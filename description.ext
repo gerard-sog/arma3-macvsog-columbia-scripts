@@ -1,0 +1,33 @@
+//General
+loadScreen = "";
+author = "";
+onLoadName = "";    // Title of the mission
+onLoadMission = "Welcome To  MACV SOG - Columbia!";
+briefingName 	= "Mission selection menu name";
+enabledebugconsole = 1;
+disabledAI = 1;
+
+//Respawn
+respawn = 3;            // Respawn "BASE", use 'respawn_west'  
+respawnOnStart = -1;    // No respawn on mission start
+respawnDialog = 0;      // Show scoreboard, 0 = Disabled, 1 = Enabled
+respawnDelay = 10;      // Delay in seconds
+respawnButton = 1;      // 0 = Disabled, 1 = Enabled
+
+respawnTemplates[] = {"Counter"};
+
+//Corpsemanager
+corpseManagerMode = 3;
+corpseLimit = 20;
+corpseRemovalMinTime = 300;
+corpseRemovalMaxTime = 600;
+
+//Wreckmanager
+wreckManagerMode = 3;
+wreckLimit = 7;
+wreckRemovalMinTime = 120;
+wreckRemovalMaxTime = 600;
+minPlayerDistance = 50;
+
+//AI
+disabledAI = 1;  // Removes playable units that are not controlled by a player
