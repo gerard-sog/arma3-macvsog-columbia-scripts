@@ -1,4 +1,5 @@
-# arma3-macvsog-columbia-scripts
+# Arma3 MACV-SOG Columbia
+## Scripts
 
 <details>
 
@@ -38,7 +39,8 @@ To display any image on a map stand, follow the below steps:
 - add the below code in the 'init' section of the map stand
 
 ```
-this setObjectTexture [0, "images\YOUR_IMAGE.paa"]
+this setObjectTexture [0,
+"images\YOUR_IMAGE.paa"]
 ```
 
 </details>
@@ -49,7 +51,23 @@ this setObjectTexture [0, "images\YOUR_IMAGE.paa"]
 
 Radio support from the Prairie fire DLC is available in a mission if all of the above are true for a player:
 - Radio Support module is present in the mission
-- The player has one of the following radio: ["vn_o_pack_t884_01", "vn_o_pack_t884_ish54_01_pl", "vn_o_pack_t884_m1_01_pl", "vn_o_pack_t884_m38_01_pl", "vn_o_pack_t884_ppsh_01_pl", "vn_b_pack_prc77_01_m16_pl", "vn_b_pack_03_m3a1_pl", "vn_b_pack_03_xm177_pl", "vn_b_pack_03_type56_pl", "vn_b_pack_03", "vn_b_pack_prc77_01", "vn_b_pack_trp_04", "vn_b_pack_trp_04_02", "vn_b_pack_03", "vn_b_pack_03_02", "vn_b_pack_lw_06", "vn_b_pack_m41_05"]
+- The player has one of the following radio: ["vn_o_pack_t884_01",
+"vn_o_pack_t884_ish54_01_pl",
+"vn_o_pack_t884_m1_01_pl",
+"vn_o_pack_t884_m38_01_pl",
+"vn_o_pack_t884_ppsh_01_pl",
+"vn_b_pack_prc77_01_m16_pl",
+"vn_b_pack_03_m3a1_pl",
+"vn_b_pack_03_xm177_pl",
+"vn_b_pack_03_type56_pl",
+"vn_b_pack_03",
+"vn_b_pack_prc77_01",
+"vn_b_pack_trp_04",
+"vn_b_pack_trp_04_02",
+"vn_b_pack_03",
+"vn_b_pack_03_02",
+"vn_b_pack_lw_06",
+"vn_b_pack_m41_05"]
 - Player has the below code in its 'init' section
 
 ```
@@ -78,3 +96,9 @@ this addAction [
 ```
 
 </details>
+
+## Default values
+
+- Default <b>addons</b> for missions: [defaultAddons.txt](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/defaultAddons.txt)
+- Default soldier <b>loadout</b>: [description.ext](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/defaultLoadout.txt)
+- Default whitelist <b>arsenal</b>: [description.ext](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/defaultWhitelistArsenal.txt)
