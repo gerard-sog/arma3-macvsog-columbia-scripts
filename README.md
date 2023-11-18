@@ -57,3 +57,21 @@ this setUnitTrait["vn_artillery", true, true];
 ```
 
 </details>
+
+<details>
+
+<summary>Add teleport flag</summary>
+
+To add a teleport flag (or any other object that player can use to teleport themselves at a predetermined point) follow the below steps:
+- Add a invisible marker (point) on the map in editor and give it a name (ex: "airfield")
+- add the below code in the 'init' section of the teleport flag (or object you choose)
+
+```
+this addAction [
+    "Travel to airfield", // This text will be displayed in the action menu (using the scroll wheel).
+{
+    (_this select 1) setPos (getMarkerPos "airfield");} // This section will teleport the player to the position of the "airfield" marker.
+];
+```
+
+</details>
