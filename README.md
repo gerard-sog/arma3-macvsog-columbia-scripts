@@ -56,6 +56,9 @@ Radio support from the Prairie fire DLC is available in a mission if all of the 
 this setUnitTrait["vn_artillery", true, true];
 ```
 
+- All this can be modified in the vn_artillery_settings class in [description.ext](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/description.ext)
+
+
 </details>
 
 <details>
