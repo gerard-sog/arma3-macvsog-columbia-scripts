@@ -11,11 +11,11 @@ ace_advanced_fatigue_deployedSwayFactor = 1;
 ace_advanced_fatigue_enabled = true;
 ace_advanced_fatigue_enableStaminaBar = true;
 ace_advanced_fatigue_fadeStaminaBar = true;
-force ace_advanced_fatigue_loadFactor = 0.84474;
+force ace_advanced_fatigue_loadFactor = 0.7;
 force ace_advanced_fatigue_performanceFactor = 1.4635;
 force ace_advanced_fatigue_recoveryFactor = 1.4904;
 ace_advanced_fatigue_restedSwayFactor = 1;
-force ace_advanced_fatigue_swayFactor = 0.84474;
+force ace_advanced_fatigue_swayFactor = 0.9;
 force ace_advanced_fatigue_terrainGradientFactor = 0.871643;
 
 // ACE Advanced Throwing
