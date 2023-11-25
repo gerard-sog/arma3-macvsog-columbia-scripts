@@ -100,5 +100,5 @@ this addAction [
 ## Default values
 
 - Default <b>addons</b> for missions: [defaultAddons.txt](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/defaultAddons.txt)
-- Default soldier <b>loadout</b>: [defaultLoadout.txt](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/defaultLoadout.txt)
+- Default <b>loadouts</b>: [loadouts](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/loadouts/)
 - Default whitelist <b>arsenal</b>: [defaultWhitelistArsenal.txt](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/defaultWhitelistArsenal.txt)
