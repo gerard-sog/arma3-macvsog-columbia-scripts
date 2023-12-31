@@ -2,7 +2,7 @@
 ace_advanced_ballistics_ammoTemperatureEnabled = true;
 ace_advanced_ballistics_barrelLengthInfluenceEnabled = true;
 ace_advanced_ballistics_bulletTraceEnabled = true;
-ace_advanced_ballistics_enabled = false;
+force ace_advanced_ballistics_enabled = true;
 ace_advanced_ballistics_muzzleVelocityVariationEnabled = true;
 ace_advanced_ballistics_simulationInterval = 0.05;
 
@@ -901,6 +901,10 @@ lambs_main_radioEast = 500;
 lambs_main_radioGuer = 500;
 lambs_main_radioShout = 100;
 lambs_main_radioWest = 500;
+
+// Laxemann Align
+L_Align_enabled = true;
+L_Align_steadyShake_enabled = true;
 
 // Laxemann Immerse
 L_Immerse_exShake = true;
