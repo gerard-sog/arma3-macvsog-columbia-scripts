@@ -31,6 +31,14 @@ minPlayerDistance = 50;
 //AI
 disabledAI = 1;  // Removes playable units that are not controlled by a player
 
+//Render distance management from ace self interact
+#include "taw_vd\GUI.h"
+
+class CfgFunctions
+{
+    #include "taw_vd\CfgFunctions.hpp"
+};
+
 class vn_artillery_settings
 {
         // Add your NUMBER variable that will be used as a cost variable - leave empty if you don't want the cost to matter.
