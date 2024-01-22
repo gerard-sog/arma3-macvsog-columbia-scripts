@@ -97,6 +97,34 @@ this addAction [
 
 </details>
 
+<details>
+
+<summary>Force vietnamese face on players</summary>
+
+Playing as early MACV-SOG team, we are playing as south vietnamese and thus we force vietnamese faces on all playable character. At player initilization or at player respawn, one random asian face is selected from the below list and set for the current player.
+
+```
+[
+    "vn_b_AsianHead_A3_06_02",
+    "vn_b_AsianHead_A3_07_02",
+    "vn_b_AsianHead_A3_07_03",
+    "vn_b_AsianHead_A3_07_04",
+    "vn_b_AsianHead_A3_07_05",
+    "vn_b_AsianHead_A3_07_06",
+    "vn_b_AsianHead_A3_07_07",
+    "vn_b_AsianHead_A3_07_08",
+    "vn_b_AsianHead_A3_07_09"
+]
+```
+
+To disable this feature, you can comment or remove the below line from initPlayerlocal.sqf and onPlayerRespawn.sqf:
+
+```
+_player setFace _randomAsianHead
+```
+
+</details>
+
 ## Default values
 
 - Default <b>addons</b> for missions: [defaultAddons.txt](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/defaultAddons.txt)
