@@ -236,6 +236,9 @@ ace_markers_moveRestriction = 0;
 ace_markers_timestampEnabled = true;
 ace_markers_timestampFormat = "HH:MM";
 ace_markers_timestampHourFormat = 24;
+ace_markers_timestampTimezone = 0;
+ace_markers_TimestampUTCMinutesOffset = 0;
+ace_markers_timestampUTCOffset = 0;
 
 // ACE Map Gestures
 ace_map_gestures_allowCurator = true;
@@ -252,6 +255,7 @@ ace_map_gestures_onlyShowFriendlys = false;
 
 // ACE Map Tools
 ace_maptools_drawStraightLines = true;
+ace_maptools_plottingBoardAllowChannelDrawing = 1;
 ace_maptools_rotateModifierKey = 1;
 
 // ACE Medical
@@ -316,6 +320,7 @@ ace_medical_treatment_medicSurgicalKit = 1;
 ace_medical_treatment_timeCoefficientPAK = 1;
 ace_medical_treatment_treatmentTimeAutoinjector = 5;
 ace_medical_treatment_treatmentTimeBodyBag = 15;
+ace_medical_treatment_treatmentTimeCoeffZeus = 1;
 ace_medical_treatment_treatmentTimeCPR = 15;
 ace_medical_treatment_treatmentTimeGrave = 30;
 ace_medical_treatment_treatmentTimeIV = 12;
@@ -406,7 +411,7 @@ ace_overheating_unJamOnreload = false;
 ace_overheating_unJamOnSwapBarrel = false;
 
 // ACE Pointing
-ace_finger_enabled = false;
+force ace_finger_enabled = true;
 ace_finger_indicatorColor = [0.83,0.68,0.21,0.75];
 ace_finger_indicatorForSelf = true;
 ace_finger_maxRange = 4;
