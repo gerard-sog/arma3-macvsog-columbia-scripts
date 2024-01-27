@@ -49,7 +49,7 @@ this setObjectTexture [0,
 
 <summary>Allow Radio Support based on trait</summary>
 
-Radio support from the Prairie fire DLC is available in a mission if all of the above are true for a player:
+Radio support from the Prairie fire DLC is available in a mission if all of the below points are true for a player:
 - Radio Support module is present in the mission
 - The player has one of the following radio: ["vn_o_pack_t884_01",
 "vn_o_pack_t884_ish54_01_pl",
@@ -68,7 +68,7 @@ Radio support from the Prairie fire DLC is available in a mission if all of the 
 "vn_b_pack_03_02",
 "vn_b_pack_lw_06",
 "vn_b_pack_m41_05"]
-- Player has the below code in its 'init' section
+- (IF unit_trait_required = 1 in description.ext) Player has the below code in its 'init' section
 
 ```
 this setUnitTrait["vn_artillery", true, true];
