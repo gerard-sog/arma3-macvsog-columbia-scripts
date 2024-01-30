@@ -2,7 +2,7 @@
 loadScreen = "images\macvsog-columbia-logo.paa";
 author = "";
 onLoadName = "";    // Title of the mission
-onLoadMission = "Welcome To  MACV SOG - Columbia!";
+onLoadMission = "Welcome To  MACV SOG - Columbia";
 briefingName 	= "Mission selection menu name";
 enabledebugconsole = 1;
 
