@@ -125,6 +125,27 @@ _player setFace _randomAsianHead
 
 </details>
 
+<details>
+
+<summary>Add frinkable beer</summary>
+
+To create a drinkable beer (or any other object that player can use) follow the below steps:
+- Add the beer object 'Savage Bia'
+- add the below code in the 'init' section of the beer (or object you choose)
+
+```
+this addAction ["Drink Beer", { 
+    "dynamicBlur" ppEffectEnable true; 
+    "dynamicBlur" ppEffectCommit 1; 
+    "dynamicBlur" ppEffectAdjust [6]; 
+    addCamShake [5, 60, 1];
+    sleep 4; 
+    "dynamicBlur" ppEffectEnable false;
+}];
+```
+
+</details>
+
 ## Default values
 
 - Default <b>addons</b> for missions: [defaultAddons.txt](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/defaultAddons.txt)
