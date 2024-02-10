@@ -321,5 +321,10 @@
   "vn_b_pack_m41_01",
   "vn_b_pack_m41_03",
   "vn_b_vest_usmc_08",
-  "vn_b_vest_usmc_07"
+  "vn_b_vest_usmc_07",
+  "vn_mpu",
+  "vn_mpu_t_mag",
+  "vn_mpu_mag",
+  "vn_s_mpu",
+  "ACE_Flashlight_MX991"
 ]
