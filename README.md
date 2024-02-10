@@ -127,7 +127,7 @@ _player setFace _randomAsianHead
 
 <details>
 
-<summary>Add frinkable beer</summary>
+<summary>Add drinkable beer</summary>
 
 To create a drinkable beer (or any other object that player can use) follow the below steps:
 - Add the beer object 'Savage Bia'
