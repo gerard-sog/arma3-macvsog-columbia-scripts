@@ -123,6 +123,11 @@ To disable this feature, you can comment or remove the below line from initPlaye
 _player setFace _randomAsianHead
 ```
 
+You can also directly execute the below command on the server to directly reset all players faces to a random asian face:
+```
+call COLUMBIA_fn_faces;
+```
+
 </details>
 
 <details>
