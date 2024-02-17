@@ -160,11 +160,11 @@ acex_headless_log = false;
 acex_headless_transferLoadout = 0;
 
 // ACE Hearing
-ace_hearing_autoAddEarplugsToUnits = true;
+force ace_hearing_autoAddEarplugsToUnits = false;
 ace_hearing_disableEarRinging = false;
 ace_hearing_earplugsVolume = 0.5;
-ace_hearing_enableCombatDeafness = true;
-ace_hearing_enabledForZeusUnits = true;
+force ace_hearing_enableCombatDeafness = false;
+force ace_hearing_enabledForZeusUnits = false;
 ace_hearing_unconsciousnessVolume = 0.4;
 
 // ACE Interaction
@@ -1003,6 +1003,19 @@ force TFAR_Teamspeak_Channel_Name = "Operation";
 force TFAR_Teamspeak_Channel_Password = "THS1964";
 tfar_terrain_interception_coefficient = 7;
 TFAR_voiceCone = true;
+
+// TSP Animate
+force tsp_cba_animate_door = true;
+tsp_cba_animate_dynamicReadyBush = true;
+tsp_cba_animate_dynamicReadyFriend = 3;
+tsp_cba_animate_dynamicReadyFriendAngle = 35;
+tsp_cba_animate_dynamicReadyObject = 2;
+force tsp_cba_animate_dynamicReadyPoll = 0;
+tsp_cba_animate_dynamicReadyVertical = -0.1;
+tsp_cba_animate_friendsAreObjects = false;
+force tsp_cba_animate_map = true;
+force tsp_cba_animate_nvg = true;
+tsp_cba_animate_walk = false;
 
 // Zeus Enhanced
 zen_area_markers_editableMarkers = 0;
