@@ -54,6 +54,10 @@
       "vn_b_vest_sog_01",
       [
         [
+          "ACE_Flashlight_MX991",
+          1
+        ],
+        [
           "vn_m16_20_t_mag",
           21,
           18
@@ -100,31 +104,26 @@
           2
         ],
         [
-          "ACE_EarPlugs",
-          1
-        ],
-        [
           "ACE_MapTools",
           1
         ],
         [
+          "ACE_Flashlight_MX991",
+          1
+        ],
+        [
           "vn_mine_m18_range_mag",
-          4,
+          2,
           1
         ],
         [
           "vn_mine_m14_mag",
-          4,
-          1
-        ],
-        [
-          "SmokeShell",
-          3,
+          6,
           1
         ],
         [
           "vn_m34_grenade_mag",
-          3,
+          4,
           1
         ],
         [
@@ -134,17 +133,22 @@
         ],
         [
           "vn_m67_grenade_mag",
-          3,
+          4,
           1
         ],
         [
-          "SmokeShellBlue",
-          1,
+          "vn_m18_purple_mag",
+          2,
           1
         ],
         [
-          "SmokeShellRed",
-          1,
+          "vn_m18_red_mag",
+          2,
+          1
+        ],
+        [
+          "vn_m18_yellow_mag",
+          2,
           1
         ]
       ]
@@ -169,10 +173,5 @@
       ""
     ]
   ],
-  [
-    [
-      "ace_earplugs",
-      true
-    ]
-  ]
+  []
 ]

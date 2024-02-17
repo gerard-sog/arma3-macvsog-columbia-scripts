@@ -95,11 +95,11 @@
           2
         ],
         [
-          "ACE_EarPlugs",
+          "ACE_MapTools",
           1
         ],
         [
-          "ACE_MapTools",
+          "ACE_Flashlight_MX991",
           1
         ],
         [
@@ -154,10 +154,5 @@
       ""
     ]
   ],
-  [
-    [
-      "ace_earplugs",
-      true
-    ]
-  ]
+  []
 ]

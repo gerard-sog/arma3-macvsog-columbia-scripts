@@ -49,6 +49,10 @@
       "vn_b_vest_sog_04",
       [
         [
+          "ACE_Flashlight_MX991",
+          1
+        ],
+        [
           "vn_type56_t_mag",
           16,
           30
@@ -95,10 +99,6 @@
           2
         ],
         [
-          "ACE_EarPlugs",
-          1
-        ],
-        [
           "ACE_MapTools",
           1
         ],
@@ -111,18 +111,17 @@
           1
         ],
         [
+          "ACE_Flashlight_MX991",
+          1
+        ],
+        [
           "vn_mine_m18_range_mag",
-          4,
+          2,
           1
         ],
         [
           "vn_mine_m14_mag",
-          4,
-          1
-        ],
-        [
-          "SmokeShell",
-          3,
+          6,
           1
         ],
         [
@@ -162,10 +161,5 @@
       ""
     ]
   ],
-  [
-    [
-      "ace_earplugs",
-      true
-    ]
-  ]
+  []
 ]

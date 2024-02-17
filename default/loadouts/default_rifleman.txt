@@ -108,23 +108,22 @@
           1
         ],
         [
+          "ACE_Flashlight_MX991",
+          1
+        ],
+        [
           "vn_mine_m18_range_mag",
-          4,
+          2,
           1
         ],
         [
           "vn_mine_m14_mag",
-          4,
-          1
-        ],
-        [
-          "SmokeShell",
-          3,
+          6,
           1
         ],
         [
           "vn_m34_grenade_mag",
-          3,
+          4,
           1
         ],
         [
@@ -134,7 +133,7 @@
         ],
         [
           "vn_m67_grenade_mag",
-          3,
+          4,
           1
         ]
       ]
@@ -159,10 +158,5 @@
       ""
     ]
   ],
-  [
-    [
-      "ace_earplugs",
-      true
-    ]
-  ]
+  []
 ]
