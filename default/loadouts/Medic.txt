@@ -54,6 +54,10 @@
       "vn_b_vest_sog_02",
       [
         [
+          "ACE_Flashlight_MX991",
+          1
+        ],
+        [
           "vn_m16_20_t_mag",
           18,
           18
@@ -78,10 +82,6 @@
         [
           "ACE_CableTie",
           2
-        ],
-        [
-          "ACE_EarPlugs",
-          1
         ],
         [
           "ACE_MapTools",
@@ -120,11 +120,6 @@
           10
         ],
         [
-          "SmokeShell",
-          2,
-          1
-        ],
-        [
           "vn_m34_grenade_mag",
           3,
           1
@@ -161,10 +156,5 @@
       ""
     ]
   ],
-  [
-    [
-      "ace_earplugs",
-      true
-    ]
-  ]
+  []
 ]
