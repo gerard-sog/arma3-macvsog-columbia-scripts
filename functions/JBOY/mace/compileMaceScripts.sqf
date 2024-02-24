@@ -1,6 +1,6 @@
 private ["_path"];
 
-_path = "JBOY\mace\";
+_path = "functions\JBOY\mace\";
 _scripts = 
 // **********************************************************************
 // Immediate Action Scripts
