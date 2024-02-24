@@ -1,6 +1,6 @@
 // JBOY_PainSfx
 // Purpose:         Have unit say one of the loud ingame pain grunts
-// Precompile:      JBOY_PainSfx =  compile preprocessFileLineNumbers "JBOY\JBOY_PainSfx.sqf";
+// Precompile:      JBOY_PainSfx =  compile preprocessFileLineNumbers "functions\JBOY\JBOY_PainSfx.sqf";
 // Credits:         Bohemia Interactive, and Greenfist and Gunter Severloh for finding path to the sounds.
 //                  
 // Example call:   [player] call JBOY_BreatheSfx;
