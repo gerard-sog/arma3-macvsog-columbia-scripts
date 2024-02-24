@@ -12,5 +12,5 @@ execVM "functions\init_columbia_zeus.sqf";
 // **********************************************************************
 // Compile general JBOY functions
 // **********************************************************************
-_n = execVM  "JBOY\JBOY_compileFuncs.sqf"; // Compile general JBOY functions
-call compile preprocessFile "JBOY\mace\compileMaceScripts.sqf"; // Compile all Mace functions
+_n = execVM  "functions\JBOY\JBOY_compileFuncs.sqf"; // Compile general JBOY functions
+call compile preprocessFile "functions\JBOY\mace\compileMaceScripts.sqf"; // Compile all Mace functions
