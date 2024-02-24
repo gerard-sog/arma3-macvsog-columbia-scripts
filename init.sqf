@@ -5,3 +5,12 @@
 
 // init COLUMBIA Zeus Custom Modules
 execVM "functions\init_columbia_zeus.sqf";
+
+// **********************************************************************
+// Place the following in your mission's init.sqf
+// **********************************************************************
+// **********************************************************************
+// Compile general JBOY functions
+// **********************************************************************
+_n = execVM  "JBOY\JBOY_compileFuncs.sqf"; // Compile general JBOY functions
+call compile preprocessFile "JBOY\mace\compileMaceScripts.sqf"; // Compile all Mace functions
