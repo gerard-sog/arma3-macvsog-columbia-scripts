@@ -5,10 +5,7 @@
 params ["_unit","_mace","_trapDir","_trapPos"];
 //systemChat str ["JBOY_maceVictim",_this];
 private _group = group _unit;
-private _future = time + 10;
-private _lifeState = lifeState _unit;
-waitUntil {sleep .1; !(lifeState _unit == _lifeState) or time > _future};
-if !(lifeState _unit == _lifeState) then
+if ((_unit distance _mace) < 3) then
 {
 	[_unit,"a3\Sounds_f_orange\missionsfx\pumpkin_destroy_0",["1","2","3"],".wss",2] spawn JBOY_playRandomSfx; // squishy sound fx
 	//[_unit] call JBOY_dustFxMace;
