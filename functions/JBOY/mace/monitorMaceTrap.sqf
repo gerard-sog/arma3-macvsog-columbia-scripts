@@ -2,7 +2,7 @@
 // Spring the trap when the trap's trigger is fired.
 // ********************************************************
 // monitorMaceTrap =
-params ["_trapProxy","_mace","_rope1","_ropeTopObj","_maceSphere","_trigger"];
+params ["_trapProxy","_mace","_ropeTopObj","_maceSphere","_trigger"];
 private _trapPos = getPos _trapProxy;
 private _trapDir = getDir _trapProxy;
 
@@ -15,7 +15,6 @@ deleteVehicle _trapProxy;
 // *******************************************************
 // Delete cosmetic rope and attach swing rope.  Then detach mace from original position to start the swing
 // *******************************************************
-deleteVehicle _rope1; 
 _mace enableSimulation true;
 // _ropeTopObj enableSimulation true; // Do NOT enable simulation on top UAV because that makes it bounce like crazy
 
@@ -31,11 +30,8 @@ _mace setDir _dirTo;
 // stablilizes mace swing and plays creaking noise
 // *******************************************************
 [_mace,_ropeTopObj] spawn JBOY_controlMaceSwing;
-// *******************************************************
-// Units react to springing of trap
-// *******************************************************
+
 sleep 1.5;
-[_unit,_mace] spawn JBOY_initialReactionToMace;
 private _group = group _unit;
 
 // *******************************************************
@@ -53,7 +49,6 @@ playSound3D [_sound,_mace, false, getPosASL _mace, 3.5];
 // *******************************************************
 [_unit,_mace, _trapDir, _trapPos] spawn JBOY_maceVictims;
 sleep 1;
-_group setBehaviour "AWARE";
 
 // *******************************************************
 // After initial swing make mace heavier so hangs closer to the ground (to counter retarded rope elasticity...argggh!!!).
@@ -83,11 +78,8 @@ if (_trapPos distance _unit > 3 or !(vehicle _unit == _unit)) then
 		// {
 			[_unit, selectRandom ["KeepFocused","StayAlert"]] call JBOY_Speak;  
 		//};
-		sleep 2;
-		_unit setUnitPOS "DOWN"; 
 		sleep 2; 
-		group _unit setBehaviour "AWARE";
-		//_unit setUnitPOS "AUTO";
+
 		{_x forceSpeed 0;} forEach units _group;
 	};
 };

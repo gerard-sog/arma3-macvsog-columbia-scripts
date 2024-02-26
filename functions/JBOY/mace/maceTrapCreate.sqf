@@ -23,7 +23,7 @@ _trapProxy enableSimulation false; // We don't want the Whip Trap to pop out and
 // ***************************************************************************
 private _topOfRope = "Sign_Sphere100cm_F" createVehicle [10,10000,0]; 
 _topOfRope setObjectMaterialGlobal [0, "\a3\data_f\default.rvmat"]; // makes sphere no longer see thru 
-_topOfRope setObjectTexture [0,'vn\characters_f_vietnam\opfor\uniforms\data\vn_o_nva_army_bdu_shirt_03_co.paa']; 
+_topOfRope setObjectTextureGlobal [0,'vn\characters_f_vietnam\opfor\uniforms\data\vn_o_nva_army_bdu_shirt_03_co.paa']; 
 //TopRope = _topOfRope; 
 _topOfRope setPos (getpos _trapProxy vectorAdd [0,0,11.0]); 
 _topOfRope setDir (_swingDir + 180); 
@@ -35,7 +35,7 @@ private _maceStartPos = ([_topOfRope, 8, (_swingDir + 180)] call BIS_fnc_relPos)
 private _maceSphere = "Sign_Sphere100cm_F" createVehicle [10,10000,0]; 
 _maceSphere setPos [_maceStartPos#0, _maceStartPos#1, 9.0]; 
 _maceSphere setObjectMaterialGlobal [0, "\a3\data_f\default.rvmat"]; // makes sphere no longer transparent
-_maceSphere setObjectTexture [0,'vn\characters_f_vietnam\opfor\uniforms\data\vn_o_nva_army_bdu_shirt_03_co.paa']; 
+_maceSphere setObjectTextureGlobal [0,'vn\characters_f_vietnam\opfor\uniforms\data\vn_o_nva_army_bdu_shirt_03_co.paa']; 
  
 // ***************************************************************************
 // Create tree to left of trapProxy position. This tree will have the mace trap attached to it.
@@ -141,7 +141,6 @@ _bush setObjectScale .85;
 _mace enableSimulation false;
 _ropeTopObj enableSimulation false;
 
-_rope1 = ropeCreate [_mace, [0,0,-.3],_ropeTopObj, [0,0,-.2]]; //,(_ropeTopObj distance _mace)+ 1]; 
 _trapProxy setVariable ["JBOY_springTrap",false,true];
 
 _trigger = createTrigger ["EmptyDetector", [100,0,0]];
@@ -155,5 +154,5 @@ _trigger setPos getpos _trapProxy;
 // ***************************************************************************
 // Trap is now ready to be sprung, so spawn a functiont to monitor it
 // ***************************************************************************
-[_trapProxy,_mace,_rope1,_ropeTopObj,_maceSphere,_trigger] spawn JBOY_monitorMaceTrap;
+[_trapProxy,_mace,_ropeTopObj,_maceSphere,_trigger] spawn JBOY_monitorMaceTrap;
 

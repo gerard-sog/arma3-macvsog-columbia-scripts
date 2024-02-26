@@ -186,7 +186,6 @@ JBOY_maceTrapCreate =
 	_mace enableSimulation false;
 	_ropeTopObj enableSimulation false;
 
-	_rope1 = ropeCreate [_mace, [0,0,-.3],_ropeTopObj, [0,0,-.2]]; //,(_ropeTopObj distance _mace)+ 1]; 
 	_trapProxy setVariable ["JBOY_springTrap",false,true];
 
 	_trigger = createTrigger ["EmptyDetector", [100,0,0]];
@@ -200,7 +199,7 @@ JBOY_maceTrapCreate =
 	// ***************************************************************************
 	// Trap is now ready to be sprung, so spawn a functiont to monitor it
 	// ***************************************************************************
-	[_trapProxy,_mace,_rope1,_ropeTopObj,_maceSphere,_trigger] spawn JBOY_monitorMaceTrap;
+	[_trapProxy,_mace,_ropeTopObj,_maceSphere,_trigger] spawn JBOY_monitorMaceTrap;
 };
 
 // ********************************************************
@@ -252,7 +251,7 @@ systemchat "found punji3";
 // ********************************************************
 JBOY_monitorMaceTrap =
 {
-	params ["_trapProxy","_mace","_rope1","_ropeTopObj","_maceSphere","_trigger"];
+	params ["_trapProxy","_mace","_ropeTopObj","_maceSphere","_trigger"];
 	private _trapPos = getPos _trapProxy;
 	private _trapDir = getDir _trapProxy;
 	
@@ -265,7 +264,6 @@ JBOY_monitorMaceTrap =
 	// *******************************************************
 	// Delete cosmetic rope and attach swing rope.  Then detach mace from original position to start the swing
 	// *******************************************************
-	deleteVehicle _rope1; 
 	_mace enableSimulation true;
 // _ropeTopObj enableSimulation true; // Do NOT enable simulation on top UAV because that makes it bounce like crazy
 
@@ -285,7 +283,6 @@ JBOY_monitorMaceTrap =
 	// Units react to springing of trap
 	// *******************************************************
 	sleep 1.5;
-	[_unit] spawn JBOY_initialReactionToMace;
 	private _group = group _unit;
 
 	// *******************************************************
@@ -303,7 +300,6 @@ JBOY_monitorMaceTrap =
 	// *******************************************************
 	[_unit,_mace, _trapDir, _trapPos] spawn JBOY_maceVictims;
 	sleep 1;
-	_group setBehaviour "AWARE";
 
 	// *******************************************************
 	// After initial swing make mace heavier so hangs closer to the ground (to counter retarded rope elasticity...argggh!!!).
@@ -341,101 +337,6 @@ JBOY_monitorMaceTrap =
 		};
 	};
 	[_mace] spawn JBOY_endMaceSwinging;
-};
-
-// ********************************************************
-// Team reacts to mace
-// ********************************************************
-JBOY_initialReactionToMace =
-{
-	params ["_unit"];
-	private _group = group _unit;
-	if (count (units _group select {alive _x}) == 0) exitWith {};
-	//{[_x] call JBOY_speakerMute;} forEach units _group;
-	private _dude = objNull;
-	
-	// SHOUT WARNING
-	if (count units _group > 1) then 
-	{
-		_dude = (units _group #1);
-		private _nameWasSaid = [_dude,_unit] call JBOY_sayNameOfUnit; // Shouts name of point man who triggered trap
-		sleep .5;
-		[_dude, selectRandom ["GoProne_1","GoProne_2","Danger","takecover"],2.5] call JBOY_Speak; 
-	};
-	
-	// SOMETIMES UNIT THAT TRIGGERED TRAP WILL ATTEMPT TO DUCK
-	// if (selectRandom [true,false,false,false] and !isPlayer _unit) then 
-	// {
-		// [_unit, "Down"] remoteExec ["playActionNow"];
-		// [_unit, "Down"] remoteExec ["playActionNow"];
-	// };
-	
-	// UNITS IN GROUP REACT BY GETTING LOW
-	{  
-		if (!isPlayer _x //and !(_x isEqualTo _unit)
-		) then 
-		{
-			[_x, "Down"] remoteExec ["playActionNow"];sleep.3;[_x, "Down"] remoteExec ["playActionNow"];
-			_x setUnitPOS "DOWN";
-			_x doWatch _unit;
-		};
-	} forEach units _group;
-	sleep 1;
-	//_unit forceSpeed 0;
-	
-	// SOME PANIC SHOUTS
-	if (count units _group > 1) then 
-	{
-		if ((speaker _dude find 'eng' >= 0)) then 
-		{
-			private _sounds = ["vn_sam_uscomba_004", // Get your ass Down!
-								"vn_sam_uscomba_010"]; // get down get down!
-			[units _group #0, (selectRandom _sounds)] remoteExecCall ["say3D",0,false];
-		};
-	};
-	sleep 2;
-	if (count (units _group select {alive _x}) == 0) exitWith {};
-	
-	// DEFINE SOME CONTEXT SPECIFIC SOUND FILES
-	private _leader = units _group #0;
-	_shortPlaySounds = ["a3\dubbing_f_epa\a_in2\24_mine\a_in2_24_mine_ico_0.ogg", //  Fuck!
-		"a3\dubbing_f_epa\a_m01\45_survivor_dead\a_m01_45_survivor_dead_med_0.ogg", // fuck
-		"a3\dubbing_f_epa\a_m02\115_take_cover\a_m02_115_take_cover_bra_0.ogg", // Take cover
-		"a3\dubbing_f_epa\a_in2\25_mine\a_in2_25_mine_ker_0.ogg", //  Fuck!
-		"a3\dubbing_f_epa\a_in2\25_mine\a_in2_25_mine_ker_2.ogg"]; // Jesuus!
-	_saySounds = ["vn_sam_uscomba_007","vn_sam_uscomba_008","vn_sam_uscomba_008","vn_sam_uscomba_008"];  // Fuck!, Shit!
-	
-	// IF GROUP BIG ENOUGH MORE PANIC SHOUTING AND LEADER CALMS THEM DOWN
-	_unitsMinusLeader = (units _group) - [_leader];
-	if (speaker _leader find 'eng' >= 0) then 
-	{
-		if (count (units _group select {alive _x}) > 1) then 
-		{
-			// Team members reacting
-			_dude = selectRandom _unitsMinusLeader;
-			[_dude, selectRandom ["EndangeredE_2"],1] call JBOY_Speak; // son of a bitch
-			sleep 1.5;
-			_dude = selectRandom _unitsMinusLeader;
-			if (selectRandom [true,false]) then
-			{
-				// [_dude, (selectRandom _saySounds)] remoteExecCall ["say3D",0,false];
-				// sleep .5;
-				playSound3D [selectRandom _shortPlaySounds,_dude, false, _dude, 2.5];
-				sleep .5;
-			// } else
-			// {
-				// playSound3D [selectRandom _playSounds,_dude, false, getPosASL _dude, 2.5];
-				// sleep 4.5;
-			};
-			// Leader restores order
-			sleep 1;
-			_leader = units _group #0; // refresh leader in case he's dead
-			[_leader, selectRandom ["Silence","DownAndQuiet"],1] call JBOY_Speak;
-			// sleep 1.5;
-			// [_leader, selectRandom ["scanhorizon","KeepFocused"]] call JBOY_Speak;
-			
-		} ;
-	};
 };
 
 // *********************************************************************
@@ -485,8 +386,6 @@ JBOY_maceVictim =
 			_dirTo = _dirTo +180;
 		};
 				private _unitDir = getDir _unit;
-		_group setBehaviour "COMBAT";
-		{_x forceSpeed 0;} forEach units _group;  // Stop the group so they react
 		{_x enableCollisionWith _mace; _x setUnitPOS "MIDDLE";} forEach units _group;
 		_unit setDamage 1;
 		_unit setPos getpos _unit;
@@ -514,173 +413,6 @@ JBOY_maceVictim =
 		[_mace] call JBOY_PainSfx;
 	};
 	sleep 7;
-	// ********************************************************
-	// Ensure group reaction to impalement runs for first victim, not for each victim
-	// ********************************************************
-	if (_unit isEqualTo (_mace getVariable "_triggerUnit")) then
-	{
-		[_group,_unit] call JBOY_reactToImpale;
-	};
-	// ********************************************************
-	// Allow units to move on if not handled by the reaction function
-	// ********************************************************
-	sleep 30;
-	{ _x setUnitPOS "UP";} forEach units _group;
-	_group setBehaviour "AWARE";
-	{_x setUnitPOS "AUTO"; _x forceSpeed -1;} forEach units _group;
-
-};
-
-// ********************************************************
-// Team reacts to impalement (or miss) of a unit.
-// ********************************************************
-JBOY_reactToImpale =
-{
-	params ["_group","_unit"];
-	if (count (units _group select {alive _x}) == 0) exitWith {};
-	private _dude = objNull;
-	private _leader = leader _group;
-	_unitsMinusLeader = (units _group) - [_leader];
-	if (!alive _unit) then 
-	{
-		if (speaker _leader find 'eng' >= 0) then 
-		{
-			// IF TEAM BIG ENOUGH, LEADER ORDERS TO HEAL, AND MEDIC SAYS NOCANDO HES DEAD
-			if (count (units _group select {alive _x}) > 1) then 
-			{
-				if (selectRandom [true,false]) then
-				{
-					[_leader, selectRandom ["HealThatSoldier","HelpThatSoldier"]] call JBOY_Speak;
-					sleep 2;
-				} else
-				{
-					private _playSounds = ["a3\dubbing_f_epa\a_m02\20_point_man_dead\a_m02_20_point_man_dead_alp_1.ogg", //  doc check on him, rest of you covering fire
-						"a3\dubbing_f_epa\a_m01\20_survivor\a_m01_20_survivor_alp_1.ogg" //Doc take care of him, we'll take up defensive positions
-						];
-					playSound3D [selectRandom _playSounds,_leader, false, _leader, 3.5];
-					sleep 4;
-				};
-				_dude = selectRandom _unitsMinusLeader;
-				[_dude, selectRandom ["NoCanDo_1","NoCanDo_2"]] call JBOY_Speak;
-				sleep 1;
-				[_dude, selectRandom["HeIsDown","HeIsDeadE"]] call JBOY_Speak;
-			} ;
-		} else
-		{
-			// IF ONLY ONE UNIT LEFT HE JUST SAYS HES DEAD
-			[leader _group, selectRandom ["HeIsDeadE"]] call JBOY_Speak;
-		};
-	} else
-	{
-		// IF TEAM BIG ENOUGH, A DUDE SAYS SOMETHING CONTEXT SENSITIVE ABOUT TRAP NEAR MISS
-		if (count _unitsMinusLeader > 0) then
-		{
-			_dude = selectRandom _unitsMinusLeader;
-			_saySounds = ["vn_sam_uscarel_006", // Watch out, you fuckin cherry, you want to get yourself killed!
-				"vn_sam_ussteal_001", // Keep off the trails
-				"vn_sam_ussteal_014", // dont touch nuthin, vc booby trap everything
-				"vn_sam_ussteal_002", // Hey, watch where you're walkin
-				"vn_sam_ussteal_005", // keep an eye out for trip lines and punji pits
-				"vn_sam_ussteal_006", // watch for vc markers, usually point to a trap or something
-							"vn_sam_uscarel_001" // I can't take another year in this hellhole
-						];
-			_playSounds = [
-				"a3\dubbing_f_epa\a_in\145_fubar\a_in_145_fubar_ker_0.ogg", // What the literal fuck, are you kidding me
-				"a3\dubbing_f_epa\a_in\150_safer\a_in_150_safer_ker_0.ogg",  // What was that you said about it being safer on foot?
-				"a3\dubbing_f_epa\a_in\175_bad_sign\a_in_175_bad_sign_ker_0.ogg" // thats not exactly a good sign
-				];
-			if (selectRandom [true,false]) then
-			{
-				[_dude, (selectRandom _saySounds)] remoteExecCall ["say3D",0,false];
-			} else 
-			{
-				playSound3D [selectRandom _playSounds,_dude, false, _dude, 1];
-			};
-		};
-		// sleep 4;
-		// [_dude, selectRandom ["CombatGenericE_4","CombatGenericE_1","CheeringE_2","CheeringE_3","CheeringE_5"]] call JBOY_Speak; // Missed, so relief yells
-	}; // end if not alive unit
-	// sleep 1.5;
-	// [leader _group, selectRandom ["EndangeredE_2"]] call JBOY_Speak; // Son of a bitch
-	// TEAM WAITS A BIT, THEN RESUMES MOVEMENT
-	sleep 4;
-	{ _x setUnitPOS "UP";} forEach units _group;
-	_group setBehaviour "AWARE";
-	{_x setUnitPOS "AUTO";} forEach units _group;
-	sleep 2;
-	//[leader _group, selectRandom ["CoverMeE_2"],.7] call JBOY_Speak; // Ok lets go
-	[leader _group, selectRandom ["KeepFocused","StayAlert"]] call JBOY_Speak;  
-	sleep 2;
-	_unit forceSpeed -1;
-	{_x forceSpeed -1;} forEach units _group; 
-	[leader _group, selectRandom ["Clear","AreaClear"]] call JBOY_Speak; // Ok lets go
-	sleep 2;
-	sleep 1;
-	[leader _group, selectRandom ["RallyUp","formonme"]] call JBOY_Speak;
-	//{[_x] call JBOY_speakerUnmute;} forEach units _group;
-};
-
-// ********************************************************
-// If unit is named, say the name.  Else call him out as officer
-// medic, one-zero, one-one, or one-two.  If none of those apply, do nothing
-// ********************************************************
-JBOY_sayNameOfUnit =
-{
-	params ["_unit","_deadUnit"];
-	//sleep 1;
-	if !(nameSound _deadUnit == "") exitWith
-	{
-//systemChat str ["found nameSound",_unit,_deadUnit,toLower(nameSound _deadUnit)];
-		[_unit, toLower(nameSound _deadUnit),2.5] call JBOY_Speak;
-		sleep .7;
-		true
-	};
-	// Parse type of unit from description
-/*	private _description = getDescription _deadUnit#2;
-	if (_description find "One-Zero" >= 0) exitWith
-	{
-//systemChat str ["found one zero",_unit,_description];
-		[_unit, "one",2] call JBOY_Speak;
-		sleep .7;
-		[_unit, "zero",2] call JBOY_Speak;
-		sleep .7;
-		true
-	};
-	if (_description find "One-One" >= 0) exitWith
-	{
-		[_unit, "one",2] call JBOY_Speak;
-		sleep .7;
-		[_unit, "one",2] call JBOY_Speak;
-		sleep .7;
-		true
-	};
-	if (_description find "One-One" >= 0) exitWith
-	{
-		[_unit, "one",2] call JBOY_Speak;
-		sleep .7;
-		[_unit, "two",2] call JBOY_Speak;
-		sleep .7;
-		true
-	};
- 	if (_description find "medic" >= 0) exitWith
-	{
-		[_unit, "veh_infantry_medic_s"] call JBOY_Speak;
-		sleep 1;
-		true
-	};
-	if (_description find "officer" >= 0) exitWith
-	{
-		[_unit, "veh_infantry_officer_s"] call JBOY_Speak;
-		sleep 1;
-		true
-	};
-	if (_description find "pilot" >= 0) exitWith
-	{
-		[_unit, "veh_infantry_pilot_s"] call JBOY_Speak;
-		sleep 1;
-		true
-	};
- */	false
 };
 
 // ********************************************************

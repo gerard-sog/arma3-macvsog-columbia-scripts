@@ -11,9 +11,7 @@ _scripts =
 "bloodCloud",
 "controlMaceSwing",
 "endMaceSwinging",
-"gesture",
 "impaleOnMace",
-"initialReactionToMace",
 "maceTrapCreate",
 "maceTrapInit",
 "makeBloodUnderMace",
@@ -21,8 +19,6 @@ _scripts =
 "maceVictim",
 "maceVictims",
 "playRandomSfx",
-"reactToImpale",
-"sayNameOfUnit",
 "unitDropsWeapon"
 ];
 // [] call JBOY_test;
