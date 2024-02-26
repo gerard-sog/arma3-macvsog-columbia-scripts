@@ -30,11 +30,8 @@ _mace setDir _dirTo;
 // stablilizes mace swing and plays creaking noise
 // *******************************************************
 [_mace,_ropeTopObj] spawn JBOY_controlMaceSwing;
-// *******************************************************
-// Units react to springing of trap
-// *******************************************************
+
 sleep 1.5;
-[_unit,_mace] spawn JBOY_initialReactionToMace;
 private _group = group _unit;
 
 // *******************************************************
@@ -52,7 +49,6 @@ playSound3D [_sound,_mace, false, getPosASL _mace, 3.5];
 // *******************************************************
 [_unit,_mace, _trapDir, _trapPos] spawn JBOY_maceVictims;
 sleep 1;
-_group setBehaviour "AWARE";
 
 // *******************************************************
 // After initial swing make mace heavier so hangs closer to the ground (to counter retarded rope elasticity...argggh!!!).
@@ -82,11 +78,8 @@ if (_trapPos distance _unit > 3 or !(vehicle _unit == _unit)) then
 		// {
 			[_unit, selectRandom ["KeepFocused","StayAlert"]] call JBOY_Speak;  
 		//};
-		sleep 2;
-		_unit setUnitPOS "DOWN"; 
 		sleep 2; 
-		group _unit setBehaviour "AWARE";
-		//_unit setUnitPOS "AUTO";
+
 		{_x forceSpeed 0;} forEach units _group;
 	};
 };

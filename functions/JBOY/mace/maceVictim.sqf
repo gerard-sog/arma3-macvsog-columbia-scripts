@@ -1,5 +1,5 @@
 // ********************************************************
-// Attachd victim to mace and play various fx (sound, blood, etc.)
+// Attach victim to mace and play various fx (sound, blood, etc.)
 // ********************************************************
 //maceVictim = 
 params ["_unit","_mace","_trapDir","_trapPos"];
@@ -15,8 +15,6 @@ if ((_unit distance _mace) < 3) then
 		_dirTo = _dirTo +180;
 	};
 			private _unitDir = getDir _unit;
-	_group setBehaviour "COMBAT";
-	{_x forceSpeed 0;} forEach units _group;  // Stop the group so they react
 	{_x enableCollisionWith _mace; _x setUnitPOS "MIDDLE";} forEach units _group;
 	_unit setDamage 1;   
 	_unit setPos getpos _unit;   
@@ -43,19 +41,5 @@ if ((_unit distance _mace) < 3) then
 	sleep 1.5;
 	[_mace] call JBOY_PainSfx;
 };
-sleep 7;
-// ********************************************************
-// Ensure group reaction to impalement runs for first victim, not for each victim
-// ********************************************************
-if (_unit isEqualTo (_mace getVariable "_triggerUnit")) then
-{
-	[_group,_unit] call JBOY_reactToImpale;
-};
-// ********************************************************
-// Allow units to move on if not handled by the reaction function
-// ********************************************************
-sleep 30;
-{ _x setUnitPOS "UP";} forEach units _group;
-_group setBehaviour "AWARE";
-{_x setUnitPOS "AUTO"; _x forceSpeed -1;} forEach units _group;
 
+sleep 30;
