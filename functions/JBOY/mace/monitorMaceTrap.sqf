@@ -2,7 +2,7 @@
 // Spring the trap when the trap's trigger is fired.
 // ********************************************************
 // monitorMaceTrap =
-params ["_trapProxy","_mace","_rope1","_ropeTopObj","_maceSphere","_trigger"];
+params ["_trapProxy","_mace","_ropeTopObj","_maceSphere","_trigger"];
 private _trapPos = getPos _trapProxy;
 private _trapDir = getDir _trapProxy;
 
@@ -15,7 +15,6 @@ deleteVehicle _trapProxy;
 // *******************************************************
 // Delete cosmetic rope and attach swing rope.  Then detach mace from original position to start the swing
 // *******************************************************
-deleteVehicle _rope1; 
 _mace enableSimulation true;
 // _ropeTopObj enableSimulation true; // Do NOT enable simulation on top UAV because that makes it bounce like crazy
 

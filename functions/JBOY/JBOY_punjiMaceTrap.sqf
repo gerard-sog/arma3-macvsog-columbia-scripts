@@ -186,7 +186,6 @@ JBOY_maceTrapCreate =
 	_mace enableSimulation false;
 	_ropeTopObj enableSimulation false;
 
-	_rope1 = ropeCreate [_mace, [0,0,-.3],_ropeTopObj, [0,0,-.2]]; //,(_ropeTopObj distance _mace)+ 1]; 
 	_trapProxy setVariable ["JBOY_springTrap",false,true];
 
 	_trigger = createTrigger ["EmptyDetector", [100,0,0]];
@@ -200,7 +199,7 @@ JBOY_maceTrapCreate =
 	// ***************************************************************************
 	// Trap is now ready to be sprung, so spawn a functiont to monitor it
 	// ***************************************************************************
-	[_trapProxy,_mace,_rope1,_ropeTopObj,_maceSphere,_trigger] spawn JBOY_monitorMaceTrap;
+	[_trapProxy,_mace,_ropeTopObj,_maceSphere,_trigger] spawn JBOY_monitorMaceTrap;
 };
 
 // ********************************************************
@@ -252,7 +251,7 @@ systemchat "found punji3";
 // ********************************************************
 JBOY_monitorMaceTrap =
 {
-	params ["_trapProxy","_mace","_rope1","_ropeTopObj","_maceSphere","_trigger"];
+	params ["_trapProxy","_mace","_ropeTopObj","_maceSphere","_trigger"];
 	private _trapPos = getPos _trapProxy;
 	private _trapDir = getDir _trapProxy;
 	
@@ -265,7 +264,6 @@ JBOY_monitorMaceTrap =
 	// *******************************************************
 	// Delete cosmetic rope and attach swing rope.  Then detach mace from original position to start the swing
 	// *******************************************************
-	deleteVehicle _rope1; 
 	_mace enableSimulation true;
 // _ropeTopObj enableSimulation true; // Do NOT enable simulation on top UAV because that makes it bounce like crazy
 
