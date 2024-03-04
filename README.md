@@ -3,7 +3,7 @@
 
 <details>
 
-<summary>Save loadout at arsenal</summary>
+<summary>1. Save loadout at arsenal</summary>
 
 To save your loadout, add the below code in the arsenal 'init' section. 
 
@@ -30,7 +30,7 @@ Then, by looking at the arsenal (from 2 meters maximum) and using the scroll whe
 
 <details>
 
-<summary>Add image on map stand</summary>
+<summary>2. Add image on map stand</summary>
 
 To display any image on a map stand, follow the below steps:
 - convert your .png into one of these resolution: 256x256, 512x512, 1024x1024 or 2048x2048
@@ -47,8 +47,9 @@ this setObjectTexture [0,
 
 <details>
 
-<summary>Allow Radio Support based on trait</summary>
+<summary>3. Prairie Fire Radio Support</summary>
 
+<h3>Allow Radio Support based on trait</h3>
 Radio support from the Prairie fire DLC is available in a mission if all of the below points are true for a player:
 - Radio Support module is present in the mission
 - The player has one of the following radio: ["vn_o_pack_t884_01",
@@ -74,14 +75,26 @@ Radio support from the Prairie fire DLC is available in a mission if all of the 
 this setUnitTrait["vn_artillery", true, true];
 ```
 
-- All this can be modified in the vn_artillery_settings class in [description.ext](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/description.ext)
+- All this can be modified in the vn_artillery_settings class in [artillery.hpp](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/artillery.hpp)
 
+<h3>Enable/Disable Radio Support based on distance from a FOB</h3>
+Here is how we emulate FOB with artillery support capabilities. By this we mean that the FOB can provide artillery support 
+within a perimeter (it will be 3.5km in our example).
+
+To do so, we use a public variable called 'SUPPORT_ENABLED' defined in [initServer.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/initServer.sqf) and it is used as the condition in [artillery.hpp](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/artillery.hpp).
+
+```
+SUPPORT_ENABLED = true; // Used with the artillery support from Prairie Fire. By default condition on artillery strike will be true thanks to this public variable.
+publicVariable "SUPPORT_ENABLED";
+```
+
+then add a trigger that updates that variable.
 
 </details>
 
 <details>
 
-<summary>Add teleport flag</summary>
+<summary>4. Add teleport flag</summary>
 
 To add a teleport flag (or any other object that player can use to teleport themselves at a predetermined point) follow the below steps:
 - Add a invisible marker (point) on the map in editor and give it a name (ex: "airfield")
@@ -99,9 +112,9 @@ this addAction [
 
 <details>
 
-<summary>Force vietnamese face on players</summary>
+<summary>5. Force vietnamese face on players</summary>
 
-Playing as early MACV-SOG team, we are playing as south vietnamese and thus we force vietnamese faces on all playable character. At player initilization or at player respawn, one random asian face is selected from the below list and set for the current player.
+Playing as early MACV-SOG team, we are playing as south vietnamese thus we force vietnamese faces on all playable character. At player initilization or at player respawn, one random asian face is selected from the below list and set for the current player.
 
 ```
 [
@@ -132,7 +145,7 @@ call COLUMBIA_fn_faces;
 
 <details>
 
-<summary>Add drinkable beer</summary>
+<summary>6. Add drinkable beer</summary>
 
 To create a drinkable beer (or any other object that player can use) follow the below steps:
 - Add the beer object 'Savage Bia'
@@ -153,7 +166,7 @@ this addAction ["Drink Beer", {
 
 <details>
 
-<summary>JBOY mace trap</summary>
+<summary>7. JBOY mace trap</summary>
 
 ```
 /* **********************************************************************
