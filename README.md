@@ -153,15 +153,15 @@ Playing as early MACV-SOG team, we are playing as south vietnamese thus we force
 ]
 ```
 
-To disable this feature, you can comment or remove the below line from initPlayerlocal.sqf and onPlayerRespawn.sqf:
+To disable this feature, you can comment or remove the below line from [initPlayerlocal.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/initPlayerlocal.sqf) and [onPlayerRespawn.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/onPlayerRespawn.sqf):
 
 ```
-_player setFace _randomAsianHead
+call COLUMBIA_fnc_faces;
 ```
 
 You can also directly execute the below command on the server to directly reset all players faces to a random asian face:
 ```
-call COLUMBIA_fn_faces;
+call COLUMBIA_fnc_faces;
 ```
 
 </details>
