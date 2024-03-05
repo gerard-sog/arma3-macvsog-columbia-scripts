@@ -38,10 +38,10 @@ To display any image on a map stand, follow the below steps:
 - add .paa file into the 'images' folder
 - add the below code in the 'init' section of the map stand
 
-```
-this setObjectTexture [0,
-"images\YOUR_IMAGE.paa"]
-```
+  ```
+  this setObjectTexture [0,
+  "images\YOUR_IMAGE.paa"]
+  ```
 
 </details>
 
@@ -52,28 +52,33 @@ this setObjectTexture [0,
 <h3>Allow Radio Support based on trait</h3>
 Radio support from the Prairie fire DLC is available in a mission if all of the below points are true for a player:
 - Radio Support module is present in the mission
-- The player has one of the following radio: ["vn_o_pack_t884_01",
-"vn_o_pack_t884_ish54_01_pl",
-"vn_o_pack_t884_m1_01_pl",
-"vn_o_pack_t884_m38_01_pl",
-"vn_o_pack_t884_ppsh_01_pl",
-"vn_b_pack_prc77_01_m16_pl",
-"vn_b_pack_03_m3a1_pl",
-"vn_b_pack_03_xm177_pl",
-"vn_b_pack_03_type56_pl",
-"vn_b_pack_03",
-"vn_b_pack_prc77_01",
-"vn_b_pack_trp_04",
-"vn_b_pack_trp_04_02",
-"vn_b_pack_03",
-"vn_b_pack_03_02",
-"vn_b_pack_lw_06",
-"vn_b_pack_m41_05"]
+- The player has one of the following radio:
+
+  ```
+  ["vn_o_pack_t884_01",
+  "vn_o_pack_t884_ish54_01_pl",
+  "vn_o_pack_t884_m1_01_pl",
+  "vn_o_pack_t884_m38_01_pl",
+  "vn_o_pack_t884_ppsh_01_pl",
+  "vn_b_pack_prc77_01_m16_pl",
+  "vn_b_pack_03_m3a1_pl",
+  "vn_b_pack_03_xm177_pl",
+  "vn_b_pack_03_type56_pl",
+  "vn_b_pack_03",
+  "vn_b_pack_prc77_01",
+  "vn_b_pack_trp_04",
+  "vn_b_pack_trp_04_02",
+  "vn_b_pack_03",
+  "vn_b_pack_03_02",
+  "vn_b_pack_lw_06",
+  "vn_b_pack_m41_05"]
+  ```
+
 - (IF unit_trait_required = 1 in description.ext) Player has the below code in its 'init' section
 
-```
-this setUnitTrait["vn_artillery", true, true];
-```
+  ```
+  this setUnitTrait["vn_artillery", true, true];
+  ```
 
 - All this can be modified in the vn_artillery_settings class in [artillery.hpp](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/artillery.hpp)
 
@@ -81,15 +86,33 @@ this setUnitTrait["vn_artillery", true, true];
 Here is how we emulate FOB with artillery support capabilities. By this we mean that the FOB can provide artillery support 
 within a perimeter (it will be 3.5km in our example).
 
-To do so, we use a public variable called 'SUPPORT_ENABLED' defined in [initServer.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/initServer.sqf) and it is used as the condition in [artillery.hpp](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/artillery.hpp).
+- To do so, we use a public variable called 'SUPPORT_ENABLED' defined in [initServer.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/initServer.sqf) and it is used as the condition in [artillery.hpp](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/artillery.hpp).
 
-```
-SUPPORT_ENABLED = true; // Used with the artillery support from Prairie Fire. By default condition on artillery strike will be true thanks to this public variable.
-publicVariable "SUPPORT_ENABLED";
-```
+  ```
+  SUPPORT_ENABLED = true; // Used with the artillery support from Prairie Fire. By default condition on artillery strike will be true thanks to this public variable.
+  publicVariable "SUPPORT_ENABLED";
+  ```
 
-then add a trigger that updates that variable.
+- then add a trigger that updates that variable (see example below).
+  - Condition:
+    ```
+    this
+    ```
+  - On Activation:
+    ```
+    SUPPORT_ENABLED = true; 
+    publicVariable "SUPPORT_ENABLED";
+    ```
+  - On Deactivation:
+    ```
+    SUPPORT_ENABLED = false; 
+    publicVariable "SUPPORT_ENABLED";
+    ```
+  <details>
+  <summary><b>see image <--- </b></summary>
 
+  ![trigger-activate-artillery](readme-images/trigger-activate-artillery.jpg)
+</details>
 </details>
 
 <details>
@@ -100,13 +123,13 @@ To add a teleport flag (or any other object that player can use to teleport them
 - Add a invisible marker (point) on the map in editor and give it a name (ex: "airfield")
 - add the below code in the 'init' section of the teleport flag (or object you choose)
 
-```
-this addAction [
-    "Travel to airfield", // This text will be displayed in the action menu (using the scroll wheel).
-{
-    (_this select 1) setPos (getMarkerPos "airfield");} // This section will teleport the player to the position of the "airfield" marker.
-];
-```
+  ```
+  this addAction [
+      "Travel to airfield", // This text will be displayed in the action menu (using the scroll wheel).
+  {
+      (_this select 1) setPos (getMarkerPos "airfield");} // This section will teleport the player to the position of the "airfield" marker.
+  ];
+  ```
 
 </details>
 
@@ -151,16 +174,16 @@ To create a drinkable beer (or any other object that player can use) follow the 
 - Add the beer object 'Savage Bia'
 - add the below code in the 'init' section of the beer (or object you choose)
 
-```
-this addAction ["Drink Beer", { 
-    "dynamicBlur" ppEffectEnable true; 
-    "dynamicBlur" ppEffectCommit 1; 
-    "dynamicBlur" ppEffectAdjust [6]; 
-    addCamShake [5, 60, 1];
-    sleep 4; 
-    "dynamicBlur" ppEffectEnable false;
-}];
-```
+  ```
+  this addAction ["Drink Beer", { 
+      "dynamicBlur" ppEffectEnable true; 
+      "dynamicBlur" ppEffectCommit 1; 
+      "dynamicBlur" ppEffectAdjust [6]; 
+      addCamShake [5, 60, 1];
+      sleep 4; 
+      "dynamicBlur" ppEffectEnable false;
+  }];
+  ```
 
 </details>
 
