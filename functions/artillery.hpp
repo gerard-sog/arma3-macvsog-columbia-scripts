@@ -17,39 +17,26 @@ class vn_artillery_settings
                 class he
                 {
                         displayname = $STR_VN_ARTILLERY_AIRCRAFT_HE_HE_NAME;
-                        class commando_vault
-                        {
-                                displayname = $STR_VN_ARTILLERY_AIRCRAFT_HE_COMMANDO_VAULT_NAME;
-                                icon = "vn\ui_f_vietnam\data\decals\vn_callsign_src_29tas_ca.paa";
-                                description = $STR_VN_ARTILLERY_AIRCRAFT_HE_COMMANDO_VAULT_DESCRIPTION;
-                                function = "vn_fnc_artillery_commando_vault";
-                                divergence = -45;
-                                cooldown = (60*5);
-                                cost = 50;
-                                condition = "SUPPORT_ENABLED";
-                        };
                         class rambler
                         {
-				                        displayname = $STR_VN_ARTILLERY_AIRCRAFT_CLUSTER_RAMBLER_NAME;
+                                displayname = $STR_VN_ARTILLERY_AIRCRAFT_CLUSTER_RAMBLER_NAME;
                                 icon = "vn\ui_f_vietnam\data\decals\vn_callsign_src_433tfs_ca.paa";
                                 description = $STR_VN_ARTILLERY_AIRCRAFT_HE_VESPA_DESCRIPTION;
                                 magazines[] = {"vn_bomb_500_mk82_he_mag_x1","vn_bomb_500_mk82_he_mag_x1"};
                                 vehicleclass = "vn_b_air_f4c_cas";
                                 cooldown = (60*5);
                                 cost = 10;
-                                condition = "SUPPORT_ENABLED";
                         };
                         class sundowner
                         {
                                 displayname = $STR_VN_ARTILLERY_AIRCRAFT_HE_SUNDOWNER_NAME;
                                 icon = "vn\ui_f_vietnam\data\decals\vn_callsign_src_vf111_ca.paa";
                                 description = $STR_VN_ARTILLERY_AIRCRAFT_HE_SUNDOWNER_DESCRIPTION;
-                                magazines[] = {"vn_bomb_500_blu1b_fb_mag_x1", "vn_bomb_500_blu1b_fb_mag_x1"};
+                                magazines[] = {"vn_bomb_500_blu1b_fb_mag_x1", ""};
                                 vehicleclass = "vn_b_air_f4c_cas";
                                 allow_double = 1;
                                 cooldown = (60*5);
                                 cost = 15;
-                                condition = "SUPPORT_ENABLED";
                         };
                         class snake
                         {
@@ -60,7 +47,16 @@ class vn_artillery_settings
                                 vehicleclass = "vn_b_air_f4c_cas";
                                 cooldown = (60*5);
                                 cost = 10;
-                                condition = "SUPPORT_ENABLED";
+                        };
+                        class showtime
+                        {
+                                displayname = $STR_VN_ARTILLERY_AIRCRAFT_HE_SHOWTIME_NAME;
+                                icon = "vn\ui_f_vietnam\data\decals\vn_callsign_src_vf96_ca.paa";
+                                description = $STR_VN_ARTILLERY_AIRCRAFT_HE_SHOWTIME_DESCRIPTION;
+                                magazines[] = {"vn_m61a1"};
+                                vehicleclass = "vn_b_air_f4c_cas";
+                                cooldown = (60*5);
+                                cost = 6;
                         };
                         class hobo
                         {
@@ -71,7 +67,6 @@ class vn_artillery_settings
                                 vehicleclass = "vn_b_air_f4c_cas";
                                 cooldown = (60*5);
                                 cost = 6;
-                                condition = "SUPPORT_ENABLED";
                         };
                         class condor
                         {
@@ -82,7 +77,6 @@ class vn_artillery_settings
                                 vehicleclass = "vn_b_air_ah1g_01";
                                 cooldown = (5*60);
                                 cost = 6;
-                                condition = "SUPPORT_ENABLED";
                         };
                         class dragon
                         {
@@ -93,22 +87,43 @@ class vn_artillery_settings
                                 vehicleclass = "vn_b_air_uh1c_01_02";
                                 cooldown = (5*60);
                                 cost = 16;
-                                condition = "SUPPORT_ENABLED";
                         };
                 };
-                class cluster
+                class flechette
                 {
-                        displayname = $STR_VN_ARTILLERY_AIRCRAFT_CLUSTER_CLUSTER_NAME;
-                        class rambler
+                        displayname = $STR_VN_ARTILLERY_AIRCRAFT_FLECHETTE_FLECHETTE_NAME;
+                        class combat
                         {
-                                displayname = $STR_VN_ARTILLERY_AIRCRAFT_CLUSTER_RAMBLER_NAME;
-                                icon = "vn\ui_f_vietnam\data\decals\vn_callsign_src_433tfs_ca.paa";
-                                description = $STR_VN_ARTILLERY_AIRCRAFT_CLUSTER_RAMBLER_DESCRIPTION;
-                                magazines[] = {"vn_bomb_f4_out_500_mk20_cb_mag_x1", "vn_bomb_f4_out_500_mk20_cb_mag_x1"};
+                                displayname = $STR_VN_ARTILLERY_AIRCRAFT_FLECHETTE_COMBAT_NAME;
+                                icon = "vn\ui_f_vietnam\data\decals\vn_callsign_src_vmfa314_ca.paa";
+                                description = $STR_VN_ARTILLERY_AIRCRAFT_FLECHETTE_COMBAT_DESCRIPTION;
+                                magazines[] = {"","","vn_rocket_ffar_wdu4_flechette_x7",""};
                                 vehicleclass = "vn_b_air_f4c_cas";
                                 allow_double = 1;
-                                cost = 20;
-                                condition = "SUPPORT_ENABLED";
+                                cooldown = (5*60);
+                                cost = 8;
+                        };
+                        class banshee
+                        {
+                                displayname = $STR_VN_ARTILLERY_AIRCRAFT_FLECHETTE_BANSHEE_NAME;
+                                icon = "vn\ui_f_vietnam\data\decals\vn_callsign_src_29tas_ca.paa";
+                                description = $STR_VN_ARTILLERY_AIRCRAFT_FLECHETTE_BANSHEE_DESCRIPTION;
+                                magazines[] = {"vn_rocket_ffar_wdu4_flechette_x7",""};
+                                vehicleclass = "vn_b_air_ah1g_04";
+                                allow_double = 1;
+                                cooldown = (5*60);
+                                cost = 6;
+                        };
+                        class scarface
+                        {
+                                displayname = $STR_VN_ARTILLERY_AIRCRAFT_FLECHETTE_SCARFACE_NAME;
+                                icon = "vn\ui_f_vietnam\data\decals\vn_callsign_src_vmo3_co.paa";
+                                description = $STR_VN_ARTILLERY_AIRCRAFT_FLECHETTE_SCARFACE_DESCRIPTION;
+                                magazines[] = {"vn_rocket_ffar_wdu4_flechette_x7",""};
+                                vehicleclass = "vn_b_air_uh1c_01_01";
+                                allow_double = 1;
+                                cooldown = (5*60);
+                                cost = 12;
                         };
                 };
                 class illumination
@@ -125,14 +140,13 @@ class vn_artillery_settings
                                 cooldown = (5*60);
                                 illumination = 1;
                                 cost = 0;
-                                condition = "SUPPORT_ENABLED";
                         };
-                class dawn_1
-                {
+                        class dawn_1
+                        {
                                 displayname = $STR_VN_ARTILLERY_ARTILLERY_ILLUMINATION_DAWN_1_NAME;
                                 icon = "vn\ui_f_vietnam\data\decals\vn_callsign_src_usarmy_ca.paa";
                                 description = $STR_VN_ARTILLERY_ARTILLERY_ILLUMINATION_DAWN_1_DESCRIPTION;
-                                condition = "SUPPORT_ENABLED";
+                                condition = "daytime >= 18 || daytime <= 6";
                                 function = "vn_fnc_artillery_dawn_1";
                                 allow_double = 0;
                                 cooldown = (60*5);
@@ -140,6 +154,38 @@ class vn_artillery_settings
                                 cost = 0;
                         };
                 };
+
+                // The following config block is for missions running "S.O.G. Nickel Steel"
+                // Avaliable at https://steamcommunity.com/sharedfiles/filedetails/?id=3083451905
+                // This section is commented out by default, to enable it in your mission, remove the '/*' and '*/' below
+                /*
+                class support
+                {
+                        displayname = $STR_VN_ARTILLERY_AIRCRAFT_SUPPORT_NAME;
+                        class ac119_bomb
+                        {
+                                displayname = $STR_VN_ARTILLERY_AIRCRAFT_SUPPORT_AC119_BOMB_NAME;
+                                icon = "vn\ui_f_vietnam\data\decals\vn_callsign_src_29tas_ca.paa";
+                                description = $STR_VN_ARTILLERY_AIRCRAFT_SUPPORT_AC119_BOMB_DESCRIPTION;
+                                function = "vnx_fnc_artillery_ac119_bomb";
+                                divergence = -250;
+                                delay_max = 120;
+                                cooldown = (60*5);
+                                cost = 50;
+                        };
+                        class ac119_orbit
+                        {
+                                displayname = $STR_VN_ARTILLERY_AIRCRAFT_SUPPORT_AC119_NAME;
+                                icon = "vn\ui_f_vietnam\data\decals\vn_callsign_src_29tas_ca.paa";
+                                description = $STR_VN_ARTILLERY_AIRCRAFT_SUPPORT_AC119_DESCRIPTION;
+                                function = "vnx_fnc_artillery_ac119_orbit";
+                                divergence = -1000;
+                                delay_max = 120;
+                                cooldown = (60*5);
+                                cost = 50;
+                        };
+                };
+                */
         };
         class artillery
         {
@@ -158,7 +204,7 @@ class vn_artillery_settings
                                 count = 1;
                                 illumination = 1;
                                 cost = 0;
-                                condition = "SUPPORT_ENABLED";
+				condition = "SUPPORT_ENABLED";
                         };
                         class mike_1
                         {
@@ -172,21 +218,7 @@ class vn_artillery_settings
                                 count = 1;
                                 illumination = 1;
                                 cost = 0;
-                                condition = "SUPPORT_ENABLED";
-                        };
-                        class easy_1
-                        {
-                                displayname = $STR_VN_ARTILLERY_ARTILLERY_ILLUMINATION_EASY_1_NAME;
-                                icon = "vn\ui_f_vietnam\data\decals\vn_callsign_src_hmm362_ca.paa";
-                                description = $STR_VN_ARTILLERY_ARTILLERY_ILLUMINATION_EASY_1_DESCRIPTION;
-                                ammo[] = {"vn_flare_plane_med_w_ammo","vn_flare_plane_med_w_ammo","vn_flare_plane_med_w_ammo","vn_flare_plane_med_w_ammo","vn_flare_plane_med_w_ammo","vn_flare_plane_med_w_ammo","vn_flare_plane_med_w_ammo","vn_flare_plane_med_w_ammo"};
-                                allow_double = 1;
-                                cooldown = (60*5);
-                                divergence = 150;
-                                count = 1;
-                                illumination = 1;
-                                cost = 0;
-                                condition = "SUPPORT_ENABLED";
+				condition = "SUPPORT_ENABLED";
                         };
                 };
                 class wp
@@ -203,33 +235,7 @@ class vn_artillery_settings
                                 divergence = 50;
                                 count = 1;
                                 cost = 10;
-                                condition = "SUPPORT_ENABLED";
-                        };
-                        class mike_2
-                        {
-                                displayname = $STR_VN_ARTILLERY_ARTILLERY_WP_MIKE_2_NAME;
-                                icon = "vn\ui_f_vietnam\data\decals\vn_callsign_src_l119_ca.paa";
-                                description = $STR_VN_ARTILLERY_ARTILLERY_WP_MIKE_2_DESCRIPTION;
-                                ammo[] = {"vn_shell_105mm_m60_wp_ammo","vn_shell_105mm_m60_wp_ammo","vn_shell_105mm_m60_wp_ammo","vn_shell_105mm_m60_wp_ammo","vn_shell_105mm_m60_wp_ammo","vn_shell_105mm_m60_wp_ammo"};
-                                allow_double = 1;
-                                cooldown = (60*5);
-                                divergence = 50;
-                                count = 1;
-                                cost = 8;
-                                condition = "SUPPORT_ENABLED";
-                        };
-                        class easy_2
-                        {
-                                displayname = $STR_VN_ARTILLERY_ARTILLERY_WP_EASY_2_NAME;
-                                icon = "vn\ui_f_vietnam\data\decals\vn_callsign_src_hmm362_ca.paa";
-                                description = $STR_VN_ARTILLERY_ARTILLERY_WP_EASY_2_DESCRIPTION;
-                                ammo[] = {"vn_shell_60mm_m302_wp_ammo","vn_shell_60mm_m302_wp_ammo","vn_shell_60mm_m302_wp_ammo","vn_shell_60mm_m302_wp_ammo","vn_shell_60mm_m302_wp_ammo","vn_shell_60mm_m302_wp_ammo","vn_shell_60mm_m302_wp_ammo","vn_shell_60mm_m302_wp_ammo"};
-                                allow_double = 1;
-                                cooldown = (60*5);
-                                divergence = 50;
-                                count = 1;
-                                cost = 4;
-                                condition = "SUPPORT_ENABLED";
+				condition = "SUPPORT_ENABLED";
                         };
                 };
                 class he
@@ -246,63 +252,7 @@ class vn_artillery_settings
                                 divergence = 50;
                                 count = 1;
                                 cost = 16;
-                                condition = "SUPPORT_ENABLED";
-                        };
-                        class mike_3: baker_3
-                        {
-                                displayname = $STR_VN_ARTILLERY_ARTILLERY_HE_MIKE_3_NAME;
-                                icon = "vn\ui_f_vietnam\data\decals\vn_callsign_src_l119_ca.paa";
-                                description = $STR_VN_ARTILLERY_ARTILLERY_HE_MIKE_3_DESCRIPTION;
-                                ammo[] = {"vn_shell_81mm_m43_he_ammo","vn_shell_81mm_m43_he_ammo","vn_shell_81mm_m43_he_ammo","vn_shell_81mm_m43_he_ammo","vn_shell_81mm_m43_he_ammo","vn_shell_81mm_m43_he_ammo"};
-                                allow_double = 1;
-                                cooldown = (60*5);
-                                divergence = 50;
-                                count = 1;
-                                cost = 12;
-                                condition = "SUPPORT_ENABLED";
-                        };
-                        class easy_3: baker_3
-                        {
-                                displayname = $STR_VN_ARTILLERY_ARTILLERY_HE_EASY_3_NAME;
-                                icon = "vn\ui_f_vietnam\data\decals\vn_callsign_src_hmm362_ca.paa";
-                                description = $STR_VN_ARTILLERY_ARTILLERY_HE_EASY_3_DESCRIPTION;
-                                ammo[] = {"vn_shell_60mm_m49a2_he_ammo","vn_shell_60mm_m49a2_he_ammo","vn_shell_60mm_m49a2_he_ammo","vn_shell_60mm_m49a2_he_ammo","vn_shell_60mm_m49a2_he_ammo","vn_shell_60mm_m49a2_he_ammo","vn_shell_60mm_m49a2_he_ammo","vn_shell_60mm_m49a2_he_ammo"};
-                                allow_double = 1;
-                                cooldown = (60*5);
-                                divergence = 50;
-                                count = 1;
-                                cost = 8;
-                                condition = "SUPPORT_ENABLED";
-                        };
-                };
-                class chemical
-                {
-                        displayname = $STR_VN_ARTILLERY_ARTILLERY_CHEMICAL_CHEMICAL_NAME;
-                        class baker_4
-                        {
-                                displayname = $STR_VN_ARTILLERY_ARTILLERY_CHEMICAL_BAKER_4_NAME;
-                                icon = "vn\ui_f_vietnam\data\decals\vn_callsign_src_l176_ca.paa";
-                                description = $STR_VN_ARTILLERY_ARTILLERY_CHEMICAL_BAKER_4_DESCRIPTION;
-                                ammo[] = {"vn_shell_105mm_m60_chem_ammo","vn_shell_105mm_m60_chem_ammo","vn_shell_105mm_m60_chem_ammo","vn_shell_105mm_m60_chem_ammo"};
-                                allow_double = 1;
-                                cooldown = (60*5);
-                                divergence = 50;
-                                count = 1;
-                                cost = 8;
-                                condition = "SUPPORT_ENABLED";
-                        };
-                        class mike_4: baker_4
-                        {
-                                displayname = $STR_VN_ARTILLERY_ARTILLERY_CHEMICAL_MIKE_4_NAME;
-                                icon = "vn\ui_f_vietnam\data\decals\vn_callsign_src_l119_ca.paa";
-                                description = $STR_VN_ARTILLERY_ARTILLERY_CHEMICAL_MIKE_4_DESCRIPTION;
-                                ammo[] = {"vn_shell_81mm_m57_fs_ammo","vn_shell_81mm_m57_fs_ammo","vn_shell_81mm_m57_fs_ammo","vn_shell_81mm_m57_fs_ammo","vn_shell_81mm_m57_fs_ammo","vn_shell_81mm_m57_fs_ammo"};
-                                allow_double = 1;
-                                cooldown = (60*5);
-                                divergence = 50;
-                                count = 1;
-                                cost = 6;
-                                condition = "SUPPORT_ENABLED";
+				condition = "SUPPORT_ENABLED";
                         };
                 };
                 class frag
@@ -319,7 +269,7 @@ class vn_artillery_settings
                                 divergence = 50;
                                 count = 1;
                                 cost = 8;
-                                condition = "SUPPORT_ENABLED";
+				condition = "SUPPORT_ENABLED";
                         };
                 };
                 class airburst
@@ -336,7 +286,7 @@ class vn_artillery_settings
                                 divergence = 50;
                                 count = 1;
                                 cost = 16;
-                                condition = "SUPPORT_ENABLED";
+				condition = "SUPPORT_ENABLED";
                         };
                 };
         };
