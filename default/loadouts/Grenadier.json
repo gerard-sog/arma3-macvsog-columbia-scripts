@@ -1,13 +1,13 @@
 [
   [
     [
-      "vn_xm177_camo",
+      "vn_m79",
       "",
       "",
       "",
       [
-        "vn_m16_20_t_mag",
-        18
+        "vn_40mm_m381_he_mag",
+        1
       ],
       [],
       ""
@@ -30,37 +30,28 @@
       [
         [
           "vn_m1911_mag",
-          3,
+          5,
           7
-        ],
-        [
-          "murshun_cigs_cigpack",
-          1,
-          20
         ],
         [
           "murshun_cigs_lighter",
           1,
           100
-        ],
-        [
-          "vn_m16_20_t_mag",
-          5,
-          18
         ]
       ]
     ],
     [
-      "vn_b_vest_sog_02",
+      "vn_b_vest_usarmy_05",
       [
         [
-          "ACE_Flashlight_MX991",
+          "vn_40mm_m680_smoke_w_mag",
+          2,
           1
         ],
         [
-          "vn_m16_20_t_mag",
-          18,
-          18
+          "vn_40mm_m381_he_mag",
+          10,
+          1
         ]
       ]
     ],
@@ -69,15 +60,35 @@
       [
         [
           "ACE_fieldDressing",
-          15
+          5
+        ],
+        [
+          "ACE_elasticBandage",
+          5
+        ],
+        [
+          "ACE_packingBandage",
+          5
         ],
         [
           "ACE_quikclot",
-          15
+          5
         ],
         [
           "ACE_epinephrine",
           2
+        ],
+        [
+          "ACE_morphine",
+          2
+        ],
+        [
+          "ACE_splint",
+          2
+        ],
+        [
+          "ACE_tourniquet",
+          4
         ],
         [
           "ACE_CableTie",
@@ -88,51 +99,28 @@
           1
         ],
         [
-          "ACE_elasticBandage",
-          15
-        ],
-        [
-          "ACE_packingBandage",
-          15
-        ],
-        [
-          "ACE_salineIV_500",
-          10
-        ],
-        [
-          "ACE_surgicalKit",
+          "greenmag_beltlinked_762x39_basic_100",
           1
         ],
         [
-          "ACE_splint",
-          2
-        ],
-        [
-          "ACE_morphine",
-          2
-        ],
-        [
-          "ACE_tourniquet",
-          2
-        ],
-        [
-          "ACE_salineIV",
-          10
+          "vn_mine_m14_mag",
+          6,
+          1
         ],
         [
           "vn_m34_grenade_mag",
-          3,
-          1
-        ],
-        [
-          "vn_m60_100_mag",
-          1,
-          100
-        ],
-        [
-          "vn_m67_grenade_mag",
           2,
           1
+        ],
+        [
+          "vn_40mm_m381_he_mag",
+          19,
+          1
+        ],
+        [
+          "murshun_cigs_cigpack",
+          1,
+          20
         ]
       ]
     ],
@@ -156,5 +144,10 @@
       ""
     ]
   ],
-  []
+  [
+    [
+      "ace_earplugs",
+      true
+    ]
+  ]
 ]

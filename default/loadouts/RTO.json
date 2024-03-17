@@ -1,38 +1,22 @@
 [
   [
     [
-      "vn_ak_01",
+      "vn_xm177_camo",
       "",
       "",
       "",
       [
-        "vn_type56_t_mag",
-        30
+        "vn_m16_20_t_mag",
+        18
       ],
       [],
       ""
     ],
     [],
-    [
-      "vn_m1911",
-      "",
-      "",
-      "",
-      [
-        "vn_m1911_mag",
-        7
-      ],
-      [],
-      ""
-    ],
+    [],
     [
       "vn_b_uniform_macv_04_06",
       [
-        [
-          "vn_m1911_mag",
-          3,
-          7
-        ],
         [
           "murshun_cigs_cigpack",
           1,
@@ -42,25 +26,26 @@
           "murshun_cigs_lighter",
           1,
           100
-        ]
-      ]
-    ],
-    [
-      "vn_b_vest_sog_04",
-      [
-        [
-          "ACE_Flashlight_MX991",
-          1
         ],
         [
-          "vn_type56_t_mag",
-          16,
-          30
+          "vn_m16_20_t_mag",
+          8,
+          18
         ]
       ]
     ],
     [
-      "vn_b_pack_trp_02",
+      "vn_b_vest_sog_01",
+      [
+        [
+          "vn_m16_20_t_mag",
+          22,
+          18
+        ]
+      ]
+    ],
+    [
+      "vn_b_pack_trp_04",
       [
         [
           "ACE_fieldDressing",
@@ -103,20 +88,11 @@
           1
         ],
         [
-          "vn_b_item_trapkit",
-          1
-        ],
-        [
-          "ACE_DefusalKit",
-          1
-        ],
-        [
           "ACE_Flashlight_MX991",
           1
         ],
         [
-          "vn_mine_m18_range_mag",
-          2,
+          "greenmag_beltlinked_762x39_basic_100",
           1
         ],
         [
@@ -126,22 +102,42 @@
         ],
         [
           "vn_m34_grenade_mag",
-          3,
+          4,
           1
         ],
         [
-          "vn_m60_100_mag",
-          1,
-          100
+          "vn_m67_grenade_mag",
+          4,
+          1
         ],
         [
-          "vn_m67_grenade_mag",
-          3,
+          "vn_m18_purple_mag",
+          2,
+          1
+        ],
+        [
+          "vn_m18_red_mag",
+          2,
+          1
+        ],
+        [
+          "vn_m18_yellow_mag",
+          2,
+          1
+        ],
+        [
+          "vn_m18_green_mag",
+          2,
+          1
+        ],
+        [
+          "DemoCharge_Remote_Mag",
+          1,
           1
         ]
       ]
     ],
-    "vn_b_helmet_sog_01",
+    "vn_b_boonie_02_08",
     "",
     [
       "vn_m19_binocs_grn",
@@ -161,5 +157,10 @@
       ""
     ]
   ],
-  []
+  [
+    [
+      "ace_earplugs",
+      true
+    ]
+  ]
 ]
