@@ -324,5 +324,18 @@
   "vn_b_acc_rag_01",
   "vn_b_headband_03",
   "vn_m14_camo",
-  "greenmag_beltlinked_762x39_basic_100"
+  "greenmag_beltlinked_762x39_basic_100",
+  "vn_hd",
+  "vn_m1895",
+  "vn_mk22",
+  "vn_m10",
+  "vn_ppk",
+  "vn_hd_mag",
+  "vn_m1895_mag",
+  "vn_mk22_mag",
+  "vn_s_ppk",
+  "vn_s_hp",
+  "vn_s_m1911",
+  "greenmag_ammo_45ACP_basic_30Rnd",
+  "greenmag_ammo_45ACP_basic_60Rnd"
 ]
