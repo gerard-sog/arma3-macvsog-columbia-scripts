@@ -137,7 +137,10 @@ To add a teleport flag (or any other object that player can use to teleport them
 
 <summary>5. Force vietnamese face on players</summary>
 
-Playing as early MACV-SOG team, we are playing as south vietnamese thus we force vietnamese faces on all playable character. At player initilization or at player respawn, one random asian face is selected from the below list and set for the current player.
+N.B: Roles 1-0, 1-1 and 1-2 will not be impacted by the face change since they were US soldiers.
+
+Playing as early MACV-SOG team, we are playing as south vietnamese thus we force vietnamese faces on all playable character. 
+At player initilization or at player respawn, one random asian face is selected from the below list and set for the current player.
 
 ```
 [
