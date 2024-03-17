@@ -26,6 +26,7 @@ class vn_artillery_settings
                                 vehicleclass = "vn_b_air_f4c_cas";
                                 cooldown = (60*5);
                                 cost = 10;
+                                condition = "CAS_SUPPORT_ENABLED";
                         };
                         class sundowner
                         {
@@ -37,6 +38,7 @@ class vn_artillery_settings
                                 allow_double = 1;
                                 cooldown = (60*5);
                                 cost = 15;
+                                condition = "CAS_SUPPORT_ENABLED";
                         };
                         class snake
                         {
@@ -47,6 +49,7 @@ class vn_artillery_settings
                                 vehicleclass = "vn_b_air_f4c_cas";
                                 cooldown = (60*5);
                                 cost = 10;
+                                condition = "CAS_SUPPORT_ENABLED";
                         };
                         class showtime
                         {
@@ -57,6 +60,7 @@ class vn_artillery_settings
                                 vehicleclass = "vn_b_air_f4c_cas";
                                 cooldown = (60*5);
                                 cost = 6;
+                                condition = "CAS_SUPPORT_ENABLED";
                         };
                         class hobo
                         {
@@ -67,6 +71,7 @@ class vn_artillery_settings
                                 vehicleclass = "vn_b_air_f4c_cas";
                                 cooldown = (60*5);
                                 cost = 6;
+                                condition = "CAS_SUPPORT_ENABLED";
                         };
                         class condor
                         {
@@ -77,6 +82,7 @@ class vn_artillery_settings
                                 vehicleclass = "vn_b_air_ah1g_01";
                                 cooldown = (5*60);
                                 cost = 6;
+                                condition = "CAS_SUPPORT_ENABLED";
                         };
                         class dragon
                         {
@@ -87,6 +93,7 @@ class vn_artillery_settings
                                 vehicleclass = "vn_b_air_uh1c_01_02";
                                 cooldown = (5*60);
                                 cost = 16;
+                                condition = "CAS_SUPPORT_ENABLED";
                         };
                 };
                 class flechette
@@ -102,6 +109,7 @@ class vn_artillery_settings
                                 allow_double = 1;
                                 cooldown = (5*60);
                                 cost = 8;
+                                condition = "CAS_SUPPORT_ENABLED";
                         };
                         class banshee
                         {
@@ -113,6 +121,7 @@ class vn_artillery_settings
                                 allow_double = 1;
                                 cooldown = (5*60);
                                 cost = 6;
+                                condition = "CAS_SUPPORT_ENABLED";
                         };
                         class scarface
                         {
@@ -124,6 +133,7 @@ class vn_artillery_settings
                                 allow_double = 1;
                                 cooldown = (5*60);
                                 cost = 12;
+                                condition = "CAS_SUPPORT_ENABLED";
                         };
                 };
                 class illumination
@@ -140,13 +150,14 @@ class vn_artillery_settings
                                 cooldown = (5*60);
                                 illumination = 1;
                                 cost = 0;
+                                condition = "CAS_SUPPORT_ENABLED";
                         };
                         class dawn_1
                         {
                                 displayname = $STR_VN_ARTILLERY_ARTILLERY_ILLUMINATION_DAWN_1_NAME;
                                 icon = "vn\ui_f_vietnam\data\decals\vn_callsign_src_usarmy_ca.paa";
                                 description = $STR_VN_ARTILLERY_ARTILLERY_ILLUMINATION_DAWN_1_DESCRIPTION;
-                                condition = "daytime >= 18 || daytime <= 6";
+                                condition = "CAS_SUPPORT_ENABLED";
                                 function = "vn_fnc_artillery_dawn_1";
                                 allow_double = 0;
                                 cooldown = (60*5);
@@ -204,7 +215,7 @@ class vn_artillery_settings
                                 count = 1;
                                 illumination = 1;
                                 cost = 0;
-				condition = "SUPPORT_ENABLED";
+				                condition = "ARTILLERY_SUPPORT_ENABLED";
                         };
                         class mike_1
                         {
@@ -218,7 +229,7 @@ class vn_artillery_settings
                                 count = 1;
                                 illumination = 1;
                                 cost = 0;
-				condition = "SUPPORT_ENABLED";
+				                condition = "ARTILLERY_SUPPORT_ENABLED";
                         };
                 };
                 class wp
@@ -235,7 +246,7 @@ class vn_artillery_settings
                                 divergence = 50;
                                 count = 1;
                                 cost = 10;
-				condition = "SUPPORT_ENABLED";
+				                condition = "ARTILLERY_SUPPORT_ENABLED";
                         };
                 };
                 class he
@@ -252,7 +263,7 @@ class vn_artillery_settings
                                 divergence = 50;
                                 count = 1;
                                 cost = 16;
-				condition = "SUPPORT_ENABLED";
+				                condition = "ARTILLERY_SUPPORT_ENABLED";
                         };
                 };
                 class frag
@@ -269,7 +280,7 @@ class vn_artillery_settings
                                 divergence = 50;
                                 count = 1;
                                 cost = 8;
-				condition = "SUPPORT_ENABLED";
+				                condition = "ARTILLERY_SUPPORT_ENABLED";
                         };
                 };
                 class airburst
@@ -286,7 +297,7 @@ class vn_artillery_settings
                                 divergence = 50;
                                 count = 1;
                                 cost = 16;
-				condition = "SUPPORT_ENABLED";
+				                condition = "ARTILLERY_SUPPORT_ENABLED";
                         };
                 };
         };

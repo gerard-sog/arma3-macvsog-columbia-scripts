@@ -4,7 +4,8 @@
  if !(_hasZen) exitWith { systemChat "ZEN not detected";};
  
  // Custom Zeus Modules in Right Panel
- ["COLUMBIA Tools", "Toggle Consciousness", {_this execVM "functions\columbia_zeus_toggleconsciousness.sqf";}, "\z\ace\addons\zeus\UI\Icon_Module_Zeus_Unconscious_ca.paa"] call zen_custom_modules_fnc_register;
+ ["A - Columbia Tools", "Toggle Consciousness", {_this execVM "functions\columbia_zeus_toggleconsciousness.sqf";}, "\z\ace\addons\zeus\UI\Icon_Module_Zeus_Unconscious_ca.paa"] call zen_custom_modules_fnc_register;
+ ["A - Columbia Tools", "Toggle CAS", {_this execVM "functions\columbia_zeus_togglecas.sqf";}, "\a3\Modules_F_Curator\Data\portraitCASGun_ca.paa"] call zen_custom_modules_fnc_register;
 
  // Checks if unit object, is not null and is alive. Required to filter away if right-clicked on group as the other if-checks dont work with group
 COLUMBIA_fnc_isAlivePlayerUnit = {
