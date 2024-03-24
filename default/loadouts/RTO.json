@@ -18,6 +18,30 @@
       "vn_b_uniform_macv_04_06",
       [
         [
+          "ACE_splint",
+          2
+        ],
+        [
+          "ACE_tourniquet",
+          4
+        ],
+        [
+          "ACE_morphine",
+          2
+        ],
+        [
+          "ACE_MapTools",
+          1
+        ],
+        [
+          "ACE_epinephrine",
+          2
+        ],
+        [
+          "ACE_CableTie",
+          2
+        ],
+        [
           "murshun_cigs_cigpack",
           1,
           20
@@ -29,7 +53,7 @@
         ],
         [
           "vn_m16_20_t_mag",
-          8,
+          6,
           18
         ]
       ]
@@ -64,30 +88,6 @@
           5
         ],
         [
-          "ACE_epinephrine",
-          2
-        ],
-        [
-          "ACE_morphine",
-          2
-        ],
-        [
-          "ACE_splint",
-          2
-        ],
-        [
-          "ACE_tourniquet",
-          4
-        ],
-        [
-          "ACE_CableTie",
-          2
-        ],
-        [
-          "ACE_MapTools",
-          1
-        ],
-        [
           "ACE_Flashlight_MX991",
           1
         ],
@@ -96,18 +96,22 @@
           1
         ],
         [
+          "ACRE_PRC77",
+          1
+        ],
+        [
           "vn_mine_m14_mag",
-          6,
+          3,
           1
         ],
         [
           "vn_m34_grenade_mag",
-          4,
+          2,
           1
         ],
         [
           "vn_m67_grenade_mag",
-          4,
+          2,
           1
         ],
         [
@@ -122,7 +126,7 @@
         ],
         [
           "vn_m18_yellow_mag",
-          2,
+          1,
           1
         ],
         [
@@ -157,10 +161,5 @@
       ""
     ]
   ],
-  [
-    [
-      "ace_earplugs",
-      true
-    ]
-  ]
+  []
 ]

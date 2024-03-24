@@ -46,4 +46,12 @@ class CfgFunctions
     }
 };
 
+class Extended_PostInit_EventHandlers
+{
+    class minedetector_disable_panel
+    {
+        init="execVM 'functions\minedetector_disable_panel.sqf';";
+    };
+};
+
 #include "functions\artillery.hpp"
