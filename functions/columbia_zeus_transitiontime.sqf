@@ -31,7 +31,7 @@ private _onConfirm = {
 			private _idlayer2 = ["Text2Display"] call BIS_fnc_rscLayer;
 			
 			if !(_text1 == "") then {
-				_text1 = [ format ["<t' size = '1'>%1</t>", _text1], -1, 0.2, _timing1, 1, 0];
+				_text1 = [ format ["<t align = 'center' shadow = '1' size = '0.7' font='tt2020style_e_vn'>%1</t>", _text1], -1, 0.2, _timing1, 1, 0];
 				_handle = (_text1 + [_idlayer1]) spawn BIS_fnc_dynamicText;
 				waitUntil {scriptDone _handle};
 			};
@@ -54,8 +54,13 @@ private _onConfirm = {
 						_minutes = str (date select 4);
 					};
 
+                    [
+                     [
+                      ["Suddenly gunshots could be heard...,", "<t align = 'center' shadow = '1' size = '0.7' font='tt2020style_e_vn'>%1</t>"] ]
+                    ] spawn BIS_fnc_typeText;
+
 					[
-						[[format [ "%1", _hours + "H" + _minutes], "<t align = 'right' size = '0.8'>%1</t>", 64]], safezoneX + safeZoneW / 2, safeZoneH / 2, "<t font='RobotoCondensed'>%1</t>"
+						[[format [ "%1", _hours + "H" + _minutes], "<t align = 'right' size = '0.8'>%1</t>", 64]], safezoneX + safeZoneW / 2, safeZoneH / 2, "<t font='tt2020style_e_vn'>%1</t>"
 					] spawn BIS_fnc_typeText; // display new date
 				};
 				
@@ -64,7 +69,7 @@ private _onConfirm = {
 			};
 			
 			if !(_text2 == "") then {
-				_text2 = [ format ["<t' size = '1'>%1</t>", _text2], -1, 0.2, _timing2, 1, 0];
+				_text2 = [ format ["<t align = 'center' shadow = '1' size = '0.7' font='tt2020style_e_vn'>%1</t>", _text2], -1, 0.2, _timing2, 1, 0];
 				_handle = (_text2 + [_idlayer2]) spawn BIS_fnc_dynamicText;
 				waitUntil {scriptDone _handle};
 			};
