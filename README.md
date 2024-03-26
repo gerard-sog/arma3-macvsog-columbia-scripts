@@ -243,6 +243,25 @@ call compile preprocessFile "functions\JBOY\mace\compileMaceScripts.sqf"; // Com
 
 </details>
 
+<details>
+
+<summary>8. ACRE2 Babel</summary>
+
+Babel configuration : [init.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/init.sqf)
+
+We are using Babel to provide the following behaviour during our MACVSOG missions:
+- Have the MACVSOG team able to talk and understand each other (using English)
+- Have some members of the MACVSOG team that could speak and understand Vietnamese (be used as translator) by adding the below line in the 'init' section of the playable unit
+  ```
+  this setVariable ["f_languages",["en", "vn"]];
+  ```
+  
+- Have the Zeus player speak Vietnamese when controlling an OPFOR unit. This makes the dialog between OPFOR and MACVSOG team possible only via the members speaking English and Vietnamese.
+
+
+
+</details>
+
 ## Default values
 
 - Default <b>addons</b> for missions: [defaultAddons.txt](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/defaultAddons.txt)
