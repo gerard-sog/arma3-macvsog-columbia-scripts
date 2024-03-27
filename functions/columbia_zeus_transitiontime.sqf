@@ -39,6 +39,7 @@ private _onConfirm = {
 			if (_datechange) then {
 				_idlayer1 cutText ["", "BLACK OUT", 1];
 				date params ["_year"];
+				sleep 1;
 				setDate [_year, _month, _day, _hours, _minutes]; // shitty performance rework with CBA server event
 				sleep 4;
 				
