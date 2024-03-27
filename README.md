@@ -247,7 +247,9 @@ call compile preprocessFile "functions\JBOY\mace\compileMaceScripts.sqf"; // Com
 
 <summary>8. ACRE2 Babel</summary>
 
-Babel configuration : [init.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/init.sqf)
+Babel configuration: [init.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/init.sqf)
+
+Key to change languages: 'Right Alt'
 
 We are using Babel to provide the following behaviour during our MACVSOG missions:
 - Have the MACVSOG team able to talk and understand each other (using English)

@@ -20,6 +20,5 @@ if (not(["1-0 Squad Leader", _playerRole] call BIS_fnc_inString) &&
     {
         private _randomAsianHead = selectRandom _availableAsianHeads;
         [player, _randomAsianHead] remoteExec ["setFace", 0, true]; // sets the face of a player to one of the above asian faces (this forces the new asian face and overides player's default face)
-        player groupChat "Player: " + name player + ", face: " + _randomAsianHead;
     };
 }
