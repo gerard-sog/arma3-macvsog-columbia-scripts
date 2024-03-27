@@ -54,11 +54,6 @@ private _onConfirm = {
 						_minutes = str (date select 4);
 					};
 
-                    [
-                     [
-                      ["Suddenly gunshots could be heard...,", "<t align = 'center' shadow = '1' size = '0.7' font='tt2020style_e_vn'>%1</t>"] ]
-                    ] spawn BIS_fnc_typeText;
-
 					[
 						[[format [ "%1", _hours + "H" + _minutes], "<t align = 'right' size = '0.8'>%1</t>", 64]], safezoneX + safeZoneW / 2, safeZoneH / 2, "<t font='tt2020style_e_vn'>%1</t>"
 					] spawn BIS_fnc_typeText; // display new date
