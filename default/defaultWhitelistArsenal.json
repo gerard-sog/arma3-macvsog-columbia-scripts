@@ -338,5 +338,11 @@
   "vn_s_m1911",
   "greenmag_ammo_45ACP_basic_30Rnd",
   "greenmag_ammo_45ACP_basic_60Rnd",
-  "vn_m127_mag"
+  "vn_m127_mag",
+  "vn_40mm_m661_flare_g_mag",
+  "vn_40mm_m662_flare_r_mag",
+  "vn_40mm_m695_flare_y_mag",
+  "vn_40mm_m715_smoke_g_mag",
+  "vn_40mm_m716_smoke_y_mag",
+  "vn_40mm_m717_smoke_p_mag"
 ]
