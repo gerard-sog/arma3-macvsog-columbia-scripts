@@ -495,10 +495,10 @@ ace_switchunits_switchToIndependent = false;
 ace_switchunits_switchToWest = false;
 
 // ACE Trenches
-ace_trenches_bigEnvelopeDigDuration = 25;
-ace_trenches_bigEnvelopeRemoveDuration = 15;
-ace_trenches_smallEnvelopeDigDuration = 20;
-ace_trenches_smallEnvelopeRemoveDuration = 12;
+force ace_trenches_bigEnvelopeDigDuration = 80;
+force ace_trenches_bigEnvelopeRemoveDuration = 80;
+force ace_trenches_smallEnvelopeDigDuration = 40;
+force ace_trenches_smallEnvelopeRemoveDuration = 40;
 
 // ACE Uncategorized
 ace_fastroping_autoAddFRIES = false;
