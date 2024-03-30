@@ -52,28 +52,18 @@ To display any image on a map stand, follow the below steps:
 <h3>Allow Radio Support based on trait</h3>
 Radio support from the Prairie fire DLC is available in a mission if all of the below points are true for a player:
 - Radio Support module is present in the mission
-- The player has one of the following radio:
+- The player has the following radio (should only be the case for RTO if no Covey in a mission):
 
   ```
-  ["vn_o_pack_t884_01",
-  "vn_o_pack_t884_ish54_01_pl",
-  "vn_o_pack_t884_m1_01_pl",
-  "vn_o_pack_t884_m38_01_pl",
-  "vn_o_pack_t884_ppsh_01_pl",
-  "vn_b_pack_prc77_01_m16_pl",
-  "vn_b_pack_03_m3a1_pl",
-  "vn_b_pack_03_xm177_pl",
-  "vn_b_pack_03_type56_pl",
-  "vn_b_pack_03",
-  "vn_b_pack_prc77_01",
-  "vn_b_pack_trp_04",
-  "vn_b_pack_trp_04_02",
-  "vn_b_pack_03",
-  "vn_b_pack_03_02",
-  "vn_b_pack_lw_06",
-  "vn_b_pack_m41_05"]
+  "vn_b_pack_lw_06"
   ```
 
+- Or if the player is flying the
+  
+  ```
+  "pook_skymaster_NATO_B"
+  ```
+  
 - (IF unit_trait_required = 1 in description.ext) Player has the below code in its 'init' section
 
   ```
@@ -245,8 +235,9 @@ call compile preprocessFile "functions\JBOY\mace\compileMaceScripts.sqf"; // Com
 
 <details>
 
-<summary>8. ACRE2 Babel</summary>
+<summary>8. ACRE2</summary>
 
+<h3>Babel</h3>
 Babel configuration: [init.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/init.sqf)
 
 Key to change languages: 'Right Alt'
@@ -260,7 +251,24 @@ We are using Babel to provide the following behaviour during our MACVSOG mission
   
 - Have the Zeus player speak Vietnamese when controlling an OPFOR unit. This makes the dialog between OPFOR and MACVSOG team possible only via the members speaking English and Vietnamese.
 
+<h3>Adding PRC77 Racks to planes</h3>
 
+Here are the steps to follow if you want to add 2 news acre radio racks to planes (child from 'Plane_Base_F' class):
+- Place a plane in the editor or during a mission
+- During the mission a player/zeus must enter the plane once in order to initialize ACRE radios in the plane
+- Use the zeus module implemented in [columbia_zeus_initpf77rack.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/columbia_zeus_initpf77rack.sqf) and click on the plane you want to add 2 racks of PRC77 radios
+- The plane will now have 2 more racks of PRC77 radios
+
+</details>
+
+<details>
+
+<summary>9. Fuel consumption</summary>
+
+Here is the code to place in the 'init' section of the vehicle you to change the fuel consumption of:
+  ```
+  this setFuelConsumptionCoef 3; // Fuel consumption will be 3x default consumption.
+  ```
 
 </details>
 
