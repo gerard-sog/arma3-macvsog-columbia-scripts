@@ -414,7 +414,7 @@ ace_overheating_unJamOnSwapBarrel = false;
 force ace_finger_enabled = true;
 ace_finger_indicatorColor = [0.83,0.68,0.21,0.75];
 ace_finger_indicatorForSelf = true;
-ace_finger_maxRange = 4;
+force ace_finger_maxRange = 6;
 ace_finger_proximityScaling = false;
 ace_finger_sizeCoef = 1;
 
