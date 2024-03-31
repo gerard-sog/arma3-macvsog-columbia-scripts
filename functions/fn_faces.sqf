@@ -13,7 +13,8 @@ private _availableAsianHeads = [
 private _playerRole = roleDescription player;
 if (not(["1-0 Squad Leader", _playerRole] call BIS_fnc_inString) &&
     not(["1-1 RTO", _playerRole] call BIS_fnc_inString) &&
-    not(["1-2 Medic", _playerRole] call BIS_fnc_inString)) then
+    not(["1-2 Medic", _playerRole] call BIS_fnc_inString) &&
+    not(["Covey", _playerRole] call BIS_fnc_inString)) then
 {
     private _currentFace = face player;
     if (not (_currentFace in _availableAsianHeads)) then
