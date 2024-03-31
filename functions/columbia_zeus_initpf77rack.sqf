@@ -1,60 +1,37 @@
-params [["_pos", [0,0,0] , [[]], 3], ["_unit", objNull, [objNull]]];
+/*
+ * Custom Zeus module
+ * Add 2 SOG ACRE Racks on a plane
+ * Radios Racks need to have been already initialized
+ * (player has to enter the plane to first init ACRE Racks no dismount needed afterward) 
+ *
+ * Using acre_api_fnc_addRackToVehicle (need to be executed on server)
+ * https://github.com/IDI-Systems/acre2/blob/master/addons/api/fnc_addRackToVehicle.sqf
+ *
+ * Arguments:
+ * 0: logic position (not used)
+ * 1: attached object (restricted to planes)
+ *
+ */
 
-// If module click into void, exit
-if (isNull _unit) exitWith {
-    ["Select an object!", -1, 1, 4, 0] spawn BIS_fnc_dynamicText;
-    playSound "FD_Start_F";
-};
+params [["_pos", [0,0,0] , [[]], 3], ["_object", objNull, [objNull]]];
 
-private _isRadioInitialized = _unit getVariable "radioInitialized";
-
-// If already initialized, exit
-if !(isNil "_isRadioInitialized") exitWith {
-    ["Radio already set!", -1, 1, 4, 0] spawn BIS_fnc_dynamicText;
-    playSound "FD_Start_F";
-};
-
-// If object not a plane, exit
-if !(_unit isKindOf "Plane_Base_F") exitWith {
+// If clicked object is not a plane exit
+if ((isNull _object) OR !(_object isKindOf "Plane_Base_F")) exitWith {
     ["Select a plane!", -1, 1, 4, 0] spawn BIS_fnc_dynamicText;
     playSound "FD_Start_F";
 };
 
-// Adding first rack with PRC77
-Columbia_fnc_addRack = {
-    params ["_plane"];
-    [_plane, [
-        "ACRE_VRC64",
-        "1-Rack PRC77",
-        "1-Rack PRC77",
-        false,
-        ["inside"],
-        [],
-        "ACRE_PRC77",
-        [],
-        []
-    ], false] call acre_api_fnc_addRackToVehicle;
+private _isRadioInitialized = _object getVariable "ColSOG_radioInitialized";
+
+// If already initialized, exit
+if !(isNil "_isRadioInitialized") exitWith {
+    ["Radio already set on this object!", -1, 1, 4, 0] spawn BIS_fnc_dynamicText;
+    playSound "FD_Start_F";
 };
 
-["zen_common_execute", [Columbia_fnc_addRack, [_unit]]] call CBA_fnc_serverEvent;
+[_object, ["ACRE_VRC64", "1-Rack PRC77", "1-Rack PRC77", false, ["inside"], [], "ACRE_PRC77", [], [] ], false] remoteExec ["acre_api_fnc_addRackToVehicle", 2];
+[_object, ["ACRE_VRC64", "2-Rack PRC77", "2-Rack PRC77", false, ["inside"], [], "ACRE_PRC77", [], [] ], false] remoteExec ["acre_api_fnc_addRackToVehicle", 2];
 
-// Adding second rack with PRC77
-Columbia_fnc_addRack2 = {
-    params ["_plane"];
-    [_plane, [
-        "ACRE_VRC64",
-        "2-Rack PRC77",
-        "2-Rack PRC77",
-        false,
-        ["inside"],
-        [],
-        "ACRE_PRC77",
-        [],
-        []
-    ], false] call acre_api_fnc_addRackToVehicle;
-};
+_object setVariable ["ColSOG_radioInitialized", true, true];
 
-["zen_common_execute", [Columbia_fnc_addRack2, [_unit]]] call CBA_fnc_serverEvent;
-
-_unit setVariable ["radioInitialized", true, true];
-systemChat "Radio PF77 initialized"
+systemChat "Radio PF77 initialized";
