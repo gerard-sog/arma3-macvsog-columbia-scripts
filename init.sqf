@@ -53,9 +53,9 @@ f_available_languages = [
 ["unit", {
     params ["_player"];
     switch ((getNumber (configFile >> "CfgVehicles" >> (typeOf _player) >> "side"))) do {
-        case 0: { ["vn"] call acre_api_fnc_babelSetSpokenLanguages; };          // OPFOR (will speack Vietnamese but will understand both Vietnamese and English)
+        case 0: { ["vn"] call acre_api_fnc_babelSetSpokenLanguages; };          // OPFOR
         case 1: { ["en"] call acre_api_fnc_babelSetSpokenLanguages; };          // BLUFOR
-        case 2: { ["vn"] call acre_api_fnc_babelSetSpokenLanguages; };    // INDEP
-        case 3: { ["vn"] call acre_api_fnc_babelSetSpokenLanguages; };    // CIVIL
+        case 2: { ["vn"] call acre_api_fnc_babelSetSpokenLanguages; };          // INDEP
+        case 3: { ["vn"] call acre_api_fnc_babelSetSpokenLanguages; };          // CIVIL
     };
 }, true] call CBA_fnc_addPlayerEventHandler;
