@@ -7,21 +7,19 @@ ace_advanced_ballistics_muzzleVelocityVariationEnabled = true;
 ace_advanced_ballistics_simulationInterval = 0.05;
 
 // ACE Advanced Fatigue
-ace_advanced_fatigue_deployedSwayFactor = 1;
 ace_advanced_fatigue_enabled = true;
 ace_advanced_fatigue_enableStaminaBar = true;
 ace_advanced_fatigue_fadeStaminaBar = true;
 force ace_advanced_fatigue_loadFactor = 0.7;
 force ace_advanced_fatigue_performanceFactor = 1.4635;
 force ace_advanced_fatigue_recoveryFactor = 1.4904;
-ace_advanced_fatigue_restedSwayFactor = 1;
-force ace_advanced_fatigue_swayFactor = 0.9;
 force ace_advanced_fatigue_terrainGradientFactor = 0.871643;
 
 // ACE Advanced Throwing
 ace_advanced_throwing_enabled = true;
 ace_advanced_throwing_enablePickUp = true;
 ace_advanced_throwing_enablePickUpAttached = true;
+ace_advanced_throwing_enableTempWindInfo = true;
 ace_advanced_throwing_showMouseControls = true;
 ace_advanced_throwing_showThrowArc = true;
 
@@ -70,12 +68,16 @@ ace_common_allowFadeMusic = true;
 ace_common_checkPBOsAction = 0;
 ace_common_checkPBOsCheckAll = false;
 ace_common_checkPBOsWhitelist = "[]";
+ace_common_deployedSwayFactor = 1;
 ace_common_displayTextColor = [0,0,0,0.1];
 ace_common_displayTextFontColor = [1,1,1,1];
+ace_common_enableSway = true;
 ace_common_epilepsyFriendlyMode = false;
 ace_common_progressBarInfo = 2;
+ace_common_restedSwayFactor = 1;
 ace_common_settingFeedbackIcons = 1;
 ace_common_settingProgressBarLocation = 0;
+ace_common_swayFactor = 1;
 
 // ACE Cook off
 force ace_cookoff_ammoCookoffDuration = 1;
@@ -197,9 +199,13 @@ ace_interact_menu_textSize = 2;
 ace_interact_menu_useListMenu = true;
 ace_interact_menu_useListMenuSelf = false;
 
+// ACE Kill Tracker
+ace_killtracker_trackAI = true;
+
 // ACE Logistics
 ace_cargo_carryAfterUnload = true;
 ace_cargo_enable = true;
+ace_cargo_enableDeploy = true;
 ace_cargo_enableRename = true;
 ace_cargo_loadTimeCoefficient = 5;
 ace_cargo_openAfterUnload = 0;
@@ -328,6 +334,7 @@ force ace_medical_treatment_treatmentTimeSplint = 7;
 force ace_medical_treatment_treatmentTimeTourniquet = 7;
 force ace_medical_treatment_woundReopenChance = 1;
 force ace_medical_treatment_woundStitchTime = 5;
+force ace_medical_vitals_simulateSpO2 = false;
 
 // ACE Medical Interface
 ace_medical_feedback_bloodVolumeEffectType = 0;
@@ -363,6 +370,7 @@ ace_medical_gui_openAfterTreatment = true;
 ace_medical_gui_peekMedicalInfoReleaseDelay = 1;
 ace_medical_gui_peekMedicalOnHit = false;
 ace_medical_gui_peekMedicalOnHitDuration = 1;
+ace_medical_gui_showBleeding = 2;
 ace_medical_gui_showBloodlossEntry = true;
 ace_medical_gui_showDamageEntry = false;
 ace_medical_gui_tourniquetWarning = false;

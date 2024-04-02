@@ -29,8 +29,8 @@ if !(isNil "_isRadioInitialized") exitWith {
     playSound "FD_Start_F";
 };
 
-[_object, ["ACRE_VRC64", "1-Rack PRC77", "1-Rack PRC77", false, ["inside"], [], "ACRE_PRC77", [], [] ], false] remoteExec ["acre_api_fnc_addRackToVehicle", 2];
-[_object, ["ACRE_VRC64", "2-Rack PRC77", "2-Rack PRC77", false, ["inside"], [], "ACRE_PRC77", [], [] ], false] remoteExec ["acre_api_fnc_addRackToVehicle", 2];
+[_object, ["ACRE_VRC64", "HQ PRC77", "PRC77", false, ["inside"], [], "ACRE_PRC77", [], ["intercom_1"] ], false] remoteExec ["acre_api_fnc_addRackToVehicle", 2];
+[_object, ["ACRE_VRC64", "Columbia PRC77", "PRC77", false, ["inside"], [], "ACRE_PRC77", [], ["intercom_1"] ], false] remoteExec ["acre_api_fnc_addRackToVehicle", 2];
 
 _object setVariable ["ColSOG_radioInitialized", true, true];
 
