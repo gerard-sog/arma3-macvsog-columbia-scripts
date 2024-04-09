@@ -170,10 +170,10 @@ force ace_hearing_enabledForZeusUnits = false;
 ace_hearing_unconsciousnessVolume = 0.4;
 
 // ACE Interaction
-ace_interaction_disableNegativeRating = false;
+force ace_interaction_disableNegativeRating = true;
 ace_interaction_enableGroupRenaming = true;
 ace_interaction_enableMagazinePassing = true;
-ace_interaction_enableTeamManagement = true;
+force ace_interaction_enableTeamManagement = true;
 ace_interaction_enableWeaponAttachments = true;
 ace_interaction_interactWithTerrainObjects = false;
 
@@ -932,49 +932,49 @@ greenmag_main_CBAS_maxMags = 0;
 greenmag_main_CBAS_simpleGM = true;
 
 // LAMBS Danger
-lambs_danger_cqbRange = 60;
-lambs_danger_disableAIAutonomousManoeuvres = false;
-lambs_danger_disableAIDeployStaticWeapons = false;
-lambs_danger_disableAIFindStaticWeapons = false;
-lambs_danger_disableAIHideFromTanksAndAircraft = false;
-lambs_danger_disableAIPlayerGroup = false;
-lambs_danger_disableAIPlayerGroupReaction = false;
-lambs_danger_disableAutonomousFlares = false;
-lambs_danger_disableAutonomousSmokeGrenades = false;
-lambs_danger_panicChance = 0.1;
+force lambs_danger_cqbRange = 60;
+force lambs_danger_disableAIAutonomousManoeuvres = false;
+force lambs_danger_disableAIDeployStaticWeapons = true;
+force lambs_danger_disableAIFindStaticWeapons = true;
+force lambs_danger_disableAIHideFromTanksAndAircraft = false;
+force lambs_danger_disableAIPlayerGroup = false;
+force lambs_danger_disableAIPlayerGroupReaction = false;
+force lambs_danger_disableAutonomousFlares = false;
+force lambs_danger_disableAutonomousSmokeGrenades = false;
+force lambs_danger_panicChance = 0.1;
 
 // LAMBS Danger Eventhandlers
-lambs_eventhandlers_ExplosionEventHandlerEnabled = true;
-lambs_eventhandlers_ExplosionReactionTime = 9;
+force lambs_eventhandlers_ExplosionEventHandlerEnabled = true;
+force lambs_eventhandlers_ExplosionReactionTime = 9;
 
 // LAMBS Danger WP
-lambs_wp_autoAddArtillery = false;
+force lambs_wp_autoAddArtillery = false;
 
 // LAMBS Main
-lambs_main_combatShareRange = 200;
-lambs_main_debug_drawAllUnitsInVehicles = false;
-lambs_main_debug_Drawing = false;
-lambs_main_debug_FSM = false;
-lambs_main_debug_FSM_civ = false;
-lambs_main_debug_functions = false;
-lambs_main_debug_RenderExpectedDestination = false;
-lambs_main_disableAICallouts = false;
-lambs_main_disableAIDodge = false;
-lambs_main_disableAIFleeing = false;
-lambs_main_disableAIGestures = false;
-lambs_main_disableAutonomousMunitionSwitching = false;
-lambs_main_disablePlayerGroupSuppression = false;
-lambs_main_indoorMove = 0.1;
-lambs_main_maxRevealValue = 1;
-lambs_main_minFriendlySuppressionDistance = 5;
-lambs_main_minObstacleProximity = 5;
-lambs_main_minSuppressionRange = 50;
-lambs_main_radioBackpack = 2000;
-lambs_main_radioDisabled = false;
-lambs_main_radioEast = 500;
-lambs_main_radioGuer = 500;
-lambs_main_radioShout = 100;
-lambs_main_radioWest = 500;
+force lambs_main_combatShareRange = 200;
+force lambs_main_debug_drawAllUnitsInVehicles = false;
+force lambs_main_debug_Drawing = false;
+force lambs_main_debug_FSM = false;
+force lambs_main_debug_FSM_civ = false;
+force lambs_main_debug_functions = false;
+force lambs_main_debug_RenderExpectedDestination = false;
+force lambs_main_disableAICallouts = false;
+force lambs_main_disableAIDodge = false;
+force lambs_main_disableAIFleeing = false;
+force lambs_main_disableAIGestures = false;
+force lambs_main_disableAutonomousMunitionSwitching = false;
+force lambs_main_disablePlayerGroupSuppression = false;
+force lambs_main_indoorMove = 0.1;
+force lambs_main_maxRevealValue = 0.6;
+force lambs_main_minFriendlySuppressionDistance = 5;
+force lambs_main_minObstacleProximity = 5;
+force lambs_main_minSuppressionRange = 50;
+force lambs_main_radioBackpack = 500;
+force lambs_main_radioDisabled = false;
+force lambs_main_radioEast = 200;
+force lambs_main_radioGuer = 200;
+force lambs_main_radioShout = 100;
+force lambs_main_radioWest = 200;
 
 // Laxemann Align
 L_Align_enabled = true;
