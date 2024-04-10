@@ -8,6 +8,8 @@ class vn_artillery_settings
         unit_trait_required = 0;
 	    // Distance from the edge of a blacklisted marker that a artillery/aircraft cannot be called in.
 	    danger_distance = 0;
+	    // Maximum delay for the support to arrive, regardless of the time calculated from distance to support module.
+	    delay_max = 15;
 	    // Radio Support should only be called in by Covey plane. This radio backpack is in case no covey pilot present for an operation and we still want Columbia to be able to use Radio Support.
         radio_backpacks[] = {"vn_b_pack_lw_06"};
         // Radio Support should only be called from Covey plane.
