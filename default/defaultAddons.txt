@@ -427,13 +427,13 @@ ace_finger_proximityScaling = false;
 ace_finger_sizeCoef = 1;
 
 // ACE Pylons
-ace_pylons_enabledForZeus = true;
-ace_pylons_enabledFromAmmoTrucks = true;
-ace_pylons_rearmNewPylons = false;
-ace_pylons_requireEngineer = false;
-ace_pylons_requireToolkit = true;
-ace_pylons_searchDistance = 15;
-ace_pylons_timePerPylon = 5;
+force ace_pylons_enabledForZeus = true;
+force ace_pylons_enabledFromAmmoTrucks = true;
+force ace_pylons_rearmNewPylons = false;
+force ace_pylons_requireEngineer = true;
+force ace_pylons_requireToolkit = true;
+force ace_pylons_searchDistance = 15;
+force ace_pylons_timePerPylon = 5;
 
 // ACE Quick Mount
 ace_quickmount_distance = 3;
