@@ -30,13 +30,18 @@
       [
         [
           "vn_m1911_mag",
-          5,
+          2,
           7
         ],
         [
           "murshun_cigs_lighter",
           1,
           100
+        ],
+        [
+          "murshun_cigs_cigpack",
+          1,
+          20
         ]
       ]
     ],
@@ -118,9 +123,34 @@
           1
         ],
         [
-          "murshun_cigs_cigpack",
-          1,
-          20
+          "vn_sten_mag",
+          9,
+          32
+        ],
+        [
+          "vn_40mm_m661_flare_g_mag",
+          2,
+          1
+        ],
+        [
+          "vn_40mm_m662_flare_r_mag",
+          2,
+          1
+        ],
+        [
+          [
+            "vn_sten",
+            "vn_s_sten",
+            "",
+            "",
+            [
+              "vn_sten_mag",
+              32
+            ],
+            [],
+            ""
+          ],
+          1
         ]
       ]
     ],
