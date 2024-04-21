@@ -6,6 +6,7 @@
 	Updates the view distance dependant on whether the player
 	is on foot, a car or an aircraft.
 */
+if (isDedicated) exitwith {};
 private "_dist";
 switch (true) do {
 	case (!(EQUAL(SEL(UAVControl getConnectedUAV player,1),""))): {
