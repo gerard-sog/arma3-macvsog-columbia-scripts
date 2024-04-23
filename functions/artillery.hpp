@@ -21,7 +21,7 @@ class vn_artillery_settings
                 class he
                 {
                         displayname = $STR_VN_ARTILLERY_AIRCRAFT_HE_HE_NAME;
-                        class rambler
+                        class rambler // A fast strike of 2x Mk82 500lb bombs from an F-4 Phantom.
                         {
                                 displayname = $STR_VN_ARTILLERY_AIRCRAFT_CLUSTER_RAMBLER_NAME;
                                 icon = "vn\ui_f_vietnam\data\decals\vn_callsign_src_433tfs_ca.paa";
@@ -30,9 +30,9 @@ class vn_artillery_settings
                                 vehicleclass = "vn_b_air_f4c_cas";
                                 cooldown = (60*5);
                                 cost = 10;
-                                condition = "CAS_SUPPORT_ENABLED";
+                                condition = "CAS_JETS_SUPPORT_ENABLED";
                         };
-                        class sundowner
+                        class sundowner // A strike of 2x BLU/1B Napalm bombs dropped from an F-4 Phantom.
                         {
                                 displayname = $STR_VN_ARTILLERY_AIRCRAFT_HE_SUNDOWNER_NAME;
                                 icon = "vn\ui_f_vietnam\data\decals\vn_callsign_src_vf111_ca.paa";
@@ -42,9 +42,9 @@ class vn_artillery_settings
                                 allow_double = 1;
                                 cooldown = (60*5);
                                 cost = 15;
-                                condition = "CAS_SUPPORT_ENABLED";
+                                condition = "CAS_JETS_SUPPORT_ENABLED";
                         };
-                        class snake
+                        class snake // 125mm high-explosive rockets fired from an F-4 Phantom.
                         {
                                 displayname = $STR_VN_ARTILLERY_AIRCRAFT_HE_SNAKE_NAME;
                                 icon = "vn\ui_f_vietnam\data\decals\vn_callsign_src_vmfa323_ca.paa";
@@ -53,9 +53,9 @@ class vn_artillery_settings
                                 vehicleclass = "vn_b_air_f4c_cas";
                                 cooldown = (60*5);
                                 cost = 10;
-                                condition = "CAS_SUPPORT_ENABLED";
+                                condition = "CAS_JETS_SUPPORT_ENABLED";
                         };
-                        class showtime
+                        class showtime // 20mm high-explosive Gunpod fired from an F-4 Phantom.
                         {
                                 displayname = $STR_VN_ARTILLERY_AIRCRAFT_HE_SHOWTIME_NAME;
                                 icon = "vn\ui_f_vietnam\data\decals\vn_callsign_src_vf96_ca.paa";
@@ -64,9 +64,9 @@ class vn_artillery_settings
                                 vehicleclass = "vn_b_air_f4c_cas";
                                 cooldown = (60*5);
                                 cost = 6;
-                                condition = "CAS_SUPPORT_ENABLED";
+                                condition = "CAS_JETS_SUPPORT_ENABLED";
                         };
-                        class hobo
+                        class hobo // 20mm high-explosive Vulcan Minigun support provided by an F-4 Phantom.
                         {
                                 displayname = $STR_VN_ARTILLERY_AIRCRAFT_HE_HOBO_NAME;
                                 icon = "vn\ui_f_vietnam\data\decals\vn_callsign_src_1sos_ca.paa";
@@ -75,9 +75,9 @@ class vn_artillery_settings
                                 vehicleclass = "vn_b_air_f4c_cas";
                                 cooldown = (60*5);
                                 cost = 6;
-                                condition = "CAS_SUPPORT_ENABLED";
+                                condition = "CAS_JETS_SUPPORT_ENABLED";
                         };
-                        class condor
+                        class condor // 14x Rockets 70mm high-explosive fired from a AH-1G Cobra.
                         {
                                 displayname = $STR_VN_ARTILLERY_AIRCRAFT_HE_CONDOR_NAME;
                                 icon = "vn\ui_f_vietnam\data\decals\vn_callsign_src_b101_ca";
@@ -86,9 +86,9 @@ class vn_artillery_settings
                                 vehicleclass = "vn_b_air_ah1g_01";
                                 cooldown = (5*60);
                                 cost = 6;
-                                condition = "CAS_SUPPORT_ENABLED";
+                                condition = "CAS_HELICOPTER_SUPPORT_ENABLED";
                         };
-                        class dragon
+                        class dragon // 38x 70mm high-explosive rockets fired from a UH-1C Huey gunship.
                         {
                                 displayname = $STR_VN_ARTILLERY_AIRCRAFT_HE_DRAGON_NAME;
                                 icon = "vn\ui_f_vietnam\data\decals\vn_callsign_src_a477_ca.paa";
@@ -97,13 +97,13 @@ class vn_artillery_settings
                                 vehicleclass = "vn_b_air_uh1c_01_02";
                                 cooldown = (5*60);
                                 cost = 16;
-                                condition = "CAS_SUPPORT_ENABLED";
+                                condition = "CAS_HELICOPTER_SUPPORT_ENABLED";
                         };
                 };
                 class flechette
                 {
                         displayname = $STR_VN_ARTILLERY_AIRCRAFT_FLECHETTE_FLECHETTE_NAME;
-                        class combat
+                        class combat // 70mm Flechette rockets fired from an F-4 Phantom.
                         {
                                 displayname = $STR_VN_ARTILLERY_AIRCRAFT_FLECHETTE_COMBAT_NAME;
                                 icon = "vn\ui_f_vietnam\data\decals\vn_callsign_src_vmfa314_ca.paa";
@@ -113,9 +113,9 @@ class vn_artillery_settings
                                 allow_double = 1;
                                 cooldown = (5*60);
                                 cost = 8;
-                                condition = "CAS_SUPPORT_ENABLED";
+                                condition = "CAS_JETS_SUPPORT_ENABLED";
                         };
-                        class banshee
+                        class banshee // 70mm Flechette rockets fired from an AH-1G Cobra.
                         {
                                 displayname = $STR_VN_ARTILLERY_AIRCRAFT_FLECHETTE_BANSHEE_NAME;
                                 icon = "vn\ui_f_vietnam\data\decals\vn_callsign_src_29tas_ca.paa";
@@ -125,9 +125,9 @@ class vn_artillery_settings
                                 allow_double = 1;
                                 cooldown = (5*60);
                                 cost = 6;
-                                condition = "CAS_SUPPORT_ENABLED";
+                                condition = "CAS_HELICOPTER_SUPPORT_ENABLED";
                         };
-                        class scarface
+                        class scarface // 70mm Flechette rockets fired from an UH-1C Huey gunship.
                         {
                                 displayname = $STR_VN_ARTILLERY_AIRCRAFT_FLECHETTE_SCARFACE_NAME;
                                 icon = "vn\ui_f_vietnam\data\decals\vn_callsign_src_vmo3_co.paa";
@@ -137,7 +137,7 @@ class vn_artillery_settings
                                 allow_double = 1;
                                 cooldown = (5*60);
                                 cost = 12;
-                                condition = "CAS_SUPPORT_ENABLED";
+                                condition = "CAS_HELICOPTER_SUPPORT_ENABLED";
                         };
                 };
                 class illumination
@@ -154,19 +154,19 @@ class vn_artillery_settings
                                 cooldown = (5*60);
                                 illumination = 1;
                                 cost = 0;
-                                condition = "CAS_SUPPORT_ENABLED";
+                                condition = "CAS_HELICOPTER_SUPPORT_ENABLED";
                         };
                         class dawn_1
                         {
                                 displayname = $STR_VN_ARTILLERY_ARTILLERY_ILLUMINATION_DAWN_1_NAME;
                                 icon = "vn\ui_f_vietnam\data\decals\vn_callsign_src_usarmy_ca.paa";
                                 description = $STR_VN_ARTILLERY_ARTILLERY_ILLUMINATION_DAWN_1_DESCRIPTION;
-                                condition = "CAS_SUPPORT_ENABLED";
                                 function = "vn_fnc_artillery_dawn_1";
                                 allow_double = 0;
                                 cooldown = (60*5);
                                 illumination = 1;
                                 cost = 0;
+                                condition = "CAS_HELICOPTER_SUPPORT_ENABLED";
                         };
                 };
 
