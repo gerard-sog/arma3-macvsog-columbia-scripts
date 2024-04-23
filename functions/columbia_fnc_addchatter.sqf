@@ -14,20 +14,6 @@
 
 params ["_chatterobj", "_caller"];
 
-private _sound = playSound3D ["\vn\music_f_vietnam\m_samaudio\pavn\aware\vn_sam_vcaware_tunnel_026.ogg", _chatterobj, false, getPosASL _chatterobj, 1, 0.9, 5, 0, false];
-waitUntil {soundParams _sound isEqualTo []};
-
-sleep 0.5;
-
-private _sound = playSound3D ["\vn\music_f_vietnam\m_samaudio\pavn\aware\vn_sam_vcaware_tunnel_016.ogg", _chatterobj, false, getPosASL _chatterobj, 1, 0.9, 5, 0, false];
-waitUntil {soundParams _sound isEqualTo []};
-
-sleep 0.5;
-
-private _sound = playSound3D ["\vn\music_f_vietnam\m_samaudio\pavn\aware\vn_sam_vcaware_tunnel_022.ogg", _chatterobj, false, getPosASL _chatterobj, 1, 0.9, 5, 0, false];
-waitUntil {soundParams _sound isEqualTo []};
-
-sleep 0.5;
-
-private _sound = playSound3D ["\vn\music_f_vietnam\m_samaudio\pavn\aware\vn_sam_vcaware_tunnel_002.ogg", _chatterobj, false, getPosASL _chatterobj, 1, 0.9, 5, 0, false];
+// duration = "2*60+47";
+private _sound = playSound3D ["\vn\sounds_f_vietnam\sfx\missiondesign\vn_phoneline_1.ogg", _chatterobj, false, getPosASL _chatterobj, 1, 0.9, 5, 0, false];
 waitUntil {soundParams _sound isEqualTo []};
