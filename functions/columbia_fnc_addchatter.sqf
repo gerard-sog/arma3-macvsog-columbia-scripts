@@ -14,6 +14,8 @@
 
 params ["_chatterobj", "_caller"];
 
+_chatterobj setVariable ["COLSOG_chatter", false, true];
+
 // duration = "2*60+47";
 private _sound = playSound3D ["\vn\sounds_f_vietnam\sfx\missiondesign\vn_phoneline_1.ogg", _chatterobj, false, getPosASL _chatterobj, 1, 0.9, 5, 0, false];
 waitUntil {soundParams _sound isEqualTo []};

@@ -30,7 +30,7 @@ _chatterobj setVariable ["COLSOG_chatter", true, true];
 
 Columbia_fnc_addchatter_to_object = {
 	params ["_chatterobj"];
-	_chatterobj addaction ["<t color='#82FA58'>Record chatter</t>", "functions\columbia_fnc_addchatter.sqf", nil, 1.5, false, true, "", "", 4, false];
+	_chatterobj addaction ["<t color='#82FA58'>Record chatter</t>", "functions\columbia_fnc_addchatter.sqf", nil, 1.5, false, true, "", "_target getVariable 'COLSOG_chatter'", 4, false];
 };
 
 {
