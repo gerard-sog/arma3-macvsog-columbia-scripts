@@ -267,8 +267,20 @@ Here are the steps to follow if you want to add 2 news acre radio racks to plane
 
 Here is the code to place in the 'init' section of the vehicle you to change the fuel consumption of:
   ```
-  this setFuelConsumptionCoef 3; // Fuel consumption will be 3x default consumption.
+  _this setFuelConsumptionCoef 3; // Fuel consumption will be 3x default consumption.
   ```
+
+</details>
+
+<details>
+
+<summary>10. Tracker module</summary>
+
+To turn ON/OFF tracker module, simply put the bellow code in the 'init' section of the tracker module:
+  ```
+  TRACKERS_ENABLED
+  ```
+This variable is initially set to 'false' but can be updated during the mission using the "Toggle Trackers" zeus module.
 
 </details>
 

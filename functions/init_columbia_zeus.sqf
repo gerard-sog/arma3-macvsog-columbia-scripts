@@ -6,6 +6,7 @@ if !(_hasZen) exitWith { systemChat "ZEN not detected";};
 // Custom Zeus Modules in Right Panel
 ["A - Columbia Tools", "Toggle Consciousness", {_this execVM "functions\columbia_zeus_toggleconsciousness.sqf";}, "\z\ace\addons\zeus\UI\Icon_Module_Zeus_Unconscious_ca.paa"] call zen_custom_modules_fnc_register;
 ["A - Columbia Tools", "Toggle CAS", {_this execVM "functions\columbia_zeus_togglecas.sqf";}, "\a3\Modules_F_Curator\Data\portraitCASGun_ca.paa"] call zen_custom_modules_fnc_register;
+["A - Columbia Tools", "Toggle Trackers", {_this execVM "functions\columbia_zeus_toggletrackers.sqf";}, "\a3\Ui_F_Curator\Data\CfgMarkers\kia_ca.paa"] call zen_custom_modules_fnc_register;
 ["A - Columbia Tools", "Transition Time", {execVM "functions\columbia_zeus_transitiontime.sqf";}, "\a3\Modules_F_Curator\Data\iconSkiptime_ca.paa"] call zen_custom_modules_fnc_register;
 ["A - Columbia Tools", "Init PF77s on plane", {_this execVM "functions\columbia_zeus_initpf77rack.sqf";}, "\a3\Modules_F_Curator\Data\portraitRadio_ca.paa"] call zen_custom_modules_fnc_register;
 ["A - Columbia Tools", "NVA radio chatter", {_this execVM "functions\columbia_zeus_addchatter.sqf";}, "\a3\Modules_F_Curator\Data\portraitRadio_ca.paa"] call zen_custom_modules_fnc_register;
