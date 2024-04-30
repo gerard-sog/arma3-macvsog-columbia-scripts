@@ -10,6 +10,7 @@ if !(_hasZen) exitWith { systemChat "ZEN not detected";};
 ["A - Columbia Tools", "Transition Time", {execVM "functions\columbia_zeus_transitiontime.sqf";}, "\a3\Modules_F_Curator\Data\iconSkiptime_ca.paa"] call zen_custom_modules_fnc_register;
 ["A - Columbia Tools", "Init PF77s on plane", {_this execVM "functions\columbia_zeus_initpf77rack.sqf";}, "\a3\Modules_F_Curator\Data\portraitRadio_ca.paa"] call zen_custom_modules_fnc_register;
 ["A - Columbia Tools", "NVA radio chatter", {_this execVM "functions\columbia_zeus_addchatter.sqf";}, "\a3\Modules_F_Curator\Data\portraitRadio_ca.paa"] call zen_custom_modules_fnc_register;
+["A - Columbia Tools", "Make Spectator", {_this execVM "functions\columbia_zeus_spectator.sqf"},"\a3\ui_f_curator\Data\Logos\arma3_curator_eye_64_ca.paa"] call zen_custom_modules_fnc_register;
 
 // Checks if unit object, is not null and is alive. Required to filter away if right-clicked on group as the other if-checks don't work with group
 COLUMBIA_fnc_isAlivePlayerUnit = {
