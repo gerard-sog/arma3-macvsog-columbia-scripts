@@ -689,45 +689,6 @@ force acre_sys_zeus_zeusCanSpectate = true;
 force acre_sys_zeus_zeusCommunicateViaCamera = true;
 force acre_sys_zeus_zeusDefaultVoiceSource = false;
 
-// AIME Ammo Type Menu
-UPSL_aime_change_ammo_setting_ammo_class = true;
-UPSL_aime_change_ammo_setting_vehicle_ammo_class = true;
-
-// AIME General
-UPSL_aime_setting_hide = true;
-
-// AIME GPS and UAV Terminal
-UPSL_aime_uav_terminal_setting_gps_action = true;
-UPSL_aime_uav_terminal_setting_term_action = true;
-UPSL_aime_uav_terminal_setting_uav_action = true;
-
-// AIME Group Management
-UPSL_aime_group_setting_drop_leader_action = true;
-
-// AIME Inventory
-UPSL_aime_inventory_setting_assemble_action = true;
-UPSL_aime_inventory_setting_backpack_action = true;
-UPSL_aime_inventory_setting_holder_action = true;
-UPSL_aime_inventory_setting_open_action = true;
-
-// AIME Vehicle Controls
-UPSL_aime_vehicle_controls_setting_arty_computer_action = true;
-UPSL_aime_vehicle_controls_setting_collision_action = true;
-UPSL_aime_vehicle_controls_setting_engine_action = true;
-UPSL_aime_vehicle_controls_setting_flaps_action = true;
-UPSL_aime_vehicle_controls_setting_gear_action = true;
-UPSL_aime_vehicle_controls_setting_hover_action = true;
-UPSL_aime_vehicle_controls_setting_lights_action = true;
-UPSL_aime_vehicle_controls_setting_manual_action = true;
-UPSL_aime_vehicle_controls_setting_user_actions = true;
-
-// AIME Vehicle Seats
-UPSL_aime_vehicle_seats_setting_change_action = true;
-UPSL_aime_vehicle_seats_setting_force_eject = false;
-UPSL_aime_vehicle_seats_setting_getin_action = true;
-UPSL_aime_vehicle_seats_setting_getout_action = true;
-UPSL_aime_vehicle_seats_setting_turnout_action = true;
-
 // Community Base Addons
 cba_diagnostic_ConsoleIndentType = -1;
 cba_diagnostic_watchInfoRefreshRate = 0.2;
@@ -845,11 +806,11 @@ diwako_dui_use_layout_editor = false;
 // Dynamic Camo System
 force DYNCAS_enabled = true;
 force DYNCAS_ghillieReduction = 0.2;
-force DYNCAS_lowerLimit = 0.6;
+force DYNCAS_lowerLimit = 0.4;
 force DYNCAS_nightCompensation = 0.8;
 force DYNCAS_targetList = 0;
 force DYNCAS_updateFrequency = 1;
-force DYNCAS_upperLimit = 1.4;
+force DYNCAS_upperLimit = 1;
 
 // Enhanced Movement Rework
 force emr_main_allowClimbOnStandingUnits = false;
@@ -986,15 +947,15 @@ force L_Immerse_force = true;
 force L_Immerse_recoil = true;
 force L_Immerse_twitch = true;
 
-// Reeveli's User Marker System
-Rev_marker_briefing = false;
-Rev_marker_CBA = false;
-Rev_marker_command = false;
-Rev_marker_global = false;
-Rev_marker_group = false;
-Rev_marker_side = false;
-Rev_marker_vehicle = false;
-Rev_markers_direct = false;
+// LAxemann's Suppress
+force L_Suppress_buildup = 0.25;
+force L_Suppress_enabled = true;
+force L_Suppress_flyByEffects = true;
+force L_Suppress_flyByIntensity = 0.3;
+force L_Suppress_halting = true;
+force L_Suppress_intensity = 0;
+force L_Suppress_playerSwabEnabled = true;
+force L_Suppress_recovery = 2;
 
 // SSD Death Screams
 force SSD_DS_enable_death = true;
