@@ -16,7 +16,7 @@
 params [["_pos", [0,0,0] , [[]], 3], ["_object", objNull, [objNull]]];
 
 // If clicked object is not a plane exit
-if ((isNull _object) OR !(_object isKindOf "Plane_Base_F")) exitWith {
+if (isNull _object) exitWith {
     ["Select a plane!", -1, 1, 4, 0] spawn BIS_fnc_dynamicText;
     playSound "FD_Start_F";
 };
