@@ -1,6 +1,6 @@
 /*
  * Custom Zeus module
- * Add 2 SOG ACRE Racks on a plane
+ * Add 2 SOG ACRE Racks
  * Radios Racks need to have been already initialized
  * (player has to enter the plane to first init ACRE Racks no dismount needed afterward) 
  *
