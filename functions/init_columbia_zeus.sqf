@@ -8,7 +8,7 @@ if !(_hasZen) exitWith { systemChat "ZEN not detected";};
 ["A - Columbia Tools", "Toggle CAS", {_this execVM "functions\columbia_zeus_togglecas.sqf";}, "\a3\Modules_F_Curator\Data\portraitCASGun_ca.paa"] call zen_custom_modules_fnc_register;
 ["A - Columbia Tools", "Toggle Trackers", {_this execVM "functions\columbia_zeus_toggletrackers.sqf";}, "\a3\Ui_F_Curator\Data\CfgMarkers\kia_ca.paa"] call zen_custom_modules_fnc_register;
 ["A - Columbia Tools", "Transition Time", {execVM "functions\columbia_zeus_transitiontime.sqf";}, "\a3\Modules_F_Curator\Data\iconSkiptime_ca.paa"] call zen_custom_modules_fnc_register;
-["A - Columbia Tools", "Init PF77s on plane", {_this execVM "functions\columbia_zeus_initpf77rack.sqf";}, "\a3\Modules_F_Curator\Data\portraitRadio_ca.paa"] call zen_custom_modules_fnc_register;
+["A - Columbia Tools", "Init PF77s", {_this execVM "functions\columbia_zeus_initpf77rack.sqf";}, "\a3\Modules_F_Curator\Data\portraitRadio_ca.paa"] call zen_custom_modules_fnc_register;
 ["A - Columbia Tools", "NVA radio chatter", {_this execVM "functions\columbia_zeus_addchatter.sqf";}, "\a3\Modules_F_Curator\Data\portraitRadio_ca.paa"] call zen_custom_modules_fnc_register;
 
 // Checks if unit object, is not null and is alive. Required to filter away if right-clicked on group as the other if-checks don't work with group
