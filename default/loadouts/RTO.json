@@ -59,11 +59,16 @@
           "vn_m16_20_t_mag",
           5,
           18
+        ],
+        [
+          "ACE_painkillers",
+          1,
+          10
         ]
       ]
     ],
     [
-      "vn_b_vest_sog_01",
+      "vn_b_vest_sog_06",
       [
         [
           "vn_m16_20_t_mag",

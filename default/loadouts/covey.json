@@ -96,7 +96,7 @@
           1
         ],
         [
-          "vn_m18_green_mag",
+          "vn_m18_purple_mag",
           2,
           1
         ]
@@ -123,5 +123,10 @@
       ""
     ]
   ],
-  []
+  [
+    [
+      "ace_earplugs",
+      true
+    ]
+  ]
 ]
