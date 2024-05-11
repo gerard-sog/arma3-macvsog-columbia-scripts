@@ -1,13 +1,13 @@
 [
     [
         [
-            "vn_xm16e1",
+            "vn_rpd_shorty_01",
             "",
             "",
             "",
             [
-                "vn_m16_20_t_mag",
-                18
+                "vn_rpd_100_mag",
+                100
             ],
             [],
             ""
@@ -18,6 +18,11 @@
             "vn_b_uniform_macv_04_06",
             [
                 [
+                    "vn_m67_grenade_mag",
+                    2,
+                    1
+                ],
+                [
                     "murshun_cigs_cigpack",
                     1,
                     20
@@ -26,21 +31,16 @@
                     "murshun_cigs_lighter",
                     1,
                     100
-                ],
-                [
-                    "vn_m16_20_t_mag",
-                    5,
-                    18
                 ]
             ]
         ],
         [
-            "vn_b_vest_sog_04",
+            "vn_b_vest_sog_05",
             [
                 [
-                    "vn_m16_20_t_mag",
-                    21,
-                    18
+                    "vn_rpd_100_mag",
+                    4,
+                    100
                 ]
             ]
         ],
@@ -80,26 +80,16 @@
                     2
                 ],
                 [
-                    "ACE_EarPlugs",
-                    1
-                ],
-                [
                     "ACE_MapTools",
                     1
                 ],
                 [
-                    "ACE_Flashlight_MX991",
+                    "ACE_EntrenchingTool",
                     1
                 ],
                 [
-                    "vn_mine_m18_range_mag",
-                    2,
-                    1
-                ],
-                [
-                    "vn_mine_m14_mag",
-                    6,
-                    1
+                    "greenmag_beltlinked_762x39_basic_100",
+                    3
                 ],
                 [
                     "vn_m34_grenade_mag",
@@ -107,13 +97,8 @@
                     1
                 ],
                 [
-                    "vn_m60_100_mag",
+                    "DemoCharge_Remote_Mag",
                     1,
-                    100
-                ],
-                [
-                    "vn_m67_grenade_mag",
-                    4,
                     1
                 ],
                 [
@@ -122,9 +107,9 @@
                     10
                 ],
                 [
-                    "vn_m16_20_mag",
-                    10,
-                    18
+                    "vn_rpd_100_mag",
+                    2,
+                    100
                 ]
             ]
         ],
