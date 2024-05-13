@@ -68,16 +68,16 @@ ace_common_allowFadeMusic = true;
 force ace_common_checkPBOsAction = 0;
 force ace_common_checkPBOsCheckAll = false;
 force ace_common_checkPBOsWhitelist = "[]";
-ace_common_deployedSwayFactor = 1;
+force ace_common_deployedSwayFactor = 1;
 ace_common_displayTextColor = [0,0,0,0.1];
 ace_common_displayTextFontColor = [1,1,1,1];
-ace_common_enableSway = true;
+force ace_common_enableSway = true;
 ace_common_epilepsyFriendlyMode = false;
 ace_common_progressBarInfo = 2;
-ace_common_restedSwayFactor = 1;
+force ace_common_restedSwayFactor = 1;
 ace_common_settingFeedbackIcons = 1;
 ace_common_settingProgressBarLocation = 0;
-ace_common_swayFactor = 1;
+force ace_common_swayFactor = 1;
 
 // ACE Cook off
 force ace_cookoff_ammoCookoffDuration = 1;
@@ -510,20 +510,20 @@ force ace_trenches_smallEnvelopeRemoveDuration = 40;
 
 // ACE Uncategorized
 force ace_fastroping_autoAddFRIES = true;
-ace_fastroping_requireRopeItems = false;
+force ace_fastroping_requireRopeItems = false;
 ace_gunbag_swapGunbagEnabled = true;
-ace_hitreactions_minDamageToTrigger = 0.1;
+force ace_hitreactions_minDamageToTrigger = 0.1;
 ace_inventory_inventoryDisplaySize = 0;
-ace_laser_dispersionCount = 2;
-ace_laser_showLaserOnMap = 1;
-ace_marker_flags_placeAnywhere = false;
-ace_microdagr_mapDataAvailable = 2;
-ace_microdagr_waypointPrecision = 3;
+force ace_laser_dispersionCount = 2;
+force ace_laser_showLaserOnMap = 0;
+force ace_marker_flags_placeAnywhere = false;
+force ace_microdagr_mapDataAvailable = 0;
+force ace_microdagr_waypointPrecision = 1;
 ace_noradio_enabled = true;
 ace_optionsmenu_showNewsOnMainMenu = true;
-ace_overpressure_distanceCoefficient = 1;
-ace_parachute_failureChance = 0;
-ace_parachute_hideAltimeter = true;
+force ace_overpressure_distanceCoefficient = 1;
+force ace_parachute_failureChance = 0;
+force ace_parachute_hideAltimeter = true;
 ace_tagging_quickTag = 1;
 
 // ACE User Interface
