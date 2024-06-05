@@ -162,7 +162,7 @@ force acex_headless_log = false;
 force acex_headless_transferLoadout = 0;
 
 // ACE Hearing
-force ace_hearing_autoAddEarplugsToUnits = false;
+ace_hearing_autoAddEarplugsToUnits = 1;
 force ace_hearing_disableEarRinging = false;
 force ace_hearing_earplugsVolume = 0.5;
 force ace_hearing_enableCombatDeafness = false;
@@ -277,7 +277,7 @@ force ace_medical_dropWeaponUnconsciousChance = 0;
 force ace_medical_enableVehicleCrashes = true;
 force ace_medical_engine_damagePassThroughEffect = 1;
 force ace_medical_fatalDamageSource = 0;
-force ace_medical_fractureChance = 0.8;
+force ace_medical_fractureChance = 0.152807;
 force ace_medical_fractures = 1;
 force ace_medical_ivFlowRate = 1.4;
 force ace_medical_limping = 1;
@@ -330,7 +330,7 @@ force ace_medical_treatment_treatmentTimeCoeffZeus = 1;
 force ace_medical_treatment_treatmentTimeCPR = 15;
 force ace_medical_treatment_treatmentTimeGrave = 30;
 force ace_medical_treatment_treatmentTimeIV = 12;
-force ace_medical_treatment_treatmentTimeSplint = 7;
+force ace_medical_treatment_treatmentTimeSplint = 20;
 force ace_medical_treatment_treatmentTimeTourniquet = 7;
 force ace_medical_treatment_woundReopenChance = 1;
 force ace_medical_treatment_woundStitchTime = 5;
