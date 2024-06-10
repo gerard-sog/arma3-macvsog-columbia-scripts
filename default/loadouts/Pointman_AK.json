@@ -63,10 +63,6 @@
           2
         ],
         [
-          "ACE_morphine",
-          2
-        ],
-        [
           "ACE_splint",
           2
         ],
@@ -122,6 +118,11 @@
           "ACE_painkillers",
           1,
           10
+        ],
+        [
+          "vn_m18_white_mag",
+          2,
+          1
         ]
       ]
     ],

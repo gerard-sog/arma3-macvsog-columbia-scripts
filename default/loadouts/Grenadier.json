@@ -49,6 +49,10 @@
       "vn_b_vest_usarmy_05",
       [
         [
+          "ACE_morphine",
+          2
+        ],
+        [
           "vn_40mm_m680_smoke_w_mag",
           2,
           1
@@ -81,10 +85,6 @@
         ],
         [
           "ACE_epinephrine",
-          2
-        ],
-        [
-          "ACE_morphine",
           2
         ],
         [
@@ -141,6 +141,11 @@
           "ACE_painkillers",
           1,
           10
+        ],
+        [
+          "vn_m18_white_mag",
+          2,
+          1
         ],
         [
           [
