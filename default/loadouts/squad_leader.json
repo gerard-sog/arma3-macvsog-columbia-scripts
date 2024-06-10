@@ -68,10 +68,6 @@
           2
         ],
         [
-          "ACE_morphine",
-          2
-        ],
-        [
           "ACE_splint",
           2
         ],
@@ -94,6 +90,10 @@
         [
           "greenmag_beltlinked_762x39_basic_100",
           1
+        ],
+        [
+          "ACE_morphine",
+          2
         ],
         [
           "vn_mine_m14_mag",
@@ -134,6 +134,11 @@
           "ACE_painkillers",
           1,
           10
+        ],
+        [
+          "vn_m18_white_mag",
+          2,
+          1
         ]
       ]
     ],

@@ -109,17 +109,22 @@
         ],
         [
           "vn_m34_grenade_mag",
-          3,
+          2,
           1
         ],
         [
           "vn_m67_grenade_mag",
-          2,
+          1,
           1
         ],
         [
           "DemoCharge_Remote_Mag",
           1,
+          1
+        ],
+        [
+          "vn_m18_white_mag",
+          2,
           1
         ]
       ]
