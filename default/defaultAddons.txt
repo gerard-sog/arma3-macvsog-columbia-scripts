@@ -900,8 +900,8 @@ force lambs_danger_disableAIFindStaticWeapons = true;
 force lambs_danger_disableAIHideFromTanksAndAircraft = false;
 force lambs_danger_disableAIPlayerGroup = false;
 force lambs_danger_disableAIPlayerGroupReaction = false;
-force lambs_danger_disableAutonomousFlares = false;
-force lambs_danger_disableAutonomousSmokeGrenades = false;
+force lambs_danger_disableAutonomousFlares = true;
+force lambs_danger_disableAutonomousSmokeGrenades = true;
 force lambs_danger_panicChance = 0.1;
 
 // LAMBS Danger Eventhandlers
