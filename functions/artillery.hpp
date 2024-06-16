@@ -21,6 +21,29 @@ class vn_artillery_settings
                 class he
                 {
                         displayname = $STR_VN_ARTILLERY_AIRCRAFT_HE_HE_NAME;
+                         class commando_vault // A 15, 000lb BLU-82 dropped from an aircraft (aka "Daisy Cutter").
+                        {
+                                displayname = $STR_VN_ARTILLERY_AIRCRAFT_HE_COMMANDO_VAULT_NAME;
+                                icon = "vn\ui_f_vietnam\data\decals\vn_callsign_src_29tas_ca.paa";
+                                description = $STR_VN_ARTILLERY_AIRCRAFT_HE_COMMANDO_VAULT_DESCRIPTION;
+                                function = "vn_fnc_artillery_commando_vault";
+                                divergence = -45;
+                                delay_max = 120;
+                                cooldown = (60*5);
+                                cost = 50;
+                                condition = "DAISY_CUTTER_SUPPORT_ENABLED";
+                        };
+                        class arc_light // Carpet bombing run of 20x 750lb M117 demolition bombs from an B-52.
+                        {
+                                displayname = $STR_VN_ARTILLERY_AIRCRAFT_HE_ARC_LIGHT_NAME;
+                                icon = "vn\ui_f_vietnam\data\decals\vn_callsign_src_69bs_ca.paa";
+                                description = $STR_VN_ARTILLERY_AIRCRAFT_HE_ARC_LIGHT_DESCRIPTION;
+                                function = "vn_fnc_artillery_arc_light";
+                                divergence = 200;
+                                cooldown = (60*5);
+                                cost = 50;
+                                condition = "ARC_LIGHT_SUPPORT_ENABLED";
+                        };
                         class rambler // A fast strike of 2x Mk82 500lb bombs from an F-4 Phantom.
                         {
                                 displayname = $STR_VN_ARTILLERY_AIRCRAFT_CLUSTER_RAMBLER_NAME;
