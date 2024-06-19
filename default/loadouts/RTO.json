@@ -26,10 +26,6 @@
           4
         ],
         [
-          "ACE_morphine",
-          2
-        ],
-        [
           "ACE_MapTools",
           1
         ],
@@ -71,6 +67,10 @@
       "vn_b_vest_sog_06",
       [
         [
+          "grad_paceCountBeads_functions_paceCountBeads",
+          1
+        ],
+        [
           "vn_m16_20_t_mag",
           22,
           18
@@ -81,20 +81,12 @@
       "vn_b_pack_trp_04",
       [
         [
-          "ACE_fieldDressing",
-          5
-        ],
-        [
           "ACE_elasticBandage",
-          5
+          10
         ],
         [
           "ACE_packingBandage",
-          5
-        ],
-        [
-          "ACE_quikclot",
-          5
+          10
         ],
         [
           "ACE_Flashlight_MX991",

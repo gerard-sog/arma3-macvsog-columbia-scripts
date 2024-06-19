@@ -48,20 +48,12 @@
             "vn_b_pack_trp_02",
             [
                 [
-                    "ACE_fieldDressing",
-                    5
-                ],
-                [
                     "ACE_elasticBandage",
-                    5
+                    10
                 ],
                 [
                     "ACE_packingBandage",
-                    5
-                ],
-                [
-                    "ACE_quikclot",
-                    5
+                    10
                 ],
                 [
                     "ACE_epinephrine",
@@ -89,6 +81,10 @@
                 ],
                 [
                     "ACE_Flashlight_MX991",
+                    1
+                ],
+                [
+                    "grad_paceCountBeads_functions_paceCountBeads",
                     1
                 ],
                 [
