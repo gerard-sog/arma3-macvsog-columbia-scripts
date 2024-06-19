@@ -19,7 +19,7 @@ private _onConfirm = {
 
 		private _grouptoadd = _x getVariable "ColumbiaTrackedGroup";
 		if !(isNil "_grouptoadd") then {
-			_grouptoupdate = _grouptoupdate pushBack _x;
+			_grouptoupdate pushBack _x;
 		};
 
 	} forEach allGroups;
