@@ -26,7 +26,7 @@ ctrlSetText[SEL(_varData,1),str(GVAR_MNS SEL(_varData,0))];
 [] call TAWVD_fnc_updateViewDistance;
 
 if(EQUAL(_mode,3)) then {
-	setObjectViewDistance [tawvd_object,100];
+	setObjectViewDistance [tawvd_object,150];
 };
 
 if(tawvd_syncObject) then {
