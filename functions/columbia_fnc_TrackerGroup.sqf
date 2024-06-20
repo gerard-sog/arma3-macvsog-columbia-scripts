@@ -12,7 +12,7 @@ columbia_fnc_customizeTrackerGroup = {
       systemChat str ["Exit NULL group", _group];
     };
 
-    _group setVariable ["ColumbiaTrackedGroup", true];
+    _group setVariable ["ColumbiaTrackedGroup", true, true];
 
     _group setBehaviour (TRACKERS_DEFAULT select 0);
     _group setCombatMode (TRACKERS_DEFAULT select 1);
