@@ -1,0 +1,62 @@
+version=1;
+blood=1;
+volumeCD=5;
+volumeFX=5;
+volumeSpeech=5;
+singleVoice=0;
+gamma=1;
+brightness=1;
+ppBrightness=1.01;
+ppContrast=1.0599999;
+ppSaturation=1.08;
+
+class DifficultyPresets
+{
+    class CustomDifficulty
+    {
+        class Options
+
+        {
+                // Simulation
+                reducedDamage = 0; // Reduced damage
+                // Situational awareness
+                groupIndicators = 0; // Group indicators (0 = never, 1 = limited distance, 2 = always)
+                friendlyTags = 0; // Friendly name tags (0 = never, 1 = limited distance, 2 = always)
+                enemyTags = 0; // Enemy name tags (0 = never, 1 = limited distance, 2 = always)
+                detectedMines = 0; // Detected mines (0 = never, 1 = limited distance, 2 = always)
+                commands = 0; // Commands (0 = never, 1 = fade out, 2 = always)
+                waypoints = 0; // Waypoints (0 = never, 1 = fade out, 2 = always)
+
+                // Personal awareness
+
+                weaponInfo = 0; // Weapon info (0 = never, 1 = fade out, 2 = always)
+                stanceIndicator = 0; // Stance indicator (0 = never, 1 = fade out, 2 = always)
+                staminaBar = 1; // Stamina bar
+                weaponCrosshair = 0; // Weapon crosshair
+                visionAid = 0; // Vision aid
+
+                // View
+
+                thirdPersonView = 1; // 3rd person view
+                cameraShake = 0; // Camera shake
+                // Multiplayer
+                scoreTable = 0; // Score table
+                deathMessages = 0; // Killed by
+                vonID = 1; // VON ID
+                // Misc
+                mapContent = 0; // Extended map content
+                autoReport = 0; // Automatic reporting
+                multipleSaves = 0; // Multiple saves
+        };
+        //aiLevelPreset is counted from 0 and can have following values: 0 (AI Level Low), 1 (AI Level Normal), 2 (AI Level High), 3 (AI Level Custom).
+        //When 3 (AI Level Custom) is chosen, values of skill and precision are stored to the class CustomAILevel.
+        aiLevelPreset=3;
+    };
+
+    class CustomAILevel
+    {
+        skillAI=1.0;
+        precisionAI=0.3;
+    };
+
+};
