@@ -1,0 +1,2 @@
+ropeDestroy globalStaboRope;							//This destroys the rope contained in the global variable
+[globalDroppedSandbag, 0] remoteExec["removeAction"]; 	//This removes the Attach STABO Rig option from the sandbag on the ground

@@ -1,0 +1,1 @@
+player moveInCargo globalParentHelicopter; //Moves the player into the helicopter from which the rope spawned
