@@ -29,8 +29,8 @@ class DifficultyPresets
 
                 // Personal awareness
 
-                weaponInfo = 0; // Weapon info (0 = never, 1 = fade out, 2 = always)
-                stanceIndicator = 0; // Stance indicator (0 = never, 1 = fade out, 2 = always)
+                weaponInfo = 2; // Weapon info (0 = never, 1 = fade out, 2 = always)
+                stanceIndicator = 1; // Stance indicator (0 = never, 1 = fade out, 2 = always)
                 staminaBar = 1; // Stamina bar
                 weaponCrosshair = 0; // Weapon crosshair
                 visionAid = 0; // Vision aid
