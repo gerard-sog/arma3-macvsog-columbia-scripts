@@ -284,6 +284,18 @@ This variable is initially set to 'false' but can be updated during the mission 
 
 </details>
 
+<details>
+
+<summary>11. STABO Rig</summary>
+
+Add:
+  ```
+  this addAction ["Drop the STABO rig", "dropSTABO.sqf"];
+  ```
+to any helicopter you want to have access to the STABO rig.
+
+</details>
+
 ## Default values
 
 - Default <b>addons</b> for missions: [defaultAddons.txt](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/defaultAddons.txt)
