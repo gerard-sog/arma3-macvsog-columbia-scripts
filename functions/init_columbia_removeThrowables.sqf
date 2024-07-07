@@ -7,8 +7,11 @@
  */
 
 if (!isServer) exitWith {};
- 
-ClassThrowables = ["vn_rg42_grenade_mag", "vn_rgd33_grenade_mag", "vn_rdg2_mag", "vn_molotov_grenade_mag", "vn_chicom_grenade_mag", "vn_f1_grenade_mag", "vn_t67_grenade_mag", "vn_rgd5_grenade_mag", "vn_rkg3_grenade_mag"];
+
+// All the smokes and grenades:
+// ClassThrowables = ["vn_rdg2_mag", "vn_molotov_grenade_mag", "vn_chicom_grenade_mag", "vn_f1_grenade_mag", "vn_t67_grenade_mag", "vn_rgd5_grenade_mag", "vn_rkg3_grenade_mag"];
+// molotove and smokes removed:
+ClassThrowables = ["vn_rdg2_mag", "vn_molotov_grenade_mag"];
  
 ["O_Soldier_base_F", "InitPost", {
 	params ["_unit"];
