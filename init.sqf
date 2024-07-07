@@ -62,3 +62,6 @@ f_available_languages = [
 
 // init removeThrowables on Opfor units
 execVM "functions\init_columbia_removeThrowables.sqf";
+
+// init convertMedicKit on killed units
+execVM "functions\columbia_fn_FirstAidconvertACE.sqf";
