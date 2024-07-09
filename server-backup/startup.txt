@@ -1,3 +1,4 @@
 DOWNLOAD CREATOR DLCS = 1
-MODLIST FILE (EXPORTED FROM A3 LAUNCHER) = MACVSOG-Columbia.html
+MODLIST FILE (EXPORTED FROM A3 LAUNCHER) = MACVSOG-Columbia-Server.html
 ADDITIONAL MODS = vn; // There is a folder called /home/container/vn with addons, keys, emm_api_x64.dll and emm_api.dll
+[ADVANCED] SERVER-SIDE ONLY MODS = @3006691432
