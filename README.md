@@ -1,31 +1,59 @@
 # Arma3 MACV-SOG Columbia
-## Scripts
+## Default values
+
+- Default <b>loadouts</b>: [loadouts](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/loadouts/)
+- Default <b>missions</b>:
+  - [Cam_Lao_Nam](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/missions/Cam_Lao_Nam/mission.sqm): Includes borders between ARVN (South Vietnam), PAVN (North Vietnam), Khmer Republic, Laos and Cambodia.
+  - [fox_pamai](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/missions/fox_pamai/mission.sqm): Includes FOB from vn_the_bra and an Airfield in out of bound area.
+  - [vn_the_bra](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/missions/vn_the_bra/mission.sqm)
+- Default <b>addons</b> for missions: [defaultAddons.txt](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/defaultAddons.txt)
+- Default whitelist <b>arsenal</b>: [defaultWhitelistArsenal.txt](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/defaultWhitelistArsenal.txt)
+
+## Zeus modules
+
+- A - Columbia AI
+  - Toggle Trackers
+  - Un-Garrison (enable PATH)
+- A - Columbia Env
+  - Fog Low
+  - Fog Ring
+  - Transition Time
+  - Vanilla Fog
+- A - Columbia Radio
+  - Init PF77s
+  - NVA radio chatter
+  - Toggle CAS
+
+see [init_columbia_zeus.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/init_columbia_zeus.sqf)
+
+
+## Features
 
 <details>
 
-<summary>1. Save loadout at arsenal</summary>
+<summary>1. Respawn with saved loadout</summary>
 
 To save your loadout, add the below code in the arsenal 'init' section. 
 
 ```
 this addAction [
-"Save loadout",
-{player setVariable["saved_loadout",getUnitLoadout player];
-hint "Loadout saved";},
-nil,
-1.5,
-true,
-true,
-"",
-"_this distance _target < 2",
-50,
-false,
-"",
-""
+  "Save loadout",
+  {player setVariable["saved_loadout",getUnitLoadout player];
+  hint "Loadout saved";},
+  nil,
+  1.5,
+  true,
+  true,
+  "",
+  "_this distance _target < 2",
+  50,
+  false,
+  "",
+  ""
 ];
 ```
 
-Then, by looking at the arsenal (from 2 meters maximum) and using the scroll wheel, you will have the option to 'save loadout'.
+Then, by looking at the arsenal (from 2 meters maximum) and using the scroll wheel, you will have the option to 'save loadout'. This will allow you to respawn with the saved loadout instead of default loadout at connection.
 </details>
 
 <details>
@@ -33,24 +61,25 @@ Then, by looking at the arsenal (from 2 meters maximum) and using the scroll whe
 <summary>2. Add image on map stand</summary>
 
 To display any image on a map stand, follow the below steps:
-- convert your .png into one of these resolution: 256x256, 512x512, 1024x1024 or 2048x2048
-- use the TexView 2 (Arma 3 Tool) to convert the .png into a .paa (Use 'RGBA' and in the other section use 'DXT5')
+- convert your .png into one of these resolution: 256x256, 512x512, 1024x1024 or 2048x2048 
+- 2 ways to convert .png to .paa:
+  - Manual: use the TexView 2 (Arma 3 Tool) to convert the .png into a .paa (Use 'RGBA' and in the other section use 'DXT5')
+  - Web: [ARMA 3 PAA CONVERTER](https://paa.gruppe-adler.de/)
 - add .paa file into the 'images' folder
-- add the below code in the 'init' section of the map stand
+- add the below code in the 'init' section of the map stand:
 
   ```
-  this setObjectTexture [0,
-  "images\YOUR_IMAGE.paa"]
+  this setObjectTexture [0, "images\YOUR_IMAGE.paa"]
   ```
 
 </details>
 
 <details>
 
-<summary>3. Prairie Fire Radio Support</summary>
+<summary>3. Radio Support</summary>
 
 <h3>Allow Radio Support based on trait</h3>
-Radio support from the Prairie fire DLC is available in a mission if all of the below points are true for a player:
+Radio support from the Prairie Fire CDLC is available in a mission if all of the below points are true for a player:
 - Radio Support module is present in the mission
 - The player has the following radio (should only be the case for RTO if no Covey in a mission):
 
@@ -58,10 +87,16 @@ Radio support from the Prairie fire DLC is available in a mission if all of the 
   "vn_b_pack_lw_06"
   ```
 
-- Or if the player is flying the
+- Or if the player is flying one of the aircraft in the list:
   
   ```
-  "pook_skymaster_NATO_B"
+  "JK_B_Cessna_T41_Armed_F", 
+  "vnx_b_air_ac119_01_01", 
+  "vn_b_air_ch34_03_01", 
+  "vn_b_air_ch34_03_01", 
+  "vn_b_air_ch34_04_01", 
+  "vn_b_air_ch34_04_02", 
+  "vn_b_air_oh6a_04"
   ```
   
 - (IF unit_trait_required = 1 in description.ext) Player has the below code in its 'init' section
@@ -72,7 +107,14 @@ Radio support from the Prairie fire DLC is available in a mission if all of the 
 
 - All this can be modified in the vn_artillery_settings class in [artillery.hpp](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/artillery.hpp)
 
-<h3>Enable/Disable Radio Support based on distance from a FOB</h3>
+<h3>Enable/Disable Radio Support</h3>
+We created a custom Zeus module to manage the availability of various supports (by default, none are available):
+- artillery availability
+- CAS (helicopter) availability
+- CAS (jet) availability
+- B-52 Arc Light strike availability
+- Daisy Cutter availability
+
 Here is how we emulate FOB with artillery support capabilities. By this we mean that the FOB can provide artillery support 
 within a perimeter (it will be 3.5km in our example).
 
@@ -99,9 +141,6 @@ within a perimeter (it will be 3.5km in our example).
     publicVariable "SUPPORT_ENABLED";
     ```
   <details>
-  <summary><b>see image <--- </b></summary>
-
-  ![trigger-activate-artillery](readme-images/trigger-activate-artillery.jpg)
 </details>
 </details>
 
@@ -238,7 +277,9 @@ call compile preprocessFile "functions\JBOY\mace\compileMaceScripts.sqf"; // Com
 <summary>8. ACRE2</summary>
 
 <h3>Babel</h3>
-Babel configuration: [init.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/init.sqf)
+Babel configuration present in: 
+- [init.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/init.sqf)
+- [onPlayerRespawn.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/onPlayerRespawn.sqf)
 
 Key to change languages: 'Right Alt'
 
@@ -251,13 +292,16 @@ We are using Babel to provide the following behaviour during our MACVSOG mission
   
 - Have the Zeus player speak Vietnamese when controlling an OPFOR unit. This makes the dialog between OPFOR and MACVSOG team possible only via the members speaking English and Vietnamese.
 
-<h3>Adding PRC77 Racks to planes</h3>
+<h3>Adding PRC77 Racks to vehicle</h3>
 
-Here are the steps to follow if you want to add 2 news acre radio racks to planes (child from 'Plane_Base_F' class):
-- Place a plane in the editor or during a mission
+Here are the steps to follow if you want to add 3 news acre radio racks to a vehicle:
+- Place a vehicle in the editor or during a mission
 - During the mission a player/zeus must enter the plane once in order to initialize ACRE radios in the plane
-- Use the zeus module implemented in [columbia_zeus_initpf77rack.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/columbia_zeus_initpf77rack.sqf) and click on the plane you want to add 2 racks of PRC77 radios
-- The plane will now have 2 more racks of PRC77 radios
+- Use the zeus module implemented in [columbia_zeus_initpf77rack.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/columbia_zeus_initpf77rack.sqf) and click on the vehicle
+- The vehicle will now have 3 more racks of PRC77 radios:
+  - A2A
+  - A2G
+  - HQ
 
 </details>
 
@@ -275,19 +319,77 @@ Here is the code to place in the 'init' section of the vehicle you to change the
 <details>
 
 <summary>10. Tracker module</summary>
+We created a custom Zeus module to manage the AI trackers spawned by the tracker module. To use that module, the tracker module placed in the Eden editor needs to have the below name:
 
-To turn ON/OFF tracker module, simply put the bellow code in the 'init' section of the tracker module:
   ```
-  TRACKERS_ENABLED
+  TrackermoduleNAME
   ```
-This variable is initially set to 'false' but can be updated during the mission using the "Toggle Trackers" zeus module.
+
+By default:
+- tracker module is disabled
+- tracker behaviour is set as "CARELESS", "BLUE", "LIMITED".
 
 </details>
 
-## Default values
+<details>
 
-- Default <b>addons</b> for missions: [defaultAddons.txt](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/defaultAddons.txt)
-- Default <b>loadouts</b>: [loadouts](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/loadouts/)
-- Default whitelist <b>arsenal</b>: [defaultWhitelistArsenal.txt](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/defaultWhitelistArsenal.txt)
-- Default <b>missions</b>:
-    - [Cam_Lao_Nam](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/missions/DefaultMission.Cam_Lao_Nam/mission.sqm): Includes borders between ARVN (South Vietnam), PAVN (North Vietnam), Khmer Republic, Laos and Cambodia.
+<summary>11. Disable mine detector panel</summary>
+For immersion purposes, we removed the HUD for mine detector.
+
+see: [minedetector_disable_panel.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/minedetector_disable_panel.sqf)
+
+</details>
+
+<details>
+
+<summary>12. Remove throwables from OPFOR AI</summary>
+We removed the below items for OPFOR AIs:
+
+```
+"vn_rdg2_mag", 
+"vn_molotov_grenade_mag"]
+```
+
+see [init_columbia_removeThrowables.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/init_columbia_removeThrowables.sqf)
+
+</details>
+
+<details>
+
+<summary>13. convert AI medikit/First aid kit to ace medical</summary>
+At the death of a unit (AI/Player):
+
+- Medikit are converted to:
+
+  ```
+  20x "ACE_fieldDressing"
+  2x "ACE_salineIV_500"
+  2x "ACE_epinephrine"
+  2x "ACE_morphine"
+  4x "ACE_tourniquet"
+  2x "ACE_splint"
+  ```
+
+- FirstAidKit are converted to:
+
+  ```
+  5x "ACE_fieldDressing"
+  1x "ACE_morphine"
+  ```
+
+see [columbia_fn_FirstAidconvertACE.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/columbia_fn_FirstAidconvertACE.sqf)
+
+</details>
+
+<details>
+
+<summary>14. Display kill counter</summary>
+To add an action to display kill counter for each player on the server, add the below line in the 'init' section of an object:
+
+```
+this addAction ["Display total kills", "functions\kill_counter.sqf"]
+```
+
+this will give you a scroll wheel action to diplay the kill counter when looking at the object. see [kill_counter.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/kill_counter.sqf)
+
+</details>
