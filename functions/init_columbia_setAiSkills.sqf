@@ -9,11 +9,9 @@
 
 if (!isServer) exitWith {};
 
-systemChat format ["script successfully started"];
-
 [
 	"O_Soldier_base_F", "Init", { 	
-		
+
 		params ["_unit"];
 		
 		[{
