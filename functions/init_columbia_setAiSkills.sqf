@@ -7,7 +7,7 @@
  *
  */
 
-//if (!isServer) exitWith {};
+if (!isServer) exitWith {};
 
 [
 	"O_Soldier_base_F", "Init", { 	
