@@ -65,3 +65,6 @@ execVM "functions\init_columbia_removeThrowables.sqf";
 
 // init convertMedicKit on killed units
 execVM "functions\columbia_fn_FirstAidconvertACE.sqf";
+
+// init setAiSkills on all spawned units
+execVM "functions\init_columbia_setAiSkills.sqf";
