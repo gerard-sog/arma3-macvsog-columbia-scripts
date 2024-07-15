@@ -29,4 +29,4 @@ zen_ai_skills = [
 
 publicVariable "zen_ai_skills";
 
-["", zen_ai_skills] call zen_fnc_ai_handleSkillsChange;
+["", zen_ai_skills] call zen_ai_fnc_handleSkillsChange;
