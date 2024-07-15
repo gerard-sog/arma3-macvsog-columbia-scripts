@@ -27,6 +27,11 @@
 
 see [init_columbia_zeus.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/init_columbia_zeus.sqf)
 
+## CBA Settings
+
+In the Addons configuration menu, you will have the ability to update the following values on the fly:
+- AI skills
+- Vanilla medical items conversion to ace medical items
 
 ## Features
 
