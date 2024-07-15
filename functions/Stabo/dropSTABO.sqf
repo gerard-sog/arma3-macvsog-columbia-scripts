@@ -25,7 +25,7 @@ publicVariable "STABO_ROPE_DEPLOYED";
 	"Attach STABO rig",												                    // Title of the action
 	"\z\ace\addons\fastroping\UI\Icon_Waypoint.paa",	                                // Idle icon shown on screen
 	"\z\ace\addons\fastroping\UI\Icon_Waypoint.paa",	                                // Progress icon shown on screen
-	"_this distance _target < 3 AND STABO_ROPE_DEPLOYED",                               // Condition for the action to be shown
+	"_this distance _target < 5 AND STABO_ROPE_DEPLOYED",                               // Condition for the action to be shown
 	"true",									                                            // Condition for the action to progress
 	{},																                    // Code executed when action starts
 	{},																                    // Code executed on every progress tick
