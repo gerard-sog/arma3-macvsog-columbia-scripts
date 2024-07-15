@@ -7,6 +7,7 @@ if !(_hasZen) exitWith { systemChat "ZEN not detected";};
 
 // Related to AI
 ["A - Columbia AI", "Un-Garrison (enable PATH)", {_this execVM "functions\columbia_zeus_ungarrison.sqf";}, "\z\ace\addons\zeus\UI\Icon_Module_Zeus_UnGarrison_ca.paa"] call zen_custom_modules_fnc_register;
+["A - Columbia AI", "Set AI Skills", {_this execVM "functions\columbia_zeus_setaisubskills.sqf";}, "\z\ace\addons\fastroping\UI\Icon_Waypoint.paa"] call zen_custom_modules_fnc_register;
 ["A - Columbia AI", "Toggle Trackers", {_this execVM "functions\columbia_zeus_toggletrackers.sqf";}, "\a3\Ui_F_Curator\Data\CfgMarkers\kia_ca.paa"] call zen_custom_modules_fnc_register;
 
 // Radio Tools

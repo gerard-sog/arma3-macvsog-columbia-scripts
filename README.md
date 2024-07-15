@@ -12,6 +12,7 @@
 ## Zeus modules
 
 - A - Columbia AI
+  - Set AI Skills
   - Toggle Trackers
   - Un-Garrison (enable PATH)
 - A - Columbia Env
