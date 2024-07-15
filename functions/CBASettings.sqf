@@ -36,7 +36,15 @@
 ["Columbia_CBA_ai_suppression", "CHECKBOX", ["suppression"], [CBA_SETTINGS_COLUMBIA, "AI skills"], true, 1, {}, true] call CBA_fnc_addSetting;
 
 // Tracker module
+["Columbia_CBA_tracker_module_enable", "CHECKBOX", ["enable"], [CBA_SETTINGS_COLUMBIA, "Tracker module"], true, 1, {}, true] call CBA_fnc_addSetting;
 ["Columbia_CBA_tracker_module_name", "EDITBOX", ["Tracker module name"], [CBA_SETTINGS_COLUMBIA, "Tracker module"], "TrackermoduleNAME", 1, {}, false] call CBA_fnc_addSetting;
 ["Columbia_CBA_tracker_module_default_behaviour", "LIST", ["Default behaviour"], [CBA_SETTINGS_COLUMBIA, "Tracker module"], [["CARELESS", "SAFE", "AWARE", "COMBAT"], ["Careless", "Safe", "Aware", "Combat"], 0], 1, {}, false] call CBA_fnc_addSetting;
 ["Columbia_CBA_tracker_module_default_combat", "LIST", ["Default combat"], [CBA_SETTINGS_COLUMBIA, "Tracker module"], [["BLUE", "GREEN", "WHITE", "YELLOW", "RED"], ["Never fire", "Hold fire", "Hold fire, engage at will", "Fire at will", "Fire at will, loose formation"], 0], 1, {}, false] call CBA_fnc_addSetting;
 ["Columbia_CBA_tracker_module_default_speed", "LIST", ["Default speed"], [CBA_SETTINGS_COLUMBIA, "Tracker module"], [["LIMITED", "NORMAL", "FULL"], ["Limited", "Normal", "Full"], 0], 1, {}, false] call CBA_fnc_addSetting;
+
+// Support module
+["Columbia_CBA_support_module_artillery_enable", "CHECKBOX", ["enable"], [CBA_SETTINGS_COLUMBIA, "Support module"], false, 1, {}, true] call CBA_fnc_addSetting;
+["Columbia_CBA_support_module_cas_helicopter_enable", "CHECKBOX", ["enable"], [CBA_SETTINGS_COLUMBIA, "Support module"], false, 1, {}, true] call CBA_fnc_addSetting;
+["Columbia_CBA_support_module_cas_jets_enable", "CHECKBOX", ["enable"], [CBA_SETTINGS_COLUMBIA, "Support module"], false, 1, {}, true] call CBA_fnc_addSetting;
+["Columbia_CBA_support_module_arc_light_enable", "CHECKBOX", ["enable"], [CBA_SETTINGS_COLUMBIA, "Support module"], false, 1, {}, true] call CBA_fnc_addSetting;
+["Columbia_CBA_support_module_daisy_cutter_enable", "CHECKBOX", ["enable"], [CBA_SETTINGS_COLUMBIA, "Support module"], false, 1, {}, true] call CBA_fnc_addSetting;
