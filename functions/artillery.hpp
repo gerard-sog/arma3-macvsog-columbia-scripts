@@ -28,7 +28,6 @@ class vn_artillery_settings
                                 description = $STR_VN_ARTILLERY_AIRCRAFT_HE_COMMANDO_VAULT_DESCRIPTION;
                                 function = "vn_fnc_artillery_commando_vault";
                                 divergence = -45;
-                                delay_max = 120;
                                 cooldown = (60*5);
                                 cost = 50;
                                 condition = "DAISY_CUTTER_SUPPORT_ENABLED";
