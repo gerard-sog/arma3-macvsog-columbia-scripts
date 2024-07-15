@@ -9,8 +9,6 @@
 
 params [["_pos", [0,0,0] , [[]], 3], ["_object", objNull, [objNull]]];
 
-if (!isServer) exitWith {};
-
 zen_ai_skills = [
     Columbia_ai_enable,
     Columbia_ai_general_skill,
