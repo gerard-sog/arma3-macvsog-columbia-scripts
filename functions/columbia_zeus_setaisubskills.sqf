@@ -16,9 +16,9 @@ zen_ai_skills = [
     0.33,   // general
     0.33,   // aiming accuracy
     0.33,   // aiming speed
-    0.33],  // aiming shake
-    0.33],  // commanding
-    0.33],  // courage
+    0.33,   // aiming shake
+    0.33,   // commanding
+    0.33,   // courage
     0.10,   // spot distance
     0.10,   // spot time
     0.33,   // reload speed
