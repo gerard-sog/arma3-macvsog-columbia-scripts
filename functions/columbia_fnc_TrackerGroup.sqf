@@ -20,4 +20,5 @@ columbia_fnc_customizeTrackerGroup = {
 
 };
 
-[ TrackermoduleNAME, columbia_fnc_customizeTrackerGroup] call columbia_fnc_onTrackerSpawn;
+// Not needed this was a duplicate call before the one in initServer.sqf
+//[ TrackermoduleNAME, columbia_fnc_customizeTrackerGroup] call columbia_fnc_onTrackerSpawn;

@@ -40,13 +40,41 @@ private _onConfirm = {
 
 private _currenttrackerstatus = TRACKERS_ENABLED;
 
+private _defaultBehaviour = 0;
+private _defaultCombat = 0;
+private _defaultSpeed = 0;
+
+switch (TRACKERS_DEFAULT select 0) do
+{
+	case "CARELESS": {_defaultBehaviour = 0;};
+	case "SAFE": {_defaultBehaviour = 1;};
+	case "AWARE": {_defaultBehaviour = 2;};
+	case "COMBAT": {_defaultBehaviour = 3;};
+};
+
+switch (TRACKERS_DEFAULT select 1) do
+{
+	case "BLUE": {_defaultCombat = 0;};
+	case "GREEN": {_defaultCombat = 1;};
+	case "WHITE": {_defaultCombat = 2;};
+	case "YELLOW": {_defaultCombat = 3;};
+  case "RED": {_defaultCombat = 4;};
+};
+
+switch (TRACKERS_DEFAULT select 2) do
+{
+	case "LIMITED": {_defaultSpeed = 0;};
+	case "NORMAL": {_defaultSpeed = 1;};
+	case "FULL": {_defaultSpeed = 2;};
+};
+
 // Module dialog
 [
 	"Toggle Trackers", [
 		["TOOLBOX:YESNO", "Tracker in area", [_currenttrackerstatus], true],
-		["COMBO", "Behaviour", [["CARELESS", "SAFE", "AWARE", "COMBAT"], [["Careless"], ["Safe"], ["Aware"], ["Combat"]], 0]],
-		["COMBO", "Combat", [["BLUE", "GREEN", "WHITE", "YELLOW", "RED"], [["Never fire"], ["Hold fire"], ["Hold fire, engage at will"], ["Fire at will"], "Fire at will, loose formation"], 0]],
-		["COMBO", "Speed", [["LIMITED", "NORMAL", "FULL"], [["Limited"], ["Normal"], ["Full"]], 0]],
+		["COMBO", "Behaviour", [["CARELESS", "SAFE", "AWARE", "COMBAT"], [["Careless"], ["Safe"], ["Aware"], ["Combat"]], _defaultBehaviour]],
+		["COMBO", "Combat", [["BLUE", "GREEN", "WHITE", "YELLOW", "RED"], [["Never fire"], ["Hold fire"], ["Hold fire, engage at will"], ["Fire at will"], "Fire at will, loose formation"], _defaultCombat]],
+		["COMBO", "Speed", [["LIMITED", "NORMAL", "FULL"], [["Limited"], ["Normal"], ["Full"]], _defaultSpeed]],
 		["TOOLBOX:YESNO", "Update already spawned groups", false, true]
 	], _onConfirm, {}
 ] call zen_dialog_fnc_create;

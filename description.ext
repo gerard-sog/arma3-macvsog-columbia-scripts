@@ -1,5 +1,5 @@
 //General
-loadScreen = "images\macvsog-columbia-logo.paa";
+loadScreen = "images\col-new-logo-no-bg.paa";
 author = "";
 onLoadName = "";    // Title of the mission
 onLoadMission = "Welcome To  MACV SOG - Columbia";
@@ -31,17 +31,18 @@ minPlayerDistance = 50;
 //AI
 disabledAI = 1;  // Removes playable units that are not controlled by a player
 
-//Render distance management from ace self interact
-#include "taw_vd\GUI.h"
+class Extended_PreInit_EventHandlers
+{
+	class COLUMBIA {init = "call compile preprocessFileLineNumbers 'functions\CBASettings.sqf'";};
+};
 
 class CfgFunctions
 {
-    #include "taw_vd\CfgFunctions.hpp"
     class COLUMBIA {
         class Faces
         {
             file ="functions";
-            class faces {}; //Same name as file
+            class faces {};
         };
     }
 };

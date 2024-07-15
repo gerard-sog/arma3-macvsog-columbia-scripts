@@ -59,3 +59,9 @@ f_available_languages = [
         case 3: { ["vn"] call acre_api_fnc_babelSetSpokenLanguages; };          // CIVIL
     };
 }, true] call CBA_fnc_addPlayerEventHandler;
+
+// init removeThrowables on Opfor units
+execVM "functions\init_columbia_removeThrowables.sqf";
+
+// init convertMedicKit on killed units
+execVM "functions\columbia_fn_FirstAidconvertACE.sqf";
