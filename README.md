@@ -12,21 +12,28 @@
 ## Zeus modules
 
 - A - Columbia AI
-  - Set AI Skills
-  - Toggle Trackers
-  - Un-Garrison (enable PATH)
+  - **Set AI Skills**: define sub-skills of AI.
+  - **Toggle Trackers**: manage Tracker module (behaviour, speed, presence).
+  - **Un-Garrison (enable PATH)**: make a unit/group move out of building.
 - A - Columbia Env
-  - Fog Low
-  - Fog Ring
-  - Transition Time
-  - Vanilla Fog
+  - **Fog Low**
+  - **Fog Ring**
+  - **Transition Time**: transition with optional text to whenever in time.
+  - **Vanilla Fog**: manage fog.
 - A - Columbia Radio
-  - Init PF77s
-  - NVA radio chatter
-  - Toggle CAS
+  - **Init PF77s**: add 3 new racks to vehicle (requires player to get in/exit vehicle before executing module on vehicle).
+  - **NVA radio chatter**: enables to make tape-recorder object produce vietnamese radio like voice (used to simulate wire taping).
+  - **Toggle CAS**: manage CAS asset available in the Radio Support module.
 
 see [init_columbia_zeus.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/init_columbia_zeus.sqf)
 
+## CBA Settings
+
+In the Addons configuration menu, you will have the ability to update the following values on the fly:
+- Vanilla medical items conversion to ace medical items
+- AI skills
+- Tracker module
+- Support module
 
 ## Features
 
