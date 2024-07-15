@@ -24,6 +24,8 @@
   - **Init PF77s**: add 3 new racks to vehicle (requires player to get in/exit vehicle before executing module on vehicle).
   - **NVA radio chatter**: enables to make tape-recorder object produce vietnamese radio like voice (used to simulate wire taping).
   - **Toggle CAS**: manage CAS asset available in the Radio Support module.
+- A - Columbia STABO
+  - **Add STABO**: add the ability to deploy a rope from a helicopter to allow player on the ground to get into the helicopter.
 
 see [init_columbia_zeus.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/init_columbia_zeus.sqf)
 
@@ -41,7 +43,7 @@ In the Addons configuration menu, you will have the ability to update the follow
 
 <summary>1. Respawn with saved loadout</summary>
 
-To save your loadout, add the below code in the arsenal 'init' section. 
+To save your loadout, add the below code in the arsenal 'init' section.
 
 ```
 this addAction [
@@ -69,7 +71,7 @@ Then, by looking at the arsenal (from 2 meters maximum) and using the scroll whe
 <summary>2. Add image on map stand</summary>
 
 To display any image on a map stand, follow the below steps:
-- convert your .png into one of these resolution: 256x256, 512x512, 1024x1024 or 2048x2048 
+- convert your .png into one of these resolution: 256x256, 512x512, 1024x1024 or 2048x2048
 - 2 ways to convert .png to .paa:
   - Manual: use the TexView 2 (Arma 3 Tool) to convert the .png into a .paa (Use 'RGBA' and in the other section use 'DXT5')
   - Web: [ARMA 3 PAA CONVERTER](https://paa.gruppe-adler.de/)
@@ -96,7 +98,7 @@ Radio support from the Prairie Fire CDLC is available in a mission if all of the
   ```
 
 - Or if the player is flying one of the aircraft in the list:
-  
+
   ```
   "JK_B_Cessna_T41_Armed_F", 
   "vnx_b_air_ac119_01_01", 
@@ -106,7 +108,7 @@ Radio support from the Prairie Fire CDLC is available in a mission if all of the
   "vn_b_air_ch34_04_02", 
   "vn_b_air_oh6a_04"
   ```
-  
+
 - (IF unit_trait_required = 1 in description.ext) Player has the below code in its 'init' section
 
   ```
@@ -123,7 +125,7 @@ We created a custom Zeus module to manage the availability of various supports (
 - B-52 Arc Light strike availability
 - Daisy Cutter availability
 
-Here is how we emulate FOB with artillery support capabilities. By this we mean that the FOB can provide artillery support 
+Here is how we emulate FOB with artillery support capabilities. By this we mean that the FOB can provide artillery support
 within a perimeter (it will be 3.5km in our example).
 
 - To do so, we use a public variable called 'SUPPORT_ENABLED' defined in [initServer.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/initServer.sqf) and it is used as the condition in [artillery.hpp](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/artillery.hpp).
@@ -176,7 +178,7 @@ To add a teleport flag (or any other object that player can use to teleport them
 
 N.B: Roles 1-0, 1-1 and 1-2 will not be impacted by the face change since they were US soldiers.
 
-Playing as early MACV-SOG team, we are playing as south vietnamese thus we force vietnamese faces on all playable character. 
+Playing as early MACV-SOG team, we are playing as south vietnamese thus we force vietnamese faces on all playable character.
 At player initilization or at player respawn, one random asian face is selected from the below list and set for the current player.
 
 ```
@@ -285,7 +287,7 @@ call compile preprocessFile "functions\JBOY\mace\compileMaceScripts.sqf"; // Com
 <summary>8. ACRE2</summary>
 
 <h3>Babel</h3>
-Babel configuration present in: 
+Babel configuration present in:
 - [init.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/init.sqf)
 - [onPlayerRespawn.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/onPlayerRespawn.sqf)
 
@@ -297,7 +299,7 @@ We are using Babel to provide the following behaviour during our MACVSOG mission
   ```
   this setVariable ["f_languages",["en", "vn"]];
   ```
-  
+
 - Have the Zeus player speak Vietnamese when controlling an OPFOR unit. This makes the dialog between OPFOR and MACVSOG team possible only via the members speaking English and Vietnamese.
 
 <h3>Adding PRC77 Racks to vehicle</h3>
