@@ -32,4 +32,5 @@ _handle = [] execVM "functions\columbia_fnc_TrackerGroup.sqf";
 waitUntil{ scriptDone _handle };
 
 // Tell the monitoring function the Module to monitor, the Function to call when new units are spawned by the module
-[ TrackermoduleNAME, columbia_fnc_customizeTrackerGroup] call columbia_fnc_onTrackerSpawn;
+private _trackerModuleToMonitor = missionNamespace getVariable Columbia_CBA_tracker_module_name;
+[_trackerModuleToMonitor, columbia_fnc_customizeTrackerGroup] call columbia_fnc_onTrackerSpawn;
