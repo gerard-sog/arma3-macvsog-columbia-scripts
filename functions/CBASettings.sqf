@@ -40,6 +40,6 @@
 // Tracker module                |
 // ==============================|
 //["Columbia_CBA_tracker_module_name", "EDITBOX", ["Tracker module name"], [CBA_SETTINGS_COLUMBIA, "Tracker module"], "TrackermoduleNAME", 1, {}, false] call CBA_fnc_addSetting;
-//["Columbia_CBA_tracker_module_default_behaviour", "LIST", [Default behaviour"], [CBA_SETTINGS_COLUMBIA, "Tracker module"], [["CARELESS", "SAFE", "AWARE", "COMBAT"], ["Careless", "Safe", "Aware", "Combat"], 0], 1, {}, false] call CBA_fnc_addSetting;
-//["Columbia_CBA_tracker_module_default_combat", "LIST", [Default combat"], [CBA_SETTINGS_COLUMBIA, "Tracker module"], [["BLUE", "GREEN", "WHITE", "YELLOW", "RED"], ["Never fire", "Hold fire", "Hold fire, engage at will", "Fire at will", "Fire at will, loose formation"], 0], 1, {}, false] call CBA_fnc_addSetting;
-//["Columbia_CBA_tracker_module_default_speed", "LIST", [Default speed"], [CBA_SETTINGS_COLUMBIA, "Tracker module"], [["LIMITED", "NORMAL", "FULL"], ["Limited", "Normal", "Full"], 0], 1, {}, false] call CBA_fnc_addSetting;
+//["Columbia_CBA_tracker_module_default_behaviour", "LIST", ["Default behaviour"], [CBA_SETTINGS_COLUMBIA, "Tracker module"], [["CARELESS", "SAFE", "AWARE", "COMBAT"], ["Careless", "Safe", "Aware", "Combat"], 0], 1, {}, false] call CBA_fnc_addSetting;
+//["Columbia_CBA_tracker_module_default_combat", "LIST", ["Default combat"], [CBA_SETTINGS_COLUMBIA, "Tracker module"], [["BLUE", "GREEN", "WHITE", "YELLOW", "RED"], ["Never fire", "Hold fire", "Hold fire, engage at will", "Fire at will", "Fire at will, loose formation"], 0], 1, {}, false] call CBA_fnc_addSetting;
+//["Columbia_CBA_tracker_module_default_speed", "LIST", ["Default speed"], [CBA_SETTINGS_COLUMBIA, "Tracker module"], [["LIMITED", "NORMAL", "FULL"], ["Limited", "Normal", "Full"], 0], 1, {}, false] call CBA_fnc_addSetting;

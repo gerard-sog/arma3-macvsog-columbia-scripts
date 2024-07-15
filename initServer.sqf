@@ -18,7 +18,12 @@ publicVariable "DAISY_CUTTER_SUPPORT_ENABLED";
 TRACKERS_ENABLED = false; // Toggle ON/OFF Tracker in AO (will only affect tracker module from Prairie Fire with the following variable used as condition 'TRACKERS_ENABLED').
 publicVariable "TRACKERS_ENABLED";
 
-TRACKERS_DEFAULT = ["CARELESS", "BLUE", "LIMITED"]; // Default behaviour values for tracker groups
+// Default behaviour values for tracker groups
+TRACKERS_DEFAULT = [
+    Columbia_CBA_tracker_module_default_behaviour,
+    Columbia_CBA_tracker_module_default_combat,
+    Columbia_CBA_tracker_module_default_speed
+    ];
 publicVariable "TRACKERS_DEFAULT";
 
 _handle = [] execVM "functions\columbia_fnc_onTrackerSpawn.sqf";
