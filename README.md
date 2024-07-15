@@ -24,6 +24,8 @@
   - **Init PF77s**: add 3 new racks to vehicle (requires player to get in/exit vehicle before executing module on vehicle).
   - **NVA radio chatter**: enables to make tape-recorder object produce vietnamese radio like voice (used to simulate wire taping).
   - **Toggle CAS**: manage CAS asset available in the Radio Support module.
+- A - Columbia STABO
+  - **Add STABO**: add the ability to deploy a rope from a helicopter to allow player on the ground to get into the helicopter.
 
 see [init_columbia_zeus.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/init_columbia_zeus.sqf)
 
@@ -399,46 +401,5 @@ this addAction ["Display total kills", "functions\kill_counter.sqf"]
 ```
 
 this will give you a scroll wheel action to diplay the kill counter when looking at the object. see [kill_counter.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/kill_counter.sqf)
-
-</details>
-
-<details>
-
-<summary>15. STABO Rig</summary>
-
-Add:
-  ```
-  this addAction
-  [
-      "Drop the STABO rig",
-      "functions\Stabo\dropSTABO.sqf",
-      nil,
-      1.5,
-      true,
-      true,
-      "",
-      "!STABO_ROPE_DEPLOYED",
-      50,
-      false,
-      "",
-      ""
-  ];
-  this addAction
-  [
-      "Detatch ropes",
-      "functions\Stabo\detatchRopes.sqf",
-      nil,
-      1.5,
-      true,
-      true,
-      "",
-      "STABO_ROPE_DEPLOYED",
-      50,
-      false,
-      "",
-      ""
-  ];
-  ```
-to any helicopter you want to have access to the STABO rig.
 
 </details>

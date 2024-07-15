@@ -10,6 +10,9 @@ if !(_hasZen) exitWith { systemChat "ZEN not detected";};
 ["A - Columbia AI", "Set AI Skills", {_this execVM "functions\columbia_zeus_setaisubskills.sqf";}, "\a3\Modules_F_Curator\Data\iconDiary_ca.paa"] call zen_custom_modules_fnc_register;
 ["A - Columbia AI", "Toggle Trackers", {_this execVM "functions\columbia_zeus_toggletrackers.sqf";}, "\a3\Ui_F_Curator\Data\CfgMarkers\kia_ca.paa"] call zen_custom_modules_fnc_register;
 
+// Related to STABO
+["A - Columbia STABO", "Add STABO", {_this execVM "functions\columbia_zeus_addstabo.sqf";}, "\z\ace\addons\fastroping\UI\Icon_Waypoint.paa"] call zen_custom_modules_fnc_register;
+
 // Radio Tools
 ["A - Columbia Radio", "Init PF77s", {_this execVM "functions\columbia_zeus_initpf77rack.sqf";}, "\a3\Modules_F_Curator\Data\portraitRadio_ca.paa"] call zen_custom_modules_fnc_register;
 ["A - Columbia Radio", "NVA radio chatter", {_this execVM "functions\columbia_zeus_addchatter.sqf";}, "\a3\Modules_F_Curator\Data\portraitRadio_ca.paa"] call zen_custom_modules_fnc_register;
