@@ -19,5 +19,21 @@ publicVariable "STABO_ROPE";
 
 STABO_ROPE_DEPLOYED = true;
 publicVariable "STABO_ROPE_DEPLOYED";
-				 
-[_droppedSandbag, ["Attach STABO rig", "functions\Stabo\attachStaboRig.sqf"]] remoteExec ["addAction"];
+
+[
+	_droppedSandbag,												// Object the action is attached to
+	"Attach STABO rig",												// Title of the action
+	"\z\ace\addons\fastroping\UI\Icon_Waypoint.paa",	            // Idle icon shown on screen
+	"\z\ace\addons\fastroping\UI\Icon_Waypoint.paa",	            // Progress icon shown on screen
+	"_this distance _target < 3 AND STABO_ROPE_DEPLOYED",			// Condition for the action to be shown
+	"",									                            // Condition for the action to progress
+	{},																// Code executed when action starts
+	{},																// Code executed on every progress tick
+	{ _caller moveInCargo PARENT_HELICOPTER; },						// Code executed on completion
+	{},																// Code executed on interrupted
+	[],																// Arguments passed to the scripts as _this select 3
+	5,																// Action duration in seconds
+	0,																// Priority
+	false,															// Remove on completion
+	false															// Show in unconscious state
+] remoteExec ["BIS_fnc_holdActionAdd", 0, _droppedSandbag];
