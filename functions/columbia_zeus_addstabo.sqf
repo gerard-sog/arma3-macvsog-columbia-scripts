@@ -52,3 +52,5 @@ Columbia_fnc_addstabo_to_helicopter = {
 {
 	["zen_common_execute", [Columbia_fnc_addstabo_to_helicopter, [_helicopterobj]], _x] call CBA_fnc_targetEvent;
 } forEach allPlayers;
+
+["STABO added", -1, 1, 4, 0] spawn BIS_fnc_dynamicText;
