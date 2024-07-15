@@ -290,7 +290,36 @@ This variable is initially set to 'false' but can be updated during the mission 
 
 Add:
   ```
-  this addAction ["Drop the STABO rig", "dropSTABO.sqf"];
+  this addAction
+  [
+      "Drop the STABO rig",
+      "functions\Stabo\dropSTABO.sqf",
+      nil,
+      1.5,
+      true,
+      true,
+      "",
+      "!STABO_ROPE_DEPLOYED",
+      50,
+      false,
+      "",
+      ""
+  ];
+  this addAction
+  [
+      "Detatch ropes",
+      "functions\Stabo\detatchRopes.sqf",
+      nil,
+      1.5,
+      true,
+      true,
+      "",
+      "STABO_ROPE_DEPLOYED",
+      50,
+      false,
+      "",
+      ""
+  ];
   ```
 to any helicopter you want to have access to the STABO rig.
 
