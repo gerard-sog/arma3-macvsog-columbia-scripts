@@ -17,11 +17,13 @@ if !(_isconcealed) then {
     _staticweapondobj setCombatMode "BLUE";
     [_staticweapondobj, "ALL"] remoteExec ["disableAI", _staticweapondobj];
 
+    // Remove ammo to avoid AI shooting last bullet.
+    _staticweapondobj setVehicleAmmo 0;
+    sleep 1;
+
 	// Conceal static weapon.
     private _shelter = createSimpleObject ["Land_vn_o_shelter_01", _staticweaponpos];
-    // Disable simulation to avoid collision between static weapon and shelter.
-    //  TODO here <===========================
-    _shelter setPos [_staticweaponpos select 0, _staticweaponpos select 1, 1];
+    _shelter setPos [_staticweaponpos select 0, _staticweaponpos select 1, 1.3];
 
     _staticweapondobj setVariable ["COLSOG_concealed", true, true];
     _staticweapondobj setVariable ["COLSOG_shelter", _shelter, true];
@@ -31,6 +33,9 @@ if !(_isconcealed) then {
     private _shelter = _staticweapondobj getVariable "COLSOG_shelter";
     deleteVehicle _shelter;
     _staticweapondobj setVariable ["COLSOG_concealed", false, true];
+
+    sleep 1;
+    _staticweapondobj setVehicleAmmo 1;
 
     // Make AI able to fire.
     _staticweapondobj setCombatMode "YELLOW";
