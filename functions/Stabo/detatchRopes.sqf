@@ -1,6 +1,14 @@
-ropeDestroy STABO_ROPE;
+params ["_target", "_caller", "_actionId", "_arguments"]; // specials parameters passed to a script by addAction
 
-STABO_ROPE_DEPLOYED = false;
-publicVariable "STABO_ROPE_DEPLOYED";
+private _parentHelicopter = _target;
+// Need broadcast so allPlayers are aware if rope is NOT deployed (the code in this file is only exec'ed by the player detaching)
+_parentHelicopter setVariable ["COLSOG_stabo_rope_deployed", false, true];
 
-[DROPPED_SANDBAG, 0] remoteExec["removeAction"];
+// get rope created from parent helicopter
+private _rope = _parentHelicopter getVariable "COLSOG_stabo_rope";
+ropeDestroy _rope;
+
+// get sandbag created from parent helicopter
+private _sandbag = _parentHelicopter getVariable "COLSOG_stabo_sandbag";
+
+[_sandbag, 0] remoteExec["removeAction"];
