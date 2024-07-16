@@ -3,7 +3,7 @@ PARENT_HELICOPTER = _parentHelicopter;
 publicVariable "PARENT_HELICOPTER";
 
 // Contains the current player vehicle location above terrain level.
-private _pos = - _parentHelicopter;
+private _pos = getPosATL _parentHelicopter;
 // Sets the third value in the array (which contains the position above the terrain) to zero.
 _pos set [2, 0];
 private _droppedSandbag = "vn_prop_sandbag_01" createVehicle ATLToASL _pos;
