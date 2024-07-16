@@ -26,10 +26,6 @@ TRACKERS_DEFAULT = [
     ];
 publicVariable "TRACKERS_DEFAULT";
 
-// Temporary for first iteration of STABO rig.
-STABO_ROPE_DEPLOYED = false;
-publicVariable "STABO_ROPE_DEPLOYED";
-
 _handle = [] execVM "functions\columbia_fnc_onTrackerSpawn.sqf";
 _handle = [] execVM "functions\columbia_fnc_TrackerGroup.sqf";
 
