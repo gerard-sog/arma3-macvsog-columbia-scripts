@@ -13,6 +13,9 @@ if !(_hasZen) exitWith { systemChat "ZEN not detected";};
 // Related to STABO
 ["A - Columbia STABO", "Add STABO", {_this execVM "functions\columbia_zeus_addstabo.sqf";}, "\z\ace\addons\fastroping\UI\Icon_Waypoint.paa"] call zen_custom_modules_fnc_register;
 
+// Camo on AA
+["A - Columbia Camo", "Conceal AA", {_this execVM "functions\columbia_zeus_concealaa.sqf";}, "x\zen\addons\context_actions\ui\stealth_ca.paa"] call zen_custom_modules_fnc_register;
+
 // Radio Tools
 ["A - Columbia Radio", "Init PF77s", {_this execVM "functions\columbia_zeus_initpf77rack.sqf";}, "\a3\Modules_F_Curator\Data\portraitRadio_ca.paa"] call zen_custom_modules_fnc_register;
 ["A - Columbia Radio", "NVA radio chatter", {_this execVM "functions\columbia_zeus_addchatter.sqf";}, "\a3\Modules_F_Curator\Data\portraitRadio_ca.paa"] call zen_custom_modules_fnc_register;
