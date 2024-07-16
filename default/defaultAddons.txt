@@ -80,7 +80,7 @@ ace_common_settingProgressBarLocation = 0;
 force ace_common_swayFactor = 1;
 
 // ACE Cook off
-force ace_cookoff_ammoCookoffDuration = 1;
+force ace_cookoff_ammoCookoffDuration = 0.1;
 force ace_cookoff_destroyVehicleAfterCookoff = false;
 force ace_cookoff_enable = 2;
 force ace_cookoff_enableAmmobox = true;
