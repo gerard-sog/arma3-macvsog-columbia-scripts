@@ -19,11 +19,11 @@ if !(_isconcealed) then {
 
     // Remove ammo to avoid AI shooting last bullet.
     _staticweapondobj setVehicleAmmo 0;
-    sleep 1;
+    uiSleep 1;
 
 	// Conceal static weapon.
     private _shelter = createSimpleObject ["Land_vn_o_shelter_01", _staticweaponpos];
-    _shelter setPos [_staticweaponpos select 0, _staticweaponpos select 1, 1.3];
+    _shelter setPos [_staticweaponpos select 0, _staticweaponpos select 1, 1.4];
 
     _staticweapondobj setVariable ["COLSOG_concealed", true, true];
     _staticweapondobj setVariable ["COLSOG_shelter", _shelter, true];
@@ -34,7 +34,7 @@ if !(_isconcealed) then {
     deleteVehicle _shelter;
     _staticweapondobj setVariable ["COLSOG_concealed", false, true];
 
-    sleep 1;
+    uiSleep 1;
     _staticweapondobj setVehicleAmmo 1;
 
     // Make AI able to fire.
