@@ -1,6 +1,6 @@
 params [["_pos", [0,0,0] , [[]], 3], ["_helicopterobj", objNull, [objNull]]];
 
-// if param is empty or Man unit, exit
+// if param is empty or not a helicopter, exit
 if (isNull _helicopterobj || !(_helicopterobj isKindOf "Helicopter")) exitWith {
 	["Need a helicopter", -1, 1, 4, 0] spawn BIS_fnc_dynamicText;
 	playSound "FD_Start_F";
