@@ -689,6 +689,39 @@ force acre_sys_zeus_zeusCanSpectate = true;
 force acre_sys_zeus_zeusCommunicateViaCamera = true;
 force acre_sys_zeus_zeusDefaultVoiceSource = false;
 
+// Columbia Settings
+force Columbia_CBA_ai_aiming_accuracy = 0.33;
+force Columbia_CBA_ai_aiming_shake = 0.33;
+force Columbia_CBA_ai_aiming_speed = 0.33;
+force Columbia_CBA_ai_auto_combat = true;
+force Columbia_CBA_ai_commanding = 0.33;
+force Columbia_CBA_ai_courage = 0.33;
+force Columbia_CBA_ai_enable = true;
+force Columbia_CBA_ai_general_skill = 0.33;
+force Columbia_CBA_ai_reload_speed = 0.33;
+force Columbia_CBA_ai_seek_cover = true;
+force Columbia_CBA_ai_spot_distance = 0.1;
+force Columbia_CBA_ai_spot_time = 0.1;
+force Columbia_CBA_ai_suppression = true;
+force Columbia_CBA_first_aid_convert_ace_field_dressing = 5;
+force Columbia_CBA_first_aid_convert_ace_morphine = 1;
+force Columbia_CBA_medikit_convert_ace_epinephrine = 2;
+force Columbia_CBA_medikit_convert_ace_field_dressing = 20;
+force Columbia_CBA_medikit_convert_ace_morphine = 2;
+force Columbia_CBA_medikit_convert_ace_saline_iv_500 = 2;
+force Columbia_CBA_medikit_convert_ace_splint = 2;
+force Columbia_CBA_medikit_convert_ace_tourniquet = 4;
+force Columbia_CBA_support_module_arc_light_enable = false;
+force Columbia_CBA_support_module_artillery_enable = false;
+force Columbia_CBA_support_module_cas_helicopter_enable = false;
+force Columbia_CBA_support_module_cas_jets_enable = false;
+force Columbia_CBA_support_module_daisy_cutter_enable = false;
+force Columbia_CBA_tracker_module_default_behaviour = "AWARE";
+force Columbia_CBA_tracker_module_default_combat = "WHITE";
+force Columbia_CBA_tracker_module_default_speed = "LIMITED";
+force Columbia_CBA_tracker_module_enable = true;
+force Columbia_CBA_tracker_module_name = "TrackermoduleNAME";
+
 // Community Base Addons
 cba_diagnostic_ConsoleIndentType = -1;
 cba_diagnostic_watchInfoRefreshRate = 0.2;
