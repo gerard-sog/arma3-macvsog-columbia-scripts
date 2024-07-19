@@ -2,7 +2,7 @@
 loadScreen = "images\col-new-logo-no-bg.paa";
 author = "";
 onLoadName = "";    // Title of the mission
-onLoadMission = "Welcome To  MACV SOG - Columbia";
+onLoadMission = "Welcome to MACV SOG - Columbia";
 briefingName 	= "Mission selection menu name";
 enabledebugconsole = 1;
 
@@ -10,10 +10,10 @@ enabledebugconsole = 1;
 respawn = 3;            // Respawn "BASE", use 'respawn_west'  
 respawnOnStart = -1;    // No respawn on mission start
 respawnDialog = 0;      // Show scoreboard, 0 = Disabled, 1 = Enabled
-respawnDelay = 10;      // Delay in seconds
+respawnDelay = 60;      // Delay in seconds
 respawnButton = 1;      // 0 = Disabled, 1 = Enabled
 
-respawnTemplates[] = {"Counter"};
+respawnTemplates[] = {"Wave", "ace_spectator", "Counter"};
 
 //Corpsemanager
 corpseManagerMode = 3;
