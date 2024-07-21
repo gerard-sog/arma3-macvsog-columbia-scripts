@@ -1,4 +1,4 @@
-# Arma3 MACV-SOG Columbia
+# Arma3 S.O.G. RT Columbia
 ## Default values
 
 - Default <b>loadouts</b>: [loadouts](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/loadouts/)

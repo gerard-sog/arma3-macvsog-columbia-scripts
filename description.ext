@@ -2,7 +2,7 @@
 loadScreen = "images\col-new-logo-no-bg.paa";
 author = "";
 onLoadName = "";    // Title of the mission
-onLoadMission = "Welcome to MACV SOG - Columbia";
+onLoadMission = "Welcome to S.O.G. RT Columbia";
 briefingName 	= "Mission selection menu name";
 enabledebugconsole = 1;
 
