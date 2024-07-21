@@ -26,8 +26,8 @@ TRACKERS_DEFAULT = [
     ];
 publicVariable "TRACKERS_DEFAULT";
 
-_handle = [] execVM "functions\columbia_fnc_onTrackerSpawn.sqf";
-_handle = [] execVM "functions\columbia_fnc_TrackerGroup.sqf";
+_handle = [] execVM "functions\TRACKER\columbia_fnc_onTrackerSpawn.sqf";
+_handle = [] execVM "functions\TRACKER\columbia_fnc_TrackerGroup.sqf";
 
 waitUntil{ scriptDone _handle };
 
