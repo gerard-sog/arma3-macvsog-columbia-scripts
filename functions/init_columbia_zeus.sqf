@@ -16,7 +16,7 @@ if !(_hasZen) exitWith { systemChat "ZEN not detected";};
 
 // Radio Tools
 ["A - Columbia Radio", "Init PF77s", {_this execVM "functions\columbia_zeus_initpf77rack.sqf";}, "\a3\Modules_F_Curator\Data\portraitRadio_ca.paa"] call zen_custom_modules_fnc_register;
-["A - Columbia Radio", "NVA radio chatter", {_this execVM "functions\columbia_zeus_addchatter.sqf";}, "\a3\Modules_F_Curator\Data\portraitRadio_ca.paa"] call zen_custom_modules_fnc_register;
+["A - Columbia Radio", "NVA radio chatter", {_this execVM "functions\CHATTER\columbia_zeus_addchatter.sqf";}, "\a3\Modules_F_Curator\Data\portraitRadio_ca.paa"] call zen_custom_modules_fnc_register;
 ["A - Columbia Radio", "Toggle CAS", {_this execVM "functions\ARTILLERY\columbia_zeus_togglecas.sqf";}, "\a3\Modules_F_Curator\Data\portraitCASGun_ca.paa"] call zen_custom_modules_fnc_register;
 
 // Environment Tools
