@@ -19,6 +19,3 @@ columbia_fnc_customizeTrackerGroup = {
     _group setSpeedMode (TRACKERS_DEFAULT select 2);
 
 };
-
-// Not needed this was a duplicate call before the one in initServer.sqf
-//[ TrackermoduleNAME, columbia_fnc_customizeTrackerGroup] call columbia_fnc_onTrackerSpawn;

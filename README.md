@@ -1,4 +1,4 @@
-# Arma3 MACV-SOG Columbia
+# Arma3 S.O.G. RT Columbia
 ## Default values
 
 - Default <b>loadouts</b>: [loadouts](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/loadouts/)
@@ -116,7 +116,7 @@ Radio support from the Prairie Fire CDLC is available in a mission if all of the
   this setUnitTrait["vn_artillery", true, true];
   ```
 
-- All this can be modified in the vn_artillery_settings class in [artillery.hpp](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/artillery.hpp)
+- All this can be modified in the vn_artillery_settings class in [artillery.hpp](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/ARTILLERY/artillery.hpp)
 
 <h3>Enable/Disable Radio Support</h3>
 We created a custom Zeus module to manage the availability of various supports (by default, none are available):
@@ -129,7 +129,7 @@ We created a custom Zeus module to manage the availability of various supports (
 Here is how we emulate FOB with artillery support capabilities. By this we mean that the FOB can provide artillery support
 within a perimeter (it will be 3.5km in our example).
 
-- To do so, we use a public variable called 'SUPPORT_ENABLED' defined in [initServer.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/initServer.sqf) and it is used as the condition in [artillery.hpp](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/artillery.hpp).
+- To do so, we use a public variable called 'SUPPORT_ENABLED' defined in [initServer.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/initServer.sqf) and it is used as the condition in [artillery.hpp](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/ARTILLERY/artillery.hpp).
 
   ```
   SUPPORT_ENABLED = true; // Used with the artillery support from Prairie Fire. By default condition on artillery strike will be true thanks to this public variable.

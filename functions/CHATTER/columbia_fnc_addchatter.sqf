@@ -8,7 +8,7 @@
  *
  * Example (in eden init field):
  * this setVariable ["COLSOG_chatter", true, true];
- * this addaction ["<t color='#82FA58'>Listen to chatter</t>", "functions\columbia_fnc_addchatter.sqf", nil, 1.5, false, true, "", "", 4, false];
+ * this addaction ["<t color='#82FA58'>Listen to chatter</t>", "functions\CHATTER\columbia_fnc_addchatter.sqf", nil, 1.5, false, true, "", "", 4, false];
  *
  */
 
