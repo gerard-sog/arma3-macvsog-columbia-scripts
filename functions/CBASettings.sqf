@@ -48,3 +48,6 @@
 ["Columbia_CBA_support_module_cas_jets_enable", "CHECKBOX", ["enable"], [CBA_SETTINGS_COLUMBIA, "Support module"], false, 1, {}, true] call CBA_fnc_addSetting;
 ["Columbia_CBA_support_module_arc_light_enable", "CHECKBOX", ["enable"], [CBA_SETTINGS_COLUMBIA, "Support module"], false, 1, {}, true] call CBA_fnc_addSetting;
 ["Columbia_CBA_support_module_daisy_cutter_enable", "CHECKBOX", ["enable"], [CBA_SETTINGS_COLUMBIA, "Support module"], false, 1, {}, true] call CBA_fnc_addSetting;
+
+// STABO
+["Columbia_CBA_stabo_climb_duration", "SLIDER", ["Action duration in seconds"], [CBA_SETTINGS_COLUMBIA, "STABO"], [1, 30, 10, 0], 1, {}, false] call CBA_fnc_addSetting;

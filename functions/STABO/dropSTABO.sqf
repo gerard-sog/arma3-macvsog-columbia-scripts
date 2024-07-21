@@ -29,7 +29,7 @@ _parentHelicopter setVariable ["COLSOG_stabo_rope", _staboRope, true];
 	"Attach STABO rig",												// Title of the action
 	"\z\ace\addons\fastroping\UI\Icon_Waypoint.paa",	            // Idle icon
 	"\z\ace\addons\fastroping\UI\Icon_Waypoint.paa",	            // Progress icon
-	"(_this distance _target < 5) AND ((_target getVariable 'COLSOG_stabo_parenthelicopter') getVariable 'COLSOG_stabo_rope_deployed')",	// Condition for the action to be shown
+	"(_this distance _target < 6) AND ((_target getVariable 'COLSOG_stabo_parenthelicopter') getVariable 'COLSOG_stabo_rope_deployed')",	// Condition for the action to be shown
 	"true",									                        // Condition for the action to progress (need true)
 	{},																// Code executed when action starts
 	{},																// Code executed on every progress tick
@@ -39,7 +39,7 @@ _parentHelicopter setVariable ["COLSOG_stabo_rope", _staboRope, true];
 	},
 	{},																// Code executed on interrupted
 	[_parentHelicopter],											// Arguments passed to the scripts (see doc for arguments)
-	5,																// Action duration in seconds
+	Columbia_CBA_stabo_climb_duration,								// Action duration in seconds
 	0,																// Priority
 	false,															// Remove on completion (removes for allPlayers !)
 	false															// Show in unconscious state
