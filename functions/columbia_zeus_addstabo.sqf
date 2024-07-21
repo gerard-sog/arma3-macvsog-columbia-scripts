@@ -22,7 +22,7 @@ Columbia_fnc_addstabo_to_helicopter = {
 	_helicopterobj addAction
       [
           "<t color='#FF0000'>Drop the STABO rig</t>",
-          "functions\Stabo\dropSTABO.sqf",
+          "functions\STABO\dropSTABO.sqf",
           nil,
           0,
           true,
@@ -37,7 +37,7 @@ Columbia_fnc_addstabo_to_helicopter = {
       _helicopterobj addAction
       [
           "<t color='#FF0000'>Detatch ropes</t>",
-          "functions\Stabo\detatchRopes.sqf",
+          "functions\STABO\detatchRopes.sqf",
           nil,
           0,
           true,
