@@ -8,11 +8,7 @@
 
 if (!isServer) exitWith {};
 
-// All the smokes and grenades:
-// ClassThrowables = ["vn_rdg2_mag", "vn_molotov_grenade_mag", "vn_chicom_grenade_mag", "vn_f1_grenade_mag", "vn_t67_grenade_mag", "vn_rgd5_grenade_mag", "vn_rkg3_grenade_mag"];
-// molotove and smokes removed:
-ClassThrowables = ["vn_rdg2_mag", "vn_molotov_grenade_mag"];
- 
+// Removing throwables
 ["O_Soldier_base_F", "InitPost", {
 	params ["_unit"];
 
@@ -23,7 +19,7 @@ ClassThrowables = ["vn_rdg2_mag", "vn_molotov_grenade_mag"];
       if (_x in _items) then {
         _unit removeMagazines _x;
       }
-		} forEach ClassThrowables;
+		} forEach Columbia_CBA_remove_throwable;
 	}, [_unit]] call CBA_fnc_execNextFrame;
 		
 }, true, [], true] call CBA_fnc_addClassEventHandler;

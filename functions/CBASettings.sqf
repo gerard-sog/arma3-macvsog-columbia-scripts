@@ -51,3 +51,6 @@
 
 // STABO
 ["Columbia_CBA_stabo_climb_duration", "SLIDER", ["Action duration in seconds"], [CBA_SETTINGS_COLUMBIA, "STABO"], [1, 30, 10, 0], 1, {}, false] call CBA_fnc_addSetting;
+
+// Throwable
+["Columbia_CBA_remove_throwable", "EDITBOX", ["Throwable to Remove from AI"], [CBA_SETTINGS_COLUMBIA, "Throwable"], "vn_rdg2_mag,vn_molotov_grenade_mag", 1, {Columbia_CBA_remove_throwable = Columbia_CBA_remove_throwable splitString " " joinString "" splitString ","}, false] call CBA_fnc_addSetting;

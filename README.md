@@ -38,6 +38,8 @@ In the Addons configuration menu, you will have the ability to update the follow
 - AI skills
 - Tracker module
 - Support module
+- STABO
+- AI Throwable
 
 ## Features
 
