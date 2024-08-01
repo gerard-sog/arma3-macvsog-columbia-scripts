@@ -719,8 +719,6 @@
   "bf_cw_bdu_base_1",
   "bf_cw_bdu_base_2",
   "bf_cw_bdu_base_3",
-  "gunner_01",
-  "gunner_02",
   "gunner_03",
   "m56_01",
   "type56_01",
@@ -989,5 +987,8 @@
   "greenmag_ammo_762x63_basic_30Rnd",
   "greenmag_ammo_762x63_basic_60Rnd",
   "riggers_vest_01a_od_01",
+  "grenadier_01",
+  "grenadier_02",
+  "grenadier_03",
   "tsp_sling"
 ]
