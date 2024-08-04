@@ -698,6 +698,7 @@ force Columbia_CBA_medikit_convert_ace_morphine = 2;
 force Columbia_CBA_medikit_convert_ace_saline_iv_500 = 2;
 force Columbia_CBA_medikit_convert_ace_splint = 2;
 force Columbia_CBA_medikit_convert_ace_tourniquet = 4;
+force Columbia_CBA_stabo_climb_duration = 10;
 force Columbia_CBA_support_module_arc_light_enable = false;
 force Columbia_CBA_support_module_artillery_enable = false;
 force Columbia_CBA_support_module_cas_helicopter_enable = false;
@@ -994,9 +995,10 @@ tsp_cba_animate_Rock = true;
 tsp_cba_animate_Scissors = true;
 force tsp_cba_animate_shake = 0;
 force tsp_cba_animate_sling = true;
-force tsp_cba_animate_sling_add = true;
+force tsp_cba_animate_sling_add = false;
 force tsp_cba_animate_sling_pos = "[[0.1, 0.8, 0.15], [-90, 40, 70]]";
 tsp_cba_animate_sling_scroll = false;
+force tsp_cba_animate_sling_sprint = true;
 force tsp_cba_animate_sound = 0;
 force tsp_cba_animate_sprint = true;
 tsp_cba_animate_Squats = true;
@@ -1037,11 +1039,11 @@ force tsp_cba_radio_vest_armor = true;
 force tsp_cba_radio_vests = "[]";
 
 // TSP Core
-tsp_cba_angle = -0.1;
+force tsp_cba_angle = -0.1;
 force tsp_cba_core_chvd = false;
 force tsp_cba_core_pause = false;
-tsp_cba_hint = "Subtitle";
-force tsp_cba_hint_distance = 20;
+force tsp_cba_hint = "Subtitle";
+force tsp_cba_hint_distance = 0;
 force tsp_param_faction = false;
 
 // Zeus Enhanced
@@ -1087,12 +1089,14 @@ zen_vision_enableWhiteHotRedCold = false;
 // Zeus Enhanced - Attributes
 zen_attributes_enableAbilities = true;
 zen_attributes_enableAmmo = true;
+zen_attributes_enableAmmoCargo = true;
 zen_attributes_enableArsenal = true;
 zen_attributes_enableBuildingMarker = true;
 zen_attributes_enableDamage = true;
 zen_attributes_enableEngine = true;
 zen_attributes_enableExecute = true;
 zen_attributes_enableFuel = true;
+zen_attributes_enableFuelCargo = true;
 zen_attributes_enableGarage = true;
 zen_attributes_enableGroupBehaviour = true;
 zen_attributes_enableGroupCombatMode = true;
@@ -1112,6 +1116,7 @@ zen_attributes_enableMarkerText = true;
 zen_attributes_enableName = true;
 zen_attributes_enablePlateNumber = true;
 zen_attributes_enableRank = true;
+zen_attributes_enableRepairCargo = true;
 zen_attributes_enableRespawnPosition = true;
 zen_attributes_enableRespawnVehicle = true;
 zen_attributes_enableSensors = true;
