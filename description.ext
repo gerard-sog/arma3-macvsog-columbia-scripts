@@ -44,6 +44,12 @@ class CfgFunctions
             file ="functions";
             class faces {};
         };
+        class Triangulate
+        {
+            file ="functions\TRIANGULATE";
+            // 1 will execute the function for each player downloading the mission.
+            class triangulate {postInit = 1;};
+        };
     }
 };
 
