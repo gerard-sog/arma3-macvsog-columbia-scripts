@@ -3,7 +3,7 @@ if !(hasInterface) exitWith {};
 _triangulate = [
 	"Columbia_triangulate",
 	"Triangulate signal",
-	"\a3\Ui_f\data\IGUI\RscIngameUI\RscUnitInfo\SI_deploy_prone_ca.paa",
+	"\a3\Modules_F_Curator\Data\iconRadio_ca.paa",
 	{
 		execVM "functions\TRIANGULATE\columbia_triangulate_signal.sqf";
 	},
@@ -21,7 +21,7 @@ _triangulate = [
                 _x = str _x;
             };
 
-            if ([_x, "ACRE_PRC77"] call _fnc_startsWith) then
+            if ([_x, Columbia_CBA_triangulation_required_item] call _fnc_startsWith) then
             {
                 _result = true;
             };
