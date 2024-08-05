@@ -10,20 +10,19 @@ if (_current_time_seconds < _next_triangulation_time_seconds) exitWith
 LAST_TRIANGULATION_TIME_SECONDS = _current_time_seconds;
 publicVariable "LAST_TRIANGULATION_TIME_SECONDS";
 
-// Finds all T884_01 and T102E radio in game.
-_all_t884_radios = entities "vn_o_prop_t884_01";
-_all_t102e_radios = entities "vn_o_prop_t102e_01";
-_all_radios = _all_t884_radios + _all_t102e_radios;
-
 // For each, get distance to player and return shortest distance.
 private _current_minimal_distance = 9999;
+
 {
-    _distance_player_radio = _x distance player;
-    if (_distance_player_radio <= _current_minimal_distance) then
+    private _all_radios = entities _x;
     {
-        _current_minimal_distance = _distance_player_radio;
-    };
-} forEach _all_radios;
+        _distance_player_radio = _x distance player;
+        if (_distance_player_radio <= _current_minimal_distance) then
+        {
+            _current_minimal_distance = _distance_player_radio;
+        };
+    } forEach _all_radios;
+} forEach Columbia_CBA_triangulation_items_to_detect;
 
 // Convert into signal intensity
 if (_current_minimal_distance >= 5000) exitWith

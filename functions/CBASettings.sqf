@@ -57,6 +57,7 @@
 
 // Triangulation
 ["Columbia_CBA_triangulation_required_item", "EDITBOX", ["Required Item"], [CBA_SETTINGS_COLUMBIA, "Triangulation"], "ACRE_PRC77", 1, {}, false] call CBA_fnc_addSetting;
+["Columbia_CBA_triangulation_items_to_detect", "EDITBOX", ["Item to detect"], [CBA_SETTINGS_COLUMBIA, "Triangulation"], "vn_o_prop_t884_01,vn_o_prop_t102e_01", 1, {Columbia_CBA_triangulation_items_to_detect = Columbia_CBA_triangulation_items_to_detect splitString " " joinString "" splitString ","}, false] call CBA_fnc_addSetting;
 ["Columbia_CBA_triangulation_cool_down", "SLIDER", ["Cool down"], [CBA_SETTINGS_COLUMBIA, "Triangulation"], [0, 600, 300, 0], 1, {}, false] call CBA_fnc_addSetting;
 ["Columbia_CBA_triangulation_signal_strength_1", "SLIDER", ["Threshold distance for signal strength 1/5"], [CBA_SETTINGS_COLUMBIA, "Triangulation"], [0, 5000, 5000, 0], 1, {}, false] call CBA_fnc_addSetting;
 ["Columbia_CBA_triangulation_signal_strength_2", "SLIDER", ["Threshold distance for signal strength 2/5"], [CBA_SETTINGS_COLUMBIA, "Triangulation"], [0, 5000, 4000, 0], 1, {}, false] call CBA_fnc_addSetting;
