@@ -4,7 +4,7 @@ private _current_time_seconds = serverTime;
 if (_current_time_seconds < _next_triangulation_time_seconds) exitWith
 {
     private _cool_down = abs (_current_time_seconds - _next_triangulation_time_seconds);
-    hint format ["Cool down : %1", _cool_down];
+    hint format ["Cool down : %1 seconds", round _cool_down];
 };
 
 LAST_TRIANGULATION_TIME_SECONDS = _current_time_seconds;
