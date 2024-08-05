@@ -12,7 +12,18 @@
       [],
       ""
     ],
-    [],
+    [
+      "vn_m127",
+      "",
+      "",
+      "",
+      [
+        "vn_m129_mag",
+        1
+      ],
+      [],
+      ""
+    ],
     [],
     [
       "vn_b_uniform_macv_04_06",
@@ -74,6 +85,11 @@
           "vn_m16_20_t_mag",
           22,
           18
+        ],
+        [
+          "vn_m129_mag",
+          1,
+          1
         ]
       ]
     ],
@@ -101,6 +117,10 @@
           1
         ],
         [
+          "ACE_salineIV_500",
+          1
+        ],
+        [
           "vn_mine_m14_mag",
           3,
           1
@@ -112,17 +132,17 @@
         ],
         [
           "vn_m67_grenade_mag",
-          2,
+          1,
           1
         ],
         [
           "vn_m18_purple_mag",
-          2,
+          3,
           1
         ],
         [
           "vn_m18_red_mag",
-          2,
+          3,
           1
         ],
         [
@@ -131,12 +151,12 @@
           1
         ],
         [
-          "vn_m18_green_mag",
-          2,
+          "DemoCharge_Remote_Mag",
+          1,
           1
         ],
         [
-          "DemoCharge_Remote_Mag",
+          "vn_m129_mag",
           1,
           1
         ]
