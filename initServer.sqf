@@ -26,7 +26,7 @@ TRACKERS_DEFAULT = [
     ];
 publicVariable "TRACKERS_DEFAULT";
 
-LAST_TRIANGULATION_TIME_SECONDS = -300;
+LAST_TRIANGULATION_TIME_SECONDS = -Columbia_CBA_triangulation_cool_down;
 publicVariable "LAST_TRIANGULATION_TIME_SECONDS";
 
 _handle = [] execVM "functions\TRACKER\columbia_fnc_onTrackerSpawn.sqf";
