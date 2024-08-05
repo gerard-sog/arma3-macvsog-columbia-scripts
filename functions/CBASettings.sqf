@@ -54,3 +54,13 @@
 
 // Throwable
 ["Columbia_CBA_remove_throwable", "EDITBOX", ["Throwable to Remove from AI"], [CBA_SETTINGS_COLUMBIA, "Throwable"], "vn_rdg2_mag,vn_molotov_grenade_mag", 1, {Columbia_CBA_remove_throwable = Columbia_CBA_remove_throwable splitString " " joinString "" splitString ","}, false] call CBA_fnc_addSetting;
+
+// Triangulation
+["Columbia_CBA_triangulation_required_item", "EDITBOX", ["Required Item"], [CBA_SETTINGS_COLUMBIA, "Triangulation"], "ACRE_PRC77", 1, {}, false] call CBA_fnc_addSetting;
+["Columbia_CBA_triangulation_items_to_detect", "EDITBOX", ["Item to detect"], [CBA_SETTINGS_COLUMBIA, "Triangulation"], "vn_o_prop_t884_01,vn_o_prop_t102e_01", 1, {Columbia_CBA_triangulation_items_to_detect = Columbia_CBA_triangulation_items_to_detect splitString " " joinString "" splitString ","}, false] call CBA_fnc_addSetting;
+["Columbia_CBA_triangulation_cool_down", "SLIDER", ["Cool down"], [CBA_SETTINGS_COLUMBIA, "Triangulation"], [0, 600, 300, 0], 1, {}, false] call CBA_fnc_addSetting;
+["Columbia_CBA_triangulation_signal_strength_1", "SLIDER", ["Threshold distance for signal strength 1/5"], [CBA_SETTINGS_COLUMBIA, "Triangulation"], [0, 5000, 5000, 0], 1, {}, false] call CBA_fnc_addSetting;
+["Columbia_CBA_triangulation_signal_strength_2", "SLIDER", ["Threshold distance for signal strength 2/5"], [CBA_SETTINGS_COLUMBIA, "Triangulation"], [0, 5000, 4000, 0], 1, {}, false] call CBA_fnc_addSetting;
+["Columbia_CBA_triangulation_signal_strength_3", "SLIDER", ["Threshold distance for signal strength 3/5"], [CBA_SETTINGS_COLUMBIA, "Triangulation"], [0, 5000, 3000, 0], 1, {}, false] call CBA_fnc_addSetting;
+["Columbia_CBA_triangulation_signal_strength_4", "SLIDER", ["Threshold distance for signal strength 4/5"], [CBA_SETTINGS_COLUMBIA, "Triangulation"], [0, 5000, 2000, 0], 1, {}, false] call CBA_fnc_addSetting;
+["Columbia_CBA_triangulation_signal_strength_5", "SLIDER", ["Threshold distance for signal strength 5/5"], [CBA_SETTINGS_COLUMBIA, "Triangulation"], [0, 5000, 1000, 0], 1, {}, false] call CBA_fnc_addSetting;
