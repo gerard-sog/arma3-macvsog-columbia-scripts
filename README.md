@@ -155,8 +155,6 @@ within a perimeter (it will be 3.5km in our example).
     SUPPORT_ENABLED = false; 
     publicVariable "SUPPORT_ENABLED";
     ```
-  <details>
-</details>
 </details>
 
 <details>
