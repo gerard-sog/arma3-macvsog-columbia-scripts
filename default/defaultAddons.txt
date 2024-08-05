@@ -66,7 +66,7 @@ ace_casings_maxCasings = 250;
 // ACE Common
 ace_common_allowFadeMusic = true;
 force ace_common_checkPBOsAction = 2;
-force ace_common_checkPBOsCheckAll = true;
+force ace_common_checkPBOsCheckAll = false;
 force ace_common_checkPBOsWhitelist = "[]";
 force ace_common_deployedSwayFactor = 1;
 ace_common_displayTextColor = [0,0,0,0.1];
@@ -698,6 +698,7 @@ force Columbia_CBA_medikit_convert_ace_morphine = 2;
 force Columbia_CBA_medikit_convert_ace_saline_iv_500 = 2;
 force Columbia_CBA_medikit_convert_ace_splint = 2;
 force Columbia_CBA_medikit_convert_ace_tourniquet = 4;
+force Columbia_CBA_remove_throwable = "vn_rdg2_mag,vn_molotov_grenade_mag";
 force Columbia_CBA_stabo_climb_duration = 10;
 force Columbia_CBA_support_module_arc_light_enable = false;
 force Columbia_CBA_support_module_artillery_enable = false;
@@ -709,6 +710,14 @@ force Columbia_CBA_tracker_module_default_combat = "WHITE";
 force Columbia_CBA_tracker_module_default_speed = "LIMITED";
 force Columbia_CBA_tracker_module_enable = true;
 force Columbia_CBA_tracker_module_name = "TrackermoduleNAME";
+force Columbia_CBA_triangulation_cool_down = 300;
+force Columbia_CBA_triangulation_items_to_detect = "vn_o_prop_t884_01,vn_o_prop_t102e_01";
+force Columbia_CBA_triangulation_required_item = "ACRE_PRC77";
+force Columbia_CBA_triangulation_signal_strength_1 = 5000;
+force Columbia_CBA_triangulation_signal_strength_2 = 4000;
+force Columbia_CBA_triangulation_signal_strength_3 = 3000;
+force Columbia_CBA_triangulation_signal_strength_4 = 2000;
+force Columbia_CBA_triangulation_signal_strength_5 = 1000;
 
 // Community Base Addons
 cba_diagnostic_ConsoleIndentType = -1;
