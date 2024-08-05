@@ -66,7 +66,7 @@ ace_casings_maxCasings = 250;
 // ACE Common
 ace_common_allowFadeMusic = true;
 force ace_common_checkPBOsAction = 2;
-force ace_common_checkPBOsCheckAll = true;
+force ace_common_checkPBOsCheckAll = false;
 force ace_common_checkPBOsWhitelist = "[]";
 force ace_common_deployedSwayFactor = 1;
 ace_common_displayTextColor = [0,0,0,0.1];
