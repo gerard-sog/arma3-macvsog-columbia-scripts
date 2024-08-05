@@ -40,6 +40,7 @@ In the Addons configuration menu, you will have the ability to update the follow
 - Support module
 - STABO
 - AI Throwable
+- Triangulation
 
 ## Features
 
