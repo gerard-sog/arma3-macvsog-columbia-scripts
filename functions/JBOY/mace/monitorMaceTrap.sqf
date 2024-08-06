@@ -19,17 +19,17 @@ private _dirTo = ([_maceSphere, _ropeTopObj] call BIS_fnc_dirTo);
 _mace setDir _dirTo;
 
 // *******************************************************
-// stablilizes mace swing and plays creaking noise
+// stabilizes mace swing and plays creaking noise
 // *******************************************************
 [_mace,_ropeTopObj] spawn JBOY_controlMaceSwing;
 // *******************************************************
 // Units react to springing of trap
 // *******************************************************
-sleep 1.5;
+uiSleep 1.5;
 private _group = group _unit;
 
 // *******************************************************
-// sound FX and accelerate swing when mace lower (waiting so it won't just piledrive into the ground)
+// sound FX and accelerate swing when mace lower (waiting so it won't just pile drive into the ground)
 // *******************************************************
 _sound = "a3\sounds_f\characters\movements\bush_004.wss";
 playSound3D [_sound,_mace, false, getPosASL _mace, 3.5];
@@ -39,13 +39,11 @@ playSound3D [_sound,_mace, false, getPosASL _mace, 3.5];
 // Deal with victims of mace
 // *******************************************************
 [_unit,_mace, _trapDir, _trapPos] spawn JBOY_maceVictims;
-sleep 1;
+uiSleep 4;
 
 // *******************************************************
-// After initial swing make mace heavier so hangs closer to the ground (to counter retarded rope elasticity...argggh!!!).
+// After initial swing make mace heavier so hangs closer to the ground (to counter retarded rope elasticity).
 // *******************************************************
-sleep 2;
-sleep 1;
 private _future = time + 10;
 waitUntil {!alive _unit or _trapPos distance _unit > 3 or !(vehicle _unit == _unit) or time > _future};
 if (_trapPos distance _unit > 3 or !(vehicle _unit == _unit)) then 
@@ -54,8 +52,8 @@ if (_trapPos distance _unit > 3 or !(vehicle _unit == _unit)) then
 	{
 		_unit doMove (_unit modelToWorld [0,9,0]); 
 		_unit setSpeedMode "FULL"; 
-		_unit forcespeed -1;
-		sleep 2;
+		_unit forceSpeed -1;
+		uiSleep 2;
 		{_x forceSpeed 0;} forEach units _group;
 	};
 };

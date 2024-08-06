@@ -9,7 +9,7 @@ params ["_trapProxy","_triggerActivatedBy"];
 if (!isServer) exitWith {};
 [] call JBOY_maceTrapInit;
 _trapProxy setVariable ["isMaceTrap",true,false]; // Tells other JBOY punji victim FX scripts that this Whip Trap is a Mace Trap
-_trapProxy setpos (getpos _trapProxy vectorAdd [0,0,-.05]);
+_trapProxy setPos (getPos _trapProxy vectorAdd [0,0,-.05]);
 private _swingDir = getDir _trapProxy; 
 _trapProxy enableSimulation false; // We don't want the Whip Trap to pop out and kill the unit.
 
@@ -22,11 +22,11 @@ _trapProxy enableSimulation false; // We don't want the Whip Trap to pop out and
 private _topOfRope = "Sign_Sphere100cm_F" createVehicle [10,10000,0]; 
 _topOfRope setObjectMaterialGlobal [0, "\a3\data_f\default.rvmat"]; // makes sphere no longer see thru 
 _topOfRope setObjectTextureGlobal [0,'vn\characters_f_vietnam\opfor\uniforms\data\vn_o_nva_army_bdu_shirt_03_co.paa']; 
-_topOfRope setPos (getpos _trapProxy vectorAdd [0,0,11.0]);
+_topOfRope setPos (getPos _trapProxy vectorAdd [0,0,11.0]);
 _topOfRope setDir (_swingDir + 180); 
 
 // ***************************************************************************
-// Create sphere used later to hide mace uav.  And camoflage the sphere.
+// Create sphere used later to hide mace uav.  And camouflage the sphere.
 // ***************************************************************************
 private _maceStartPos = ([_topOfRope, 8, (_swingDir + 180)] call BIS_fnc_relPos); 
 private _maceSphere = "Sign_Sphere100cm_F" createVehicle [10,10000,0]; 
@@ -38,7 +38,7 @@ _maceSphere setObjectTextureGlobal [0,'vn\characters_f_vietnam\opfor\uniforms\da
 // Create tree to left of trapProxy position. This tree will have the mace trap attached to it.
 // ***************************************************************************
 private _tree = createSimpleObject ["vn\vn_vegetation_f_exp\tree\vn_t_palaquium_f.p3d", [0,0,0]]; 
-_tree setPosatl (_trapProxy modelToWorld [3.8,-4,0]);
+_tree setPosATL (_trapProxy modelToWorld [3.8,-4,0]);
 _tree setDir ((getDir _trapProxy)-120); 
 _tree enableSimulation false;
 
@@ -47,7 +47,7 @@ _tree enableSimulation false;
 // ***************************************************************************
 private _maceStartTreePos = ([_topOfRope, 12, (_swingDir + 180)] call BIS_fnc_relPos); 
 private _tree2 = createSimpleObject ["vn\vn_vegetation_f_enoch\tree\vn_t_fagussylvatica_1fc.p3d", [0,0,0]]; 
-_tree2 setPosatl [_maceStartTreePos#0,_maceStartTreePos#1,-6];
+_tree2 setPosATL [_maceStartTreePos#0,_maceStartTreePos#1,-6];
 _tree2 enableSimulation false;
 
 // ***************************************************************************
@@ -55,7 +55,7 @@ _tree2 enableSimulation false;
 // ***************************************************************************
 private _clutters  = ["vn\vn_plants_f\clutter\vn_c_thistle_small.p3d","vn\vn_vegetation_f_enoch\clutter\vn_c_fern.p3d","vn\vn_vegetation_f_exp\clutter\grass\vn_c_grass_tropic.p3d","vn\vn_plants_f\clutter\vn_c_plant_greenbunch.p3d","vn\vn_vegetation_f_exp\clutter\red_dirt\vn_c_red_dirt_sparse_grass.p3d","vn\vn_vegetation_f_exp\clutter\volcano\vn_c_volcano_grass.p3d"];
 private _clutter = createSimpleObject [selectRandom _clutters, [0,0,0]];  
-_clutter setPosatl (_trapProxy modelToWorld [1,0,0]); 
+_clutter setPosATL (_trapProxy modelToWorld [1,0,0]);
 _clutter setDir (random 360); 
 
 // ***************************************************************************
@@ -74,9 +74,9 @@ _ropeTopObj disableAI "ALL";
  private _bush = createSimpleObject ["vn\vn_vegetation_f_enoch\bush\vn_b_betula_nana.p3d", [0,0,0]]; 
 _bush enableCollisionWith _ropeTopObj;
 _bush enableCollisionWith _tree;
-_bush attachto [_ropeTopObj,[0,0,0]];  
+_bush attachTo [_ropeTopObj,[0,0,0]];
 _ropeTopObj attachTo [_topOfRope,[0,0,0]];
-_ropeTopObj allowdamage false; 
+_ropeTopObj allowDamage false;
 _dirTo = ([_maceSphere, _ropeTopObj] call BIS_fnc_dirTo);  
 _ropeTopObj setDir _dirTo; 
 
@@ -89,7 +89,7 @@ _mace disableAI "ALL";
 _mace allowDamage false;
 _mace setFuel 0;
 _mace engineOn false;
-_mace setMass 170; // realtively low mass so initial swing doesn't hit the ground, then set higher so hangs lower (in controlMaceSwing function)
+_mace setMass 170; // relatively low mass so initial swing doesn't hit the ground, then set higher so hangs lower (in controlMaceSwing function)
 _mace setDir _dirTo; 
 _mace setCenterOfMass [0,0,-.3]; 
 _mace enableCollisionWith _tree2;
@@ -99,7 +99,7 @@ _mace enableCollisionWith _tree2;
 // ***************************************************************************
 _mace  attachTo [_maceSphere,[0,0,0]]; 
 _bush = createSimpleObject ["vn\vn_vegetation_f_enoch\bush\vn_b_betula_nana.p3d", [0,0,0]]; 
-_bush attachto [_mace,[0,0,0]];  
+_bush attachTo [_mace,[0,0,0]];
 _bush setObjectScale .85; 
 
 // ***************************************************************************
@@ -121,9 +121,9 @@ _trigger setVariable ["trapObject",_trapProxy,true];
 _trigger setTriggerArea [2.5, 1, 0, false];
 _trigger setTriggerActivation [_triggerActivatedBy, "PRESENT", false];
 _trigger setTriggerStatements ["this and ({!(typeOf _x in ['B_UAV_01_F','B_UGV_02_Science_F'])} count thislist > 0)", '',""];
-_trigger setPos getpos _trapProxy;
+_trigger setPos getPos _trapProxy;
 // ***************************************************************************
-// Trap is now ready to be sprung, so spawn a functiont to monitor it
+// Trap is now ready to be sprung, so spawn a function to monitor it
 // ***************************************************************************
 [_trapProxy,_mace,_ropeTopObj,_maceSphere,_trigger] spawn JBOY_monitorMaceTrap;
 

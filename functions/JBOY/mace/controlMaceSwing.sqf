@@ -39,9 +39,9 @@ while {simulationEnabled _mace} do
 			_mace setMass (270); // 300 mass will have mace drag on ground once to stabilize it, then here we raise back up with a lesser mass.
 			_mace setVelocityModelSpace [0,2,0];
 			_once = false; 
-			sleep .2; 
+			uiSleep .2;
 		}; 
 	};
-	sleep 2.5;
+	uiSleep 2.5;
 };
 
