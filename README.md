@@ -1,7 +1,40 @@
 # Arma3 S.O.G. RT Columbia
+
+Compilation of scripts used during multiplayer PVE/PVP mission on Arma 3. Also featuring defaults loadouts and missions as well as providing CBA settings in order to easily update the scripts to your convenience.
+
+## Table of contents
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Default values](#default-values)
+- [Zeus modules](##zeus-modules)
+- [CBA Settings](##cba-settings)
+- [Features](##features)
+
+## Requirements
+- [Prairie Fire DLC](https://store.steampowered.com/app/1227700/Arma_3_Creator_DLC_SOG_Prairie_Fire/)
+- [CBA_A3](https://steamcommunity.com/workshop/filedetails/?id=450814997)
+- [ace](https://steamcommunity.com/workshop/filedetails/?id=463939057)
+- [ACRE2](https://steamcommunity.com/workshop/filedetails/?id=751965892)
+
+## Installation
+Installation of all the scripts/zeus modules is done by **copying the below files and folder directly into your mission folder** where your **"mission.sqm"** file is located (ex: C:\Users\<user_name>\Documents\Arma 3 - Other Profiles\<profile_name>\missions\KheSanhMission01.vn_khe_sanh).
+- [functions](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions) (<i>Folder</i>)
+- [description.ext](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/description.ext) (<i>File</i>)
+- [init.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/init.sqf) (<i>File</i>)
+- [initPlayerlocal.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/initPlayerlocal.sqf) (<i>File</i>)
+- [initServer.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/initServer.sqf) (<i>File</i>)
+- [onPlayerRespawn.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/onPlayerRespawn.sqf) (<i>File</i>)
 ## Default values
 
-- Default <b>loadouts</b>: [loadouts](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/loadouts/)
+- Default <b>loadouts</b>:
+  - [covey](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/loadouts/covey.json)
+  - [rifleman](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/loadouts/default_rifleman.json)
+  - [grenadier](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/loadouts/Grenadier.json)
+  - [medic](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/loadouts/Medic.json)
+  - [RPD Gunner](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/loadouts/MG_RPD.json)
+  - [pointman](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/loadouts/Pointman_AK.json)
+  - [RTO](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/loadouts/RTO.json)
+  - [Squad leader](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/loadouts/squad_leader.json)
 - Default <b>missions</b>:
   - [Cam_Lao_Nam](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/missions/Cam_Lao_Nam/mission.sqm): Includes borders between ARVN (South Vietnam), PAVN (North Vietnam), Khmer Republic, Laos and Cambodia.
   - [fox_pamai](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/missions/fox_pamai/mission.sqm): Includes FOB from vn_the_bra and an Airfield in out of bound area.
@@ -34,13 +67,63 @@ see [init_columbia_zeus.sqf](https://github.com/gerard-sog/arma3-macvsog-columbi
 ## CBA Settings
 
 In the Addons configuration menu, you will have the ability to update the following values on the fly:
-- Vanilla medical items conversion to ace medical items
-- AI skills
-- Tracker module
-- Support module
-- STABO
-- AI Throwable
-- Triangulation
+
+- **Vanilla medical items conversion to ace medical items**
+  - Medikit
+    - field dressing: <i>Integer</i>
+    - saline IV 500: <i>Integer</i>
+    - epinephrine: <i>Integer</i>
+    - morphine: <i>Integer</i>
+    - tourniquet: <i>Integer</i>
+    - split: <i>Integer</i>
+  - First Aid:
+    - field dression: <i>Integer</i>
+    - morphine: <i>Integer</i>
+
+- **AI skills**
+  - enable: <i>Boolean</i>
+  - general: <i>Float</i>
+  - aiming accuracy: <i>Float</i>
+  - aiming speed: <i>Float</i>
+  - aiming shake: <i>Float</i>
+  - commanding: <i>Float</i>
+  - courage: <i>Float</i>
+  - spot distance: <i>Float</i>
+  - sport time: <i>Float</i>
+  - reload speed: <i>Float</i>
+  - seek cover: <i>Boolean</i>
+  - auto combat: <i>Boolean</i>
+  - suppression: <i>Boolean</i>
+
+- **Tracker module**
+  - enable: <i>Boolean</i>
+  - Tracker module name: <i>String</i>
+  - Default behaviour: <i>["Careless", "Safe", "Aware", "Combat"]</i>
+  - Default combat: <i>["Never fire", "Hold fire", "Hold fire, engage at will", "Fire at will", "Fire at will, loose formation"]</i>
+  - Default speed: <i>["Limited", "Normal", "Full"]</i>
+
+- **Support module**
+  - enable artillery: <i>Boolean</i>
+  - enable helicopter: <i>Boolean</i>
+  - enable jets: <i>Boolean</i>
+  - enable arc light (B52): <i>Boolean</i>
+  - enable daisy cutter: <i>Boolean</i>
+
+- **STABO**
+  - Action duration in seconds: <i>Integer</i>
+
+- **AI Throwable**
+  - Throwable to Remove from AI: <i>List\<String\> separated with , and no " required</i> 
+
+- **Triangulation**
+  - Required Item: <i>String</i>
+  - Items to detect: <i>List\<String\> separated with , and no " required</i>
+  - Cool down in seconds: <i>Integer</i>
+  - Threshold distance for signal strength 1/5: <i>Integer</i>
+  - Threshold distance for signal strength 2/5: <i>Integer</i>
+  - Threshold distance for signal strength 3/5: <i>Integer</i>
+  - Threshold distance for signal strength 4/5: <i>Integer</i>
+  - Threshold distance for signal strength 5/5: <i>Integer</i>
 
 ## Features
 
