@@ -1,6 +1,8 @@
 # Arma3 S.O.G. RT Columbia
 
-Compilation of scripts used during multiplayer PVE/PVP mission on Arma 3. Also featuring defaults loadouts and missions as well as providing CBA settings in order to easily update the scripts to your convenience.
+Compilation of scripts used during multiplayer PVE/PVP mission on Arma 3. Also featuring defaults loadouts and missions as well as providing CBA settings in order to easily update the scripts to your convenience. 
+
+If you want to contribute to this project, see [CONTRIBUTING.md](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/CONTRIBUTING.md).
 
 ## Table of contents
 - [Requirements](#requirements)
