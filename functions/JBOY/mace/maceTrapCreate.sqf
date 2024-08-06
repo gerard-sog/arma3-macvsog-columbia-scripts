@@ -51,18 +51,6 @@ _tree2 setPosatl [_maceStartTreePos#0,_maceStartTreePos#1,-6];
 _tree2 enableSimulation false;
 
 // ***************************************************************************
-// Create path blocker object to left of tree so AI won't try to go around tree instead of walking thru trap.
-// Otherwise stupid AI walks around spawned tree instead of walking thru trap.
-// ***************************************************************************
-private _blockers = ["vn\vn_vegetation_f_enoch\bush\vn_b_caragana_arborescens.p3d",
-		"vn\structures_f_vietnam\civ\fences\vn_fence_punji_02_05.p3d",
-		"vn\vn_vegetation_f_exp\shrub\vn_b_ficusc2d_tanoa_f.p3d",
-		"vn\vn_plants_f\bush\vn_b_ficusc1s_f.p3d"];
-private _pathblocker = createSimpleObject [selectRandom _blockers, [0,0,0]];  
-_pathblocker setPosatl (_trapProxy modelToWorld [5.8,-2,0]); 
-_pathblocker setDir ((getDir _trapProxy)-180); 
-
-// ***************************************************************************
 // Create a clutter object help hide the tripwire.
 // ***************************************************************************
 private _clutters  = ["vn\vn_plants_f\clutter\vn_c_thistle_small.p3d","vn\vn_vegetation_f_enoch\clutter\vn_c_fern.p3d","vn\vn_vegetation_f_exp\clutter\grass\vn_c_grass_tropic.p3d","vn\vn_plants_f\clutter\vn_c_plant_greenbunch.p3d","vn\vn_vegetation_f_exp\clutter\red_dirt\vn_c_red_dirt_sparse_grass.p3d","vn\vn_vegetation_f_exp\clutter\volcano\vn_c_volcano_grass.p3d"];
@@ -79,6 +67,7 @@ _ropeTopObj enableCollisionWith _tree;
 _ropeTopObj setFuel 0; 
 _ropeTopObj engineOn false; 
 _ropeTopObj disableAI "ALL";
+
 // ***************************************************************************
 // Attach sphere and bush to UAV to hide it from players.
 // ***************************************************************************
@@ -86,7 +75,7 @@ _ropeTopObj disableAI "ALL";
 _bush enableCollisionWith _ropeTopObj;
 _bush enableCollisionWith _tree;
 _bush attachto [_ropeTopObj,[0,0,0]];  
-_ropeTopObj  attachTo [_topOfRope,[0,0,0]];
+_ropeTopObj attachTo [_topOfRope,[0,0,0]];
 _ropeTopObj allowdamage false; 
 _dirTo = ([_maceSphere, _ropeTopObj] call BIS_fnc_dirTo);  
 _ropeTopObj setDir _dirTo; 
@@ -96,10 +85,10 @@ _ropeTopObj setDir _dirTo;
 // ***************************************************************************
 _mace = createVehicle ["B_UGV_02_Science_F", [30,0,0], [], 0, "CAN_COLLIDE"]; //B_UGV_02_Science_F
 _mace setVariable ["victimAnimsAlreadyUsed",[],true]; // used to ensure different impale anim applied to many dudes impaled on same mace
-_mace disableAI "ALL"; 
-_mace allowDamage false; 
-_mace setFuel 0; 
-_mace engineOn false; 
+_mace disableAI "ALL";
+_mace allowDamage false;
+_mace setFuel 0;
+_mace engineOn false;
 _mace setMass 170; // realtively low mass so initial swing doesn't hit the ground, then set higher so hangs lower (in controlMaceSwing function)
 _mace setDir _dirTo; 
 _mace setCenterOfMass [0,0,-.3]; 
@@ -125,9 +114,6 @@ _bush setObjectScale .85;
 // Attach rope between mace and and the pivot point on the trap tree.  This gives a straight rope
 // before trap is sprung, and is for visual effect later.  We will use a different rope when trap is sprung.
 // ***************************************************************************
-_mace enableSimulation false;
-_ropeTopObj enableSimulation false;
-
 _trapProxy setVariable ["JBOY_springTrap",false,true];
 
 _trigger = createTrigger ["EmptyDetector", [100,0,0]];

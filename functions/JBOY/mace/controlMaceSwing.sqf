@@ -36,7 +36,7 @@ while {simulationEnabled _mace} do
 		private _currentMass = getMass _mace;
 		if (getPos _mace #2 < .2 and _once) then
 		{
-			_mace setMass (270); // // 300 mass will have mace drag on ground once to stabilize it, then here we raise back up with a lesser mass.
+			_mace setMass (270); // 300 mass will have mace drag on ground once to stabilize it, then here we raise back up with a lesser mass.
 			_mace setVelocityModelSpace [0,2,0];
 			_once = false; 
 			sleep .2; 

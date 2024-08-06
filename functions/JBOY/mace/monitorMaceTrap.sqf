@@ -12,8 +12,6 @@ deleteVehicle _trapProxy;
 // *******************************************************
 // Delete cosmetic rope and attach swing rope.  Then detach mace from original position to start the swing
 // *******************************************************
-_mace enableSimulation true;
-
 private _rope2 = ropeCreate [_mace, [0,0,.1],_ropeTopObj, [0,0,-.5],_mace distance _ropeTopObj]; 
 detach _mace;
 _maceSphere attachTo [_mace,[0,0,0]]; 
