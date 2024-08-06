@@ -24,8 +24,8 @@ Installation of all the scripts/zeus modules is done by **copying the below file
 - [initPlayerlocal.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/initPlayerlocal.sqf) (<i>File</i>)
 - [initServer.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/initServer.sqf) (<i>File</i>)
 - [onPlayerRespawn.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/onPlayerRespawn.sqf) (<i>File</i>)
-## Default values
 
+## Default values
 - Default <b>loadouts</b>:
   - [covey](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/loadouts/covey.json)
   - [rifleman](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/loadouts/default_rifleman.json)
@@ -44,7 +44,6 @@ Installation of all the scripts/zeus modules is done by **copying the below file
 - Default whitelist <b>arsenal</b>: [defaultWhitelistArsenal.txt](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/defaultWhitelistArsenal.txt)
 
 ## Zeus modules
-
 - A - Columbia AI
   - **Set AI Skills**: define sub-skills of AI.
   - **Toggle Trackers**: manage Tracker module (behaviour, speed, presence).
@@ -65,7 +64,6 @@ Installation of all the scripts/zeus modules is done by **copying the below file
 see [init_columbia_zeus.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/init_columbia_zeus.sqf)
 
 ## CBA Settings
-
 In the Addons configuration menu, you will have the ability to update the following values on the fly:
 
 - **Vanilla medical items conversion to ace medical items**
@@ -126,7 +124,6 @@ In the Addons configuration menu, you will have the ability to update the follow
   - Threshold distance for signal strength 5/5: <i>Integer</i>
 
 ## Features
-
 <details>
 
 <summary>1. Respawn with saved loadout</summary>
