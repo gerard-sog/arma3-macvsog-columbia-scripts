@@ -1,7 +1,6 @@
 // ********************************************************
 // UGV drone makes a small noise while moving, so lets mask it with cool creaking noise.
 // ********************************************************
-//controlMaceSwing =
 params ["_mace","_ropeTopObj"];
 private _sound = selectRandom [
 	"a3\sounds_f\characters\movements\bush_004.wss",
@@ -28,7 +27,6 @@ _mace setMass 300;
 // when mace hits ground first time, when it will set mace to 270
 // thus allowing mace to lift off of ground and swing some more (hopefully more stable)
 // *****************************************************************
-//private _maxMass = 220;
 private _once = true;
 while {simulationEnabled _mace} do
 {
@@ -36,8 +34,7 @@ while {simulationEnabled _mace} do
 	{
 		playSound3D [_sound,_mace, false, getPosASL _mace, .7]; // play sound to mask the ugv motor sound 
 		private _currentMass = getMass _mace;
-		// if (_maxMass > _currentMass) then {_mace setMass (_currentMass +3);}; // failed attempt to stabilize mace
-		if (getPos _mace #2 < .2 and _once) then 
+		if (getPos _mace #2 < .2 and _once) then
 		{
 			_mace setMass (270); // // 300 mass will have mace drag on ground once to stabilize it, then here we raise back up with a lesser mass.
 			_mace setVelocityModelSpace [0,2,0];
