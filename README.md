@@ -6,9 +6,9 @@ Compilation of scripts used during multiplayer PVE/PVP mission on Arma 3. Also f
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Default values](#default-values)
-- [Zeus modules](##zeus-modules)
-- [CBA Settings](##cba-settings)
-- [Features](##features)
+- [Zeus modules](#zeus-modules)
+- [CBA Settings](#cba-settings)
+- [Features](#features)
 
 ## Requirements
 - [Prairie Fire DLC](https://store.steampowered.com/app/1227700/Arma_3_Creator_DLC_SOG_Prairie_Fire/)
