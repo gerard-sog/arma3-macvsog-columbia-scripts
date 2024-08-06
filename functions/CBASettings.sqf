@@ -43,11 +43,11 @@
 ["Columbia_CBA_tracker_module_default_speed", "LIST", ["Default speed"], [CBA_SETTINGS_COLUMBIA, "Tracker module"], [["LIMITED", "NORMAL", "FULL"], ["Limited", "Normal", "Full"], 0], 1, {}, false] call CBA_fnc_addSetting;
 
 // Support module
-["Columbia_CBA_support_module_artillery_enable", "CHECKBOX", ["enable"], [CBA_SETTINGS_COLUMBIA, "Support module"], false, 1, {}, true] call CBA_fnc_addSetting;
-["Columbia_CBA_support_module_cas_helicopter_enable", "CHECKBOX", ["enable"], [CBA_SETTINGS_COLUMBIA, "Support module"], false, 1, {}, true] call CBA_fnc_addSetting;
-["Columbia_CBA_support_module_cas_jets_enable", "CHECKBOX", ["enable"], [CBA_SETTINGS_COLUMBIA, "Support module"], false, 1, {}, true] call CBA_fnc_addSetting;
-["Columbia_CBA_support_module_arc_light_enable", "CHECKBOX", ["enable"], [CBA_SETTINGS_COLUMBIA, "Support module"], false, 1, {}, true] call CBA_fnc_addSetting;
-["Columbia_CBA_support_module_daisy_cutter_enable", "CHECKBOX", ["enable"], [CBA_SETTINGS_COLUMBIA, "Support module"], false, 1, {}, true] call CBA_fnc_addSetting;
+["Columbia_CBA_support_module_artillery_enable", "CHECKBOX", ["enable artillery"], [CBA_SETTINGS_COLUMBIA, "Support module"], false, 1, {}, true] call CBA_fnc_addSetting;
+["Columbia_CBA_support_module_cas_helicopter_enable", "CHECKBOX", ["enable helicopter"], [CBA_SETTINGS_COLUMBIA, "Support module"], false, 1, {}, true] call CBA_fnc_addSetting;
+["Columbia_CBA_support_module_cas_jets_enable", "CHECKBOX", ["enable jets"], [CBA_SETTINGS_COLUMBIA, "Support module"], false, 1, {}, true] call CBA_fnc_addSetting;
+["Columbia_CBA_support_module_arc_light_enable", "CHECKBOX", ["enable arc light (B52)"], [CBA_SETTINGS_COLUMBIA, "Support module"], false, 1, {}, true] call CBA_fnc_addSetting;
+["Columbia_CBA_support_module_daisy_cutter_enable", "CHECKBOX", ["enable daisy cutter"], [CBA_SETTINGS_COLUMBIA, "Support module"], false, 1, {}, true] call CBA_fnc_addSetting;
 
 // STABO
 ["Columbia_CBA_stabo_climb_duration", "SLIDER", ["Action duration in seconds"], [CBA_SETTINGS_COLUMBIA, "STABO"], [1, 30, 10, 0], 1, {}, false] call CBA_fnc_addSetting;
@@ -57,8 +57,8 @@
 
 // Triangulation
 ["Columbia_CBA_triangulation_required_item", "EDITBOX", ["Required Item"], [CBA_SETTINGS_COLUMBIA, "Triangulation"], "ACRE_PRC77", 1, {}, false] call CBA_fnc_addSetting;
-["Columbia_CBA_triangulation_items_to_detect", "EDITBOX", ["Item to detect"], [CBA_SETTINGS_COLUMBIA, "Triangulation"], "vn_o_prop_t884_01,vn_o_prop_t102e_01", 1, {Columbia_CBA_triangulation_items_to_detect = Columbia_CBA_triangulation_items_to_detect splitString " " joinString "" splitString ","}, false] call CBA_fnc_addSetting;
-["Columbia_CBA_triangulation_cool_down", "SLIDER", ["Cool down"], [CBA_SETTINGS_COLUMBIA, "Triangulation"], [0, 600, 300, 0], 1, {}, false] call CBA_fnc_addSetting;
+["Columbia_CBA_triangulation_items_to_detect", "EDITBOX", ["Items to detect"], [CBA_SETTINGS_COLUMBIA, "Triangulation"], "vn_o_prop_t884_01,vn_o_prop_t102e_01", 1, {Columbia_CBA_triangulation_items_to_detect = Columbia_CBA_triangulation_items_to_detect splitString " " joinString "" splitString ","}, false] call CBA_fnc_addSetting;
+["Columbia_CBA_triangulation_cool_down", "SLIDER", ["Cool down in seconds"], [CBA_SETTINGS_COLUMBIA, "Triangulation"], [0, 600, 300, 0], 1, {}, false] call CBA_fnc_addSetting;
 ["Columbia_CBA_triangulation_signal_strength_1", "SLIDER", ["Threshold distance for signal strength 1/5"], [CBA_SETTINGS_COLUMBIA, "Triangulation"], [0, 5000, 5000, 0], 1, {}, false] call CBA_fnc_addSetting;
 ["Columbia_CBA_triangulation_signal_strength_2", "SLIDER", ["Threshold distance for signal strength 2/5"], [CBA_SETTINGS_COLUMBIA, "Triangulation"], [0, 5000, 4000, 0], 1, {}, false] call CBA_fnc_addSetting;
 ["Columbia_CBA_triangulation_signal_strength_3", "SLIDER", ["Threshold distance for signal strength 3/5"], [CBA_SETTINGS_COLUMBIA, "Triangulation"], [0, 5000, 3000, 0], 1, {}, false] call CBA_fnc_addSetting;
