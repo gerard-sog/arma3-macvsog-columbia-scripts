@@ -1,7 +1,6 @@
 // ********************************************************
 // Lower mace to ground to end physics so physics no longer eating CPU.
 // ********************************************************
-// impaleOnMace =
 params ["_mace","_unit"];
 private _dirTo = ([_unit, _mace] call BIS_fnc_dirTo);
 private _unitFacingMace = false;
@@ -13,7 +12,6 @@ if ([ position _unit, _dirTo, 180, position _mace ] call BIS_fnc_inAngleSector) 
 private _animOptions = [];
 if (_unitFacingMace) then 
 {
-//systemChat "UNIT FACING MACE";
 	_animOptions = [1,3,5];  // Good ones: 1,3
 } else
 {
@@ -62,4 +60,3 @@ switch (_option) do
 _victimAnimsAlreadyUsed = _mace getVariable ["victimAnimsAlreadyUsed",[]];
 _victimAnimsAlreadyUsed pushBack _option;
 _mace setVariable ["victimAnimsAlreadyUsed",_victimAnimsAlreadyUsed,true];
-//player groupchat str ["victimAnimsAlreadyUsed",(_mace getVariable "victimAnimsAlreadyUsed"), _victimAnimsAlreadyUsed, _option];

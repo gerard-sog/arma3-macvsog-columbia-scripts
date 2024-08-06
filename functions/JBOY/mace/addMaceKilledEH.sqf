@@ -2,7 +2,6 @@
 // May convert mace scripts to use killed eventhandlers to fire off victim code.
 // as of 2/24/22 this is not inuse.
 // *********************************************************************
-// addMaceKilledEH =
 params["_unit"];
 _unit addEventHandler ["Killed", {
 	params ["_unit", "_killer", "_instigator", "_useEffects"];
