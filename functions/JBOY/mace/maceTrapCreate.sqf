@@ -16,7 +16,7 @@ _trapProxy enableSimulation false; // We don't want the Whip Trap to pop out and
 // ***************************************************************************
 // Create top of rope object directly above trapProxy position.  Will be where tree branch is.
 // For rope physics to work we must use UAV vehicles (the smallest ones). To hide those
-// vehicles from player, we create spheres around them, and camoflage the sphere with color and attaching
+// vehicles from player, we create spheres around them, and camouflage the sphere with color and attaching
 // a bush.
 // ***************************************************************************
 private _topOfRope = "Sign_Sphere100cm_F" createVehicle [10,10000,0]; 

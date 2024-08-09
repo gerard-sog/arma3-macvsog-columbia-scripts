@@ -12,11 +12,11 @@ params [["_pos", [0,0,0] , [[]], 3], ["_location", objNull, [objNull]]];
 private _onConfirm = {
     params ["_dialogResult", "_input"];
 	_dialogResult params ["_trap_direction"];
-	_input params ["_location", "_posa"];
+	_input params ["_location", "_pos"];
 
     // Clicked position needs to be empty and not an object.
     if (isNull _location) exitWith {
-        _create_trap = "vn_modulemine_punji_03" createVehicle _posa;
+        _create_trap = "vn_modulemine_punji_03" createVehicle _pos;
         _create_trap setDir _trap_direction;
         [_create_trap, 'WEST'] spawn {params ["_trap","_triggerActivatedBy"];[_trap,_triggerActivatedBy] spawn JBOY_maceTrapCreate;};
     };
