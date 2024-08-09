@@ -8,7 +8,6 @@
 params ["_trapProxy","_triggerActivatedBy"]; 
 if (!isServer) exitWith {};
 [] call JBOY_maceTrapInit;
-_trapProxy setVariable ["isMaceTrap",true,false]; // Tells other JBOY punji victim FX scripts that this Whip Trap is a Mace Trap
 _trapProxy setPos (getPos _trapProxy vectorAdd [0,0,-.05]);
 private _swingDir = getDir _trapProxy; 
 _trapProxy enableSimulation false; // We don't want the Whip Trap to pop out and kill the unit.

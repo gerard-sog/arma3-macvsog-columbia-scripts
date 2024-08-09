@@ -11,14 +11,15 @@ params [["_pos", [0,0,0] , [[]], 3], ["_location", objNull, [objNull]]];
 
 private _onConfirm = {
     params ["_dialogResult", "_input"];
-	_dialogResult params ["_trap_direction", "_trap_height"];
+	_dialogResult params ["_trap_direction", "_trap_height", "_tree_type"];
+
 	_input params ["_location", "_pos"];
 
     // Clicked position needs to be empty and not an object.
     if (isNull _location) exitWith {
-        _create_trap = "vn_modulemine_punji_03" createVehicle _pos;
-        _create_trap setDir _trap_direction;
-        [_create_trap, 'WEST', _trap_height] spawn {params ["_trap","_triggerActivatedBy", "_mace_height"];[_trap,_triggerActivatedBy,_mace_height] spawn JBOY_createFallingMaceTrap;};
+        _wire_trap = "vn_modulemine_punji_03" createVehicle _pos;
+        _wire_trap setDir _trap_direction;
+        [_wire_trap, _trap_height, _tree_type] spawn JBOY_createFallingMaceTrap;
     };
 };
 
@@ -27,7 +28,8 @@ private _onConfirm = {
 	"Place Falling Mace Trap",
 	[
 		["SLIDER", "(0=N, 90=E, 180=S, 270=W)" , [0, 360, 0, 0], false],
-		["SLIDER", "Height" , [0, 100, 0, 0], false]
+		["SLIDER", "Height", [0, 40, 0, 0], false],
+		["TOOLBOX:WIDE", "Tree", [0, 4, 1, ["None", "Ficus Big Tree", "Inocarpus Tree", "palaquium Tree"]], true]
 	],
 	_onConfirm,
 	{},
