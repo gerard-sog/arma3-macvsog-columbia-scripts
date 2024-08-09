@@ -18,7 +18,7 @@ if !(_isconcealed) then {
     [_staticweapondobj, "ALL"] remoteExec ["disableAI", _staticweapondobj];
 
     // Remove ammo to avoid AI shooting last bullet.
-    _staticweapondobj setVehicleAmmo 0;
+    _staticweapondobj setVehicleAmmoDef 0;
     uiSleep 1;
 
 	// Conceal static weapon.
@@ -35,7 +35,7 @@ if !(_isconcealed) then {
     _staticweapondobj setVariable ["COLSOG_concealed", false, true];
 
     uiSleep 1;
-    _staticweapondobj setVehicleAmmo 1;
+    _staticweapondobj setVehicleAmmoDef 1;
 
     // Make AI able to fire.
     _staticweapondobj setCombatMode "YELLOW";
