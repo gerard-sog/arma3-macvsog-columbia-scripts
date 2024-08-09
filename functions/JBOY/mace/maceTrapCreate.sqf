@@ -53,7 +53,7 @@ _tree2 enableSimulation false;
 // ***************************************************************************
 // Create a clutter object help hide the tripwire.
 // ***************************************************************************
-private _clutters  = ["vn\vn_plants_f\clutter\vn_c_thistle_small.p3d","vn\vn_vegetation_f_enoch\clutter\vn_c_fern.p3d","vn\vn_vegetation_f_exp\clutter\grass\vn_c_grass_tropic.p3d","vn\vn_plants_f\clutter\vn_c_plant_greenbunch.p3d","vn\vn_vegetation_f_exp\clutter\red_dirt\vn_c_red_dirt_sparse_grass.p3d","vn\vn_vegetation_f_exp\clutter\volcano\vn_c_volcano_grass.p3d"];
+private _clutters  = ["vn\vn_vegetation_f_enoch\clutter\vn_c_fern.p3d","vn\vn_vegetation_f_exp\clutter\grass\vn_c_grass_tropic.p3d","vn\vn_vegetation_f_exp\clutter\red_dirt\vn_c_red_dirt_sparse_grass.p3d","vn\vn_vegetation_f_exp\clutter\volcano\vn_c_volcano_grass.p3d"];
 private _clutter = createSimpleObject [selectRandom _clutters, [0,0,0]];  
 _clutter setPosATL (_trapProxy modelToWorld [1,0,0]);
 _clutter setDir (random 360); 
