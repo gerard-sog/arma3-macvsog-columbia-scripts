@@ -11,7 +11,9 @@ _scripts =
 "monitorMaceTrap",
 "maceVictim",
 "maceVictims",
-"unitDropsWeapon"
+"unitDropsWeapon",
+"createFallingMaceTrap",
+"monitorFallingMaceTrap"
 ];
 
 {

@@ -62,6 +62,9 @@ Installation of all the scripts/zeus modules is done by **copying the below file
 - A - Columbia Vehicle
   - **Add STABO**: add the ability to deploy a rope from a helicopter to allow player on the ground to get into the helicopter.
   - **Conceal AA**: conceal static gun with a shelter.
+- A - Columbia Punji Traps
+  - **Fall Trap**: create mace with punji sticks falling from a tree above trap wire.
+  - **Swing Trap**: create mace with punji sticks swinging from a tree towards the trap wire.
 
 see [init_columbia_zeus.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/init_columbia_zeus.sqf)
 

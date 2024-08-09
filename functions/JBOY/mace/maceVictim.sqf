@@ -10,7 +10,7 @@ if ((_unit distance _mace) < 3) then
 	{
 		_dirTo = _dirTo + 180;
 	};
-			private _unitDir = getDir _unit;
+	private _unitDir = getDir _unit;
 	{_x enableCollisionWith _mace; _x setUnitPOS "MIDDLE";} forEach units _group;
 	_unit setDamage 1;   
 	_unit setPos getPos _unit;
