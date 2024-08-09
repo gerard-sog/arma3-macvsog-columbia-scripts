@@ -11,7 +11,7 @@ if !(currentWeapon _unit == "") then
 {
 	private _weaponV = currentWeapon _unit;         
 	private _mag = currentMagazine _unit;
-	sleep .1;  
+	uiSleep .1;
 	private _weaponHolderV = "WeaponHolderSimulated" createVehicle [0,0,0]; 
 	_unit removeWeapon (currentWeapon _unit);
 	_weaponHolderV addWeaponCargoGlobal [_weaponV,1];  
@@ -26,7 +26,7 @@ if (_dropLauncher) then
 {
 	private _weaponV = secondaryWeapon _unit;         
 	private _mag = currentMagazine _unit;
-	sleep .1;  
+	uiSleep .1;
 	private _weaponHolderV = "WeaponHolderSimulated" createVehicle [0,0,0]; 
 	_unit removeWeapon (secondaryWeapon _unit);
 	_weaponHolderV addWeaponCargoGlobal [_weaponV,1];  

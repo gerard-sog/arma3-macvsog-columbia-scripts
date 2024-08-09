@@ -1,9 +1,6 @@
 private ["_path"];
 _path = "functions\JBOY\mace\";
-_scripts = 
-// **********************************************************************
-// Immediate Action Scripts
-// **********************************************************************
+_scripts =
 [
 "attachSprungWhipTrap",
 "controlMaceSwing",
@@ -14,7 +11,9 @@ _scripts =
 "monitorMaceTrap",
 "maceVictim",
 "maceVictims",
-"unitDropsWeapon"
+"unitDropsWeapon",
+"createFallingMaceTrap",
+"monitorFallingMaceTrap"
 ];
 
 {
