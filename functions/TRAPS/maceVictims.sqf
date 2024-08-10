@@ -6,5 +6,5 @@ params ["_unit","_mace","_trapDir","_trapPos"];
 _mace setVariable ["_triggerUnit",_unit,true];
 _victims = (_unit nearEntities ["Man", 20]) select {_x isKindOf "Man"}; // nearEntities 'Man' includes UGV, so we exclude those with isKindOf
 {
-    [[_x,_mace, _trapDir, _trapPos], "functions\JBOY\mace\maceVictim.sqf"] remoteExec ["execVM", 0, true];
+    [[_x,_mace, _trapDir, _trapPos], "functions\TRAPS\maceVictim.sqf"] remoteExec ["execVM", 0, true];
 } forEach _victims;

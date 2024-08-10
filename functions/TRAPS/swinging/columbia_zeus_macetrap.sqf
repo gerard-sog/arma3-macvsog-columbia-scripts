@@ -18,7 +18,7 @@ private _onConfirm = {
     if (isNull _location) exitWith {
         _create_trap = "vn_modulemine_punji_03" createVehicle _pos;
         _create_trap setDir _trap_direction;
-        [[_create_trap, 'WEST'], "functions\JBOY\mace\maceTrapCreate.sqf"] remoteExec ["execVM", 0, true];
+        [[_create_trap, 'WEST'], "functions\TRAPS\swinging\maceTrapCreate.sqf"] remoteExec ["execVM", 0, true];
     };
 };
 

@@ -319,7 +319,7 @@ To create a drinkable beer (or any other object that player can use) follow the 
 
 <details>
 
-<summary>7. Punji mace trap</summary>
+<summary>7. Punji mace traps</summary>
 
 <h3>Credits</h3>
  - **Johnnyboy** for original implementation of mace trap that my scripts are based on.
@@ -331,16 +331,21 @@ will be the direction the mace will swinging.
 2. In the Whip Trap object's init field, put the following code:
 
 ```
-[[this, 'WEST'], "functions\JBOY\mace\maceTrapCreate.sqf"] remoteExec ["execVM", 0, true];
+[[this, 'WEST'], "functions\TRAPS\swinging\maceTrapCreate.sqf"] remoteExec ["execVM", 0, true];
 ```
 
-The second parameter above determines who can activate the trap.  
-This script creates a trigger for the trap, so these are the values you can
-use for this parameter:
-"EAST", "WEST", "GUER", "CIV", "LOGIC", "ANY", "ANYPLAYER"
+or 
 
-For a Prairie Fire mission you might want to set it to WEST so only West units
-activate the trap.  This simulates the locals (VC and Civs) knowing to avoid the trap.
+```
+[[this, _trap_height, _tree_type], "functions\TRAPS\falling\createFallingMaceTrap.sqf"] remoteExec ["execVM", 0, true];
+```
+
+- _trap_height: <i>Integer</i> (default 0, will allow the height to be automatically managed depending on _tree_type)
+- _tree_type: <i>Integer</i> 
+  - 0: no tree.
+  - 1: "\vn\vn_vegetation_f_exp\tree\vn_t_ficus_big_f.p3d"
+  - 2: "\vn\vn_vegetation_f_exp\tree\vn_t_inocarpus_f.p3d"
+  - 3: "vn\vn_vegetation_f_exp\tree\vn_t_palaquium_f.p3d"
 
 </details>
 

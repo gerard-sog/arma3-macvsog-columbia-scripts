@@ -5,7 +5,7 @@ params ["_trapProxy","_mace","_maceSphere","_trigger"];
 private _trapPos = getPos _trapProxy;
 private _trapDir = getDir _trapProxy;
 
-waitUntil {triggerActivated _trigger or (_trapProxy getVariable ["JBOY_springTrap",false])}; 
+waitUntil {triggerActivated _trigger or (_trapProxy getVariable ["TRAPS_springTrap",false])};
 private _unit = nearestObject [_trapPos,'Man'];
 playSound3D ["a3\sounds_f\air\sfx\sl_rope_break.wss",_trapProxy, false, _trapProxy, 4];
 deleteVehicle _trapProxy;
@@ -26,7 +26,7 @@ playSound3D [_sound,_mace, false, getPosASL _mace, 3.5];
 // *******************************************************
 // Deal with victims of mace
 // *******************************************************
-[[_unit,_mace, _trapDir, _trapPos], "functions\JBOY\mace\maceVictims.sqf"] remoteExec ["execVM", 0, true];
+[[_unit,_mace, _trapDir, _trapPos], "functions\TRAPS\maceVictims.sqf"] remoteExec ["execVM", 0, true];
 uiSleep 4;
 
 private _future = time + 10;

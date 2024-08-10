@@ -7,13 +7,13 @@
 // ********************************************************
 params ["_wire_trap", "_trap_height", "_tree_type"];
 if (!isServer) exitWith {};
-[[], "functions\JBOY\mace\maceTrapInit.sqf"] remoteExec ["execVM", 0, true];
+[[], "functions\TRAPS\maceTrapInit.sqf"] remoteExec ["execVM", 0, true];
 
 _selected_tree_configuration = [
     ["None", 0, 0],
     ["\vn\vn_vegetation_f_exp\tree\vn_t_ficus_big_f.p3d", 23, 60],
     ["\vn\vn_vegetation_f_exp\tree\vn_t_inocarpus_f.p3d", 13, 0],
-    ["vn\vn_vegetation_f_exp\tree\vn_t_palaquium_f.p3d", 12, 200]
+    ["\vn\vn_vegetation_f_exp\tree\vn_t_palaquium_f.p3d", 12, 200]
     ] select _tree_type;
 
 _selected_tree_type = _selected_tree_configuration select 0;
@@ -84,12 +84,12 @@ if (_selected_tree_type != "None") then {
 // ***************************************************************************
 // Attach 4 whip trap punji objects to mace so it has wicked spikes
 // ***************************************************************************
-[[_mace,[0.55,0,0.03],	[0.999972,-1.70678e-006,-0.0075168],	1.55], "functions\JBOY\mace\attachSprungWhipTrap.sqf"] remoteExec ["execVM", 0, true];
-[[_mace,[-0.5,0.14,0],	[-0.998451,-2.64464e-006,-0.0556383],	1.60], "functions\JBOY\mace\attachSprungWhipTrap.sqf"] remoteExec ["execVM", 0, true];
-[[_mace,[0.07,-.55,0.2],	[0.0363626,-0.998937,0.263383],			1.55], "functions\JBOY\mace\attachSprungWhipTrap.sqf"] remoteExec ["execVM", 0, true];
-[[_mace,[0.07,.55,0.0],	[0.0363626,0.998112,-0.3495081],		1.55], "functions\JBOY\mace\attachSprungWhipTrap.sqf"] remoteExec ["execVM", 0, true];
+[[_mace,[0.55,0,0.03],	[0.999972,-1.70678e-006,-0.0075168],	1.55], "functions\TRAPS\attachSprungWhipTrap.sqf"] remoteExec ["execVM", 0, true];
+[[_mace,[-0.5,0.14,0],	[-0.998451,-2.64464e-006,-0.0556383],	1.60], "functions\TRAPS\attachSprungWhipTrap.sqf"] remoteExec ["execVM", 0, true];
+[[_mace,[0.07,-.55,0.2],	[0.0363626,-0.998937,0.263383],			1.55], "functions\TRAPS\attachSprungWhipTrap.sqf"] remoteExec ["execVM", 0, true];
+[[_mace,[0.07,.55,0.0],	[0.0363626,0.998112,-0.3495081],		1.55], "functions\TRAPS\attachSprungWhipTrap.sqf"] remoteExec ["execVM", 0, true];
 
-_wire_trap setVariable ["JBOY_springTrap",false,true];
+_wire_trap setVariable ["TRAPS_springTrap",false,true];
 _trigger = createTrigger ["EmptyDetector", [100,0,0]];
 _trigger setVariable ["trapObject",_wire_trap,true];
 _trigger setTriggerArea [2.5, 1, 0, false];
@@ -100,4 +100,4 @@ _trigger setPos getPos _wire_trap;
 // ***************************************************************************
 // Trap is now ready to be sprung, so spawn a function to monitor it
 // ***************************************************************************
-[[_wire_trap,_mace,_maceSphere,_trigger], "functions\JBOY\mace\monitorFallingMaceTrap.sqf"] remoteExec ["execVM", 0, true];
+[[_wire_trap,_mace,_maceSphere,_trigger], "functions\TRAPS\falling\monitorFallingMaceTrap.sqf"] remoteExec ["execVM", 0, true];
