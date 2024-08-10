@@ -1,7 +1,7 @@
 // ********************************************************
 // Spring the trap when the trap's trigger is fired.
 // ********************************************************
-params ["_trapProxy","_mace","_maceSphere","_trigger"];
+params ["_trapProxy","_mace","_maceSphere","_trigger","_selected_tree_height"];
 private _trapPos = getPos _trapProxy;
 private _trapDir = getDir _trapProxy;
 
@@ -15,7 +15,15 @@ deleteVehicle _trapProxy;
 // *******************************************************
 detach _mace;
 _maceSphere attachTo [_mace,[0,0,0]];
-uiSleep 1.5;
+
+_additional_time_before_mace_hits_ground = 0.0;
+if (_selected_tree_height >= 14 && _selected_tree_height < 21) then {
+    _additional_time_before_mace_hits_ground = 0.5;
+};
+if (_selected_tree_height >= 21 && _selected_tree_height < 26) then {
+    _additional_time_before_mace_hits_ground = 0.9;
+};
+uiSleep (1.5 + _additional_time_before_mace_hits_ground);
 
 // *******************************************************
 // sound FX and accelerate swing when mace lower (waiting so it won't just pile drive into the ground)

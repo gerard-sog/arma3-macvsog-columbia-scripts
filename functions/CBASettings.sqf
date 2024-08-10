@@ -64,3 +64,7 @@
 ["Columbia_CBA_triangulation_signal_strength_3", "SLIDER", ["Threshold distance for signal strength 3/5"], [CBA_SETTINGS_COLUMBIA, "Triangulation"], [0, 5000, 3000, 0], 1, {}, false] call CBA_fnc_addSetting;
 ["Columbia_CBA_triangulation_signal_strength_4", "SLIDER", ["Threshold distance for signal strength 4/5"], [CBA_SETTINGS_COLUMBIA, "Triangulation"], [0, 5000, 2000, 0], 1, {}, false] call CBA_fnc_addSetting;
 ["Columbia_CBA_triangulation_signal_strength_5", "SLIDER", ["Threshold distance for signal strength 5/5"], [CBA_SETTINGS_COLUMBIA, "Triangulation"], [0, 5000, 1000, 0], 1, {}, false] call CBA_fnc_addSetting;
+
+// Traps
+["Columbia_CBA_traps_mace_kill_radius", "SLIDER", ["Mace kill radius (m)], [CBA_SETTINGS_COLUMBIA, "Traps"], [1, 10, 3, 0], 1, {}, false] call CBA_fnc_addSetting;
+["Columbia_CBA_traps_screaming_enable", "CHECKBOX", ["enable screams"], [CBA_SETTINGS_COLUMBIA, "Traps"], true, 1, {}, false] call CBA_fnc_addSetting;

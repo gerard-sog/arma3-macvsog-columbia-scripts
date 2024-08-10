@@ -7,7 +7,6 @@
 // ********************************************************
 params ["_trapProxy","_triggerActivatedBy"]; 
 if (!isServer) exitWith {};
-[[], "functions\TRAPS\maceTrapInit.sqf"] remoteExec ["execVM", 0, true];
 
 _trapProxy setPos (getPos _trapProxy vectorAdd [0,0,-.05]);
 private _swingDir = getDir _trapProxy; 

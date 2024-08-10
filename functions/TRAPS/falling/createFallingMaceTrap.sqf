@@ -7,7 +7,6 @@
 // ********************************************************
 params ["_wire_trap", "_trap_height", "_tree_type"];
 if (!isServer) exitWith {};
-[[], "functions\TRAPS\maceTrapInit.sqf"] remoteExec ["execVM", 0, true];
 
 _selected_tree_configuration = [
     ["None", 0, 0],
@@ -100,4 +99,4 @@ _trigger setPos getPos _wire_trap;
 // ***************************************************************************
 // Trap is now ready to be sprung, so spawn a function to monitor it
 // ***************************************************************************
-[[_wire_trap,_mace,_maceSphere,_trigger], "functions\TRAPS\falling\monitorFallingMaceTrap.sqf"] remoteExec ["execVM", 0, true];
+[[_wire_trap,_mace,_maceSphere,_trigger,_selected_tree_height], "functions\TRAPS\falling\monitorFallingMaceTrap.sqf"] remoteExec ["execVM", 0, true];
