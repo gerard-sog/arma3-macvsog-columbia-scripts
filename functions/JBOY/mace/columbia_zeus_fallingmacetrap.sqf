@@ -28,8 +28,8 @@ private _onConfirm = {
 	"Place Falling Mace Trap",
 	[
 		["SLIDER", "(0=N, 90=E, 180=S, 270=W)" , [0, 360, 0, 0], false],
-		["SLIDER", "Height", [0, 40, 0, 0], false],
-		["TOOLBOX:WIDE", "Tree", [0, 4, 1, ["None", "Ficus Big Tree", "Inocarpus Tree", "palaquium Tree"]], true]
+		["SLIDER", "Height", [0, 25, 0, 0], false],
+		["TOOLBOX:WIDE", "Tree", [0, 4, 1, ["None", "Ficus Big Tree (height: 23)", "Inocarpus Tree (height: 13)", "palaquium Tree (height: 12)"]], true]
 	],
 	_onConfirm,
 	{},

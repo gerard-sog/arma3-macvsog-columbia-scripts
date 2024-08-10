@@ -10,14 +10,15 @@ if (!isServer) exitWith {};
 [] call JBOY_maceTrapInit;
 
 _selected_tree_configuration = [
-    ["None", 0],
-    ["\vn\vn_vegetation_f_exp\tree\vn_t_ficus_big_f.p3d", 30],
-    ["\vn\vn_vegetation_f_exp\tree\vn_t_inocarpus_f.p3d", 20],
-    ["vn\vn_vegetation_f_exp\tree\vn_t_palaquium_f.p3d", 12]
+    ["None", 0, 0],
+    ["\vn\vn_vegetation_f_exp\tree\vn_t_ficus_big_f.p3d", 23, 60],
+    ["\vn\vn_vegetation_f_exp\tree\vn_t_inocarpus_f.p3d", 13, 0],
+    ["vn\vn_vegetation_f_exp\tree\vn_t_palaquium_f.p3d", 12, 200]
     ] select _tree_type;
 
 _selected_tree_type = _selected_tree_configuration select 0;
 _selected_tree_height = _selected_tree_configuration select 1;
+_selected_tree_rotation_correction = _selected_tree_configuration select 2;
 
 // Allow to force height of trap.
 if (_trap_height != 0) then {
@@ -74,7 +75,7 @@ _mace setCenterOfMass [0,0,-.3];
 if (_selected_tree_type != "None") then {
     _tree = createSimpleObject [_selected_tree_type, [0,0,0]];
     _tree setPosATL (_wire_trap modelToWorld [3.8,-4,0]);
-    _tree setDir ((getDir _wire_trap)-120);
+    _tree setDir ((getDir _wire_trap) + _selected_tree_rotation_correction);
     _tree enableSimulation false;
     _mace enableCollisionWith _tree;
     _bush enableCollisionWith _tree;
