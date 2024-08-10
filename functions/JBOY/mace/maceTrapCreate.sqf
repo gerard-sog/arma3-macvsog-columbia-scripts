@@ -7,7 +7,8 @@
 // ********************************************************
 params ["_trapProxy","_triggerActivatedBy"]; 
 if (!isServer) exitWith {};
-[] call JBOY_maceTrapInit;
+[[], "functions\JBOY\mace\maceTrapInit.sqf"] remoteExec ["execVM", 0, true];
+
 _trapProxy setPos (getPos _trapProxy vectorAdd [0,0,-.05]);
 private _swingDir = getDir _trapProxy; 
 _trapProxy enableSimulation false; // We don't want the Whip Trap to pop out and kill the unit.
@@ -103,10 +104,10 @@ _bush setObjectScale .85;
 // ***************************************************************************
 // Attach 4 whip trap punji objects to mace so it has wicked spikes
 // ***************************************************************************
-[_mace,[0.55,0,0.03],	[0.999972,-1.70678e-006,-0.0075168],	1.55] call JBOY_attachSprungWhipTrap;
-[_mace,[-0.5,0.14,0],	[-0.998451,-2.64464e-006,-0.0556383],	1.60] call JBOY_attachSprungWhipTrap;
-[_mace,[0.07,-.55,0.2],	[0.0363626,-0.998937,0.263383],			1.55] call JBOY_attachSprungWhipTrap;
-[_mace,[0.07,.55,0.0],	[0.0363626,0.998112,-0.3495081],		1.55] call JBOY_attachSprungWhipTrap;
+[[_mace,[0.55,0,0.03],	[0.999972,-1.70678e-006,-0.0075168],	1.55], "functions\JBOY\mace\attachSprungWhipTrap.sqf"] remoteExec ["execVM", 0, true];
+[[_mace,[-0.5,0.14,0],	[-0.998451,-2.64464e-006,-0.0556383],	1.60], "functions\JBOY\mace\attachSprungWhipTrap.sqf"] remoteExec ["execVM", 0, true];
+[[_mace,[0.07,-.55,0.2],	[0.0363626,-0.998937,0.263383],			1.55], "functions\JBOY\mace\attachSprungWhipTrap.sqf"] remoteExec ["execVM", 0, true];
+[[_mace,[0.07,.55,0.0],	[0.0363626,0.998112,-0.3495081],		1.55], "functions\JBOY\mace\attachSprungWhipTrap.sqf"] remoteExec ["execVM", 0, true];
 
 // ***************************************************************************
 // Attach rope between mace and and the pivot point on the trap tree.  This gives a straight rope
@@ -124,5 +125,4 @@ _trigger setPos getPos _trapProxy;
 // ***************************************************************************
 // Trap is now ready to be sprung, so spawn a function to monitor it
 // ***************************************************************************
-[_trapProxy,_mace,_ropeTopObj,_maceSphere,_trigger] spawn JBOY_monitorMaceTrap;
-
+[[_trapProxy,_mace,_ropeTopObj,_maceSphere,_trigger], "functions\JBOY\mace\monitorMaceTrap.sqf"] remoteExec ["execVM", 0, true];

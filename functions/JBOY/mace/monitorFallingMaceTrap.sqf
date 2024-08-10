@@ -26,7 +26,7 @@ playSound3D [_sound,_mace, false, getPosASL _mace, 3.5];
 // *******************************************************
 // Deal with victims of mace
 // *******************************************************
-[_unit,_mace, _trapDir, _trapPos] spawn JBOY_maceVictims;
+[[_unit,_mace, _trapDir, _trapPos], "functions\JBOY\mace\maceVictims.sqf"] remoteExec ["execVM", 0, true];
 uiSleep 4;
 
 private _future = time + 10;

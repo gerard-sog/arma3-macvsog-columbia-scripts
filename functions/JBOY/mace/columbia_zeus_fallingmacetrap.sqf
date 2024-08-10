@@ -19,7 +19,7 @@ private _onConfirm = {
     if (isNull _location) exitWith {
         _wire_trap = "vn_modulemine_punji_03" createVehicle _pos;
         _wire_trap setDir _trap_direction;
-        [_wire_trap, _trap_height, _tree_type] spawn JBOY_createFallingMaceTrap;
+        [[_wire_trap, _trap_height, _tree_type], "functions\JBOY\mace\createFallingMaceTrap.sqf"] remoteExec ["execVM", 0, true];
     };
 };
 

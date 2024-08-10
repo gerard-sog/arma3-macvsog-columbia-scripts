@@ -7,7 +7,7 @@
 // ********************************************************
 params ["_wire_trap", "_trap_height", "_tree_type"];
 if (!isServer) exitWith {};
-[] call JBOY_maceTrapInit;
+[[], "functions\JBOY\mace\maceTrapInit.sqf"] remoteExec ["execVM", 0, true];
 
 _selected_tree_configuration = [
     ["None", 0, 0],
@@ -84,10 +84,10 @@ if (_selected_tree_type != "None") then {
 // ***************************************************************************
 // Attach 4 whip trap punji objects to mace so it has wicked spikes
 // ***************************************************************************
-[_mace,[0.55,0,0.03],	[0.999972,-1.70678e-006,-0.0075168],	1.55] call JBOY_attachSprungWhipTrap;
-[_mace,[-0.5,0.14,0],	[-0.998451,-2.64464e-006,-0.0556383],	1.60] call JBOY_attachSprungWhipTrap;
-[_mace,[0.07,-.55,0.2],	[0.0363626,-0.998937,0.263383],			1.55] call JBOY_attachSprungWhipTrap;
-[_mace,[0.07,.55,0.0],	[0.0363626,0.998112,-0.3495081],		1.55] call JBOY_attachSprungWhipTrap;
+[[_mace,[0.55,0,0.03],	[0.999972,-1.70678e-006,-0.0075168],	1.55], "functions\JBOY\mace\attachSprungWhipTrap.sqf"] remoteExec ["execVM", 0, true];
+[[_mace,[-0.5,0.14,0],	[-0.998451,-2.64464e-006,-0.0556383],	1.60], "functions\JBOY\mace\attachSprungWhipTrap.sqf"] remoteExec ["execVM", 0, true];
+[[_mace,[0.07,-.55,0.2],	[0.0363626,-0.998937,0.263383],			1.55], "functions\JBOY\mace\attachSprungWhipTrap.sqf"] remoteExec ["execVM", 0, true];
+[[_mace,[0.07,.55,0.0],	[0.0363626,0.998112,-0.3495081],		1.55], "functions\JBOY\mace\attachSprungWhipTrap.sqf"] remoteExec ["execVM", 0, true];
 
 _wire_trap setVariable ["JBOY_springTrap",false,true];
 _trigger = createTrigger ["EmptyDetector", [100,0,0]];
@@ -100,4 +100,4 @@ _trigger setPos getPos _wire_trap;
 // ***************************************************************************
 // Trap is now ready to be sprung, so spawn a function to monitor it
 // ***************************************************************************
-[_wire_trap,_mace,_maceSphere,_trigger] spawn JBOY_monitorFallingMaceTrap;
+[[_wire_trap,_mace,_maceSphere,_trigger], "functions\JBOY\mace\monitorFallingMaceTrap.sqf"] remoteExec ["execVM", 0, true];

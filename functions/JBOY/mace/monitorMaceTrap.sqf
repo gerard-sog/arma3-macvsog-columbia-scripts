@@ -21,7 +21,8 @@ _mace setDir _dirTo;
 // *******************************************************
 // stabilizes mace swing and plays creaking noise
 // *******************************************************
-[_mace,_ropeTopObj] spawn JBOY_controlMaceSwing;
+[[_mace,_ropeTopObj], "functions\JBOY\mace\controlMaceSwing.sqf"] remoteExec ["execVM", 0, true];
+
 // *******************************************************
 // Units react to springing of trap
 // *******************************************************
@@ -38,7 +39,7 @@ playSound3D [_sound,_mace, false, getPosASL _mace, 3.5];
 // *******************************************************
 // Deal with victims of mace
 // *******************************************************
-[_unit,_mace, _trapDir, _trapPos] spawn JBOY_maceVictims;
+[[_unit,_mace, _trapDir, _trapPos], "functions\JBOY\mace\maceVictims.sqf"] remoteExec ["execVM", 0, true];
 uiSleep 4;
 
 // *******************************************************
@@ -46,5 +47,4 @@ uiSleep 4;
 // *******************************************************
 private _future = time + 10;
 waitUntil {!alive _unit or _trapPos distance _unit > 3 or !(vehicle _unit == _unit) or time > _future};
-[_mace] spawn JBOY_endMaceSwinging;
-
+[[_mace], "functions\JBOY\mace\endMaceSwinging.sqf"] remoteExec ["execVM", 0, true];

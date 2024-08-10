@@ -15,12 +15,12 @@ if ((_unit distance _mace) < 3) then
 	_unit setDamage 1;   
 	_unit setPos getPos _unit;
 	_mace setDir (_trapDir);
-	[_mace,_unit] call JBOY_impaleOnMace;
+	[[_mace,_unit], "functions\JBOY\mace\impaleOnMace.sqf"] remoteExec ["execVM", 0, true];
 	_unit setDir _dirTo;
 	_unit setVectorUp [0.0363626,0.998112,0.9995081]; 
 	_mace setDir _trapDir;
 	_mace setVelocityModelSpace [0,5,0]; // keep the dude swinging
-	[_unit] call JBOY_unitDropsWeapon;
+	[[_unit], "functions\JBOY\mace\unitDropsWeapon.sqf"] remoteExec ["execVM", 0, true];
 	uiSleep .5;
 	[_mace, (selectRandom (missionNamespace getVariable "vn_us_death_screams"))] remoteExecCall ["say3D",0,false]; // victim screams
 	uiSleep 1;
