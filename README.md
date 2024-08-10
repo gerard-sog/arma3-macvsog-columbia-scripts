@@ -128,6 +128,10 @@ In the Addons configuration menu, you will have the ability to update the follow
   - Threshold distance for signal strength 4/5: <i>Integer</i>
   - Threshold distance for signal strength 5/5: <i>Integer</i>
 
+- **Punji Mace Traps**
+  - Mace kill radius (m): <i>Integer</i>
+  - enable screams: <i>Boolean</i>
+
 ## Features
 <details>
 
