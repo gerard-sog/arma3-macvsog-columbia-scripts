@@ -91,10 +91,16 @@ if (_selected_tree_type != "None") then {
 _trigger = createTrigger ["EmptyDetector", [100,0,0]];
 _trigger setTriggerArea [2.5, 1, 0, false];
 _trigger setTriggerActivation ['WEST', "PRESENT", false];
-_trigger setTriggerStatements ["this and ({!(typeOf _x in ['B_UAV_01_F','B_UGV_02_Science_F'])} count thislist > 0)", '',""];
+_trigger setTriggerStatements [
+    "this and ({!(typeOf _x in ['B_UAV_01_F','B_UGV_02_Science_F'])} count thislist > 0)",
+    "",
+    ""
+    ];
 _trigger setPos getPos _wire_trap;
 
 // ***************************************************************************
 // Trap is now ready to be sprung, so spawn a function to monitor it
 // ***************************************************************************
-[[_wire_trap,_mace,_maceSphere,_trigger,_selected_tree_height], "functions\TRAPS\falling\monitorFallingMaceTrap.sqf"] remoteExec ["execVM", 0, true];
+uiSleep 2.0; // required else _trigger might be undefined in waitUntil (bug: https://community.bistudio.com/wiki/waitUntil)
+waitUntil {triggerActivated _trigger};
+[[_wire_trap, _mace, _maceSphere, _selected_tree_height], "functions\TRAPS\falling\monitorFallingMaceTrap.sqf"] remoteExec ["execVM", 0, true];

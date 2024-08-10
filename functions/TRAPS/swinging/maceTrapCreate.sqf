@@ -116,10 +116,16 @@ _bush setObjectScale .85;
 _trigger = createTrigger ["EmptyDetector", [100,0,0]];
 _trigger setTriggerArea [2.5, 1, 0, false];
 _trigger setTriggerActivation [_triggerActivatedBy, "PRESENT", false];
-_trigger setTriggerStatements ["this and ({!(typeOf _x in ['B_UAV_01_F','B_UGV_02_Science_F'])} count thislist > 0)", '',""];
+_trigger setTriggerStatements [
+    "this and ({!(typeOf _x in ['B_UAV_01_F','B_UGV_02_Science_F'])} count thislist > 0)",
+    "",
+    ""
+    ];
 _trigger setPos getPos _trapProxy;
 
 // ***************************************************************************
 // Trap is now ready to be sprung, so spawn a function to monitor it
 // ***************************************************************************
-[[_trapProxy,_mace,_ropeTopObj,_maceSphere,_trigger], "functions\TRAPS\swinging\monitorMaceTrap.sqf"] remoteExec ["execVM", 0, true];
+uiSleep 2.0; // required else _trigger might be undefined in waitUntil (bug: https://community.bistudio.com/wiki/waitUntil)
+waitUntil {triggerActivated _trigger};
+[[_trapProxy, _mace, _ropeTopObj, _maceSphere], "functions\TRAPS\swinging\monitorMaceTrap.sqf"] remoteExec ["execVM", 0, true];

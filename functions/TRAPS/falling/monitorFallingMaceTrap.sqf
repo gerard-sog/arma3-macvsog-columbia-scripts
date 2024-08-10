@@ -1,11 +1,10 @@
 // ********************************************************
 // Spring the trap when the trap's trigger is fired.
 // ********************************************************
-params ["_trapProxy","_mace","_maceSphere","_trigger","_selected_tree_height"];
+params ["_trapProxy","_mace","_maceSphere","_selected_tree_height"];
 private _trapPos = getPos _trapProxy;
 private _trapDir = getDir _trapProxy;
 
-waitUntil {triggerActivated _trigger};
 private _unit = nearestObject [_trapPos,'Man'];
 playSound3D ["a3\sounds_f\air\sfx\sl_rope_break.wss",_trapProxy, false, _trapProxy, 4];
 deleteVehicle _trapProxy;
