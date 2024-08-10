@@ -88,9 +88,7 @@ if (_selected_tree_type != "None") then {
 [[_mace,[0.07,-.55,0.2],	[0.0363626,-0.998937,0.263383],			1.55], "functions\TRAPS\attachSprungWhipTrap.sqf"] remoteExec ["execVM", 0, true];
 [[_mace,[0.07,.55,0.0],	[0.0363626,0.998112,-0.3495081],		1.55], "functions\TRAPS\attachSprungWhipTrap.sqf"] remoteExec ["execVM", 0, true];
 
-_wire_trap setVariable ["TRAPS_springTrap",false,true];
 _trigger = createTrigger ["EmptyDetector", [100,0,0]];
-_trigger setVariable ["trapObject",_wire_trap,true];
 _trigger setTriggerArea [2.5, 1, 0, false];
 _trigger setTriggerActivation ['WEST', "PRESENT", false];
 _trigger setTriggerStatements ["this and ({!(typeOf _x in ['B_UAV_01_F','B_UGV_02_Science_F'])} count thislist > 0)", '',""];

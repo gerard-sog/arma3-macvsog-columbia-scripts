@@ -112,10 +112,8 @@ _bush setObjectScale .85;
 // Attach rope between mace and and the pivot point on the trap tree.  This gives a straight rope
 // before trap is sprung, and is for visual effect later.  We will use a different rope when trap is sprung.
 // ***************************************************************************
-_trapProxy setVariable ["TRAPS_springTrap",false,true];
 
 _trigger = createTrigger ["EmptyDetector", [100,0,0]];
-_trigger setVariable ["trapObject",_trapProxy,true];
 _trigger setTriggerArea [2.5, 1, 0, false];
 _trigger setTriggerActivation [_triggerActivatedBy, "PRESENT", false];
 _trigger setTriggerStatements ["this and ({!(typeOf _x in ['B_UAV_01_F','B_UGV_02_Science_F'])} count thislist > 0)", '',""];
