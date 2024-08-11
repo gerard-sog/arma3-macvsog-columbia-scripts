@@ -40,4 +40,4 @@ waitUntil {!alive _unit or _trap_pos distance _unit > 3 or !(vehicle _unit == _u
 uiSleep 30;
 _mace setMass 290;
 uiSleep 10;
-_mace enableSimulation false;
+deleteVehicle _mace;
