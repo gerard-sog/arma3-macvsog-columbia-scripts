@@ -1,4 +1,4 @@
-# Arma3 S.O.G. RT Columbia
+# Arma 3 S.O.G. RT Columbia
 
 Compilation of scripts used during multiplayer PVE/PVP mission on Arma 3. Also featuring defaults loadouts and missions as well as providing CBA settings in order to easily update the scripts to your convenience. 
 
