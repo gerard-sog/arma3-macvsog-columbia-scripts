@@ -26,7 +26,6 @@
   "ACE_fieldDressing",
   "ACE_EarPlugs",
   "ACE_CableTie",
-  "vn_b_item_trapkit",
   "ACE_DefusalKit",
   "ACE_EntrenchingTool",
   "ACE_MapTools",
@@ -990,5 +989,11 @@
   "grenadier_01",
   "grenadier_02",
   "grenadier_03",
-  "tsp_sling"
+  "tsp_sling",
+  "vn_m1897",
+  "vn_izh54_shorty",
+  "vn_izh54_so_mag",
+  "vn_m1897_fl_mag",
+  "vn_m1897_buck_mag",
+  "vn_b_m1897"
 ]
