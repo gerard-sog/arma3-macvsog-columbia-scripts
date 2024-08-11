@@ -6,14 +6,6 @@
 // init COLUMBIA Zeus Custom Modules
 execVM "functions\init_columbia_zeus.sqf";
 
-// **********************************************************************
-// Place the following in your mission's init.sqf
-// **********************************************************************
-// **********************************************************************
-// Compile general JBOY functions
-// **********************************************************************
-call compile preprocessFile "functions\JBOY\mace\compileMaceScripts.sqf"; // Compile all Mace functions
-
 // ACRE BABEL config
 f_available_languages = [
 ["en", "English"],

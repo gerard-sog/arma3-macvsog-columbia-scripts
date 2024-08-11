@@ -24,3 +24,7 @@ if !(_hasZen) exitWith { systemChat "ZEN not detected";};
 ["A - Columbia Env", "Fog Low", {_this execVM "functions\ENV\columbia_zeus_AL_lowfog.sqf";}, "\a3\Modules_F_Curator\Data\portraitSmoke_ca.paa"] call zen_custom_modules_fnc_register;
 ["A - Columbia Env", "Fog Ring", {_this execVM "functions\ENV\columbia_zeus_AL_ringfog.sqf";}, "\a3\Modules_F_Curator\Data\iconSmoke_ca.paa"] call zen_custom_modules_fnc_register;
 ["A - Columbia Env", "Vanilla Fog", {_this execVM "functions\ENV\columbia_zeus_vanillaFog.sqf";}, "\a3\Modules_F_Curator\Data\portraitSmoke_ca.paa"] call zen_custom_modules_fnc_register;
+
+// Punji Traps
+["A - Columbia Punji Traps", "Swing Trap", {_this execVM "functions\TRAPS\swinging\columbia_zeus_macetrap.sqf";}, "\a3\ui_f\data\igui\cfg\simpletasks\types\kill_ca.paa"] call zen_custom_modules_fnc_register;
+["A - Columbia Punji Traps", "Fall Trap", {_this execVM "functions\TRAPS\falling\columbia_zeus_fallingmacetrap.sqf";}, "\a3\ui_f\data\igui\cfg\simpletasks\types\kill_ca.paa"] call zen_custom_modules_fnc_register;

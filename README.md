@@ -62,6 +62,9 @@ Installation of all the scripts/zeus modules is done by **copying the below file
 - A - Columbia Vehicle
   - **Add STABO**: add the ability to deploy a rope from a helicopter to allow player on the ground to get into the helicopter.
   - **Conceal AA**: conceal static gun with a shelter.
+- A - Columbia Punji Traps
+  - **Fall Trap**: create mace with punji sticks falling from a tree above trap wire.
+  - **Swing Trap**: create mace with punji sticks swinging from a tree towards the trap wire.
 
 see [init_columbia_zeus.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/init_columbia_zeus.sqf)
 
@@ -124,6 +127,11 @@ In the Addons configuration menu, you will have the ability to update the follow
   - Threshold distance for signal strength 3/5: <i>Integer</i>
   - Threshold distance for signal strength 4/5: <i>Integer</i>
   - Threshold distance for signal strength 5/5: <i>Integer</i>
+
+- **Punji Mace Traps**
+  - Mace kill radius (m): <i>Integer</i>
+  - Enable screams: <i>Boolean</i>
+  - Side activating trap: <i>["BLUFOR", "OPFOR", "Independent", "Civilian", "Any player", "Any AI or player"]</i>
 
 ## Features
 <details>
@@ -316,53 +324,33 @@ To create a drinkable beer (or any other object that player can use) follow the 
 
 <details>
 
-<summary>7. JBOY mace trap</summary>
+<summary>7. Punji mace traps</summary>
+
+<h3>Credits</h3>
+ - **Johnnyboy** for original implementation of mace trap that my scripts are based on.
+ - **Savage Game Design** for the objects and sound files used by this script.
+
+<h3>HOW TO ADD THESE TRAPS TO YOUR MISSION</h3>
+1. Place a Whip Trap object in the editor.  The direction you set the trap 
+will be the direction the mace will swinging.
+2. In the Whip Trap object's init field, put the following code:
 
 ```
-/* **********************************************************************
-JBOY Mace Punji Trap demonstration mission.
-Author:  Johnnyboy
-Credits: Savage Game Design for the objects and sound files used by this script.
-
-HOW TO ADD THESE TRAPS TO YOUR MISSION
-======================================
-1.  Include the compile code below in your init.sqf
-2. Place a Whip Trap object in the editor.  The direction you set the trap 
-will be the direction the mace will swing.
-Note that AI may be inclined to walk around the trap, so you might want to place more
-objects to funnel the AI path to the trap.
-3. In the Whip Trap object's init field, put the following code:
-
-[this,'WEST'] spawn {sleep 3; params ["_trap","_triggerActivatedBy"];[_trap,_triggerActivatedBy] spawn JBOY_maceTrapCreate;};
-
-The second parameter above determines who can activate the trap.  
-This script creates a trigger for the trap, so these are the values you can
-use for this parameter:
-"EAST", "WEST", "GUER", "CIV", "LOGIC", "ANY", "ANYPLAYER"
-
-For a Prairie Fire mission you might want to set it to WEST so only West units
-activate the trap.  This simulates the locals (VC and Civs) knowing to avoid the trap.
-
-SCRIPT FEATURES
-================
-- Direction of mace swing determined by direction of placed Whip Trap (that has call to this script in init)
-- What side can activate trap is configurable
-- Maximum Sound FX for immersion: (trap activation, screams, swinging rope creaking)
-- Weapon flies when hit by mace
-- Multiple random death animations for when impaled on mace
-- Other AI units in group react to mace when a unit hit
-- AI units in group react to mace if mace misses them
-
-*************************************************************************/
-
-// **********************************************************************
-// Place the following in your mission's init.sqf
-// **********************************************************************
-// **********************************************************************
-// Compile general JBOY functions
-// **********************************************************************
-call compile preprocessFile "functions\JBOY\mace\compileMaceScripts.sqf"; // Compile all Mace functions
+[[this, 'WEST'], "functions\TRAPS\swinging\columbia_fnc_create_swinging_mace_trap.sqf"] remoteExec ["execVM", 0, true];
 ```
+
+or 
+
+```
+[[this, _trap_height, _tree_type], "functions\TRAPS\falling\columbia_fnc_create_falling_mace_trap.sqf"] remoteExec ["execVM", 0, true];
+```
+
+- _trap_height: <i>Integer</i> (default 0, will allow the height to be automatically managed depending on _tree_type)
+- _tree_type: <i>Integer</i> 
+  - 0: no tree.
+  - 1: "\vn\vn_vegetation_f_exp\tree\vn_t_ficus_big_f.p3d"
+  - 2: "\vn\vn_vegetation_f_exp\tree\vn_t_inocarpus_f.p3d"
+  - 3: "vn\vn_vegetation_f_exp\tree\vn_t_palaquium_f.p3d"
 
 </details>
 
