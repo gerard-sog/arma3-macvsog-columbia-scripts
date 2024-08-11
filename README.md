@@ -130,7 +130,8 @@ In the Addons configuration menu, you will have the ability to update the follow
 
 - **Punji Mace Traps**
   - Mace kill radius (m): <i>Integer</i>
-  - enable screams: <i>Boolean</i>
+  - Enable screams: <i>Boolean</i>
+  - Side activating trap: <i>["BLUFOR", "OPFOR", "Independent", "Civilian", "Any player", "Any AI or player"]</i>
 
 ## Features
 <details>
@@ -335,13 +336,13 @@ will be the direction the mace will swinging.
 2. In the Whip Trap object's init field, put the following code:
 
 ```
-[[this, 'WEST'], "functions\TRAPS\swinging\maceTrapCreate.sqf"] remoteExec ["execVM", 0, true];
+[[this, 'WEST'], "functions\TRAPS\swinging\columbia_fnc_create_swinging_mace_trap.sqf"] remoteExec ["execVM", 0, true];
 ```
 
 or 
 
 ```
-[[this, _trap_height, _tree_type], "functions\TRAPS\falling\createFallingMaceTrap.sqf"] remoteExec ["execVM", 0, true];
+[[this, _trap_height, _tree_type], "functions\TRAPS\falling\columbia_fnc_create_falling_mace_trap.sqf"] remoteExec ["execVM", 0, true];
 ```
 
 - _trap_height: <i>Integer</i> (default 0, will allow the height to be automatically managed depending on _tree_type)

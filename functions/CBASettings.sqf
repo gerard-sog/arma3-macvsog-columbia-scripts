@@ -67,4 +67,5 @@
 
 // Traps
 ["Columbia_CBA_traps_mace_kill_radius", "SLIDER", ["Mace kill radius (m)"], [CBA_SETTINGS_COLUMBIA, "Traps"], [1, 10, 3, 0], 1, {}, false] call CBA_fnc_addSetting;
-["Columbia_CBA_traps_screaming_enable", "CHECKBOX", ["enable screams"], [CBA_SETTINGS_COLUMBIA, "Traps"], true, 1, {}, false] call CBA_fnc_addSetting;
+["Columbia_CBA_traps_screaming_enable", "CHECKBOX", ["Enable screams"], [CBA_SETTINGS_COLUMBIA, "Traps"], true, 1, {}, false] call CBA_fnc_addSetting;
+["Columbia_CBA_traps_trigger_activated_by", "LIST", ["Trigger for Side"], [CBA_SETTINGS_COLUMBIA, "Traps"], [["WEST", "EAST", "GUER", "CIV", "ANYPLAYER", "ANY"], ["BLUFOR", "OPFOR", "Independent", "Civilian", "Any player", "Any AI or player"], 0], 1, {}, false] call CBA_fnc_addSetting;

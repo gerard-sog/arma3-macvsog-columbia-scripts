@@ -1,26 +1,27 @@
-// ********************************************************
+// *******************************************************
 // Attach victim to mace and play various fx (sound, blood, etc.)
-// ********************************************************
-params ["_unit","_mace","_trapDir","_trapPos"];
+// *******************************************************
+params ["_unit", "_mace", "_trap_dir", "_trap_pos"];
 private _group = group _unit;
 if ((_unit distance _mace) < Columbia_CBA_traps_mace_kill_radius) then
 {
-	private _dirTo = ([_unit, _mace] call BIS_fnc_dirTo);
-	if ([ position _unit, _dirTo, 180, position _mace ] call BIS_fnc_inAngleSector) then
+	private _dir_to = ([_unit, _mace] call BIS_fnc_dirTo);
+	if ([position _unit, _dir_to, 180, position _mace] call BIS_fnc_inAngleSector) then
 	{
-		_dirTo = _dirTo + 180;
+		_dir_to = _dir_to + 180;
 	};
-	private _unitDir = getDir _unit;
 	{_x enableCollisionWith _mace; _x setUnitPOS "MIDDLE";} forEach units _group;
-	_unit setDamage 1;   
+
+	// Kills the unit in kill radius.
+	_unit setDamage 1;
+
 	_unit setPos getPos _unit;
-	_mace setDir (_trapDir);
-	[[_mace,_unit], "functions\TRAPS\impaleOnMace.sqf"] remoteExec ["execVM", 0, true];
-	_unit setDir _dirTo;
-	_unit setVectorUp [0.0363626,0.998112,0.9995081]; 
-	_mace setDir _trapDir;
-	_mace setVelocityModelSpace [0,5,0]; // keep the dude swinging
-	[[_unit], "functions\TRAPS\unitDropsWeapon.sqf"] remoteExec ["execVM", 0, true];
+	_mace setDir (_trap_dir);
+	[[_mace, _unit], "functions\TRAPS\columbia_fnc_impale_on_mace.sqf"] remoteExec ["execVM", 0, true];
+	_unit setDir _dir_to;
+	_unit setVectorUp [0.0363626, 0.998112, 0.9995081];
+	_mace setDir _trap_dir;
+	_mace setVelocityModelSpace [0, 5, 0]; // keep the dude swinging
 	uiSleep .5;
 
 	vn_us_death_screams = [
@@ -85,14 +86,14 @@ if ((_unit distance _mace) < Columbia_CBA_traps_mace_kill_radius) then
 	    ];
 
     if (Columbia_CBA_traps_screaming_enable) then {
-        [_mace, selectRandom vn_us_death_screams] remoteExecCall ["say3D",0,false]; // victim screams
+        [_mace, selectRandom vn_us_death_screams] remoteExecCall ["say3D", 0, false]; // victim screams
     	uiSleep 3;
-    	[_mace, selectRandom vn_us_death_screams] remoteExecCall ["say3D",0,false]; // victim screams again
+    	[_mace, selectRandom vn_us_death_screams] remoteExecCall ["say3D", 0, false]; // victim screams again
     	uiSleep 1;
     };
 
 	private _sound = "a3\sounds_f\characters\movements\bush_004.wss"; // play sound to mask the ugv motor sound
-	playSound3D [_sound,_mace, false, getPosASL _mace, 3.5];
+	playSound3D [_sound, _mace, false, getPosASL _mace, 3.5];
 	uiSleep 1.5;
 };
 uiSleep 30;
