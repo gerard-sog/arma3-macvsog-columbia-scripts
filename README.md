@@ -475,3 +475,95 @@ this addAction ["Display total kills", "functions\kill_counter.sqf"]
 this will give you a scroll wheel action to diplay the kill counter when looking at the object. see [kill_counter.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/kill_counter.sqf)
 
 </details>
+
+<details>
+
+<summary>15. Add 'STABO' action on chopper in Eden Editor</summary>
+
+Adds the ability to **any player** in the vehicle to drop/detach the STABO rig.
+
+Place the below lines of code into the 'init' section of the vehicle.
+
+```
+this setVariable ["COLSOG_stabo_rope_deployed", false, true]; 
+this addAction 
+[ 
+    "<t color='#FF0000'>Drop the STABO rig</t>", 
+    "functions\STABO\dropSTABO.sqf", 
+    nil, 
+    0, 
+    true, 
+    true, 
+    "", 
+    "(_this in _target) AND !(_target getVariable 'COLSOG_stabo_rope_deployed')", 
+    50, 
+    false, 
+    "", 
+    "" 
+]; 
+this addAction 
+[ 
+    "<t color='#FF0000'>Detatch ropes</t>", 
+    "functions\STABO\detatchRopes.sqf", 
+    nil, 
+    0, 
+    true, 
+    true, 
+    "", 
+    "(_this in _target) AND (_target getVariable 'COLSOG_stabo_rope_deployed')", 
+    50, 
+    false, 
+    "", 
+    "" 
+];
+```
+
+</details>
+
+<details>
+
+<summary>16. Add 'request crew' action on chopper in Eden Editor</summary>
+
+Adds the ability to the **pilot** in the vehicle to request AI door gunners (crew) if:
+ - helicopter is touching the ground AND
+ - engine is off
+
+(Crew can only be added once).
+
+Place the below lines of code into the 'init' section of the vehicle.
+
+```
+this setVariable ["COLSOG_has_crew", false, true]; 
+this addAction 
+[ 
+    "<t color='#FFFF00'>Request crew</t>", 
+    "functions\DOOR_GUNNER\columbia_fnc_add_crew.sqf", 
+    nil, 
+    0, 
+    true, 
+    true, 
+    "", 
+    "(_this in _target) AND (driver _target isEqualTo _this) AND (isTouchingGround _target) AND !(isEngineOn _target) AND !(_target getVariable 'COLSOG_has_crew')", 
+    50, 
+    false, 
+    "", 
+    "" 
+];
+this addAction 
+[ 
+    "<t color='#FFFF00'>Remove crew</t>", 
+    "functions\DOOR_GUNNER\columbia_fnc_delete_crew.sqf", 
+    nil, 
+    0, 
+    true, 
+    true, 
+    "", 
+    "(_this in _target) AND (driver _target isEqualTo _this) AND (isTouchingGround _target) AND !(isEngineOn _target) AND (_target getVariable 'COLSOG_has_crew')", 
+    50, 
+    false, 
+    "", 
+    "" 
+];
+```
+
+</details>
