@@ -486,7 +486,7 @@ Adds the ability to **any player** in the vehicle to drop/detach the STABO rig.
 Place the below lines of code into the 'init' section of the vehicle.
 
 ```
-this setVariable ["COLSOG_stabo_rope_deployed", false, true]; 
+this setVariable ["COLSOG_staboRopeDeployed", false, true]; 
 this addAction 
 [ 
     "<t color='#FF0000'>Drop the STABO rig</t>", 
@@ -496,7 +496,7 @@ this addAction
     true, 
     true, 
     "", 
-    "(_this in _target) AND !(_target getVariable 'COLSOG_stabo_rope_deployed')", 
+    "(_this in _target) AND !(_target getVariable 'COLSOG_staboRopeDeployed')", 
     50, 
     false, 
     "", 
@@ -504,14 +504,14 @@ this addAction
 ]; 
 this addAction 
 [ 
-    "<t color='#FF0000'>Detatch ropes</t>", 
+    "<t color='#FF0000'>Detach ropes</t>", 
     "functions\STABO\detatchRopes.sqf", 
     nil, 
     0, 
     true, 
     true, 
     "", 
-    "(_this in _target) AND (_target getVariable 'COLSOG_stabo_rope_deployed')", 
+    "(_this in _target) AND (_target getVariable 'COLSOG_staboRopeDeployed')", 
     50, 
     false, 
     "", 
@@ -534,7 +534,7 @@ Adds the ability to the **pilot** in the vehicle to request AI door gunners (cre
 Place the below lines of code into the 'init' section of the vehicle.
 
 ```
-this setVariable ["COLSOG_has_crew", false, true]; 
+this setVariable ["COLSOG_HasCrew", false, true]; 
 this addAction 
 [ 
     "<t color='#FFFF00'>Request crew</t>", 
@@ -544,7 +544,7 @@ this addAction
     true, 
     true, 
     "", 
-    "(_this in _target) AND (driver _target isEqualTo _this) AND (isTouchingGround _target) AND !(isEngineOn _target) AND !(_target getVariable 'COLSOG_has_crew')", 
+    "(_this in _target) AND (driver _target isEqualTo _this) AND (isTouchingGround _target) AND !(isEngineOn _target) AND !(_target getVariable 'COLSOG_HasCrew')", 
     50, 
     false, 
     "", 
@@ -559,7 +559,7 @@ this addAction
     true, 
     true, 
     "", 
-    "(_this in _target) AND (driver _target isEqualTo _this) AND (isTouchingGround _target) AND !(isEngineOn _target) AND (_target getVariable 'COLSOG_has_crew')", 
+    "(_this in _target) AND (driver _target isEqualTo _this) AND (isTouchingGround _target) AND !(isEngineOn _target) AND (_target getVariable 'COLSOG_HasCrew')", 
     50, 
     false, 
     "", 

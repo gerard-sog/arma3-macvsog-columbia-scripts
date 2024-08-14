@@ -2,8 +2,8 @@ params ["_target", "_caller", "_actionId", "_arguments"]; // specials parameters
 
 private _parentHelicopter = _target;
 
-// Need broadcast so allPlayers are aware if rope is deployed (the code in this file is only exec'ed by the player dropping)
-_parentHelicopter setVariable ["COLSOG_stabo_rope_deployed", true, true];
+// Need broadcast so allPlayers are aware if rope is deployed (the code in this file is only executed by the player dropping)
+_parentHelicopter setVariable ["COLSOG_staboRopeDeployed", true, true];
 
 // Contains the current player vehicle location above terrain level.
 private _pos = getPosATL _parentHelicopter;
@@ -11,17 +11,17 @@ private _pos = getPosATL _parentHelicopter;
 _pos set [2, 0];
 private _droppedSandbag = "vn_prop_sandbag_01" createVehicle ATLToASL _pos;
 
-// store the parent helicopter on sandbag (broadcast needed for condition shown in holdactionadd)
-_droppedSandbag setVariable ["COLSOG_stabo_parenthelicopter", _parentHelicopter, true];
+// store the parent helicopter on sandbag (broadcast needed for condition shown in holdActionAdd)
+_droppedSandbag setVariable ["COLSOG_staboParentHelicopter", _parentHelicopter, true];
 
 // store the sandbag created on parent helicopter (broadcast needed might be another player detaching)
-_parentHelicopter setVariable ["COLSOG_stabo_sandbag", _droppedSandbag, true];
+_parentHelicopter setVariable ["COLSOG_staboSandbag", _droppedSandbag, true];
 
 // Creates a rope under vehicle 55m in length with 50 segments (dropped sandbag attached at end of rope).
 private _staboRope = ropeCreate [_parentHelicopter, [0, 0, 0], _droppedSandbag, [0,0,0], 50, nil, nil, nil, 63];
 
 // store the rope created on parent helicopter (broadcast needed might be another player detaching)
-_parentHelicopter setVariable ["COLSOG_stabo_rope", _staboRope, true];
+_parentHelicopter setVariable ["COLSOG_staboRope", _staboRope, true];
 
 // Remote exec the HoldActionAdd
 [
@@ -29,7 +29,7 @@ _parentHelicopter setVariable ["COLSOG_stabo_rope", _staboRope, true];
 	"Attach STABO rig",												// Title of the action
 	"\z\ace\addons\fastroping\UI\Icon_Waypoint.paa",	            // Idle icon
 	"\z\ace\addons\fastroping\UI\Icon_Waypoint.paa",	            // Progress icon
-	"(_this distance _target < 6) AND ((_target getVariable 'COLSOG_stabo_parenthelicopter') getVariable 'COLSOG_stabo_rope_deployed')",	// Condition for the action to be shown
+	"(_this distance _target < 6) AND ((_target getVariable 'COLSOG_staboParentHelicopter') getVariable 'COLSOG_staboRopeDeployed')",	// Condition for the action to be shown
 	"true",									                        // Condition for the action to progress (need true)
 	{},																// Code executed when action starts
 	{},																// Code executed on every progress tick
