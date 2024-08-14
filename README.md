@@ -61,6 +61,7 @@ Installation of all the scripts/zeus modules is done by **copying the below file
   - **Toggle CAS**: manage CAS asset available in the Radio Support module.
 - A - Columbia Vehicle
   - **Add STABO**: add the ability to deploy a rope from a helicopter to allow player on the ground to get into the helicopter.
+  - **Add Crew management**: add the ability for the pilot of a helicopter to request AI crew members (door gunners).
   - **Conceal AA**: conceal static gun with a shelter.
 - A - Columbia Punji Traps
   - **Fall Trap**: create mace with punji sticks falling from a tree above trap wire.
