@@ -1,39 +1,38 @@
-
 params [["_pos", [0,0,0] , [[]], 3], ["_unit", objNull, [objNull]]];
 
 private _onConfirm = {
 	params ["_dialogResult"];
-	_dialogResult params ["_cashelicopterstatus", "_casjetsstatus", "_artillerystatus", "_arclightstatus", "_daisycutterstatus"];
+	_dialogResult params ["_casHelicopterStatus", "_casJetStatus", "_artilleryStatus", "_arcLightStatus", "_daisyCutterStatus"];
 
-    CAS_HELICOPTER_SUPPORT_ENABLED = _cashelicopterstatus;
-    publicVariable "CAS_HELICOPTER_SUPPORT_ENABLED";
+    COLSOG_CasHelicopterSupportEnabled = _casHelicopterStatus;
+    publicVariable "COLSOG_CasHelicopterSupportEnabled";
 
-    CAS_JETS_SUPPORT_ENABLED = _casjetsstatus;
-    publicVariable "CAS_JETS_SUPPORT_ENABLED";
+    COLSOG_CasJetSupportEnabled = _casJetStatus;
+    publicVariable "COLSOG_CasJetSupportEnabled";
 
-    ARTILLERY_SUPPORT_ENABLED = _artillerystatus;
-    publicVariable "ARTILLERY_SUPPORT_ENABLED";
+    COLSOG_ArtillerySupportEnabled = _artilleryStatus;
+    publicVariable "COLSOG_ArtillerySupportEnabled";
 
-    ARC_LIGHT_SUPPORT_ENABLED = _arclightstatus;
-    publicVariable "ARC_LIGHT_SUPPORT_ENABLED";
+    COLSOG_ArcLightSupportEnabled = _arcLightStatus;
+    publicVariable "COLSOG_ArcLightSupportEnabled";
 
-    DAISY_CUTTER_SUPPORT_ENABLED = _daisycutterstatus;
-    publicVariable "DAISY_CUTTER_SUPPORT_ENABLED";
+    COLSOG_DaisyCutterSupportEnabled = _daisyCutterStatus;
+    publicVariable "COLSOG_DaisyCutterSupportEnabled";
 };
 
-private _currentcashelicopterstatus = CAS_HELICOPTER_SUPPORT_ENABLED;
-private _current_currentcasjetsstatus = CAS_JETS_SUPPORT_ENABLED;
-private _currentartillerystatus = ARTILLERY_SUPPORT_ENABLED;
-private _currentarclightstatus = ARC_LIGHT_SUPPORT_ENABLED;
-private _currentdaisycutterstatus = DAISY_CUTTER_SUPPORT_ENABLED;
+private _currentCasHelicopterStatus = COLSOG_CasHelicopterSupportEnabled;
+private _currentCasJetStatus = COLSOG_CasJetSupportEnabled;
+private _currentArtilleryStatus = COLSOG_ArtillerySupportEnabled;
+private _currentArcLightStatus = COLSOG_ArcLightSupportEnabled;
+private _currentDaisyCutterStatus = COLSOG_DaisyCutterSupportEnabled;
 
 // Module dialog
 [
 	"Toggle CAS", [
-		["TOOLBOX:YESNO", "CAS Heli Support", [_currentcashelicopterstatus], true],
-		["TOOLBOX:YESNO", "CAS Jets Support", [_current_currentcasjetsstatus], true],
-		["TOOLBOX:YESNO", "Artillery Support", [_currentartillerystatus], true],
-		["TOOLBOX:YESNO", "Arc Light Support", [_currentarclightstatus], true],
-		["TOOLBOX:YESNO", "Daisy Cutter Support", [_currentdaisycutterstatus], true]
+		["TOOLBOX:YESNO", "CAS Heli Support", [_currentCasHelicopterStatus], true],
+		["TOOLBOX:YESNO", "CAS Jets Support", [_currentCasJetStatus], true],
+		["TOOLBOX:YESNO", "Artillery Support", [_currentArtilleryStatus], true],
+		["TOOLBOX:YESNO", "Arc Light Support", [_currentArcLightStatus], true],
+		["TOOLBOX:YESNO", "Daisy Cutter Support", [_currentDaisyCutterStatus], true]
 	], _onConfirm, {}
 ] call zen_dialog_fnc_create;

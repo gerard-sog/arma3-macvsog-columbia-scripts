@@ -30,7 +30,7 @@ class vn_artillery_settings
                                 divergence = -45;
                                 cooldown = (60*5);
                                 cost = 50;
-                                condition = "DAISY_CUTTER_SUPPORT_ENABLED";
+                                condition = "COLSOG_DaisyCutterSupportEnabled";
                         };
                         class arc_light // Carpet bombing run of 20x 750lb M117 demolition bombs from an B-52.
                         {
@@ -41,7 +41,7 @@ class vn_artillery_settings
                                 divergence = 200;
                                 cooldown = (60*5);
                                 cost = 50;
-                                condition = "ARC_LIGHT_SUPPORT_ENABLED";
+                                condition = "COLSOG_ArcLightSupportEnabled";
                         };
                         class rambler // A fast strike of 2x Mk82 500lb bombs from an F-4 Phantom.
                         {
@@ -52,7 +52,7 @@ class vn_artillery_settings
                                 vehicleclass = "vn_b_air_f4c_cas";
                                 cooldown = (60*5);
                                 cost = 10;
-                                condition = "CAS_JETS_SUPPORT_ENABLED";
+                                condition = "COLSOG_CasJetSupportEnabled";
                         };
                         class sundowner // A strike of 2x BLU/1B Napalm bombs dropped from an F-4 Phantom.
                         {
@@ -64,7 +64,7 @@ class vn_artillery_settings
                                 allow_double = 1;
                                 cooldown = (60*5);
                                 cost = 15;
-                                condition = "CAS_JETS_SUPPORT_ENABLED";
+                                condition = "COLSOG_CasJetSupportEnabled";
                         };
                         class snake // 125mm high-explosive rockets fired from an F-4 Phantom.
                         {
@@ -75,7 +75,7 @@ class vn_artillery_settings
                                 vehicleclass = "vn_b_air_f4c_cas";
                                 cooldown = (60*5);
                                 cost = 10;
-                                condition = "CAS_JETS_SUPPORT_ENABLED";
+                                condition = "COLSOG_CasJetSupportEnabled";
                         };
                         class showtime // 20mm high-explosive Gunpod fired from an F-4 Phantom.
                         {
@@ -86,7 +86,7 @@ class vn_artillery_settings
                                 vehicleclass = "vn_b_air_f4c_cas";
                                 cooldown = (60*5);
                                 cost = 6;
-                                condition = "CAS_JETS_SUPPORT_ENABLED";
+                                condition = "COLSOG_CasJetSupportEnabled";
                         };
                         class hobo // 20mm high-explosive Vulcan Minigun support provided by an F-4 Phantom.
                         {
@@ -97,7 +97,7 @@ class vn_artillery_settings
                                 vehicleclass = "vn_b_air_f4c_cas";
                                 cooldown = (60*5);
                                 cost = 6;
-                                condition = "CAS_JETS_SUPPORT_ENABLED";
+                                condition = "COLSOG_CasJetSupportEnabled";
                         };
                         class condor // 14x Rockets 70mm high-explosive fired from a AH-1G Cobra.
                         {
@@ -108,7 +108,7 @@ class vn_artillery_settings
                                 vehicleclass = "vn_b_air_ah1g_01";
                                 cooldown = (5*60);
                                 cost = 6;
-                                condition = "CAS_HELICOPTER_SUPPORT_ENABLED";
+                                condition = "COLSOG_CasHelicopterSupportEnabled";
                         };
                         class dragon // 38x 70mm high-explosive rockets fired from a UH-1C Huey gunship.
                         {
@@ -119,7 +119,7 @@ class vn_artillery_settings
                                 vehicleclass = "vn_b_air_uh1c_01_02";
                                 cooldown = (5*60);
                                 cost = 16;
-                                condition = "CAS_HELICOPTER_SUPPORT_ENABLED";
+                                condition = "COLSOG_CasHelicopterSupportEnabled";
                         };
                 };
                 class flechette
@@ -135,7 +135,7 @@ class vn_artillery_settings
                                 allow_double = 1;
                                 cooldown = (5*60);
                                 cost = 8;
-                                condition = "CAS_JETS_SUPPORT_ENABLED";
+                                condition = "COLSOG_CasJetSupportEnabled";
                         };
                         class banshee // 70mm Flechette rockets fired from an AH-1G Cobra.
                         {
@@ -147,7 +147,7 @@ class vn_artillery_settings
                                 allow_double = 1;
                                 cooldown = (5*60);
                                 cost = 6;
-                                condition = "CAS_HELICOPTER_SUPPORT_ENABLED";
+                                condition = "COLSOG_CasHelicopterSupportEnabled";
                         };
                         class scarface // 70mm Flechette rockets fired from an UH-1C Huey gunship.
                         {
@@ -159,7 +159,7 @@ class vn_artillery_settings
                                 allow_double = 1;
                                 cooldown = (5*60);
                                 cost = 12;
-                                condition = "CAS_HELICOPTER_SUPPORT_ENABLED";
+                                condition = "COLSOG_CasHelicopterSupportEnabled";
                         };
                 };
                 class illumination
@@ -176,7 +176,7 @@ class vn_artillery_settings
                                 cooldown = (5*60);
                                 illumination = 1;
                                 cost = 0;
-                                condition = "CAS_HELICOPTER_SUPPORT_ENABLED";
+                                condition = "COLSOG_CasHelicopterSupportEnabled";
                         };
                         class dawn_1
                         {
@@ -188,7 +188,7 @@ class vn_artillery_settings
                                 cooldown = (60*5);
                                 illumination = 1;
                                 cost = 0;
-                                condition = "CAS_HELICOPTER_SUPPORT_ENABLED";
+                                condition = "COLSOG_CasHelicopterSupportEnabled";
                         };
                 };
 
@@ -241,7 +241,7 @@ class vn_artillery_settings
                                 count = 1;
                                 illumination = 1;
                                 cost = 0;
-				                condition = "ARTILLERY_SUPPORT_ENABLED";
+				                condition = "COLSOG_ArtillerySupportEnabled";
                         };
                         class mike_1
                         {
@@ -255,7 +255,7 @@ class vn_artillery_settings
                                 count = 1;
                                 illumination = 1;
                                 cost = 0;
-				                condition = "ARTILLERY_SUPPORT_ENABLED";
+				                condition = "COLSOG_ArtillerySupportEnabled";
                         };
                 };
                 class wp
@@ -272,7 +272,7 @@ class vn_artillery_settings
                                 divergence = 50;
                                 count = 1;
                                 cost = 10;
-				                condition = "ARTILLERY_SUPPORT_ENABLED";
+				                condition = "COLSOG_ArtillerySupportEnabled";
                         };
                 };
                 class he
@@ -289,7 +289,7 @@ class vn_artillery_settings
                                 divergence = 50;
                                 count = 1;
                                 cost = 16;
-				                condition = "ARTILLERY_SUPPORT_ENABLED";
+				                condition = "COLSOG_ArtillerySupportEnabled";
                         };
                 };
                 class frag
@@ -306,7 +306,7 @@ class vn_artillery_settings
                                 divergence = 50;
                                 count = 1;
                                 cost = 8;
-				                condition = "ARTILLERY_SUPPORT_ENABLED";
+				                condition = "COLSOG_ArtillerySupportEnabled";
                         };
                 };
                 class airburst
@@ -323,7 +323,7 @@ class vn_artillery_settings
                                 divergence = 50;
                                 count = 1;
                                 cost = 16;
-				                condition = "ARTILLERY_SUPPORT_ENABLED";
+				                condition = "COLSOG_ArtillerySupportEnabled";
                         };
                 };
         };
