@@ -9,10 +9,13 @@ if (_current_time_seconds < _next_triangulation_time_seconds) exitWith
     hint format ["Cool down : %1 seconds", round _cool_down];
 };
 
-If (_nearest_acre_spike > 10) exitWith //If there isn't a radio spike within 10m, returns a hint to tell the user there is no spike nearby. Does not trigger the cooldown period.
-{
-    hint format ["No ground spike nearby"];
-};
+
+If( Columbia_CBA_trilateration_require_spike = true, 
+    If (_nearest_acre_spike > 10) exitWith //If there isn't a radio spike within 10m, returns a hint to tell the user there is no spike nearby. Does not trigger the cooldown period.
+        {
+            hint format ["No ground spike nearby"];
+        };
+)
 
 LAST_TRIANGULATION_TIME_SECONDS = _current_time_seconds;
 publicVariable "LAST_TRIANGULATION_TIME_SECONDS";
