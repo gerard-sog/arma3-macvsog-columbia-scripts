@@ -67,7 +67,7 @@ Installation of all the scripts/zeus modules is done by **copying the below file
   - **Fall Trap**: create mace with punji sticks falling from a tree above trap wire.
   - **Swing Trap**: create mace with punji sticks swinging from a tree towards the trap wire.
 
-see [init_columbia_zeus.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/init_columbia_zeus.sqf)
+see [init_colsog_zeus.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/init_colsog_zeus.sqf)
 
 ## CBA Settings
 In the Addons configuration menu, you will have the ability to update the following values on the fly:
@@ -292,12 +292,12 @@ At player initilization or at player respawn, one random asian face is selected 
 To disable this feature, you can comment or remove the below line from [initPlayerlocal.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/initPlayerlocal.sqf) and [onPlayerRespawn.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/onPlayerRespawn.sqf):
 
 ```
-call COLUMBIA_fnc_faces;
+call COLSOG_fnc_faces;
 ```
 
 You can also directly execute the below command on the server to directly reset all players faces to a random asian face:
 ```
-call COLUMBIA_fnc_faces;
+call COLSOG_fnc_faces;
 ```
 
 </details>
@@ -337,13 +337,13 @@ will be the direction the mace will swinging.
 2. In the Whip Trap object's init field, put the following code:
 
 ```
-[[this, 'WEST'], "functions\TRAPS\swinging\columbia_fnc_create_swinging_mace_trap.sqf"] remoteExec ["execVM", 0, true];
+[[this, 'WEST'], "functions\TRAPS\swinging\colsog_fn_createSwingingMaceTrap.sqf"] remoteExec ["execVM", 0, true];
 ```
 
 or 
 
 ```
-[[this, _trapHeight, _treeType], "functions\TRAPS\falling\columbia_fnc_create_falling_mace_trap.sqf"] remoteExec ["execVM", 0, true];
+[[this, _trapHeight, _treeType], "functions\TRAPS\falling\colsog_fn_createFallingMaceTrap.sqf"] remoteExec ["execVM", 0, true];
 ```
 
 - _trapHeight: <i>Integer</i> (default 0, will allow the height to be automatically managed depending on _treeType)
@@ -380,7 +380,7 @@ We are using Babel to provide the following behaviour during our MACVSOG mission
 Here are the steps to follow if you want to add 3 news acre radio racks to a vehicle:
 - Place a vehicle in the editor or during a mission
 - During the mission a player/zeus must enter the plane once in order to initialize ACRE radios in the plane
-- Use the zeus module implemented in [columbia_zeus_initpf77rack.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/columbia_zeus_initpf77rack.sqf) and click on the vehicle
+- Use the zeus module implemented in [colsog_zeus_initPf77Rack.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/colsog_zeus_initPf77Rack.sqf) and click on the vehicle
 - The vehicle will now have 3 more racks of PRC77 radios:
   - A2A
   - A2G
@@ -433,7 +433,7 @@ We removed the below items for OPFOR AIs:
 "vn_molotov_grenade_mag"]
 ```
 
-see [init_columbia_removeThrowables.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/init_columbia_removeThrowables.sqf)
+see [init_colsog_removeThrowables.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/init_colsog_removeThrowables.sqf)
 
 </details>
 
@@ -460,7 +460,7 @@ At the death of a unit (AI/Player):
   1x "ACE_morphine"
   ```
 
-see [columbia_fn_FirstAidconvertACE.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/columbia_fn_FirstAidconvertACE.sqf)
+see [colsog_fn_firstAidConvertAce.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/colsog_fn_firstAidConvertAce.sqf)
 
 </details>
 
@@ -470,10 +470,10 @@ see [columbia_fn_FirstAidconvertACE.sqf](https://github.com/gerard-sog/arma3-mac
 To add an action to display kill counter for each player on the server, add the below line in the 'init' section of an object:
 
 ```
-this addAction ["Display total kills", "functions\kill_counter.sqf"]
+this addAction ["Display total kills", "functions\colsog_fn_killCounter.sqf"]
 ```
 
-this will give you a scroll wheel action to diplay the kill counter when looking at the object. see [kill_counter.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/kill_counter.sqf)
+this will give you a scroll wheel action to diplay the kill counter when looking at the object. see [colsog_fn_killCounter.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/colsog_fn_killCounter.sqf)
 
 </details>
 
@@ -490,7 +490,7 @@ this setVariable ["COLSOG_staboRopeDeployed", false, true];
 this addAction 
 [ 
     "<t color='#FF0000'>Drop the STABO rig</t>", 
-    "functions\STABO\dropSTABO.sqf", 
+    "functions\STABO\colsog_fn_dropStabo.sqf", 
     nil, 
     0, 
     true, 
@@ -505,7 +505,7 @@ this addAction
 this addAction 
 [ 
     "<t color='#FF0000'>Detach ropes</t>", 
-    "functions\STABO\detatchRopes.sqf", 
+    "functions\STABO\colsog_fn_detatchRopes.sqf", 
     nil, 
     0, 
     true, 
@@ -538,7 +538,7 @@ this setVariable ["COLSOG_HasCrew", false, true];
 this addAction 
 [ 
     "<t color='#FFFF00'>Request crew</t>", 
-    "functions\DOOR_GUNNER\columbia_fnc_add_crew.sqf", 
+    "functions\DOOR_GUNNER\colsog_fnc_addCrew.sqf", 
     nil, 
     0, 
     true, 
@@ -553,7 +553,7 @@ this addAction
 this addAction 
 [ 
     "<t color='#FFFF00'>Remove crew</t>", 
-    "functions\DOOR_GUNNER\columbia_fnc_delete_crew.sqf", 
+    "functions\DOOR_GUNNER\colsog_fn_deleteCrew.sqf", 
     nil, 
     0, 
     true, 

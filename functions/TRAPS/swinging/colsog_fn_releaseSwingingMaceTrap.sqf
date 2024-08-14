@@ -20,7 +20,7 @@ _mace setDir _directionTo;
 // *******************************************************
 // stabilizes mace swing and plays creaking noise
 // *******************************************************
-[[_mace, _ropeTopObject], "functions\TRAPS\swinging\columbia_fnc_control_mace_swing.sqf"] remoteExec ["execVM", 0, true];
+[[_mace, _ropeTopObject], "functions\TRAPS\swinging\colsog_fn_controlMaceSwing.sqf"] remoteExec ["execVM", 0, true];
 
 // *******************************************************
 // Units react to springing of trap
@@ -37,7 +37,7 @@ playSound3D [_sound, _mace, false, getPosASL _mace, 3.5];
 // *******************************************************
 // Deal with victims of mace
 // *******************************************************
-[[_unit, _mace, _trapDirection, _trapPosition], "functions\TRAPS\columbia_fnc_mace_victims.sqf"] remoteExec ["execVM", 0, true];
+[[_unit, _mace, _trapDirection, _trapPosition], "functions\TRAPS\colsog_fn_maceVictims.sqf"] remoteExec ["execVM", 0, true];
 uiSleep 4;
 
 // *******************************************************
@@ -45,4 +45,4 @@ uiSleep 4;
 // *******************************************************
 private _future = time + 10;
 waitUntil {!alive _unit or _trapPosition distance _unit > 3 or !(vehicle _unit == _unit) or time > _future};
-[[_mace], "functions\TRAPS\swinging\columbia_fnc_end_mace_swinging.sqf"] remoteExec ["execVM", 0, true];
+[[_mace], "functions\TRAPS\swinging\colsog_fn_endMaceSwinging.sqf"] remoteExec ["execVM", 0, true];

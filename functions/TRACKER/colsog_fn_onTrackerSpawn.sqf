@@ -8,8 +8,8 @@
         _interval     - How often to check for new groups [NUMBER, defaults to 3]
 */
 
-columbia_fnc_onTrackerSpawn = {
-    if (!canSuspend) exitWith {_this spawn columbia_fnc_onTrackerSpawn};
+colsog_fn_onTrackerSpawn = {
+    if (!canSuspend) exitWith {_this spawn colsog_fn_onTrackerSpawn};
     params [
         ["_module", objNull, [objNull]],
         ["_fnc_callback", {}, [{}]],

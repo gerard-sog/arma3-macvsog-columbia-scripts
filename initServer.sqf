@@ -29,11 +29,11 @@ publicVariable "COLSOG_TrackersDefault";
 COLSOG_lastTriangulationTimeSeconds = -colsog_triangulation_coolDown;
 publicVariable "COLSOG_lastTriangulationTimeSeconds";
 
-_handle = [] execVM "functions\TRACKER\columbia_fnc_onTrackerSpawn.sqf";
-_handle = [] execVM "functions\TRACKER\columbia_fnc_TrackerGroup.sqf";
+_handle = [] execVM "functions\TRACKER\colsog_fn_onTrackerSpawn.sqf";
+_handle = [] execVM "functions\TRACKER\colsog_fn_trackerGroup.sqf";
 
 waitUntil{ scriptDone _handle };
 
 // Tell the monitoring function the Module to monitor, the Function to call when new units are spawned by the module
 private _trackerModuleToMonitor = missionNamespace getVariable colsog_tracker_moduleName;
-[_trackerModuleToMonitor, columbia_fnc_customizeTrackerGroup] call columbia_fnc_onTrackerSpawn;
+[_trackerModuleToMonitor, colsog_fn_customizeTrackerGroup] call colsog_fn_onTrackerSpawn;

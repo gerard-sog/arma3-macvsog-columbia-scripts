@@ -21,7 +21,7 @@ private _onConfirm = {
     if (isNull _location) exitWith {
         private _wireTrap = "vn_modulemine_punji_03" createVehicle _pos;
         _wireTrap setDir _trapDirection;
-        [[_wireTrap], "functions\TRAPS\swinging\columbia_fnc_create_swinging_mace_trap.sqf"] remoteExec ["execVM", 0, true];
+        [[_wireTrap], "functions\TRAPS\swinging\colsog_fn_createSwingingMaceTrap.sqf"] remoteExec ["execVM", 0, true];
     };
 };
 

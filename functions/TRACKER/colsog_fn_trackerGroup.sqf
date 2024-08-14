@@ -1,10 +1,10 @@
 /*
-    This script shows example usage of columbia_fnc_onTrackerSpawn to customize the loadouts of spawned groups.
-    columbia_fnc_customizeTrackerGroup - function that randomly assigns loadouts to the group units depending on type of the tracker group
+    This script shows example usage of colsog_fn_onTrackerSpawn to customize the loadouts of spawned groups.
+    colsog_fn_customizeTrackerGroup - function that randomly assigns loadouts to the group units depending on type of the tracker group
 */
 
 
-columbia_fnc_customizeTrackerGroup = {
+colsog_fn_customizeTrackerGroup = {
     params [["_group", grpNull, [grpNull]]];
 
     if (isNull _group) exitWith {

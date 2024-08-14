@@ -34,7 +34,7 @@ COLSOG_fnc_addStaboToHelicopter = {
 	_helicopterObject addAction
       [
           "<t color='#FF0000'>Drop the STABO rig</t>",
-          "functions\STABO\dropSTABO.sqf",
+          "functions\STABO\colsog_fn_dropStabo.sqf",
           nil,
           0,
           true,
@@ -49,7 +49,7 @@ COLSOG_fnc_addStaboToHelicopter = {
       _helicopterObject addAction
       [
           "<t color='#FF0000'>Detach ropes</t>",
-          "functions\STABO\detatchRopes.sqf",
+          "functions\STABO\colsog_fn_detatchRopes.sqf",
           nil,
           0,
           true,
