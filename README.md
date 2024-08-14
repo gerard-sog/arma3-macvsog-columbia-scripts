@@ -538,7 +538,7 @@ this setVariable ["COLSOG_HasCrew", false, true];
 this addAction 
 [ 
     "<t color='#FFFF00'>Request crew</t>", 
-    "functions\crew\colsog_fnc_addCrew.sqf", 
+    "functions\crew\colsog_fn_addCrew.sqf", 
     nil, 
     0, 
     true, 
