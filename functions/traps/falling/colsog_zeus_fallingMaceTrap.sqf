@@ -22,7 +22,7 @@ private _onConfirm = {
     if (isNull _location) exitWith {
         private _wireTrap = "vn_modulemine_punji_03" createVehicle _pos;
         _wireTrap setDir _trapDirection;
-        [[_wireTrap, _trapHeight, _treeType], "functions\TRAPS\falling\colsog_fn_createFallingMaceTrap.sqf"] remoteExec ["execVM", 0, true];
+        [[_wireTrap, _trapHeight, _treeType], "functions\traps\falling\colsog_fn_createFallingMaceTrap.sqf"] remoteExec ["execVM", 0, true];
     };
 };
 

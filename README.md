@@ -337,13 +337,13 @@ will be the direction the mace will swinging.
 2. In the Whip Trap object's init field, put the following code:
 
 ```
-[[this, 'WEST'], "functions\TRAPS\swinging\colsog_fn_createSwingingMaceTrap.sqf"] remoteExec ["execVM", 0, true];
+[[this, 'WEST'], "functions\traps\swinging\colsog_fn_createSwingingMaceTrap.sqf"] remoteExec ["execVM", 0, true];
 ```
 
 or 
 
 ```
-[[this, _trapHeight, _treeType], "functions\TRAPS\falling\colsog_fn_createFallingMaceTrap.sqf"] remoteExec ["execVM", 0, true];
+[[this, _trapHeight, _treeType], "functions\traps\falling\colsog_fn_createFallingMaceTrap.sqf"] remoteExec ["execVM", 0, true];
 ```
 
 - _trapHeight: <i>Integer</i> (default 0, will allow the height to be automatically managed depending on _treeType)
@@ -490,7 +490,7 @@ this setVariable ["COLSOG_staboRopeDeployed", false, true];
 this addAction 
 [ 
     "<t color='#FF0000'>Drop the STABO rig</t>", 
-    "functions\STABO\colsog_fn_dropStabo.sqf", 
+    "functions\stabo\colsog_fn_dropStabo.sqf", 
     nil, 
     0, 
     true, 
@@ -505,7 +505,7 @@ this addAction
 this addAction 
 [ 
     "<t color='#FF0000'>Detach ropes</t>", 
-    "functions\STABO\colsog_fn_detatchRopes.sqf", 
+    "functions\stabo\colsog_fn_detatchRopes.sqf", 
     nil, 
     0, 
     true, 
@@ -538,7 +538,7 @@ this setVariable ["COLSOG_HasCrew", false, true];
 this addAction 
 [ 
     "<t color='#FFFF00'>Request crew</t>", 
-    "functions\DOOR_GUNNER\colsog_fnc_addCrew.sqf", 
+    "functions\crew\colsog_fnc_addCrew.sqf", 
     nil, 
     0, 
     true, 
@@ -553,7 +553,7 @@ this addAction
 this addAction 
 [ 
     "<t color='#FFFF00'>Remove crew</t>", 
-    "functions\DOOR_GUNNER\colsog_fn_deleteCrew.sqf", 
+    "functions\crew\colsog_fn_deleteCrew.sqf", 
     nil, 
     0, 
     true, 

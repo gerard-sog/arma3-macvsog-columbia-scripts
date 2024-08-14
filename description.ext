@@ -61,4 +61,4 @@ class Extended_PostInit_EventHandlers
     };
 };
 
-#include "functions\ARTILLERY\artillery.hpp"
+#include "functions\artillery\artillery.hpp"

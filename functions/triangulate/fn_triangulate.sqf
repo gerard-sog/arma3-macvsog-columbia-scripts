@@ -5,7 +5,7 @@ _triangulate = [
 	"Triangulate signal",
 	"\a3\Modules_F_Curator\Data\iconRadio_ca.paa",
 	{
-		execVM "functions\TRIANGULATE\colsog_fn_triangulate_signal.sqf";
+		execVM "functions\triangulate\colsog_fn_triangulate_signal.sqf";
 	},
 	{
 	    _fnc_startsWith =

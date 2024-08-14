@@ -28,7 +28,7 @@ uiSleep (1.5 + _additionalTimeBeforeMaceHitsGround);
 private _sound = "a3\sounds_f\characters\movements\bush_004.wss";
 playSound3D [_sound, _mace, false, getPosASL _mace, 3.5];
 
-[[_unit, _mace, _trapDirection, _trapPosition], "functions\TRAPS\colsog_fn_maceVictims.sqf"] remoteExec ["execVM", 0, true];
+[[_unit, _mace, _trapDirection, _trapPosition], "functions\traps\colsog_fn_maceVictims.sqf"] remoteExec ["execVM", 0, true];
 uiSleep 4;
 
 // *******************************************************

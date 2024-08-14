@@ -78,10 +78,10 @@ if (_selectedTreeType != "None") then {
 // *******************************************************
 // Attach 4 whip trap objects to mace so it has spikes
 // *******************************************************
-[[_mace, [0.55,0,0.03],	[0.999972,-1.70678e-006,-0.0075168],	1.55], "functions\TRAPS\colsog_fn_attachSprungWhipTrap.sqf"] remoteExec ["execVM", 0, true];
-[[_mace, [-0.5,0.14,0],	[-0.998451,-2.64464e-006,-0.0556383],	1.60], "functions\TRAPS\colsog_fn_attachSprungWhipTrap.sqf"] remoteExec ["execVM", 0, true];
-[[_mace, [0.07,-.55,0.2],	[0.0363626,-0.998937,0.263383],		1.55], "functions\TRAPS\colsog_fn_attachSprungWhipTrap.sqf"] remoteExec ["execVM", 0, true];
-[[_mace, [0.07,.55,0.0],	[0.0363626,0.998112,-0.3495081],	1.55], "functions\TRAPS\colsog_fn_attachSprungWhipTrap.sqf"] remoteExec ["execVM", 0, true];
+[[_mace, [0.55,0,0.03],	[0.999972,-1.70678e-006,-0.0075168],	1.55], "functions\traps\colsog_fn_attachSprungWhipTrap.sqf"] remoteExec ["execVM", 0, true];
+[[_mace, [-0.5,0.14,0],	[-0.998451,-2.64464e-006,-0.0556383],	1.60], "functions\traps\colsog_fn_attachSprungWhipTrap.sqf"] remoteExec ["execVM", 0, true];
+[[_mace, [0.07,-.55,0.2],	[0.0363626,-0.998937,0.263383],		1.55], "functions\traps\colsog_fn_attachSprungWhipTrap.sqf"] remoteExec ["execVM", 0, true];
+[[_mace, [0.07,.55,0.0],	[0.0363626,0.998112,-0.3495081],	1.55], "functions\traps\colsog_fn_attachSprungWhipTrap.sqf"] remoteExec ["execVM", 0, true];
 
 // *******************************************************
 // Create invisible trigger for the trap
@@ -101,4 +101,4 @@ _trigger setPos getPos _wireTrap;
 // *******************************************************
 uiSleep 2.0; // REQUIRED else _trigger might be undefined in waitUntil (bug: https://community.bistudio.com/wiki/waitUntil).
 waitUntil {triggerActivated _trigger};
-[[_wireTrap, _mace, _maceSphere, _selectedTreeHeight], "functions\TRAPS\falling\colsog_fn_releaseFallingMaceTrap.sqf"] remoteExec ["execVM", 0, true];
+[[_wireTrap, _mace, _maceSphere, _selectedTreeHeight], "functions\traps\falling\colsog_fn_releaseFallingMaceTrap.sqf"] remoteExec ["execVM", 0, true];

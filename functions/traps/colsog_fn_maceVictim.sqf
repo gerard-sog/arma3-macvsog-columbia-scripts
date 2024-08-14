@@ -17,7 +17,7 @@ if ((_unit distance _mace) < colsog_traps_maceKillRadius) then
 
 	_unit setPos getPos _unit;
 	_mace setDir (_trapDirection);
-	[[_mace, _unit], "functions\TRAPS\colsog_fn_impaleOnMace.sqf"] remoteExec ["execVM", 0, true];
+	[[_mace, _unit], "functions\traps\colsog_fn_impaleOnMace.sqf"] remoteExec ["execVM", 0, true];
 	_unit setDir _directionTo;
 	_unit setVectorUp [0.0363626, 0.998112, 0.9995081];
 	_mace setDir _trapDirection;

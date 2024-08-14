@@ -34,7 +34,7 @@ COLSOG_fnc_addCrewManagementToHelicopter = {
 	_helicopterObject addAction
       [
           "<t color='#FFFF00'>Request crew</t>",
-          "functions\DOOR_GUNNER\colsog_fn_addCrew.sqf",
+          "functions\crew\colsog_fn_addCrew.sqf",
           nil,
           0,
           true,
@@ -49,7 +49,7 @@ COLSOG_fnc_addCrewManagementToHelicopter = {
       _helicopterObject addAction
       [
           "<t color='#FFFF00'>Remove crew</t>",
-          "functions\DOOR_GUNNER\colsog_fn_deleteCrew.sqf",
+          "functions\crew\colsog_fn_deleteCrew.sqf",
           nil,
           0,
           true,

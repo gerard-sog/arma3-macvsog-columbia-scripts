@@ -29,8 +29,8 @@ publicVariable "COLSOG_TrackersDefault";
 COLSOG_lastTriangulationTimeSeconds = -colsog_triangulation_coolDown;
 publicVariable "COLSOG_lastTriangulationTimeSeconds";
 
-_handle = [] execVM "functions\TRACKER\colsog_fn_onTrackerSpawn.sqf";
-_handle = [] execVM "functions\TRACKER\colsog_fn_trackerGroup.sqf";
+_handle = [] execVM "functions\tracker\colsog_fn_onTrackerSpawn.sqf";
+_handle = [] execVM "functions\tracker\colsog_fn_trackerGroup.sqf";
 
 waitUntil{ scriptDone _handle };
 
