@@ -3,48 +3,47 @@ params [["_pos", [0,0,0] , [[]], 3], ["_unit", objNull, [objNull]]];
 
 private _onConfirm = {
 	params ["_dialogResult"];
-	_dialogResult params ["_trackerstatus", "_behaviour", "_combat", "_speed", "_update"];
+	_dialogResult params ["_trackerStatus", "_behaviour", "_combat", "_speed", "_update"];
 
-    TRACKERS_ENABLED = _trackerstatus;
-    publicVariable "TRACKERS_ENABLED";
+    COLSOG_TrackersEnabled = _trackerStatus;
+    publicVariable "COLSOG_TrackersEnabled";
 
-    TRACKERS_DEFAULT = [_behaviour, _combat, _speed];
-    publicVariable "TRACKERS_DEFAULT";
+    COLSOG_TrackersDefault = [_behaviour, _combat, _speed];
+    publicVariable "COLSOG_TrackersDefault";
 
 	if !(_update) exitWith {};
 
-	private _grouptoupdate = [];
+	private _groupToUpdate = [];
 
 	{
-
-		private _grouptoadd = _x getVariable "ColumbiaTrackedGroup";
-		if !(isNil "_grouptoadd") then {
-			_grouptoupdate pushBack _x;
+		private _groupToAdd = _x getVariable "COLSOG_trackedGroup";
+		if !(isNil "_groupToAdd") then {
+			_groupToUpdate pushBack _x;
 		};
 
 	} forEach allGroups;
 
 	// spawn group update
 	[ 
-		[_grouptoupdate], { 
-			params ["_grouptoupdate"];
+		[_groupToUpdate], {
+			params ["_groupToUpdate"];
 			{
-				_x setBehaviour (TRACKERS_DEFAULT select 0);
-				_x setCombatMode (TRACKERS_DEFAULT select 1);
-				_x setSpeedMode (TRACKERS_DEFAULT select 2);
-			} forEach _grouptoupdate;
+				_x setBehaviour (COLSOG_TrackersDefault select 0);
+				_x setCombatMode (COLSOG_TrackersDefault select 1);
+				_x setSpeedMode (COLSOG_TrackersDefault select 2);
+			} forEach _groupToUpdate;
 		}
 	] remoteExecCall ["spawn", 2, false];
 
 };
 
-private _currenttrackerstatus = TRACKERS_ENABLED;
+private _currentTrackerStatus = COLSOG_TrackersEnabled;
 
 private _defaultBehaviour = 0;
 private _defaultCombat = 0;
 private _defaultSpeed = 0;
 
-switch (TRACKERS_DEFAULT select 0) do
+switch (COLSOG_TrackersDefault select 0) do
 {
 	case "CARELESS": {_defaultBehaviour = 0;};
 	case "SAFE": {_defaultBehaviour = 1;};
@@ -52,7 +51,7 @@ switch (TRACKERS_DEFAULT select 0) do
 	case "COMBAT": {_defaultBehaviour = 3;};
 };
 
-switch (TRACKERS_DEFAULT select 1) do
+switch (COLSOG_TrackersDefault select 1) do
 {
 	case "BLUE": {_defaultCombat = 0;};
 	case "GREEN": {_defaultCombat = 1;};
@@ -61,7 +60,7 @@ switch (TRACKERS_DEFAULT select 1) do
   case "RED": {_defaultCombat = 4;};
 };
 
-switch (TRACKERS_DEFAULT select 2) do
+switch (COLSOG_TrackersDefault select 2) do
 {
 	case "LIMITED": {_defaultSpeed = 0;};
 	case "NORMAL": {_defaultSpeed = 1;};
@@ -71,7 +70,7 @@ switch (TRACKERS_DEFAULT select 2) do
 // Module dialog
 [
 	"Toggle Trackers", [
-		["TOOLBOX:YESNO", "Tracker in area", [_currenttrackerstatus], true],
+		["TOOLBOX:YESNO", "Tracker in area", [_currentTrackerStatus], true],
 		["COMBO", "Behaviour", [["CARELESS", "SAFE", "AWARE", "COMBAT"], [["Careless"], ["Safe"], ["Aware"], ["Combat"]], _defaultBehaviour]],
 		["COMBO", "Combat", [["BLUE", "GREEN", "WHITE", "YELLOW", "RED"], [["Never fire"], ["Hold fire"], ["Hold fire, engage at will"], ["Fire at will"], "Fire at will, loose formation"], _defaultCombat]],
 		["COMBO", "Speed", [["LIMITED", "NORMAL", "FULL"], [["Limited"], ["Normal"], ["Full"]], _defaultSpeed]],

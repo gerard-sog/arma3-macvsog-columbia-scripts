@@ -15,16 +15,16 @@ publicVariable "COLSOG_ArcLightSupportEnabled";
 COLSOG_DaisyCutterSupportEnabled = Columbia_CBA_support_module_daisy_cutter_enable; // Toggle ON/OFF Daisy Cutter availability (see support module from Prairie Fire).
 publicVariable "COLSOG_DaisyCutterSupportEnabled";
 
-TRACKERS_ENABLED = Columbia_CBA_tracker_module_enable; // Toggle ON/OFF Tracker in AO (will only affect tracker module from Prairie Fire with the following variable used as condition 'TRACKERS_ENABLED').
-publicVariable "TRACKERS_ENABLED";
+COLSOG_TrackersEnabled = Columbia_CBA_tracker_module_enable; // Toggle ON/OFF Tracker in AO (will only affect tracker module from Prairie Fire with the following variable used as condition 'COLSOG_TrackersEnabled').
+publicVariable "COLSOG_TrackersEnabled";
 
 // Default behaviour values for tracker groups
-TRACKERS_DEFAULT = [
+COLSOG_TrackersDefault = [
     Columbia_CBA_tracker_module_default_behaviour,
     Columbia_CBA_tracker_module_default_combat,
     Columbia_CBA_tracker_module_default_speed
     ];
-publicVariable "TRACKERS_DEFAULT";
+publicVariable "COLSOG_TrackersDefault";
 
 LAST_TRIANGULATION_TIME_SECONDS = -Columbia_CBA_triangulation_cool_down;
 publicVariable "LAST_TRIANGULATION_TIME_SECONDS";
