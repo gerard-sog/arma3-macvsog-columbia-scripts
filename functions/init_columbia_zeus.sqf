@@ -12,6 +12,7 @@ if !(_hasZen) exitWith { systemChat "ZEN not detected";};
 
 // Related to action on vehicle/object
 ["A - Columbia Vehicle", "Add STABO", {_this execVM "functions\STABO\columbia_zeus_addstabo.sqf";}, "\z\ace\addons\fastroping\UI\Icon_Waypoint.paa"] call zen_custom_modules_fnc_register;
+["A - Columbia Vehicle", "Add Crew management", {_this execVM "functions\DOOR_GUNNER\columbia_zeus_addcrewmanagement.sqf";}, "\a3\Modules_F_Curator\Data\portraitObjectiveGetIn_ca.paa"] call zen_custom_modules_fnc_register;
 ["A - Columbia Vehicle", "Conceal AA", {_this execVM "functions\columbia_zeus_concealaa.sqf";}, "x\zen\addons\context_actions\ui\stealth_ca.paa"] call zen_custom_modules_fnc_register;
 
 // Radio Tools
