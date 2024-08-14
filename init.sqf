@@ -3,8 +3,8 @@
 // Executes at mission start
 // No parameters are passed to this script
 
-// init COLUMBIA Zeus Custom Modules
-execVM "functions\init_columbia_zeus.sqf";
+// init COLSOG Zeus Custom Modules
+execVM "functions\init_colsog_zeus.sqf";
 
 // ACRE BABEL config
 f_available_languages = [
@@ -52,7 +52,7 @@ f_available_languages = [
 }, true] call CBA_fnc_addPlayerEventHandler;
 
 // init removeThrowables on Opfor units
-execVM "functions\init_columbia_removeThrowables.sqf";
+execVM "functions\init_colsog_removeThrowables.sqf";
 
 // init convertMedicKit on killed units
-execVM "functions\columbia_fn_FirstAidconvertACE.sqf";
+execVM "functions\colsog_fn_firstAidConvertAce.sqf";

@@ -33,12 +33,12 @@ disabledAI = 1;  // Removes playable units that are not controlled by a player
 
 class Extended_PreInit_EventHandlers
 {
-	class COLUMBIA {init = "call compile preprocessFileLineNumbers 'functions\CBASettings.sqf'";};
+	class COLSOG {init = "call compile preprocessFileLineNumbers 'functions\CBASettings.sqf'";};
 };
 
 class CfgFunctions
 {
-    class COLUMBIA {
+    class COLSOG {
         class Faces
         {
             file ="functions";
@@ -61,4 +61,4 @@ class Extended_PostInit_EventHandlers
     };
 };
 
-#include "functions\ARTILLERY\artillery.hpp"
+#include "functions\artillery\artillery.hpp"

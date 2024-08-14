@@ -8,7 +8,7 @@ removeAllAssignedItems player;
 clearAllItemsFromBackpack player;
 removeBackpack player;
 player setUnitLoadout(player getVariable["saved_loadout", []]);
-call COLUMBIA_fnc_faces;
+call COLSOG_fnc_faces;
 
 // Set language to expected one and not default player one (required).
 [] spawn {

@@ -46,28 +46,28 @@ Installation of all the scripts/zeus modules is done by **copying the below file
 - Default whitelist <b>arsenal</b>: [defaultWhitelistArsenal.txt](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/defaultWhitelistArsenal.txt)
 
 ## Zeus modules
-- A - Columbia AI
+- A - COLSOG AI
   - **Set AI Skills**: define sub-skills of AI.
   - **Toggle Trackers**: manage Tracker module (behaviour, speed, presence).
   - **Un-Garrison (enable PATH)**: make a unit/group move out of building.
-- A - Columbia Env
+- A - COLSOG Env
   - **Fog Low**
   - **Fog Ring**
   - **Transition Time**: transition with optional text to whenever in time.
   - **Vanilla Fog**: manage fog.
-- A - Columbia Radio
+- A - COLSOG Radio
   - **Init PF77s**: add 3 new racks to vehicle (requires player to get in/exit vehicle before executing module on vehicle).
   - **NVA radio chatter**: enables to make tape-recorder object produce vietnamese radio like voice (used to simulate wire taping).
   - **Toggle CAS**: manage CAS asset available in the Radio Support module.
-- A - Columbia Vehicle
+- A - COLSOG Vehicle
   - **Add STABO**: add the ability to deploy a rope from a helicopter to allow player on the ground to get into the helicopter.
   - **Add Crew management**: add the ability for the pilot of a helicopter to request AI crew members (door gunners).
   - **Conceal AA**: conceal static gun with a shelter.
-- A - Columbia Punji Traps
+- A - COLSOG Punji Traps
   - **Fall Trap**: create mace with punji sticks falling from a tree above trap wire.
   - **Swing Trap**: create mace with punji sticks swinging from a tree towards the trap wire.
 
-see [init_columbia_zeus.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/init_columbia_zeus.sqf)
+see [init_colsog_zeus.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/init_colsog_zeus.sqf)
 
 ## CBA Settings
 In the Addons configuration menu, you will have the ability to update the following values on the fly:
@@ -292,12 +292,12 @@ At player initilization or at player respawn, one random asian face is selected 
 To disable this feature, you can comment or remove the below line from [initPlayerlocal.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/initPlayerlocal.sqf) and [onPlayerRespawn.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/onPlayerRespawn.sqf):
 
 ```
-call COLUMBIA_fnc_faces;
+call COLSOG_fnc_faces;
 ```
 
 You can also directly execute the below command on the server to directly reset all players faces to a random asian face:
 ```
-call COLUMBIA_fnc_faces;
+call COLSOG_fnc_faces;
 ```
 
 </details>
@@ -337,17 +337,17 @@ will be the direction the mace will swinging.
 2. In the Whip Trap object's init field, put the following code:
 
 ```
-[[this, 'WEST'], "functions\TRAPS\swinging\columbia_fnc_create_swinging_mace_trap.sqf"] remoteExec ["execVM", 0, true];
+[[this, 'WEST'], "functions\traps\swinging\colsog_fn_createSwingingMaceTrap.sqf"] remoteExec ["execVM", 0, true];
 ```
 
 or 
 
 ```
-[[this, _trap_height, _tree_type], "functions\TRAPS\falling\columbia_fnc_create_falling_mace_trap.sqf"] remoteExec ["execVM", 0, true];
+[[this, _trapHeight, _treeType], "functions\traps\falling\colsog_fn_createFallingMaceTrap.sqf"] remoteExec ["execVM", 0, true];
 ```
 
-- _trap_height: <i>Integer</i> (default 0, will allow the height to be automatically managed depending on _tree_type)
-- _tree_type: <i>Integer</i> 
+- _trapHeight: <i>Integer</i> (default 0, will allow the height to be automatically managed depending on _treeType)
+- _treeType: <i>Integer</i> 
   - 0: no tree.
   - 1: "\vn\vn_vegetation_f_exp\tree\vn_t_ficus_big_f.p3d"
   - 2: "\vn\vn_vegetation_f_exp\tree\vn_t_inocarpus_f.p3d"
@@ -380,7 +380,7 @@ We are using Babel to provide the following behaviour during our MACVSOG mission
 Here are the steps to follow if you want to add 3 news acre radio racks to a vehicle:
 - Place a vehicle in the editor or during a mission
 - During the mission a player/zeus must enter the plane once in order to initialize ACRE radios in the plane
-- Use the zeus module implemented in [columbia_zeus_initpf77rack.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/columbia_zeus_initpf77rack.sqf) and click on the vehicle
+- Use the zeus module implemented in [colsog_zeus_initPf77Rack.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/colsog_zeus_initPf77Rack.sqf) and click on the vehicle
 - The vehicle will now have 3 more racks of PRC77 radios:
   - A2A
   - A2G
@@ -408,6 +408,12 @@ We created a custom Zeus module to manage the AI trackers spawned by the tracker
   TrackermoduleNAME
   ```
 
+and the below code in its 'init' section.
+
+  ```
+  COLSOG_TrackersEnabled
+  ```
+
 By default:
 - tracker module is disabled
 - tracker behaviour is set as "CARELESS", "BLUE", "LIMITED".
@@ -433,7 +439,7 @@ We removed the below items for OPFOR AIs:
 "vn_molotov_grenade_mag"]
 ```
 
-see [init_columbia_removeThrowables.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/init_columbia_removeThrowables.sqf)
+see [init_colsog_removeThrowables.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/init_colsog_removeThrowables.sqf)
 
 </details>
 
@@ -460,7 +466,7 @@ At the death of a unit (AI/Player):
   1x "ACE_morphine"
   ```
 
-see [columbia_fn_FirstAidconvertACE.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/columbia_fn_FirstAidconvertACE.sqf)
+see [colsog_fn_firstAidConvertAce.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/colsog_fn_firstAidConvertAce.sqf)
 
 </details>
 
@@ -470,10 +476,10 @@ see [columbia_fn_FirstAidconvertACE.sqf](https://github.com/gerard-sog/arma3-mac
 To add an action to display kill counter for each player on the server, add the below line in the 'init' section of an object:
 
 ```
-this addAction ["Display total kills", "functions\kill_counter.sqf"]
+this addAction ["Display total kills", "functions\colsog_fn_killCounter.sqf"]
 ```
 
-this will give you a scroll wheel action to diplay the kill counter when looking at the object. see [kill_counter.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/kill_counter.sqf)
+this will give you a scroll wheel action to diplay the kill counter when looking at the object. see [colsog_fn_killCounter.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/colsog_fn_killCounter.sqf)
 
 </details>
 
@@ -486,17 +492,17 @@ Adds the ability to **any player** in the vehicle to drop/detach the STABO rig.
 Place the below lines of code into the 'init' section of the vehicle.
 
 ```
-this setVariable ["COLSOG_stabo_rope_deployed", false, true]; 
+this setVariable ["COLSOG_staboRopeDeployed", false, true]; 
 this addAction 
 [ 
     "<t color='#FF0000'>Drop the STABO rig</t>", 
-    "functions\STABO\dropSTABO.sqf", 
+    "functions\stabo\colsog_fn_dropStabo.sqf", 
     nil, 
     0, 
     true, 
     true, 
     "", 
-    "(_this in _target) AND !(_target getVariable 'COLSOG_stabo_rope_deployed')", 
+    "(_this in _target) AND !(_target getVariable 'COLSOG_staboRopeDeployed')", 
     50, 
     false, 
     "", 
@@ -504,14 +510,14 @@ this addAction
 ]; 
 this addAction 
 [ 
-    "<t color='#FF0000'>Detatch ropes</t>", 
-    "functions\STABO\detatchRopes.sqf", 
+    "<t color='#FF0000'>Detach ropes</t>", 
+    "functions\stabo\colsog_fn_detatchRopes.sqf", 
     nil, 
     0, 
     true, 
     true, 
     "", 
-    "(_this in _target) AND (_target getVariable 'COLSOG_stabo_rope_deployed')", 
+    "(_this in _target) AND (_target getVariable 'COLSOG_staboRopeDeployed')", 
     50, 
     false, 
     "", 
@@ -534,17 +540,17 @@ Adds the ability to the **pilot** in the vehicle to request AI door gunners (cre
 Place the below lines of code into the 'init' section of the vehicle.
 
 ```
-this setVariable ["COLSOG_has_crew", false, true]; 
+this setVariable ["COLSOG_HasCrew", false, true]; 
 this addAction 
 [ 
     "<t color='#FFFF00'>Request crew</t>", 
-    "functions\DOOR_GUNNER\columbia_fnc_add_crew.sqf", 
+    "functions\crew\colsog_fn_addCrew.sqf", 
     nil, 
     0, 
     true, 
     true, 
     "", 
-    "(_this in _target) AND (driver _target isEqualTo _this) AND (isTouchingGround _target) AND !(isEngineOn _target) AND !(_target getVariable 'COLSOG_has_crew')", 
+    "(_this in _target) AND (driver _target isEqualTo _this) AND (isTouchingGround _target) AND !(isEngineOn _target) AND !(_target getVariable 'COLSOG_HasCrew')", 
     50, 
     false, 
     "", 
@@ -553,13 +559,13 @@ this addAction
 this addAction 
 [ 
     "<t color='#FFFF00'>Remove crew</t>", 
-    "functions\DOOR_GUNNER\columbia_fnc_delete_crew.sqf", 
+    "functions\crew\colsog_fn_deleteCrew.sqf", 
     nil, 
     0, 
     true, 
     true, 
     "", 
-    "(_this in _target) AND (driver _target isEqualTo _this) AND (isTouchingGround _target) AND !(isEngineOn _target) AND (_target getVariable 'COLSOG_has_crew')", 
+    "(_this in _target) AND (driver _target isEqualTo _this) AND (isTouchingGround _target) AND !(isEngineOn _target) AND (_target getVariable 'COLSOG_HasCrew')", 
     50, 
     false, 
     "", 
