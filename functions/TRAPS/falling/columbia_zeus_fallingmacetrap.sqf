@@ -1,6 +1,9 @@
 /*
- * Custom Zeus module
- * Create a Falling Mace Trap at location and with specific direction and height.
+ * Custom Zeus module: Create a Falling Mace Trap at location and with specific direction and height.
+ *
+ * Arguments:
+ * 0: logic position
+ * 1: attached object
  *
  * Return Value:
  * None
@@ -11,15 +14,15 @@ params [["_pos", [0, 0, 0] , [[]], 3], ["_location", objNull, [objNull]]];
 
 private _onConfirm = {
     params ["_dialogResult", "_input"];
-	_dialogResult params ["_trap_direction", "_trap_height", "_tree_type"];
+	_dialogResult params ["_trapDirection", "_trapHeight", "_treeType"];
 
 	_input params ["_location", "_pos"];
 
     // Clicked position needs to be empty and not an object.
     if (isNull _location) exitWith {
-        _wire_trap = "vn_modulemine_punji_03" createVehicle _pos;
-        _wire_trap setDir _trap_direction;
-        [[_wire_trap, _trap_height, _tree_type], "functions\TRAPS\falling\columbia_fnc_create_falling_mace_trap.sqf"] remoteExec ["execVM", 0, true];
+        private _wireTrap = "vn_modulemine_punji_03" createVehicle _pos;
+        _wireTrap setDir _trapDirection;
+        [[_wireTrap, _trapHeight, _treeType], "functions\TRAPS\falling\columbia_fnc_create_falling_mace_trap.sqf"] remoteExec ["execVM", 0, true];
     };
 };
 

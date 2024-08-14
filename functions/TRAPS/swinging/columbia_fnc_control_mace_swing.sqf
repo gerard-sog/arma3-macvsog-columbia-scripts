@@ -1,7 +1,7 @@
 // *******************************************************
 // UGV drone makes a small noise while moving, so lets mask it with cool creaking noise.
 // *******************************************************
-params ["_mace", "_rope_top_obj"];
+params ["_mace", "_ropeTopObject"];
 private _sound = selectRandom [
 	"a3\sounds_f\characters\movements\bush_004.wss",
 	"a3\sounds_f\environment\sfx\tree_creaking\creacking_1.wss",
@@ -19,8 +19,8 @@ private _sound = selectRandom [
 // When mace swings down and then up first time, set mass to 300.
 // This will force it to drag on ground once which stabilizes goofy bouncing.
 // *******************************************************
-waitUntil {_mace distance2D _rope_top_obj < 1};
-waitUntil {_mace distance2D _rope_top_obj > 2};
+waitUntil {_mace distance2D _ropeTopObject < 1};
+waitUntil {_mace distance2D _ropeTopObject > 2};
 _mace setMass 300;
 // *******************************************************
 // Loop below plays groovy creaking sound on each swing, and will detect

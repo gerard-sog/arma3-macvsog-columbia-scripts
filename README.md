@@ -343,11 +343,11 @@ will be the direction the mace will swinging.
 or 
 
 ```
-[[this, _trap_height, _tree_type], "functions\TRAPS\falling\columbia_fnc_create_falling_mace_trap.sqf"] remoteExec ["execVM", 0, true];
+[[this, _trapHeight, _treeType], "functions\TRAPS\falling\columbia_fnc_create_falling_mace_trap.sqf"] remoteExec ["execVM", 0, true];
 ```
 
-- _trap_height: <i>Integer</i> (default 0, will allow the height to be automatically managed depending on _tree_type)
-- _tree_type: <i>Integer</i> 
+- _trapHeight: <i>Integer</i> (default 0, will allow the height to be automatically managed depending on _treeType)
+- _treeType: <i>Integer</i> 
   - 0: no tree.
   - 1: "\vn\vn_vegetation_f_exp\tree\vn_t_ficus_big_f.p3d"
   - 2: "\vn\vn_vegetation_f_exp\tree\vn_t_inocarpus_f.p3d"

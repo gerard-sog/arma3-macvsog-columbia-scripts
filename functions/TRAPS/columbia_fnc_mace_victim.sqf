@@ -1,14 +1,14 @@
 // *******************************************************
 // Attach victim to mace and play various fx (sound, blood, etc.)
 // *******************************************************
-params ["_unit", "_mace", "_trap_dir", "_trap_pos"];
+params ["_unit", "_mace", "_trapDirection", "_trapPosition"];
 private _group = group _unit;
 if ((_unit distance _mace) < Columbia_CBA_traps_mace_kill_radius) then
 {
-	private _dir_to = ([_unit, _mace] call BIS_fnc_dirTo);
-	if ([position _unit, _dir_to, 180, position _mace] call BIS_fnc_inAngleSector) then
+	private _directionTo = ([_unit, _mace] call BIS_fnc_dirTo);
+	if ([position _unit, _directionTo, 180, position _mace] call BIS_fnc_inAngleSector) then
 	{
-		_dir_to = _dir_to + 180;
+		_directionTo = _directionTo + 180;
 	};
 	{_x enableCollisionWith _mace; _x setUnitPOS "MIDDLE";} forEach units _group;
 
@@ -16,11 +16,11 @@ if ((_unit distance _mace) < Columbia_CBA_traps_mace_kill_radius) then
 	_unit setDamage 1;
 
 	_unit setPos getPos _unit;
-	_mace setDir (_trap_dir);
+	_mace setDir (_trapDirection);
 	[[_mace, _unit], "functions\TRAPS\columbia_fnc_impale_on_mace.sqf"] remoteExec ["execVM", 0, true];
-	_unit setDir _dir_to;
+	_unit setDir _directionTo;
 	_unit setVectorUp [0.0363626, 0.998112, 0.9995081];
-	_mace setDir _trap_dir;
+	_mace setDir _trapDirection;
 	_mace setVelocityModelSpace [0, 5, 0]; // keep the dude swinging
 	uiSleep .5;
 
