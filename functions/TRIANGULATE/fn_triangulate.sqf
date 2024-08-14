@@ -1,7 +1,7 @@
 if !(hasInterface) exitWith {};
 
 _triangulate = [
-	"Columbia_triangulate",
+	"COLSOG_triangulate",
 	"Triangulate signal",
 	"\a3\Modules_F_Curator\Data\iconRadio_ca.paa",
 	{

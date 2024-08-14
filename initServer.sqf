@@ -26,8 +26,8 @@ COLSOG_TrackersDefault = [
     ];
 publicVariable "COLSOG_TrackersDefault";
 
-LAST_TRIANGULATION_TIME_SECONDS = -Columbia_CBA_triangulation_cool_down;
-publicVariable "LAST_TRIANGULATION_TIME_SECONDS";
+COLSOG_lastTriangulationTimeSeconds = -Columbia_CBA_triangulation_cool_down;
+publicVariable "COLSOG_lastTriangulationTimeSeconds";
 
 _handle = [] execVM "functions\TRACKER\columbia_fnc_onTrackerSpawn.sqf";
 _handle = [] execVM "functions\TRACKER\columbia_fnc_TrackerGroup.sqf";
