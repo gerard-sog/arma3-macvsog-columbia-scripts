@@ -1,10 +1,17 @@
 // 5 minutes timeout between each call.
 private _next_triangulation_time_seconds = LAST_TRIANGULATION_TIME_SECONDS + Columbia_CBA_triangulation_cool_down;
 private _current_time_seconds = serverTime;
+private _nearest_acre_spike = player distance nearestObject [player, "vhf30108spike"]; //Gets the distances to the nearest radio spike
+
 if (_current_time_seconds < _next_triangulation_time_seconds) exitWith
 {
     private _cool_down = abs (_current_time_seconds - _next_triangulation_time_seconds);
     hint format ["Cool down : %1 seconds", round _cool_down];
+};
+
+If (_nearest_acre_spike > 10) exitWith //If there isn't a radio spike within 10m, returns a hint to tell the user there is no spike nearby. Does not trigger the cooldown period.
+{
+    hint format ["No ground spike nearby"];
 };
 
 LAST_TRIANGULATION_TIME_SECONDS = _current_time_seconds;
