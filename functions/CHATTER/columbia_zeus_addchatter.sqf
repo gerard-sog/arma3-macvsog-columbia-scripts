@@ -1,6 +1,5 @@
 /*
- * Custom Zeus module
- * Add addaction "chatter" to object
+ * Custom Zeus module: Add "chatter" action on selected object.
  *
  * Arguments:
  * 0: logic position (not used)
@@ -11,28 +10,28 @@
  *
  */
 
-params [["_pos", [0,0,0] , [[]], 3], ["_chatterobj", objNull, [objNull]]];
+params [["_pos", [0,0,0] , [[]], 3], ["_chatterObject", objNull, [objNull]]];
 
 // if param is empty or Man unit, exit
-if (isNull _chatterobj || (_chatterobj isKindOf "CAManBase")) exitWith {
+if (isNull _chatterObject || (_chatterObject isKindOf "CAManBase")) exitWith {
 	["Need an object", -1, 1, 4, 0] spawn BIS_fnc_dynamicText;
 	playSound "FD_Start_F";
 };
 
-private _localaction = _chatterobj getVariable "COLSOG_chatter";
+private _localAction = _chatterObject getVariable "COLSOG_Chatter";
 
-if !(isNil "_localaction") exitWith {
+if !(isNil "_localAction") exitWith {
 	["Object already has chatter", -1, 1, 4, 0] spawn BIS_fnc_dynamicText;
 	playSound "FD_Start_F";
 };
 
-_chatterobj setVariable ["COLSOG_chatter", true, true];
+_chatterObject setVariable ["COLSOG_Chatter", true, true];
 
-Columbia_fnc_addchatter_to_object = {
-	params ["_chatterobj"];
-	_chatterobj addaction ["<t color='#82FA58'>Record chatter</t>", "functions\CHATTER\columbia_fnc_addchatter.sqf", nil, 1.5, false, true, "", "_target getVariable 'COLSOG_chatter'", 4, false];
+COLSOG_fnc_addChatterToObject = {
+	params ["_chatterObject"];
+	_chatterObject addAction ["<t color='#82FA58'>Record chatter</t>", "functions\CHATTER\columbia_fnc_addchatter.sqf", nil, 1.5, false, true, "", "_target getVariable 'COLSOG_Chatter'", 4, false];
 };
 
 {
-	["zen_common_execute", [Columbia_fnc_addchatter_to_object, [_chatterobj]], _x] call CBA_fnc_targetEvent;
+	["zen_common_execute", [COLSOG_fnc_addChatterToObject, [_chatterObject]], _x] call CBA_fnc_targetEvent;
 } forEach allPlayers;
