@@ -2,4 +2,4 @@ params ["_target", "_caller", "_actionId", "_arguments"]; // specials parameters
 
 deleteVehicleCrew _target;
 
-_target setVariable ["COLSOG_has_crew", false, true];
+_target setVariable ["COLSOG_HasCrew", false, true];

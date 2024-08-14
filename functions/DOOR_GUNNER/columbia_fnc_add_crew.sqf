@@ -2,4 +2,4 @@ params ["_target", "_caller", "_actionId", "_arguments"]; // specials parameters
 
 createVehicleCrew _target;
 
-_target setVariable ["COLSOG_has_crew", true, true];
+_target setVariable ["COLSOG_HasCrew", true, true];

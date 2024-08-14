@@ -1,25 +1,37 @@
-params [["_pos", [0,0,0] , [[]], 3], ["_helicopterobj", objNull, [objNull]]];
+/*
+ * Custom Zeus module: Add "Crew management" action on selected object.
+ *
+ * Arguments:
+ * 0: logic position (not used)
+ * 1: attached object
+ *
+ * Return Value:
+ * None
+ *
+ */
+
+params [["_pos", [0,0,0] , [[]], 3], ["_helicopterObject", objNull, [objNull]]];
 
 // if param is empty or not Helicopter type, exit
-if (isNull _helicopterobj || !(_helicopterobj isKindOf "Helicopter")) exitWith {
+if (isNull _helicopterObject || !(_helicopterObject isKindOf "Helicopter")) exitWith {
 	["Need a helicopter", -1, 1, 4, 0] spawn BIS_fnc_dynamicText;
 	playSound "FD_Start_F";
 };
 
-private _localaction = _helicopterobj getVariable "COLSOG_crew_management";
+private _localAction = _helicopterObject getVariable "COLSOG_CrewManagement";
 
-if!(isNil "_localaction") exitWith {
+if!(isNil "_localAction") exitWith {
 	["Helicopter already has crew management", -1, 1, 4, 0] spawn BIS_fnc_dynamicText;
 	playSound "FD_Start_F";
 };
 
 // Broadcast (3rd parameter) is not really needed except if multiple zeus, if only 1 could be false to save network traffic
-_helicopterobj setVariable ["COLSOG_crew_management", true, true];
+_helicopterObject setVariable ["COLSOG_CrewManagement", true, true];
 
-Columbia_fnc_add_crew_management_to_helicopter = {
-	params ["_helicopterobj"];
-    _helicopterobj setVariable ["COLSOG_has_crew", false, true]; // Should not need Broadcast because setVariable is already done in a forEeach allPlayers
-	_helicopterobj addAction
+COLSOG_fnc_addCrewManagementToHelicopter = {
+	params ["_helicopterObject"];
+    _helicopterObject setVariable ["COLSOG_HasCrew", false, true]; // Should not need Broadcast because setVariable is already done in a forEeach allPlayers
+	_helicopterObject addAction
       [
           "<t color='#FFFF00'>Request crew</t>",
           "functions\DOOR_GUNNER\columbia_fnc_add_crew.sqf",
@@ -28,13 +40,13 @@ Columbia_fnc_add_crew_management_to_helicopter = {
           true,
           true,
           "",
-          "(_this in _target) AND (driver _target isEqualTo _this) AND (isTouchingGround _target) AND !(isEngineOn _target) AND !(_target getVariable 'COLSOG_has_crew')",
+          "(_this in _target) AND (driver _target isEqualTo _this) AND (isTouchingGround _target) AND !(isEngineOn _target) AND !(_target getVariable 'COLSOG_HasCrew')",
           50,
           false,
           "",
           ""
       ];
-      _helicopterobj addAction
+      _helicopterObject addAction
       [
           "<t color='#FFFF00'>Remove crew</t>",
           "functions\DOOR_GUNNER\columbia_fnc_delete_crew.sqf",
@@ -43,7 +55,7 @@ Columbia_fnc_add_crew_management_to_helicopter = {
           true,
           true,
           "",
-          "(_this in _target) AND (driver _target isEqualTo _this) AND (isTouchingGround _target) AND !(isEngineOn _target) AND (_target getVariable 'COLSOG_has_crew')",
+          "(_this in _target) AND (driver _target isEqualTo _this) AND (isTouchingGround _target) AND !(isEngineOn _target) AND (_target getVariable 'COLSOG_HasCrew')",
           50,
           false,
           "",
@@ -53,7 +65,7 @@ Columbia_fnc_add_crew_management_to_helicopter = {
 
 // Attach both addAction to allPlayers
 {
-	["zen_common_execute", [Columbia_fnc_add_crew_management_to_helicopter, [_helicopterobj]], _x] call CBA_fnc_targetEvent;
+	["zen_common_execute", [COLSOG_fnc_addCrewManagementToHelicopter, [_helicopterObject]], _x] call CBA_fnc_targetEvent;
 } forEach allPlayers;
 
 ["Crew management added", -1, 1, 4, 0] spawn BIS_fnc_dynamicText;
