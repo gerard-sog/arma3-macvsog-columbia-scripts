@@ -39,7 +39,7 @@ _parentHelicopter setVariable ["COLSOG_staboRope", _staboRope, true];
 	},
 	{},																// Code executed on interrupted
 	[_parentHelicopter],											// Arguments passed to the scripts (see doc for arguments)
-	Columbia_CBA_stabo_climb_duration,								// Action duration in seconds
+	colsog_stabo_climbDuration,								// Action duration in seconds
 	0,																// Priority
 	false,															// Remove on completion (removes for allPlayers !)
 	false															// Show in unconscious state

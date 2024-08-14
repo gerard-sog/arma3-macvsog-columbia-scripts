@@ -88,7 +88,7 @@ if (_selectedTreeType != "None") then {
 // *******************************************************
 private _trigger = createTrigger ["EmptyDetector", [100, 0, 0]];
 _trigger setTriggerArea [2.5, 1, 0, false];
-_trigger setTriggerActivation [Columbia_CBA_traps_trigger_activated_by, "PRESENT", false];
+_trigger setTriggerActivation [colsog_traps_activatedBySide, "PRESENT", false];
 _trigger setTriggerStatements [
     "this and ({!(typeOf _x in ['B_UAV_01_F','B_UGV_02_Science_F'])} count thislist > 0)",
     "",

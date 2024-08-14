@@ -21,7 +21,7 @@ _triangulate = [
                 _x = str _x;
             };
 
-            if ([_x, Columbia_CBA_triangulation_required_item] call _fnc_startsWith) then
+            if ([_x, colsog_triangulation_requiredItem] call _fnc_startsWith) then
             {
                 _result = true;
             };

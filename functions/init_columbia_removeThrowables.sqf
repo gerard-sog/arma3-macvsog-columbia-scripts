@@ -19,7 +19,7 @@ if (!isServer) exitWith {};
       if (_x in _items) then {
         _unit removeMagazines _x;
       }
-		} forEach Columbia_CBA_remove_throwable;
+		} forEach colsog_throwable_remove;
 	}, [_unit]] call CBA_fnc_execNextFrame;
 		
 }, true, [], true] call CBA_fnc_addClassEventHandler;

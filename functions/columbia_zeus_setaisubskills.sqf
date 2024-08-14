@@ -10,19 +10,19 @@
 params [["_pos", [0,0,0] , [[]], 3], ["_object", objNull, [objNull]]];
 
 zen_ai_skills = [
-    Columbia_CBA_ai_enable,
-    Columbia_CBA_ai_general_skill,
-    Columbia_CBA_ai_aiming_accuracy,
-    Columbia_CBA_ai_aiming_speed,
-    Columbia_CBA_ai_aiming_shake,
-    Columbia_CBA_ai_commanding,
-    Columbia_CBA_ai_courage,
-    Columbia_CBA_ai_spot_distance,
-    Columbia_CBA_ai_spot_time,
-    Columbia_CBA_ai_reload_speed,
-    Columbia_CBA_ai_seek_cover,
-    Columbia_CBA_ai_auto_combat,
-    Columbia_CBA_ai_suppression
+    colsog_ai_enable,
+    colsog_ai_generalSkill,
+    colsog_ai_aimingAccuracy,
+    colsog_ai_aimingSpeed,
+    colsog_ai_aimingShake,
+    colsog_ai_commanding,
+    colsog_ai_courage,
+    colsog_ai_spotDistance,
+    colsog_ai_spotTime,
+    colsog_ai_reloadSpeed,
+    colsog_ai_seekCover,
+    colsog_ai_autoCombat,
+    colsog_ai_suppression
 ];
 
 publicVariable "zen_ai_skills";

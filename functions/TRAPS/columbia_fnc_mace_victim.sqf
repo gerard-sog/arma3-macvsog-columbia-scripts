@@ -3,7 +3,7 @@
 // *******************************************************
 params ["_unit", "_mace", "_trapDirection", "_trapPosition"];
 private _group = group _unit;
-if ((_unit distance _mace) < Columbia_CBA_traps_mace_kill_radius) then
+if ((_unit distance _mace) < colsog_traps_maceKillRadius) then
 {
 	private _directionTo = ([_unit, _mace] call BIS_fnc_dirTo);
 	if ([position _unit, _directionTo, 180, position _mace] call BIS_fnc_inAngleSector) then
@@ -85,7 +85,7 @@ if ((_unit distance _mace) < Columbia_CBA_traps_mace_kill_radius) then
 	    "vn_sam_usdeath_058"
 	    ];
 
-    if (Columbia_CBA_traps_screaming_enable) then {
+    if (colsog_traps_screamingEnable) then {
         [_mace, selectRandom vn_us_death_screams] remoteExecCall ["say3D", 0, false]; // victim screams
     	uiSleep 3;
     	[_mace, selectRandom vn_us_death_screams] remoteExecCall ["say3D", 0, false]; // victim screams again
