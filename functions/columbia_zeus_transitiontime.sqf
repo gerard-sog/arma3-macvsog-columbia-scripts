@@ -1,8 +1,8 @@
 /*
  * Author: Kay
  * Custom Zeus module
- * 2 Transition Text with optional date change inbetween (empty text are not displayed)
- * Date change during 5 sec fadetoblack, optional show new date
+ * 2 Transition Text with optional date change in between (empty text are not displayed)
+ * Date change during 5 sec fade to black, optional show new date
  * 
  * Arguments:
  * No Parameters
@@ -13,31 +13,31 @@ params [["_pos", [0,0,0] , [[]], 3], ["_unit", objNull, [objNull]]];
 
 private _onConfirm = {
 	params ["_dialogResult"];
-	_dialogResult params ["_text1", "_timing1", "_dummy1", "_datechange", "_day", "_month", "_hours", "_minutes", "_show", "_text2", "_timing2"];
+	_dialogResult params ["_text1", "_timing1", "_dummy1", "_dateChange", "_day", "_month", "_hours", "_minutes", "_show", "_text2", "_timing2"];
 
-	if (_text1 == "" && _text2 == "" && _datechange == false) exitWith {
+	if (_text1 == "" && _text2 == "" && _dateChange == false) exitWith {
 		["Need at least 1 text or date change", -1, 1, 4, 0] spawn BIS_fnc_dynamicText;
         playSound "FD_Start_F";
 	};
 	
 	// spawn texts & date change	
 	[ 
-		[_text1, _timing1, _text2, _timing2, _datechange, _month+1, _day+1, _hours, _minutes, _show], { 
+		[_text1, _timing1, _text2, _timing2, _dateChange, _month+1, _day+1, _hours, _minutes, _show], {
 		
-			params ["_text1", "_timing1", "_text2", "_timing2", "_datechange", "_month", "_day", "_hours", "_minutes", "_show"];
+			params ["_text1", "_timing1", "_text2", "_timing2", "_dateChange", "_month", "_day", "_hours", "_minutes", "_show"];
 
 			private "_handle";
-			private _idlayer1 = ["Text1Display"] call BIS_fnc_rscLayer;
-			private _idlayer2 = ["Text2Display"] call BIS_fnc_rscLayer;
+			private _idLayer1 = ["Text1Display"] call BIS_fnc_rscLayer;
+			private _idLayer2 = ["Text2Display"] call BIS_fnc_rscLayer;
 			
 			if !(_text1 == "") then {
 				_text1 = [ format ["<t align = 'center' shadow = '1' size = '0.7' font='tt2020style_e_vn'>%1</t>", _text1], -1, 0.2, _timing1, 1, 0];
-				_handle = (_text1 + [_idlayer1]) spawn BIS_fnc_dynamicText;
+				_handle = (_text1 + [_idLayer1]) spawn BIS_fnc_dynamicText;
 				waitUntil {scriptDone _handle};
 			};
 			
-			if (_datechange) then {
-				_idlayer1 cutText ["", "BLACK OUT", 1];
+			if (_dateChange) then {
+				_idLayer1 cutText ["", "BLACK OUT", 1];
 				date params ["_year"];
 				sleep 1;
 				setDate [_year, _month, _day, _hours, _minutes]; // shitty performance rework with CBA server event
@@ -61,12 +61,12 @@ private _onConfirm = {
 				};
 				
 				sleep 1;
-				_idlayer1 cutText ["", "BLACK IN", 1];
+				_idLayer1 cutText ["", "BLACK IN", 1];
 			};
 			
 			if !(_text2 == "") then {
 				_text2 = [ format ["<t align = 'center' shadow = '1' size = '0.7' font='tt2020style_e_vn'>%1</t>", _text2], -1, 0.2, _timing2, 1, 0];
-				_handle = (_text2 + [_idlayer2]) spawn BIS_fnc_dynamicText;
+				_handle = (_text2 + [_idLayer2]) spawn BIS_fnc_dynamicText;
 				waitUntil {scriptDone _handle};
 			};
 		}

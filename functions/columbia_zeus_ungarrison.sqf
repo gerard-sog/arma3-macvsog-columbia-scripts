@@ -9,6 +9,7 @@
  * 1: attached unit
  *
  */
+
 params [["_pos", [0,0,0] , [[]], 3], ["_unit", objNull, [objNull]]];
 
 //if unit is empty/null/player, exit
@@ -18,11 +19,10 @@ if (isNull _unit || !(_unit isKindOf "CAManBase") || isPlayer _unit) exitWith {
 };
 
 
-RCC_fnc_unGarrison = {
+COLSOG_fnc_unGarrison = {
 	params ["_unit"];
 
 	if (isFormationLeader _unit) then {
-		//private _group = group _unit;
 		{
 			_x enableAI "PATH";
 			_x enableAI "MOVE";
@@ -30,14 +30,14 @@ RCC_fnc_unGarrison = {
 
 	} else {
 		[_unit] join grpNull;
-		private _newgroup = group _unit;
+		private _newGroup = group _unit;
 		private _exit = nearestBuilding _unit buildingExit 0;
-		private _wp = _newgroup addWaypoint [_exit, 5];
+		private _waypoint = _newGroup addWaypoint [_exit, 5];
 
 		_unit enableAI "PATH";
 		_unit enableAI "MOVE";
-		_wp setWaypointType "MOVE";
+		_waypoint setWaypointType "MOVE";
 	};
 };
 
-["zen_common_execute", [RCC_fnc_unGarrison, [_unit]], _unit] call CBA_fnc_targetEvent;
+["zen_common_execute", [COLSOG_fnc_unGarrison, [_unit]], _unit] call CBA_fnc_targetEvent;

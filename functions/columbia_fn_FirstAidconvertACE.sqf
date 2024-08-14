@@ -1,10 +1,10 @@
 if !(isClass (configFile >> "CfgPatches" >> "ace_main")) exitWith {};
 
 ClassFirstAidConvertACE = "FirstAidKit";
-ClassMediConvertACE = "Medikit";
+ClassMedicConvertACE = "Medikit";
 if (isClass (configFile >> "CfgPatches" >> "vn_emm")) then {
 	ClassFirstAidConvertACE = "vn_o_item_firstaidkit";
-	ClassMediConvertACE = "vn_b_item_medikit_01";
+	ClassMedicConvertACE = "vn_b_item_medikit_01";
 };
 
 addMissionEventHandler ["EntityKilled", {
@@ -13,9 +13,9 @@ addMissionEventHandler ["EntityKilled", {
 		private _unit = _this select 0;
 		private _items = items _unit;
 
-		if (ClassMediConvertACE in _items) then {
+		if (ClassMedicConvertACE in _items) then {
 			_unit removeItems ClassFirstAidConvertACE;
-			_unit removeItem ClassMediConvertACE;
+			_unit removeItem ClassMedicConvertACE;
 			_backpack = BackpackContainer _unit;
 			_backpack addItemCargoGlobal ["ACE_fieldDressing", colsog_medikit_convertAceFieldDressing];
 			_backpack addItemCargoGlobal ["ACE_salineIV_500", colsog_medikit_convertAceSalineIv500];

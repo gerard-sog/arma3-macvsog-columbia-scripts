@@ -676,7 +676,7 @@ force acre_sys_zeus_zeusCanSpectate = true;
 force acre_sys_zeus_zeusCommunicateViaCamera = true;
 force acre_sys_zeus_zeusDefaultVoiceSource = false;
 
-// Columbia Settings
+// COLSOG Settings
 force colsog_ai_aimingAccuracy = 0.33;
 force colsog_ai_aimingShake = 0.33;
 force colsog_ai_aimingSpeed = 0.33;

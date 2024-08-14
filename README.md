@@ -46,24 +46,24 @@ Installation of all the scripts/zeus modules is done by **copying the below file
 - Default whitelist <b>arsenal</b>: [defaultWhitelistArsenal.txt](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/defaultWhitelistArsenal.txt)
 
 ## Zeus modules
-- A - Columbia AI
+- A - COLSOG AI
   - **Set AI Skills**: define sub-skills of AI.
   - **Toggle Trackers**: manage Tracker module (behaviour, speed, presence).
   - **Un-Garrison (enable PATH)**: make a unit/group move out of building.
-- A - Columbia Env
+- A - COLSOG Env
   - **Fog Low**
   - **Fog Ring**
   - **Transition Time**: transition with optional text to whenever in time.
   - **Vanilla Fog**: manage fog.
-- A - Columbia Radio
+- A - COLSOG Radio
   - **Init PF77s**: add 3 new racks to vehicle (requires player to get in/exit vehicle before executing module on vehicle).
   - **NVA radio chatter**: enables to make tape-recorder object produce vietnamese radio like voice (used to simulate wire taping).
   - **Toggle CAS**: manage CAS asset available in the Radio Support module.
-- A - Columbia Vehicle
+- A - COLSOG Vehicle
   - **Add STABO**: add the ability to deploy a rope from a helicopter to allow player on the ground to get into the helicopter.
   - **Add Crew management**: add the ability for the pilot of a helicopter to request AI crew members (door gunners).
   - **Conceal AA**: conceal static gun with a shelter.
-- A - Columbia Punji Traps
+- A - COLSOG Punji Traps
   - **Fall Trap**: create mace with punji sticks falling from a tree above trap wire.
   - **Swing Trap**: create mace with punji sticks swinging from a tree towards the trap wire.
 

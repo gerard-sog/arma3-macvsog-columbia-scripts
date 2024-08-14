@@ -21,7 +21,7 @@ if (isNull _object) exitWith {
     playSound "FD_Start_F";
 };
 
-private _isRadioInitialized = _object getVariable "ColSOG_radioInitialized";
+private _isRadioInitialized = _object getVariable "COLSOG_radioInitialized";
 
 // If already initialized, exit
 if !(isNil "_isRadioInitialized") exitWith {
@@ -33,6 +33,6 @@ if !(isNil "_isRadioInitialized") exitWith {
 [_object, ["ACRE_VRC64", "A2G", "PRC77", false, ["inside"], [], "ACRE_PRC77", [], [] ], false] remoteExec ["acre_api_fnc_addRackToVehicle", 2];
 [_object, ["ACRE_VRC64", "HQ", "PRC77", false, ["inside"], [], "ACRE_PRC77", [], [] ], false] remoteExec ["acre_api_fnc_addRackToVehicle", 2];
 
-_object setVariable ["ColSOG_radioInitialized", true, true];
+_object setVariable ["COLSOG_radioInitialized", true, true];
 
 systemChat "Radio PF77 initialized";
