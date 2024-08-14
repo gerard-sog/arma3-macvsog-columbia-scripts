@@ -408,6 +408,12 @@ We created a custom Zeus module to manage the AI trackers spawned by the tracker
   TrackermoduleNAME
   ```
 
+and the below code in its 'init' section.
+
+  ```
+  COLSOG_TrackersEnabled
+  ```
+
 By default:
 - tracker module is disabled
 - tracker behaviour is set as "CARELESS", "BLUE", "LIMITED".
