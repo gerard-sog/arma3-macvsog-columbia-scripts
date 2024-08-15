@@ -61,4 +61,5 @@ class Extended_PostInit_EventHandlers
     };
 };
 
-#include "functions\artillery\artillery.hpp"
+#include "functions\artillery\cfgArtillerySettings.hpp"
+#include "functions\tracker\armies\cfgTrackerArmiesTest.hpp"

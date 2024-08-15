@@ -211,7 +211,7 @@ Radio support from the Prairie Fire CDLC is available in a mission if all of the
   this setUnitTrait["vn_artillery", true, true];
   ```
 
-- All this can be modified in the vn_artillery_settings class in [artillery.hpp](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/artillery/artillery.hpp)
+- All this can be modified in the vn_artillery_settings class in [cfgArtillerySettings.hpp](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/artillery/cfgArtillerySettings.hpp)
 
 <h3>Enable/Disable Radio Support</h3>
 We created a custom Zeus module to manage the availability of various supports (by default, none are available):
@@ -224,7 +224,7 @@ We created a custom Zeus module to manage the availability of various supports (
 Here is how we emulate FOB with artillery support capabilities. By this we mean that the FOB can provide artillery support
 within a perimeter (it will be 3.5km in our example).
 
-- To do so, we use a public variable called 'SUPPORT_ENABLED' defined in [initServer.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/initServer.sqf) and it is used as the condition in [artillery.hpp](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/artillery/artillery.hpp).
+- To do so, we use a public variable called 'SUPPORT_ENABLED' defined in [initServer.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/initServer.sqf) and it is used as the condition in [cfgArtillerySettings.hpp](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/artillery/cfgArtillerySettings.hpp).
 
   ```
   SUPPORT_ENABLED = true; // Used with the artillery support from Prairie Fire. By default condition on artillery strike will be true thanks to this public variable.
@@ -573,5 +573,21 @@ this addAction
     "" 
 ];
 ```
+
+</details>
+
+<details>
+
+<summary>17. Tracker Module Armies</summary>
+
+Tracker module spawned armies can be configured using [cfgTrackerArmies.hpp](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/tracker/armies/cfgTrackerArmies.hpp).
+
+This configuration file allows to overide type of squads spawned by the tracker module according to the level of alert.
+
+- alert 0
+- alert 1
+- alert 2
+- alert 3
+- alert 4
 
 </details>
