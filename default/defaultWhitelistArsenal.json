@@ -1020,5 +1020,13 @@
   "uns_m2carbine_shorty_p",
   "uns_m2carbinemag_NT",
   "uns_m2carbinemag",
-  "uns_m2carbinemag_T"
+  "uns_m2carbinemag_T",
+  "vn_m2carbine_gl",
+  "vn_22mm_cs_mag",
+  "vn_22mm_lume_mag",
+  "vn_22mm_m17_frag_mag",
+  "vn_22mm_m19_wp_mag",
+  "vn_22mm_m1a2_frag_mag",
+  "vn_22mm_m22_smoke_mag",
+  "vn_22mm_m9_heat_mag"
 ]
