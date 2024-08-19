@@ -13,7 +13,7 @@ class vn_artillery_settings
 	    // Radio Support should only be called in by Covey plane. This radio backpack is in case no covey pilot present for an operation and we still want Columbia to be able to use Radio Support.
         radio_backpacks[] = {"vn_b_pack_lw_06"};
         // Radio Support should only be called from Covey plane.
-        radio_vehicles[] = {"JK_B_Cessna_T41_Armed_F", "vnx_b_air_ac119_01_01", "vn_b_air_ch34_03_01", "vn_b_air_ch34_03_01", "vn_b_air_ch34_04_01", "vn_b_air_ch34_04_02", "vn_b_air_oh6a_04", "vn_i_air_ch34_02_02"};
+        radio_vehicles[] = { "vnx_b_air_ac119_01_01", "vn_b_air_ch34_03_01", "vn_b_air_ch34_03_01", "vn_b_air_ch34_04_01", "vn_b_air_ch34_04_02", "vn_b_air_oh6a_04", "vn_i_air_ch34_02_02", "uns_A1H_CAS", "UNS_skymaster_FAC"};
         player_types[] = {"vn_b_men_sog_05", "vn_b_men_sog_17", "vn_b_men_army_08", "vn_o_men_nva_dc_13", "vn_o_men_nva_65_27", "vn_o_men_nva_65_13", "vn_o_men_nva_27", "vn_o_men_nva_13", "vn_o_men_nva_marine_13", "vn_o_men_nva_navy_13", "vn_o_men_vc_local_27", "vn_o_men_vc_local_13", "vn_o_men_vc_regional_13"};
         // Planes
         class aircraft
