@@ -38,19 +38,7 @@ class Extended_PreInit_EventHandlers
 
 class CfgFunctions
 {
-    class COLSOG {
-        class Faces
-        {
-            file ="functions";
-            class faces {};
-        };
-        class Triangulate
-        {
-            file ="functions\TRIANGULATE";
-            // 1 will execute the function for each player downloading the mission.
-            class triangulate {postInit = 1;};
-        };
-    }
+    #include "functions\COLSOG_CfgFunctions.hpp"
 };
 
 class Extended_PostInit_EventHandlers

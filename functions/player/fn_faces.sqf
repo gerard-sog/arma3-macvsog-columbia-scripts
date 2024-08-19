@@ -1,3 +1,21 @@
+/*
+ * Sets the face of a player to one of asian faces
+ * Depending on the slot, this forces the new asian face and overrides player's default face if he has not one
+ *
+ * Arguments:
+ * No parameters
+ *
+ * Locality:
+ * Local execute per player (ie: initPlayerLocal & onPlayerRespawn)
+ *
+ * Example:
+ * call COLSOG_fnc_faces;
+ *
+ * Return values:
+ * none
+ *
+ */
+
 private _availableAsianHeads = [
     "vn_b_AsianHead_A3_06_02",
     "vn_b_AsianHead_A3_07_02",
