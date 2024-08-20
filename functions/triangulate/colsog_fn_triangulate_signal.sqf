@@ -1,10 +1,17 @@
 // 5 minutes timeout between each call.
 private _nextTriangulationTimeSeconds = COLSOG_lastTriangulationTimeSeconds + colsog_triangulation_coolDown;
 private _currentTimeSeconds = serverTime;
+private _nearest_acre_spike = player distance nearestObject [player, "vhf30108spike"]; //Gets the distances to the nearest radio spike
+
 if (_currentTimeSeconds < _nextTriangulationTimeSeconds) exitWith
 {
     private _coolDown = abs (_currentTimeSeconds - _nextTriangulationTimeSeconds);
     hint format ["Cool down : %1 seconds", round _coolDown];
+};
+
+if (_nearest_acre_spike > 5 && colsog_triangulation_requireSpike == true) exitWith //If there isn't a radio spike within 5m, returns a hint to tell the user there is no spike nearby. Does not trigger the cooldown period.
+{
+    hint format ["No ground spike nearby"];
 };
 
 COLSOG_lastTriangulationTimeSeconds = _currentTimeSeconds;

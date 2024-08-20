@@ -57,6 +57,7 @@
 
 // Triangulation
 ["colsog_triangulation_requiredItem", "EDITBOX", ["Required Item"], [CBA_SETTINGS_COLSOG, "Triangulation"], "ACRE_PRC77", 1, {}, false] call CBA_fnc_addSetting;
+["colsog_triangulation_requireSpike", "CHECKBOX", ["Triangulation requires spike"], [CBA_SETTINGS_COLUMBIA, "Triangulation"],true, 1, {}, true] call CBA_fnc_addSetting;
 ["colsog_triangulation_itemsToDetect", "EDITBOX", ["Items to detect"], [CBA_SETTINGS_COLSOG, "Triangulation"], "vn_o_prop_t884_01,vn_o_prop_t102e_01", 1, {colsog_triangulation_itemsToDetect = colsog_triangulation_itemsToDetect splitString " " joinString "" splitString ","}, false] call CBA_fnc_addSetting;
 ["colsog_triangulation_coolDown", "SLIDER", ["Cool down in seconds"], [CBA_SETTINGS_COLSOG, "Triangulation"], [0, 600, 300, 0], 1, {}, false] call CBA_fnc_addSetting;
 ["colsog_triangulation_signalStrength1", "SLIDER", ["Threshold distance for signal strength 1/5"], [CBA_SETTINGS_COLSOG, "Triangulation"], [0, 5000, 5000, 0], 1, {}, false] call CBA_fnc_addSetting;
