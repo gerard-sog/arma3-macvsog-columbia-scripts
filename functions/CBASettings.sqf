@@ -69,3 +69,8 @@
 ["colsog_traps_maceKillRadius", "SLIDER", ["Mace kill radius (m)"], [CBA_SETTINGS_COLSOG, "Traps"], [1, 10, 3, 0], 1, {}, false] call CBA_fnc_addSetting;
 ["colsog_traps_screamingEnable", "CHECKBOX", ["Enable screams"], [CBA_SETTINGS_COLSOG, "Traps"], true, 1, {}, false] call CBA_fnc_addSetting;
 ["colsog_traps_activatedBySide", "LIST", ["Trigger for Side"], [CBA_SETTINGS_COLSOG, "Traps"], [["WEST", "EAST", "GUER", "CIV", "ANYPLAYER", "ANY"], ["BLUFOR", "OPFOR", "Independent", "Civilian", "Any player", "Any AI or player"], 0], 1, {}, false] call CBA_fnc_addSetting;
+
+// Battery
+["colsog_battery_supportedRadios", "EDITBOX", ["ACRE radio with battery"], [CBA_SETTINGS_COLSOG, "Battery"], "ACRE_PRC77,ACRE_PRC343", 1, {colsog_battery_supportedRadios = colsog_battery_supportedRadios splitString " " joinString "" splitString ","}, false] call CBA_fnc_addSetting;
+["colsog_battery_capacity", "SLIDER", ["Battery capacity in seconds"], [CBA_SETTINGS_COLSOG, "Battery"], [0, 300, 60, 0], 1, {}, false] call CBA_fnc_addSetting;
+["colsog_battery_enemySpawnThreshold", "SLIDER", ["Amount of radio calls before enemy detection"], [CBA_SETTINGS_COLSOG, "Battery"], [0, 100, 25, 0], 1, {}, false] call CBA_fnc_addSetting;
