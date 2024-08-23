@@ -73,6 +73,16 @@ call CBA_fnc_waitUntilAndExecute;
     {
     params ["_unit", "_onRadio", "_radioId"];
         if (_onRadio AND (isTouchingGround player)) then {
+
+            // Checks that radio has not be forced ON by player if battery is empty.
+            // If needed, turn OFF radio again.
+            private _batteryLevelRadioId = BATTERY_LEVEL + _radioId;
+            private _batteryLevelInSeconds = missionNamespace getVariable _batteryLevelRadioId;
+            if (_newBatteryLevelInSeconds <= 0) exitWith {
+                [_radioId, "setOnOffState", 0, true] call acre_sys_data_fnc_dataEvent;
+                hint format ["Battery is empty: %1", _radioId];
+            };
+
             // startTime for talking on the radio.
             private _startTime = serverTime;
             private _startTransmitRadioId = START_TRANSMIT + _radioId;
@@ -107,9 +117,8 @@ call CBA_fnc_waitUntilAndExecute;
             missionNamespace setVariable [_batteryLevelRadioId, _newBatteryLevelInSeconds];
 
             if (_newBatteryLevelInSeconds <= 0) exitWith {
-                // this works (if not, maybe needs capital letters).
-                player removeItem _radioId;
-                hint format ["No more battery for : %1", _radioId];
+                [_radioId, "setOnOffState", 0, true] call acre_sys_data_fnc_dataEvent;
+                hint format ["Battery is empty: %1", _radioId];
             };
 
             hint format ["Battery level : %1 - %2 seconds", _radioId, round _newBatteryLevelInSeconds];
