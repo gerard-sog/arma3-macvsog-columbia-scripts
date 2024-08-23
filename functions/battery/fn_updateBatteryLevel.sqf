@@ -24,6 +24,40 @@ _getBatteryLevel = [
 
 ["Man", 1, ["ACE_SelfActions", "ACE_Equipment"], _getBatteryLevel, true] call ace_interact_menu_fnc_addActionToClass;
 
+_increaseBatteryLevel = [
+	"COLSOG_battery",
+	"Add new battery",
+	"x\zen\addons\context_actions\ui\add_ca.paa",
+	{
+		execVM "functions\battery\colsog_fn_increaseBatteryLevel.sqf";
+	},
+	{
+	    private _result = false;
+
+	    private _hasPowerItem = false;
+        {
+            if ([player, _x] call BIS_fnc_hasItem) then
+            {
+                _hasPowerItem = true;
+            };
+        } forEach colsog_battery_powerItems;
+
+        private _hasRadioItem = false;
+        {
+            if ([player, _x] call acre_api_fnc_hasKindOfRadio) then
+            {
+                _hasRadioItem = true;
+            };
+        } forEach colsog_battery_supportedRadios;
+
+        _result = (_hasPowerItem AND _hasRadioItem);
+        _result
+	}
+] call ace_interact_menu_fnc_createAction;
+
+["Man", 1, ["ACE_SelfActions", "ACE_Equipment"], _increaseBatteryLevel, true] call ace_interact_menu_fnc_addActionToClass;
+
+
 // Wait for first broadcast in order to initialize battery on all radio of current player.
 [
     {[player] call acre_api_fnc_isBroadcasting;},
@@ -74,7 +108,7 @@ call CBA_fnc_waitUntilAndExecute;
 
             if (_newBatteryLevelInSeconds <= 0) exitWith {
                 // this works (if not, maybe needs capital letters).
-                player removeItemFromBackpack _radioId;
+                player removeItem _radioId;
                 hint format ["No more battery for : %1", _radioId];
             };
 

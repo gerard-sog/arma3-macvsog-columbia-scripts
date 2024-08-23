@@ -15,6 +15,6 @@
             _batteryLevelInSeconds = colsog_battery_capacity;
         };
 
-        hint format ["Battery level initialized : %1 - %2 seconds", _x, round _batteryLevelInSeconds];
+        hint format ["Battery initialized: %1 - %2 seconds", _x, round _batteryLevelInSeconds];
     };
 } forEach colsog_battery_supportedRadios;

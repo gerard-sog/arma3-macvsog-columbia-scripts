@@ -13,9 +13,10 @@
         {
         	missionNamespace setVariable [_batteryLevelRadioId, colsog_battery_capacity];
         	_batteryLevelInSeconds = colsog_battery_capacity;
+        	hint format ["Battery initialized: %1 - %2 seconds", _x, round _batteryLevelInSeconds];
+        } else {
+            hint format ["Battery level: %1 - %2 seconds", _x, round _batteryLevelInSeconds];
         };
-
-        hint format ["Battery level : %1 - %2 seconds", _x, round _batteryLevelInSeconds];
         uiSleep 2;
     };
 } forEach colsog_battery_supportedRadios;

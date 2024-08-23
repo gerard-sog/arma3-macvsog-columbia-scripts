@@ -74,3 +74,4 @@
 ["colsog_battery_supportedRadios", "EDITBOX", ["ACRE radio with battery"], [CBA_SETTINGS_COLSOG, "Battery"], "ACRE_PRC77,ACRE_PRC343", 1, {colsog_battery_supportedRadios = colsog_battery_supportedRadios splitString " " joinString "" splitString ","}, false] call CBA_fnc_addSetting;
 ["colsog_battery_capacity", "SLIDER", ["Battery capacity in seconds"], [CBA_SETTINGS_COLSOG, "Battery"], [0, 300, 60, 0], 1, {}, false] call CBA_fnc_addSetting;
 ["colsog_battery_enemySpawnThreshold", "SLIDER", ["Amount of radio calls before enemy detection"], [CBA_SETTINGS_COLSOG, "Battery"], [0, 100, 25, 0], 1, {}, false] call CBA_fnc_addSetting;
+["colsog_battery_powerItems", "EDITBOX", ["Item used as spare battery"], [CBA_SETTINGS_COLSOG, "Battery"], "ACE_UAVBattery", 1, {colsog_battery_powerItems = colsog_battery_powerItems splitString " " joinString "" splitString ","}, false] call CBA_fnc_addSetting;
