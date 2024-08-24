@@ -12,7 +12,7 @@
  * call COLSOG_fnc_faces;
  *
  * Return values:
- * none
+ * None
  *
  */
 

@@ -15,5 +15,15 @@ class COLSOG {
         file ="functions\battery";
         // 1 will execute the function for each player downloading the mission.
         class updateBatteryLevel {postInit = 1;};
+        class displayBatteryLevel {};
+        class increaseBatteryLevel {};
+        class initializeBatteryLevel {};
+
+        class getBatteryLevelFromRadioId {};
+        class setBatteryLevelFromRadioId {};
+        class getBatteryLevelFromRadioType {};
+        class setBatteryLevelFromRadioType {};
+        class getLastStartOfTransmission {};
+        class setLastStartOfTransmission {};
     };
 }
