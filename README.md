@@ -138,6 +138,7 @@ In the Addons configuration menu, you will have the ability to update the follow
   - Battery capacity in seconds: <i>Integer</i>
   - Amount of radio calls before enemy detection: <i>Integer</i>
   - Item used as spare battery: <i>List\<String\> separated with , and no " required</i>
+  - Groups impacted by enemy radio call detection: <i>List\<String\> separated with , and no " required</i>
 
 ## Features
 

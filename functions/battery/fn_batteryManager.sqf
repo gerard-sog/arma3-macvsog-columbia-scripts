@@ -148,13 +148,7 @@ _increaseBatteryLevelPrc343 = [
             hint format ["Battery level: %1 - %2 seconds", _radioId, round _newBatteryLevelInSeconds];
 
             // If radio call threshold reached, spawn enemy towards current player position and reset.
-            COLSOG_amountOfRadioCalls = COLSOG_amountOfRadioCalls + 1;
-            if (COLSOG_amountOfRadioCalls > colsog_battery_enemySpawnThreshold) then {
-                COLSOG_amountOfRadioCalls = 0;
-                private _group = [(player modelToWorld [0,250,0]), 1, east, "VN"] call VN_ms_fnc_tracker_spawnGroup;
-                _group move (getPos player);
-            };
-            publicVariable "COLSOG_amountOfRadioCalls";
+            [player] call COLSOG_fnc_incrementRadioCallsCounter;
         };
     }
 ] call CBA_fnc_addEventHandler;
