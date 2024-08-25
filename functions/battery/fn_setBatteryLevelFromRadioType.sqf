@@ -17,4 +17,4 @@ params ["_radioType", "_player", "_newBatteryLevel"];
 private _radioId = [_radioType, _player] call acre_api_fnc_getRadioByType;
 private _batteryLevelRadioId = BATTERY_LEVEL + _radioId;
 
-missionNamespace setVariable [_batteryLevelRadioId, _newBatteryLevel];
+missionNamespace setVariable [_batteryLevelRadioId, _newBatteryLevel, true];

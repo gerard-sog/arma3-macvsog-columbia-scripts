@@ -15,4 +15,4 @@ params ["_radioId", "_newBatteryLevel"];
 
 private _batteryLevelRadioId = BATTERY_LEVEL + _radioId;
 
-missionNamespace setVariable [_batteryLevelRadioId, _newBatteryLevel];
+missionNamespace setVariable [_batteryLevelRadioId, _newBatteryLevel, true];

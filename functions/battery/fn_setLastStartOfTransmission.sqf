@@ -14,4 +14,4 @@
 params ["_startTransmissionServerTime", "_radioId"];
 
 private _startTransmitRadioId = START_TRANSMIT + _radioId;
-missionNamespace setVariable [_startTransmitRadioId, _startTransmissionServerTime];
+missionNamespace setVariable [_startTransmitRadioId, _startTransmissionServerTime, true];
