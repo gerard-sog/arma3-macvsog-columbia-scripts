@@ -16,7 +16,7 @@ private _batteryLevelInSeconds = [_radioType, _player] call COLSOG_fnc_getBatter
 if (isNil "_batteryLevelInSeconds") then
 {
     [_radioType, _player, colsog_battery_capacity] call COLSOG_fnc_setBatteryLevelFromRadioType;
-    hint format ["Battery Initialized: %1 - %2 seconds", _radioType, round colsog_battery_capacity];
+    hint format ["Battery Initialized"];
 } else {
     scopeName "outsideOfLoop";
     private _powerItemRemoved = "MISSING";
@@ -31,5 +31,5 @@ if (isNil "_batteryLevelInSeconds") then
 
     // This is where script execution will jump to after 'breakTo'.
     [_radioType, _player, colsog_battery_capacity] call COLSOG_fnc_setBatteryLevelFromRadioType;
-    hint format ["New battery added: %1 - %2 seconds ( -1x %3)", _radioType, round colsog_battery_capacity, _powerItemRemoved];
+    hint format ["New battery inserted"];
 };
