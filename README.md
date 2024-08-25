@@ -135,7 +135,7 @@ In the Addons configuration menu, you will have the ability to update the follow
   - Side activating trap: <i>["BLUFOR", "OPFOR", "Independent", "Civilian", "Any player", "Any AI or player"]</i>
 
 - **Battery**
-  - Battery capacity in seconds: <i>Integer</i>
+  - PRC77 Battery capacity in seconds: <i>Integer</i>
   - Amount of radio calls before enemy detection: <i>Integer</i>
   - Item used as spare battery: <i>List\<String\> separated with , and no " required</i>
   - Groups impacted by enemy radio call detection: <i>List\<String\> separated with , and no " required</i>
@@ -445,9 +445,8 @@ this addAction
 
 <summary>10. Radio battery/power management</summary>
 
-Now the RTO will need to carry batteries for his radio. Currently we manage the two below ACRE radios:
+Now the RTO will need to carry batteries for his radio. Currently managed ACRE radio:
 - PRC77
-- PRC343
 
 You will have two new action under 'ace equipment' interaction:
 - "Show battery level": If you have one of the above radio types in your inventory.

@@ -16,21 +16,6 @@ _displayBatteryLevelPrc77 = [
 
 ["Man", 1, ["ACE_SelfActions", "ACE_Equipment"], _displayBatteryLevelPrc77, true] call ace_interact_menu_fnc_addActionToClass;
 
-_displayBatteryLevelPrc343 = [
-	"COLSOG_battery",
-	"PRC343 - Show battery level",
-	"\a3\Modules_F_Curator\Data\iconLightning_ca.paa",
-	{
-		["ACRE_PRC343", player] call COLSOG_fnc_displayBatteryLevel;
-	},
-	{
-        [player, "ACRE_PRC343"] call acre_api_fnc_hasKindOfRadio
-	}
-] call ace_interact_menu_fnc_createAction;
-
-["Man", 1, ["ACE_SelfActions", "ACE_Equipment"], _displayBatteryLevelPrc343, true] call ace_interact_menu_fnc_addActionToClass;
-
-
 _increaseBatteryLevelPrc77 = [
 	"COLSOG_battery",
 	"PRC77 - Add new battery",
@@ -64,16 +49,13 @@ _increaseBatteryLevelPrc77 = [
 ["acre_startedSpeaking",
     {
     params ["_unit", "_onRadio", "_radioId"];
-        if (_onRadio AND (isTouchingGround player)) then {
-
-            // Checks that radio has not be forced ON by player if battery is empty.
-            // If needed, turn OFF radio again.
+        if (_onRadio AND (isTouchingGround player) AND (["PRC77", _radioId] call BIS_fnc_inString)) then {
             private _currentBatteryLevelInSeconds = [_radioId] call COLSOG_fnc_getBatteryLevelFromRadioId;
 
             // If not initialized, we will initialize the radio.
             if (isNil "_currentBatteryLevelInSeconds") then
             {
-                _currentBatteryLevelInSeconds = colsog_battery_capacity;
+                _currentBatteryLevelInSeconds = colsog_battery_prc77Capacity;
                 [_radioId, _currentBatteryLevelInSeconds] call COLSOG_fnc_setBatteryLevelFromRadioId;
                 hint format ["Battery Initialized"];
             };
@@ -94,9 +76,8 @@ _increaseBatteryLevelPrc77 = [
 ["acre_stoppedSpeaking",
     {
         params ["_unit", "_onRadio"];
-        if (_onRadio AND (isTouchingGround player)) then {
-            private _radioId = player getVariable LAST_TRANSMISSION_RADIO_ID;
-
+        private _radioId = player getVariable [LAST_TRANSMISSION_RADIO_ID, ""];
+        if (_onRadio AND (isTouchingGround player) AND (["PRC77", _radioId] call BIS_fnc_inString)) then {
             private _transmissionStartTime = [_radioId] call COLSOG_fnc_getLastStartOfTransmission;
             private _transmissionEndTime = serverTime;
 

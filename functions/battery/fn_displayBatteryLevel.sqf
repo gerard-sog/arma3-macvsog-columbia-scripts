@@ -14,10 +14,10 @@ params ["_radioType", "_player"];
 private _batteryLevelInSeconds = [_radioType, player] call COLSOG_fnc_getBatteryLevelFromRadioType;
 
 if (isNil "_batteryLevelInSeconds") then {
-    [_radioType, player, colsog_battery_capacity] call COLSOG_fnc_setBatteryLevelFromRadioType;
+    [_radioType, player, colsog_battery_prc77Capacity] call COLSOG_fnc_setBatteryLevelFromRadioType;
     hint format ["Battery Initialized"];
 } else {
-    private _batteryLevelInPercent = round (100 * (_batteryLevelInSeconds/colsog_battery_capacity));
+    private _batteryLevelInPercent = round (100 * (_batteryLevelInSeconds/colsog_battery_prc77Capacity));
     if ((_batteryLevelInPercent > 80) AND (_batteryLevelInPercent <= 100)) exitWith
     {
         hint format ["Full: [#####]"];
