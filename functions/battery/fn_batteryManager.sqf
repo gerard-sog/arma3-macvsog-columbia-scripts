@@ -16,21 +16,6 @@ _displayBatteryLevelPrc77 = [
 
 ["Man", 1, ["ACE_SelfActions", "ACE_Equipment"], _displayBatteryLevelPrc77, true] call ace_interact_menu_fnc_addActionToClass;
 
-_displayBatteryLevelPrc343 = [
-	"COLSOG_battery",
-	"PRC343 - Show battery level",
-	"\a3\Modules_F_Curator\Data\iconLightning_ca.paa",
-	{
-		["ACRE_PRC343", player] call COLSOG_fnc_displayBatteryLevel;
-	},
-	{
-        [player, "ACRE_PRC343"] call acre_api_fnc_hasKindOfRadio
-	}
-] call ace_interact_menu_fnc_createAction;
-
-["Man", 1, ["ACE_SelfActions", "ACE_Equipment"], _displayBatteryLevelPrc343, true] call ace_interact_menu_fnc_addActionToClass;
-
-
 _increaseBatteryLevelPrc77 = [
 	"COLSOG_battery",
 	"PRC77 - Add new battery",
@@ -58,57 +43,25 @@ _increaseBatteryLevelPrc77 = [
 
 ["Man", 1, ["ACE_SelfActions", "ACE_Equipment"], _increaseBatteryLevelPrc77, true] call ace_interact_menu_fnc_addActionToClass;
 
-
-_increaseBatteryLevelPrc343 = [
-	"COLSOG_battery",
-	"PRC343 - Add new battery",
-	"x\zen\addons\context_actions\ui\add_ca.paa",
-	{
-		["ACRE_PRC343", player] call COLSOG_fnc_increaseBatteryLevel;
-	},
-	{
-	    private _result = false;
-
-	    private _hasPowerItem = false;
-        {
-            if ([player, _x] call BIS_fnc_hasItem) then
-            {
-                _hasPowerItem = true;
-            };
-        } forEach colsog_battery_powerItems;
-
-        private _hasRadioItem = ([player, "ACRE_PRC343"] call acre_api_fnc_hasKindOfRadio);
-
-        _result = (_hasPowerItem AND _hasRadioItem);
-        _result
-	}
-] call ace_interact_menu_fnc_createAction;
-
-["Man", 1, ["ACE_SelfActions", "ACE_Equipment"], _increaseBatteryLevelPrc343, true] call ace_interact_menu_fnc_addActionToClass;
-
 // Set eventHandler to lower radio battery when used
 // AND to spawn enemy if used too many times.
 
 ["acre_startedSpeaking",
     {
     params ["_unit", "_onRadio", "_radioId"];
-        if (_onRadio AND (isTouchingGround player)) then {
-
-            // Checks that radio has not be forced ON by player if battery is empty.
-            // If needed, turn OFF radio again.
+        if (_onRadio AND (isTouchingGround player) AND (["PRC77", _radioId] call BIS_fnc_inString)) then {
             private _currentBatteryLevelInSeconds = [_radioId] call COLSOG_fnc_getBatteryLevelFromRadioId;
 
             // If not initialized, we will initialize the radio.
             if (isNil "_currentBatteryLevelInSeconds") then
             {
-                _currentBatteryLevelInSeconds = colsog_battery_capacity;
+                _currentBatteryLevelInSeconds = colsog_battery_prc77Capacity;
                 [_radioId, _currentBatteryLevelInSeconds] call COLSOG_fnc_setBatteryLevelFromRadioId;
-                hint format ["Battery Initialized: %1 - %2 seconds", _radioId, round _currentBatteryLevelInSeconds];
+                hint format ["Battery Initialized"];
             };
 
             if (_currentBatteryLevelInSeconds <= 0) exitWith {
                 [_radioId, "setOnOffState", 0, true] call acre_sys_data_fnc_dataEvent;
-                hint format ["Battery is empty: %1", _radioId];
             };
 
             [serverTime, _radioId] call COLSOG_fnc_setLastStartOfTransmission;
@@ -123,9 +76,8 @@ _increaseBatteryLevelPrc343 = [
 ["acre_stoppedSpeaking",
     {
         params ["_unit", "_onRadio"];
-        if (_onRadio AND (isTouchingGround player)) then {
-            private _radioId = player getVariable LAST_TRANSMISSION_RADIO_ID;
-
+        private _radioId = player getVariable [LAST_TRANSMISSION_RADIO_ID, ""];
+        if (_onRadio AND (isTouchingGround player) AND (["PRC77", _radioId] call BIS_fnc_inString)) then {
             private _transmissionStartTime = [_radioId] call COLSOG_fnc_getLastStartOfTransmission;
             private _transmissionEndTime = serverTime;
 
@@ -142,10 +94,7 @@ _increaseBatteryLevelPrc343 = [
 
             if (_newBatteryLevelInSeconds <= 0) exitWith {
                 [_radioId, "setOnOffState", 0, true] call acre_sys_data_fnc_dataEvent;
-                hint format ["Battery is empty: %1", _radioId];
             };
-
-            hint format ["Battery level: %1 - %2 seconds", _radioId, round _newBatteryLevelInSeconds];
 
             // If radio call threshold reached, spawn enemy towards current player position and reset.
             [player] call COLSOG_fnc_incrementRadioCallsCounter;
