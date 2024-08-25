@@ -29,9 +29,6 @@ publicVariable "COLSOG_TrackersDefault";
 COLSOG_lastTriangulationTimeSeconds = -colsog_triangulation_coolDown;
 publicVariable "COLSOG_lastTriangulationTimeSeconds";
 
-COLSOG_batterySupportedRadios = ["ACRE_PRC77", "ACRE_PRC343"];
-publicVariable "COLSOG_batterySupportedRadios";
-
 COLSOG_amountOfRadioCalls = 0;
 publicVariable "COLSOG_amountOfRadioCalls";
 
