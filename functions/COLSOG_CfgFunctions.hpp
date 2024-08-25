@@ -14,11 +14,11 @@ class COLSOG {
     {
         file ="functions\battery";
         // 1 will execute the function for each player downloading the mission.
-        class updateBatteryLevel {postInit = 1;};
+        class batteryManager {postInit = 1;};
+        // ACE self-interact actions.
         class displayBatteryLevel {};
         class increaseBatteryLevel {};
-        class initializeBatteryLevel {};
-
+        // Utils methods.
         class getBatteryLevelFromRadioId {};
         class setBatteryLevelFromRadioId {};
         class getBatteryLevelFromRadioType {};

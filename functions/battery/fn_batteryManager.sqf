@@ -86,15 +86,6 @@ _increaseBatteryLevelPrc343 = [
 
 ["Man", 1, ["ACE_SelfActions", "ACE_Equipment"], _increaseBatteryLevelPrc343, true] call ace_interact_menu_fnc_addActionToClass;
 
-
-// Wait for first broadcast in order to initialize battery on all radio of current player.
-[
-    {[player] call acre_api_fnc_isBroadcasting;},
-    {execVM "functions\battery\fn_initializeBatteryLevel.sqf";},
-    [player]
-]
-call CBA_fnc_waitUntilAndExecute;
-
 // Set eventHandler to lower radio battery when used
 // AND to spawn enemy if used too many times.
 
@@ -106,6 +97,14 @@ call CBA_fnc_waitUntilAndExecute;
             // Checks that radio has not be forced ON by player if battery is empty.
             // If needed, turn OFF radio again.
             private _currentBatteryLevelInSeconds = [_radioId] call COLSOG_fnc_getBatteryLevelFromRadioId;
+
+            // If not initialized, we will initialize the radio.
+            if (isNil "_currentBatteryLevelInSeconds") then
+            {
+                _currentBatteryLevelInSeconds = colsog_battery_capacity;
+                [_radioId, _currentBatteryLevelInSeconds] call COLSOG_fnc_setBatteryLevelFromRadioId;
+                hint format ["Battery Initialized: %1 - %2 seconds", _radioId, round _currentBatteryLevelInSeconds];
+            };
 
             if (_currentBatteryLevelInSeconds <= 0) exitWith {
                 [_radioId, "setOnOffState", 0, true] call acre_sys_data_fnc_dataEvent;
