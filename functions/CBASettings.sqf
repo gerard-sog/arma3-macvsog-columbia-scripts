@@ -69,3 +69,9 @@
 ["colsog_traps_maceKillRadius", "SLIDER", ["Mace kill radius (m)"], [CBA_SETTINGS_COLSOG, "Traps"], [1, 10, 3, 0], 1, {}, false] call CBA_fnc_addSetting;
 ["colsog_traps_screamingEnable", "CHECKBOX", ["Enable screams"], [CBA_SETTINGS_COLSOG, "Traps"], true, 1, {}, false] call CBA_fnc_addSetting;
 ["colsog_traps_activatedBySide", "LIST", ["Trigger for Side"], [CBA_SETTINGS_COLSOG, "Traps"], [["WEST", "EAST", "GUER", "CIV", "ANYPLAYER", "ANY"], ["BLUFOR", "OPFOR", "Independent", "Civilian", "Any player", "Any AI or player"], 0], 1, {}, false] call CBA_fnc_addSetting;
+
+// Battery
+["colsog_battery_capacity", "SLIDER", ["Battery capacity in seconds"], [CBA_SETTINGS_COLSOG, "Battery"], [0, 300, 120, 0], 1, {}, false] call CBA_fnc_addSetting;
+["colsog_battery_enemySpawnThreshold", "SLIDER", ["Amount of radio calls before enemy detection"], [CBA_SETTINGS_COLSOG, "Battery"], [0, 100, 50, 0], 1, {}, false] call CBA_fnc_addSetting;
+["colsog_battery_groupsTriggeringEnemySpawnThresholdIncrease", "EDITBOX", ["Groups impacted by enemy radio call detection"], [CBA_SETTINGS_COLSOG, "Battery"], "Columbia,Reserves", 1, {colsog_battery_groupsTriggeringEnemySpawnThresholdIncrease = colsog_battery_groupsTriggeringEnemySpawnThresholdIncrease splitString " " joinString "" splitString ","}, false] call CBA_fnc_addSetting;
+["colsog_battery_powerItems", "EDITBOX", ["Item used as spare battery"], [CBA_SETTINGS_COLSOG, "Battery"], "ACE_UAVBattery", 1, {colsog_battery_powerItems = colsog_battery_powerItems splitString " " joinString "" splitString ","}, false] call CBA_fnc_addSetting;

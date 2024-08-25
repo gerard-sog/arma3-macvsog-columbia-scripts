@@ -134,55 +134,19 @@ In the Addons configuration menu, you will have the ability to update the follow
   - Enable screams: <i>Boolean</i>
   - Side activating trap: <i>["BLUFOR", "OPFOR", "Independent", "Civilian", "Any player", "Any AI or player"]</i>
 
+- **Battery**
+  - Battery capacity in seconds: <i>Integer</i>
+  - Amount of radio calls before enemy detection: <i>Integer</i>
+  - Item used as spare battery: <i>List\<String\> separated with , and no " required</i>
+  - Groups impacted by enemy radio call detection: <i>List\<String\> separated with , and no " required</i>
+
 ## Features
-<details>
 
-<summary>1. Respawn with saved loadout</summary>
-
-To save your loadout, add the below code in the arsenal 'init' section.
-
-```
-this addAction [
-  "Save loadout",
-  {player setVariable["saved_loadout",getUnitLoadout player];
-  hint "Loadout saved";},
-  nil,
-  1.5,
-  true,
-  true,
-  "",
-  "_this distance _target < 2",
-  50,
-  false,
-  "",
-  ""
-];
-```
-
-Then, by looking at the arsenal (from 2 meters maximum) and using the scroll wheel, you will have the option to 'save loadout'. This will allow you to respawn with the saved loadout instead of default loadout at connection.
-</details>
+### Gameplay
 
 <details>
 
-<summary>2. Add image on map stand</summary>
-
-To display any image on a map stand, follow the below steps:
-- convert your .png into one of these resolution: 256x256, 512x512, 1024x1024 or 2048x2048
-- 2 ways to convert .png to .paa:
-  - Manual: use the TexView 2 (Arma 3 Tool) to convert the .png into a .paa (Use 'RGBA' and in the other section use 'DXT5')
-  - Web: [ARMA 3 PAA CONVERTER](https://paa.gruppe-adler.de/)
-- add .paa file into the 'images' folder
-- add the below code in the 'init' section of the map stand:
-
-  ```
-  this setObjectTexture [0, "images\YOUR_IMAGE.paa"]
-  ```
-
-</details>
-
-<details>
-
-<summary>3. Radio Support</summary>
+<summary>1. Radio Support</summary>
 
 <h3>Allow Radio Support based on trait</h3>
 Radio support from the Prairie Fire CDLC is available in a mission if all of the below points are true for a player:
@@ -250,104 +214,29 @@ within a perimeter (it will be 3.5km in our example).
 
 <details>
 
-<summary>4. Add teleport flag</summary>
-
-To add a teleport flag (or any other object that player can use to teleport themselves at a predetermined point) follow the below steps:
-- Add a invisible marker (point) on the map in editor and give it a name (ex: "airfield")
-- add the below code in the 'init' section of the teleport flag (or object you choose)
-
-  ```
-  this addAction [
-      "Travel to airfield", // This text will be displayed in the action menu (using the scroll wheel).
-  {
-      (_this select 1) setPos (getMarkerPos "airfield");} // This section will teleport the player to the position of the "airfield" marker.
-  ];
-  ```
-
-</details>
-
-<details>
-
-<summary>5. Force vietnamese face on players</summary>
-
-N.B: Roles 1-0, 1-1 and 1-2 will not be impacted by the face change since they were US soldiers.
-
-Playing as early MACV-SOG team, we are playing as south vietnamese thus we force vietnamese faces on all playable character.
-At player initilization or at player respawn, one random asian face is selected from the below list and set for the current player.
-
-```
-[
-    "vn_b_AsianHead_A3_06_02",
-    "vn_b_AsianHead_A3_07_02",
-    "vn_b_AsianHead_A3_07_03",
-    "vn_b_AsianHead_A3_07_04",
-    "vn_b_AsianHead_A3_07_05",
-    "vn_b_AsianHead_A3_07_06",
-    "vn_b_AsianHead_A3_07_07",
-    "vn_b_AsianHead_A3_07_08",
-    "vn_b_AsianHead_A3_07_09"
-]
-```
-
-To disable this feature, you can comment or remove the below line from [initPlayerlocal.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/initPlayerlocal.sqf) and [onPlayerRespawn.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/onPlayerRespawn.sqf):
-
-```
-call COLSOG_fnc_faces;
-```
-
-You can also directly execute the below command on the server to directly reset all players faces to a random asian face:
-```
-call COLSOG_fnc_faces;
-```
-
-</details>
-
-<details>
-
-<summary>6. Add drinkable beer</summary>
-
-To create a drinkable beer (or any other object that player can use) follow the below steps:
-- Add the beer object 'Savage Bia'
-- add the below code in the 'init' section of the beer (or object you choose)
-
-  ```
-  this addAction ["Drink Beer", { 
-      "dynamicBlur" ppEffectEnable true; 
-      "dynamicBlur" ppEffectCommit 1; 
-      "dynamicBlur" ppEffectAdjust [6]; 
-      addCamShake [5, 60, 1];
-      sleep 4; 
-      "dynamicBlur" ppEffectEnable false;
-  }];
-  ```
-
-</details>
-
-<details>
-
-<summary>7. Punji mace traps</summary>
+<summary>2. Punji mace traps</summary>
 
 <h3>Credits</h3>
- - **Johnnyboy** for original implementation of mace trap that my scripts are based on.
- - **Savage Game Design** for the objects and sound files used by this script.
+- **Johnnyboy** for original implementation of mace trap that my scripts are based on.
+- **Savage Game Design** for the objects and sound files used by this script.
 
 <h3>HOW TO ADD THESE TRAPS TO YOUR MISSION</h3>
-1. Place a Whip Trap object in the editor.  The direction you set the trap 
-will be the direction the mace will swinging.
+1. Place a Whip Trap object in the editor.  The direction you set the trap
+   will be the direction the mace will swinging.
 2. In the Whip Trap object's init field, put the following code:
 
 ```
 [[this, 'WEST'], "functions\traps\swinging\colsog_fn_createSwingingMaceTrap.sqf"] remoteExec ["execVM", 0, true];
 ```
 
-or 
+or
 
 ```
 [[this, _trapHeight, _treeType], "functions\traps\falling\colsog_fn_createFallingMaceTrap.sqf"] remoteExec ["execVM", 0, true];
 ```
 
 - _trapHeight: <i>Integer</i> (default 0, will allow the height to be automatically managed depending on _treeType)
-- _treeType: <i>Integer</i> 
+- _treeType: <i>Integer</i>
   - 0: no tree.
   - 1: "\vn\vn_vegetation_f_exp\tree\vn_t_ficus_big_f.p3d"
   - 2: "\vn\vn_vegetation_f_exp\tree\vn_t_inocarpus_f.p3d"
@@ -357,7 +246,7 @@ or
 
 <details>
 
-<summary>8. ACRE2</summary>
+<summary>3. ACRE2</summary>
 
 <h3>Babel</h3>
 Babel configuration present in:
@@ -391,18 +280,7 @@ Here are the steps to follow if you want to add 3 news acre radio racks to a veh
 
 <details>
 
-<summary>9. Fuel consumption</summary>
-
-Here is the code to place in the 'init' section of the vehicle you to change the fuel consumption of:
-  ```
-  _this setFuelConsumptionCoef 3; // Fuel consumption will be 3x default consumption.
-  ```
-
-</details>
-
-<details>
-
-<summary>10. Tracker module</summary>
+<summary>4. Tracker module</summary>
 We created a custom Zeus module to manage the AI trackers spawned by the tracker module. To use that module, the tracker module placed in the Eden editor needs to have the below name:
 
   ```
@@ -423,7 +301,7 @@ By default:
 
 <details>
 
-<summary>11. Disable mine detector panel</summary>
+<summary>5. Disable mine detector panel</summary>
 For immersion purposes, we removed the HUD for mine detector.
 
 see: [minedetector_disable_panel.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/minedetector_disable_panel.sqf)
@@ -432,7 +310,7 @@ see: [minedetector_disable_panel.sqf](https://github.com/gerard-sog/arma3-macvso
 
 <details>
 
-<summary>12. Remove throwables from OPFOR AI</summary>
+<summary>6. Remove throwables from OPFOR AI</summary>
 We removed the below items for OPFOR AIs:
 
 ```
@@ -446,7 +324,7 @@ see [init_colsog_removeThrowables.sqf](https://github.com/gerard-sog/arma3-macvs
 
 <details>
 
-<summary>13. convert AI medikit/First aid kit to ace medical</summary>
+<summary>7. Convert AI medikit/First aid kit to ace medical</summary>
 At the death of a unit (AI/Player):
 
 - Medikit are converted to:
@@ -473,20 +351,7 @@ see [colsog_fn_firstAidConvertAce.sqf](https://github.com/gerard-sog/arma3-macvs
 
 <details>
 
-<summary>14. Display kill counter</summary>
-To add an action to display kill counter for each player on the server, add the below line in the 'init' section of an object:
-
-```
-this addAction ["Display total kills", "functions\colsog_fn_killCounter.sqf"]
-```
-
-this will give you a scroll wheel action to diplay the kill counter when looking at the object. see [colsog_fn_killCounter.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/colsog_fn_killCounter.sqf)
-
-</details>
-
-<details>
-
-<summary>15. Add 'STABO' action on chopper in Eden Editor</summary>
+<summary>8. Add 'STABO' action on chopper in Eden Editor</summary>
 
 Adds the ability to **any player** in the vehicle to drop/detach the STABO rig.
 
@@ -530,11 +395,11 @@ this addAction
 
 <details>
 
-<summary>16. Add 'request crew' action on chopper in Eden Editor</summary>
+<summary>9. Add 'request crew' action on chopper in Eden Editor</summary>
 
 Adds the ability to the **pilot** in the vehicle to request AI door gunners (crew) if:
- - helicopter is touching the ground AND
- - engine is off
+- helicopter is touching the ground AND
+- engine is off
 
 (Crew can only be added once).
 
@@ -573,5 +438,168 @@ this addAction
     "" 
 ];
 ```
+
+</details>
+
+<details>
+
+<summary>10. Radio battery/power management</summary>
+
+Now the RTO will need to carry batteries for his radio. Currently we manage the two below ACRE radios:
+- PRC77
+- PRC343
+
+You will have two new action under 'ace equipment' interaction:
+- "Show battery level": If you have one of the above radio types in your inventory.
+- "Add new battery": If you have one of the above radio types and a battery item in your inventory.
+
+If your battery is **EMPTY**, the radio will be turned OFF (will not update radio GUI) and once a new battery has been added, 
+you will have to turn it OFF/ON again in the radio GUI.
+
+</details>
+
+### Tips
+
+<details>
+
+<summary>1. Respawn with saved loadout</summary>
+
+To save your loadout, add the below code in the arsenal 'init' section.
+
+```
+this addAction [
+  "Save loadout",
+  {player setVariable["saved_loadout",getUnitLoadout player];
+  hint "Loadout saved";},
+  nil,
+  1.5,
+  true,
+  true,
+  "",
+  "_this distance _target < 2",
+  50,
+  false,
+  "",
+  ""
+];
+```
+
+Then, by looking at the arsenal (from 2 meters maximum) and using the scroll wheel, you will have the option to 'save loadout'. This will allow you to respawn with the saved loadout instead of default loadout at connection.
+</details>
+
+<details>
+
+<summary>2. Add image on map stand</summary>
+
+To display any image on a map stand, follow the below steps:
+- convert your .png into one of these resolution: 256x256, 512x512, 1024x1024 or 2048x2048
+- 2 ways to convert .png to .paa:
+  - Manual: use the TexView 2 (Arma 3 Tool) to convert the .png into a .paa (Use 'RGBA' and in the other section use 'DXT5')
+  - Web: [ARMA 3 PAA CONVERTER](https://paa.gruppe-adler.de/)
+- add .paa file into the 'images' folder
+- add the below code in the 'init' section of the map stand:
+
+  ```
+  this setObjectTexture [0, "images\YOUR_IMAGE.paa"]
+  ```
+
+</details>
+
+<details>
+
+<summary>3. Add teleport flag</summary>
+
+To add a teleport flag (or any other object that player can use to teleport themselves at a predetermined point) follow the below steps:
+- Add a invisible marker (point) on the map in editor and give it a name (ex: "airfield")
+- add the below code in the 'init' section of the teleport flag (or object you choose)
+
+  ```
+  this addAction [
+      "Travel to airfield", // This text will be displayed in the action menu (using the scroll wheel).
+  {
+      (_this select 1) setPos (getMarkerPos "airfield");} // This section will teleport the player to the position of the "airfield" marker.
+  ];
+  ```
+
+</details>
+
+<details>
+
+<summary>4. Force vietnamese face on players</summary>
+
+N.B: Roles 1-0, 1-1 and 1-2 will not be impacted by the face change since they were US soldiers.
+
+Playing as early MACV-SOG team, we are playing as south vietnamese thus we force vietnamese faces on all playable character.
+At player initilization or at player respawn, one random asian face is selected from the below list and set for the current player.
+
+```
+[
+    "vn_b_AsianHead_A3_06_02",
+    "vn_b_AsianHead_A3_07_02",
+    "vn_b_AsianHead_A3_07_03",
+    "vn_b_AsianHead_A3_07_04",
+    "vn_b_AsianHead_A3_07_05",
+    "vn_b_AsianHead_A3_07_06",
+    "vn_b_AsianHead_A3_07_07",
+    "vn_b_AsianHead_A3_07_08",
+    "vn_b_AsianHead_A3_07_09"
+]
+```
+
+To disable this feature, you can comment or remove the below line from [initPlayerlocal.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/initPlayerlocal.sqf) and [onPlayerRespawn.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/onPlayerRespawn.sqf):
+
+```
+call COLSOG_fnc_faces;
+```
+
+You can also directly execute the below command on the server to directly reset all players faces to a random asian face:
+```
+call COLSOG_fnc_faces;
+```
+
+</details>
+
+<details>
+
+<summary>5. Add drinkable beer</summary>
+
+To create a drinkable beer (or any other object that player can use) follow the below steps:
+- Add the beer object 'Savage Bia'
+- add the below code in the 'init' section of the beer (or object you choose)
+
+  ```
+  this addAction ["Drink Beer", { 
+      "dynamicBlur" ppEffectEnable true; 
+      "dynamicBlur" ppEffectCommit 1; 
+      "dynamicBlur" ppEffectAdjust [6]; 
+      addCamShake [5, 60, 1];
+      sleep 4; 
+      "dynamicBlur" ppEffectEnable false;
+  }];
+  ```
+
+</details>
+
+<details>
+
+<summary>6. Fuel consumption</summary>
+
+Here is the code to place in the 'init' section of the vehicle you to change the fuel consumption of:
+  ```
+  _this setFuelConsumptionCoef 3; // Fuel consumption will be 3x default consumption.
+  ```
+
+</details>
+
+<details>
+
+<summary>7. Display kill counter</summary>
+To add an action to display kill counter for each player on the server, add the below line in the 'init' section of an object:
+
+```
+this addAction ["Display total kills", "functions\colsog_fn_killCounter.sqf"]
+```
+
+this will give you a scroll wheel action to diplay the kill counter when looking at the object. see [colsog_fn_killCounter.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/colsog_fn_killCounter.sqf)
 
 </details>
