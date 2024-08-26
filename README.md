@@ -120,9 +120,10 @@ In the Addons configuration menu, you will have the ability to update the follow
   - Throwable to Remove from AI: <i>List\<String\> separated with , and no " required</i> 
 
 - **Triangulation**
-  - Required Item: <i>String</i>
+  - Required ACRE radio: <i>String</i>
   - Items to detect: <i>List\<String\> separated with , and no " required</i>
   - Cool down in seconds: <i>Integer</i>
+  - Requires ACRE spike 'vhf30108spike' nearby (10m away max): <i>Boolean</i>
   - Threshold distance for signal strength 1/5: <i>Integer</i>
   - Threshold distance for signal strength 2/5: <i>Integer</i>
   - Threshold distance for signal strength 3/5: <i>Integer</i>

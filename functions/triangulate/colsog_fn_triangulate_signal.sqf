@@ -1,3 +1,10 @@
+// Check if ACRE spike required and nearby.
+private _isAcreSpikeConditionOk = [player] call COLSOG_fnc_isAcreSpikeRequiredAndNearby;
+
+if (not (_isAcreSpikeConditionOk)) exitWith {
+    hint format ["No ground spike nearby"];
+};
+
 // 5 minutes timeout between each call.
 private _nextTriangulationTimeSeconds = COLSOG_lastTriangulationTimeSeconds + colsog_triangulation_coolDown;
 private _currentTimeSeconds = serverTime;
