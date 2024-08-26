@@ -458,6 +458,23 @@ you will have to turn it OFF/ON again in the radio GUI.
 
 </details>
 
+<details>
+
+<summary>11. Triangulation</summary>
+
+In order to triangulate enemy radios, you will need:
+- To set the frequency on the in the object (see 'Items to detect' in CBA setting to use other objects) the players will have to triangulate with the below code in the 'init' section of the object (ex: frequency set to 52.50).
+
+```
+this setVariable ["COLSOG_radioFrequency", 52.50, true]; 
+```
+
+- The players will have to set the frequency of the PRC77 radio to the desired frequency (in this example 52.50) and then use the triangulate action in 'ace self-interact equipment' menu.
+
+There is a timeout on the triangulation process (see 'Cool down in seconds' in CBA setting) after each execution.
+
+</details>
+
 ### Tips
 
 <details>
