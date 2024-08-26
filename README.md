@@ -288,7 +288,7 @@ We created a custom Zeus module to manage the AI trackers spawned by the tracker
   TrackermoduleNAME
   ```
 
-and the below code in its 'init' section.
+and the below code in its 'Run condition' section.
 
   ```
   COLSOG_TrackersEnabled
