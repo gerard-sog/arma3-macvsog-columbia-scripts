@@ -8,25 +8,7 @@ _triangulate = [
 		execVM "functions\triangulate\colsog_fn_triangulate_signal.sqf";
 	},
 	{
-	    _fnc_startsWith =
-        {
-            params ["_string", "_startsWith"];
-            _string select [0, count _startsWith] isEqualTo _startsWith
-        };
-
-        private _result = false;
-        {
-            if (typename _x != "STRING") then
-            {
-                _x = str _x;
-            };
-
-            if ([_x, colsog_triangulation_requiredItem] call _fnc_startsWith) then
-            {
-                _result = true;
-            };
-        } forEach (flatten getUnitLoadout player);
-        _result
+	    [player, colsog_triangulation_requiredAcreRadio] call acre_api_fnc_hasKindOfRadio;
 	}
 ] call ace_interact_menu_fnc_createAction;
 
