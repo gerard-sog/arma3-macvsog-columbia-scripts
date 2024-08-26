@@ -14,6 +14,7 @@ class COLSOG {
 		// this particular function will only execute for players because the file is exiting if dedicated !(hasInterface)
 		class triangulate {postInit = 1;};
 		class isAcreSpikeRequiredAndNearby {};
+		class getCurrentPrc77RadioFrequency {};
 	};
 	class Battery
     {

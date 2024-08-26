@@ -1,8 +1,16 @@
+#define RADIO_FREQUENCY "COLSOG_radioFrequency"
+
 // Check if ACRE spike required and nearby.
 private _isAcreSpikeConditionOk = [player] call COLSOG_fnc_isAcreSpikeRequiredAndNearby;
 
 if (not (_isAcreSpikeConditionOk)) exitWith {
     hint format ["No ground spike nearby"];
+};
+
+private _frequencyToTriangulate = [player] call COLSOG_fnc_getCurrentPrc77RadioFrequency;
+if (isNil "_frequencyToTriangulate") exitWith
+{
+    hint format ["Cannot retrieve current frequency"];
 };
 
 // 5 minutes timeout between each call.
@@ -23,10 +31,13 @@ private _currentMinimalDistance = 9999;
 {
     private _all_radios = entities _x;
     {
-        private _distancePlayerRadio = _x distance player;
-        if (_distancePlayerRadio <= _currentMinimalDistance) then
-        {
-            _currentMinimalDistance = _distancePlayerRadio;
+        private _radioFrequency = _x getVariable [RADIO_FREQUENCY, 0.0];
+        if (_frequencyToTriangulate == _radioFrequency) then {
+            private _distancePlayerRadio = _x distance player;
+            if (_distancePlayerRadio <= _currentMinimalDistance) then
+            {
+                _currentMinimalDistance = _distancePlayerRadio;
+            };
         };
     } forEach _all_radios;
 } forEach colsog_triangulation_itemsToDetect;
