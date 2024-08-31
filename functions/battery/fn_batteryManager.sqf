@@ -49,7 +49,7 @@ _increaseBatteryLevelPrc77 = [
 ["acre_startedSpeaking",
     {
     params ["_unit", "_onRadio", "_radioId"];
-        if (_onRadio AND (isTouchingGround player) AND (["PRC77", _radioId] call BIS_fnc_inString)) then {
+        if (_onRadio AND (isTouchingGround player) AND ([player, _radioId] call BIS_fnc_hasItem)) then {
             private _currentBatteryLevelInSeconds = [_radioId] call COLSOG_fnc_getBatteryLevelFromRadioId;
 
             // If not initialized, we will initialize the radio.
@@ -77,7 +77,7 @@ _increaseBatteryLevelPrc77 = [
     {
         params ["_unit", "_onRadio"];
         private _radioId = player getVariable [LAST_TRANSMISSION_RADIO_ID, ""];
-        if (_onRadio AND (isTouchingGround player) AND (["PRC77", _radioId] call BIS_fnc_inString)) then {
+        if (_onRadio AND (isTouchingGround player) AND ([player, _radioId] call BIS_fnc_hasItem)) then {
             private _transmissionStartTime = [_radioId] call COLSOG_fnc_getLastStartOfTransmission;
             private _transmissionEndTime = serverTime;
 
