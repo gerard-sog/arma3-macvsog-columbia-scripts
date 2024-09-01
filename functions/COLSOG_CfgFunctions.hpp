@@ -32,5 +32,6 @@ class COLSOG {
         class getLastStartOfTransmission {};
         class setLastStartOfTransmission {};
         class incrementRadioCallsCounter {};
+        class isBatteryManagementRequired {};
     };
 }
