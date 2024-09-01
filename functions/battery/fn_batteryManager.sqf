@@ -1,4 +1,5 @@
 #define LAST_TRANSMISSION_RADIO_ID "COLSOG_lastTransmissionRadioId"
+#define ACRE_PRC77 "ACRE_PRC77"
 
 if !(hasInterface) exitWith {};
 
@@ -7,10 +8,10 @@ _displayBatteryLevelPrc77 = [
 	"PRC77 - Show battery level",
 	"\a3\Modules_F_Curator\Data\iconLightning_ca.paa",
 	{
-		["ACRE_PRC77", player] call COLSOG_fnc_displayBatteryLevel;
+		[ACRE_PRC77, player] call COLSOG_fnc_displayBatteryLevel;
 	},
 	{
-        [player, "ACRE_PRC77"] call acre_api_fnc_hasKindOfRadio
+        [player, ACRE_PRC77] call acre_api_fnc_hasKindOfRadio
 	}
 ] call ace_interact_menu_fnc_createAction;
 
@@ -21,7 +22,7 @@ _increaseBatteryLevelPrc77 = [
 	"PRC77 - Add new battery",
 	"x\zen\addons\context_actions\ui\add_ca.paa",
 	{
-		["ACRE_PRC77", player] call COLSOG_fnc_increaseBatteryLevel;
+		[ACRE_PRC77, player] call COLSOG_fnc_increaseBatteryLevel;
 	},
 	{
 	    private _result = false;
@@ -34,7 +35,7 @@ _increaseBatteryLevelPrc77 = [
             };
         } forEach colsog_battery_powerItems;
 
-        private _hasRadioItem = ([player, "ACRE_PRC77"] call acre_api_fnc_hasKindOfRadio);
+        private _hasRadioItem = ([player, ACRE_PRC77] call acre_api_fnc_hasKindOfRadio);
 
         _result = (_hasPowerItem AND _hasRadioItem);
         _result
@@ -49,7 +50,7 @@ _increaseBatteryLevelPrc77 = [
 ["acre_startedSpeaking",
     {
     params ["_unit", "_onRadio", "_radioId"];
-        if (_onRadio AND (isTouchingGround player) AND (["PRC77", _radioId] call BIS_fnc_inString)) then {
+        if ([_onRadio, _radioId, ACRE_PRC77, player] call COLSOG_fnc_isBatteryManagementRequired) then {
             private _currentBatteryLevelInSeconds = [_radioId] call COLSOG_fnc_getBatteryLevelFromRadioId;
 
             // If not initialized, we will initialize the radio.
@@ -77,7 +78,7 @@ _increaseBatteryLevelPrc77 = [
     {
         params ["_unit", "_onRadio"];
         private _radioId = player getVariable [LAST_TRANSMISSION_RADIO_ID, ""];
-        if (_onRadio AND (isTouchingGround player) AND (["PRC77", _radioId] call BIS_fnc_inString)) then {
+        if ([_onRadio, _radioId, ACRE_PRC77, player] call COLSOG_fnc_isBatteryManagementRequired) then {
             private _transmissionStartTime = [_radioId] call COLSOG_fnc_getLastStartOfTransmission;
             private _transmissionEndTime = serverTime;
 
