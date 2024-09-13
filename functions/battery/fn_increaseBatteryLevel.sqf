@@ -19,12 +19,14 @@ if (isNil "_batteryLevelInSeconds") then
     hint format ["Battery Initialized"];
 } else {
     scopeName "outsideOfLoop";
+    private _radioId = [_radioType, _player] call acre_api_fnc_getRadioByType;
     private _powerItemRemoved = "MISSING";
     {
         if ([_player, _x] call BIS_fnc_hasItem) then
         {
             _powerItemRemoved = _x;
             _player removeItem _powerItemRemoved;
+            [_radioId, "setOnOffState", 1, true] call acre_sys_data_fnc_dataEvent;
             breakTo "outsideOfLoop";
         };
     } forEach colsog_battery_powerItems;
