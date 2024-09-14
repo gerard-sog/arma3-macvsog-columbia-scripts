@@ -103,12 +103,12 @@ force ace_dragging_skipContainerWeight = false;
 force ace_dragging_weightCoefficient = 1;
 
 // ACE Explosives
-force ace_explosives_customTimerDefault = 30;
-force ace_explosives_customTimerMax = 900;
-force ace_explosives_customTimerMin = 5;
-force ace_explosives_explodeOnDefuse = true;
-force ace_explosives_punishNonSpecialists = true;
-force ace_explosives_requireSpecialist = false;
+force ace_explosives_customTimerDefault = 15;
+force ace_explosives_customTimerMax = 1800;
+ace_explosives_customTimerMin = 5;
+ace_explosives_explodeOnDefuse = true;
+ace_explosives_punishNonSpecialists = true;
+ace_explosives_requireSpecialist = false;
 
 // ACE Field Rations
 force acex_field_rations_affectAdvancedFatigue = false;
