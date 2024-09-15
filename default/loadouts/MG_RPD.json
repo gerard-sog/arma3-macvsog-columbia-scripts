@@ -18,6 +18,10 @@
             "vn_b_uniform_macv_04_06",
             [
                 [
+                    "greenmag_item_speedloader",
+                    1
+                ],
+                [
                     "vn_m67_grenade_mag",
                     2,
                     1
