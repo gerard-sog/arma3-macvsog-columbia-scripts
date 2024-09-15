@@ -454,8 +454,7 @@ You will have two new action under 'ace equipment' interaction:
 - "Show battery level": If you have one of the above radio types in your inventory.
 - "Add new battery": If you have one of the above radio types and a battery item in your inventory.
 
-If your battery is **EMPTY**, the radio will be turned OFF (will not update radio GUI) and once a new battery has been added, 
-you will have to turn it OFF/ON again in the radio GUI.
+If your battery is **EMPTY**, the radio will be turned OFF and once a new battery has been added it will be turned ON again automatically.
 
 </details>
 

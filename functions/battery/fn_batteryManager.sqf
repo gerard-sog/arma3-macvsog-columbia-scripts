@@ -99,6 +99,14 @@ _increaseBatteryLevelPrc77 = [
 
             // If radio call threshold reached, spawn enemy towards current player position and reset.
             [player] call COLSOG_fnc_incrementRadioCallsCounter;
+
+            // If battery critically low, then 3 bip audio cue to warn about low battery.
+            private _batteryLevelInPercent = round (100 * (_newBatteryLevelInSeconds/colsog_battery_prc77Capacity));
+            if ((_batteryLevelInPercent > 0) AND (_batteryLevelInPercent <= 20)) then
+            {
+                playSound "gdtmod_satchel_starttimer"; // (bip bip bip)
+                hintSilent format ["Critical: [#----]"];
+            };
         };
     }
 ] call CBA_fnc_addEventHandler;
