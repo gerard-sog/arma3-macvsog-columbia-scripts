@@ -973,6 +973,26 @@ force SSD_DS_r_general = 0.8;
 force SSD_DS_r_head = 0.195851;
 force SSD_DS_r_stomach = 0.8;
 
+// Tao's Folding Map Rewrite
+force tao_rewrite_main_allowAdjust = 1;
+force tao_rewrite_main_allowPaperMapDarkening = true;
+tao_rewrite_main_closeMap = true;
+force tao_rewrite_main_closeView = ["INTERNAL","EXTERNAL"];
+tao_rewrite_main_enableMap = true;
+force tao_rewrite_main_GPSAdjust = true;
+force tao_rewrite_main_gridRef = false;
+tao_rewrite_main_isNightMap = false;
+force tao_rewrite_main_itemsGPSSetting = "[""ACE_DAGR"",""ACE_microDAGR""]";
+force tao_rewrite_main_mapIcon = false;
+force tao_rewrite_main_mapTypeLocked = true;
+force tao_rewrite_main_prefMap = true;
+force tao_rewrite_main_refreshRate = 0;
+force tao_rewrite_main_requireGPSForGridRef = true;
+force tao_rewrite_main_requireGPSForTablet = true;
+force tao_rewrite_main_requireGPSmapIcon = true;
+force tao_rewrite_main_requireMapForPaperMap = true;
+tao_rewrite_main_zoomStep = 2;
+
 // TSP Animate
 force tsp_cba_animate_attachment = true;
 tsp_cba_animate_Bang = true;
