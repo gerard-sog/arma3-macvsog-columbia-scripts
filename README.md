@@ -11,6 +11,7 @@ If you want to contribute to this project, see [CONTRIBUTING.md](https://github.
 - [Zeus modules](#zeus-modules)
 - [CBA Settings](#cba-settings)
 - [Features](#features)
+- [RT Columbia mods](#rt-columbia-mods)
 
 ## Requirements
 - [Prairie Fire DLC](https://store.steampowered.com/app/1227700/Arma_3_Creator_DLC_SOG_Prairie_Fire/)
@@ -620,3 +621,7 @@ this addAction ["Display total kills", "functions\colsog_fn_killCounter.sqf"]
 this will give you a scroll wheel action to diplay the kill counter when looking at the object. see [colsog_fn_killCounter.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/colsog_fn_killCounter.sqf)
 
 </details>
+
+## RT Columbia mods
+
+Procedure to create a new Arma 3 inventory object from scratch: https://github.com/gerard-sog/arma3-macvsog-columbia-items.
