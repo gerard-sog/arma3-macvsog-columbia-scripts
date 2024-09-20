@@ -629,7 +629,7 @@ Procedure to create a new Arma 3 inventory object from scratch: https://github.c
 
 ## Cam Lao Name borders
 
-Original credit goes to [commy2](https://gist.github.com/commy2/861b5fd14c500232d3d6ede75c4ea5c3). This script convers a series of vectors to create nice borders. Currently only for Cam Lao Nam. To enable, uncomment the line: 
+[Original credit](https://github.com/Savage-Game-Design/A3-Modding-Example/tree/master/missions/map_borders.cam_lao_nam). This script converts a series of vectors to create nice borders. Currently only for Cam Lao Nam. To enable, uncomment the line: 
 
 ```
 [] spawn compileScript ["vet_border\init.sqf"];
