@@ -635,4 +635,4 @@ Original credit goes to [commy2](https://gist.github.com/commy2/861b5fd14c500232
 [] spawn compileScript ["vet_border\init.sqf"];
 ```
 
-in the main init.sqf.
+in the main init.sqf and place down the [Cam Lao Nam borders composition](https://steamcommunity.com/sharedfiles/filedetails/?id=3334463724) which contains the necessary markers.
