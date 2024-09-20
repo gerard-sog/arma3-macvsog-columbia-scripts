@@ -56,3 +56,7 @@ execVM "functions\init_colsog_removeThrowables.sqf";
 
 // init convertMedicKit on killed units
 execVM "functions\colsog_fn_firstAidConvertAce.sqf";
+
+// run the script to create the nice vectored map borders
+// commented out by default as currently we only have borders for Cam Lao Nam
+// [] spawn compileScript ["vet_border\init.sqf"];
