@@ -622,6 +622,20 @@ this will give you a scroll wheel action to diplay the kill counter when looking
 
 </details>
 
+<details>
+
+<summary>8. Cam Lao Nam borders</summary>
+
+[Original credit](https://github.com/Savage-Game-Design/A3-Modding-Example/tree/master/missions/map_borders.cam_lao_nam). This script converts a series of vectors to create nice borders. 
+Currently only for Cam Lao Nam. To enable, uncomment the line: 
+
+```
+[] spawn compileScript ["vet_border\init.sqf"];
+```
+
+in the main init.sqf and place down the [Cam Lao Nam borders composition](https://steamcommunity.com/sharedfiles/filedetails/?id=3334463724) which contains the necessary markers.
+</details>
+
 ## RT Columbia mods
 
 Procedure to create a new Arma 3 inventory object from scratch: https://github.com/gerard-sog/arma3-macvsog-columbia-items.
