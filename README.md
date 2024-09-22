@@ -12,7 +12,6 @@ If you want to contribute to this project, see [CONTRIBUTING.md](https://github.
 - [CBA Settings](#cba-settings)
 - [Features](#features)
 - [RT Columbia mods](#rt-columbia-mods)
-- [Cam Lao Nam borders](#cam-lao-nam-borders)
 
 ## Requirements
 - [Prairie Fire DLC](https://store.steampowered.com/app/1227700/Arma_3_Creator_DLC_SOG_Prairie_Fire/)
@@ -623,16 +622,20 @@ this will give you a scroll wheel action to diplay the kill counter when looking
 
 </details>
 
-## RT Columbia mods
+<details>
 
-Procedure to create a new Arma 3 inventory object from scratch: https://github.com/gerard-sog/arma3-macvsog-columbia-items.
+<summary>8. Cam Lao Nam borders</summary>
 
-## Cam Lao Nam borders
-
-[Original credit](https://github.com/Savage-Game-Design/A3-Modding-Example/tree/master/missions/map_borders.cam_lao_nam). This script converts a series of vectors to create nice borders. Currently only for Cam Lao Nam. To enable, uncomment the line: 
+[Original credit](https://github.com/Savage-Game-Design/A3-Modding-Example/tree/master/missions/map_borders.cam_lao_nam). This script converts a series of vectors to create nice borders. 
+Currently only for Cam Lao Nam. To enable, uncomment the line: 
 
 ```
 [] spawn compileScript ["vet_border\init.sqf"];
 ```
 
 in the main init.sqf and place down the [Cam Lao Nam borders composition](https://steamcommunity.com/sharedfiles/filedetails/?id=3334463724) which contains the necessary markers.
+</details>
+
+## RT Columbia mods
+
+Procedure to create a new Arma 3 inventory object from scratch: https://github.com/gerard-sog/arma3-macvsog-columbia-items.
