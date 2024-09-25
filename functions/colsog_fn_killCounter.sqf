@@ -1,8 +1,2 @@
-{
-	systemChat format [
-		"%1 got %2 kills",
-		name _x,
-                         (getPlayerScores _x) select 0
-	];
-} forEach allPlayers;
-systemChat format ["%1 total kills", scoreSide west];
+//Broadcasts the true number of kills made by blufor. This is calculated in the colsog_fn_countTotalAIDeaths.sqf script.
+["RT Columbia and air assets inflicted " + str totalAIDeaths + " casualties on the enemy."] remoteExec ["systemChat"];
