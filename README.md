@@ -618,7 +618,7 @@ To add an action to display kill counter for each player on the server, add the 
 this addAction ["Display total kills", "functions\colsog_fn_killCounter.sqf"]
 ```
 
-this will give you a scroll wheel action to diplay the kill counter when looking at the object. see [colsog_fn_killCounter.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/colsog_fn_killCounter.sqf)
+this will give you a scroll wheel action to display the kill counter when looking at the object. see [colsog_fn_killCounter.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/colsog_fn_killCounter.sqf)
 
 </details>
 

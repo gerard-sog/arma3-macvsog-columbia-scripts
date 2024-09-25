@@ -1,2 +1,2 @@
 //Broadcasts the true number of kills made by blufor. This is calculated in the colsog_fn_countTotalAIDeaths.sqf script.
-["RT Columbia inflicted " + str totalAIDeaths + " casualties on the enemy."] remoteExec ["systemChat"];
+["RT Columbia and air assets inflicted " + str totalAIDeaths + " casualties on the enemy."] remoteExec ["systemChat"];
