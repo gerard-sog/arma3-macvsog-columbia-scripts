@@ -1,3 +1,4 @@
+if (!isServer) exitWith {};
 totalAIDeaths = 0;
 
 ["O_Soldier_base_F", "Killed", 
