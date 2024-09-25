@@ -1,8 +1,1 @@
-{
-	systemChat format [
-		"%1 got %2 kills",
-		name _x,
-                         (getPlayerScores _x) select 0
-	];
-} forEach allPlayers;
-systemChat format ["%1 total kills", scoreSide west];
+["RT Columbia inflicted " + str totalAIDeaths + " casualties on the enemy."] remoteExec ["systemChat"];
