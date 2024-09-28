@@ -25,7 +25,7 @@ _mace setDir _directionTo;
 // *******************************************************
 // stabilizes mace swing and plays creaking noise
 // *******************************************************
-[_mace, _ropeTopObject],	1.55] execVM "functions\traps\swinging\colsog_fn_controlMaceSwing.sqf";
+[_mace, _ropeTopObject] execVM "functions\traps\swinging\colsog_fn_controlMaceSwing.sqf";
 
 // *******************************************************
 // Units react to springing of trap
