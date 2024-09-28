@@ -1,3 +1,8 @@
+/*
+ * Locality:
+ * On the server.
+ */
+
 // *******************************************************
 // Create the trap composition around the placed Whip Trap.
 // Composition includes a tree to suspend the rope.  Another tree
@@ -108,10 +113,10 @@ _bush setObjectScale .85;
 // *******************************************************
 // Attach 4 whip trap punji objects to mace so it has wicked spikes
 // *******************************************************
-[[_mace, [0.55,0,0.03],	[0.999972,-1.70678e-006,-0.0075168],	1.55], "functions\traps\colsog_fn_attachSprungWhipTrap.sqf"] remoteExec ["execVM", 0, true];
-[[_mace, [-0.5,0.14,0],	[-0.998451,-2.64464e-006,-0.0556383],	1.60], "functions\traps\colsog_fn_attachSprungWhipTrap.sqf"] remoteExec ["execVM", 0, true];
-[[_mace, [0.07,-.55,0.2],	[0.0363626,-0.998937,0.263383],		1.55], "functions\traps\colsog_fn_attachSprungWhipTrap.sqf"] remoteExec ["execVM", 0, true];
-[[_mace, [0.07,.55,0.0],	[0.0363626,0.998112,-0.3495081],	1.55], "functions\traps\colsog_fn_attachSprungWhipTrap.sqf"] remoteExec ["execVM", 0, true];
+[_mace, [0.55,0,0.03],	[0.999972,-1.70678e-006,-0.0075168],	1.55] execVM "functions\traps\colsog_fn_attachSprungWhipTrap.sqf";
+[_mace, [-0.5,0.14,0],	[-0.998451,-2.64464e-006,-0.0556383],	1.60] execVM "functions\traps\colsog_fn_attachSprungWhipTrap.sqf";
+[_mace, [0.07,-.55,0.2],	[0.0363626,-0.998937,0.263383],		1.55] execVM "functions\traps\colsog_fn_attachSprungWhipTrap.sqf";
+[_mace, [0.07,.55,0.0],	[0.0363626,0.998112,-0.3495081],	1.55] execVM "functions\traps\colsog_fn_attachSprungWhipTrap.sqf";
 
 // *******************************************************
 // Attach rope between mace and and the pivot point on the trap tree.  This gives a straight rope
@@ -132,4 +137,4 @@ _trigger setPos getPos _wireTrap;
 // *******************************************************
 uiSleep 2.0; // REQUIRED else _trigger might be undefined in waitUntil (bug: https://community.bistudio.com/wiki/waitUntil).
 waitUntil {triggerActivated _trigger};
-[[_wireTrap, _mace, _ropeTopObject, _maceSphere], "functions\traps\swinging\colsog_fn_releaseSwingingMaceTrap.sqf"] remoteExec ["execVM", 0, true];
+[_wireTrap, _mace, _ropeTopObject, _maceSphere] execVM "functions\traps\swinging\colsog_fn_releaseSwingingMaceTrap.sqf";

@@ -1,3 +1,8 @@
+/*
+ * Locality:
+ * On the server.
+ */
+
 // *******************************************************
 // UGV drone makes a small noise while moving, so lets mask it with cool creaking noise.
 // *******************************************************

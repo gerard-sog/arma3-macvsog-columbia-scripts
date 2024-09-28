@@ -5,6 +5,9 @@
  * 0: logic position
  * 1: attached object
  *
+ * Locality:
+ * On Zeus local computer.
+ *
  * Return Value:
  * None
  *
@@ -22,7 +25,8 @@ private _onConfirm = {
     if (isNull _location) exitWith {
         private _wireTrap = "vn_modulemine_punji_03" createVehicle _pos;
         _wireTrap setDir _trapDirection;
-        [[_wireTrap, _trapHeight, _treeType], "functions\traps\falling\colsog_fn_createFallingMaceTrap.sqf"] remoteExec ["execVM", 0, true];
+        // Needs to be sent to server.
+        [[_wireTrap, _trapHeight, _treeType], "functions\traps\falling\colsog_fn_createFallingMaceTrap.sqf"] remoteExec ["execVM", 2, false];
     };
 };
 
