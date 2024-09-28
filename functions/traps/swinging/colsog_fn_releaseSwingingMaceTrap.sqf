@@ -10,7 +10,6 @@ params ["_wireTrap", "_mace", "_ropeTopObject", "_maceSphere"];
 private _trapPosition = getPos _wireTrap;
 private _trapDirection = getDir _wireTrap;
 
-private _unit = nearestObject [_trapPosition, 'Man'];
 playSound3D ["a3\sounds_f\air\sfx\sl_rope_break.wss", _wireTrap, false, _wireTrap, 4];
 deleteVehicle _wireTrap;
 // *******************************************************
@@ -39,15 +38,20 @@ _sound = "a3\sounds_f\characters\movements\bush_004.wss";
 playSound3D [_sound, _mace, false, getPosASL _mace, 3.5];
 waitUntil {_mace distance2D _trapPosition < 3};
 playSound3D [_sound, _mace, false, getPosASL _mace, 3.5];
+
 // *******************************************************
 // Deal with victims of mace
 // *******************************************************
-[_unit, _mace, _trapDirection, _trapPosition] execVM "functions\traps\colsog_fn_maceVictims.sqf";
+[_mace, _trapDirection, _trapPosition] execVM "functions\traps\colsog_fn_maceVictims.sqf";
 uiSleep 4;
 
 // *******************************************************
 // After initial swing make mace heavier so hangs closer to the ground (to counter retarded rope elasticity).
 // *******************************************************
 private _future = time + 10;
-waitUntil {!alive _unit or _trapPosition distance _unit > 3 or !(vehicle _unit == _unit) or time > _future};
-[_mace] execVM "functions\traps\swinging\colsog_fn_endMaceSwinging.sqf";
+waitUntil {time > _future};
+
+uiSleep 60;
+_mace setMass 290; // Make mace settle down to ground so no more physics eating CPU
+uiSleep 10;
+deleteVehicle _mace;

@@ -26,7 +26,7 @@ private _onConfirm = {
         private _wireTrap = "vn_modulemine_punji_03" createVehicle _pos;
         _wireTrap setDir _trapDirection;
         // Needs to be sent to server.
-        [[_wireTrap, _trapHeight, _treeType], "functions\traps\falling\colsog_fn_createFallingMaceTrap.sqf"] remoteExec ["execVM", 2, true];
+        [[_wireTrap, _trapHeight, _treeType], "functions\traps\falling\colsog_fn_createFallingMaceTrap.sqf"] remoteExec ["execVM", 2, false];
     };
 };
 

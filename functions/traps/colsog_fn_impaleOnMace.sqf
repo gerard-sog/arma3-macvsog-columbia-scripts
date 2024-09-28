@@ -1,12 +1,12 @@
 /*
  * Locality:
- * On player local computer.
+ * On player local computer OR on Server if AI.
  */
 
 // *******************************************************
 // Lower mace to ground to end physics so physics no longer eating CPU.
 // *******************************************************
-params ["_mace", "_unit"];
+params ["_unit", "_mace"];
 private _directionTo = ([_unit, _mace] call BIS_fnc_dirTo);
 private _unitFacingMace = false;
 if ([position _unit, _directionTo, 180, position _mace] call BIS_fnc_inAngleSector) then
@@ -28,35 +28,35 @@ switch (_option) do
 {  
 	case 1:
 	{ 
-		[_unit, "vn_armor_m41_commander_out_kia"] remoteExec ["switchMove"];    
+		_unit switchMove "vn_armor_m41_commander_out_kia";
 		_unit attachTo [_mace, [0.5, -.5, -0.4]];
 		_unit setDir _directionTo;
 		_unit setVectorUp [0.0363626, 0.998112, 0.9995081];
 	};
 	case 2:
 	{ 
-		[_unit, "KIA_driver_scooter_01"] remoteExec ["switchMove"];    
+		_unit switchMove "KIA_driver_scooter_01";
 		_unit attachTo [_mace, [0.8, -0.1, -0.1]];
 		_unit setDir _directionTo;
 		_unit setVectorUp [0.0363626, 0.998112, 0.9995081];
 	};
 	case 3:
 	{ 
-		[_unit, "KIA_driver_boat_transport_02"] remoteExec ["switchMove"];    
+		_unit switchMove "KIA_driver_boat_transport_02";
 		_unit attachTo [_mace, [0.3, .5, -0.16]]; // positive y value move unit backward
 		_unit setDir (_directionTo + 180);
 		_unit setVectorUp [0.0363626, 0.998112, 0.9995081];
 	};
 	case 4:
 	{ 
-		[_unit, "KIA_driver_boat_transport_02"] remoteExec ["switchMove"];    
+		_unit switchMove "KIA_driver_boat_transport_02";
 		_unit attachTo [_mace, [0.1, .2, -0.16]]; // positive y value move unit backward
 		_unit setDir (_directionTo + 180);
 		_unit setVectorUp [-0.0363626, 0.198112, 0.9995081];
 	};
 	case 5:
 	{ 
-		[_unit, "vn_boat_05_gunner_06_kia"] remoteExec ["switchMove"];    
+		_unit switchMove "vn_boat_05_gunner_06_kia";
 		_unit attachTo [_mace, [0.5, -.5, -0.7]]; // positive y value move unit backward
 		_unit setDir (_directionTo + 180);
 		_unit setVectorUp [0.0363626, 0.998112, 0.9995081];
