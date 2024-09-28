@@ -49,8 +49,9 @@ _increaseBatteryLevelPrc77 = [
 
 ["acre_startedSpeaking",
     {
-    params ["_unit", "_onRadio", "_radioId"];
-        if ([_onRadio, _radioId, ACRE_PRC77, player] call COLSOG_fnc_isBatteryManagementRequired) then {
+        params ["_unit", "_onRadio", "_radioId"];
+        if ([_onRadio, _radioId, ACRE_PRC77, player] call COLSOG_fnc_isBatteryManagementRequired) then
+        {
             private _currentBatteryLevelInSeconds = [_radioId] call COLSOG_fnc_getBatteryLevelFromRadioId;
 
             // If not initialized, we will initialize the radio.
@@ -66,10 +67,10 @@ _increaseBatteryLevelPrc77 = [
             };
 
             [serverTime, _radioId] call COLSOG_fnc_setLastStartOfTransmission;
-
-            // Required in order to have access to the 'radioId' in 'acre_stoppedSpeaking'.
-            player setVariable [LAST_TRANSMISSION_RADIO_ID, _radioId, true];
         };
+
+        // Required in order to have access to the 'radioId' in 'acre_stoppedSpeaking'.
+        player setVariable [LAST_TRANSMISSION_RADIO_ID, _radioId, true];
     }
 ] call CBA_fnc_addEventHandler;
 
@@ -78,7 +79,8 @@ _increaseBatteryLevelPrc77 = [
     {
         params ["_unit", "_onRadio"];
         private _radioId = player getVariable [LAST_TRANSMISSION_RADIO_ID, ""];
-        if ([_onRadio, _radioId, ACRE_PRC77, player] call COLSOG_fnc_isBatteryManagementRequired) then {
+        if ([_onRadio, _radioId, ACRE_PRC77, player] call COLSOG_fnc_isBatteryManagementRequired) then
+        {
             private _transmissionStartTime = [_radioId] call COLSOG_fnc_getLastStartOfTransmission;
             private _transmissionEndTime = serverTime;
 
