@@ -1,3 +1,8 @@
+/*
+ * Locality:
+ * On player local computer.
+ */
+
 // *******************************************************
 // Attach victim to mace and play various fx (sound, blood, etc.)
 // *******************************************************
@@ -17,7 +22,7 @@ if ((_unit distance _mace) < colsog_traps_maceKillRadius) then
 
 	_unit setPos getPos _unit;
 	_mace setDir (_trapDirection);
-	[[_mace, _unit], "functions\traps\colsog_fn_impaleOnMace.sqf"] remoteExec ["execVM", 0, true];
+	[_mace, _unit] execVM "functions\traps\colsog_fn_impaleOnMace.sqf";
 	_unit setDir _directionTo;
 	_unit setVectorUp [0.0363626, 0.998112, 0.9995081];
 	_mace setDir _trapDirection;
@@ -91,10 +96,5 @@ if ((_unit distance _mace) < colsog_traps_maceKillRadius) then
     	[_mace, selectRandom vn_us_death_screams] remoteExecCall ["say3D", 0, false]; // victim screams again
     	uiSleep 1;
     };
-
-	private _sound = "a3\sounds_f\characters\movements\bush_004.wss"; // play sound to mask the ugv motor sound
-	playSound3D [_sound, _mace, false, getPosASL _mace, 3.5];
-	uiSleep 1.5;
 };
 uiSleep 30;
-

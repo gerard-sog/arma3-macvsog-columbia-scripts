@@ -1,3 +1,8 @@
+/*
+ * Locality:
+ * On the server.
+ */
+
 // *******************************************************
 // Lower mace to ground to end physics so physics no longer eating CPU.
 // *******************************************************

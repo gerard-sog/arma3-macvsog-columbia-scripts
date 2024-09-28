@@ -1,3 +1,8 @@
+/*
+ * Locality:
+ * On the server.
+ */
+
 // *******************************************************
 // Attach sprung whip trap punji object to object.  
 // To see the sprung trap stakes you have to animateSource the object first.

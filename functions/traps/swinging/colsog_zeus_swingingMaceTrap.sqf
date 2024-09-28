@@ -5,6 +5,9 @@
  * 0: logic position
  * 1: attached object
  *
+ * Locality:
+ * On Zeus local computer.
+ *
  * Return Value:
  * None
  *
@@ -21,7 +24,7 @@ private _onConfirm = {
     if (isNull _location) exitWith {
         private _wireTrap = "vn_modulemine_punji_03" createVehicle _pos;
         _wireTrap setDir _trapDirection;
-        [[_wireTrap], "functions\traps\swinging\colsog_fn_createSwingingMaceTrap.sqf"] remoteExec ["execVM", 0, true];
+        [[_wireTrap], "functions\traps\swinging\colsog_fn_createSwingingMaceTrap.sqf"] remoteExec ["execVM", 2, true];
     };
 };
 

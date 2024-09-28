@@ -1,3 +1,8 @@
+/*
+ * Locality:
+ * On the server.
+ */
+
 params ["_wireTrap", "_mace", "_maceSphere", "_selectedTreeHeight"];
 private _trapPosition = getPos _wireTrap;
 private _trapDirection = getDir _wireTrap;
@@ -28,7 +33,7 @@ uiSleep (1.5 + _additionalTimeBeforeMaceHitsGround);
 private _sound = "a3\sounds_f\characters\movements\bush_004.wss";
 playSound3D [_sound, _mace, false, getPosASL _mace, 3.5];
 
-[[_unit, _mace, _trapDirection, _trapPosition], "functions\traps\colsog_fn_maceVictims.sqf"] remoteExec ["execVM", 0, true];
+[_unit, _mace, _trapDirection, _trapPosition] execVM "functions\traps\colsog_fn_maceVictims.sqf";
 uiSleep 4;
 
 // *******************************************************
