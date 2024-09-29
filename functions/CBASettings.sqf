@@ -76,3 +76,8 @@
 ["colsog_battery_enemySpawnThreshold", "SLIDER", ["Amount of radio calls before enemy detection"], [CBA_SETTINGS_COLSOG, "Battery"], [0, 100, 50, 0], 1, {}, false] call CBA_fnc_addSetting;
 ["colsog_battery_groupsTriggeringEnemySpawnThresholdIncrease", "EDITBOX", ["Groups impacted by enemy radio call detection"], [CBA_SETTINGS_COLSOG, "Battery"], "Columbia,Reserves", 1, {colsog_battery_groupsTriggeringEnemySpawnThresholdIncrease = colsog_battery_groupsTriggeringEnemySpawnThresholdIncrease splitString " " joinString "" splitString ","}, false] call CBA_fnc_addSetting;
 ["colsog_battery_powerItems", "EDITBOX", ["Item used as spare battery"], [CBA_SETTINGS_COLSOG, "Battery"], "ACE_UAVBattery", 1, {colsog_battery_powerItems = colsog_battery_powerItems splitString " " joinString "" splitString ","}, false] call CBA_fnc_addSetting;
+
+// Sensors
+["colsog_sensor_gunshotInventoryItem", "EDITBOX", ["Inventory item allowing placement of 'Gunshot' sensor"], [CBA_SETTINGS_COLSOG, "Sensors"], "colsog_inv_sensor", 1, {}, false] call CBA_fnc_addSetting;
+["colsog_sensor_gunshotThingItem", "EDITBOX", ["Item used as 'Gunshot' sensor"], [CBA_SETTINGS_COLSOG, "Sensors"], "colsog_thing_sensor", 1, {}, false] call CBA_fnc_addSetting;
+["colsog_sensor_gunshotSendToCustomUnits", "CHECKBOX", ["Sensor tries sending data to custom units ?"], [CBA_SETTINGS_COLSOG, "Sensors"], true, 1, {}, false] call CBA_fnc_addSetting;

@@ -34,4 +34,12 @@ class COLSOG {
         class incrementRadioCallsCounter {};
         class isBatteryManagementRequired {};
     };
+    class Sensors
+    {
+        file ="functions\sensors";
+        // 1 will execute the function for each player downloading the mission.
+        class gunshotSensor {postInit = 1;};
+        // Utils methods.
+        class recordEventInObjectData {};
+    }
 }

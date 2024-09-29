@@ -1,7 +1,10 @@
+params ["_player"];
 
-private _pos = getPosATL player;
-private _sensor = "vn_prop_sandbag_01" createVehicle _pos; // item to be configurable.
-_sensor setVariable ["COLSOG_sensorType", "gunshot", true];
+if (!isServer) exitWith {};
+
+_player removeItem colsog_sensor_gunshotInventoryItem;
+private _pos = getPosATL _player;
+private _sensor = colsog_sensor_gunshotThingItem createVehicle _pos; // item to be configurable.
 
 _sensor addAction
 [
@@ -37,17 +40,20 @@ _sensor addAction
 
 // Proximity sensor
 private _trigger = createTrigger ["EmptyDetector", _pos];
-_trigger setVariable ["sensor", _sensor];
+// Required in order to pass as argument in trigger statement.
+_trigger setVariable ["COLSOG_sensorObject", _sensor];
 _trigger setTriggerArea [50, 50, 0, false];
 _trigger setTriggerInterval 5;
 _trigger setTriggerActivation ["EAST", "PRESENT", true];
 _trigger setTriggerStatements
 [
     "this",
-    "[thisTrigger getVariable 'sensor'] execVM 'functions\sensors\gunshot\fn_saveProximityData.sqf'",
+    "[thisTrigger getVariable 'COLSOG_sensorObject'] execVM 'functions\sensors\gunshot\fn_recordMovement.sqf'",
     ""
 ];
 _trigger setPos getPos _sensor;
+// Required in order to delete trigger when object is deleted/picked up.
+_sensor setVariable ["COLSOG_sensorTrigger", _trigger];
 
 // Gunshot sensor
 _sensor addEventHandler
@@ -56,20 +62,7 @@ _sensor addEventHandler
     {
         params ["_unit", "_firer", "_distance", "_weapon", "_muzzle", "_mode", "_ammo", "_gunner"];
 
-        systemChat "FiredNear";
-        systemChat (_unit getVariable ["COLSOG_sensorData", "1"]);
-
-        private _data = _unit getVariable ["COLSOG_sensorData", ""];
-        private _time = [dayTime] call BIS_fnc_timeToString; // 07:21:36
-
-        systemChat _time;
-
-        private _newData = _data + "|" + _time + ":<font color='#FF0000'>gunshot</font> dst " + str _distance + "<br />";
-
-        systemChat _newData;
-
-        _unit setVariable ["COLSOG_sensorData", _newData, true];
-
-        // TODO: send ping to pilot OR dairy record if in distance ?
+        private _eventData = "distance " + (str _distance) + "meters.";
+        [_unit, "GUNSHOT", "#FF0000", _eventData, colsog_sensor_gunshotSendToCustomUnits] call COLSOG_fnc_recordEventInObjectData;
     }
 ];
