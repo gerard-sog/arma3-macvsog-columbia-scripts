@@ -41,7 +41,7 @@ private _sensor = colsog_sensor_gunshotThingItem createVehicle _pos; // item to 
 // Proximity sensor
 private _trigger = createTrigger ["EmptyDetector", _pos];
 // Required in order to pass as argument in trigger statement.
-_trigger setVariable ["COLSOG_sensorObject", _sensor];
+_trigger setVariable ["COLSOG_sensorObject", _sensor, true];
 _trigger setTriggerArea [50, 50, 0, false];
 _trigger setTriggerInterval 5;
 _trigger setTriggerActivation ["EAST", "PRESENT", true];
@@ -53,7 +53,7 @@ _trigger setTriggerStatements
 ];
 _trigger setPos getPos _sensor;
 // Required in order to delete trigger when object is deleted/picked up.
-_sensor setVariable ["COLSOG_sensorTrigger", _trigger];
+_sensor setVariable ["COLSOG_sensorTrigger", _trigger, true];
 
 // Gunshot sensor
 _sensor addEventHandler
