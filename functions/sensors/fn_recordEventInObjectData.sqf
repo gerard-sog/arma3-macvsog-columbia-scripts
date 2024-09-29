@@ -13,9 +13,15 @@
  */
 
 #define SENSOR_DATA "COLSOG_sensorData"
+#define SENSOR_LAST_ENTRY_TIME "COLSOG_sensorLastEntryTime"
 #define SENSOR_IS_PILOT "COLSOG_isPilot"
 
 params ["_sensor", ["_eventType", "EVENT"], ["_colorCode", "#000000"], ["_eventData", " - "], ["_sendToCustomUnits", false]];
+
+// Maximum 1 event log per X seconds.
+private _sensorLastEntryTime = _sensor getVariable [SENSOR_LAST_ENTRY_TIME, 0];
+
+if ((_sensorLastEntryTime + colsog_sensor_log_frequency) > serverTime) exitWith {};
 
 private _data = _sensor getVariable [SENSOR_DATA, ""];
 private _timestamp = [dayTime] call BIS_fnc_timeToString; // 07:21:36
@@ -35,3 +41,5 @@ if (_sendToCustomUnits) then
     	};
     } forEach allPlayers;
 };
+
+_sensor setVariable [SENSOR_LAST_ENTRY_TIME, serverTime, true];

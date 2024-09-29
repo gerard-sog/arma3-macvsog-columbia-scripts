@@ -81,3 +81,4 @@
 ["colsog_sensor_gunshotInventoryItem", "EDITBOX", ["Inventory item allowing placement of 'Gunshot' sensor"], [CBA_SETTINGS_COLSOG, "Sensors"], "colsog_inv_sensor", 1, {}, false] call CBA_fnc_addSetting;
 ["colsog_sensor_gunshotThingItem", "EDITBOX", ["Item used as 'Gunshot' sensor"], [CBA_SETTINGS_COLSOG, "Sensors"], "colsog_thing_sensor", 1, {}, false] call CBA_fnc_addSetting;
 ["colsog_sensor_gunshotSendToCustomUnits", "CHECKBOX", ["Sensor tries sending data to custom units ?"], [CBA_SETTINGS_COLSOG, "Sensors"], true, 1, {}, false] call CBA_fnc_addSetting;
+["colsog_sensor_log_frequency", "SLIDER", ["Sensor logging frequency"], [CBA_SETTINGS_COLSOG, "Sensors"], [0, 60, 5, 0], 1, {}, false] call CBA_fnc_addSetting;
