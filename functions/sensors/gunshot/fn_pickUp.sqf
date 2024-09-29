@@ -1,4 +1,3 @@
-
 params ["_target", "_caller", "_actionId", "_arguments"]; // specials parameters passed to a script by addAction
 
 // Get equivalent inventory item.
