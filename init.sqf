@@ -54,6 +54,9 @@ f_available_languages = [
 // init removeThrowables on Opfor units
 execVM "functions\init_colsog_removeThrowables.sqf";
 
+// init Gunshot sensors placed by player
+execVM "functions\sensors\gunshot\init_colsog_gunshotSensor.sqf"
+
 // init convertMedicKit on killed units
 execVM "functions\colsog_fn_firstAidConvertAce.sqf";
 

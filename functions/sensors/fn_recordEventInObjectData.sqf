@@ -14,9 +14,9 @@
 
 #define SENSOR_DATA "COLSOG_sensorData"
 #define SENSOR_LAST_ENTRY_TIME "COLSOG_sensorLastEntryTime"
-#define SENSOR_IS_PILOT "COLSOG_isPilot"
+#define SENSOR_IS_LISTENING_TO_SENSOR "COLSOG_isListeningToSensor"
 
-params ["_sensor", ["_eventType", "EVENT"], ["_colorCode", "#000000"], ["_eventData", " - "], ["_sendToCustomUnits", false]];
+params ["_sensor", ["_eventType", "EVENT"], ["_colorCode", "#000000"], ["_eventData", " - "], ["_transmitDataOverRadio", false]];
 
 // Maximum 1 event log per X seconds.
 private _sensorLastEntryTime = _sensor getVariable [SENSOR_LAST_ENTRY_TIME, 0];
@@ -30,11 +30,12 @@ private _newData = _data + _newEvent;
 
 _sensor setVariable [SENSOR_DATA, _newData, true];
 
-if (_sendToCustomUnits) then
+if (_transmitDataOverRadio) then
 {
     {
-    	private _isPilot = _x getVariable [SENSOR_IS_PILOT, false];
-    	if (_isPilot) then {
+    	private _isListeningToSensor = _x getVariable [SENSOR_IS_LISTENING_TO_SENSOR, false];
+    	if ((_isListeningToSensor) AND (_x distance _sensor < colsog_sensor_radioTransmissionRange)) then
+    	{
             player createDiaryRecord ["Diary", ["Data", _newEvent]];
     	    // (bip bip bip)
     	    "gdtmod_satchel_starttimer" remoteExec ["playSound", _x];

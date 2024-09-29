@@ -143,6 +143,17 @@ In the Addons configuration menu, you will have the ability to update the follow
   - Item used as spare battery: <i>List\<String\> separated with , and no " required</i>
   - Groups impacted by enemy radio call detection: <i>List\<String\> separated with , and no " required</i>
 
+- **Sensor**
+  - Inventory item to use: <i>String</i>
+  - Thing item used as sensor: <i>String</i>
+  - Transmit data over radio: <i>Boolean</i>
+    - Player received diary record + audio bip by radio waves requires: 
+      ```
+      this setvariable ["COLSOG_isListeningToSensor", true];
+      ```
+  - Radio transmission range (m): <i>Integer</i>
+  - Sensor logging frequency (seconds): <i>Integer</i>
+
 ## Features
 
 ### Gameplay
@@ -473,6 +484,31 @@ this setVariable ["COLSOG_radioFrequency", 52.50, true];
 - The players will have to set the frequency of the PRC77 radio to the desired frequency (in this example 52.50) and then use the triangulate action in 'ace self-interact equipment' menu.
 
 There is a timeout on the triangulation process (see 'Cool down in seconds' in CBA setting) after each execution.
+
+</details>
+
+<details>
+
+<summary>12. Sensors</summary>
+
+<details>
+
+<summary>12.1. 'Gunshot' Sensor</summary>
+
+See Addons settings to configure this sensor.
+
+- Detects:
+  - When a gunshot is fired in its vicinity (maximum 70 meters).
+  - When an OPFOR enters its 25 meters detection radius.
+- Stores Data:
+  - Locally on the object and can be collect using the 'collect' action on the item. Will be save as diary entry.
+  - Sends data over radio wave and player with bellow line of code will receive the diary record from distance (useful for pilots).
+
+    ```
+    this setvariable ["COLSOG_isListeningToSensor", true]; 
+    ```
+
+</details>
 
 </details>
 
