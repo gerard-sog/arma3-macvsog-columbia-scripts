@@ -23,9 +23,10 @@ private _sensorLastEntryTime = _sensor getVariable [SENSOR_LAST_ENTRY_TIME, 0];
 
 if ((_sensorLastEntryTime + colsog_sensor_log_frequency) > serverTime) exitWith {};
 
+private _sensorId = str (_sensor getVariable "COLSOG_sensorID");
 private _data = _sensor getVariable [SENSOR_DATA, ""];
 private _timestamp = [dayTime] call BIS_fnc_timeToString; // 07:21:36
-private _newEvent = _timestamp + ":<font color='" + _colorCode + "'>" + _eventType + "</font>: " + _eventData + "<br />";
+private _newEvent = "ID_" + _sensorId + " | " + _timestamp + " | <font color='" + _colorCode + "'>" + _eventType + "</font> | " + _eventData + "<br />";
 private _newData = _data + _newEvent;
 
 _sensor setVariable [SENSOR_DATA, _newData, true];
