@@ -32,6 +32,9 @@ publicVariable "COLSOG_lastTriangulationTimeSeconds";
 COLSOG_amountOfRadioCalls = 0;
 publicVariable "COLSOG_amountOfRadioCalls";
 
+COLSOG_sensorIdCounter = 0;
+publicVariable "COLSOG_sensorIdCounter";
+
 _handle = [] execVM "functions\tracker\colsog_fn_onTrackerSpawn.sqf";
 _handle = [] execVM "functions\tracker\colsog_fn_trackerGroup.sqf";
 
