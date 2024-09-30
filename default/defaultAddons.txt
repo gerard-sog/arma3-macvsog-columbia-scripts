@@ -67,7 +67,7 @@ ace_casings_maxCasings = 250;
 ace_common_allowFadeMusic = true;
 force ace_common_checkPBOsAction = 2;
 force ace_common_checkPBOsCheckAll = true;
-force ace_common_checkPBOsWhitelist = "[  ""tsp_animate_limit"", ""tsp_animate_stiff"",  ""bettinv_main_ace"", ""bettinv_main"", ""3denEnhanced"",  ""sp_general"",  ""sp_player"",  ""PLP_SOGMeleeTweak"",  ""light"",  ""lighty"",  ""FSL_pvttunt"",  ""betterinv_main"",  ""crowsza_ace"",  ""crowsza_drawbuild"",  ""crowsza_main"",  ""crowsza_misc"",  ""crowsza_pingbox"",  ""crowsza_teleport"",  ""crowsza_tfar"",  ""crowsza_zeus_text"",  ""DNI_ZeusFPSMonitor"",  ""CHVD"",  ""ANZ_MissileEfxMod"",  ""WarFXPE"",  ""Vile_HUD"",  ""Blastcore_MainCore"",  ""Blastcore_VEP"",  ""L_ES_ES_main"",  ""L_ES_ES_sounds"",  ""L_ES_ES_sys"",  ""ESSP_core"",  ""ESSP_compat_vn"",  ""A3_Anims_F_Config_Sdr"", ""PLP_starSphere""  ]";
+force ace_common_checkPBOsWhitelist = "[  ""bettinv_main_ace"", ""bettinv_main"", ""3denEnhanced"",  ""sp_general"",  ""sp_player"",  ""PLP_SOGMeleeTweak"",  ""light"",  ""lighty"",  ""FSL_pvttunt"",  ""betterinv_main"",  ""crowsza_ace"",  ""crowsza_drawbuild"",  ""crowsza_main"",  ""crowsza_misc"",  ""crowsza_pingbox"",  ""crowsza_teleport"",  ""crowsza_tfar"",  ""crowsza_zeus_text"",  ""DNI_ZeusFPSMonitor"",  ""CHVD"",  ""ANZ_MissileEfxMod"",  ""WarFXPE"",  ""Vile_HUD"",  ""Blastcore_MainCore"",  ""Blastcore_VEP"",  ""L_ES_ES_main"",  ""L_ES_ES_sounds"",  ""L_ES_ES_sys"",  ""ESSP_core"",  ""ESSP_compat_vn"",  ""A3_Anims_F_Config_Sdr"", ""PLP_starSphere""  ]";
 force ace_common_deployedSwayFactor = 1;
 ace_common_displayTextColor = [0,0,0,0.1];
 ace_common_displayTextFontColor = [1,1,1,1];
@@ -103,8 +103,8 @@ force ace_dragging_skipContainerWeight = false;
 force ace_dragging_weightCoefficient = 1;
 
 // ACE Explosives
-force ace_explosives_customTimerDefault = 15;
-force ace_explosives_customTimerMax = 1800;
+force ace_explosives_customTimerDefault = 30;
+force ace_explosives_customTimerMax = 900;
 force ace_explosives_customTimerMin = 5;
 force ace_explosives_explodeOnDefuse = true;
 force ace_explosives_punishNonSpecialists = true;
@@ -692,7 +692,7 @@ force colsog_ai_spotTime = 0.1;
 force colsog_ai_suppression = true;
 force colsog_battery_enemySpawnThreshold = 50;
 force colsog_battery_groupsTriggeringEnemySpawnThresholdIncrease = "Columbia,Reserves";
-force colsog_battery_powerItems = "ACE_UAVBattery";
+force colsog_battery_powerItems = "colsog_inv_prc77_battery";
 force colsog_battery_prc77Capacity = 300;
 force colsog_firstAid_convertAceFieldDressing = 5;
 force colsog_firstAid_convertAceMorphine = 1;
@@ -703,13 +703,18 @@ force colsog_medikit_convertAceSalineIv500 = 2;
 force colsog_medikit_convertAceSplint = 2;
 force colsog_medikit_convertAceTourniquet = 4;
 force colsog_sensor_engineInventoryItem = "colsog_inv_handsid_sensor";
-force colsog_sensor_engineLogFrequency = 5;
+force colsog_sensor_engineLogFrequency = 10;
 force colsog_sensor_engineRadioTransmissionRange = 1500;
 force colsog_sensor_engineThingItem = "colsog_thing_handsid_sensor";
 force colsog_sensor_engineTransmitDataOverRadio = true;
+force colsog_sensor_gravityInventoryItem = "";
+force colsog_sensor_gravityLogFrequency = 60;
+force colsog_sensor_gravityRadioTransmissionRange = 0;
+force colsog_sensor_gravityThingItem = "";
+force colsog_sensor_gravityTransmitDataOverRadio = false;
 force colsog_sensor_gunshotInventoryItem = "colsog_inv_sensor";
-force colsog_sensor_gunshotLogFrequency = 5;
-force colsog_sensor_gunshotRadioTransmissionRange = 500;
+force colsog_sensor_gunshotLogFrequency = 10;
+force colsog_sensor_gunshotRadioTransmissionRange = 1500;
 force colsog_sensor_gunshotThingItem = "colsog_thing_sensor";
 force colsog_sensor_gunshotTransmitDataOverRadio = true;
 force colsog_stabo_climbDuration = 10;
@@ -940,11 +945,6 @@ force grad_trenches_functions_vehicleEnvelopeDigTime = 120;
 force grad_trenches_functions_vehicleEnvelopeRemovalTime = -1;
 force grad_trenches_functions_vehicleTrenchBuildSpeed = 5;
 
-// GreenMag
-force greenmag_main_CBAS_enable = true;
-greenmag_main_CBAS_maxMags = 0;
-force greenmag_main_CBAS_simpleGM = true;
-
 // Laxemann Align
 force L_Align_enabled = true;
 force L_Align_steadyShake_enabled = true;
@@ -964,6 +964,10 @@ force L_Suppress_halting = true;
 force L_Suppress_intensity = 0;
 force L_Suppress_playerSwabEnabled = true;
 force L_Suppress_recovery = 2;
+
+// PKM
+A3_mags_clipsAreDisposable = true;
+A3_mags_looseBeltsAreDisposable = true;
 
 // SSD Death Screams
 force SSD_DS_enable_death = true;
@@ -1020,6 +1024,7 @@ force tsp_cba_animate_door = true;
 tsp_cba_animate_Duo = true;
 force tsp_cba_animate_friend = 0;
 force tsp_cba_animate_grenade = true;
+tsp_cba_animate_Heart = true;
 tsp_cba_animate_Horns = true;
 tsp_cba_animate_Inspect = true;
 tsp_cba_animate_Ivan = true;
@@ -1054,12 +1059,17 @@ force tsp_cba_animate_Suicide = false;
 force tsp_cba_animate_tactical = true;
 force tsp_cba_animate_tap = true;
 force tsp_cba_animate_throw = false;
+tsp_cba_animate_ThumbsDown = true;
+tsp_cba_animate_ThumbsUp = true;
+tsp_cba_animate_uav = true;
 force tsp_cba_animate_walk = false;
 force tsp_cba_animate_walk_default = 1;
 force tsp_cba_animate_walk_lower = 1;
 force tsp_cba_animate_walk_max = 1;
 force tsp_cba_animate_watch = true;
 tsp_cba_animate_Zozo = true;
+
+// TSP Animate - Radio
 force tsp_cba_radio = true;
 force tsp_cba_radio_aiming = true;
 force tsp_cba_radio_headsets = "[]";
@@ -1087,6 +1097,7 @@ force tsp_cba_radio_vests = "[]";
 
 // TSP Core
 force tsp_cba_angle = -0.1;
+tsp_cba_compat = false;
 force tsp_cba_core_chvd = false;
 force tsp_cba_core_pause = false;
 force tsp_cba_hint = "Subtitle";
