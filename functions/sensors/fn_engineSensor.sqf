@@ -8,7 +8,10 @@ _engineSensor = [
 		execVM "functions\sensors\engine\fn_createEngineSensor.sqf";
 	},
 	{
-	    [player, colsog_sensor_engineInventoryItem] call BIS_fnc_hasItem;
+	    private _hasItem = [player, colsog_sensor_engineInventoryItem] call BIS_fnc_hasItem;
+	    private _isNotInVehicle = (isNull objectParent player);
+	    _result = (_hasItem AND _isNotInVehicle);
+        _result
 	}
 ] call ace_interact_menu_fnc_createAction;
 

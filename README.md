@@ -165,6 +165,17 @@ In the Addons configuration menu, you will have the ability to update the follow
   - Radio transmission range (m): <i>Integer</i>
   - Sensor logging frequency (sec): <i>Integer</i>
 
+- **Sensors - Gravity**
+  - Inventory item to use: <i>String</i>
+  - Thing item used as sensor: <i>String</i>
+  - Transmit data over radio: <i>Boolean</i>
+    - Player received diary record + audio bip by radio waves requires:
+      ```
+      this setvariable ["COLSOG_isListeningToSensor", true];
+      ```
+  - Radio transmission range (m): <i>Integer</i>
+  - Sensor logging frequency (sec): <i>Integer</i>
+
 ## Features
 
 ### Gameplay

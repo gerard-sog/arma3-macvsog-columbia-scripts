@@ -8,7 +8,10 @@ _gunshotSensor = [
 		execVM "functions\sensors\gunshot\fn_createGunshotSensor.sqf";
 	},
 	{
-	    [player, colsog_sensor_gunshotInventoryItem] call BIS_fnc_hasItem;
+	    private _hasItem = [player, colsog_sensor_gunshotInventoryItem] call BIS_fnc_hasItem;
+	    private _isNotInVehicle = (isNull objectParent player);
+        _result = (_hasItem AND _isNotInVehicle);
+        _result
 	}
 ] call ace_interact_menu_fnc_createAction;
 

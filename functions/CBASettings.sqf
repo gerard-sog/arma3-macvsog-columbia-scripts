@@ -90,3 +90,10 @@
 ["colsog_sensor_engineTransmitDataOverRadio", "CHECKBOX", ["Transmit data over radio"], [CBA_SETTINGS_COLSOG, "Sensors - Engine"], true, 1, {}, false] call CBA_fnc_addSetting;
 ["colsog_sensor_engineRadioTransmissionRange", "SLIDER", ["Radio transmission range (m)"], [CBA_SETTINGS_COLSOG, "Sensors - Engine"], [0, 2500, 1500, 0], 1, {}, false] call CBA_fnc_addSetting;
 ["colsog_sensor_engineLogFrequency", "SLIDER", ["Sensor logging frequency (sec)"], [CBA_SETTINGS_COLSOG, "Sensors - Engine"], [0, 60, 5, 0], 1, {}, false] call CBA_fnc_addSetting;
+
+// Sensors - Gravity
+["colsog_sensor_gravityInventoryItem", "EDITBOX", ["Inventory item to use"], [CBA_SETTINGS_COLSOG, "Sensors - Gravity"], "colsog_inv_sensor", 1, {}, false] call CBA_fnc_addSetting;
+["colsog_sensor_gravityThingItem", "EDITBOX", ["Thing item used as sensor"], [CBA_SETTINGS_COLSOG, "Sensors - Gravity"], "colsog_thing_sensor", 1, {}, false] call CBA_fnc_addSetting;
+["colsog_sensor_gravityTransmitDataOverRadio", "CHECKBOX", ["Transmit data over radio"], [CBA_SETTINGS_COLSOG, "Sensors - Gravity"], true, 1, {}, false] call CBA_fnc_addSetting;
+["colsog_sensor_gravityRadioTransmissionRange", "SLIDER", ["Radio transmission range (m)"], [CBA_SETTINGS_COLSOG, "Sensors - Gravity"], [0, 2500, 1000, 0], 1, {}, false] call CBA_fnc_addSetting;
+["colsog_sensor_gravityLogFrequency", "SLIDER", ["Sensor logging frequency (sec)"], [CBA_SETTINGS_COLSOG, "Sensors - Gravity"], [0, 60, 5, 0], 1, {}, false] call CBA_fnc_addSetting;
