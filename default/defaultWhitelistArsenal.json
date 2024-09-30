@@ -962,7 +962,6 @@
   "vn_l1a1_01_gl",
   "vn_22mm_m61_frag_mag",
   "vn_22mm_n94_heat_mag",
-  "ACE_UAVBattery",
   "sog_boonie_2_ban_1_tiger_1_e",
   "sog_boonie_2_ban_1_tiger_2_e",
   "sog_boonie_2_ban_1_tiger_3_e",
@@ -1170,5 +1169,8 @@
   "pk_762_51_5Rnd_clip",
   "pk_762_51_60Rnd_clip_bandolier",
   "pk_762_25_8Rnd_clip",
-  "pk_9_18_8Rnd_clip"
+  "pk_9_18_8Rnd_clip",
+  "colsog_inv_prc77_battery",
+  "colsog_inv_sensor",
+  "colsog_inv_handsid_sensor"
 ]

@@ -117,25 +117,12 @@
           1
         ],
         [
-          "ACE_UAVBattery",
-          1
-        ],
-        [
-          "greenmag_item_speedloader",
-          1
-        ],
-        [
           "vn_mine_m14_mag",
           3,
           1
         ],
         [
           "vn_m34_grenade_mag",
-          1,
-          1
-        ],
-        [
-          "vn_m67_grenade_mag",
           1,
           1
         ],
@@ -155,12 +142,12 @@
           1
         ],
         [
-          "DemoCharge_Remote_Mag",
+          "vn_m129_mag",
           1,
           1
         ],
         [
-          "vn_m129_mag",
+          "colsog_inv_prc77_battery",
           1,
           1
         ]
@@ -186,10 +173,5 @@
       ""
     ]
   ],
-  [
-    [
-      "ace_earplugs",
-      true
-    ]
-  ]
+  []
 ]
