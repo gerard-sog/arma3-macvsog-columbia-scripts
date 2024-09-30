@@ -18,7 +18,7 @@ if (!isServer) exitWith {};
                 _trigger setTriggerStatements
                 [
                     "this",
-                    "[thisTrigger getVariable 'COLSOG_sensorObject'] execVM 'functions\sensors\gunshot\fn_recordMovement.sqf'",
+                    "[thisTrigger getVariable 'COLSOG_sensorObject'] execVM 'functions\sensors\gunshot\fn_recordOpforMovement.sqf'",
                     ""
                 ];
                 _trigger setPos getPos _unit;
@@ -33,7 +33,7 @@ if (!isServer) exitWith {};
                         params ["_unit", "_firer", "_distance", "_weapon", "_muzzle", "_mode", "_ammo", "_gunner"];
 
                         private _eventData = "distance " + (str _distance) + "meters.";
-                        [_unit, "GUNSHOT", "#FF0000", _eventData, colsog_sensor_transmitDataOverRadio] call COLSOG_fnc_recordEventInObjectData;
+                        [_unit, "GUNSHOT", "#FF0000", _eventData, colsog_sensor_transmitDataOverRadio] execVM "functions\sensors\common\fn_recordEventInObjectData.sqf";
                     }
                 ];
             }, [_unit]

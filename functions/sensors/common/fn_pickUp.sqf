@@ -1,7 +1,7 @@
 params ["_target", "_caller", "_actionId", "_arguments"]; // specials parameters passed to a script by addAction
 
 // Get equivalent inventory item.
-private _inventorySensorItem = colsog_sensor_gunshotInventoryItem;
+private _inventorySensorItem = _arguments select 0;
 
 if (_caller canAdd _inventorySensorItem) then
 {

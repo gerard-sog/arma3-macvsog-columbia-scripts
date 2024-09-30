@@ -12,8 +12,8 @@ publicVariable "COLSOG_sensorIdCounter";
 	_sensor,
 	[
       "<t color='#FF0000'>Pick up</t>",
-      "functions\sensors\gunshot\fn_pickUp.sqf",
-      nil,
+      "functions\sensors\common\fn_pickUp.sqf",
+      [colsog_sensor_gunshotInventoryItem],
       0,
       true,
       true,
@@ -30,7 +30,7 @@ publicVariable "COLSOG_sensorIdCounter";
 	_sensor,
 	[
       "<t color='#00FF00'>Collect data</t>",
-      "functions\sensors\gunshot\fn_collectData.sqf",
+      "functions\sensors\common\fn_collectDataAsDiaryRecord.sqf",
       nil,
       0,
       true,
