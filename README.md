@@ -143,16 +143,27 @@ In the Addons configuration menu, you will have the ability to update the follow
   - Item used as spare battery: <i>List\<String\> separated with , and no " required</i>
   - Groups impacted by enemy radio call detection: <i>List\<String\> separated with , and no " required</i>
 
-- **Sensor**
+- **Sensors - Gunshot**
   - Inventory item to use: <i>String</i>
   - Thing item used as sensor: <i>String</i>
   - Transmit data over radio: <i>Boolean</i>
-    - Player received diary record + audio bip by radio waves requires: 
+    - Player received diary record + audio bip by radio waves requires:
       ```
       this setvariable ["COLSOG_isListeningToSensor", true];
       ```
   - Radio transmission range (m): <i>Integer</i>
-  - Sensor logging frequency (seconds): <i>Integer</i>
+  - Sensor logging frequency (sec): <i>Integer</i>
+
+- **Sensors - Engine**
+  - Inventory item to use: <i>String</i>
+  - Thing item used as sensor: <i>String</i>
+  - Transmit data over radio: <i>Boolean</i>
+    - Player received diary record + audio bip by radio waves requires:
+      ```
+      this setvariable ["COLSOG_isListeningToSensor", true];
+      ```
+  - Radio transmission range (m): <i>Integer</i>
+  - Sensor logging frequency (sec): <i>Integer</i>
 
 ## Features
 
@@ -500,6 +511,24 @@ See Addons settings to configure this sensor.
 - Detects:
   - When a gunshot is fired in its vicinity (maximum 70 meters).
   - When an OPFOR enters its 25 meters detection radius.
+- Stores Data:
+  - Locally on the object and can be collect using the 'collect' action on the item. Will be save as diary entry.
+  - Sends data over radio wave and player with bellow line of code will receive the diary record from distance (useful for pilots).
+
+    ```
+    this setvariable ["COLSOG_isListeningToSensor", true]; 
+    ```
+
+</details>
+
+<details>
+
+<summary>12.1. 'Engine' Sensor</summary>
+
+See Addons settings to configure this sensor.
+
+- Detects:
+  - When an OPFOR Vehicles enters its 50 meters detection radius.
 - Stores Data:
   - Locally on the object and can be collect using the 'collect' action on the item. Will be save as diary entry.
   - Sends data over radio wave and player with bellow line of code will receive the diary record from distance (useful for pilots).
