@@ -39,8 +39,9 @@ if (_transmitDataOverRadio) then
     	private _isListeningToSensor = _x getVariable [SENSOR_IS_LISTENING_TO_SENSOR, false];
     	if ((_isListeningToSensor) AND (_x distance _sensor < _radioTransmissionRange)) then
     	{
-            player createDiaryRecord ["Diary", ["Received over radio", _newEvent]];
+            [_x, ["Diary", ["Received over radio", _newEvent]]] remoteExec ["createDiaryRecord", _x];
     	    // (bip bip bip)
+    	    hintSilent format ["ID_" + _sensorId];
     	    "gdtmod_satchel_starttimer" remoteExec ["playSound", _x];
     	};
     } forEach allPlayers;

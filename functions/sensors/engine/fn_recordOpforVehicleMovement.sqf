@@ -3,7 +3,7 @@ params ["_sensor", "_thisList"]; // specials parameters passed to a script by ad
 private _heavierVehicle = -1;
 {
     private _objectType = (_x call BIS_fnc_objectType) select 1;
-    systemChat str _objectType;
+
 	if ((_heavierVehicle < 0) && (_objectType == "Car" || _objectType == "Motorcycle")) then
 	{
         _heavierVehicle = 0;
