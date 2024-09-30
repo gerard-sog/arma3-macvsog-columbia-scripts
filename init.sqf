@@ -56,6 +56,8 @@ execVM "functions\init_colsog_removeThrowables.sqf";
 
 // init Gunshot sensors placed by player
 execVM "functions\sensors\gunshot\init_colsog_gunshotSensor.sqf"
+// init Engine sensors placed by player
+execVM "functions\sensors\engine\init_colsog_engineSensor.sqf"
 
 // init convertMedicKit on killed units
 execVM "functions\colsog_fn_firstAidConvertAce.sqf";

@@ -39,5 +39,6 @@ class COLSOG {
         file ="functions\sensors";
         // 1 will execute the function for each player downloading the mission.
         class gunshotSensor {postInit = 1;};
+        class engineSensor {postInit = 1;};
     }
 }
