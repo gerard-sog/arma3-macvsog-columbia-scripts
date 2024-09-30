@@ -1,6 +1,6 @@
 player removeItem colsog_sensor_gunshotInventoryItem;
 private _pos = getPosATL player;
-private _sensor = colsog_sensor_gunshotThingItem createVehicle _pos; // item to be configurable.
+private _sensor = createVehicle [colsog_sensor_gunshotThingItem, getPosATL player, [], 0.5, "CAN_COLLIDE"]; // item to be configurable.
 
 // Giving an idea to log it in records, this will give the ability to differentiate them.
 COLSOG_sensorIdCounter = COLSOG_sensorIdCounter + 1;
