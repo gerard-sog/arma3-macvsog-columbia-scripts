@@ -33,7 +33,7 @@ if (!isServer) exitWith {};
                         params ["_unit", "_firer", "_distance", "_weapon", "_muzzle", "_mode", "_ammo", "_gunner"];
 
                         private _eventData = "distance " + (str _distance) + "meters.";
-                        [_unit, "GUNSHOT", "#FF0000", _eventData, colsog_sensor_transmitDataOverRadio] execVM "functions\sensors\common\fn_recordEventInObjectData.sqf";
+                        [_unit, "GUNSHOT", "#FF0000", _eventData, colsog_sensor_gunshotTransmitDataOverRadio, colsog_sensor_gunshotRadioTransmissionRange, colsog_sensor_gunshotLogFrequency] execVM "functions\sensors\common\fn_recordEventInObjectData.sqf";
                     }
                 ];
             }, [_unit]

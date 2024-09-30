@@ -7,6 +7,8 @@
  * 2: Color of event type in record (String. ex: "#00FF00")
  * 3: Data for the event (String)
  * 4: If true, will send record to custom unit if unit in the vicinity of sensor (Boolean)
+ * 5: Radio wave range in meters (Integer)
+ * 6: Logging frequency in seconds (Integer)
  *
  * Return values:
  * None
@@ -16,12 +18,12 @@
 #define SENSOR_LAST_ENTRY_TIME "COLSOG_sensorLastEntryTime"
 #define SENSOR_IS_LISTENING_TO_SENSOR "COLSOG_isListeningToSensor"
 
-params ["_sensor", ["_eventType", "EVENT"], ["_colorCode", "#000000"], ["_eventData", " - "], ["_transmitDataOverRadio", false]];
+params ["_sensor", ["_eventType", "EVENT"], ["_colorCode", "#000000"], ["_eventData", " - "], ["_transmitDataOverRadio", false], ["_radioTransmissionRange", 1000], ["_logFrequency", 5]];
 
 // Maximum 1 event log per X seconds.
 private _sensorLastEntryTime = _sensor getVariable [SENSOR_LAST_ENTRY_TIME, 0];
 
-if ((_sensorLastEntryTime + colsog_sensor_log_frequency) > serverTime) exitWith {};
+if ((_sensorLastEntryTime + _logFrequency) > serverTime) exitWith {};
 
 private _sensorId = str (_sensor getVariable "COLSOG_sensorID");
 private _data = _sensor getVariable [SENSOR_DATA, ""];
@@ -35,7 +37,7 @@ if (_transmitDataOverRadio) then
 {
     {
     	private _isListeningToSensor = _x getVariable [SENSOR_IS_LISTENING_TO_SENSOR, false];
-    	if ((_isListeningToSensor) AND (_x distance _sensor < colsog_sensor_radioTransmissionRange)) then
+    	if ((_isListeningToSensor) AND (_x distance _sensor < _radioTransmissionRange)) then
     	{
             player createDiaryRecord ["Diary", ["Received over radio", _newEvent]];
     	    // (bip bip bip)

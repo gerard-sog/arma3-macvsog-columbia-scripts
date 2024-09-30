@@ -77,9 +77,16 @@
 ["colsog_battery_groupsTriggeringEnemySpawnThresholdIncrease", "EDITBOX", ["Groups impacted by enemy radio call detection"], [CBA_SETTINGS_COLSOG, "Battery"], "Columbia,Reserves", 1, {colsog_battery_groupsTriggeringEnemySpawnThresholdIncrease = colsog_battery_groupsTriggeringEnemySpawnThresholdIncrease splitString " " joinString "" splitString ","}, false] call CBA_fnc_addSetting;
 ["colsog_battery_powerItems", "EDITBOX", ["Item used as spare battery"], [CBA_SETTINGS_COLSOG, "Battery"], "ACE_UAVBattery", 1, {colsog_battery_powerItems = colsog_battery_powerItems splitString " " joinString "" splitString ","}, false] call CBA_fnc_addSetting;
 
-// Sensors
+// Sensors - Gunshot
 ["colsog_sensor_gunshotInventoryItem", "EDITBOX", ["Inventory item to use"], [CBA_SETTINGS_COLSOG, "Sensors - Gunshot"], "colsog_inv_sensor", 1, {}, false] call CBA_fnc_addSetting;
 ["colsog_sensor_gunshotThingItem", "EDITBOX", ["Thing item used as sensor"], [CBA_SETTINGS_COLSOG, "Sensors - Gunshot"], "colsog_thing_sensor", 1, {}, false] call CBA_fnc_addSetting;
-["colsog_sensor_transmitDataOverRadio", "CHECKBOX", ["Transmit data over radio"], [CBA_SETTINGS_COLSOG, "Sensors - Gunshot"], true, 1, {}, false] call CBA_fnc_addSetting;
-["colsog_sensor_radioTransmissionRange", "SLIDER", ["Radio transmission range (m)"], [CBA_SETTINGS_COLSOG, "Sensors - Gunshot"], [0, 2500, 500, 0], 1, {}, false] call CBA_fnc_addSetting;
-["colsog_sensor_log_frequency", "SLIDER", ["Sensor logging frequency"], [CBA_SETTINGS_COLSOG, "Sensors - Gunshot"], [0, 60, 5, 0], 1, {}, false] call CBA_fnc_addSetting;
+["colsog_sensor_gunshotTransmitDataOverRadio", "CHECKBOX", ["Transmit data over radio"], [CBA_SETTINGS_COLSOG, "Sensors - Gunshot"], true, 1, {}, false] call CBA_fnc_addSetting;
+["colsog_sensor_gunshotRadioTransmissionRange", "SLIDER", ["Radio transmission range (m)"], [CBA_SETTINGS_COLSOG, "Sensors - Gunshot"], [0, 2500, 500, 0], 1, {}, false] call CBA_fnc_addSetting;
+["colsog_sensor_gunshotLogFrequency", "SLIDER", ["Sensor logging frequency (sec)"], [CBA_SETTINGS_COLSOG, "Sensors - Gunshot"], [0, 60, 5, 0], 1, {}, false] call CBA_fnc_addSetting;
+
+// Sensors - Engine
+["colsog_sensor_engineInventoryItem", "EDITBOX", ["Inventory item to use"], [CBA_SETTINGS_COLSOG, "Sensors - Engine"], "colsog_inv_handsid_sensor", 1, {}, false] call CBA_fnc_addSetting;
+["colsog_sensor_engineThingItem", "EDITBOX", ["Thing item used as sensor"], [CBA_SETTINGS_COLSOG, "Sensors - Engine"], "colsog_thing_handsid_sensor", 1, {}, false] call CBA_fnc_addSetting;
+["colsog_sensor_engineTransmitDataOverRadio", "CHECKBOX", ["Transmit data over radio"], [CBA_SETTINGS_COLSOG, "Sensors - Engine"], true, 1, {}, false] call CBA_fnc_addSetting;
+["colsog_sensor_engineRadioTransmissionRange", "SLIDER", ["Radio transmission range (m)"], [CBA_SETTINGS_COLSOG, "Sensors - Engine"], [0, 2500, 1500, 0], 1, {}, false] call CBA_fnc_addSetting;
+["colsog_sensor_engineLogFrequency", "SLIDER", ["Sensor logging frequency (sec)"], [CBA_SETTINGS_COLSOG, "Sensors - Engine"], [0, 60, 5, 0], 1, {}, false] call CBA_fnc_addSetting;
