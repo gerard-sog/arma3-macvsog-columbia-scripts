@@ -966,8 +966,8 @@ force L_Suppress_playerSwabEnabled = true;
 force L_Suppress_recovery = 2;
 
 // PKM
-A3_mags_clipsAreDisposable = true;
-A3_mags_looseBeltsAreDisposable = true;
+force A3_mags_clipsAreDisposable = true;
+force A3_mags_looseBeltsAreDisposable = true;
 
 // SSD Death Screams
 force SSD_DS_enable_death = true;
