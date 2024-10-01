@@ -534,7 +534,7 @@ See Addons settings to configure this sensor.
 
 <details>
 
-<summary>12.1. 'Engine' Sensor</summary>
+<summary>12.2. 'Engine' Sensor</summary>
 
 See Addons settings to configure this sensor.
 
@@ -547,6 +547,14 @@ See Addons settings to configure this sensor.
     ```
     this setvariable ["COLSOG_isListeningToSensor", true]; 
     ```
+
+</details>
+
+<details>
+
+<summary>12.3. 'Gravity' Sensor</summary>
+
+Same as 'Gunshot' Sensor but can only be thrown from a helicopter/plane. The sensor will activate after 30 seconds in order to give it time to land on the ground.
 
 </details>
 
