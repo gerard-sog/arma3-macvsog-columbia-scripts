@@ -555,6 +555,13 @@ See Addons settings to configure this sensor.
     this setvariable ["COLSOG_isListeningToSensor", true]; 
     ```
 
+- To place it in the **Eden Editor**, place the below line in the 'init' section fo the object:
+  - 1st parameter: Object used as sensor, needs to be 'this'.
+  - 2nd parameter: the ID given to the sensor (it will not update the sensor ID counter so ideally this value should be greater than 25 to avoid duplicate ID during your mission if players are expected to place sensors as well).
+      ```
+      [this, 26] execVM "functions\sensors\engine\fn_createEngineSensor.sqf";
+      ```
+
 </details>
 
 <details>

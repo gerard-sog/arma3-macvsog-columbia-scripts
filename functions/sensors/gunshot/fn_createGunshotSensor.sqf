@@ -1,5 +1,5 @@
 /*
- * Saves the new recorded event inside the data of the object.
+ * Creates a 'Gunshot' sensor.
  *
  * Arguments:
  * 0: (Optional) Sensor Object, needed when sensor created in Eden Editor (Object)
