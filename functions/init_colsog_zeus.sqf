@@ -14,6 +14,7 @@ if !(_hasZen) exitWith { systemChat "ZEN not detected";};
 ["A - COLSOG Vehicle", "Add STABO", {_this execVM "functions\stabo\colsog_zeus_addStabo.sqf";}, "\z\ace\addons\fastroping\UI\Icon_Waypoint.paa"] call zen_custom_modules_fnc_register;
 ["A - COLSOG Vehicle", "Add Crew management", {_this execVM "functions\crew\colsog_zeus_addCrewManagement.sqf";}, "\a3\Modules_F_Curator\Data\portraitObjectiveGetIn_ca.paa"] call zen_custom_modules_fnc_register;
 ["A - COLSOG Vehicle", "Conceal AA", {_this execVM "functions\colsog_zeus_concealStaticWeapon.sqf";}, "x\zen\addons\context_actions\ui\stealth_ca.paa"] call zen_custom_modules_fnc_register;
+["A - COLSOG Vehicle", "Create supply box", {_this execVM "functions\resupply\colsog_zeus_createResupplyBox.sqf";}, "\a3\ui_f\data\igui\cfg\simpletasks\types\box_ca.paa"] call zen_custom_modules_fnc_register;
 
 // Radio Tools
 ["A - COLSOG Radio", "Init PF77s", {_this execVM "functions\colsog_zeus_initPf77Rack.sqf";}, "\a3\Modules_F_Curator\Data\portraitRadio_ca.paa"] call zen_custom_modules_fnc_register;
