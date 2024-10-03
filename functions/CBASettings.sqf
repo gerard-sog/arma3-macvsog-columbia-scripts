@@ -122,6 +122,7 @@
 ["colsog_traps_maceKillRadius", "SLIDER", ["Mace kill radius (m)"], [CBA_SETTINGS_COLSOG, "Traps"], [1, 10, 3, 0], 1, {}, false] call CBA_fnc_addSetting;
 ["colsog_traps_screamingEnable", "CHECKBOX", ["Enable screams"], [CBA_SETTINGS_COLSOG, "Traps"], true, 1, {}, false] call CBA_fnc_addSetting;
 ["colsog_traps_activatedBySide", "LIST", ["Trigger for Side"], [CBA_SETTINGS_COLSOG, "Traps"], [["WEST", "EAST", "GUER", "CIV", "ANYPLAYER", "ANY"], ["BLUFOR", "OPFOR", "Independent", "Civilian", "Any player", "Any AI or player"], 0], 1, {}, false] call CBA_fnc_addSetting;
+["colsog_traps_chanceOfBeingImpaled", "SLIDER", ["Chance of being impaled (%)"], [CBA_SETTINGS_COLSOG, "Traps"], [0, 100, 20, 0], 1, {}, false] call CBA_fnc_addSetting;
 
 // Battery
 ["colsog_battery_prc77Capacity", "SLIDER", ["PRC77 Battery capacity in seconds"], [CBA_SETTINGS_COLSOG, "Battery"], [0, 600, 300, 0], 1, {}, false] call CBA_fnc_addSetting;

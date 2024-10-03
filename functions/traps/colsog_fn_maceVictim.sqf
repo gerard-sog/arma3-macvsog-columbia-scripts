@@ -15,14 +15,53 @@ if ([position _unit, _directionTo, 180, position _mace] call BIS_fnc_inAngleSect
 };
 {_x enableCollisionWith _mace; _x setUnitPOS "MIDDLE";} forEach units _group;
 
-// Kills the unit in kill radius.
-_unit setDamage 1;
+private _oddOfBeingImpaled = [1, 100] call BIS_fnc_randomNum;
+systemChat ("Luck: " + str (_oddOfBeingImpaled));
+if (_oddOfBeingImpaled <= colsog_traps_chanceOfBeingImpaled) then
+{
+    // Kills the unit in kill radius.
+    _unit setDamage 1;
+    _unit setPos getPos _unit;
+    _mace setDir (_trapDirection);
+    [_unit, _mace] execVM "functions\traps\colsog_fn_impaleOnMace.sqf";
+    _unit setDir _directionTo;
+    _unit setVectorUp [0.0363626, 0.998112, 0.9995081];
+} else
+{
+    // “Head”, “Body”, “LeftArm”, “RightArm”, “LeftLeg”, “RightLeg”
+    private _firstRandomBodyPart = selectRandom ["Head", "Body", "LeftArm", "RightArm", "LeftLeg", "RightLeg"];
+    private _firstRandomDamage = [1, 10] call BIS_fnc_randomNum;
+    private _firstRandomDamageType = selectRandom ["stab", "bullet", "punch"];
+    [_unit, _firstRandomDamage, _firstRandomBodyPart, _firstRandomDamageType] call ace_medical_fnc_addDamageToUnit;
 
-_unit setPos getPos _unit;
-_mace setDir (_trapDirection);
-[_unit, _mace] execVM "functions\traps\colsog_fn_impaleOnMace.sqf";
-_unit setDir _directionTo;
-_unit setVectorUp [0.0363626, 0.998112, 0.9995081];
+    private _secondRandomBodyPart = selectRandom ["Head", "Body", "LeftArm", "RightArm", "LeftLeg", "RightLeg"];
+    private _secondRandomDamage = [1, 10] call BIS_fnc_randomNum;
+    private _secondRandomDamageType = selectRandom ["stab", "bullet", "punch"];
+    [_unit, _secondRandomDamage, _secondRandomBodyPart, _secondRandomDamageType] call ace_medical_fnc_addDamageToUnit;
+
+    private _brokenLimbs = selectRandom
+    [
+        "0, 0, 0, 0", // Nothing.
+        "0, 0, 0, 1", // 1 leg.
+        "0, 0, 1, 0", // 1 leg.
+        "0, 0, 1, 1", // 2 legs.
+        "0, 1, 0, 0", // 1 arm.
+        "1, 0, 0, 0", // 1 arm.
+        "1, 0, 0, 1", // 1 arm & 1 leg.
+        "1, 0, 1, 0", // 1 arm & 1 leg.
+        "0, 1, 0, 1", // 1 arm & 1 leg.
+        "0, 1, 1, 0"  // 1 arm & 1 leg.
+    ];
+
+    private _currentMedicalState = [_unit] call ace_medical_fnc_serializeState;
+    private _index = _currentMedicalState find "ace_medical_fractures";
+    private _firstPart = _currentMedicalState select [0, _index];
+    private _fracturePart = "ace_medical_fractures"": [0, 0, " + _brokenLimbs + "]";
+    private _lastPart = _currentMedicalState select [_index + 42, count _currentMedicalState];
+    private _newMedicalState = _firstPart + _fracturePart + _lastPart;
+    [_unit, _newMedicalState] call ace_medical_fnc_deserializeState;
+};
+
 _mace setDir _trapDirection;
 _mace setVelocityModelSpace [0, 5, 0]; // keep the dude swinging
 uiSleep .5;
