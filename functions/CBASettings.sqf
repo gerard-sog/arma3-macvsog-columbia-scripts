@@ -20,6 +20,58 @@
 ["colsog_firstAid_convertAceFieldDressing", "SLIDER", ["First Aid - field dressing"], [CBA_SETTINGS_COLSOG, "Medical kit conversion"], [0, 10, 5, 0], 1, {}, false] call CBA_fnc_addSetting;
 ["colsog_firstAid_convertAceMorphine", "SLIDER", ["First Aid - morphine"], [CBA_SETTINGS_COLSOG, "Medical kit conversion"], [0, 10, 1, 0], 1, {}, false] call CBA_fnc_addSetting;
 
+// Supply box
+[
+    "colsog_supply_content",
+    "EDITBOX",
+    ["Content of supply box"],
+    [CBA_SETTINGS_COLSOG, "Supply box"],
+    "[
+      'vn_m16_20_t_mag', 12,
+      'ACE_fieldDressing', 50,
+      'ACE_packingBandage', 50,
+      'ACE_elasticBandage', 50,
+      'ACE_quikclot', 50,
+      'ACE_CableTie', 5,
+      'ACE_DefusalKit', 1,
+      'ACE_EntrenchingTool', 1,
+      'ACE_epinephrine', 10,
+      'ACE_Flashlight_MX991', 1,
+      'uns_m67gren', 20,
+      'vn_m18_purple_mag', 3,
+      'vn_m18_red_mag', 6,
+      'vn_m18_white_mag', 20,
+      'vn_m18_yellow_mag', 6,
+      'vn_40mm_m381_he_mag', 25,
+      'vn_40mm_m397_ab_mag', 5,
+      'vn_40mm_m433_hedp_mag', 5,
+      'ACE_Clacker', 1,
+      'vn_40mm_m583_flare_w_mag', 8,
+      'ACE_MapTools', 1,
+      'vn_mine_m18_mag', 10,
+      'ACE_salineIV', 10,
+      'ACE_salineIV_250', 20,
+      'ACE_salineIV_500', 15,
+      'ACE_splint', 10,
+      'ACE_surgicalKit', 1,
+      'ACE_tourniquet', 20,
+      'vn_xm16e1', 4,
+      'pk_556_45_clip_bandolier', 14,
+      'pk_762_39_100Rnd_belt', 5,
+      'pk_762_51_100Rnd_belt', 5,
+      'pk_762_51_60Rnd_clip_bandolier', 8,
+      'pk_9_19_50Rnd_box', 5,
+      'pk_carbine_10Rnd_clip', 5,
+      'pk_45ACP_10Rnd_clip', 5,
+      'pk_792_57_50Rnd_belt', 5
+    ]",
+    1,
+    {
+        colsog_supply_content = parseSimpleArray colsog_supply_content
+    },
+    false
+] call CBA_fnc_addSetting;
+
 // AI skills
 ["colsog_ai_enable", "CHECKBOX", ["enable"], [CBA_SETTINGS_COLSOG, "AI skills"], true, 1, {}, true] call CBA_fnc_addSetting;
 ["colsog_ai_generalSkill", "SLIDER", ["general"], [CBA_SETTINGS_COLSOG, "AI skills"], [0, 1, 0.33, 2], 1, {}, false] call CBA_fnc_addSetting;

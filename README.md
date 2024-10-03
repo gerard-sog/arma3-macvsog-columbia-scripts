@@ -65,6 +65,7 @@ Installation of all the scripts/zeus modules is done by **copying the below file
   - **Add STABO**: add the ability to deploy a rope from a helicopter to allow player on the ground to get into the helicopter.
   - **Add Crew management**: add the ability for the pilot of a helicopter to request AI crew members (door gunners).
   - **Conceal AA**: conceal static gun with a shelter.
+  - **Create supply box**: create a supply box with customizable content.
 - A - COLSOG Punji Traps
   - **Fall Trap**: create mace with punji sticks falling from a tree above trap wire.
   - **Swing Trap**: create mace with punji sticks swinging from a tree towards the trap wire.
