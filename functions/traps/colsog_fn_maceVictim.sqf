@@ -16,7 +16,6 @@ if ([position _unit, _directionTo, 180, position _mace] call BIS_fnc_inAngleSect
 {_x enableCollisionWith _mace; _x setUnitPOS "MIDDLE";} forEach units _group;
 
 private _oddOfBeingImpaled = [1, 100] call BIS_fnc_randomNum;
-systemChat ("Luck: " + str (_oddOfBeingImpaled));
 if (_oddOfBeingImpaled <= colsog_traps_chanceOfBeingImpaled) then
 {
     // Kills the unit in kill radius.
@@ -28,7 +27,6 @@ if (_oddOfBeingImpaled <= colsog_traps_chanceOfBeingImpaled) then
     _unit setVectorUp [0.0363626, 0.998112, 0.9995081];
 } else
 {
-    // “Head”, “Body”, “LeftArm”, “RightArm”, “LeftLeg”, “RightLeg”
     private _firstRandomBodyPart = selectRandom ["Head", "Body", "LeftArm", "RightArm", "LeftLeg", "RightLeg"];
     private _firstRandomDamage = [1, 10] call BIS_fnc_randomNum;
     private _firstRandomDamageType = selectRandom ["stab", "bullet", "punch"];

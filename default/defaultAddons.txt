@@ -769,6 +769,7 @@ force colsog_tracker_defaultSpeed = "LIMITED";
 force colsog_tracker_enable = true;
 force colsog_tracker_moduleName = "TrackermoduleNAME";
 force colsog_traps_activatedBySide = "WEST";
+force colsog_traps_chanceOfBeingImpaled = 20;
 force colsog_traps_maceKillRadius = 3;
 force colsog_traps_screamingEnable = true;
 force colsog_triangulation_coolDown = 150;
