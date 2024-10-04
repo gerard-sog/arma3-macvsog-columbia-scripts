@@ -15,7 +15,7 @@
     [],
     [],
     [
-      "vn_b_uniform_macv_04_06",
+      "vn_b_uniform_macv_01_04",
       [
         [
           "murshun_cigs_cigpack",
@@ -84,19 +84,11 @@
           1
         ],
         [
-          "greenmag_beltlinked_762x39_basic_100",
-          1
-        ],
-        [
           "ACE_morphine",
           2
         ],
         [
           "ACE_salineIV_500",
-          1
-        ],
-        [
-          "greenmag_item_speedloader",
           1
         ],
         [
@@ -143,10 +135,15 @@
           "vn_m18_white_mag",
           2,
           1
+        ],
+        [
+          "pk_762_39_100Rnd_belt",
+          1,
+          100
         ]
       ]
     ],
-    "vn_b_boonie_02_08",
+    "vn_b_boonie_02_04",
     "",
     [
       "vn_m19_binocs_grn",

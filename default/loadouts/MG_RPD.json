@@ -15,12 +15,8 @@
         [],
         [],
         [
-            "vn_b_uniform_macv_04_06",
+            "vn_b_uniform_macv_01_04",
             [
-                [
-                    "greenmag_item_speedloader",
-                    1
-                ],
                 [
                     "vn_m67_grenade_mag",
                     2,
@@ -84,10 +80,6 @@
                     1
                 ],
                 [
-                    "greenmag_beltlinked_762x39_basic_100",
-                    3
-                ],
-                [
                     "grad_paceCountBeads_functions_paceCountBeads",
                     1
                 ],
@@ -122,7 +114,7 @@
                 ]
             ]
         ],
-        "vn_b_boonie_02_08",
+        "vn_b_boonie_02_04",
         "",
         [
             "vn_m19_binocs_grn",
