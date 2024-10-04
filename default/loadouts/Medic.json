@@ -15,7 +15,7 @@
     [],
     [],
     [
-      "vn_b_uniform_macv_04_06",
+      "vn_b_uniform_macv_01_04",
       [
         [
           "murshun_cigs_cigpack",
@@ -48,14 +48,6 @@
       "vn_b_pack_trp_02",
       [
         [
-          "ACE_fieldDressing",
-          15
-        ],
-        [
-          "ACE_quikclot",
-          15
-        ],
-        [
           "ACE_epinephrine",
           2
         ],
@@ -69,11 +61,11 @@
         ],
         [
           "ACE_elasticBandage",
-          15
+          25
         ],
         [
           "ACE_packingBandage",
-          15
+          25
         ],
         [
           "ACE_salineIV_500",
@@ -104,12 +96,16 @@
           1
         ],
         [
-          "greenmag_beltlinked_762x39_basic_100",
+          "grad_paceCountBeads_functions_paceCountBeads",
           1
         ],
         [
-          "grad_paceCountBeads_functions_paceCountBeads",
-          1
+          "ACE_quikclot",
+          5
+        ],
+        [
+          "ACE_fieldDressing",
+          5
         ],
         [
           "vn_m34_grenade_mag",
@@ -122,18 +118,18 @@
           1
         ],
         [
-          "DemoCharge_Remote_Mag",
-          1,
-          1
-        ],
-        [
           "vn_m18_white_mag",
           2,
           1
+        ],
+        [
+          "pk_762_39_100Rnd_belt",
+          1,
+          100
         ]
       ]
     ],
-    "vn_b_boonie_02_08",
+    "vn_b_boonie_02_04",
     "",
     [
       "vn_m19_binocs_grn",
