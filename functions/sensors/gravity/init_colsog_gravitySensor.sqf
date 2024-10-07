@@ -9,8 +9,16 @@ if (!isServer) exitWith {};
                 params ["_unit"];
                 [
                     {
+                        // Delayed activation until sensor touches ground.
+                        (getPos (_this select 0) select 2) <= 0 ;
+                    },
+                    {
                         // Proximity sensor
                         private _delayedUnitActivation = _this select 0;
+                        // Freeze it where it touched the ground and set height to 0.0 meter.
+                        _delayedUnitActivation enableSimulation false;
+                        _delayedUnitActivationPosition = getPos _delayedUnitActivation;
+                        _delayedUnitActivation setPos [_delayedUnitActivationPosition select 0, _delayedUnitActivationPosition select 1, 0.0];
                         private _pos = getPosATL _delayedUnitActivation;
                         private _trigger = createTrigger ["EmptyDetector", _pos];
                         // Required in order to pass as argument in trigger statement.
@@ -40,9 +48,8 @@ if (!isServer) exitWith {};
                             }
                         ];
                     },
-                    [_unit],
-                    30 // Delay of 30 seconds before sensor is activated.
-                ] call CBA_fnc_waitAndExecute;
+                    [_unit]
+                ] call CBA_fnc_waitUntilAndExecute;
             }, [_unit]
         ] call CBA_fnc_execNextFrame;
     }, true, [], true
