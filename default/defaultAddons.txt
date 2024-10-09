@@ -26,7 +26,6 @@ ace_advanced_throwing_showThrowArc = true;
 // ACE Advanced Vehicle Damage
 force ace_vehicle_damage_enableCarDamage = false;
 force ace_vehicle_damage_enabled = false;
-force ace_vehicle_damage_removeAmmoDuringCookoff = true;
 
 // ACE AI
 force ace_ai_assignNVG = false;
@@ -79,14 +78,15 @@ ace_common_settingFeedbackIcons = 1;
 ace_common_settingProgressBarLocation = 0;
 force ace_common_swayFactor = 1;
 
-// ACE Cook off
+// ACE Cook-off
 force ace_cookoff_ammoCookoffDuration = 0.1;
+ace_cookoff_cookoffDuration = 1;
 force ace_cookoff_destroyVehicleAfterCookoff = false;
-force ace_cookoff_enable = 2;
 force ace_cookoff_enableAmmobox = true;
 force ace_cookoff_enableAmmoCookoff = true;
 force ace_cookoff_enableFire = true;
 force ace_cookoff_probabilityCoef = 1;
+ace_cookoff_removeAmmoDuringCookoff = true;
 
 // ACE Crew Served Weapons
 force ace_csw_ammoHandling = 2;
@@ -137,10 +137,9 @@ force acex_fortify_settingHint = 0;
 
 // ACE Fragmentation Simulation
 force ace_frag_enabled = true;
-force ace_frag_maxTrack = 10;
-force ace_frag_maxTrackPerFrame = 10;
 force ace_frag_reflectionsEnabled = false;
 force ace_frag_spallEnabled = false;
+ace_frag_spallIntensity = 1;
 
 // ACE G-Forces
 ace_gforces_coef = 1;
@@ -171,11 +170,14 @@ force ace_hearing_unconsciousnessVolume = 0.4;
 
 // ACE Interaction
 force ace_interaction_disableNegativeRating = true;
+ace_interaction_enableAnimActions = true;
 force ace_interaction_enableGroupRenaming = false;
 force ace_interaction_enableMagazinePassing = true;
 force ace_interaction_enableTeamManagement = true;
 force ace_interaction_enableWeaponAttachments = true;
+ace_interaction_interactWithEnemyCrew = 0;
 force ace_interaction_interactWithTerrainObjects = false;
+ace_interaction_remoteTeamManagement = true;
 
 // ACE Interaction Menu
 ace_gestures_showOnInteractionMenu = 2;
@@ -200,6 +202,7 @@ ace_interact_menu_useListMenu = true;
 ace_interact_menu_useListMenuSelf = false;
 
 // ACE Kill Tracker
+ace_killtracker_showCrewKills = false;
 force ace_killtracker_trackAI = true;
 
 // ACE Logistics
@@ -215,6 +218,7 @@ force ace_rearm_enabled = true;
 force ace_rearm_level = 0;
 force ace_rearm_supply = 0;
 force ace_refuel_cargoRate = 10;
+ace_refuel_enabled = true;
 force ace_refuel_hoseLength = 14;
 force ace_refuel_progressDuration = 1;
 force ace_refuel_rate = 1;
@@ -477,6 +481,7 @@ ace_scopes_deduceBarometricPressureFromTerrainAltitude = false;
 ace_scopes_defaultZeroRange = 100;
 force ace_scopes_enabled = true;
 ace_scopes_forceUseOfAdjustmentTurrets = false;
+ace_scopes_inScopeAdjustment = false;
 ace_scopes_overwriteZeroRange = false;
 ace_scopes_simplifiedZeroing = false;
 ace_scopes_useLegacyUI = false;
@@ -513,6 +518,8 @@ force ace_fastroping_autoAddFRIES = true;
 force ace_fastroping_requireRopeItems = false;
 ace_gunbag_swapGunbagEnabled = true;
 force ace_hitreactions_minDamageToTrigger = 0.1;
+ace_hitreactions_weaponDropChanceArmHitAI = 0;
+ace_hitreactions_weaponDropChanceArmHitPlayer = 0;
 ace_inventory_inventoryDisplaySize = 0;
 force ace_laser_dispersionCount = 2;
 force ace_laser_showLaserOnMap = 0;
@@ -521,7 +528,8 @@ force ace_microdagr_mapDataAvailable = 0;
 force ace_microdagr_waypointPrecision = 1;
 ace_noradio_enabled = true;
 ace_optionsmenu_showNewsOnMainMenu = true;
-force ace_overpressure_distanceCoefficient = 1;
+ace_overpressure_backblastDistanceCoefficient = 1;
+ace_overpressure_overpressureDistanceCoefficient = 1;
 force ace_parachute_failureChance = 0;
 force ace_parachute_hideAltimeter = true;
 ace_tagging_quickTag = 1;
@@ -691,7 +699,7 @@ force colsog_ai_spotDistance = 0.1;
 force colsog_ai_spotTime = 0.1;
 force colsog_ai_suppression = true;
 force colsog_battery_enemySpawnThreshold = 50;
-force colsog_battery_groupsTriggeringEnemySpawnThresholdIncrease = "Columbia,Reserves";
+force colsog_battery_groupsTriggeringEnemySpawnThresholdIncrease = "Kingman,Atlas,Reserves";
 force colsog_battery_powerItems = "colsog_inv_prc77_battery";
 force colsog_battery_prc77Capacity = 480;
 force colsog_firstAid_convertAceFieldDressing = 5;
@@ -704,17 +712,17 @@ force colsog_medikit_convertAceSplint = 2;
 force colsog_medikit_convertAceTourniquet = 4;
 force colsog_sensor_engineInventoryItem = "colsog_inv_handsid_sensor";
 force colsog_sensor_engineLogFrequency = 10;
-force colsog_sensor_engineRadioTransmissionRange = 1500;
+force colsog_sensor_engineRadioTransmissionRange = 2000;
 force colsog_sensor_engineThingItem = "colsog_thing_handsid_sensor";
 force colsog_sensor_engineTransmitDataOverRadio = true;
 force colsog_sensor_gravityInventoryItem = "colsog_inv_gravity_sensor";
 force colsog_sensor_gravityLogFrequency = 10;
-force colsog_sensor_gravityRadioTransmissionRange = 1500;
+force colsog_sensor_gravityRadioTransmissionRange = 2000;
 force colsog_sensor_gravityThingItem = "colsog_thing_gravity_sensor";
 force colsog_sensor_gravityTransmitDataOverRadio = true;
 force colsog_sensor_gunshotInventoryItem = "colsog_inv_sensor";
 force colsog_sensor_gunshotLogFrequency = 10;
-force colsog_sensor_gunshotRadioTransmissionRange = 1500;
+force colsog_sensor_gunshotRadioTransmissionRange = 2000;
 force colsog_sensor_gunshotThingItem = "colsog_thing_sensor";
 force colsog_sensor_gunshotTransmitDataOverRadio = true;
 force colsog_stabo_climbDuration = 10;
