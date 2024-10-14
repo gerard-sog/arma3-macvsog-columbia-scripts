@@ -150,3 +150,9 @@
 ["colsog_sensor_gravityTransmitDataOverRadio", "CHECKBOX", ["Transmit data over radio"], [CBA_SETTINGS_COLSOG, "Sensors - Gravity"], true, 1, {}, false] call CBA_fnc_addSetting;
 ["colsog_sensor_gravityRadioTransmissionRange", "SLIDER", ["Radio transmission range (m)"], [CBA_SETTINGS_COLSOG, "Sensors - Gravity"], [0, 2500, 1000, 0], 1, {}, false] call CBA_fnc_addSetting;
 ["colsog_sensor_gravityLogFrequency", "SLIDER", ["Sensor logging frequency (sec)"], [CBA_SETTINGS_COLSOG, "Sensors - Gravity"], [0, 60, 5, 0], 1, {}, false] call CBA_fnc_addSetting;
+
+// Intel
+["colsog_intel_inventoryItem", "EDITBOX", ["Intel object (inventory item)"], [CBA_SETTINGS_COLSOG, "Intel"], "uns_leaflet16", 1, {}, false] call CBA_fnc_addSetting;
+["colsog_intel_chanceOfUnitCarryingIntel", "SLIDER", ["Chance of unit carrying intel (%)"], [CBA_SETTINGS_COLSOG, "Intel"], [0, 100, 20, 0], 1, {}, false] call CBA_fnc_addSetting;
+["colsog_intel_chanceOfIntelFallingOnGround", "SLIDER", ["Chance of intel falling on ground (%)"], [CBA_SETTINGS_COLSOG, "Intel"], [0, 100, 20, 0], 1, {}, false] call CBA_fnc_addSetting;
+["colsog_intel_intelExpertRequired", "CHECKBOX", ["Requires trait to decrypt intel"], [CBA_SETTINGS_COLSOG, "Intel"], true, 1, {}, false] call CBA_fnc_addSetting;

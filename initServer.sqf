@@ -35,6 +35,15 @@ publicVariable "COLSOG_amountOfRadioCalls";
 COLSOG_sensorIdCounter = 0;
 publicVariable "COLSOG_sensorIdCounter";
 
+COLSOG_intelPool = [
+    "intel 1",
+    "intel 2",
+    "intel 3",
+    "intel 4",
+    "intel 5"
+    ];
+publicVariable "COLSOG_intelPool";
+
 _handle = [] execVM "functions\tracker\colsog_fn_onTrackerSpawn.sqf";
 _handle = [] execVM "functions\tracker\colsog_fn_trackerGroup.sqf";
 
