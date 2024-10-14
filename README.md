@@ -69,6 +69,8 @@ Installation of all the scripts/zeus modules is done by **copying the below file
 - A - COLSOG Punji Traps
   - **Fall Trap**: create mace with punji sticks falling from a tree above trap wire.
   - **Swing Trap**: create mace with punji sticks swinging from a tree towards the trap wire.
+- A - COLSOG Intel
+  - **Update Intel**: Update array of intel during a mission.
 
 see [init_colsog_zeus.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/init_colsog_zeus.sqf)
 
@@ -176,6 +178,12 @@ In the Addons configuration menu, you will have the ability to update the follow
       ```
   - Radio transmission range (m): <i>Integer</i>
   - Sensor logging frequency (sec): <i>Integer</i>
+
+- **Intel**
+  - Intel object (inventory item): <i>String</i>
+  - Chance of unit carrying intel (%): <i>Integer</i>
+  - Chance of intel falling on ground (%): <iInteger</i>
+  - Requires trait 'COLSOG_intelExpert' to decrypt intel : <i>Boolean</i>
 
 ## Features
 
@@ -572,6 +580,41 @@ See Addons settings to configure this sensor.
 Same as 'Gunshot' Sensor but can only be thrown from a helicopter/plane. The sensor will activate after 30 seconds in order to give it time to land on the ground.
 
 </details>
+
+</details>
+
+<details>
+
+<summary>13. Intel on body</summary>
+
+Now, when an enemy unit (OPFOR) is killed, there is a chance that the unit will be carrying intel. And there is also a chance that the intel falls from his pocket onto the ground.
+
+To exploit the intel:
+- Pick it up.
+- Ace self-interact and under 'ACE equipment' select 'Decrypt intel'.
+- This will consume the intel and retrieve one intel from an array of intel that the mission maker can place in [initServer.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/initServer.sqf) and write a diary entry.
+
+Zeus can update the array of available intel using zeus module 'COLSOG - Intel'.
+
+```
+COLSOG_intelPool = [
+    "intel 1",
+    "intel 2",
+    "intel 3",
+    "intel 4",
+    "intel 5"
+    ]; 
+```
+
+It is also possible to only allow decryption of intel if player has the following attribute set in his 'init' section:
+
+```
+this setvariable ["COLSOG_intelExpert", true];
+```
+
+Else the player will see "You cannot read the document...".
+
+If intel pool is empty and a player tries to decrypt an intel, the player will receive a hint displaying "Contains no valuable information.".
 
 </details>
 
