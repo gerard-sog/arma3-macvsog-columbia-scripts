@@ -45,4 +45,6 @@ _parentHelicopter setVariable ["COLSOG_staboRope", _staboRope, true];
 	false															// Show in unconscious state
 ] remoteExec ["BIS_fnc_holdActionAdd", 0]; // no need for JIP parameter in remoteExec
 
+//There needs to be a sleep here, otherwise the physics of the rope falling causes some latent movement in the sandbag.
+sleep 1;
 _droppedSandbag enableSimulation false;
