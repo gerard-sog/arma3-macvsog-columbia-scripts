@@ -17,8 +17,8 @@ _droppedSandbag setVariable ["COLSOG_staboParentHelicopter", _parentHelicopter, 
 // store the sandbag created on parent helicopter (broadcast needed might be another player detaching)
 _parentHelicopter setVariable ["COLSOG_staboSandbag", _droppedSandbag, true];
 
-// Creates a rope under vehicle 55m in length with 50 segments (dropped sandbag attached at end of rope).
-private _staboRope = ropeCreate [_parentHelicopter, [0, 0, 0], _droppedSandbag, [0,0,0], 50, nil, nil, nil, 63];
+// Creates a rope under vehicle 100m in length with 63 segments (dropped sandbag attached at end of rope).
+private _staboRope = ropeCreate [_parentHelicopter, [0, 0, 0], _droppedSandbag, [0,0,0], 100, nil, nil, nil, 63];
 
 // store the rope created on parent helicopter (broadcast needed might be another player detaching)
 _parentHelicopter setVariable ["COLSOG_staboRope", _staboRope, true];
@@ -44,3 +44,5 @@ _parentHelicopter setVariable ["COLSOG_staboRope", _staboRope, true];
 	false,															// Remove on completion (removes for allPlayers !)
 	false															// Show in unconscious state
 ] remoteExec ["BIS_fnc_holdActionAdd", 0]; // no need for JIP parameter in remoteExec
+
+_droppedSandbag enableSimulation false;
