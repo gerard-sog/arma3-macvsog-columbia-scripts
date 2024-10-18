@@ -30,3 +30,6 @@ if !(_hasZen) exitWith { systemChat "ZEN not detected";};
 // Punji Traps
 ["A - COLSOG Punji Traps", "Swing Trap", {_this execVM "functions\traps\swinging\colsog_zeus_swingingMaceTrap.sqf";}, "\a3\ui_f\data\igui\cfg\simpletasks\types\kill_ca.paa"] call zen_custom_modules_fnc_register;
 ["A - COLSOG Punji Traps", "Fall Trap", {_this execVM "functions\traps\falling\colsog_zeus_fallingMaceTrap.sqf";}, "\a3\ui_f\data\igui\cfg\simpletasks\types\kill_ca.paa"] call zen_custom_modules_fnc_register;
+
+// Intel
+["A - COLSOG Intel", "Update Intel", {_this execVM "functions\intel\colsog_zeus_updateIntel.sqf";}, "\a3\ui_f\data\igui\cfg\simpletasks\types\documents_ca.paa"] call zen_custom_modules_fnc_register;

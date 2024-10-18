@@ -42,4 +42,10 @@ class COLSOG {
         class engineSensor {postInit = 1;};
         class gravitySensor {postInit = 1;};
     }
+    class Intel
+    {
+        file ="functions\intel";
+        // 1 will execute the function for each player downloading the mission.
+        class intel {postInit = 1;};
+    };
 }
