@@ -1,5 +1,7 @@
 if !(isClass (configFile >> "CfgPatches" >> "ace_main")) exitWith {};
 
+if (!isServer) exitWith {};
+
 ClassFirstAidConvertACE = "FirstAidKit";
 ClassMedicConvertACE = "Medikit";
 if (isClass (configFile >> "CfgPatches" >> "vn_emm")) then {
@@ -9,10 +11,12 @@ if (isClass (configFile >> "CfgPatches" >> "vn_emm")) then {
 
 addMissionEventHandler ["EntityKilled", {
 	params ["_killed", "_killer"];
+
 	if (_killed isKindOf "CAManBase") then {
 		private _unit = _this select 0;
 		private _items = items _unit;
 
+        // Medical
 		if (ClassMedicConvertACE in _items) then {
 			_unit removeItems ClassFirstAidConvertACE;
 			_unit removeItem ClassMedicConvertACE;
@@ -33,5 +37,23 @@ addMissionEventHandler ["EntityKilled", {
 				_vest addItemCargoGlobal ["ACE_morphine", colsog_firstAid_convertAceMorphine];
 			};
 		};
+
+		// Intel
+		private _chanceOfUnitCarryingIntel = [1, 100] call BIS_fnc_randomNum;
+        if (_chanceOfUnitCarryingIntel <= colsog_intel_chanceOfUnitCarryingIntel) then
+        {
+            private _chanceOfIntelFallingOnGround = [1, 100] call BIS_fnc_randomNum;
+            if (_chanceOfIntelFallingOnGround <= colsog_intel_chanceOfIntelFallingOnGround) then
+            {
+                // Intel can be found on the ground.
+                private _groundWeaponHolder = createVehicle ["groundweaponholder", getPosATL _unit, [], 1, "CAN_COLLIDE"];
+                _groundWeaponHolder addItemCargoGlobal [colsog_intel_inventoryItem, 1];
+            } else
+            {
+                // Intel can be found in the inventory of the unit.
+                private _uniform = uniformContainer _unit;
+                _uniform addItemCargoGlobal [colsog_intel_inventoryItem, 1];
+            };
+        };
 	};
 }];
