@@ -587,7 +587,7 @@ Same as 'Gunshot' Sensor but can only be thrown from a helicopter/plane. The sen
 
 <summary>13. Intel on body</summary>
 
-Now, when an enemy unit (OPFOR) is killed, there is a chance that the unit will be carrying intel. And there is also a chance that the intel falls from his pocket onto the ground.
+Now, when a unit is killed, there is a chance that the unit will be carrying intel. And there is also a chance that the intel falls from his pocket onto the ground.
 
 To exploit the intel:
 - Pick it up.
