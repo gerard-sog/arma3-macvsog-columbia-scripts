@@ -4,6 +4,8 @@ Compilation of scripts used during multiplayer PVE/PVP mission on Arma 3. Also f
 
 If you want to contribute to this project, see [CONTRIBUTING.md](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/CONTRIBUTING.md).
 
+YouTube channel showcasing the scripts: [YouTube - RT Columbia](https://www.youtube.com/@RTColumbia/videos)
+
 ## Table of contents
 - [Requirements](#requirements)
 - [Installation](#installation)
@@ -390,7 +392,7 @@ At the death of a unit (AI/Player):
   1x "ACE_morphine"
   ```
 
-see [colsog_fn_firstAidConvertAce.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/colsog_fn_firstAidConvertAce.sqf)
+see [fn_firstAidConvertAce.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/missionEventHandlers/entityKilled/fn_firstAidConvertAce.sqf)
 
 </details>
 
