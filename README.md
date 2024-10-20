@@ -390,7 +390,7 @@ At the death of a unit (AI/Player):
   1x "ACE_morphine"
   ```
 
-see [colsog_fn_firstAidConvertAce.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/colsog_fn_firstAidConvertAce.sqf)
+see [fn_firstAidConvertAce.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/missionEventHandlers/entityKilled/fn_firstAidConvertAce.sqf)
 
 </details>
 
