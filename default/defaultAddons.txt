@@ -1000,6 +1000,43 @@ force grad_trenches_functions_vehicleEnvelopeDigTime = 120;
 force grad_trenches_functions_vehicleEnvelopeRemovalTime = -1;
 force grad_trenches_functions_vehicleTrenchBuildSpeed = 5;
 
+// Hide Among The Grass
+force hatg_setting_building = true;
+force hatg_setting_complex_detection = true;
+force hatg_setting_cooldown = 10;
+force hatg_setting_debug = false;
+force hatg_setting_debug_conditions = false;
+force hatg_setting_debug_detection = false;
+force hatg_setting_debug_surface = false;
+force hatg_setting_distance_close = 5;
+force hatg_setting_distance_close_multiplier = 2;
+force hatg_setting_distance_height = 2;
+force hatg_setting_distance_reset = 5;
+force hatg_setting_distance_shots = 4;
+force hatg_setting_movement_crouch = 5;
+force hatg_setting_mp_ai = false;
+force hatg_setting_reveal_nearby = false;
+force hatg_setting_simple = false;
+force hatg_setting_surfaces = true;
+
+// Hide Among The Grass -  Equipment
+force hatg_setting_equipment_ghillie_blacklist = "[]";
+force hatg_setting_equipment_ghillie_whitelist = "[""U_I_FullGhillie_ard"",""U_O_FullGhillie_ard"",""U_B_FullGhillie_ard"",""U_I_FullGhillie_lsh"",""U_O_FullGhillie_lsh"",""U_B_FullGhillie_lsh"",""U_I_FullGhillie_sard"",""U_O_FullGhillie_sard"",""U_B_FullGhillie_sard"",""U_I_GhillieSuit"",""U_O_GhillieSuit"",""U_B_GhillieSuit"",""U_O_T_FullGhillie_tna_F"",""U_B_T_FullGhillie_tna_F"",""U_O_T_Sniper_F"",""U_B_T_Sniper_F"",""CUP_U_B_CZ_WDL_Ghillie"",""CUP_U_O_RUS_Ghillie"",""CUP_U_B_BAF_DDPM_GHILLIE"",""CUP_U_B_BAF_DPM_GHILLIE"",""CUP_U_B_BAF_MTP_GHILLIE"",""CUP_U_B_CZ_DST_Ghillie"",""CUP_U_O_TK_Ghillie_Top"",""CUP_U_I_Ghillie_Top"",""U_SSU_Stealth_Uniform_Ghillie_HexcamBrown"",""U_SSU_Stealth_Uniform_Ghillie_HexcamGreen"",""U_SSU_Stealth_Uniform_Ghillie_MCAM_Alpine"",""U_SSU_Stealth_Uniform_Ghillie_AOR1"",""U_SSU_Stealth_Uniform_Ghillie_AOR2"",""U_SSU_Stealth_Uniform_Ghillie_MCAM_Black"",""U_SSU_Stealth_Uniform_Ghillie_Black"",""U_SSU_Stealth_Uniform_Ghillie_M81"",""U_SSU_Stealth_Uniform_Ghillie_MCAM"",""U_SSU_Stealth_Uniform_Ghillie_OCP"",""U_SSU_Stealth_Uniform_Ghillie_MCAM_Tropic"",""U_SSU_Stealth_Uniform_Ghillie_MCAM_Woodland""]";
+force hatg_setting_equipment_suppressor_blacklist = "[""ACE_muzzle_mzls_B"",""ACE_muzzle_mzls_L"",""ACE_muzzle_mzls_H"",""ACE_muzzle_mzls_93mmg"",""ACE_muzzle_mzls_338"",""ACE_muzzle_mzls_smg_01"",""ACE_muzzle_mzls_smg_02"",""muzzle_antenna_01_f"",""muzzle_antenna_02_f"",""muzzle_antenna_03_f"",""CUP_muzzle_mfsup_Flashhider_545x39_Black"",""CUP_muzzle_mfsup_Flashhider_545x39_OD"",""CUP_muzzle_mfsup_Flashhider_545x39_Tan"",""CUP_muzzle_mfsup_Flashhider_556x45_Black"",""CUP_muzzle_mfsup_Flashhider_556x45_OD"",""CUP_muzzle_mfsup_Flashhider_556x45_Tan"",""CUP_muzzle_mfsup_SCAR_L"",""CUP_muzzle_mfsup_SCAR_H"",""CUP_muzzle_mfsup_Flashhider_762x39_Black"",""CUP_muzzle_mfsup_Flashhider_762x39_OD"",""CUP_muzzle_mfsup_Flashhider_762x39_Tan"",""CUP_muzzle_mfsup_Flashhider_762x51_Black"",""CUP_muzzle_mfsup_Flashhider_762x51_OD"",""CUP_muzzle_mfsup_Flashhider_762x51_Tan"",""CUP_muzzle_mfsup_CSA"",""CUP_muzzle_mfsup_CSA_desert"",""CUP_muzzle_mfsup_CSA_woodland"",""CUP_muzzle_mfsup_flashhider_Sa58"",""CUP_muzzle_mfsup_Zendl"",""CUP_muzzle_mfsup_Zendl_desert"",""CUP_muzzle_mfsup_Zendl_woodland"",""CUP_acc_bfa"",""CUP_acc_sffh"",""CUP_muzzle_mfsup_Flashhider_PK_Black"",""CUP_muzzle_mfsup_Flashhider_PK_OD"",""CUP_muzzle_mfsup_Flashhider_PK_Tan"",""rhs_acc_ak5"",""rhs_acc_dtk"",""rhs_acc_dtk1983"",""rhs_acc_dtk1"",""rhs_acc_dtk2"",""rhs_acc_dtk3"",""rhs_acc_pgs64"",""rhs_acc_pgs64_74u"",""rhs_acc_pgs64_74un"",""rhs_acc_uuk"",""rhs_acc_dtk1l"",""rhs_acc_dtkakm"",""rhs_acc_dtkrpk"",""rhsusf_acc_ARDEC_M240"",""rhsgref_acc_falMuzzle_l1a1"",""rhsusf_acc_SF3P556"",""rhsusf_acc_SFMB556"",""rhsgref_acc_zendl"",""rhsusf_acc_m14_flashsuppresor"",""rhsusf_acc_m24_muzzlehider_black"",""rhsusf_acc_m24_muzzlehider_d"",""rhsusf_acc_m24_muzzlehider_wd"",""hlc_muzzle_Miter18T"",""hlc_muzzle_snds_ROTEX3P"",""hlc_muzzle_Gunfighter_comp"",""hlc_muzzle_Brevis"",""hlc_muzzle_MAG58_Brake"",""hlc_muzzle_17SBrake"",""hlc_muzzle_OEMDevice"",""hlc_muzzle_KX3_comp"",""hlc_muzzle_FSC30"",""hlc_muzzle_Cherrybomb"",""hlc_muzzle_SF3P_762R"",""hlc_muzzle_A1_FlashHider"",""hlc_muzzle_XM177E1_Moderator"",""hlc_muzzle_XM177E2_Moderator"",""hlc_muzzle_E1_FlashHider"",""hlc_muzzle_OEMDevice_556"",""hlc_muzzle_snds_ArsenalComp"",""hlc_muzzle_SF3P_762""]";
+force hatg_setting_equipment_suppressor_integral = "[""srifle_DMR_02_F"",""srifle_DMR_02_camo_F"",""srifle_DMR_02_sniper_F"",""srifle_DMR_04_F"",""srifle_DMR_04_Tan_F"",""CUP_arifle_AS_VAL"",""CUP_arifle_AS_VAL_flash"",""CUP_arifle_AS_VAL_VFG"",""CUP_arifle_AS_VAL_top_rail"",""CUP_arifle_AS_VAL_flash_top"",""CUP_arifle_AS_VAL_VFG_top_rail"",""CUP_srifle_VSSVintorez"",""CUP_srifle_VSSVintorez_flash"",""CUP_srifle_VSSVintorez_VFG"",""CUP_srifle_VSSVintorez_top_rail"",""CUP_srifle_VSSVintorez_flash_top"",""CUP_srifle_VSSVintorez_VFG_top_rail"",""CUP_smg_MP5SD6"",""CUP_arifle_OTS14_GROZA_762_Grip"",""CUP_arifle_OTS14_GROZA_Grip"",""rhs_weap_asval"",""rhs_weap_asval_grip"",""rhs_weap_asval_grip_npz"",""rhs_weap_asval_npz"",""rhs_weap_vss"",""rhs_weap_vss_grip"",""rhs_weap_vss_grip_npz"",""rhs_weap_vss_npz"",""rhs_weap_m3a1_specops"",""hlc_rifle_honeybase"",""hlc_rifle_awcovert_BL"",""hlc_rifle_awcovert_FDE"",""hlc_rifle_awcovert"",""hlc_smg_mp5sd5"",""hlc_smg_mp5sd6""]";
+force hatg_setting_equipment_suppressor_whitelist = "[]";
+
+// Hide Among The Grass -  UI
+force hatg_setting_ui = false;
+hatg_setting_ui_colour_hidden = [0,1,0,1];
+hatg_setting_ui_colour_revealed = [1,0,0,1];
+hatg_setting_ui_fade = 0;
+hatg_setting_ui_font = "PuristaBold";
+hatg_setting_ui_textsize = 2;
+hatg_setting_ui_use_image = false;
+hatg_setting_ui_x = 0;
+hatg_setting_ui_y = 0;
+
 // Laxemann Align
 force L_Align_enabled = true;
 force L_Align_steadyShake_enabled = true;
@@ -1023,6 +1060,15 @@ force L_Suppress_recovery = 2;
 // PKM
 force A3_mags_clipsAreDisposable = true;
 force A3_mags_looseBeltsAreDisposable = true;
+
+// Restrict Markers
+restrict_markers_main_autoCopyDeletion = true;
+force restrict_markers_main_canCopyFromSide = 2;
+force restrict_markers_main_enabled = true;
+force restrict_markers_main_shareDistance = 7;
+force restrict_markers_main_shareDistanceGroup = 7;
+restrict_markers_main_showNotifications = true;
+
 
 // SSD Death Screams
 force SSD_DS_enable_death = true;
