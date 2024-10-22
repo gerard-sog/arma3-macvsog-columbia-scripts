@@ -1,0 +1,1 @@
+["RT Columbia inflicted " + str totalAIDeaths + " casualties on the enemy."] remoteExec ["systemChat"];
