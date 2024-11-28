@@ -11,9 +11,9 @@ class vn_artillery_settings
 	    // Maximum delay for the support to arrive, regardless of the time calculated from distance to support module.
 	    delay_max = 15;
 	    // Radio Support should only be called in by Covey plane. This radio backpack is in case no covey pilot present for an operation and we still want Columbia to be able to use Radio Support.
-        radio_backpacks[] = {"vn_b_pack_lw_06"};
+        radio_backpacks[] = {"vn_b_pack_lw_06", "seal_radio_1_a", "seal_radio_2_a", "seal_radio_3_a", "seal_radio_4_a", "seal_radio_5_a"};
         // Radio Support should only be called from Covey plane.
-        radio_vehicles[] = {"vn_i_air_uh1c_01_01", "vn_b_air_uh1c_05_01", "vn_b_air_oh6a_04", "vn_i_air_ch34_02_02", "UNS_skymaster_FAC", "uns_o1_usaf"};
+        radio_vehicles[] = {"vn_i_air_uh1c_01_01", "vn_b_air_uh1c_05_01", "vn_b_air_oh6a_04", "vn_i_air_ch34_02_02", "UNS_skymaster_FAC", "uns_o1_usaf", "uns_A1J_navy_CAS", "vn_b_air_oh6a_04", "vn_b_air_ch34_04_02"};
         player_types[] = {"vn_b_men_sog_05", "vn_b_men_sog_17", "vn_b_men_army_08", "vn_o_men_nva_dc_13", "vn_o_men_nva_65_27", "vn_o_men_nva_65_13", "vn_o_men_nva_27", "vn_o_men_nva_13", "vn_o_men_nva_marine_13", "vn_o_men_nva_navy_13", "vn_o_men_vc_local_27", "vn_o_men_vc_local_13", "vn_o_men_vc_regional_13"};
         // Planes
         class aircraft
