@@ -66,7 +66,7 @@ ace_casings_maxCasings = 250;
 ace_common_allowFadeMusic = true;
 force ace_common_checkPBOsAction = 2;
 force ace_common_checkPBOsCheckAll = true;
-force ace_common_checkPBOsWhitelist = "[  ""3denEnhanced_EventScripts"", ""lambs_main"", ""lambs_rpg"", ""lambs_rpgSOG"", ""lambs_range"", ""lambs_danger"", ""lambs_eventhandlers"", ""lambs_formations"", ""lambs_wp"", ""Rev_marker_system"", ""tsp_animate_limit"", ""tsp_animate_stiff"",  ""bettinv_main_ace"", ""bettinv_main"", ""3denEnhanced"",  ""sp_general"",  ""sp_player"",  ""PLP_SOGMeleeTweak"",  ""light"",  ""lighty"",  ""FSL_pvttunt"",  ""betterinv_main"",  ""crowsza_ace"",  ""crowsza_drawbuild"",  ""crowsza_main"",  ""crowsza_misc"",  ""crowsza_pingbox"",  ""crowsza_teleport"",  ""crowsza_tfar"",  ""crowsza_zeus_text"",  ""DNI_ZeusFPSMonitor"",  ""CHVD"",  ""ANZ_MissileEfxMod"",  ""WarFXPE"",  ""Vile_HUD"",  ""Blastcore_MainCore"",  ""Blastcore_VEP"",  ""L_ES_ES_main"",  ""L_ES_ES_sounds"",  ""L_ES_ES_sys"",  ""ESSP_core"",  ""ESSP_compat_vn"",  ""A3_Anims_F_Config_Sdr"", ""PLP_starSphere""  ]";
+force ace_common_checkPBOsWhitelist = "[  ""Rev_marker_system"", ""tsp_animate_limit"", ""tsp_animate_stiff"",  ""bettinv_main_ace"", ""bettinv_main"", ""3denEnhanced"",  ""sp_general"",  ""sp_player"",  ""PLP_SOGMeleeTweak"",  ""light"",  ""lighty"",  ""FSL_pvttunt"",  ""betterinv_main"",  ""crowsza_ace"",  ""crowsza_drawbuild"",  ""crowsza_main"",  ""crowsza_misc"",  ""crowsza_pingbox"",  ""crowsza_teleport"",  ""crowsza_tfar"",  ""crowsza_zeus_text"",  ""DNI_ZeusFPSMonitor"",  ""CHVD"",  ""ANZ_MissileEfxMod"",  ""WarFXPE"",  ""Vile_HUD"",  ""Blastcore_MainCore"",  ""Blastcore_VEP"",  ""L_ES_ES_main"",  ""L_ES_ES_sounds"",  ""L_ES_ES_sys"",  ""ESSP_core"",  ""ESSP_compat_vn"",  ""A3_Anims_F_Config_Sdr"", ""PLP_starSphere""  ]";
 force ace_common_deployedSwayFactor = 1;
 ace_common_displayTextColor = [0,0,0,0.1];
 ace_common_displayTextFontColor = [1,1,1,1];
@@ -705,6 +705,10 @@ force colsog_battery_powerItems = "colsog_inv_prc77_battery";
 force colsog_battery_prc77Capacity = 480;
 force colsog_firstAid_convertAceFieldDressing = 5;
 force colsog_firstAid_convertAceMorphine = 1;
+force colsog_intel_chanceOfIntelFallingOnGround = 25;
+force colsog_intel_chanceOfUnitCarryingIntel = 10;
+force colsog_intel_intelExpertRequired = true;
+force colsog_intel_inventoryItem = "uns_leaflet16";
 force colsog_medikit_convertAceEpinephrine = 2;
 force colsog_medikit_convertAceFieldDressing = 20;
 force colsog_medikit_convertAceMorphine = 2;
@@ -727,7 +731,44 @@ force colsog_sensor_gunshotRadioTransmissionRange = 2000;
 force colsog_sensor_gunshotThingItem = "colsog_thing_sensor";
 force colsog_sensor_gunshotTransmitDataOverRadio = true;
 force colsog_stabo_climbDuration = 10;
-force colsog_supply_content = "[ 
+force colsog_supply_content = "[
+      'vn_m16_20_t_mag', 12,
+      'ACE_fieldDressing', 50,
+      'ACE_packingBandage', 50,
+      'ACE_elasticBandage', 50,
+      'ACE_quikclot', 50,
+      'ACE_CableTie', 5,
+      'ACE_DefusalKit', 1,
+      'ACE_EntrenchingTool', 1,
+      'ACE_epinephrine', 10,
+      'ACE_Flashlight_MX991', 1,
+      'uns_m67gren', 20,
+      'vn_m18_purple_mag', 3,
+      'vn_m18_red_mag', 6,
+      'vn_m18_white_mag', 20,
+      'vn_m18_yellow_mag', 6,
+      'vn_40mm_m381_he_mag', 25,
+      'vn_40mm_m397_ab_mag', 5,
+      'vn_40mm_m433_hedp_mag', 5,
+      'ACE_Clacker', 1,
+      'vn_40mm_m583_flare_w_mag', 8,
+      'ACE_MapTools', 1,
+      'vn_mine_m18_mag', 10,
+      'ACE_salineIV', 10,
+      'ACE_salineIV_250', 20,
+      'ACE_salineIV_500', 15,
+      'ACE_splint', 10,
+      'ACE_surgicalKit', 1,
+      'ACE_tourniquet', 20,
+      'vn_xm16e1', 4,
+      'pk_556_45_clip_bandolier', 14,
+      'pk_762_39_100Rnd_belt', 5,
+      'pk_762_51_100Rnd_belt', 5,
+      'pk_762_51_60Rnd_clip_bandolier', 8,
+      'pk_9_19_50Rnd_box', 5,
+      'pk_carbine_10Rnd_clip', 5,
+      'pk_45ACP_10Rnd_clip', 5,
+      'pk_792_57_50Rnd_belt', 5
       'vn_m16_20_t_mag', 12, 
       'ACE_fieldDressing', 50, 
       'ACE_packingBandage', 50, 
@@ -997,31 +1038,30 @@ force grad_trenches_functions_vehicleEnvelopeRemovalTime = -1;
 force grad_trenches_functions_vehicleTrenchBuildSpeed = 5;
 
 // Hide Among The Grass
-hatg_setting_building = true;
-hatg_setting_complex_detection = true;
-hatg_setting_cooldown = 30;
-hatg_setting_debug = false;
-hatg_setting_debug_conditions = false;
-hatg_setting_debug_detection = false;
-hatg_setting_debug_surface = false;
-hatg_setting_distance_close = 30;
-hatg_setting_distance_close_multiplier = 2;
-hatg_setting_distance_height = 2;
-hatg_setting_distance_reset = 5;
-hatg_setting_distance_shots = 4;
-hatg_setting_enable_crouch = true;
-hatg_setting_movement_crouch = 5;
-hatg_setting_mp_ai = false;
-hatg_setting_reveal_nearby = true;
-hatg_setting_simple = false;
-hatg_setting_surfaces = true;
+force hatg_setting_building = true;
+force hatg_setting_complex_detection = true;
+force hatg_setting_cooldown = 10;
+force hatg_setting_debug = false;
+force hatg_setting_debug_conditions = false;
+force hatg_setting_debug_detection = false;
+force hatg_setting_debug_surface = false;
+force hatg_setting_distance_close = 5;
+force hatg_setting_distance_close_multiplier = 2;
+force hatg_setting_distance_height = 2;
+force hatg_setting_distance_reset = 5;
+force hatg_setting_distance_shots = 4;
+force hatg_setting_movement_crouch = 5;
+force hatg_setting_mp_ai = false;
+force hatg_setting_reveal_nearby = false;
+force hatg_setting_simple = false;
+force hatg_setting_surfaces = true;
 
 // Hide Among The Grass -  Equipment
-hatg_setting_equipment_ghillie_blacklist = "[]";
-hatg_setting_equipment_ghillie_whitelist = "[""U_I_FullGhillie_ard"",""U_O_FullGhillie_ard"",""U_B_FullGhillie_ard"",""U_I_FullGhillie_lsh"",""U_O_FullGhillie_lsh"",""U_B_FullGhillie_lsh"",""U_I_FullGhillie_sard"",""U_O_FullGhillie_sard"",""U_B_FullGhillie_sard"",""U_I_GhillieSuit"",""U_O_GhillieSuit"",""U_B_GhillieSuit"",""U_O_T_FullGhillie_tna_F"",""U_B_T_FullGhillie_tna_F"",""U_O_T_Sniper_F"",""U_B_T_Sniper_F"",""CUP_U_B_CZ_WDL_Ghillie"",""CUP_U_O_RUS_Ghillie"",""CUP_U_B_BAF_DDPM_GHILLIE"",""CUP_U_B_BAF_DPM_GHILLIE"",""CUP_U_B_BAF_MTP_GHILLIE"",""CUP_U_B_CZ_DST_Ghillie"",""CUP_U_O_TK_Ghillie_Top"",""CUP_U_I_Ghillie_Top"",""U_SSU_Stealth_Uniform_Ghillie_HexcamBrown"",""U_SSU_Stealth_Uniform_Ghillie_HexcamGreen"",""U_SSU_Stealth_Uniform_Ghillie_MCAM_Alpine"",""U_SSU_Stealth_Uniform_Ghillie_AOR1"",""U_SSU_Stealth_Uniform_Ghillie_AOR2"",""U_SSU_Stealth_Uniform_Ghillie_MCAM_Black"",""U_SSU_Stealth_Uniform_Ghillie_Black"",""U_SSU_Stealth_Uniform_Ghillie_M81"",""U_SSU_Stealth_Uniform_Ghillie_MCAM"",""U_SSU_Stealth_Uniform_Ghillie_OCP"",""U_SSU_Stealth_Uniform_Ghillie_MCAM_Tropic"",""U_SSU_Stealth_Uniform_Ghillie_MCAM_Woodland""]";
-hatg_setting_equipment_suppressor_blacklist = "[""ACE_muzzle_mzls_B"",""ACE_muzzle_mzls_L"",""ACE_muzzle_mzls_H"",""ACE_muzzle_mzls_93mmg"",""ACE_muzzle_mzls_338"",""ACE_muzzle_mzls_smg_01"",""ACE_muzzle_mzls_smg_02"",""muzzle_antenna_01_f"",""muzzle_antenna_02_f"",""muzzle_antenna_03_f"",""CUP_muzzle_mfsup_Flashhider_545x39_Black"",""CUP_muzzle_mfsup_Flashhider_545x39_OD"",""CUP_muzzle_mfsup_Flashhider_545x39_Tan"",""CUP_muzzle_mfsup_Flashhider_556x45_Black"",""CUP_muzzle_mfsup_Flashhider_556x45_OD"",""CUP_muzzle_mfsup_Flashhider_556x45_Tan"",""CUP_muzzle_mfsup_SCAR_L"",""CUP_muzzle_mfsup_SCAR_H"",""CUP_muzzle_mfsup_Flashhider_762x39_Black"",""CUP_muzzle_mfsup_Flashhider_762x39_OD"",""CUP_muzzle_mfsup_Flashhider_762x39_Tan"",""CUP_muzzle_mfsup_Flashhider_762x51_Black"",""CUP_muzzle_mfsup_Flashhider_762x51_OD"",""CUP_muzzle_mfsup_Flashhider_762x51_Tan"",""CUP_muzzle_mfsup_CSA"",""CUP_muzzle_mfsup_CSA_desert"",""CUP_muzzle_mfsup_CSA_woodland"",""CUP_muzzle_mfsup_flashhider_Sa58"",""CUP_muzzle_mfsup_Zendl"",""CUP_muzzle_mfsup_Zendl_desert"",""CUP_muzzle_mfsup_Zendl_woodland"",""CUP_acc_bfa"",""CUP_acc_sffh"",""CUP_muzzle_mfsup_Flashhider_PK_Black"",""CUP_muzzle_mfsup_Flashhider_PK_OD"",""CUP_muzzle_mfsup_Flashhider_PK_Tan"",""rhs_acc_ak5"",""rhs_acc_dtk"",""rhs_acc_dtk1983"",""rhs_acc_dtk1"",""rhs_acc_dtk2"",""rhs_acc_dtk3"",""rhs_acc_pgs64"",""rhs_acc_pgs64_74u"",""rhs_acc_pgs64_74un"",""rhs_acc_uuk"",""rhs_acc_dtk1l"",""rhs_acc_dtkakm"",""rhs_acc_dtkrpk"",""rhsusf_acc_ARDEC_M240"",""rhsgref_acc_falMuzzle_l1a1"",""rhsusf_acc_SF3P556"",""rhsusf_acc_SFMB556"",""rhsgref_acc_zendl"",""rhsusf_acc_m14_flashsuppresor"",""rhsusf_acc_m24_muzzlehider_black"",""rhsusf_acc_m24_muzzlehider_d"",""rhsusf_acc_m24_muzzlehider_wd"",""hlc_muzzle_Miter18T"",""hlc_muzzle_snds_ROTEX3P"",""hlc_muzzle_Gunfighter_comp"",""hlc_muzzle_Brevis"",""hlc_muzzle_MAG58_Brake"",""hlc_muzzle_17SBrake"",""hlc_muzzle_OEMDevice"",""hlc_muzzle_KX3_comp"",""hlc_muzzle_FSC30"",""hlc_muzzle_Cherrybomb"",""hlc_muzzle_SF3P_762R"",""hlc_muzzle_A1_FlashHider"",""hlc_muzzle_XM177E1_Moderator"",""hlc_muzzle_XM177E2_Moderator"",""hlc_muzzle_E1_FlashHider"",""hlc_muzzle_OEMDevice_556"",""hlc_muzzle_snds_ArsenalComp"",""hlc_muzzle_SF3P_762""]";
-hatg_setting_equipment_suppressor_integral = "[""srifle_DMR_02_F"",""srifle_DMR_02_camo_F"",""srifle_DMR_02_sniper_F"",""srifle_DMR_04_F"",""srifle_DMR_04_Tan_F"",""CUP_arifle_AS_VAL"",""CUP_arifle_AS_VAL_flash"",""CUP_arifle_AS_VAL_VFG"",""CUP_arifle_AS_VAL_top_rail"",""CUP_arifle_AS_VAL_flash_top"",""CUP_arifle_AS_VAL_VFG_top_rail"",""CUP_srifle_VSSVintorez"",""CUP_srifle_VSSVintorez_flash"",""CUP_srifle_VSSVintorez_VFG"",""CUP_srifle_VSSVintorez_top_rail"",""CUP_srifle_VSSVintorez_flash_top"",""CUP_srifle_VSSVintorez_VFG_top_rail"",""CUP_smg_MP5SD6"",""CUP_arifle_OTS14_GROZA_762_Grip"",""CUP_arifle_OTS14_GROZA_Grip"",""rhs_weap_asval"",""rhs_weap_asval_grip"",""rhs_weap_asval_grip_npz"",""rhs_weap_asval_npz"",""rhs_weap_vss"",""rhs_weap_vss_grip"",""rhs_weap_vss_grip_npz"",""rhs_weap_vss_npz"",""rhs_weap_m3a1_specops"",""hlc_rifle_honeybase"",""hlc_rifle_awcovert_BL"",""hlc_rifle_awcovert_FDE"",""hlc_rifle_awcovert"",""hlc_smg_mp5sd5"",""hlc_smg_mp5sd6""]";
-hatg_setting_equipment_suppressor_whitelist = "[]";
+force hatg_setting_equipment_ghillie_blacklist = "[]";
+force hatg_setting_equipment_ghillie_whitelist = "[""U_I_FullGhillie_ard"",""U_O_FullGhillie_ard"",""U_B_FullGhillie_ard"",""U_I_FullGhillie_lsh"",""U_O_FullGhillie_lsh"",""U_B_FullGhillie_lsh"",""U_I_FullGhillie_sard"",""U_O_FullGhillie_sard"",""U_B_FullGhillie_sard"",""U_I_GhillieSuit"",""U_O_GhillieSuit"",""U_B_GhillieSuit"",""U_O_T_FullGhillie_tna_F"",""U_B_T_FullGhillie_tna_F"",""U_O_T_Sniper_F"",""U_B_T_Sniper_F"",""CUP_U_B_CZ_WDL_Ghillie"",""CUP_U_O_RUS_Ghillie"",""CUP_U_B_BAF_DDPM_GHILLIE"",""CUP_U_B_BAF_DPM_GHILLIE"",""CUP_U_B_BAF_MTP_GHILLIE"",""CUP_U_B_CZ_DST_Ghillie"",""CUP_U_O_TK_Ghillie_Top"",""CUP_U_I_Ghillie_Top"",""U_SSU_Stealth_Uniform_Ghillie_HexcamBrown"",""U_SSU_Stealth_Uniform_Ghillie_HexcamGreen"",""U_SSU_Stealth_Uniform_Ghillie_MCAM_Alpine"",""U_SSU_Stealth_Uniform_Ghillie_AOR1"",""U_SSU_Stealth_Uniform_Ghillie_AOR2"",""U_SSU_Stealth_Uniform_Ghillie_MCAM_Black"",""U_SSU_Stealth_Uniform_Ghillie_Black"",""U_SSU_Stealth_Uniform_Ghillie_M81"",""U_SSU_Stealth_Uniform_Ghillie_MCAM"",""U_SSU_Stealth_Uniform_Ghillie_OCP"",""U_SSU_Stealth_Uniform_Ghillie_MCAM_Tropic"",""U_SSU_Stealth_Uniform_Ghillie_MCAM_Woodland""]";
+force hatg_setting_equipment_suppressor_blacklist = "[""ACE_muzzle_mzls_B"",""ACE_muzzle_mzls_L"",""ACE_muzzle_mzls_H"",""ACE_muzzle_mzls_93mmg"",""ACE_muzzle_mzls_338"",""ACE_muzzle_mzls_smg_01"",""ACE_muzzle_mzls_smg_02"",""muzzle_antenna_01_f"",""muzzle_antenna_02_f"",""muzzle_antenna_03_f"",""CUP_muzzle_mfsup_Flashhider_545x39_Black"",""CUP_muzzle_mfsup_Flashhider_545x39_OD"",""CUP_muzzle_mfsup_Flashhider_545x39_Tan"",""CUP_muzzle_mfsup_Flashhider_556x45_Black"",""CUP_muzzle_mfsup_Flashhider_556x45_OD"",""CUP_muzzle_mfsup_Flashhider_556x45_Tan"",""CUP_muzzle_mfsup_SCAR_L"",""CUP_muzzle_mfsup_SCAR_H"",""CUP_muzzle_mfsup_Flashhider_762x39_Black"",""CUP_muzzle_mfsup_Flashhider_762x39_OD"",""CUP_muzzle_mfsup_Flashhider_762x39_Tan"",""CUP_muzzle_mfsup_Flashhider_762x51_Black"",""CUP_muzzle_mfsup_Flashhider_762x51_OD"",""CUP_muzzle_mfsup_Flashhider_762x51_Tan"",""CUP_muzzle_mfsup_CSA"",""CUP_muzzle_mfsup_CSA_desert"",""CUP_muzzle_mfsup_CSA_woodland"",""CUP_muzzle_mfsup_flashhider_Sa58"",""CUP_muzzle_mfsup_Zendl"",""CUP_muzzle_mfsup_Zendl_desert"",""CUP_muzzle_mfsup_Zendl_woodland"",""CUP_acc_bfa"",""CUP_acc_sffh"",""CUP_muzzle_mfsup_Flashhider_PK_Black"",""CUP_muzzle_mfsup_Flashhider_PK_OD"",""CUP_muzzle_mfsup_Flashhider_PK_Tan"",""rhs_acc_ak5"",""rhs_acc_dtk"",""rhs_acc_dtk1983"",""rhs_acc_dtk1"",""rhs_acc_dtk2"",""rhs_acc_dtk3"",""rhs_acc_pgs64"",""rhs_acc_pgs64_74u"",""rhs_acc_pgs64_74un"",""rhs_acc_uuk"",""rhs_acc_dtk1l"",""rhs_acc_dtkakm"",""rhs_acc_dtkrpk"",""rhsusf_acc_ARDEC_M240"",""rhsgref_acc_falMuzzle_l1a1"",""rhsusf_acc_SF3P556"",""rhsusf_acc_SFMB556"",""rhsgref_acc_zendl"",""rhsusf_acc_m14_flashsuppresor"",""rhsusf_acc_m24_muzzlehider_black"",""rhsusf_acc_m24_muzzlehider_d"",""rhsusf_acc_m24_muzzlehider_wd"",""hlc_muzzle_Miter18T"",""hlc_muzzle_snds_ROTEX3P"",""hlc_muzzle_Gunfighter_comp"",""hlc_muzzle_Brevis"",""hlc_muzzle_MAG58_Brake"",""hlc_muzzle_17SBrake"",""hlc_muzzle_OEMDevice"",""hlc_muzzle_KX3_comp"",""hlc_muzzle_FSC30"",""hlc_muzzle_Cherrybomb"",""hlc_muzzle_SF3P_762R"",""hlc_muzzle_A1_FlashHider"",""hlc_muzzle_XM177E1_Moderator"",""hlc_muzzle_XM177E2_Moderator"",""hlc_muzzle_E1_FlashHider"",""hlc_muzzle_OEMDevice_556"",""hlc_muzzle_snds_ArsenalComp"",""hlc_muzzle_SF3P_762""]";
+force hatg_setting_equipment_suppressor_integral = "[""srifle_DMR_02_F"",""srifle_DMR_02_camo_F"",""srifle_DMR_02_sniper_F"",""srifle_DMR_04_F"",""srifle_DMR_04_Tan_F"",""CUP_arifle_AS_VAL"",""CUP_arifle_AS_VAL_flash"",""CUP_arifle_AS_VAL_VFG"",""CUP_arifle_AS_VAL_top_rail"",""CUP_arifle_AS_VAL_flash_top"",""CUP_arifle_AS_VAL_VFG_top_rail"",""CUP_srifle_VSSVintorez"",""CUP_srifle_VSSVintorez_flash"",""CUP_srifle_VSSVintorez_VFG"",""CUP_srifle_VSSVintorez_top_rail"",""CUP_srifle_VSSVintorez_flash_top"",""CUP_srifle_VSSVintorez_VFG_top_rail"",""CUP_smg_MP5SD6"",""CUP_arifle_OTS14_GROZA_762_Grip"",""CUP_arifle_OTS14_GROZA_Grip"",""rhs_weap_asval"",""rhs_weap_asval_grip"",""rhs_weap_asval_grip_npz"",""rhs_weap_asval_npz"",""rhs_weap_vss"",""rhs_weap_vss_grip"",""rhs_weap_vss_grip_npz"",""rhs_weap_vss_npz"",""rhs_weap_m3a1_specops"",""hlc_rifle_honeybase"",""hlc_rifle_awcovert_BL"",""hlc_rifle_awcovert_FDE"",""hlc_rifle_awcovert"",""hlc_smg_mp5sd5"",""hlc_smg_mp5sd6""]";
+force hatg_setting_equipment_suppressor_whitelist = "[]";
 
 // Hide Among The Grass -  UI
 hatg_setting_ui = false;
@@ -1033,18 +1073,6 @@ hatg_setting_ui_textsize = 2;
 hatg_setting_ui_use_image = false;
 hatg_setting_ui_x = 0;
 hatg_setting_ui_y = 0;
-
-// LAMBS Danger
-force lambs_danger_cqbRange = 20;
-force lambs_danger_disableAIAutonomousManoeuvres = false;
-force lambs_danger_disableAIDeployStaticWeapons = true;
-force lambs_danger_disableAIFindStaticWeapons = false;
-force lambs_danger_disableAIHideFromTanksAndAircraft = false;
-force lambs_danger_disableAIPlayerGroup = false;
-force lambs_danger_disableAIPlayerGroupReaction = false;
-force lambs_danger_disableAutonomousFlares = false;
-force lambs_danger_disableAutonomousSmokeGrenades = true;
-force lambs_danger_panicChance = 0;
 
 // LAMBS Danger Eventhandlers
 force lambs_eventhandlers_ExplosionEventHandlerEnabled = true;
@@ -1105,11 +1133,10 @@ force A3_mags_looseBeltsAreDisposable = true;
 
 // Restrict Markers
 restrict_markers_main_autoCopyDeletion = true;
-restrict_markers_main_canCopyFromSide = 2;
-restrict_markers_main_enabled = true;
-restrict_markers_main_shareDistance = 7;
-restrict_markers_main_shareDistanceGroup = 7;
-restrict_markers_main_showNotifications = true;
+force restrict_markers_main_canCopyFromSide = 2;
+force restrict_markers_main_enabled = true;
+force restrict_markers_main_shareDistance = 7;
+force restrict_markers_main_shareDistanceGroup = 7;
 
 // SSD Death Screams
 force SSD_DS_enable_death = true;
