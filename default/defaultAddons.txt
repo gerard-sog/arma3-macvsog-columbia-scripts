@@ -1064,7 +1064,7 @@ force hatg_setting_equipment_suppressor_integral = "[""srifle_DMR_02_F"",""srifl
 force hatg_setting_equipment_suppressor_whitelist = "[]";
 
 // Hide Among The Grass -  UI
-hatg_setting_ui = false;
+force hatg_setting_ui = false;
 hatg_setting_ui_colour_hidden = [0,1,0,1];
 hatg_setting_ui_colour_revealed = [1,0,0,1];
 hatg_setting_ui_fade = 0;
