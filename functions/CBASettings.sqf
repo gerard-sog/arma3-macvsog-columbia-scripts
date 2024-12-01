@@ -156,3 +156,6 @@
 ["colsog_intel_chanceOfUnitCarryingIntel", "SLIDER", ["Chance of unit carrying intel (%)"], [CBA_SETTINGS_COLSOG, "Intel"], [0, 100, 20, 0], 1, {}, false] call CBA_fnc_addSetting;
 ["colsog_intel_chanceOfIntelFallingOnGround", "SLIDER", ["Chance of intel falling on ground (%)"], [CBA_SETTINGS_COLSOG, "Intel"], [0, 100, 20, 0], 1, {}, false] call CBA_fnc_addSetting;
 ["colsog_intel_intelExpertRequired", "CHECKBOX", ["Requires trait to decrypt intel"], [CBA_SETTINGS_COLSOG, "Intel"], true, 1, {}, false] call CBA_fnc_addSetting;
+
+// Climbing
+["colsog_climbing_unitsAllowedToClimbTrees", "EDITBOX", ["Units allowed to climb trees"], [CBA_SETTINGS_COLSOG, "Climbing"], "Point man", 1, {colsog_climbing_unitsAllowedToClimbTrees = colsog_climbing_unitsAllowedToClimbTrees splitString ",";}, false] call CBA_fnc_addSetting;

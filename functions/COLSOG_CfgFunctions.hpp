@@ -48,4 +48,11 @@ class COLSOG {
         // 1 will execute the function for each player downloading the mission.
         class intel {postInit = 1;};
     };
+    class Climbing
+    {
+        file ="functions\climbing";
+        // 1 will execute the function for each player downloading the mission.
+        class addTreeClimbingAction {postInit = 1;};
+        class climbTree {};
+    }
 }
