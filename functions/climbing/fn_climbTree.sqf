@@ -18,7 +18,8 @@ private _hashMapOfAuthorizedTreesAndHeightCorrection = createHashMapFromArray [
     ["t_cocosnucifera3s_tall_f.p3d", 0],
     ["t_inocarpus_f.p3d", 8],
     ["t_palaquium_f.p3d", 3],
-    ["t_ficus_big_f.p3d", 15]
+    ["t_ficus_big_f.p3d", 15],
+    ["t_cocosnucifera2s_small_f.p3d", 8]
 ];
 
 private _isAuthorizedTree = false;
@@ -33,7 +34,7 @@ private _objectP3dName = _modelInfo select 0;
 } forEach (keys _hashMapOfAuthorizedTreesAndHeightCorrection);
 
 if (!_isAuthorizedTree) exitWith {
-    hintSilent format ["Not a tree."];
+    hintSilent format ["I cannot climb this."];
 };
 
 private _xyzTreeDimension = _object call BIS_fnc_boundingBoxDimensions;
@@ -44,19 +45,27 @@ private _treeHeight = (_xyzTreeDimension select 1) + _treeHeightCorrection;
     params ["_treeHeight"];
     waitUntil {inputAction "MoveForward" > 0};
 
-    private _shelter = createVehicle ["Land_vn_o_wallfoliage_01", getPos player vectorAdd [0, 0, _treeHeight]];
-    _shelter setPos [getPos player select 0, getPos player select 1, _treeHeight + 2];
-    // Rotate 90 degree
-    _shelter setVectorDirAndUp [[0,1,0], [1,0,0]];
-    player setPosATL (getPos _shelter vectorAdd [0, 0, 1]);
+    private _invisibleBarrier = createVehicle ["Land_InvisibleBarrier_F", getPos player vectorAdd [0, 0, _treeHeight]];
+    _invisibleBarrier setPos [getPos player select 0, getPos player select 1, _treeHeight + 2];
+    player setPos (getPos _invisibleBarrier vectorAdd [0,0,1]);
+    player switchMove "HubSpectator_stand";
+    player hideObjectGlobal true;
+
+    player setVariable ["COLSOG_invisibleBarrier", _invisibleBarrier, true];
 
     hint "Climbing";
-
 };
 
 [_treeHeight] spawn {
     params ["_treeHeight"];
     waitUntil {inputAction "MoveBack" > 0};
+
+    private _invisibleBarrier = player getVariable "COLSOG_invisibleBarrier";
+    deleteVehicle _invisibleBarrier;
+
+    player setPos (getPos player vectorAdd [0, 0, -(_treeHeight + 2)]);
+    player hideObjectGlobal false;
+    player switchMove "";
+
     hint "Going down";
-    player setPosATL (getPos player vectorAdd [0, 0, -(_treeHeight + 2)]);
 };
