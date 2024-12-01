@@ -9,11 +9,10 @@
  * None
  */
 
-params ["_player", "_object"];
-
+private _object = cursorObject;
 private _modelInfo = getModelInfo _object;
 
-private _hashMapOfAuthorizedTreesAndHeightCorrection = createHashMapFromArray [
+private _hashMapOfAuthorizedTreesAndHeightCorrection = [
     ["t_cyathea_f.p3d", 2],
     ["t_cocos_tall_f.p3d", 9],
     ["t_cocosnucifera3s_tall_f.p3d", 0],
@@ -24,45 +23,45 @@ private _hashMapOfAuthorizedTreesAndHeightCorrection = createHashMapFromArray [
 ];
 
 private _isAuthorizedTree = false;
-private _tree = "None";
+private _treeHeightCorrection = 0;
 private _objectP3dName = _modelInfo select 0;
 
 {
-    if ([_x, _objectP3dName] call BIS_fnc_inString) exitWith {
+    private _key = _x select 0;
+    if ([_key, _objectP3dName] call BIS_fnc_inString) exitWith {
         _isAuthorizedTree = true;
-        _tree = _x;
+        _treeHeightCorrection = _x select 1;
     };
-} forEach (keys _hashMapOfAuthorizedTreesAndHeightCorrection);
+} forEach _hashMapOfAuthorizedTreesAndHeightCorrection;
 
 // Conditions for action to be performed.
 if (!_isAuthorizedTree) exitWith {
     hintSilent format ["I cannot climb this."];
 };
 
-if (_player distance2D _object > 4) exitWith {
+if (player distance2D _object > 7) exitWith {
     hintSilent format ["I need to get closer."];
 };
 
 [
     15,
-    [_player, _object],
+    [_object, _treeHeightCorrection],
     {
         params ["_args"];
-        _args params ["_player", "_object"];
+        _args params ["_object", "_treeHeightCorrection"];
 
         private _xyzTreeDimension = _object call BIS_fnc_boundingBoxDimensions;
-        private _treeHeightCorrection = _hashMapOfAuthorizedTreesAndHeightCorrection get _tree;
         private _treeHeight = (_xyzTreeDimension select 1) + _treeHeightCorrection;
 
-        private _invisibleBarrier = createVehicle ["Land_InvisibleBarrier_F", getPos _player vectorAdd [0, 0, _treeHeight]];
-        private _playerPos = getPos _player;
+        private _invisibleBarrier = createVehicle ["Land_InvisibleBarrier_F", getPos player vectorAdd [0, 0, _treeHeight]];
+        private _playerPos = getPos player;
         _invisibleBarrier setPos [_playerPos select 0, _playerPos select 1, _treeHeight + 2];
-        _player setPos (getPos _invisibleBarrier vectorAdd [0, 0, 1]);
-        _player switchMove "HubSpectator_stand";
-        _player hideObjectGlobal true;
+        player setPos (getPos _invisibleBarrier vectorAdd [0, 0, 1]);
+        player switchMove "HubSpectator_stand";
+        player hideObjectGlobal true;
 
-        _player setVariable ["COLSOG_isUpInTree", true, true];
-        _player setVariable ["COLSOG_invisibleBarrier", _invisibleBarrier, true];
+        player setVariable ["COLSOG_isUpInTree", true, false];
+        player setVariable ["COLSOG_invisibleBarrier", _invisibleBarrier, false];
     },
     {},
     "Climbing up the tree!"

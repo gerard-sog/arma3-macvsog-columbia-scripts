@@ -9,24 +9,19 @@
  * None
  */
 
-params ["_player"];
-
 [
     5,
-    [_player],
+    [],
     {
-        params ["_args"];
-        _args params ["_player"];
-
-        private _invisibleBarrier = _player getVariable "COLSOG_invisibleBarrier";
+        private _invisibleBarrier = player getVariable "COLSOG_invisibleBarrier";
         deleteVehicle _invisibleBarrier;
 
-        private _playerPos = getPos _player;
-        _player setPos [_playerPos select 0, _playerPos select 1, 0];
-        _player hideObjectGlobal false;
-        _player switchMove "";
+        private _playerPos = getPos player;
+        player setPos [_playerPos select 0, _playerPos select 1, 0];
+        player hideObjectGlobal false;
+        player switchMove "";
 
-        _player setVariable ["COLSOG_isUpInTree", false, true];
+        player setVariable ["COLSOG_isUpInTree", false, false];
     },
     {},
     "Climbing down!"

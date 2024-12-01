@@ -12,10 +12,12 @@ _climbTree = [
 	"Climb tree",
 	"\a3\Modules_F_Curator\Data\iconLightning_ca.paa",
 	{
-		[player, cursorObject] call COLSOG_fnc_climbTree;
+		call COLSOG_fnc_climbTree;
 	},
 	{
         private _hasItem = [player, "ACE_rope18"] call BIS_fnc_hasItem;
+
+        private _isPlayerInTree = player getVariable ["COLSOG_isUpInTree", false];
 
         private _isRoleAllowedToClimb = false;
         private _role = roleDescription player;
@@ -24,7 +26,7 @@ _climbTree = [
                 _isRoleAllowedToClimb = true;
             };
         } forEach colsog_climbing_unitsAllowedToClimbTrees;
-        _result = (_hasItem AND _isRoleAllowedToClimb);
+        _result = (_hasItem AND _isRoleAllowedToClimb AND !_isPlayerInTree);
         _result
 	}
 ] call ace_interact_menu_fnc_createAction;
@@ -36,7 +38,7 @@ _climbTree = [
 	"Climb down",
 	"\a3\Modules_F_Curator\Data\iconLightning_ca.paa",
 	{
-		[player] call COLSOG_fnc_climbDownTree;
+		call COLSOG_fnc_climbDownTree;
 	},
 	{
         player getVariable ["COLSOG_isUpInTree", false];
