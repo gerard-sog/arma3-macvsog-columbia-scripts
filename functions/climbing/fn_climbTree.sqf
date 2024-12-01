@@ -39,39 +39,31 @@ if (!_isAuthorizedTree) exitWith {
     hintSilent format ["I cannot climb this."];
 };
 
-if (_player distance2D _object > 5) exitWith {
+if (_player distance2D _object > 4) exitWith {
     hintSilent format ["I need to get closer."];
 };
 
-private _xyzTreeDimension = _object call BIS_fnc_boundingBoxDimensions;
-private _treeHeightCorrection = _hashMapOfAuthorizedTreesAndHeightCorrection get _tree;
-private _treeHeight = (_xyzTreeDimension select 1) + _treeHeightCorrection;
+[
+    15,
+    [_player, _object],
+    {
+        params ["_args"];
+        _args params ["_player", "_object"];
 
-[_treeHeight, _player] spawn {
-    params ["_treeHeight", "_player"];
-    waitUntil {inputAction "MoveForward" > 0};
+        private _xyzTreeDimension = _object call BIS_fnc_boundingBoxDimensions;
+        private _treeHeightCorrection = _hashMapOfAuthorizedTreesAndHeightCorrection get _tree;
+        private _treeHeight = (_xyzTreeDimension select 1) + _treeHeightCorrection;
 
-    private _invisibleBarrier = createVehicle ["Land_InvisibleBarrier_F", getPos _player vectorAdd [0, 0, _treeHeight]];
-    _invisibleBarrier setPos [getPos _player select 0, getPos _player select 1, _treeHeight + 2];
-    _player setPos (getPos _invisibleBarrier vectorAdd [0,0,1]);
-    _player switchMove "HubSpectator_stand";
-    _player hideObjectGlobal true;
+        private _invisibleBarrier = createVehicle ["Land_InvisibleBarrier_F", getPos _player vectorAdd [0, 0, _treeHeight]];
+        private _playerPos = getPos _player;
+        _invisibleBarrier setPos [_playerPos select 0, _playerPos select 1, _treeHeight + 2];
+        _player setPos (getPos _invisibleBarrier vectorAdd [0, 0, 1]);
+        _player switchMove "HubSpectator_stand";
+        _player hideObjectGlobal true;
 
-    _player setVariable ["COLSOG_invisibleBarrier", _invisibleBarrier, true];
-
-    hintSilent format ["Climbing."];
-
-    [_treeHeight, _player] spawn {
-        params ["_treeHeight", "_player"];
-        waitUntil {inputAction "MoveBack" > 0};
-
-        private _invisibleBarrier = _player getVariable "COLSOG_invisibleBarrier";
-        deleteVehicle _invisibleBarrier;
-
-        _player setPos (getPos _player vectorAdd [0, 0, -(_treeHeight + 2)]);
-        _player hideObjectGlobal false;
-        _player switchMove "";
-
-        hintSilent format ["Going down."];
-    };
-};
+        _player setVariable ["COLSOG_isUpInTree", true, true];
+        _player setVariable ["COLSOG_invisibleBarrier", _invisibleBarrier, true];
+    },
+    {},
+    "Climbing up the tree!"
+] call ace_common_fnc_progressBar;
