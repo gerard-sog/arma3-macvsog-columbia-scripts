@@ -54,7 +54,9 @@ if (player distance2D _object > 7) exitWith {
         _invisibleBarrier setPos [_playerPos select 0, _playerPos select 1, _treeHeight + 2];
         player setPos (getPos _invisibleBarrier vectorAdd [0, 0, 1]);
         player switchMove "HubSpectator_stand";
-        player hideObjectGlobal true;
+
+        // remote-executes hideObjectGlobal from a client to the server
+        [player, true] remoteExec ["hideObjectGlobal", 2];
 
         player setVariable ["COLSOG_isUpInTree", true, false];
         player setVariable ["COLSOG_invisibleBarrier", _invisibleBarrier, false];

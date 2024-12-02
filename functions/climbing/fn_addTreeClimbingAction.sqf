@@ -10,7 +10,7 @@ if !(hasInterface) exitWith {};
 _climbTree = [
 	"COLSOG_climbUpTree",
 	"Climb up",
-	"\a3\Modules_F_Curator\Data\iconLightning_ca.paa",
+	"\a3\modules_f\data\hideterrainobjects\icon_ca.paa",
 	{
 		call COLSOG_fnc_climbTree;
 	},
@@ -36,7 +36,7 @@ _climbTree = [
 _climbTree = [
 	"COLSOG_climbDownTree",
 	"Climb down",
-	"\a3\Modules_F_Curator\Data\iconLightning_ca.paa",
+	"\a3\modules_f\data\hideterrainobjects\icon_ca.paa",
 	{
 		call COLSOG_fnc_climbDownTree;
 	},
