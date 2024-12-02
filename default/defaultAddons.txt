@@ -703,6 +703,10 @@ force colsog_battery_enemySpawnThreshold = 50;
 force colsog_battery_groupsTriggeringEnemySpawnThresholdIncrease = "Takoma,Atlas,Reserves";
 force colsog_battery_powerItems = "colsog_inv_prc77_battery";
 force colsog_battery_prc77Capacity = 480;
+force colsog_climbing_requiredItem = "ACE_rope18";
+force colsog_climbing_timeToClimbDown = 5;
+force colsog_climbing_timeToClimbUp = 15;
+force colsog_climbing_unitsAllowedToClimbTrees = "Point man";
 force colsog_firstAid_convertAceFieldDressing = 5;
 force colsog_firstAid_convertAceMorphine = 1;
 force colsog_intel_chanceOfIntelFallingOnGround = 25;
@@ -1013,6 +1017,7 @@ force hatg_setting_distance_close_multiplier = 2;
 force hatg_setting_distance_height = 2;
 force hatg_setting_distance_reset = 5;
 force hatg_setting_distance_shots = 4;
+hatg_setting_enable_crouch = true;
 force hatg_setting_movement_crouch = 5;
 force hatg_setting_mp_ai = false;
 force hatg_setting_reveal_nearby = false;
@@ -1068,7 +1073,6 @@ force restrict_markers_main_enabled = true;
 force restrict_markers_main_shareDistance = 7;
 force restrict_markers_main_shareDistanceGroup = 7;
 restrict_markers_main_showNotifications = true;
-
 
 // SSD Death Screams
 force SSD_DS_enable_death = true;
@@ -1182,32 +1186,6 @@ force tsp_cba_animate_walk_max = 1;
 force tsp_cba_animate_watch = true;
 tsp_cba_animate_Wedge = true;
 tsp_cba_animate_Zozo = true;
-
-// TSP Animate - Radio
-force tsp_cba_radio = true;
-force tsp_cba_radio_aiming = true;
-force tsp_cba_radio_headsets = "[]";
-force tsp_cba_radio_helmets = "[]";
-force tsp_cba_radio_preference_acre_bf888s = "Model";
-force tsp_cba_radio_preference_ACRE_PRC117F = "Handset";
-force tsp_cba_radio_preference_acre_prc148 = "Model";
-force tsp_cba_radio_preference_acre_prc152 = "Vest";
-force tsp_cba_radio_preference_acre_prc343 = "Model";
-force tsp_cba_radio_preference_ACRE_PRC77 = "Handset";
-force tsp_cba_radio_preference_acre_sem52SL = "Vest";
-force tsp_cba_radio_preference_ACRE_SEM70 = "Handset";
-force tsp_cba_radio_preference_JLTS_clone_comlink = "Wrist";
-force tsp_cba_radio_preference_JLTS_droid_comlink = "Ear";
-force tsp_cba_radio_preference_Others = "Handset";
-force tsp_cba_radio_preference_TFAR_anprc148jem = "Model";
-force tsp_cba_radio_preference_TFAR_anprc152 = "Vest";
-force tsp_cba_radio_preference_TFAR_anprc154 = "Vest";
-force tsp_cba_radio_preference_TFAR_fadak = "Model";
-force tsp_cba_radio_preference_TFAR_pnr1000a = "Model";
-force tsp_cba_radio_preference_TFAR_rf7800str = "Vest";
-force tsp_cba_radio_vehicle = true;
-force tsp_cba_radio_vest_armor = true;
-force tsp_cba_radio_vests = "[]";
 
 // TSP Core
 force tsp_cba_angle = -0.1;
