@@ -45,7 +45,9 @@ Installation of all the scripts/zeus modules is done by **copying the below file
   - [vn_khe_sanh](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/missions/vn_khe_sanh/mission.sqm)
   - [vn_the_bra](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/missions/vn_the_bra/mission.sqm)
 - Default <b>addons</b> for missions: [defaultAddons.txt](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/defaultAddons.txt)
-- Default whitelist <b>arsenal</b>: [defaultWhitelistArsenal.json](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/defaultWhitelistArsenal.json)
+- Default <b>arsenals</b>: 
+  - [defaultWhitelistArsenal.json](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/arsenals/defaultWhitelistArsenal.json)
+  - [defaultPilotWhitelistArsenal.json](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/arsenals/defaultPilotWhitelistArsenal.json)
 
 ## Zeus modules
 - A - COLSOG AI
@@ -801,4 +803,5 @@ in the main init.sqf and place down the [Cam Lao Nam borders composition](https:
 
 ## RT Columbia mods
 
-Procedure to create a new Arma 3 inventory object from scratch: https://github.com/gerard-sog/arma3-macvsog-columbia-items.
+- Procedure to create a new Arma 3 inventory object from scratch: https://github.com/gerard-sog/arma3-macvsog-columbia-items.
+- Custom gesture wheel: https://steamcommunity.com/sharedfiles/filedetails/?id=3339280489.
