@@ -1,9 +1,6 @@
 /*
- * Creates a 'Gunshot' sensor.
- *
- * Arguments:
- * 0: (Optional) Sensor Object, needed when sensor created in Eden Editor (Object)
- * 1: (Optional) Sensor ID, needed when sensor created in Eden Editor (Integer)
+ * Makes player executing the action climbing up a tree (actually teleport on top of tree on invisible platform
+ * and is frozen in order to not fall).
  *
  * Return values:
  * None
@@ -34,7 +31,6 @@ private _objectP3dName = _modelInfo select 0;
     };
 } forEach _hashMapOfAuthorizedTreesAndHeightCorrection;
 
-// Conditions for action to be performed.
 if (!_isAuthorizedTree) exitWith {
     hintSilent format ["I cannot climb this."];
 };
@@ -44,7 +40,7 @@ if (player distance2D _object > 7) exitWith {
 };
 
 [
-    15,
+    colsog_climbing_timeToClimbUp,
     [_object, _treeHeightCorrection],
     {
         params ["_args"];

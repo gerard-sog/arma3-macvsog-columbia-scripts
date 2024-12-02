@@ -1,16 +1,14 @@
 /*
- * Creates a 'Gunshot' sensor.
+ * Makes player executing the action climbing up a tree and allows movement again.
  *
  * Arguments:
- * 0: (Optional) Sensor Object, needed when sensor created in Eden Editor (Object)
- * 1: (Optional) Sensor ID, needed when sensor created in Eden Editor (Integer)
  *
  * Return values:
  * None
  */
 
 [
-    5,
+    colsog_climbing_timeToClimbDown,
     [],
     {
         private _invisibleBarrier = player getVariable "COLSOG_invisibleBarrier";

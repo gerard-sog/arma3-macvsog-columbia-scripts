@@ -1,5 +1,5 @@
 /*
- * Adds an ace action to climb to the top of a tree.
+ * Adds an ace action to climb to the top of a tree and climb down.
  *
  * Return values:
  * None
@@ -9,13 +9,13 @@ if !(hasInterface) exitWith {};
 
 _climbTree = [
 	"COLSOG_climbUpTree",
-	"Climb tree",
+	"Climb up",
 	"\a3\Modules_F_Curator\Data\iconLightning_ca.paa",
 	{
 		call COLSOG_fnc_climbTree;
 	},
 	{
-        private _hasItem = [player, "ACE_rope18"] call BIS_fnc_hasItem;
+        private _hasItem = [player, colsog_climbing_requiredItem] call BIS_fnc_hasItem;
 
         private _isPlayerInTree = player getVariable ["COLSOG_isUpInTree", false];
 

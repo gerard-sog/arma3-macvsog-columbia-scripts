@@ -185,6 +185,12 @@ In the Addons configuration menu, you will have the ability to update the follow
   - Chance of intel falling on ground (%): <iInteger</i>
   - Requires trait 'COLSOG_intelExpert' to decrypt intel : <i>Boolean</i>
 
+- **Climbing**
+  - Units allowed to climb trees: <i>String</i>
+  - Required item to climb: <i>String</i>
+  - Time to climb up (sec): <iInteger</i>
+  - Time to climb down (sec): <iInteger</i>
+
 ## Features
 
 ### Gameplay
@@ -615,6 +621,34 @@ this setvariable ["COLSOG_intelExpert", true];
 Else the player will see "You cannot read the document...".
 
 If intel pool is empty and a player tries to decrypt an intel, the player will receive a hint displaying "Contains no valuable information.".
+
+</details>
+
+<details>
+
+<summary>14. Climbing up/down trees</summary>
+
+Allows player to climb up trees to see further away, orient himself/herself.
+
+To climb up a tree follow this steps:
+- Have required role (unit's name), item and make sure tree is in the config of authorized tree to climb (see [fn_climbTree.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/climbing/fn_climbTree.sqf).
+
+```
+private _hashMapOfAuthorizedTreesAndHeightCorrection = [
+    ["t_cyathea_f.p3d", 2],
+    ["t_cocos_tall_f.p3d", 9],
+    ["t_cocosnucifera3s_tall_f.p3d", 0],
+    ["t_inocarpus_f.p3d", 8],
+    ["t_palaquium_f.p3d", 3],
+    ["t_ficus_big_f.p3d", 15],
+    ["t_cocosnucifera2s_small_f.p3d", 8]
+];
+```
+
+- Go close enough to a tree and go in 'ace equipment' --> "Climb up".
+- To go down, go in 'ace equipment' --> "Climb down".
+
+It is also configurable through CBA Settings (see 'CBA Settings' section of the readme).
 
 </details>
 
