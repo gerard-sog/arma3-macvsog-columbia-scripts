@@ -10,7 +10,7 @@ params ["_wireTrap", "_mace", "_ropeTopObject", "_maceSphere"];
 private _trapPosition = getPos _wireTrap;
 private _trapDirection = getDir _wireTrap;
 
-playSound3D ["a3\sounds_f\air\sfx\sl_rope_break.wss", _wireTrap, false, _wireTrap, 4];
+playSound3D ["a3\sounds_f\air\sfx\sl_rope_break.wss", _wireTrap, false, _wireTrap, 4, 1, 15, 0, false];
 deleteVehicle _wireTrap;
 // *******************************************************
 // Delete cosmetic rope and attach swing rope.  Then detach mace from original position to start the swing
@@ -35,9 +35,9 @@ uiSleep 1.5;
 // sound FX and accelerate swing when mace lower (waiting so it won't just pile drive into the ground)
 // *******************************************************
 _sound = "a3\sounds_f\characters\movements\bush_004.wss";
-playSound3D [_sound, _mace, false, getPosASL _mace, 3.5];
+playSound3D [_sound, _mace, false, getPosASL _mace, 3.5, 1, 15, 0, false];
 waitUntil {_mace distance2D _trapPosition < 3};
-playSound3D [_sound, _mace, false, getPosASL _mace, 3.5];
+playSound3D [_sound, _mace, false, getPosASL _mace, 3.5, 1, 15, 0, false];
 
 // *******************************************************
 // Deal with victims of mace
