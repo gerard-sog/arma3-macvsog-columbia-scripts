@@ -103,6 +103,7 @@
 
 // STABO
 ["colsog_stabo_climbDuration", "SLIDER", ["Action duration in seconds"], [CBA_SETTINGS_COLSOG, "STABO"], [1, 30, 10, 0], 1, {}, false] call CBA_fnc_addSetting;
+["colsog_stabo_ropeLength", "SLIDER", ["Rope length (m)"], [CBA_SETTINGS_COLSOG, "STABO"], [25, 100, 60, 0], 1, {}, false] call CBA_fnc_addSetting;
 
 // Throwable
 ["colsog_throwable_remove", "EDITBOX", ["Throwable to Remove from AI"], [CBA_SETTINGS_COLSOG, "Throwable"], "vn_rdg2_mag,vn_molotov_grenade_mag", 1, {colsog_throwable_remove = colsog_throwable_remove splitString " " joinString "" splitString ","}, false] call CBA_fnc_addSetting;
