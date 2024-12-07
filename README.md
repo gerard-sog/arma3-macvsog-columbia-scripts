@@ -122,6 +122,7 @@ In the Addons configuration menu, you will have the ability to update the follow
 
 - **STABO**
   - Action duration in seconds: <i>Integer</i>
+  - Rope length (m): <i>Integer</i>
 
 - **AI Throwable**
   - Throwable to Remove from AI: <i>List\<String\> separated with , and no " required</i> 
