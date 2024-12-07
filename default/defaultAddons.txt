@@ -700,7 +700,7 @@ force colsog_ai_spotDistance = 0.1;
 force colsog_ai_spotTime = 0.1;
 force colsog_ai_suppression = true;
 force colsog_battery_enemySpawnThreshold = 50;
-force colsog_battery_groupsTriggeringEnemySpawnThresholdIncrease = "Takoma,Atlas,Reserves";
+force colsog_battery_groupsTriggeringEnemySpawnThresholdIncrease = "";
 force colsog_battery_powerItems = "colsog_inv_prc77_battery";
 force colsog_battery_prc77Capacity = 480;
 force colsog_climbing_requiredItem = "ACE_rope18";
@@ -735,6 +735,7 @@ force colsog_sensor_gunshotRadioTransmissionRange = 2000;
 force colsog_sensor_gunshotThingItem = "colsog_thing_sensor";
 force colsog_sensor_gunshotTransmitDataOverRadio = true;
 force colsog_stabo_climbDuration = 10;
+force colsog_stabo_ropeLength = 60;
 force colsog_supply_content = "[
       'vn_m16_20_t_mag', 12,
       'ACE_fieldDressing', 50,
