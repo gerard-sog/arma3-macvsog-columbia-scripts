@@ -44,6 +44,9 @@ COLSOG_intelPool = [
     ];
 publicVariable "COLSOG_intelPool";
 
+COLSOG_isDayNightCycleActive = false;
+publicVariable "COLSOG_isDayNightCycleActive";
+
 _handle = [] execVM "functions\tracker\colsog_fn_onTrackerSpawn.sqf";
 _handle = [] execVM "functions\tracker\colsog_fn_trackerGroup.sqf";
 
