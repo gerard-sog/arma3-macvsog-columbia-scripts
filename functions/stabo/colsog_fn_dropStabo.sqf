@@ -23,7 +23,6 @@ _parentHelicopter setVariable ["COLSOG_staboRope", _staboRope, true];
         (getPos (_this select 0) select 2) <= 0.25 ;
     },
     {
-        systemChat "TOUCHING GROUND";
         [(_this select 0), true] remoteExec ["hideObjectGlobal", 2];
 
         private _frozenDroppedSandbag = "vn_prop_sandbag_01" createVehicle (getPosATL (_this select 0));
@@ -78,7 +77,6 @@ _parentHelicopter setVariable ["COLSOG_staboRope", _staboRope, true];
                 ((_this select 0) distance (_this select 1)) >= 55;
             },
             {
-                systemChat "ROPE BREAK!";
                 // If rope already detached, we exit and do not execute this script.
                 if (not ((_this select 1) getVariable "COLSOG_staboRopeDeployed")) exitWith {};
 
