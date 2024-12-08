@@ -23,6 +23,7 @@ if !(_hasZen) exitWith { systemChat "ZEN not detected";};
 
 // Environment Tools
 ["A - COLSOG Env", "Transition Time", {execVM "functions\colsog_zeus_transitionTime.sqf";}, "\a3\Modules_F_Curator\Data\iconSkiptime_ca.paa"] call zen_custom_modules_fnc_register;
+["A - COLSOG Env", "Day/Night Cycle", {execVM "functions\day-and-night\colsog_zeus_startDayNightCycle.sqf";}, "\a3\Modules_F_Curator\Data\portraitTimeAcceleration_ca.paa"] call zen_custom_modules_fnc_register;
 ["A - COLSOG Env", "Fog Low", {_this execVM "functions\environment\colsog_zeus_lowFog.sqf";}, "\a3\Modules_F_Curator\Data\portraitSmoke_ca.paa"] call zen_custom_modules_fnc_register;
 ["A - COLSOG Env", "Fog Ring", {_this execVM "functions\environment\colsog_zeus_ringFog.sqf";}, "\a3\Modules_F_Curator\Data\iconSmoke_ca.paa"] call zen_custom_modules_fnc_register;
 ["A - COLSOG Env", "Vanilla Fog", {_this execVM "functions\environment\colsog_zeus_vanillaFog.sqf";}, "\a3\Modules_F_Curator\Data\portraitSmoke_ca.paa"] call zen_custom_modules_fnc_register;

@@ -1,8 +1,8 @@
 # Arma 3 S.O.G. RT Columbia
 
 Compilation of scripts used during multiplayer PVE/PVP mission on Arma 3. Also featuring defaults loadouts and missions as well as providing CBA settings in order to easily update the scripts to your convenience. 
-
-If you want to contribute to this project, see [CONTRIBUTING.md](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/CONTRIBUTING.md).
+- If you want to contribute to this project, see [CONTRIBUTING.md](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/CONTRIBUTING.md).
+- For demo of scripts, see [RT Columbia - Youtube videos](https://www.youtube.com/@RTColumbia/videos).
 
 ## Table of contents
 - [Requirements](#requirements)
@@ -55,6 +55,7 @@ Installation of all the scripts/zeus modules is done by **copying the below file
   - **Toggle Trackers**: manage Tracker module (behaviour, speed, presence).
   - **Un-Garrison (enable PATH)**: make a unit/group move out of building.
 - A - COLSOG Env
+  - **Day/Night Cycle**: allows to have day of X hours, dusk of Y hours and night of Z hours.
   - **Fog Low**
   - **Fog Ring**
   - **Transition Time**: transition with optional text to whenever in time.
@@ -185,14 +186,20 @@ In the Addons configuration menu, you will have the ability to update the follow
 - **Intel**
   - Intel object (inventory item): <i>String</i>
   - Chance of unit carrying intel (%): <i>Integer</i>
-  - Chance of intel falling on ground (%): <iInteger</i>
+  - Chance of intel falling on ground (%): <i>Integer</i>
   - Requires trait 'COLSOG_intelExpert' to decrypt intel : <i>Boolean</i>
 
 - **Climbing**
   - Units allowed to climb trees: <i>String</i>
   - Required item to climb: <i>String</i>
-  - Time to climb up (sec): <iInteger</i>
-  - Time to climb down (sec): <iInteger</i>
+  - Time to climb up (sec): <i>Integer</i>
+  - Time to climb down (sec): <i>Integer</i>
+
+- **Day & Night**
+  - Time before night considered as dusk (minutes): <i>Integer</i>
+  - Day time acceleration: <i>Integer</i>
+  - Dusk time acceleration: <i>Integer</i>
+  - Night time acceleration: <i>Integer</i>
 
 ## Features
 
