@@ -197,6 +197,9 @@ In the Addons configuration menu, you will have the ability to update the follow
 
 - **Day & Night**
   - Time before night considered as dusk (minutes): <i>Integer</i>
+  - Day time acceleration: <i>Integer</i>
+  - Dusk time acceleration: <i>Integer</i>
+  - Night time acceleration: <i>Integer</i>
 
 ## Features
 
