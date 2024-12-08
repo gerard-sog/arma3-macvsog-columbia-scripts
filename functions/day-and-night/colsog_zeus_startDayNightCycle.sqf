@@ -35,18 +35,18 @@ if (!_isDayNightCycleActive) exitWith {};
             // Between 6:00 and 17:30 time is 12x speed (so roughly 1 hour real time)
             private _isDayTime = (sunOrMoon == 1) && (_actualTime < _duskTime);
             if (_isDayTime) then {
-                setTimeMultiplier 12;
+                setTimeMultiplier colsog_dayAndNight_dayTimeAcceleration;
             };
 
             // Between 17:30 and 18:00 time is 6x speed (to give 5 minutes to set up RON position when there is still light)
             private _isDusk = (_actualTime >= _duskTime) && (_actualTime < _nightTime);
             if (_isDusk) then {
-                setTimeMultiplier 6;
+                setTimeMultiplier colsog_dayAndNight_duskTimeAcceleration;
             };
 
             // Between 18:00 and 6:00 time is 120 speed (so night is 5 minutes long)
             if (!_isDayTime && !_isDusk) then {
-                setTimeMultiplier 120;
+                setTimeMultiplier colsog_dayAndNight_nightTimeAcceleration;
             };
         };
         setTimeMultiplier 1;
