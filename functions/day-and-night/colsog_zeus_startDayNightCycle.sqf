@@ -50,6 +50,5 @@ if (!_isDayNightCycleActive) exitWith {};
             };
         };
         setTimeMultiplier 1;
-        systemChat "TIME SPEED: 1x";
     }
 ] remoteExecCall ["spawn", 2, false];
