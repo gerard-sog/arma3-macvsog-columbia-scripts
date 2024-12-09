@@ -61,8 +61,8 @@ execVM "functions\sensors\engine\init_colsog_engineSensor.sqf";
 // init Gravity sensors placed by player
 execVM "functions\sensors\gravity\init_colsog_gravitySensor.sqf";
 
-// init convertMedicKit on killed units
-execVM "functions\colsog_fn_firstAidConvertAce.sqf";
+// init missionEventHandlers on server
+execVM "functions\colsog_fn_missionEventHandlers.sqf";
 
 // run the script to create the nice vectored map borders
 // commented out by default as currently we only have borders for Cam Lao Nam
