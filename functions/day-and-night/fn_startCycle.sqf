@@ -64,7 +64,7 @@ COLSOG_PFHdaynight = [
 			["Dawn Time", -1, 1, 2, 0] remoteExec ["BIS_fnc_dynamicText", _callerID];
 		};
     
-		// Between 18:00 and 6:00 time is 120 speed (so night is 5 minutes long)
+		// Between 18:00 and 5:30 time is 120 speed (so night is 5 minutes long)
 		if ((sunOrMoon == 0) && !_isDayTime && !_isDusk && !_isDawn && (_actualTimeMultiplier != colsog_dayAndNight_nightTimeAcceleration)) then {
 			setTimeMultiplier colsog_dayAndNight_nightTimeAcceleration;
 			["Night Time", -1, 1, 2, 0] remoteExec ["BIS_fnc_dynamicText", _callerID];
