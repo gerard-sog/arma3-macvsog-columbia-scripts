@@ -30,7 +30,7 @@ COLSOG_PFEHdaynight = [
 
 		if (!COLSOG_isDayNightCycleActive) exitWith {
 			setTimeMultiplier _beforeCycleTimeMultiplier;
-      ["Day/Night Cycle OFF", -1, 1, 2, 0] remoteExec ["BIS_fnc_dynamicText", _callerID];
+      		["Day/Night Cycle OFF", -1, 1, 2, 0] remoteExec ["BIS_fnc_dynamicText", _callerID];
 			[_handle] call CBA_fnc_removePerFrameHandler;
 		};
 

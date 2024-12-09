@@ -13,7 +13,7 @@
 params [["_pos", [0, 0, 0] , [[]], 3], ["_location", objNull, [objNull]]];
 
 private _onConfirm = {
-	params ["_dialogResult"];
+    params ["_dialogResult"];
     _dialogResult params ["_activateCycle" ,"_dayTimeAcceleration", "_duskTimeAcceleration", "_nightTimeAcceleration"];
 
     if ((missionNamespace getVariable "colsog_dayAndNight_dayTimeAcceleration") != _dayTimeAcceleration) then {
