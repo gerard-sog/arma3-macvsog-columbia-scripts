@@ -25,11 +25,13 @@ private _beforeCycleTimeMultiplier = timeMultiplier;
 
 COLSOG_PFEHdaynight = [
 	{
-		params ["_beforeCycleTimeMultiplier"];
+    params ["_args","_handle"];
+		_args params ["_beforeCycleTimeMultiplier", "_callerID"];
 
 		if (!COLSOG_isDayNightCycleActive) exitWith {
 			setTimeMultiplier _beforeCycleTimeMultiplier;
-			[COLSOG_PFEHdaynight] call CBA_fnc_removePerFrameHandler;
+      ["Day/Night Cycle OFF", -1, 1, 2, 0] remoteExec ["BIS_fnc_dynamicText", _callerID];
+			[_handle] call CBA_fnc_removePerFrameHandler;
 		};
 
 		// Dusk time is 30 minutes before night.

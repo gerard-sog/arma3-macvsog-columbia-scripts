@@ -12,21 +12,21 @@
 
 params [["_pos", [0, 0, 0] , [[]], 3], ["_location", objNull, [objNull]]];
 
-private _onConfim = {
+private _onConfirm = {
 	params ["_dialogResult"];
-    _dialogResult params ["_activateCycle" ,"_dayTimeAcceleration", "_duskTimeAcceleration", "_nightTimeAcceleration"]
+    _dialogResult params ["_activateCycle" ,"_dayTimeAcceleration", "_duskTimeAcceleration", "_nightTimeAcceleration"];
 
-    if (missionNamespace getVariable "colsog_dayAndNight_dayTimeAcceleration" != _dayTimeAcceleration) then {
+    if ((missionNamespace getVariable "colsog_dayAndNight_dayTimeAcceleration") != _dayTimeAcceleration) then {
         missionNamespace setVariable ["colsog_dayAndNight_dayTimeAcceleration", _dayTimeAcceleration, true];
         systemChat "Changed DayTime Acceleration";
     };
 
-    if (missionNamespace getVariable "colsog_dayAndNight_duskTimeAcceleration" != _duskTimeAcceleration) then {
+    if ((missionNamespace getVariable "colsog_dayAndNight_duskTimeAcceleration") != _duskTimeAcceleration) then {
         missionNamespace setVariable ["colsog_dayAndNight_duskTimeAcceleration", _duskTimeAcceleration, true];
         systemChat "Changed DuskTime Acceleration";
     };
 
-    if (missionNamespace getVariable "colsog_dayAndNight_nightTimeAcceleration" != _nightTimeAcceleration) then {
+    if ((missionNamespace getVariable "colsog_dayAndNight_nightTimeAcceleration") != _nightTimeAcceleration) then {
         missionNamespace setVariable ["colsog_dayAndNight_nightTimeAcceleration", _nightTimeAcceleration, true];
         systemChat "Changed NightTime Acceleration";
     };
@@ -34,15 +34,13 @@ private _onConfim = {
     if (!_activateCycle) exitWith { // switch Off
         COLSOG_isDayNightCycleActive = false;
         publicVariable "COLSOG_isDayNightCycleActive";
-        systemChat "Day/Night Cycle OFF";
     };
 
-    if (COLSOG_isDayNightCycleActive && _activateCycle) exitWith {
-        systemChat "Day/Night Already ON";
-    }; // if already ON, no call needed to function
+    if (COLSOG_isDayNightCycleActive && _activateCycle) exitWith {}; // if already ON, no call needed to function
 
+    systemChat "Day/Night Cycle Starting";
+    
     private _callerID = clientOwner;
-
     [_callerID] remoteExec ["COLSOG_fnc_startCycle", 2];
 
 };
