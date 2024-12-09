@@ -51,6 +51,8 @@ private _onConfim = {
             COLSOG_isDayNightCycleActive = true;
             publicVariable "COLSOG_isDayNightCycleActive";
 
+            private _actualTimeMultiplier = timeMultiplier;
+
             while {COLSOG_isDayNightCycleActive} do {
                 uiSleep 1;
 
@@ -80,7 +82,7 @@ private _onConfim = {
                     ["Night Time", -1, 1, 2, 0] remoteExec ["BIS_fnc_dynamicText", _callerID];
                 };
             };
-            setTimeMultiplier 1;
+            setTimeMultiplier _actualTimeMultiplier;
         }
     ] remoteExecCall ["spawn", 2, false];
 
