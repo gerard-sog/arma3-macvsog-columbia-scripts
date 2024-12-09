@@ -41,9 +41,13 @@ private _onConfim = {
         systemChat "Day/Night Already ON";
     }; // if already ON, no call needed to function
 
+    private _callerID = clientOwner;
+
     [
-        [],
+        [_callerID],
         {
+            params ["_callerID"];
+
             COLSOG_isDayNightCycleActive = true;
             publicVariable "COLSOG_isDayNightCycleActive";
 
@@ -60,17 +64,20 @@ private _onConfim = {
                 private _isDayTime = (sunOrMoon == 1) && (_actualTime < _duskTime);
                 if (_isDayTime) then {
                     setTimeMultiplier colsog_dayAndNight_dayTimeAcceleration;
+                    ["Day Time", -1, 1, 2, 0] remoteExec ["BIS_fnc_dynamicText", _callerID];
                 };
 
                 // Between 17:30 and 18:00 time is 6x speed (to give 5 minutes to set up RON position when there is still light)
                 private _isDusk = (_actualTime >= _duskTime) && (_actualTime < _nightTime);
                 if (_isDusk) then {
                     setTimeMultiplier colsog_dayAndNight_duskTimeAcceleration;
+                    ["Dusk Time", -1, 1, 2, 0] remoteExec ["BIS_fnc_dynamicText", _callerID];
                 };
 
                 // Between 18:00 and 6:00 time is 120 speed (so night is 5 minutes long)
                 if (!_isDayTime && !_isDusk) then {
                     setTimeMultiplier colsog_dayAndNight_nightTimeAcceleration;
+                    ["Night Time", -1, 1, 2, 0] remoteExec ["BIS_fnc_dynamicText", _callerID];
                 };
             };
             setTimeMultiplier 1;
