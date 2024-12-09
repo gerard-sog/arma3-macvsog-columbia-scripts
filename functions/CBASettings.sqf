@@ -165,7 +165,9 @@
 ["colsog_climbing_timeToClimbDown", "SLIDER", ["Time to climb down (sec)"], [CBA_SETTINGS_COLSOG, "Climbing"], [0, 60, 5, 0], 1, {}, false] call CBA_fnc_addSetting;
 
 // Day & Night
-["colsog_dayAndNight_duskDuration", "SLIDER", ["Time before night considered as dusk (minutes)"], [CBA_SETTINGS_COLSOG, "Day & Night"], [0, 120, 30, 0], 1, {}, false] call CBA_fnc_addSetting;
+["colsog_dayAndNight_dawnDuration", "SLIDER", ["Time before day considered as dawn (minutes)"], [CBA_SETTINGS_COLSOG, "Day & Night"], [0, 120, 30, 0], 1, {}, false] call CBA_fnc_addSetting;
+["colsog_dayAndNight_dawnTimeAcceleration", "SLIDER", ["Dawn time acceleration"], [CBA_SETTINGS_COLSOG, "Day & Night"], [0, 120, 8, 0], 1, {}, false] call CBA_fnc_addSetting;
 ["colsog_dayAndNight_dayTimeAcceleration", "SLIDER", ["Day time acceleration"], [CBA_SETTINGS_COLSOG, "Day & Night"], [0, 120, 12, 0], 1, {}, false] call CBA_fnc_addSetting;
+["colsog_dayAndNight_duskDuration", "SLIDER", ["Time before night considered as dusk (minutes)"], [CBA_SETTINGS_COLSOG, "Day & Night"], [0, 120, 30, 0], 1, {}, false] call CBA_fnc_addSetting;
 ["colsog_dayAndNight_duskTimeAcceleration", "SLIDER", ["Dusk time acceleration"], [CBA_SETTINGS_COLSOG, "Day & Night"], [0, 120, 6, 0], 1, {}, false] call CBA_fnc_addSetting;
 ["colsog_dayAndNight_nightTimeAcceleration", "SLIDER", ["Night time acceleration"], [CBA_SETTINGS_COLSOG, "Day & Night"], [0, 120, 120, 0], 1, {}, false] call CBA_fnc_addSetting;
