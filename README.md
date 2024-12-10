@@ -196,8 +196,10 @@ In the Addons configuration menu, you will have the ability to update the follow
   - Time to climb down (sec): <i>Integer</i>
 
 - **Day & Night**
-  - Time before night considered as dusk (minutes): <i>Integer</i>
+  - Time before day considered as dawn (minutes): <i>Integer</i>
+  - Dawn time acceleration: <i>Integer</i>
   - Day time acceleration: <i>Integer</i>
+  - Time before night considered as dusk (minutes): <i>Integer</i>
   - Dusk time acceleration: <i>Integer</i>
   - Night time acceleration: <i>Integer</i>
 

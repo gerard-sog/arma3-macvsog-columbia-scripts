@@ -12,43 +12,68 @@
 
 params [["_pos", [0, 0, 0] , [[]], 3], ["_location", objNull, [objNull]]];
 
-// Get if system is ON or OFF.
-_isDayNightCycleActive = !COLSOG_isDayNightCycleActive;
-COLSOG_isDayNightCycleActive = _isDayNightCycleActive;
-publicVariable "COLSOG_isDayNightCycleActive";
+private _onConfirm = {
+    params ["_dialogResult"];
+    _dialogResult params ["_activateCycle", "_dawnNotUsed", "_dawnTimeAcceleration", "_dayTimeAcceleration", "_duskNotUsed", "_duskTimeAcceleration", "_nightTimeAcceleration"];
 
-// Will be turn OFF inside the spawn method. The condition for the loop is updated to false.
-if (!_isDayNightCycleActive) exitWith {};
+    if ((missionNamespace getVariable "colsog_dayAndNight_dawnTimeAcceleration") != _dawnTimeAcceleration) then {
+        missionNamespace setVariable ["colsog_dayAndNight_dawnTimeAcceleration", _duskTimeAcceleration, true];
+        systemChat "Changed DawnTime Acceleration: " + str (_dawnTimeAcceleration);
+    };
+
+    if ((missionNamespace getVariable "colsog_dayAndNight_dayTimeAcceleration") != _dayTimeAcceleration) then {
+        missionNamespace setVariable ["colsog_dayAndNight_dayTimeAcceleration", _dayTimeAcceleration, true];
+        systemChat "Changed DayTime Acceleration: " + str (_dayTimeAcceleration);
+    };
+
+    if ((missionNamespace getVariable "colsog_dayAndNight_duskTimeAcceleration") != _duskTimeAcceleration) then {
+        missionNamespace setVariable ["colsog_dayAndNight_duskTimeAcceleration", _duskTimeAcceleration, true];
+        systemChat "Changed DuskTime Acceleration: " + str (_duskTimeAcceleration);
+    };
+
+    if ((missionNamespace getVariable "colsog_dayAndNight_nightTimeAcceleration") != _nightTimeAcceleration) then {
+        missionNamespace setVariable ["colsog_dayAndNight_nightTimeAcceleration", _nightTimeAcceleration, true];
+        systemChat "Changed NightTime Acceleration: " + str (_nightTimeAcceleration);
+    };
+
+    // switch Off
+    if (!_activateCycle) exitWith {
+        COLSOG_isDayNightCycleActive = false;
+        publicVariable "COLSOG_isDayNightCycleActive";
+    };
+
+    // if already ON, no call needed to function
+    if (COLSOG_isDayNightCycleActive && _activateCycle) exitWith {};
+
+    systemChat "Day/Night cycle enabled";
+
+    private _callerID = clientOwner;
+    [_callerID] remoteExec ["COLSOG_fnc_startCycle", 2];
+};
+
+private _dialogTitle = format ["Day/Night Cycle: %1-%2-%3 / %4H%5", date select 0, date select 1, date select 2, date select 3, date select 4];
+
+private _sunriseSunsetTime = date call BIS_fnc_sunriseSunsetTime;
+private _sunriseTime = (_sunriseSunsetTime select 0);
+private _sunsetTime = (_sunriseSunsetTime select 1);
+
+private _dawnTime = _sunriseTime - (colsog_dayAndNight_dawnDuration / 60);
+private _dawnTimeInHourMinuteFormat = format [">>>> Dawn: from %1h%2m to %3h%4m", floor _dawnTime, round ((_dawnTime - (floor _dawnTime)) * 60), floor _sunriseTime, round ((_sunriseTime - (floor _sunriseTime)) * 60)];
+
+private _duskTime = _sunsetTime - (colsog_dayAndNight_duskDuration / 60);
+private _duskTimeInHourMinuteFormat = format [">>>> Dusk: from %1h%2m to %3h%4m", floor _dawnTime, round ((_duskTime - (floor _duskTime)) * 60), floor _sunsetTime, round ((_sunsetTime - (floor _sunsetTime)) * 60)];
 
 [
-    [],
-    {
-        while {COLSOG_isDayNightCycleActive} do {
-            uiSleep 1;
-
-            // Dusk time is 30 minutes before night.
-            private _sunriseAndSunsetArray = date call BIS_fnc_sunriseSunsetTime;
-            private _nightTime = _sunriseAndSunsetArray select 1;
-            private _duskTime = _nightTime - (colsog_dayAndNight_duskDuration / 60);
-            private _actualTime = daytime;
-
-            // Between 6:00 and 17:30 time is 12x speed (so roughly 1 hour real time)
-            private _isDayTime = (sunOrMoon == 1) && (_actualTime < _duskTime);
-            if (_isDayTime) then {
-                setTimeMultiplier colsog_dayAndNight_dayTimeAcceleration;
-            };
-
-            // Between 17:30 and 18:00 time is 6x speed (to give 5 minutes to set up RON position when there is still light)
-            private _isDusk = (_actualTime >= _duskTime) && (_actualTime < _nightTime);
-            if (_isDusk) then {
-                setTimeMultiplier colsog_dayAndNight_duskTimeAcceleration;
-            };
-
-            // Between 18:00 and 6:00 time is 120 speed (so night is 5 minutes long)
-            if (!_isDayTime && !_isDusk) then {
-                setTimeMultiplier colsog_dayAndNight_nightTimeAcceleration;
-            };
-        };
-        setTimeMultiplier 1;
-    }
-] remoteExecCall ["spawn", 2, false];
+	_dialogTitle, 
+	[
+		["TOOLBOX:YESNO", "Activate Day/Night Cycle", [COLSOG_isDayNightCycleActive], true],
+		["LIST", [_dawnTimeInHourMinuteFormat], [[false], [""], 0, 0]],
+		["SLIDER", "Dawn Time Acceleration", [0, 120, colsog_dayAndNight_dawnTimeAcceleration, 0], true],
+		["SLIDER", "Day Time Acceleration", [0, 120, colsog_dayAndNight_dayTimeAcceleration, 0], true],
+    ["LIST", [_duskTimeInHourMinuteFormat], [[false], [""], 0, 0]],
+		["SLIDER", "Dusk Time Acceleration", [0, 120, colsog_dayAndNight_duskTimeAcceleration, 0], true],
+		["SLIDER", "Night Time Acceleration", [0, 120, colsog_dayAndNight_nightTimeAcceleration, 0], true]
+	],
+	_onConfirm,
+	{}
+] call zen_dialog_fnc_create;

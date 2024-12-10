@@ -56,4 +56,9 @@ class COLSOG {
         class climbTree {};
         class climbDownTree {};
     }
+    class Daynight
+    {
+        file ="functions\day-and-night";
+        class startCycle {};
+    }
 }
