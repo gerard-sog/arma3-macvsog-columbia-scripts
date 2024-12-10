@@ -23,8 +23,7 @@ publicVariable "COLSOG_isDayNightCycleActive";
 
 private _beforeCycleTimeMultiplier = timeMultiplier;
 
-COLSOG_PFHdaynight =
-[
+COLSOG_PFHdaynight = [
 	{
         params ["_args", "_handle"];
 		_args params ["_beforeCycleTimeMultiplier", "_callerID"];

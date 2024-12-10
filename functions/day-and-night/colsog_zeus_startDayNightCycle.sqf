@@ -70,7 +70,7 @@ private _duskTimeInHourMinuteFormat = format [">>>> Dusk: from %1h%2m to %3h%4m"
 		["LIST", [_dawnTimeInHourMinuteFormat], [[false], [""], 0, 0]],
 		["SLIDER", "Dawn Time Acceleration", [0, 120, colsog_dayAndNight_dawnTimeAcceleration, 0], true],
 		["SLIDER", "Day Time Acceleration", [0, 120, colsog_dayAndNight_dayTimeAcceleration, 0], true],
-        ["LIST", [_duskTimeInHourMinuteFormat], [[false], [""], 0, 0]],
+    ["LIST", [_duskTimeInHourMinuteFormat], [[false], [""], 0, 0]],
 		["SLIDER", "Dusk Time Acceleration", [0, 120, colsog_dayAndNight_duskTimeAcceleration, 0], true],
 		["SLIDER", "Night Time Acceleration", [0, 120, colsog_dayAndNight_nightTimeAcceleration, 0], true]
 	],
