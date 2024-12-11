@@ -3,7 +3,7 @@
  *
  * Arguments:
  * 0: logic position
- * 1: attached object
+ * 1: attached object (not used)
  *
  * Locality:
  * On Zeus local computer.
@@ -13,21 +13,23 @@
  *
  */
 
-params [["_pos", [0, 0, 0] , [[]], 3], ["_location", objNull, [objNull]]];
+params [["_pos", [0, 0, 0] , [[]], 3], ["_object", objNull, [objNull]]];
+
+// Clicked position needs to be empty and not an object. (test before menu creation)
+if (!isNull _object) exitWith {
+	["Need a position and not an object", -1, 1, 4, 0] spawn BIS_fnc_dynamicText;
+	playSound "FD_Start_F";
+};
 
 private _onConfirm = {
-    params ["_dialogResult", "_input"];
+    params ["_dialogResult", "_pos"]; // if a single _arguments is passed, can be named directly
 	_dialogResult params ["_trapDirection", "_trapHeight", "_treeType"];
 
-	_input params ["_location", "_pos"];
+	private _wireTrap = "vn_modulemine_punji_03" createVehicle _pos;
+	_wireTrap setDir _trapDirection;
+	// Needs to be sent to server.
+	[[_wireTrap, _trapHeight, _treeType], "functions\traps\falling\colsog_fn_createFallingMaceTrap.sqf"] remoteExec ["execVM", 2, false];
 
-    // Clicked position needs to be empty and not an object.
-    if (isNull _location) exitWith {
-        private _wireTrap = "vn_modulemine_punji_03" createVehicle _pos;
-        _wireTrap setDir _trapDirection;
-        // Needs to be sent to server.
-        [[_wireTrap, _trapHeight, _treeType], "functions\traps\falling\colsog_fn_createFallingMaceTrap.sqf"] remoteExec ["execVM", 2, false];
-    };
 };
 
 // Module dialog
@@ -40,5 +42,5 @@ private _onConfirm = {
 	],
 	_onConfirm,
 	{},
-	[_location, _pos]
+	_pos // only need position as _arguments for _onConfirm
 ] call zen_dialog_fnc_create;
