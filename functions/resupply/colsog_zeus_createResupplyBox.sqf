@@ -17,6 +17,7 @@ clearItemCargoGlobal _supplyBox;
 clearWeaponCargoGlobal _supplyBox;
 clearMagazineCargoGlobal _supplyBox;
 clearBackpackCargoGlobal _supplyBox;
+["zen_common_updateEditableObjects", [[_supplyBox], true]] call CBA_fnc_serverEvent;
 
 private _contentAsArrayOfArrays = [];
 for "_i" from 0 to (((count colsog_supply_content) / 2) - 1) do
