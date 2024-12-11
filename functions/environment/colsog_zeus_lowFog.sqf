@@ -21,7 +21,7 @@ private _onConfirm = {
 	_helipad setPosATL _heliPosition;
 
 	[[_helipad, _mainColor], "functions\environment\colsog_fn_lowFog.sqf"] remoteExec ["execVM", 0, true];
-	["zen_common_addObjects", [[_helipad]]] call CBA_fnc_serverEvent;
+	["zen_common_updateEditableObjects", [[_helipad], true]] call CBA_fnc_serverEvent;
 
 };
 
