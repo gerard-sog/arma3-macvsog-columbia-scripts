@@ -22,6 +22,7 @@ if ((isNil "_sensor") && (isNil "_sensorId")) then
 {
     player removeItem colsog_sensor_gunshotInventoryItem;
     _sensor = createVehicle [colsog_sensor_gunshotThingItem, getPosATL player, [], 0.5, "CAN_COLLIDE"];
+    ["zen_common_updateEditableObjects", [[_sensor], true]] call CBA_fnc_serverEvent;
 
     // Giving an idea to log it in records, this will give the ability to differentiate them.
     COLSOG_sensorIdCounter = COLSOG_sensorIdCounter + 1;
