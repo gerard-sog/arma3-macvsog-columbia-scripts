@@ -51,6 +51,8 @@ _maceSphere setObjectTextureGlobal [0, 'vn\characters_f_vietnam\opfor\uniforms\d
 _maceSphere setPos (getPos _wireTrap vectorAdd [0, 0, _selectedTreeHeight]);
 _maceSphere setDir (_swingDirection + 180);
 
+_maceSphere setVariable ["COLSOG_TrapObjDeleteArray", [_maceSphere], false]; // no broadcast will only but set/read by server
+
 // *******************************************************
 // Create a clutter object help hide the tripwire
 // *******************************************************
@@ -64,6 +66,8 @@ private _clutter = createSimpleObject [selectRandom _clutters, [0, 0, 0]]; // ne
 _clutter setPosATL (_wireTrap modelToWorld [1, 0, 0]);
 _clutter setDir (random 360);
 
+_maceSphere setVariable ["COLSOG_TrapObjDeleteArray", [((_maceSphere getVariable "COLSOG_TrapObjDeleteArray") pushBack _clutter)], false];
+
 // *******************************************************
 // Create UAV vehicle (present in the sphere)
 // *******************************************************
@@ -72,6 +76,8 @@ _mace allowDamage false;
 _mace setFuel 0;
 _mace engineOn false;
 _mace disableAI "ALL";
+
+_maceSphere setVariable ["COLSOG_TrapObjDeleteArray", [((_maceSphere getVariable "COLSOG_TrapObjDeleteArray") pushBack _mace)], false];
 
 // *******************************************************
 // Attach bush to mace and mace to sphere
@@ -84,6 +90,8 @@ _mace allowDamage false;
 _mace setMass 170; // relatively low mass so initial swing doesn't hit the ground, then set higher so hangs lower.
 _mace setCenterOfMass [0, 0, -.3];
 
+_maceSphere setVariable ["COLSOG_TrapObjDeleteArray", [((_maceSphere getVariable "COLSOG_TrapObjDeleteArray") pushBack _bush)], false];
+
 // *******************************************************
 // Creating the tree where mace will be hidden.
 // *******************************************************
@@ -94,6 +102,8 @@ if (_selectedTreeType != "None") then {
     _tree enableSimulation false;
     _mace enableCollisionWith _tree;
     _bush enableCollisionWith _tree;
+
+    _maceSphere setVariable ["COLSOG_TrapObjDeleteArray", [((_maceSphere getVariable "COLSOG_TrapObjDeleteArray") pushBack _tree)], false];
 };
 
 // *******************************************************
@@ -104,6 +114,7 @@ if (_selectedTreeType != "None") then {
 [_mace, [0.07,-.55,0.2],	[0.0363626,-0.998937,0.263383],		1.55] execVM "functions\traps\colsog_fn_attachSprungWhipTrap.sqf";
 [_mace, [0.07,.55,0.0],	[0.0363626,0.998112,-0.3495081],	1.55] execVM "functions\traps\colsog_fn_attachSprungWhipTrap.sqf";
 // 4 whip need deletion if wiretrap deleted
+// to do later, need to pass _maceSphere
 
 // *******************************************************
 // Create invisible trigger for the trap
@@ -117,6 +128,8 @@ _trigger setTriggerStatements [
     ""
     ];
 _trigger setPos getPos _wireTrap;
+
+_maceSphere setVariable ["COLSOG_TrapObjDeleteArray", [((_maceSphere getVariable "COLSOG_TrapObjDeleteArray") pushBack _trigger)], false];
 
 // *******************************************************
 // Trap is now ready
