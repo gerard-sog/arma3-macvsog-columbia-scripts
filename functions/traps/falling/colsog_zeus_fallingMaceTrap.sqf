@@ -27,6 +27,10 @@ private _onConfirm = {
 
 	private _wireTrap = "vn_modulemine_punji_03" createVehicle _pos;
 	_wireTrap setDir _trapDirection;
+
+	// add wiretrap to zeus (planned to be used to delete whole composition)
+	["zen_common_updateEditableObjects", [[_supplyBox], true]] call CBA_fnc_serverEvent;
+	
 	// Needs to be sent to server.
 	[[_wireTrap, _trapHeight, _treeType], "functions\traps\falling\colsog_fn_createFallingMaceTrap.sqf"] remoteExec ["execVM", 2, false];
 
