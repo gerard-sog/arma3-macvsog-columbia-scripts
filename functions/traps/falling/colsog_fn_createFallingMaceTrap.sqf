@@ -136,6 +136,7 @@ _maceSphere setVariable ["COLSOG_TrapObjDeleteArray", [((_maceSphere getVariable
 // *******************************************************
 uiSleep 2.0; // REQUIRED else _trigger might be undefined in waitUntil (bug: https://community.bistudio.com/wiki/waitUntil).
 waitUntil {triggerActivated _trigger};
+// TO DO rewrite with CBA_waitUntilAndExecute
 
 // need to pass _trigger to release script for trigger deletion
 [_wireTrap, _mace, _maceSphere, _selectedTreeHeight] execVM "functions\traps\falling\colsog_fn_releaseFallingMaceTrap.sqf";

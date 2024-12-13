@@ -1,13 +1,31 @@
 /*
+ * Release falling mace trap
+ *
+ * Arguments:
+ * 0: _wireTrap
+ * 1: _mace
+ * 2: _maceSphere
+ * 3: _selectedTreeHeight
+ * TO DO 4: _trigger
+ *
  * Locality:
- * On the server.
+ * Execute only on server
+ *
+ * Example:
+ * [_wireTrap, _mace, _maceSphere, _selectedTreeHeight, _trigger] execVM "functions\traps\falling\colsog_fn_releaseFallingMaceTrap.sqf";
+ *
+ * Return values:
+ * None
+ *
  */
 
 params ["_wireTrap", "_mace", "_maceSphere", "_selectedTreeHeight"];
+if (!isServer) exitWith {}; // safety
+
 private _trapPosition = getPos _wireTrap;
 private _trapDirection = getDir _wireTrap;
 
-playSound3D ["a3\sounds_f\air\sfx\sl_rope_break.wss", _wireTrap, false, _wireTrap, 4];
+playSound3D ["a3\sounds_f\air\sfx\sl_rope_break.wss", _wireTrap, false, _wireTrap, 4]; // TO DO test distance
 deleteVehicle _wireTrap;
 
 // *******************************************************
@@ -30,7 +48,7 @@ if (_selectedTreeHeight >= 21 && _selectedTreeHeight < 26) then {
 uiSleep (1.5 + _additionalTimeBeforeMaceHitsGround);
 
 private _sound = "a3\sounds_f\characters\movements\bush_004.wss";
-playSound3D [_sound, _mace, false, getPosASL _mace, 3.5];
+playSound3D [_sound, _mace, false, getPosASL _mace, 3.5];  // TO DO test distance
 
 [_mace, _trapDirection, _trapPosition] execVM "functions\traps\colsog_fn_maceVictims.sqf";
 uiSleep 4;
@@ -40,6 +58,7 @@ uiSleep 4;
 // *******************************************************
 private _future = time + 10;
 waitUntil {time > _future};
+// TO DO rewrite with CBA_waitUntilAndExecute
 
 uiSleep 30;
 _mace setMass 290; // Make mace settle down to ground so no more physics eating CPU
