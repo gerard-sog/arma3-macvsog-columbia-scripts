@@ -26,7 +26,8 @@ private _trapPosition = getPos _wireTrap;
 private _trapDirection = getDir _wireTrap;
 
 playSound3D ["a3\sounds_f\air\sfx\sl_rope_break.wss", _wireTrap, false, getPosASL _wireTrap, 4]; // TO DO test distance
-deleteVehicle _wireTrap;
+// deleteVehicle _wireTrap; if we delete _wireTrap it cannot be used as a deletion object
+hideObjectGlobal _wireTrap; // hide 3d model instead, zeus can still see hitbox
 
 // *******************************************************
 // Detach mace from original position to start the fall

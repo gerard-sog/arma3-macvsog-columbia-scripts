@@ -66,6 +66,8 @@ private _clutter = createSimpleObject [selectRandom _clutters, [0, 0, 0]]; // ne
 _clutter setPosATL (_wireTrap modelToWorld [1, 0, 0]);
 _clutter setDir (random 360);
 
+["zen_common_updateEditableObjects", [[_maceSphere], true]] call CBA_fnc_serverEvent; // TMP DEBUG
+
 _maceSphere setVariable ["COLSOG_TrapObjDeleteArray", [((_maceSphere getVariable "COLSOG_TrapObjDeleteArray") pushBack _clutter)], false];
 
 // *******************************************************
