@@ -25,7 +25,7 @@ if (!isServer) exitWith {}; // safety
 private _trapPosition = getPos _wireTrap;
 private _trapDirection = getDir _wireTrap;
 
-playSound3D ["a3\sounds_f\air\sfx\sl_rope_break.wss", _wireTrap, false, _wireTrap, 4]; // TO DO test distance
+playSound3D ["a3\sounds_f\air\sfx\sl_rope_break.wss", _wireTrap, false, getPosASL _wireTrap, 4]; // TO DO test distance
 deleteVehicle _wireTrap;
 
 // *******************************************************
