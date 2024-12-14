@@ -6,7 +6,7 @@
  * 1: _mace
  * 2: _maceSphere
  * 3: _selectedTreeHeight
- * TO DO 4: _trigger
+ * 4: _trigger
  *
  * Locality:
  * Execute only on server
@@ -26,8 +26,7 @@ private _trapPosition = getPos _wireTrap;
 private _trapDirection = getDir _wireTrap;
 
 playSound3D ["a3\sounds_f\air\sfx\sl_rope_break.wss", _wireTrap, false, getPosASL _wireTrap, 4]; // TO DO test distance
-// deleteVehicle _wireTrap; if we delete _wireTrap it cannot be used as a deletion object
-hideObjectGlobal _wireTrap; // hide 3d model instead, zeus can still see hitbox
+deleteVehicle _wireTrap;
 
 // *******************************************************
 // Detach mace from original position to start the fall
@@ -54,7 +53,6 @@ playSound3D [_sound, _mace, false, getPosASL _mace, 3.5];  // TO DO test distanc
 [_mace, _trapDirection, _trapPosition] execVM "functions\traps\colsog_fn_maceVictims.sqf";
 uiSleep 4;
 
-// POC delete trigger
 // can be checked in console watching for Empty Detector array
 deleteVehicle _trigger;
 

@@ -39,8 +39,7 @@ if (_trapHeight != 0) then {
 _wireTrap setPos (getPos _wireTrap vectorAdd [0, 0, -.05]);
 private _swingDirection = getDir _wireTrap;
 
-// enableSimulationGlobal (is wireTrap really disable for all players ?)
-_wireTrap enableSimulation false; // We don't want the Whip Trap to pop out and kill the unit.
+_wireTrap enableSimulationGlobal false; // We don't want the Whip Trap to pop out and kill the unit.
 
 // *******************************************************
 // Create sphere top of trap position (at selected height)
@@ -53,6 +52,7 @@ _maceSphere setDir (_swingDirection + 180);
 
 ["zen_common_updateEditableObjects", [[_maceSphere], true]] call CBA_fnc_serverEvent; // add macesphere to zeus, this will be our deletion object
 private _trapObjDeleteArray = []; // variable to store objects of the composition
+_trapObjDeleteArray pushBack _wireTrap; // wiretrap deleted if macesphere deleted
 
 // *******************************************************
 // Create a clutter object help hide the tripwire
@@ -67,18 +67,18 @@ private _clutter = createSimpleObject [selectRandom _clutters, [0, 0, 0]];
 _clutter setPosATL (_wireTrap modelToWorld [1, 0, 0]);
 _clutter setDir (random 360);
 
-_trapObjDeleteArray pushBack _clutter; // need deletion if macesphere deleted
+_trapObjDeleteArray pushBack _clutter; // deleted if macesphere deleted
 
 // *******************************************************
 // Create UAV vehicle (present in the sphere)
 // *******************************************************
-private _mace = createVehicle ["B_UGV_02_Science_F", [20, 20, 0], [], 0, "CAN_COLLIDE"]; // need deletion when trap triggered
+private _mace = createVehicle ["B_UGV_02_Science_F", [20, 20, 0], [], 0, "CAN_COLLIDE"]; // deleted when trap triggered
 _mace allowDamage false;
 _mace setFuel 0;
 _mace engineOn false;
 _mace disableAI "ALL";
 
-_trapObjDeleteArray pushBack _mace; // need deletion if macesphere deleted
+_trapObjDeleteArray pushBack _mace; // deleted if macesphere deleted
 
 // *******************************************************
 // Attach bush to mace and mace to sphere
@@ -91,7 +91,7 @@ _mace allowDamage false;
 _mace setMass 170; // relatively low mass so initial swing doesn't hit the ground, then set higher so hangs lower.
 _mace setCenterOfMass [0, 0, -.3];
 
-_trapObjDeleteArray pushBack _bush; // need deletion if macesphere deleted
+_trapObjDeleteArray pushBack _bush; // deleted if macesphere deleted
 
 // *******************************************************
 // Creating the tree where mace will be hidden.
@@ -104,7 +104,7 @@ if (_selectedTreeType != "None") then {
     _mace enableCollisionWith _tree;
     _bush enableCollisionWith _tree;
 
-    _trapObjDeleteArray pushBack _tree; // need deletion if macesphere deleted
+    _trapObjDeleteArray pushBack _tree; // deleted if macesphere deleted
 };
 
 // *******************************************************
@@ -120,7 +120,7 @@ if (_selectedTreeType != "None") then {
 // *******************************************************
 // Create invisible trigger for the trap
 // *******************************************************
-private _trigger = createTrigger ["EmptyDetector", [100, 0, 0]]; // need deletion when trap triggered
+private _trigger = createTrigger ["EmptyDetector", [100, 0, 0]]; // deleted when trap triggered
 _trigger setTriggerArea [2.5, 1, 0, false];
 _trigger setTriggerActivation [colsog_traps_activatedBySide, "PRESENT", false];
 _trigger setTriggerStatements [
@@ -130,30 +130,27 @@ _trigger setTriggerStatements [
     ];
 _trigger setPos getPos _wireTrap;
 
-_trapObjDeleteArray pushBack _trigger; // need deletion if macesphere deleted
+_trapObjDeleteArray pushBack _trigger; // deleted if macesphere deleted
 
 WATCHARRAY = _trapObjDeleteArray;
 publicVariable "WATCHARRAY"; // broadcast for debug
 
-// *******************************************************
-// Trap is now ready
-// *******************************************************
-
-// Deletion POC on _maceSphere
+// Whole composition deletion on _maceSphere
 [
-    {!alive (_this select 0)}, // (this select 0) is 1st argument _maceSphere
+    {!alive (_this select 0)}, // (_this select 0) is 1st argument _maceSphere
     {
         {
             deleteVehicle _x;
-        } forEach (_this select 1); // (this select 1) is 2nd argument _trapObjDeleteArray
+        } forEach (_this select 1); // (_this select 1) is 2nd argument _trapObjDeleteArray
     }, 
     [_maceSphere, _trapObjDeleteArray] // arguments passes to statement & condition
 ] call CBA_fnc_waitUntilAndExecute;
 
-
+// *******************************************************
+// Trap is now ready
+// *******************************************************
 uiSleep 2.0; // REQUIRED else _trigger might be undefined in waitUntil (bug: https://community.bistudio.com/wiki/waitUntil).
 waitUntil {triggerActivated _trigger};
 // TO DO rewrite with CBA_waitUntilAndExecute
 
-// need to pass _trigger to release script for trigger deletion
 [_wireTrap, _mace, _maceSphere, _selectedTreeHeight, _trigger] execVM "functions\traps\falling\colsog_fn_releaseFallingMaceTrap.sqf";
