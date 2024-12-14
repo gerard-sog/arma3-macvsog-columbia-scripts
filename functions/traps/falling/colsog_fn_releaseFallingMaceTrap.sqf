@@ -54,14 +54,24 @@ playSound3D [_sound, _mace, false, getPosASL _mace, 3.5];  // TO DO test distanc
 [_mace, _trapDirection, _trapPosition] execVM "functions\traps\colsog_fn_maceVictims.sqf";
 uiSleep 4;
 
+// POC delete trigger
+// can be checked in console watching for Empty Detector array
+deleteVehicle _trigger;
+
 // *******************************************************
 // Disable trap simulation to save performance
 // *******************************************************
-private _future = time + 10;
-waitUntil {time > _future};
-// TO DO rewrite with CBA_waitUntilAndExecute
-
-uiSleep 30;
-_mace setMass 290; // Make mace settle down to ground so no more physics eating CPU
-uiSleep 10;
-deleteVehicle _mace;
+[
+    {
+        _this setMass 290; // Make mace settle down to ground so no more physics eating CPU
+        [
+            {
+                deleteVehicle _this;
+            }, 
+            _this, // argument (still _mace)
+            10 // wait 10sec before execute
+        ] call CBA_fnc_waitAndExecute;
+    }, 
+    _mace, // argument
+    30 // wait 30sec before execute
+] call CBA_fnc_waitAndExecute;
