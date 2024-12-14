@@ -19,7 +19,7 @@
  *
  */
 
-params ["_wireTrap", "_mace", "_maceSphere", "_selectedTreeHeight"];
+params ["_wireTrap", "_mace", "_maceSphere", "_selectedTreeHeight", "_trigger"];
 if (!isServer) exitWith {}; // safety
 
 private _trapPosition = getPos _wireTrap;

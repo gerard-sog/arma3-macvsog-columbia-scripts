@@ -153,4 +153,4 @@ waitUntil {triggerActivated _trigger};
 // TO DO rewrite with CBA_waitUntilAndExecute
 
 // need to pass _trigger to release script for trigger deletion
-[_wireTrap, _mace, _maceSphere, _selectedTreeHeight] execVM "functions\traps\falling\colsog_fn_releaseFallingMaceTrap.sqf";
+[_wireTrap, _mace, _maceSphere, _selectedTreeHeight, _trigger] execVM "functions\traps\falling\colsog_fn_releaseFallingMaceTrap.sqf";
