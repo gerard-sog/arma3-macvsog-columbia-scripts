@@ -45,13 +45,14 @@ _wireTrap enableSimulation false; // We don't want the Whip Trap to pop out and 
 // *******************************************************
 // Create sphere top of trap position (at selected height)
 // *******************************************************
-private _maceSphere = "Sign_Sphere100cm_F" createVehicle [10, 10000, 0]; // need deletion if wiretrap deleted
+private _maceSphere = "Sign_Sphere100cm_F" createVehicle [10, 10000, 0];
 _maceSphere setObjectMaterialGlobal [0, "\a3\data_f\default.rvmat"]; // makes sphere no longer see thru
 _maceSphere setObjectTextureGlobal [0, 'vn\characters_f_vietnam\opfor\uniforms\data\vn_o_nva_army_bdu_shirt_03_co.paa'];
 _maceSphere setPos (getPos _wireTrap vectorAdd [0, 0, _selectedTreeHeight]);
 _maceSphere setDir (_swingDirection + 180);
 
-_maceSphere setVariable ["COLSOG_TrapObjDeleteArray", [_maceSphere], false]; // no broadcast will only but set/read by server
+["zen_common_updateEditableObjects", [[_maceSphere], true]] call CBA_fnc_serverEvent; // add macesphere to zeus, this will be our deletion object
+private _trapObjDeleteArray = []; // variable to store objects of the composition
 
 // *******************************************************
 // Create a clutter object help hide the tripwire
@@ -62,29 +63,27 @@ private _clutters  = [
     "vn\vn_vegetation_f_exp\clutter\red_dirt\vn_c_red_dirt_sparse_grass.p3d",
     "vn\vn_vegetation_f_exp\clutter\volcano\vn_c_volcano_grass.p3d"
     ];
-private _clutter = createSimpleObject [selectRandom _clutters, [0, 0, 0]]; // need deletion if wiretrap deleted
+private _clutter = createSimpleObject [selectRandom _clutters, [0, 0, 0]];
 _clutter setPosATL (_wireTrap modelToWorld [1, 0, 0]);
 _clutter setDir (random 360);
 
-["zen_common_updateEditableObjects", [[_maceSphere], true]] call CBA_fnc_serverEvent; // TMP DEBUG
-
-_maceSphere setVariable ["COLSOG_TrapObjDeleteArray", [((_maceSphere getVariable "COLSOG_TrapObjDeleteArray") pushBack _clutter)], false];
+_trapObjDeleteArray pushBack _clutter; // need deletion if macesphere deleted
 
 // *******************************************************
 // Create UAV vehicle (present in the sphere)
 // *******************************************************
-private _mace = createVehicle ["B_UGV_02_Science_F", [20, 20, 0], [], 0, "CAN_COLLIDE"]; // need deletion if wiretrap deleted (AND when trap triggered)
+private _mace = createVehicle ["B_UGV_02_Science_F", [20, 20, 0], [], 0, "CAN_COLLIDE"]; // need deletion when trap triggered
 _mace allowDamage false;
 _mace setFuel 0;
 _mace engineOn false;
 _mace disableAI "ALL";
 
-_maceSphere setVariable ["COLSOG_TrapObjDeleteArray", [((_maceSphere getVariable "COLSOG_TrapObjDeleteArray") pushBack _mace)], false];
+_trapObjDeleteArray pushBack _mace; // need deletion if macesphere deleted
 
 // *******************************************************
 // Attach bush to mace and mace to sphere
 // *******************************************************
-private _bush = createSimpleObject ["vn\vn_vegetation_f_enoch\bush\vn_b_betula_nana.p3d", [0,0,0]]; // need deletion if wiretrap deleted
+private _bush = createSimpleObject ["vn\vn_vegetation_f_enoch\bush\vn_b_betula_nana.p3d", [0,0,0]];
 _bush enableCollisionWith _mace;
 _bush attachTo [_mace, [0, 0, 0]];
 _mace attachTo [_maceSphere, [0, 0, 0]];
@@ -92,20 +91,20 @@ _mace allowDamage false;
 _mace setMass 170; // relatively low mass so initial swing doesn't hit the ground, then set higher so hangs lower.
 _mace setCenterOfMass [0, 0, -.3];
 
-_maceSphere setVariable ["COLSOG_TrapObjDeleteArray", [((_maceSphere getVariable "COLSOG_TrapObjDeleteArray") pushBack _bush)], false];
+_trapObjDeleteArray pushBack _bush; // need deletion if macesphere deleted
 
 // *******************************************************
 // Creating the tree where mace will be hidden.
 // *******************************************************
 if (_selectedTreeType != "None") then {
-    private _tree = createSimpleObject [_selectedTreeType, [0, 0, 0]]; // need deletion if wiretrap deleted
+    private _tree = createSimpleObject [_selectedTreeType, [0, 0, 0]];
     _tree setPosATL (_wireTrap modelToWorld [3.8, -4, 0]);
     _tree setDir ((getDir _wireTrap) + _selectedTreeRotationCorrection);
     _tree enableSimulation false;
     _mace enableCollisionWith _tree;
     _bush enableCollisionWith _tree;
 
-    _maceSphere setVariable ["COLSOG_TrapObjDeleteArray", [((_maceSphere getVariable "COLSOG_TrapObjDeleteArray") pushBack _tree)], false];
+    _trapObjDeleteArray pushBack _tree; // need deletion if macesphere deleted
 };
 
 // *******************************************************
@@ -116,12 +115,12 @@ if (_selectedTreeType != "None") then {
 [_mace, [0.07,-.55,0.2],	[0.0363626,-0.998937,0.263383],		1.55] execVM "functions\traps\colsog_fn_attachSprungWhipTrap.sqf";
 [_mace, [0.07,.55,0.0],	[0.0363626,0.998112,-0.3495081],	1.55] execVM "functions\traps\colsog_fn_attachSprungWhipTrap.sqf";
 // 4 whip need deletion if wiretrap deleted
-// to do later, need to pass _maceSphere
+// to do later, need to pass _trapObjDeleteArray or return object from execVM
 
 // *******************************************************
 // Create invisible trigger for the trap
 // *******************************************************
-private _trigger = createTrigger ["EmptyDetector", [100, 0, 0]]; // need deletion if wiretrap deleted (AND when trap triggered)
+private _trigger = createTrigger ["EmptyDetector", [100, 0, 0]]; // need deletion when trap triggered
 _trigger setTriggerArea [2.5, 1, 0, false];
 _trigger setTriggerActivation [colsog_traps_activatedBySide, "PRESENT", false];
 _trigger setTriggerStatements [
@@ -131,11 +130,24 @@ _trigger setTriggerStatements [
     ];
 _trigger setPos getPos _wireTrap;
 
-_maceSphere setVariable ["COLSOG_TrapObjDeleteArray", [((_maceSphere getVariable "COLSOG_TrapObjDeleteArray") pushBack _trigger)], false];
+_trapObjDeleteArray pushBack _tree; // need deletion if macesphere deleted
 
 // *******************************************************
 // Trap is now ready
 // *******************************************************
+
+// Deletion POC on _maceSphere
+[
+    {!alive (this select 0)}, // (this select 0) is 1st argument _maceSphere
+    {
+        {
+            deleteVehicle _x;
+        } forEach (this select 1); // (this select 1) is 2nd argument _trapObjDeleteArray
+    }, 
+    [_maceSphere, _trapObjDeleteArray] // arguments passes to statement & condition
+] call CBA_fnc_waitUntilAndExecute;
+
+
 uiSleep 2.0; // REQUIRED else _trigger might be undefined in waitUntil (bug: https://community.bistudio.com/wiki/waitUntil).
 waitUntil {triggerActivated _trigger};
 // TO DO rewrite with CBA_waitUntilAndExecute

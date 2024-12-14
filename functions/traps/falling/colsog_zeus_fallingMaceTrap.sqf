@@ -28,7 +28,7 @@ private _onConfirm = {
 	private _wireTrap = "vn_modulemine_punji_03" createVehicle _pos;
 	_wireTrap setDir _trapDirection;
 
-	// add wiretrap to zeus (planned to be used to delete whole composition)
+	// add wiretrap to zeus
 	["zen_common_updateEditableObjects", [[_wireTrap], true]] call CBA_fnc_serverEvent;
 	
 	// Needs to be sent to server.
