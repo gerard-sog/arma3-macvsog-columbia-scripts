@@ -21,7 +21,7 @@ private _onConfirm = {
 	_helipad setVariable ["AL_high_ON", true, true]; // still setting a variable on object created, could be used to delete all at once
 
 	[[_helipad, _mainColor], "functions\environment\colsog_fn_highFog.sqf"] remoteExec ["execVM", 0, true];
-	["zen_common_addObjects", [[_helipad]]] call CBA_fnc_serverEvent;
+	["zen_common_updateEditableObjects", [[_helipad], true]] call CBA_fnc_serverEvent;
 
 };
 
