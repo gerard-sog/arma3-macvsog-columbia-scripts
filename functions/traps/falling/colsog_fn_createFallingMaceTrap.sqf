@@ -130,7 +130,7 @@ _trigger setTriggerStatements [
     ];
 _trigger setPos getPos _wireTrap;
 
-_trapObjDeleteArray pushBack _tree; // need deletion if macesphere deleted
+_trapObjDeleteArray pushBack _trigger; // need deletion if macesphere deleted
 
 WATCHARRAY = _trapObjDeleteArray;
 publicVariable "WATCHARRAY"; // broadcast for debug
@@ -141,11 +141,11 @@ publicVariable "WATCHARRAY"; // broadcast for debug
 
 // Deletion POC on _maceSphere
 [
-    {!alive (this select 0)}, // (this select 0) is 1st argument _maceSphere
+    {!alive (_this select 0)}, // (this select 0) is 1st argument _maceSphere
     {
         {
             deleteVehicle _x;
-        } forEach (this select 1); // (this select 1) is 2nd argument _trapObjDeleteArray
+        } forEach (_this select 1); // (this select 1) is 2nd argument _trapObjDeleteArray
     }, 
     [_maceSphere, _trapObjDeleteArray] // arguments passes to statement & condition
 ] call CBA_fnc_waitUntilAndExecute;
