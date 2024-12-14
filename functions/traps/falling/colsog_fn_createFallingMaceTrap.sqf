@@ -132,6 +132,9 @@ _trigger setPos getPos _wireTrap;
 
 _trapObjDeleteArray pushBack _tree; // need deletion if macesphere deleted
 
+WATCHARRAY = _trapObjDeleteArray;
+publicVariable "WATCHARRAY"; // broadcast for debug
+
 // *******************************************************
 // Trap is now ready
 // *******************************************************
