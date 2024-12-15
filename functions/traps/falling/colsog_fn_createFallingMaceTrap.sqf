@@ -110,10 +110,32 @@ if (_selectedTreeType != "None") then {
 // *******************************************************
 // Attach 4 whip trap objects to mace so it has spikes
 // *******************************************************
-[_mace, [0.55,0,0.03],	[0.999972,-1.70678e-006,-0.0075168],	1.55] execVM "functions\traps\colsog_fn_attachSprungWhipTrap.sqf";
-[_mace, [-0.5,0.14,0],	[-0.998451,-2.64464e-006,-0.0556383],	1.60] execVM "functions\traps\colsog_fn_attachSprungWhipTrap.sqf";
-[_mace, [0.07,-.55,0.2],	[0.0363626,-0.998937,0.263383],		1.55] execVM "functions\traps\colsog_fn_attachSprungWhipTrap.sqf";
-[_mace, [0.07,.55,0.0],	[0.0363626,0.998112,-0.3495081],	1.55] execVM "functions\traps\colsog_fn_attachSprungWhipTrap.sqf";
+COLSOG_fnc_attachSprungWhipTrap = {
+    params ["_object", "_attachPosition", "_vectorUp", "_scale"];
+    private _punji = createSimpleObject ["vn\weapons_f_vietnam\mines\punji\vn_mine_punji_02_ammo.p3d", [0, 0, 0]];
+    _punji animateSource ["mine_trigger_source", 1]; 
+    _punji attachTo [_object, _attachPosition];
+    _punji setVectorUp _vectorUp;
+    _punji setObjectScale _scale;
+    _punji; // return object from function
+};
+
+private _sprungwhip1 = [_mace, [0.55,0,0.03], [0.999972,-1.70678e-006,-0.0075168], 1.55] call COLSOG_fnc_attachSprungWhipTrap;
+_trapObjDeleteArray pushBack _sprungwhip1; // deleted if macesphere deleted
+
+private _sprungwhip2 = [_mace, [-0.5,0.14,0], [-0.998451,-2.64464e-006,-0.0556383], 1.60] call COLSOG_fnc_attachSprungWhipTrap;
+_trapObjDeleteArray pushBack _sprungwhip2; // deleted if macesphere deleted
+
+private _sprungwhip3 = [_mace, [0.07,-.55,0.2], [0.0363626,-0.998937,0.263383], 1.55] call COLSOG_fnc_attachSprungWhipTrap;
+_trapObjDeleteArray pushBack _sprungwhip3; // deleted if macesphere deleted
+
+private _sprungwhip4 = [_mace, [0.07,.55,0.0], [0.0363626,0.998112,-0.3495081], 1.55] call COLSOG_fnc_attachSprungWhipTrap;
+_trapObjDeleteArray pushBack _sprungwhip4; // deleted if macesphere deleted
+
+//[_mace, [0.55,0,0.03],	[0.999972,-1.70678e-006,-0.0075168],	1.55] execVM "functions\traps\colsog_fn_attachSprungWhipTrap.sqf";
+//[_mace, [-0.5,0.14,0],	[-0.998451,-2.64464e-006,-0.0556383],	1.60] execVM "functions\traps\colsog_fn_attachSprungWhipTrap.sqf";
+//[_mace, [0.07,-.55,0.2],	[0.0363626,-0.998937,0.263383],		1.55] execVM "functions\traps\colsog_fn_attachSprungWhipTrap.sqf";
+//[_mace, [0.07,.55,0.0],	[0.0363626,0.998112,-0.3495081],	1.55] execVM "functions\traps\colsog_fn_attachSprungWhipTrap.sqf";
 // 4 whip need deletion if wiretrap deleted
 // to do later, need to pass _trapObjDeleteArray or return object from execVM
 
