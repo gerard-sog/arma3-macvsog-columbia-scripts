@@ -9,7 +9,9 @@
  * On local player OR Server if AI
  *
  * Example:
- * [_unit, _mace] execVM "functions\traps\colsog_fn_impaleOnMace.sqf";
+ * [_unit, _mace] execVM "functions\traps\colsog_fn_impaleOnMace.sqf"; when called from the unit
+ *
+ * [[_unit, _mace], "functions\traps\colsog_fn_impaleOnMace.sqf"] remoteExec ["execVM", owner _unit, false]; // when called from another machine
  *
  * Return values:
  * None
