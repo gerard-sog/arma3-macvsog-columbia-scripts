@@ -61,7 +61,7 @@ private _dawnTime = _sunriseTime - (colsog_dayAndNight_dawnDuration / 60);
 private _dawnTimeInHourMinuteFormat = format [">>>> Dawn: from %1h%2m to %3h%4m", floor _dawnTime, round ((_dawnTime - (floor _dawnTime)) * 60), floor _sunriseTime, round ((_sunriseTime - (floor _sunriseTime)) * 60)];
 
 private _duskTime = _sunsetTime - (colsog_dayAndNight_duskDuration / 60);
-private _duskTimeInHourMinuteFormat = format [">>>> Dusk: from %1h%2m to %3h%4m", floor _dawnTime, round ((_duskTime - (floor _duskTime)) * 60), floor _sunsetTime, round ((_sunsetTime - (floor _sunsetTime)) * 60)];
+private _duskTimeInHourMinuteFormat = format [">>>> Dusk: from %1h%2m to %3h%4m", floor _duskTime, round ((_duskTime - (floor _duskTime)) * 60), floor _sunsetTime, round ((_sunsetTime - (floor _sunsetTime)) * 60)];
 
 [
 	_dialogTitle, 
@@ -70,7 +70,7 @@ private _duskTimeInHourMinuteFormat = format [">>>> Dusk: from %1h%2m to %3h%4m"
 		["LIST", [_dawnTimeInHourMinuteFormat], [[false], [""], 0, 0]],
 		["SLIDER", "Dawn Time Acceleration", [0, 120, colsog_dayAndNight_dawnTimeAcceleration, 0], true],
 		["SLIDER", "Day Time Acceleration", [0, 120, colsog_dayAndNight_dayTimeAcceleration, 0], true],
-    ["LIST", [_duskTimeInHourMinuteFormat], [[false], [""], 0, 0]],
+        ["LIST", [_duskTimeInHourMinuteFormat], [[false], [""], 0, 0]],
 		["SLIDER", "Dusk Time Acceleration", [0, 120, colsog_dayAndNight_duskTimeAcceleration, 0], true],
 		["SLIDER", "Night Time Acceleration", [0, 120, colsog_dayAndNight_nightTimeAcceleration, 0], true]
 	],

@@ -53,7 +53,7 @@ COLSOG_PFHdaynight = [
         };
 
 		// Day.
-		private _isDayTime = (sunOrMoon == 1) && (_actualTime < _duskTime);
+		private _isDayTime = (_actualTime > _dayTime) && (_actualTime < _duskTime);
 		if (_isDayTime && (_actualTimeMultiplier != colsog_dayAndNight_dayTimeAcceleration)) then {
 			setTimeMultiplier colsog_dayAndNight_dayTimeAcceleration;
 			["Day Time", -1, 1, 2, 0] remoteExec ["BIS_fnc_dynamicText", _callerID];
@@ -67,7 +67,8 @@ COLSOG_PFHdaynight = [
 		};
 
 		// Night.
-		if ((sunOrMoon == 0) && !_isDayTime && !_isDusk && !_isDawn && (_actualTimeMultiplier != colsog_dayAndNight_nightTimeAcceleration)) then {
+		private _isNightTime = !_isDayTime && !_isDusk && !_isDawn;
+		if (_isNightTime && (_actualTimeMultiplier != colsog_dayAndNight_nightTimeAcceleration)) then {
 			setTimeMultiplier colsog_dayAndNight_nightTimeAcceleration;
 			["Night Time", -1, 1, 2, 0] remoteExec ["BIS_fnc_dynamicText", _callerID];
 		};
