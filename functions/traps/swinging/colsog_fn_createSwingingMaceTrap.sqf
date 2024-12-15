@@ -169,7 +169,7 @@ _trapObjDeleteArray pushBack _sprungwhip4;
 // Attach rope between mace and and the pivot point on the trap tree.  This gives a straight rope
 // before trap is sprung, and is for visual effect later.  We will use a different rope when trap is sprung.
 // *******************************************************
-_trigger = createTrigger ["EmptyDetector", [100, 0, 0]];
+private _trigger = createTrigger ["EmptyDetector", [100, 0, 0]];
 _trigger setTriggerArea [2.5, 1, 0, false];
 _trigger setTriggerActivation [colsog_traps_activatedBySide, "PRESENT", false];
 _trigger setTriggerStatements [
@@ -203,7 +203,7 @@ publicVariable "WATCHARRAY"; // broadcast for debug
         [
             {triggerActivated (_this select 4)}, // 4th argument _trigger
             {
-                _this execVM "functions\traps\falling\colsog_fn_releaseSwingingMaceTrap.sqf";
+                _this execVM "functions\traps\swinging\colsog_fn_releaseSwingingMaceTrap.sqf";
             }, 
             _this // arguments passes to condition & statement
         ] call CBA_fnc_waitUntilAndExecute;

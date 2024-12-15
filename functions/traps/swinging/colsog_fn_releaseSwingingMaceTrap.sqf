@@ -19,7 +19,7 @@
  *
  */
 
-params ["_wireTrap", "_mace", "_ropeTopObject", "_maceSphere"];
+params ["_wireTrap", "_mace", "_ropeTopObject", "_maceSphere", "_trigger"];
 
 if (!isServer) exitWith {};
 
