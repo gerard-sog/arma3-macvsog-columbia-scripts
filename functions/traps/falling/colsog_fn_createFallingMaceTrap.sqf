@@ -152,9 +152,6 @@ publicVariable "WATCHARRAY"; // broadcast for debug
 
 
 // Trap is now ready
-//uiSleep 2.0; // REQUIRED else _trigger might be undefined in waitUntil (bug: https://community.bistudio.com/wiki/waitUntil).
-//waitUntil {triggerActivated _trigger};
-// TO DO rewrite with CBA_waitUntilAndExecute
 [
     {
         [
@@ -168,6 +165,3 @@ publicVariable "WATCHARRAY"; // broadcast for debug
     [_wireTrap, _mace, _maceSphere, _selectedTreeHeight, _trigger], // arguments
     2 // REQUIRED else _trigger might be undefined
 ] call CBA_fnc_waitAndExecute;
-
-
-//[_wireTrap, _mace, _maceSphere, _selectedTreeHeight, _trigger] execVM "functions\traps\falling\colsog_fn_releaseFallingMaceTrap.sqf";

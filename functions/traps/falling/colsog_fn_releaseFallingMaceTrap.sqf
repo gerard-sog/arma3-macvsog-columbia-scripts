@@ -29,6 +29,8 @@ private _trapDirection = getDir _wireTrap;
 playSound3D ["a3\sounds_f\air\sfx\sl_rope_break.wss", _wireTrap, false, getPosASL _wireTrap, 4]; // TO DO test distance
 deleteVehicle _wireTrap;
 
+["zen_common_updateEditableObjects", [[_maceSphere], false]] call CBA_fnc_serverEvent; // hide macesphere once trap triggered
+
 // Detach mace from original position to start the fall
 detach _mace;
 _maceSphere attachTo [_mace, [0, 0, 0]];
