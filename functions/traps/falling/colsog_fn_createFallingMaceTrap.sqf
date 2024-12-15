@@ -162,7 +162,9 @@ publicVariable "WATCHARRAY"; // broadcast for debug
     {!alive (_this select 0)}, // (_this select 0) is 1st argument _maceSphere
     {
         {
-            deleteVehicle _x;
+            if !(isNull _x) then {
+                deleteVehicle _x;
+            };
         } forEach (_this select 1); // (_this select 1) is 2nd argument _trapObjDeleteArray
     }, 
     [_maceSphere, _trapObjDeleteArray] // arguments passes to statement & condition
