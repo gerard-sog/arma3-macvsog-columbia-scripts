@@ -1,17 +1,39 @@
 /*
+ * Release swinging mace trap
+ *
+ * Arguments:
+ * 0: _wireTrap
+ * 1: _mace
+ * 2: _ropeTopObject
+ * 3: _maceSphere
+ * 4: _trigger
+ *
  * Locality:
- * On the server.
+ * Execute only on server
+ *
+ * Example:
+ * [_wireTrap, _mace, _ropeTopObject, _maceSphere, _trigger] execVM "functions\traps\falling\colsog_fn_releaseSwingingMaceTrap.sqf";
+ *
+ * Return values:
+ * None
+ *
  */
+
+params ["_wireTrap", "_mace", "_ropeTopObject", "_maceSphere"];
+
+if (!isServer) exitWith {};
 
 // *******************************************************
 // Spring the trap when the trap's trigger is fired.
 // *******************************************************
-params ["_wireTrap", "_mace", "_ropeTopObject", "_maceSphere"];
 private _trapPosition = getPos _wireTrap;
 private _trapDirection = getDir _wireTrap;
 
 playSound3D ["a3\sounds_f\air\sfx\sl_rope_break.wss", _wireTrap, false, _wireTrap, 4];
 deleteVehicle _wireTrap;
+
+["zen_common_updateEditableObjects", [[_maceSphere], false]] call CBA_fnc_serverEvent; // hide macesphere once trap triggered
+
 // *******************************************************
 // Delete cosmetic rope and attach swing rope.  Then detach mace from original position to start the swing
 // *******************************************************
@@ -45,13 +67,22 @@ playSound3D [_sound, _mace, false, getPosASL _mace, 3.5];
 [_mace, _trapDirection, _trapPosition] execVM "functions\traps\colsog_fn_maceVictims.sqf";
 uiSleep 4;
 
+deleteVehicle _trigger;
+
 // *******************************************************
 // After initial swing make mace heavier so hangs closer to the ground (to counter retarded rope elasticity).
 // *******************************************************
-private _future = time + 10;
-waitUntil {time > _future};
-
-uiSleep 60;
-_mace setMass 290; // Make mace settle down to ground so no more physics eating CPU
-uiSleep 10;
-deleteVehicle _mace;
+[
+    {
+        _this setMass 290; // Make mace settle down to ground so no more physics eating CPU
+        [
+            {
+                deleteVehicle _this;
+            }, 
+            _this, // argument (still _mace)
+            10
+        ] call CBA_fnc_waitAndExecute;
+    }, 
+    _mace, // argument
+    70
+] call CBA_fnc_waitAndExecute;

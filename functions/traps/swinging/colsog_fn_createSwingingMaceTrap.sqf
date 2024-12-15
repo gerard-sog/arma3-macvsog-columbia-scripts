@@ -197,9 +197,17 @@ publicVariable "WATCHARRAY"; // broadcast for debug
     [_maceSphere, _trapObjDeleteArray] // arguments passes to condition & statement
 ] call CBA_fnc_waitUntilAndExecute;
 
-// *******************************************************
 // Trap is now ready
-// *******************************************************
-uiSleep 2.0; // REQUIRED else _trigger might be undefined in waitUntil (bug: https://community.bistudio.com/wiki/waitUntil).
-waitUntil {triggerActivated _trigger};
-[_wireTrap, _mace, _ropeTopObject, _maceSphere] execVM "functions\traps\swinging\colsog_fn_releaseSwingingMaceTrap.sqf";
+[
+    {
+        [
+            {triggerActivated (_this select 4)}, // 4th argument _trigger
+            {
+                _this execVM "functions\traps\falling\colsog_fn_releaseSwingingMaceTrap.sqf";
+            }, 
+            _this // arguments passes to condition & statement
+        ] call CBA_fnc_waitUntilAndExecute;
+    }, 
+    [_wireTrap, _mace, _ropeTopObject, _maceSphere, _trigger], // arguments
+    2 // REQUIRED else _trigger might be undefined
+] call CBA_fnc_waitAndExecute;
