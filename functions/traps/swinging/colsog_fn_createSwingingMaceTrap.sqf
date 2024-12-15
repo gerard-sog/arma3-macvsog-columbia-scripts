@@ -89,7 +89,7 @@ private _clutter = createSimpleObject [selectRandom _clutters, [0, 0, 0]];
 _clutter setPosATL (_wireTrap modelToWorld [1, 0, 0]);
 _clutter setDir (random 360);
 
-_trapObjDeleteArray pushBack _clutters;
+_trapObjDeleteArray pushBack _clutter;
 
 // *******************************************************
 // Create UAV vehicle at rope top to attach the rope to.  Ropes need to attach to vehicles.
@@ -137,9 +137,11 @@ _trapObjDeleteArray pushBack _mace;
 // Add bush and sphere to mace to hide it
 // *******************************************************
 _mace attachTo [_maceSphere, [0, 0, 0]];
-_bush = createSimpleObject ["vn\vn_vegetation_f_enoch\bush\vn_b_betula_nana.p3d", [0, 0, 0]];
+private _bush = createSimpleObject ["vn\vn_vegetation_f_enoch\bush\vn_b_betula_nana.p3d", [0, 0, 0]];
 _bush attachTo [_mace, [0, 0, 0]];
 _bush setObjectScale .85; 
+
+_trapObjDeleteArray pushBack _bush;
 
 // *******************************************************
 // Attach 4 whip trap punji objects to mace so it has wicked spikes
@@ -187,7 +189,7 @@ publicVariable "WATCHARRAY"; // broadcast for debug
     {!alive (_this select 0)}, // 1st argument _maceSphere
     {
         {
-            if !(isNull _x) then {
+            if !(objNull isEqualTo _x) then {
                 deleteVehicle _x;
             };
         } forEach (_this select 1); // 2nd argument _trapObjDeleteArray
