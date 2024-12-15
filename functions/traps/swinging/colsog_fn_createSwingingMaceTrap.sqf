@@ -1,21 +1,35 @@
 /*
+ * Create swinging mace trap
+ *
+ * Arguments:
+ * 0: _wireTrap
+ *
  * Locality:
- * On the server.
+ * Execute only on server
+ *
+ * Example:
+ * [[_wireTrap], "functions\traps\swinging\colsog_fn_createSwingingMaceTrap.sqf"] remoteExec ["execVM", 2, false];
+ *
+ * Return values:
+ * None
+ *
  */
 
-// *******************************************************
 // Create the trap composition around the placed Whip Trap.
-// Composition includes a tree to suspend the rope.  Another tree
-// for starting point of mace to be suspended, and small plant to hide
-// one side of the trip wire.
-// Also creates a trigger to fire off the trap.
-// *******************************************************
+// Composition includes a tree to suspend the rope.
+// Another tree for starting point of mace to be suspended,
+// and small plant to hide one side of the trip wire.
+
 params ["_wireTrap"];
+
 if (!isServer) exitWith {};
 
 _wireTrap setPos (getPos _wireTrap vectorAdd [0, 0, -.05]);
 private _swingDirection = getDir _wireTrap;
-_wireTrap enableSimulation false; // We don't want the Whip Trap to pop out and kill the unit.
+_wireTrap enableSimulationGlobal false; // We don't want the Whip Trap to pop out and kill the unit.
+
+private _trapObjDeleteArray = []; // variable to store objects of the composition
+_trapObjDeleteArray pushBack _wireTrap;
 
 // *******************************************************
 // Create top of rope object directly above trapProxy position.  Will be where tree branch is.
@@ -29,6 +43,8 @@ _topOfRope setObjectTextureGlobal [0, 'vn\characters_f_vietnam\opfor\uniforms\da
 _topOfRope setPos (getPos _wireTrap vectorAdd [0,0,11.0]);
 _topOfRope setDir (_swingDirection + 180);
 
+_trapObjDeleteArray pushBack _topOfRope;
+
 // *******************************************************
 // Create sphere used later to hide mace uav.  And camouflage the sphere.
 // *******************************************************
@@ -37,7 +53,9 @@ private _maceSphere = "Sign_Sphere100cm_F" createVehicle [10,10000,0];
 _maceSphere setPos [_maceStartPosition#0, _maceStartPosition#1, 9.0];
 _maceSphere setObjectMaterialGlobal [0, "\a3\data_f\default.rvmat"]; // makes sphere no longer transparent
 _maceSphere setObjectTextureGlobal [0,'vn\characters_f_vietnam\opfor\uniforms\data\vn_o_nva_army_bdu_shirt_03_co.paa'];
- 
+
+["zen_common_updateEditableObjects", [[_maceSphere], true]] call CBA_fnc_serverEvent; // add macesphere to zeus this is our deletion object
+
 // *******************************************************
 // Create tree to left of trapProxy position. This tree will have the mace trap attached to it.
 // *******************************************************
@@ -46,6 +64,8 @@ _tree setPosATL (_wireTrap modelToWorld [3.8, -4, 0]);
 _tree setDir ((getDir _wireTrap) - 120);
 _tree enableSimulation false;
 
+_trapObjDeleteArray pushBack _tree;
+
 // *******************************************************
 // Create tree where mace is suspended in air to camouflage it
 // *******************************************************
@@ -53,6 +73,8 @@ private _maceStartTreePosition = ([_topOfRope, 12, (_swingDirection + 180)] call
 private _secondTree = createSimpleObject ["vn\vn_vegetation_f_enoch\tree\vn_t_fagussylvatica_1fc.p3d", [0, 0, 0]];
 _secondTree setPosATL [_maceStartTreePosition#0, _maceStartTreePosition#1, -6];
 _secondTree enableSimulation false;
+
+_trapObjDeleteArray pushBack _secondTree;
 
 // *******************************************************
 // Create a clutter object help hide the tripwire.
@@ -67,6 +89,8 @@ private _clutter = createSimpleObject [selectRandom _clutters, [0, 0, 0]];
 _clutter setPosATL (_wireTrap modelToWorld [1, 0, 0]);
 _clutter setDir (random 360);
 
+_trapObjDeleteArray pushBack _clutters;
+
 // *******************************************************
 // Create UAV vehicle at rope top to attach the rope to.  Ropes need to attach to vehicles.
 // *******************************************************
@@ -77,6 +101,8 @@ _ropeTopObject setFuel 0;
 _ropeTopObject engineOn false;
 _ropeTopObject disableAI "ALL";
 
+_trapObjDeleteArray pushBack _ropeTopObject;
+
 // *******************************************************
 // Attach sphere and bush to UAV to hide it from players.
 // *******************************************************
@@ -84,6 +110,9 @@ _ropeTopObject disableAI "ALL";
 _bush enableCollisionWith _ropeTopObject;
 _bush enableCollisionWith _tree;
 _bush attachTo [_ropeTopObject, [0, 0, 0]];
+
+_trapObjDeleteArray pushBack _bush;
+
 _ropeTopObject attachTo [_topOfRope, [0, 0, 0]];
 _ropeTopObject allowDamage false;
 private _directionTo = ([_maceSphere, _ropeTopObject] call BIS_fnc_dirTo);
@@ -92,7 +121,7 @@ _ropeTopObject setDir _directionTo;
 // *******************************************************
 // Create the mace vehicle (UAV) B_UAV_01_F C_Kart_01_F B_UGV_02_Science_F
 // *******************************************************
-_mace = createVehicle ["B_UGV_02_Science_F", [30, 0, 0], [], 0, "CAN_COLLIDE"];
+private _mace = createVehicle ["B_UGV_02_Science_F", [30, 0, 0], [], 0, "CAN_COLLIDE"];
 _mace setVariable ["COLSOG_victimAnimationAlreadyUsed", [], true]; // used to ensure different impale anim applied to many dudes impaled on same mace
 _mace disableAI "ALL";
 _mace allowDamage false;
@@ -101,6 +130,8 @@ _mace engineOn false;
 _mace setMass 170; // relatively low mass so initial swing doesn't hit the ground, then set higher so hangs lower (in controlMaceSwing function)
 _mace setCenterOfMass [0, 0, -.3];
 _mace enableCollisionWith _secondTree;
+
+_trapObjDeleteArray pushBack _mace;
 
 // *******************************************************
 // Add bush and sphere to mace to hide it
@@ -113,10 +144,24 @@ _bush setObjectScale .85;
 // *******************************************************
 // Attach 4 whip trap punji objects to mace so it has wicked spikes
 // *******************************************************
-[_mace, [0.55,0,0.03],	[0.999972,-1.70678e-006,-0.0075168],	1.55] execVM "functions\traps\colsog_fn_attachSprungWhipTrap.sqf";
-[_mace, [-0.5,0.14,0],	[-0.998451,-2.64464e-006,-0.0556383],	1.60] execVM "functions\traps\colsog_fn_attachSprungWhipTrap.sqf";
-[_mace, [0.07,-.55,0.2],	[0.0363626,-0.998937,0.263383],		1.55] execVM "functions\traps\colsog_fn_attachSprungWhipTrap.sqf";
-[_mace, [0.07,.55,0.0],	[0.0363626,0.998112,-0.3495081],	1.55] execVM "functions\traps\colsog_fn_attachSprungWhipTrap.sqf";
+COLSOG_fnc_attachSprungWhipTrap = {
+    params ["_object", "_attachPosition", "_vectorUp", "_scale"];
+    private _punji = createSimpleObject ["vn\weapons_f_vietnam\mines\punji\vn_mine_punji_02_ammo.p3d", [0, 0, 0]];
+    _punji animateSource ["mine_trigger_source", 1]; 
+    _punji attachTo [_object, _attachPosition];
+    _punji setVectorUp _vectorUp;
+    _punji setObjectScale _scale;
+    _punji; // return object from function
+};
+
+private _sprungwhip1 = [_mace, [0.55,0,0.03], [0.999972,-1.70678e-006,-0.0075168], 1.55] call COLSOG_fnc_attachSprungWhipTrap;
+_trapObjDeleteArray pushBack _sprungwhip1;
+private _sprungwhip2 = [_mace, [-0.5,0.14,0], [-0.998451,-2.64464e-006,-0.0556383],	1.60] call COLSOG_fnc_attachSprungWhipTrap;
+_trapObjDeleteArray pushBack _sprungwhip2;
+private _sprungwhip3 = [_mace, [0.07,-.55,0.2],	[0.0363626,-0.998937,0.263383], 1.55] call COLSOG_fnc_attachSprungWhipTrap;
+_trapObjDeleteArray pushBack _sprungwhip3;
+private _sprungwhip4 = [_mace, [0.07,.55,0.0], [0.0363626,0.998112,-0.3495081], 1.55] call COLSOG_fnc_attachSprungWhipTrap;
+_trapObjDeleteArray pushBack _sprungwhip4;
 
 // *******************************************************
 // Attach rope between mace and and the pivot point on the trap tree.  This gives a straight rope
@@ -131,6 +176,24 @@ _trigger setTriggerStatements [
     ""
     ];
 _trigger setPos getPos _wireTrap;
+
+_trapObjDeleteArray pushBack _trigger;
+
+WATCHARRAY = _trapObjDeleteArray; // debug
+publicVariable "WATCHARRAY"; // broadcast for debug
+
+// Whole composition deletion on _maceSphere
+[
+    {!alive (_this select 0)}, // 1st argument _maceSphere
+    {
+        {
+            if !(isNull _x) then {
+                deleteVehicle _x;
+            };
+        } forEach (_this select 1); // 2nd argument _trapObjDeleteArray
+    }, 
+    [_maceSphere, _trapObjDeleteArray] // arguments passes to condition & statement
+] call CBA_fnc_waitUntilAndExecute;
 
 // *******************************************************
 // Trap is now ready
