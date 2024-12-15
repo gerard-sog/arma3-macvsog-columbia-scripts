@@ -74,15 +74,16 @@ deleteVehicle _trigger;
 // *******************************************************
 [
     {
-        _this setMass 290; // Make mace settle down to ground so no more physics eating CPU
+        (_this select 0) setMass 290; // Make mace settle down to ground so no more physics eating CPU
         [
             {
-                deleteVehicle _this;
+                deleteVehicle (_this select 0); // delete _mace UGV
+				deleteVehicle (_this select 1); // delete _ropeTopObject UGV
             }, 
             _this, // argument (still _mace)
             10
         ] call CBA_fnc_waitAndExecute;
     }, 
-    _mace, // argument
+    [_mace, _ropeTopObject], // argument
     70
 ] call CBA_fnc_waitAndExecute;
