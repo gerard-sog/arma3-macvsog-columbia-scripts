@@ -142,7 +142,7 @@ publicVariable "WATCHARRAY"; // broadcast for debug
     {!alive (_this select 0)}, // 1st argument _maceSphere
     {
         {
-            if !(isNull _x) then {
+            if !(objNull isEqualTo _x) then {
                 deleteVehicle _x;
             };
         } forEach (_this select 1); // 2nd argument _trapObjDeleteArray
