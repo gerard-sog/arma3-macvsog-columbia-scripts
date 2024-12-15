@@ -20,7 +20,8 @@
  */
 
 params ["_wireTrap", "_mace", "_maceSphere", "_selectedTreeHeight", "_trigger"];
-if (!isServer) exitWith {}; // safety
+
+if (!isServer) exitWith {};
 
 private _trapPosition = getPos _wireTrap;
 private _trapDirection = getDir _wireTrap;
@@ -28,15 +29,11 @@ private _trapDirection = getDir _wireTrap;
 playSound3D ["a3\sounds_f\air\sfx\sl_rope_break.wss", _wireTrap, false, getPosASL _wireTrap, 4]; // TO DO test distance
 deleteVehicle _wireTrap;
 
-// *******************************************************
 // Detach mace from original position to start the fall
-// *******************************************************
 detach _mace;
 _maceSphere attachTo [_mace, [0, 0, 0]];
 
-// *******************************************************
 // Detect and deal with victims of mace
-// *******************************************************
 // Depending on height, we need to wait before checking distance to unit next to trap (to see if hit or not).
 private _additionalTimeBeforeMaceHitsGround = 0.0;
 if (_selectedTreeHeight >= 14 && _selectedTreeHeight < 21) then {
@@ -53,12 +50,9 @@ playSound3D [_sound, _mace, false, getPosASL _mace, 3.5];  // TO DO test distanc
 [_mace, _trapDirection, _trapPosition] execVM "functions\traps\colsog_fn_maceVictims.sqf";
 uiSleep 4;
 
-// can be checked in console watching for Empty Detector array
 deleteVehicle _trigger;
 
-// *******************************************************
 // Disable trap simulation to save performance
-// *******************************************************
 [
     {
         _this setMass 290; // Make mace settle down to ground so no more physics eating CPU
@@ -67,9 +61,9 @@ deleteVehicle _trigger;
                 deleteVehicle _this;
             }, 
             _this, // argument (still _mace)
-            10 // wait 10sec before execute
+            10
         ] call CBA_fnc_waitAndExecute;
     }, 
     _mace, // argument
-    30 // wait 30sec before execute
+    40
 ] call CBA_fnc_waitAndExecute;

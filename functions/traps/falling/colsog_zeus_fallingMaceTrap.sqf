@@ -15,21 +15,18 @@
 
 params [["_pos", [0, 0, 0] , [[]], 3], ["_object", objNull, [objNull]]];
 
-// Clicked position needs to be empty and not an object. (test before menu creation)
+// Clicked position needs to be empty and not an object
 if (!isNull _object) exitWith {
 	["Need a position and not an object", -1, 1, 4, 0] spawn BIS_fnc_dynamicText;
 	playSound "FD_Start_F";
 };
 
 private _onConfirm = {
-    params ["_dialogResult", "_pos"]; // if a single _arguments is passed, can be named directly
+    params ["_dialogResult", "_pos"];
 	_dialogResult params ["_trapDirection", "_trapHeight", "_treeType"];
 
 	private _wireTrap = "vn_modulemine_punji_03" createVehicle _pos;
 	_wireTrap setDir _trapDirection;
-
-	// add wiretrap to zeus
-	["zen_common_updateEditableObjects", [[_wireTrap], true]] call CBA_fnc_serverEvent;
 	
 	// Needs to be sent to server.
 	[[_wireTrap, _trapHeight, _treeType], "functions\traps\falling\colsog_fn_createFallingMaceTrap.sqf"] remoteExec ["execVM", 2, false];
