@@ -27,7 +27,7 @@ if (!isServer) exitWith {};
 private _trapPosition = getPos _wireTrap;
 private _trapDirection = getDir _wireTrap;
 
-playSound3D ["a3\sounds_f\air\sfx\sl_rope_break.wss", _wireTrap, false, getPosASL _wireTrap, 4]; // TO DO test distance
+playSound3D ["a3\sounds_f\air\sfx\sl_rope_break.wss", _wireTrap, false, getPosASL _wireTrap, 4, 1, 150];
 deleteVehicle _wireTrap;
 
 ["zen_common_updateEditableObjects", [[_maceSphere], false]] call CBA_fnc_serverEvent; // hide macesphere once trap triggered
@@ -47,9 +47,9 @@ uiSleep 1.5;
 
 // sound FX and accelerate swing when mace lower (waiting so it won't just pile drive into the ground)
 _sound = "a3\sounds_f\characters\movements\bush_004.wss";
-playSound3D [_sound, _mace, false, getPosASL _mace, 3.5]; // TO DO test distance
+playSound3D [_sound, _mace, false, getPosASL _mace, 3.5, 1, 150];
 waitUntil {_mace distance2D _trapPosition < 3};
-playSound3D [_sound, _mace, false, getPosASL _mace, 3.5]; // TO DO test distance
+playSound3D [_sound, _mace, false, getPosASL _mace, 3.5, 1, 150];
 
 // Deal with victims of mace
 [_mace, _trapDirection, _trapPosition] execVM "functions\traps\colsog_fn_maceVictims.sqf";

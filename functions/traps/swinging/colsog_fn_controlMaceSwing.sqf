@@ -52,7 +52,8 @@ while {simulationEnabled _mace} do
 {
 	if (abs(speed _mace) > 1 or abs(velocity _mace #2)> .5) then
 	{
-		playSound3D [_sound,_mace, false, getPosASL _mace, .7]; // play sound to mask the ugv motor sound 
+		// upped volume from 0.7 to 1 (could also call a randomsound each loop instead of the same one)
+		playSound3D [_sound,_mace, false, getPosASL _mace, 1, 1, 150]; // play sound to mask the ugv motor sound 
 		if (getPos _mace #2 < .2 and _once) then
 		{
 			_mace setMass (270); // 300 mass will have mace drag on ground once to stabilize it, then here we raise back up with a lesser mass.

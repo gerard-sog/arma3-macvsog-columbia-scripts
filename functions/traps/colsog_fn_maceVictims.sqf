@@ -29,5 +29,5 @@ private _victims = (_trapPosition nearEntities ["Man", colsog_traps_maceKillRadi
 } forEach _victims;
 
 private _sound = "a3\sounds_f\characters\movements\bush_004.wss"; // play sound to mask the ugv motor sound
-playSound3D [_sound, _mace, false, getPosASL _mace, 3.5]; // TO DO test distance
+playSound3D [_sound, _mace, false, getPosASL _mace, 3.5, 1, 150];
 uiSleep 1.5;

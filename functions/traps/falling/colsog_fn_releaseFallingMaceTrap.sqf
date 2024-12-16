@@ -26,7 +26,7 @@ if (!isServer) exitWith {};
 private _trapPosition = getPos _wireTrap;
 private _trapDirection = getDir _wireTrap;
 
-playSound3D ["a3\sounds_f\air\sfx\sl_rope_break.wss", _wireTrap, false, getPosASL _wireTrap, 4]; // TO DO test distance
+playSound3D ["a3\sounds_f\air\sfx\sl_rope_break.wss", _wireTrap, false, getPosASL _wireTrap, 4, 1, 150];
 deleteVehicle _wireTrap;
 
 ["zen_common_updateEditableObjects", [[_maceSphere], false]] call CBA_fnc_serverEvent; // hide macesphere once trap triggered
@@ -47,7 +47,7 @@ if (_selectedTreeHeight >= 21 && _selectedTreeHeight < 26) then {
 uiSleep (1.5 + _additionalTimeBeforeMaceHitsGround);
 
 private _sound = "a3\sounds_f\characters\movements\bush_004.wss";
-playSound3D [_sound, _mace, false, getPosASL _mace, 3.5];  // TO DO test distance
+playSound3D [_sound, _mace, false, getPosASL _mace, 3.5, 1, 150];
 
 [_mace, _trapDirection, _trapPosition] execVM "functions\traps\colsog_fn_maceVictims.sqf";
 uiSleep 4;
