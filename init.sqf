@@ -1,26 +1,31 @@
-//
-// init.sqf
-// Executes at mission start
-// No parameters are passed to this script
+/*
+ * init.sqf
+ * Executes at mission start (last in order in dedicated context, sooner in MP)
+ *
+ * https://community.bistudio.com/wiki/Initialisation_Order
+ *
+ * No parameters are passed to this script
+ *
+ */
 
 // init COLSOG Zeus Custom Modules
 execVM "functions\init_colsog_zeus.sqf";
 
 // ACRE BABEL config
-f_available_languages = [
-["en", "English"],
-["vn", "Vietnamese"]
-];
+f_available_languages = [["en", "English"], ["vn", "Vietnamese"]];
 {
     _x call acre_api_fnc_babelAddLanguageType;
 } forEach f_available_languages;
+// this can be moved to initPlayerlocal
+// exec only for players https://github.com/IDI-Systems/acre2/blob/master/addons/api/fnc_babelAddLanguageType.sqf#L20
 
 [] spawn {
-    if (!hasInterface) exitWith {};
+    if (!hasInterface) exitWith {}; // this whole spawn can be moved to initPlayerlocal
+
     if (player != player) then {waitUntil {player == player};};
     if (!alive player) then {waitUntil {alive player};};
 
-    _languagesPlayerSpeaks = player getVariable ["f_languages", []];
+    _languagesPlayerSpeaks = player getVariable ["f_languages", []]; // get var from eden, can be set in initPlayerlocal depending on the slot name
 
     switch (playerside) do {
     case west: {
@@ -39,7 +44,7 @@ f_available_languages = [
     _languagesPlayerSpeaks call acre_api_fnc_babelSetSpokenLanguages;
 };
 
-// The bellow lines are only executed by ZEUS.
+// The below lines are only executed by ZEUS. (event is created for every player, could be moved to initPlayerlocal)
 // When someone controls a unit (zeus), this event handler will be triggered.
 ["unit", {
     params ["_player"];
