@@ -18,6 +18,7 @@ Compilation of scripts used during multiplayer PVE/PVP mission on Arma 3. Also f
 - [CBA_A3](https://steamcommunity.com/workshop/filedetails/?id=450814997)
 - [ace](https://steamcommunity.com/workshop/filedetails/?id=463939057)
 - [ACRE2](https://steamcommunity.com/workshop/filedetails/?id=751965892)
+- [Zeus Enhanced](https://steamcommunity.com/sharedfiles/filedetails/?id=1779063631)
 
 ## Installation
 Installation of all the scripts/zeus modules is done by **copying the below files and folder directly into your mission folder** where your **"mission.sqm"** file is located (ex: C:\Users\<user_name>\Documents\Arma 3 - Other Profiles\<profile_name>\missions\KheSanhMission01.vn_khe_sanh).
