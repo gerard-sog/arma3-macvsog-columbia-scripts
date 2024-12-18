@@ -16,6 +16,8 @@
  *
  */
 
+if (!hasInterface) exitWith {};
+
 private _availableAsianHeads = [
     "vn_b_AsianHead_A3_06_02",
     "vn_b_AsianHead_A3_07_02",
@@ -35,13 +37,7 @@ if (!_hasUSface) then {
     if (not (_currentFace in _availableAsianHeads)) then
     {
         private _randomAsianHead = selectRandom _availableAsianHeads;
-        [player, _randomAsianHead] remoteExec ["setFace", 0, true]; // sets the face of a player to one of the above asian faces (this forces the new asian face and overrides player's default face)
+        [player, _randomAsianHead] remoteExec ["setFace", 0, true];
+        // sets the face of a player to one of the above asian faces (this forces the new asian face and overrides player's default face)
     };
-}
-
-
-//if (not(["1-0 Squad Leader", _playerRole] call BIS_fnc_inString) &&
-//    not(["1-1 RTO", _playerRole] call BIS_fnc_inString) &&
-//    not(["1-2 Medic", _playerRole] call BIS_fnc_inString) &&
-//    not(["Pilot", _playerRole] call BIS_fnc_inString) &&
-//    not(["Chief SOG", _playerRole] call BIS_fnc_inString)) then
+};

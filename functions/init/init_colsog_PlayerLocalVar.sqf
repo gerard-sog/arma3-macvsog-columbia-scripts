@@ -9,12 +9,10 @@
 
 if (!hasInterface) exitWith {};
 
- switch ((roleDescription player splitString "@") select 0) do {
+switch ((roleDescription player splitString "@") select 0) do {
 	case "Chief SOG": {
 		player setVariable ["hasUSface", true];
-		player setVariable ["canSpeak", ["en", "vn"]];
 		player setUnitTrait ["vn_artillery", true, true];
-
 	};
 	case "Pilot": {
 		player setVariable ["hasUSface", true];
@@ -36,7 +34,7 @@ if (!hasInterface) exitWith {};
 		player setVariable ["canSpeak", ["en", "vn"]];
 		player setVariable ["canClimb", true];
 	};
-	default : {
+	default {
 		player setVariable ["canSpeak", ["en", "vn"]];
 	};
-}
+};
