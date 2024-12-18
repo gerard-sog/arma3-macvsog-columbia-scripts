@@ -10,6 +10,15 @@
 if (!hasInterface) exitWith {};
 
  switch ((roleDescription player splitString "@") select 0) do {
+	case "Chief SOG": {
+		player setVariable ["hasUSface", true];
+		player setVariable ["canSpeak", ["en", "vn"]];
+		player setUnitTrait ["vn_artillery", true, true];
+
+	};
+	case "Pilot": {
+		player setVariable ["hasUSface", true];
+	};
 	case "1-0 Squad Leader": {
 		player setVariable ["hasUSface", true];
 	};
@@ -19,18 +28,15 @@ if (!hasInterface) exitWith {};
 	case "1-2 Medic": {
 		player setVariable ["hasUSface", true];
 	};
-	case "Pilot": {
-		player setVariable ["hasUSface", true];
+	case "0-1 Team Leader": {
+		player setVariable ["canSpeak", ["en", "vn"]];
+		player setVariable ["canClimb", true];
 	};
-	case "Chief SOG": {
-		player setVariable ["hasUSface", true];
-		player setVariable ["canSpeak",["en", "vn"]];
-	};
-	case "Pointman": {
-		player setVariable ["canSpeak",["en", "vn"]];
+	case "0-4 Point man": {
+		player setVariable ["canSpeak", ["en", "vn"]];
 		player setVariable ["canClimb", true];
 	};
 	default : {
-		player setVariable ["canSpeak",["en", "vn"]];
+		player setVariable ["canSpeak", ["en", "vn"]];
 	};
 }

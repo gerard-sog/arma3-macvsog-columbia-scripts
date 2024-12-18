@@ -19,14 +19,9 @@ _climbTree = [
 
         private _isPlayerInTree = player getVariable ["COLSOG_isUpInTree", false];
 
-        private _isRoleAllowedToClimb = false;
-        private _role = roleDescription player;
-        {
-            if ([_x, _role] call BIS_fnc_inString) then {
-                _isRoleAllowedToClimb = true;
-            };
-        } forEach colsog_climbing_unitsAllowedToClimbTrees;
-        _result = (_hasItem AND _isRoleAllowedToClimb AND !_isPlayerInTree);
+		private _canClimb = player getVariable ["canClimb", false];
+
+        _result = (_hasItem AND canClimb AND !_isPlayerInTree);
         _result
 	}
 ] call ace_interact_menu_fnc_createAction;
