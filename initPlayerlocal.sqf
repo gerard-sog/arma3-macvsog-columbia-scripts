@@ -12,20 +12,37 @@
 
 params ["_player", "_didJIP"];
 
-execVM "functions\init\init_colsog_PlayerLocalVar.sqf";
+execVM "functions\init\init_colsog_PlayerLocalVar.sqf"; // player exists we can set variable on object
 
-// good safety to wait player has finished downloading the mission, is on map screen, & alive (might need a [] spawn for waitUntil or CBA_fnc_waitUntilAndExecute)
+// ACRE BABEL config
+colsog_available_languages = [["en", "English"], ["vn", "Vietnamese"]];
+{
+	_x call acre_api_fnc_babelAddLanguageType;
+} forEach colsog_available_languages;
+// exec only for players https://github.com/IDI-Systems/acre2/blob/master/addons/api/fnc_babelAddLanguageType.sqf#L20
+
+// Safety to be sure player has finished downloading the mission, is on map screen, alive (inventory loaded, acre initialized)
 //
 //if (player != player) then {waitUntil {player == player};};
 //if (!alive player) then {waitUntil {alive player};};
 
-player setVariable ["saved_loadout", getUnitLoadout _player];	// sets the default loadout for respawn to initial loadout when player joined the server.
+[
+	{_this == _this}, // waitUntil {player == player}
+	{
+		[
+			{alive _this}, // waitUntil {alive player}
+			{
+				// sets the default loadout for respawn to initial loadout when player joined the server.
+				_this setVariable ["saved_loadout", getUnitLoadout _this];
 
-// set all variable on player
-//
-// f_languages for acre_api_fnc_babelSetSpokenLanguages
-// hasUSface for COLSOG_fnc_faces
-//
-// todo: climbing, arma unitTraits
+				// force vietnamese face if needed
+				call COLSOG_fnc_faces;
 
-call COLSOG_fnc_faces;
+				// init Babel spoken language
+				execVM "functions\init\init_colsog_PlayerBabel.sqf";
+			}, 
+			_this // argument (still player)
+		] call CBA_fnc_waitUntilAndExecute;
+	}, 
+	player // argument passes to condition & statement
+] call CBA_fnc_waitUntilAndExecute;

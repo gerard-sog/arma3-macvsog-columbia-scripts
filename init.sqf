@@ -11,51 +11,6 @@
 // init COLSOG Zeus Custom Modules
 execVM "functions\init_colsog_zeus.sqf";
 
-// ACRE BABEL config
-f_available_languages = [["en", "English"], ["vn", "Vietnamese"]];
-{
-    _x call acre_api_fnc_babelAddLanguageType;
-} forEach f_available_languages;
-// this can be moved to initPlayerlocal
-// exec only for players https://github.com/IDI-Systems/acre2/blob/master/addons/api/fnc_babelAddLanguageType.sqf#L20
-
-[] spawn {
-    if (!hasInterface) exitWith {}; // this whole spawn can be moved to initPlayerlocal
-
-    if (player != player) then {waitUntil {player == player};};
-    if (!alive player) then {waitUntil {alive player};};
-
-    _languagesPlayerSpeaks = player getVariable ["f_languages", []]; // get var from eden, can be set in initPlayerlocal depending on the slot name
-
-    switch (playerside) do {
-    case west: {
-            if (_languagesPlayerSpeaks isEqualTo []) then {_languagesPlayerSpeaks = ["en"];};   // Have the MACVSOG team able to talk and understand each other (using English)
-        };
-    case east: {
-            if (_languagesPlayerSpeaks isEqualTo []) then {_languagesPlayerSpeaks = ["vn"];};
-        };
-    case independent: {
-            if (_languagesPlayerSpeaks isEqualTo []) then {_languagesPlayerSpeaks = ["vn"];};
-        };
-    case civilian: {
-            if (_languagesPlayerSpeaks isEqualTo []) then {_languagesPlayerSpeaks = ["vn"];};
-        };
-    };
-    _languagesPlayerSpeaks call acre_api_fnc_babelSetSpokenLanguages;
-};
-
-// The below lines are only executed by ZEUS. (event is created for every player, could be moved to initPlayerlocal)
-// When someone controls a unit (zeus), this event handler will be triggered.
-["unit", {
-    params ["_player"];
-    switch ((getNumber (configFile >> "CfgVehicles" >> (typeOf _player) >> "side"))) do {
-        case 0: { ["vn"] call acre_api_fnc_babelSetSpokenLanguages; };          // OPFOR
-        case 1: { ["en"] call acre_api_fnc_babelSetSpokenLanguages; };          // BLUFOR
-        case 2: { ["vn"] call acre_api_fnc_babelSetSpokenLanguages; };          // INDEP
-        case 3: { ["vn"] call acre_api_fnc_babelSetSpokenLanguages; };          // CIVIL
-    };
-}, true] call CBA_fnc_addPlayerEventHandler;
-
 // init removeThrowables on Opfor units
 execVM "functions\init_colsog_removeThrowables.sqf";
 

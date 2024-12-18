@@ -1,9 +1,13 @@
 /*
- * Set all variable on player
+ * Set all variables on player
  * (most are local use only, no broadcast)
  * Executed locally when player joins mission (includes both mission start and JIP)
  *
+ * Called again when player respawn
+ *
  */
+
+if (!hasInterface) exitWith {};
 
  switch ((roleDescription player splitString "@") select 0) do {
 	case "1-0 Squad Leader": {
@@ -20,13 +24,13 @@
 	};
 	case "Chief SOG": {
 		player setVariable ["hasUSface", true];
-		player setVariable ["f_languages",["en", "vn"]];
+		player setVariable ["canSpeak",["en", "vn"]];
 	};
 	case "Pointman": {
-		player setVariable ["f_languages",["en", "vn"]];
+		player setVariable ["canSpeak",["en", "vn"]];
 		player setVariable ["canClimb", true];
 	};
 	default : {
-		player setVariable ["f_languages",["en", "vn"]];
+		player setVariable ["canSpeak",["en", "vn"]];
 	};
 }
