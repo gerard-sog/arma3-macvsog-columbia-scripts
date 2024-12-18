@@ -28,13 +28,9 @@ private _availableAsianHeads = [
     "vn_b_AsianHead_A3_07_09"
 ];
 
-private _playerRole = roleDescription player;
-if (not(["1-0 Squad Leader", _playerRole] call BIS_fnc_inString) &&
-    not(["1-1 RTO", _playerRole] call BIS_fnc_inString) &&
-    not(["1-2 Medic", _playerRole] call BIS_fnc_inString) &&
-    not(["Pilot", _playerRole] call BIS_fnc_inString) &&
-    not(["Chief SOG", _playerRole] call BIS_fnc_inString)) then
-{
+private _hasUSface = player getVariable ["hasUSface", false];
+
+if (!_hasUSface) then {
     private _currentFace = face player;
     if (not (_currentFace in _availableAsianHeads)) then
     {
@@ -42,3 +38,10 @@ if (not(["1-0 Squad Leader", _playerRole] call BIS_fnc_inString) &&
         [player, _randomAsianHead] remoteExec ["setFace", 0, true]; // sets the face of a player to one of the above asian faces (this forces the new asian face and overrides player's default face)
     };
 }
+
+
+//if (not(["1-0 Squad Leader", _playerRole] call BIS_fnc_inString) &&
+//    not(["1-1 RTO", _playerRole] call BIS_fnc_inString) &&
+//    not(["1-2 Medic", _playerRole] call BIS_fnc_inString) &&
+//    not(["Pilot", _playerRole] call BIS_fnc_inString) &&
+//    not(["Chief SOG", _playerRole] call BIS_fnc_inString)) then

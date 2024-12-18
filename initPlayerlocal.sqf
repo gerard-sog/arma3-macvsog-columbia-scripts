@@ -12,6 +12,8 @@
 
 params ["_player", "_didJIP"];
 
+execVM "functions\init\init_colsog_PlayerLocalVar.sqf";
+
 // good safety to wait player has finished downloading the mission, is on map screen, & alive (might need a [] spawn for waitUntil or CBA_fnc_waitUntilAndExecute)
 //
 //if (player != player) then {waitUntil {player == player};};
@@ -22,7 +24,7 @@ player setVariable ["saved_loadout", getUnitLoadout _player];	// sets the defaul
 // set all variable on player
 //
 // f_languages for acre_api_fnc_babelSetSpokenLanguages
-// hasUSfaces for COLSOG_fnc_faces
+// hasUSface for COLSOG_fnc_faces
 //
 // todo: climbing, arma unitTraits
 
