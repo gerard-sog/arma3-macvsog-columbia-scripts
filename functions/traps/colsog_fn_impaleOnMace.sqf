@@ -1,12 +1,25 @@
 /*
+ * Impale victim on mace
+ * 
+ * Arguments:
+ * 0: _unit
+ * 1: _mace
+ *
  * Locality:
- * On player local computer OR on Server if AI.
+ * On local player OR Server if AI
+ *
+ * Example:
+ * [_unit, _mace] execVM "functions\traps\colsog_fn_impaleOnMace.sqf"; when called from the unit
+ *
+ * [[_unit, _mace], "functions\traps\colsog_fn_impaleOnMace.sqf"] remoteExec ["execVM", owner _unit, false]; // when called from another machine
+ *
+ * Return values:
+ * None
+ *
  */
 
-// *******************************************************
-// Lower mace to ground to end physics so physics no longer eating CPU.
-// *******************************************************
 params ["_unit", "_mace"];
+
 private _directionTo = ([_unit, _mace] call BIS_fnc_dirTo);
 private _unitFacingMace = false;
 if ([position _unit, _directionTo, 180, position _mace] call BIS_fnc_inAngleSector) then

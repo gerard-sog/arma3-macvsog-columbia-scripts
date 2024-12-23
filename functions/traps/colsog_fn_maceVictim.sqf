@@ -1,12 +1,25 @@
 /*
+ * Attach victim to mace and play various fx (sound, blood, etc.)
+ * 
+ * Arguments:
+ * 0: _unit
+ * 1: _mace
+ * 2: _trapDirection
+ * 3: _trapPosition
+ *
  * Locality:
- * On player local computer OR on Server if AI.
+ * On local player OR Server if AI
+ *
+ * Example:
+ * [[_unit, _mace, _trapDirection, _trapPosition], "functions\traps\colsog_fn_maceVictim.sqf"] remoteExec ["execVM", owner _unit, false];
+ *
+ * Return values:
+ * None
+ *
  */
 
-// *******************************************************
-// Attach victim to mace and play various fx (sound, blood, etc.)
-// *******************************************************
 params ["_unit", "_mace", "_trapDirection", "_trapPosition"];
+
 private _group = group _unit;
 private _directionTo = ([_unit, _mace] call BIS_fnc_dirTo);
 if ([position _unit, _directionTo, 180, position _mace] call BIS_fnc_inAngleSector) then
@@ -129,4 +142,4 @@ if (colsog_traps_screamingEnable) then {
     [_mace, selectRandom vn_us_death_screams] remoteExecCall ["say3D", 0, false]; // victim screams
 };
 
-uiSleep 30;
+// uiSleep 30; probably useless
