@@ -327,4 +327,61 @@ class vn_artillery_settings
                         };
                 };
         };
+        class transport
+        {
+                class eleven_seats
+                {
+                        displayname = $STR_VN_ARTILLERY_TRANSPORT_ELEVEN_SEATS_NAME;
+                        class rutledge_1
+                        {
+                                displayname = $STR_VN_ARTILLERY_RUTLEDGE_NAME;
+                                //icon = "vn\ui_f_vietnam\data\decals\";
+                                description = $STR_VN_ARTILLERY_TRANSPORT_CH3D_DESCRIPTION;
+                                vehicleclass = "vn_i_air_ch34_02_02";
+                                hook = 1;
+                                cooldown = (60*5);
+                                cost = 0;
+                        };
+                        class pestkiller_1
+                        {
+                                displayname = $STR_VN_ARTILLERY_PESTKILLER_NAME;
+                                //icon = "vn\ui_f_vietnam\data\decals\";
+                                description = $STR_VN_ARTILLERY_TRANSPORT_CH3D_DESCRIPTION;
+                                vehicleclass = "vn_i_air_ch34_02_02";
+                                hook = 1;
+                                cooldown = (60*5);
+                                cost = 0;
+                        };
+                        class evileyes_1
+                        {
+                                displayname = $STR_VN_ARTILLERY_EVILEYES_NAME;
+                                //icon = "vn\ui_f_vietnam\data\decals\";
+                                description = $STR_VN_ARTILLERY_TRANSPORT_CH3D_DESCRIPTION;
+                                vehicleclass = "vn_i_air_ch34_02_02";
+                                hook = 1;
+                                cooldown = (60*5);
+                                cost = 0;
+                        };
+                        class thandieu_1
+                        {
+                                displayname = $STR_VN_ARTILLERY_THANDIEU_NAME;
+                                //icon = "vn\ui_f_vietnam\data\decals\";
+                                description = $STR_VN_ARTILLERY_TRANSPORT_CH3D_DESCRIPTION;
+                                vehicleclass = "vn_i_air_ch34_02_02";
+                                hook = 1;
+                                cooldown = (60*5);
+                                cost = 0;
+                        };
+                        class kingbee_1
+                        {
+                                displayname = $STR_VN_ARTILLERY_KINGBEE_NAME;
+                                //icon = "vn\ui_f_vietnam\data\decals\";
+                                description = $STR_VN_ARTILLERY_TRANSPORT_CH3D_DESCRIPTION;
+                                vehicleclass = "vn_i_air_ch34_02_02";
+                                hook = 1;
+                                cooldown = (60*5);
+                                cost = 0;
+                        };
+                };
+        };
 };
