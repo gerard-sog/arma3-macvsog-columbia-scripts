@@ -17,11 +17,6 @@
         private _playerPos = getPos player;
         player setPos [_playerPos select 0, _playerPos select 1, 0];
 
-        // remote-executes hideObjectGlobal from a client to the server
-        [player, false] remoteExec ["hideObjectGlobal", 2];
-
-        player switchMove "";
-
         player setVariable ["COLSOG_isUpInTree", false, false];
     },
     {},

@@ -49,14 +49,11 @@ if (player distance2D _object > 7) exitWith {
         private _xyzTreeDimension = _object call BIS_fnc_boundingBoxDimensions;
         private _treeHeight = (_xyzTreeDimension select 1) + _treeHeightCorrection;
 
-        private _invisibleBarrier = createVehicle ["Land_InvisibleBarrier_F", getPos player vectorAdd [0, 0, _treeHeight]];
+        private _invisibleBarrier = createVehicle ["Land_vn_o_platform_04", getPos player vectorAdd [0, 0, _treeHeight]];
         private _playerPos = getPos player;
         _invisibleBarrier setPos [_playerPos select 0, _playerPos select 1, _treeHeight + 2];
-        player setPos (getPos _invisibleBarrier vectorAdd [0, 0, 1]);
-        player switchMove "HubSpectator_stand";
 
-        // remote-executes hideObjectGlobal from a client to the server
-        [player, true] remoteExec ["hideObjectGlobal", 2];
+        player setPos (getPos _invisibleBarrier vectorAdd [0, 0, 1]);
 
         player setVariable ["COLSOG_isUpInTree", true, false];
         player setVariable ["COLSOG_invisibleBarrier", _invisibleBarrier, false];
