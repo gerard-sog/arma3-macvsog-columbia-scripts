@@ -13,8 +13,37 @@
 params [["_pos", [0, 0, 0] , [[]], 3], ["_location", objNull, [objNull]]];
 
 private _onConfirm = {
-    params ["_dialogResult"];
-    _dialogResult params ["_activateCycle", "_dawnNotUsed", "_dawnTimeAcceleration", "_dayTimeAcceleration", "_duskNotUsed", "_duskTimeAcceleration", "_nightTimeAcceleration"];
+    params ["_dialogResult", "_dawnTime"];
+    _dialogResult params ["_activateCycle", "_dawnNotUsed", "_dawnTimeAcceleration", "_dayTimeAcceleration", "_duskNotUsed", "_duskTimeAcceleration", "_nightTimeAcceleration", "_skiptofirstlight"];
+
+    if (_skiptofirstlight) then {
+        // spawn date change to _dawnTime
+        [ 
+            [_dawnTime], {
+            
+                params ["_dawnTime"];
+
+                private _idLayer1 = ["Text1Display"] call BIS_fnc_rscLayer;
+                _idLayer1 cutText ["", "BLACK OUT", 1];
+                uiSleep 1;
+
+                date params ["_year", "_month", "_day", "_hours", "_minutes"];
+
+                if (_hours > 12) then {
+                    _day = _day + 1;
+                };
+
+                _hours = floor _dawnTime;
+                _minutes = round ((_dawnTime - (floor _dawnTime)) * 60);
+
+                setDate [_year, _month, _day, _hours, _minutes]; // shitty performance rework with CBA server event
+
+                uiSleep 4;
+                _idLayer1 cutText ["", "BLACK IN", 1];
+
+            }
+        ] remoteExecCall ["spawn", 0, false];
+    };
 
     if ((missionNamespace getVariable "colsog_dayAndNight_dawnTimeAcceleration") != _dawnTimeAcceleration) then {
         missionNamespace setVariable ["colsog_dayAndNight_dawnTimeAcceleration", _duskTimeAcceleration, true];
@@ -72,8 +101,10 @@ private _duskTimeInHourMinuteFormat = format [">>>> Dusk: from %1h%2m to %3h%4m"
 		["SLIDER", "Day Time Acceleration", [0, 120, colsog_dayAndNight_dayTimeAcceleration, 0], true],
         ["LIST", [_duskTimeInHourMinuteFormat], [[false], [""], 0, 0]],
 		["SLIDER", "Dusk Time Acceleration", [0, 120, colsog_dayAndNight_duskTimeAcceleration, 0], true],
-		["SLIDER", "Night Time Acceleration", [0, 120, colsog_dayAndNight_nightTimeAcceleration, 0], true]
+		["SLIDER", "Night Time Acceleration", [0, 120, colsog_dayAndNight_nightTimeAcceleration, 0], true],
+        ["TOOLBOX:YESNO", "Skip to first light", [false], true]
 	],
 	_onConfirm,
-	{}
+	{},
+    _dawnTime
 ] call zen_dialog_fnc_create;
