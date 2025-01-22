@@ -112,5 +112,5 @@ private _dialogTitle = format ["Day/Night Cycle: %1-%2-%3 - %4 - %5", date#0, da
 	],
 	_onConfirm,
 	{},
-    _dawnTime
+    _dawnBeforeTime
 ] call zen_dialog_fnc_create;
