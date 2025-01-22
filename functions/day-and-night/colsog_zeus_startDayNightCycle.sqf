@@ -80,8 +80,6 @@ private _onConfirm = {
     [_callerID] remoteExec ["COLSOG_fnc_startCycle", 2];
 };
 
-private _dialogTitle = format ["Day/Night Cycle: %1-%2-%3 / %4H%5", date select 0, date select 1, date select 2, date select 3, date select 4];
-
 private _sunriseSunsetTime = date call BIS_fnc_sunriseSunsetTime;
 private _sunriseTime = (_sunriseSunsetTime select 0);
 private _sunsetTime = (_sunriseSunsetTime select 1);
@@ -91,6 +89,12 @@ private _dawnTimeInHourMinuteFormat = format [">>>> Dawn: from %1h%2m to %3h%4m"
 
 private _duskTime = _sunsetTime - (colsog_dayAndNight_duskDuration / 60);
 private _duskTimeInHourMinuteFormat = format [">>>> Dusk: from %1h%2m to %3h%4m", floor _duskTime, round ((_duskTime - (floor _duskTime)) * 60), floor _sunsetTime, round ((_sunsetTime - (floor _sunsetTime)) * 60)];
+
+private _sunsetTimeString = format ["Sunset: %1h%2m",floor _sunsetTime, round ((_sunsetTime - (floor _sunsetTime)) * 60)];
+private _sunriseTimeString = format ["Sunrise: %1h%2m",floor _sunriseTime, round ((_sunriseTime - (floor _sunriseTime)) * 60)];
+
+private _dialogTitle = format ["Day/Night Cycle: %1-%2-%3 - %4 - %5", date#0, date#1, date#2, _sunsetTimeString, _sunriseTimeString];
+
 
 [
 	_dialogTitle, 
