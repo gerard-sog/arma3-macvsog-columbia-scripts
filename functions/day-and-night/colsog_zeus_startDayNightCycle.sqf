@@ -46,7 +46,7 @@ private _onConfirm = {
     };
 
     if ((missionNamespace getVariable "colsog_dayAndNight_dawnTimeAcceleration") != _dawnTimeAcceleration) then {
-        missionNamespace setVariable ["colsog_dayAndNight_dawnTimeAcceleration", _duskTimeAcceleration, true];
+        missionNamespace setVariable ["colsog_dayAndNight_dawnTimeAcceleration", _dawnTimeAcceleration, true];
         systemChat "Changed DawnTime Acceleration: " + str (_dawnTimeAcceleration);
     };
 
