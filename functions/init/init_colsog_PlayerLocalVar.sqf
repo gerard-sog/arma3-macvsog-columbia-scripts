@@ -13,7 +13,7 @@ private _playerRole = roleDescription player;
 if (["Chief SOG", _playerRole] call BIS_fnc_inString) exitWith {
     player setVariable ["hasUsface", true];
     player setUnitTrait ["vn_artillery", true, true];
-    player setVariable ["canReadIntel", true, true];
+    player setVariable ["canReadIntel", true];
 }
 if (["Pilot", _playerRole] call BIS_fnc_inString) exitWith {
     player setVariable ["hasUsface", true];
@@ -22,20 +22,20 @@ if (["Pilot", _playerRole] call BIS_fnc_inString) exitWith {
 if (["0-1 Team Leader", _playerRole] call BIS_fnc_inString) exitWith {
     player setVariable ["canSpeak", ["en", "vn"]];
     player setVariable ["canClimb", true];
-    player setVariable ["canReadIntel", true, true];
+    player setVariable ["canReadIntel", true];
 }
 if (["0-2 Machine Gunner", _playerRole] call BIS_fnc_inString) exitWith {
     player setVariable ["canSpeak", ["en", "vn"]];
-    player setVariable ["canReadIntel", true, true];
+    player setVariable ["canReadIntel", true];
 }
 if (["0-3 Grenadier", _playerRole] call BIS_fnc_inString) exitWith {
     player setVariable ["canSpeak", ["en", "vn"]];
-    player setVariable ["canReadIntel", true, true];
+    player setVariable ["canReadIntel", true];
 }
 if (["0-4 Point man", _playerRole] call BIS_fnc_inString) exitWith {
     player setVariable ["canSpeak", ["en", "vn"]];
     player setVariable ["canClimb", true];
-    player setVariable ["canReadIntel", true, true];
+    player setVariable ["canReadIntel", true];
 }
 if (["1-0 Squad Leader", _playerRole] call BIS_fnc_inString) exitWith {
     player setVariable ["hasUsface", true];
