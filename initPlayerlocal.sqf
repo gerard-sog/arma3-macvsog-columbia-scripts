@@ -13,7 +13,7 @@
 params ["_player", "_didJIP"];
 
 _handle = [] execVM "functions\init\init_colsog_PlayerLocalVar.sqf"; // player exists we can set variables on object player
-waitUntil{ scriptDone _handle };
+waitUntil { scriptDone _handle };
 
 // ACRE BABEL config
 colsog_available_languages = [["en", "English"], ["vn", "Vietnamese"]];

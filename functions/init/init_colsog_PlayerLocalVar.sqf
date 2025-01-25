@@ -49,4 +49,4 @@ switch ((roleDescription player splitString "@") select 0) do {
     default {
         player setVariable ["canSpeak",["en", "vn"]];
     };
-}
+};
