@@ -32,6 +32,7 @@ private _availableAsianHeads = [
 
 private _hasUsface = player getVariable ["hasUsface", false];
 
+systemChat str _hasUsface;
 if (!_hasUsface) then {
     private _currentFace = face player;
     if (not (_currentFace in _availableAsianHeads)) then
