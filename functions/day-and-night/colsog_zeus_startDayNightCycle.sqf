@@ -35,6 +35,7 @@ private _onConfirm = {
 
                 _hours = floor _dawnTime;
                 _minutes = round ((_dawnTime - (floor _dawnTime)) * 60);
+                _minutes = _minutes - 3; // substract 3min so night/dawn feedback can trigger
 
                 setDate [_year, _month, _day, _hours, _minutes]; // shitty performance rework with CBA server event
 
@@ -89,7 +90,7 @@ private _dawnAfterTime = _sunriseTime + (colsog_dayAndNight_dawnDuration / 60);
 private _dawnTimeInHourMinuteFormat = format [">>>> Dawn: from %1h%2m to %3h%4m", floor _dawnBeforeTime, round ((_dawnBeforeTime - (floor _dawnBeforeTime)) * 60), floor _dawnAfterTime, round ((_dawnAfterTime - (floor _dawnAfterTime)) * 60)];
 
 private _duskBeforeTime = _sunsetTime - (colsog_dayAndNight_duskDuration / 60);
-private _duskAfterTime = _sunsetTime - (colsog_dayAndNight_duskDuration / 60);
+private _duskAfterTime = _sunsetTime + (colsog_dayAndNight_duskDuration / 60);
 private _duskTimeInHourMinuteFormat = format [">>>> Dusk: from %1h%2m to %3h%4m", floor _duskBeforeTime, round ((_duskBeforeTime - (floor _duskBeforeTime)) * 60), floor _duskAfterTime, round ((_duskAfterTime - (floor _duskAfterTime)) * 60)];
 
 private _sunsetTimeString = format ["Sunset: %1h%2m",floor _sunsetTime, round ((_sunsetTime - (floor _sunsetTime)) * 60)];
