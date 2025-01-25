@@ -10,24 +10,20 @@
 if (!hasInterface) exitWith {};
 
 switch ((roleDescription player splitString "@") select 0) do {
-    case "1-0 Squad Leader": {
-        player setVariable ["hasUsface", true];
-    };
-    case "1-1 RTO": {
-        player setVariable ["hasUsface", true];
-    };
-    case "1-2 Medic": {
-        player setVariable ["hasUsface", true];
-    };
-    case "Pilot": {
-        player setVariable ["hasUsface", true];
-        player setVariable ["canMonitorSensor", true];
-    };
+    // HQ
     case "Chief SOG": {
         player setVariable ["hasUsface", true];
         player setUnitTrait ["vn_artillery", true, true];
         player setVariable ["canReadIntel", true];
     };
+
+    // Pilots
+    case "Pilot": {
+        player setVariable ["hasUsface", true];
+        player setVariable ["canMonitorSensor", true];
+    };
+
+    // Columbia
     case "0-1 Team Leader": {
         player setVariable ["canSpeak", ["en", "vn"]];
         player setVariable ["canClimb", true];
@@ -46,6 +42,17 @@ switch ((roleDescription player splitString "@") select 0) do {
         player setVariable ["canClimb", true];
         player setVariable ["canReadIntel", true];
     };
+    case "1-0 Squad Leader": {
+        player setVariable ["hasUsface", true];
+    };
+    case "1-1 RTO": {
+        player setVariable ["hasUsface", true];
+    };
+    case "1-2 Medic": {
+        player setVariable ["hasUsface", true];
+    };
+
+    // Reserves
     default {
         player setVariable ["canSpeak",["en", "vn"]];
     };
