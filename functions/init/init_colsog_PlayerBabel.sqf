@@ -8,8 +8,7 @@
 
 if (!hasInterface) exitWith {};
 
-//_languagesPlayerSpeaks = player getVariable ["f_languages", []]; // get old var from eden
-_languagesPlayerSpeaks = player getVariable ["canSpeak", []]; // get old var from eden
+_languagesPlayerSpeaks = player getVariable ["canSpeak", []];
 
 switch (playerSide) do {
 case west: {

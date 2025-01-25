@@ -22,10 +22,6 @@ colsog_available_languages = [["en", "English"], ["vn", "Vietnamese"]];
 // exec only for players https://github.com/IDI-Systems/acre2/blob/master/addons/api/fnc_babelAddLanguageType.sqf#L20
 
 // Safety to be sure player has finished downloading the mission, is on map screen, alive (inventory loaded, acre initialized)
-//
-//if (player != player) then {waitUntil {player == player};};
-//if (!alive player) then {waitUntil {alive player};};
-
 [
 	{_this == _this}, // waitUntil {player == player}
 	{

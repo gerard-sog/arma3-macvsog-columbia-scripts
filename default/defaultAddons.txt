@@ -706,7 +706,6 @@ force colsog_battery_prc77Capacity = 480;
 force colsog_climbing_requiredItem = "ACE_rope18";
 force colsog_climbing_timeToClimbDown = 5;
 force colsog_climbing_timeToClimbUp = 15;
-force colsog_climbing_unitsAllowedToClimbTrees = "Point man,Team Leader";
 force colsog_dayAndNight_dawnDuration = 30;
 force colsog_dayAndNight_dawnTimeAcceleration = 8;
 force colsog_dayAndNight_dayTimeAcceleration = 12;
