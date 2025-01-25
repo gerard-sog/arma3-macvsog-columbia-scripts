@@ -6,12 +6,12 @@
  * see https://cbateam.github.io/CBA_A3/docs/files/settings/fnc_addSetting-sqf.html
  */
 
-#define CBA_SETTINGS_COLSOG "COLSOG Settings"
 #define CBA_SETTINGS_COLSOG_SENSORS "COLSOG Sensors"
 #define CBA_SETTINGS_COLSOG_RADIO_AND_BATTERY "COLSOG Radio and Battery"
 #define CBA_SETTINGS_COLSOG_PRAIRIE_FIRE_MODULE "COLSOG Prairie Fire Module"
 #define CBA_SETTINGS_COLSOG_AI_ENV_RELATED "COLSOG AI and ENV related"
 #define CBA_SETTINGS_COLSOG_MISCELLANEOUS "COLSOG Miscellaneous"
+#define CBA_SETTINGS_COLSOG_MEDICAL_AND_SUPPLY "COLSOG Medical and Supply"
 
 // ========================================
 // |CBA_SETTINGS_COLSOG_MEDICAL_AND_SUPPLY|
