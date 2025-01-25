@@ -16,7 +16,7 @@
 
 #define SENSOR_DATA "COLSOG_sensorData"
 #define SENSOR_LAST_ENTRY_TIME "COLSOG_sensorLastEntryTime"
-#define SENSOR_IS_LISTENING_TO_SENSOR "COLSOG_isListeningToSensor"
+#define CAN_MONITOR_SENSOR "canMonitorSensor"
 
 params ["_sensor", ["_eventType", "EVENT"], ["_colorCode", "#000000"], ["_eventData", " - "], ["_transmitDataOverRadio", false], ["_radioTransmissionRange", 1000], ["_logFrequency", 5]];
 
@@ -36,7 +36,7 @@ _sensor setVariable [SENSOR_DATA, _newData, true];
 if (_transmitDataOverRadio) then
 {
     {
-    	private _isListeningToSensor = _x getVariable [SENSOR_IS_LISTENING_TO_SENSOR, false];
+    	private _isListeningToSensor = _x getVariable [CAN_MONITOR_SENSOR, false];
     	if ((_isListeningToSensor) AND (_x distance _sensor < _radioTransmissionRange)) then
     	{
             [_x, ["Diary", ["Received over radio", _newEvent]]] remoteExec ["createDiaryRecord", _x];

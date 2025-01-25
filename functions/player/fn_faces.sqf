@@ -30,9 +30,9 @@ private _availableAsianHeads = [
     "vn_b_AsianHead_A3_07_09"
 ];
 
-private _hasUSface = player getVariable ["hasUSface", false];
+private _hasUsface = player getVariable ["hasUsface", false];
 
-if (!_hasUSface) then {
+if (!_hasUsface) then {
     private _currentFace = face player;
     if (not (_currentFace in _availableAsianHeads)) then
     {

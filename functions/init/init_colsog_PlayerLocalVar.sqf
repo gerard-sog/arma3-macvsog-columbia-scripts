@@ -9,32 +9,42 @@
 
 if (!hasInterface) exitWith {};
 
-switch ((roleDescription player splitString "@") select 0) do {
-	case "Chief SOG": {
-		player setVariable ["hasUSface", true];
-		player setUnitTrait ["vn_artillery", true, true];
-	};
-	case "Pilot": {
-		player setVariable ["hasUSface", true];
-	};
-	case "1-0 Squad Leader": {
-		player setVariable ["hasUSface", true];
-	};
-	case "1-1 RTO": {
-		player setVariable ["hasUSface", true];
-	};
-	case "1-2 Medic": {
-		player setVariable ["hasUSface", true];
-	};
-	case "0-1 Team Leader": {
-		player setVariable ["canSpeak", ["en", "vn"]];
-		player setVariable ["canClimb", true];
-	};
-	case "0-4 Point man": {
-		player setVariable ["canSpeak", ["en", "vn"]];
-		player setVariable ["canClimb", true];
-	};
-	default {
-		player setVariable ["canSpeak", ["en", "vn"]];
-	};
-};
+private _playerRole = roleDescription player;
+if (["Chief SOG", _playerRole] call BIS_fnc_inString) exitWith {
+    player setVariable ["hasUsface", true];
+    player setUnitTrait ["vn_artillery", true, true];
+    player setVariable ["canReadIntel", true, true];
+}
+if (["Pilot", _playerRole] call BIS_fnc_inString) exitWith {
+    player setVariable ["hasUsface", true];
+    player setVariable ["canMonitorSensor", true];
+}
+if (["0-1 Team Leader", _playerRole] call BIS_fnc_inString) exitWith {
+    player setVariable ["canSpeak", ["en", "vn"]];
+    player setVariable ["canClimb", true];
+    player setVariable ["canReadIntel", true, true];
+}
+if (["0-2 Machine Gunner", _playerRole] call BIS_fnc_inString) exitWith {
+    player setVariable ["canSpeak", ["en", "vn"]];
+    player setVariable ["canReadIntel", true, true];
+}
+if (["0-3 Grenadier", _playerRole] call BIS_fnc_inString) exitWith {
+    player setVariable ["canSpeak", ["en", "vn"]];
+    player setVariable ["canReadIntel", true, true];
+}
+if (["0-4 Point man", _playerRole] call BIS_fnc_inString) exitWith {
+    player setVariable ["canSpeak", ["en", "vn"]];
+    player setVariable ["canClimb", true];
+    player setVariable ["canReadIntel", true, true];
+}
+if (["1-0 Squad Leader", _playerRole] call BIS_fnc_inString) exitWith {
+    player setVariable ["hasUsface", true];
+}
+if (["1-1 RTO", _playerRole] call BIS_fnc_inString) exitWith {
+    player setVariable ["hasUsface", true];
+}
+if (["1-2 Medic", _playerRole] call BIS_fnc_inString) exitWith {
+    player setVariable ["hasUsface", true];
+}
+// Default
+player setVariable ["canSpeak", ["en", "vn"]];
