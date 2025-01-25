@@ -7,7 +7,7 @@
 
 params ["_player"];
 
-private _isIntelExpert = _player getVariable ["COLSOG_intelExpert", !(colsog_intel_intelExpertRequired)];
+private _isIntelExpert = _player getVariable ["canReadIntel", !(colsog_intel_intelExpertRequired)];
 
 if (_isIntelExpert) then {
     _player removeItem colsog_intel_inventoryItem;
