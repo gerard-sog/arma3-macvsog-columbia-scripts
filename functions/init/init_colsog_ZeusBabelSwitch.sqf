@@ -18,5 +18,4 @@ if (!hasInterface) exitWith {};
         case 2: { ["vn"] call acre_api_fnc_babelSetSpokenLanguages; };		// INDEP
         case 3: { ["vn"] call acre_api_fnc_babelSetSpokenLanguages; };		// CIVIL
     };
-	systemChat "Babel switch triggered";
 }, false] call CBA_fnc_addPlayerEventHandler; // _applyRetroactively false or it fires immediately 
