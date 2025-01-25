@@ -21,7 +21,7 @@ _climbTree = [
 
 		private _canClimb = player getVariable ["canClimb", false];
 
-        _result = (_hasItem AND canClimb AND !_isPlayerInTree);
+        _result = (_hasItem AND _canClimb AND !_isPlayerInTree);
         _result
 	}
 ] call ace_interact_menu_fnc_createAction;

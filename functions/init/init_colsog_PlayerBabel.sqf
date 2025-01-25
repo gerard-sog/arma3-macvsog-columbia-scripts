@@ -26,5 +26,3 @@ case civilian: {
 	};
 };
 _languagesPlayerSpeaks call acre_api_fnc_babelSetSpokenLanguages;
-
-systemChat str _languagesPlayerSpeaks;
