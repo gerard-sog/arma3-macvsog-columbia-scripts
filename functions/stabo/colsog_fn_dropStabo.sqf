@@ -23,6 +23,9 @@ _parentHelicopter setVariable ["COLSOG_staboRope", _staboRope, true];
         (getPos (_this select 0) select 2) <= 0.25 ;
     },
     {
+        private _crew = crew (_this select 1);
+        ["Sandbag touching ground!", -1, 1, 2, 0] remoteExec ["BIS_fnc_dynamicText", _crew];
+
         [(_this select 0), true] remoteExec ["hideObjectGlobal", 2];
 
         private _frozenDroppedSandbag = "vn_prop_sandbag_01" createVehicle (getPosATL (_this select 0));
@@ -74,9 +77,12 @@ _parentHelicopter setVariable ["COLSOG_staboRope", _staboRope, true];
         [
             {
                 // Delayed HoldActionAdd until sandbag touches ground (a bit more long than the rope itself to avoid rope breaking when sandbag touches the ground).
-                ((_this select 0) distance (_this select 1)) >= 55;
+                ((_this select 0) distance (_this select 1)) >= (colsog_stabo_ropeLength + 5);
             },
             {
+                private _crew = crew (_this select 1);
+                ["Rope broke!", -1, 1, 2, 0] remoteExec ["BIS_fnc_dynamicText", _crew];
+
                 // If rope already detached, we exit and do not execute this script.
                 if (not ((_this select 1) getVariable "COLSOG_staboRopeDeployed")) exitWith {};
 
