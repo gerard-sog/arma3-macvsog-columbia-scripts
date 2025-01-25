@@ -38,12 +38,14 @@ COLSOG_PFHdaynight = [
         private _actualTimeMultiplier = timeMultiplier;
 
         private _sunriseSunsetTime = date call BIS_fnc_sunriseSunsetTime;
+		private _sunriseTime = (_sunriseSunsetTime select 0);
+		private _sunsetTime = (_sunriseSunsetTime select 1);
 
-        private _dayTime = _sunriseSunsetTime select 0;
-        private _dawnTime = _dayTime - (colsog_dayAndNight_dawnDuration / 60);
+        private _dayTime = _sunriseTime + (colsog_dayAndNight_dawnDuration / 60);
+        private _dawnTime = _sunriseTime - (colsog_dayAndNight_dawnDuration / 60);
 
-        private _nightTime = _sunriseSunsetTime select 1;
-        private _duskTime = _nightTime - (colsog_dayAndNight_duskDuration / 60);
+        private _nightTime = _sunsetTime + (colsog_dayAndNight_duskDuration / 60);
+        private _duskTime = _sunsetTime - (colsog_dayAndNight_duskDuration / 60);
 
 		// Dawn.
         private _isDawn = (_actualTime >= _dawnTime) && (_actualTime < _dayTime);
