@@ -1,5 +1,5 @@
 /*
- * Manage attack logic for bayonet charge.
+ * Manage moving logic for bayonet charge.
  *
  * Arguments:
  * 0: AI group attacking (Object)
@@ -13,10 +13,10 @@ params ["_attacker", "_target", "_currentWaypointPos"];
 
 private _targetMovedAwayFromLastPos = _currentWaypointPos distanceSqr (getPos _target) > 3;
 if (_targetMovedAwayFromLastPos) then {
-    systemChat "moving";
+    "moving" remoteExec ["systemChat", 0];
     _currentWaypointPos = getPos _target;
     _attacker move _currentWaypointPos;
 } else {
-    systemChat "continue moving...";
+    "continue moving..." remoteExec ["systemChat", 0];
 };
 _currentWaypointPos;

@@ -10,7 +10,7 @@
 
 params ["_attacker", "_target"];
 
-systemChat "attack";
+"attack" remoteExec ["systemChat", 0];
 private _leader = leader _attacker;
 
 _leader playActionNow selectRandom ["vn_bayonet_bayonetstrike","vn_bayonet_buttstrike"];

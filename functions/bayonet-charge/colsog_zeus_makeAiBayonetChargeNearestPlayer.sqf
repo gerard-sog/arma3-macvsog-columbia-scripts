@@ -28,21 +28,23 @@ private _unitGroup = group _unit;
     [_x] join grpNull;
     private _newGroup = group _x;
 
-    // Unit setup (remove ammo, sprint mode, etc.)
-    _rifle = primaryWeapon _x;
-    removeAllWeapons _x;
-    _x addWeapon _rifle;
-    _x setUnitPos "UP";
-    _x disableAI "FSM";
-    _x setBehaviour "AWARE";
-    _x allowFleeing 0;
-    _x forceSpeed (_closestTarget getSpeed "FAST");
-    _x doTarget _closestTarget;
-
     [
         [_newGroup, _closestTarget],
         {
             params ["_attacker", "_target"];
+
+            _leader = leader _attacker;
+
+            // Unit setup (remove ammo, sprint mode, etc.)
+            _rifle = primaryWeapon _leader;
+            removeAllWeapons _leader;
+            _leader addWeapon _rifle;
+            _leader setUnitPos "UP";
+            _leader disableAI "FSM";
+            _leader setBehaviour "AWARE";
+            _leader allowFleeing 0;
+            _leader forceSpeed (_target getSpeed "FAST");
+            _leader doTarget _target;
 
             private _stop = false;
             private _currentWaypointPos = [0, 0, 0];
@@ -64,13 +66,12 @@ private _unitGroup = group _unit;
                     if (isNull _target) then {
                         _stop = true;
                     } else {
-                        systemChat "switching target";
+                        "switching target" remoteExec ["systemChat", 0];
                     };
                 };
             };
 
-            systemChat "end";
+            "end" remoteExec ["systemChat", 0];
         }
     ] remoteExecCall ["spawn", 2, false];
-
 } foreach units _unitGroup;
