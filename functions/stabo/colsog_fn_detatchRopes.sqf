@@ -11,4 +11,7 @@ ropeDestroy _rope;
 // get sandbag created from parent helicopter
 private _sandbag = _parentHelicopter getVariable "COLSOG_staboSandbag";
 
+// reset the parent helicopter on sandbag (needed for ace unconconscious loading)
+_sandbag setVariable ["COLSOG_staboParentHelicopter", nil, true];
+
 [_sandbag, 0] remoteExec["removeAction"];
