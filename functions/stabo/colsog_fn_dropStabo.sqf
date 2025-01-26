@@ -96,6 +96,9 @@ _parentHelicopter setVariable ["COLSOG_staboRope", _staboRope, true];
                 // get sandbag created from parent helicopter
                 private _sandbag = (_this select 1) getVariable "COLSOG_staboSandbag";
 
+                // reset the parent helicopter on sandbag (needed for ace unconconscious loading)
+                (_this select 0) setVariable ["COLSOG_staboParentHelicopter", nil, true];
+
                 [_sandbag, 0] remoteExec["removeAction"];
             },
             [_frozenDroppedSandbag, _this select 1]

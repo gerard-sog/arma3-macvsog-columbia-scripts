@@ -61,4 +61,9 @@ class COLSOG {
         file ="functions\day-and-night";
         class startCycle {};
     }
+    class Stabo
+    {
+        file ="functions\stabo";
+        class addStaboLoadUnconAction {postInit = 1;};
+    };
 }
