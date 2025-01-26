@@ -66,5 +66,6 @@ class COLSOG {
         file ="functions\bayonet-charge";
         class attackAi {};
         class moveAi {};
+        class getClosestTarget {};
     }
 }

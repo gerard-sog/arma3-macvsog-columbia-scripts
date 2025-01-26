@@ -20,13 +20,13 @@ if (isNull _unit || not (_unit isKindOf "CAManBase")) exitWith {
 private _unitGroup = group _unit;
 
 {
+    private _closestTarget = [_x] call COLSOG_fnc_getClosestTarget;
+    if (isNull _closestTarget) exitWith {
+        systemChat "No player in a 500m radius";
+    };
+
     [_x] join grpNull;
     private _newGroup = group _x;
-
-    private _unitPos = getPos _x;
-    private _playerList = allPlayers apply {[_unitPos distanceSqr _x, _x]};
-    _playerList sort true;
-    private _closestPlayer = (_playerList select 0) param [1, objNull];
 
     // Unit setup (remove ammo, sprint mode, etc.)
     _rifle = primaryWeapon _x;
@@ -36,25 +36,36 @@ private _unitGroup = group _unit;
     _x disableAI "FSM";
     _x setBehaviour "AWARE";
     _x allowFleeing 0;
-    _x forceSpeed (_closestPlayer getSpeed "FAST");
-    _x doTarget _closestPlayer;
+    _x forceSpeed (_closestTarget getSpeed "FAST");
+    _x doTarget _closestTarget;
 
     [
-        [_newGroup, _closestPlayer],
+        [_newGroup, _closestTarget],
         {
-            params ["_attackers", "_target"];
+            params ["_attacker", "_target"];
 
+            private _stop = false;
             private _currentWaypointPos = [0, 0, 0];
 
-            while {({ alive _x } count units _attackers != 0) && (alive _target || lifeState _target != "INCAPACITATED")} do {
+            while {(({ alive _x } count units _attacker != 0) && (!_stop))} do {
                 sleep 1;
 
-                private _distanceToTarget = (leader _attackers) distance _target;
+                private _distanceToTarget = (leader _attacker) distance _target;
 
                 if (_distanceToTarget > 3) then {
-                    _currentWaypointPos = [_attackers, _target, _currentWaypointPos] call COLSOG_fnc_moveAi;
+                    _currentWaypointPos = [_attacker, _target, _currentWaypointPos] call COLSOG_fnc_moveAi;
                 } else {
-                    [_attackers, _target] call COLSOG_fnc_attackAi;
+                    [_attacker, _target] call COLSOG_fnc_attackAi;
+                };
+
+                // Update targeted player.
+                if (!alive _target || lifeState _target == "INCAPACITATED") then {
+                    _target = [leader _attacker] call COLSOG_fnc_getClosestTarget;
+                    if (isNull _target) then {
+                        _stop = true;
+                    } else {
+                        systemChat "switching target";
+                    };
                 };
             };
 
@@ -63,6 +74,3 @@ private _unitGroup = group _unit;
     ] remoteExecCall ["spawn", 2, false];
 
 } foreach units _unitGroup;
-
-// TODO:
-// - One player killed, choose another player to attack.

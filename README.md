@@ -281,7 +281,9 @@ within a perimeter (it will be 3.5km in our example).
 <summary>2. Punji mace traps</summary>
 
 <h3>Credits</h3>
-- **Johnnyboy** for original implementation of mace trap that my scripts are based on.
+- **Johnnyboy** for original implementation of:
+  - mace trap
+  - bayonet charge
 - **Savage Game Design** for the objects and sound files used by this script.
 
 <h3>HOW TO ADD THESE TRAPS TO YOUR MISSION</h3>
