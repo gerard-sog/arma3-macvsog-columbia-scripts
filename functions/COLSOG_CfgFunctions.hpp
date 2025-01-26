@@ -61,4 +61,11 @@ class COLSOG {
         file ="functions\day-and-night";
         class startCycle {};
     }
+    class BayonetCharge
+    {
+        file ="functions\bayonet-charge";
+        class attackAi {};
+        class moveAi {};
+        class getClosestTarget {};
+    }
 }
