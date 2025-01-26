@@ -12,12 +12,21 @@ _staboLoadUncon = [
 	"Load body",
 	"\a3\modules_f\data\hideterrainobjects\icon_ca.paa",
 	{
-		//call COLSOG_fnc_climbTree;
+		private _frozenDroppedSandbag = nearestObjects [player, ["vn_prop_sandbag_01"], 6];
+
+		private _parentHelicopter = [];
+		{
+			private _parent = _x getVariable "COLSOG_staboParentHelicopter";
+			if (!isNil "_parent") then {
+				_parentHelicopter = _parent;
+			};
+		} forEach _frozenDroppedSandbag;
+
+		[player, _target, _parentHelicopter] call ace_common_fnc_loadPerson;
 	},
 	{
-		private _dropppedsanbbag = nearestObjects [player, ["vn_prop_sandbag_01"], 6];
-        _result
+		true
 	}
 ] call ace_interact_menu_fnc_createAction;
 
-["Man", 1, ["ACE_MainActions"], _staboLoadUncon, true] call ace_interact_menu_fnc_addActionToClass;
+["Man", 0, ["ACE_MainActions"], _staboLoadUncon, true] call ace_interact_menu_fnc_addActionToClass;
