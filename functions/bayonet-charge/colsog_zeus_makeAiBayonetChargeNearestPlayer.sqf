@@ -49,37 +49,11 @@ private _unitGroup = group _unit;
             sleep 1;
 
             private _distanceToTarget = (leader _attackers) distance _target;
+
             if (_distanceToTarget > 3) then {
-                private _targetMovedAwayFromLastPos = _currentWaypointPos distanceSqr (getPos _target) > 3;
-                if (_targetMovedAwayFromLastPos) then {
-                    systemChat "moving";
-                    _currentWaypointPos = getPos _target;
-                    _attackers move _currentWaypointPos;
-                } else {
-                    systemChat "continue moving...";
-                };
+                _currentWaypointPos = [_attackers, _target, _currentWaypointPos] call COLSOG_fnc_moveAi;
             } else {
-                systemChat "attack";
-                private _leader = leader _attackers;
-
-                _leader playActionNow selectRandom ["vn_bayonet_bayonetstrike","vn_bayonet_buttstrike"];
-
-                private _stab_audio = selectRandom ["vn_melee_stab_1","vn_melee_stab_2","vn_melee_stab_3","vn_melee_stab_4","vn_melee_stab_5","vn_melee_stab_6","vn_melee_stab_7","vn_melee_stab_8","vn_melee_stab_9","vn_melee_stab_10","vn_melee_stab_11","vn_melee_stab_12","vn_melee_stab_13","vn_melee_stab_14","vn_melee_stab_15","vn_melee_stab_16"];
-                [_leader, _stab_audio] remoteExecCall ["say3D", 0, false];
-
-                private _bulletType = "B_9x21_Ball";
-                private _bullet = _bulletType createVehicle [10,10,100];
-                _bullet setMass 10;
-                _bullet setVelocity [0,0,0];
-                _bullet setVelocity [0, 0, 50];
-                [_bullet, [_leader, _leader]] remoteExecCall ["setShotParents", 2];
-
-                private _relPos = [0.1, 0, 1.2];
-                if (stance _target == "CROUCH") then {
-                    _relPos = [0.1,0,.8]
-                };
-
-                _bullet setpos (_target modelToWorld _relPos);
+                [_attackers, _target] call COLSOG_fnc_attackAi;
             };
         };
 
