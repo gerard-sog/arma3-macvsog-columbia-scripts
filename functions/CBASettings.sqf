@@ -193,3 +193,6 @@
 ["colsog_climbing_requiredItem", "EDITBOX", ["Required item to climb"], [CBA_SETTINGS_COLSOG_MISCELLANEOUS, "Climbing"], "ACE_rope18", 1, {}, false] call CBA_fnc_addSetting;
 ["colsog_climbing_timeToClimbUp", "SLIDER", ["Time to climb up (sec)"], [CBA_SETTINGS_COLSOG_MISCELLANEOUS, "Climbing"], [0, 60, 15, 0], 1, {}, false] call CBA_fnc_addSetting;
 ["colsog_climbing_timeToClimbDown", "SLIDER", ["Time to climb down (sec)"], [CBA_SETTINGS_COLSOG_MISCELLANEOUS, "Climbing"], [0, 60, 5, 0], 1, {}, false] call CBA_fnc_addSetting;
+
+// Covertop
+["colsog_faces_iscovertops", "CHECKBOX", ["Force all players to vietnamese faces"], [CBA_SETTINGS_COLSOG_MISCELLANEOUS, "Covertops"], false, 1, {}, false] call CBA_fnc_addSetting;

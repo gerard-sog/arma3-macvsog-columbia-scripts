@@ -57,3 +57,8 @@ switch ((roleDescription player splitString "@") select 0) do {
         player setVariable ["canSpeak",["en", "vn"]];
     };
 };
+
+// if covertops flag is set, all players will have vietnamese faces
+if(colsog_faces_iscovertops) then {
+    player setVariable ["hasUsface", false];
+};
