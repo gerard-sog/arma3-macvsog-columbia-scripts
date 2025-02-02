@@ -1,6 +1,6 @@
 # Arma 3 S.O.G. RT Columbia
 
-Compilation of scripts used during multiplayer PVE/PVP mission on Arma 3. Also featuring defaults loadouts and missions as well as providing CBA settings in order to easily update the scripts to your convenience. 
+Compilation of scripts used during multiplayer PVE/PVP mission on Arma 3. Also featuring defaults loadouts and missions as well as providing CBA settings to easily tweak the scripts to your liking. 
 - If you want to contribute to this project, see [CONTRIBUTING.md](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/CONTRIBUTING.md).
 - For demo of scripts, see [RT Columbia - Youtube videos](https://www.youtube.com/@RTColumbia/videos).
 
@@ -13,12 +13,16 @@ Compilation of scripts used during multiplayer PVE/PVP mission on Arma 3. Also f
 - [Features](#features)
 - [RT Columbia mods](#rt-columbia-mods)
 
+---
+
 ## Requirements
 - [Prairie Fire DLC](https://store.steampowered.com/app/1227700/Arma_3_Creator_DLC_SOG_Prairie_Fire/)
 - [CBA_A3](https://steamcommunity.com/workshop/filedetails/?id=450814997)
 - [ace](https://steamcommunity.com/workshop/filedetails/?id=463939057)
 - [ACRE2](https://steamcommunity.com/workshop/filedetails/?id=751965892)
 - [Zeus Enhanced](https://steamcommunity.com/sharedfiles/filedetails/?id=1779063631)
+
+---
 
 ## Installation
 Installation of all the scripts/zeus modules is done by **copying the below files and folder directly into your mission folder** where your **"mission.sqm"** file is located (ex: C:\Users\<user_name>\Documents\Arma 3 - Other Profiles\<profile_name>\missions\KheSanhMission01.vn_khe_sanh).
@@ -28,6 +32,8 @@ Installation of all the scripts/zeus modules is done by **copying the below file
 - [initPlayerlocal.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/initPlayerlocal.sqf) (<i>File</i>)
 - [initServer.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/initServer.sqf) (<i>File</i>)
 - [onPlayerRespawn.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/onPlayerRespawn.sqf) (<i>File</i>)
+
+---
 
 ## Default values
 - Default <b>loadouts</b>:
@@ -50,11 +56,14 @@ Installation of all the scripts/zeus modules is done by **copying the below file
   - [defaultWhitelistArsenal.json](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/arsenals/defaultWhitelistArsenal.json)
   - [defaultPilotWhitelistArsenal.json](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/arsenals/defaultPilotWhitelistArsenal.json)
 
+---
+
 ## Zeus modules
 - A - COLSOG AI
   - **Set AI Skills**: define sub-skills of AI.
   - **Toggle Trackers**: manage Tracker module (behaviour, speed, presence).
   - **Un-Garrison (enable PATH)**: make a unit/group move out of building.
+  - **Bayonet charge**: make a unit/group rush closest target and only use bayonet attack.
 - A - COLSOG Env
   - **Day/Night Cycle**: allows to have day of X hours, dusk of Y hours and night of Z hours.
   - **Fog Low**
@@ -78,131 +87,176 @@ Installation of all the scripts/zeus modules is done by **copying the below file
 
 see [init_colsog_zeus.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/init_colsog_zeus.sqf)
 
+---
+
 ## CBA Settings
 In the Addons configuration menu, you will have the ability to update the following values on the fly:
 
-- **Vanilla medical items conversion to ace medical items**
-  - Medikit
+<details>
+
+<summary>COLSOG Medical and Supply</summary>
+
+vanilla medical items conversion to ace medical items
+
+  - **Medikit**
     - field dressing: <i>Integer</i>
     - saline IV 500: <i>Integer</i>
     - epinephrine: <i>Integer</i>
     - morphine: <i>Integer</i>
     - tourniquet: <i>Integer</i>
     - split: <i>Integer</i>
-  - First Aid:
+    
+  - **First Aid**
     - field dression: <i>Integer</i>
     - morphine: <i>Integer</i>
 
-- **AI skills**
-  - enable: <i>Boolean</i>
-  - general: <i>Float</i>
-  - aiming accuracy: <i>Float</i>
-  - aiming speed: <i>Float</i>
-  - aiming shake: <i>Float</i>
-  - commanding: <i>Float</i>
-  - courage: <i>Float</i>
-  - spot distance: <i>Float</i>
-  - sport time: <i>Float</i>
-  - reload speed: <i>Float</i>
-  - seek cover: <i>Boolean</i>
-  - auto combat: <i>Boolean</i>
-  - suppression: <i>Boolean</i>
+</details>
 
-- **Tracker module**
-  - enable: <i>Boolean</i>
-  - Tracker module name: <i>String</i>
-  - Default behaviour: <i>["Careless", "Safe", "Aware", "Combat"]</i>
-  - Default combat: <i>["Never fire", "Hold fire", "Hold fire, engage at will", "Fire at will", "Fire at will, loose formation"]</i>
-  - Default speed: <i>["Limited", "Normal", "Full"]</i>
+<details>
 
-- **Support module**
-  - enable artillery: <i>Boolean</i>
-  - enable helicopter: <i>Boolean</i>
-  - enable jets: <i>Boolean</i>
-  - enable arc light (B52): <i>Boolean</i>
-  - enable daisy cutter: <i>Boolean</i>
+<summary>COLSOG AI and ENV related</summary>
 
-- **STABO**
-  - Action duration in seconds: <i>Integer</i>
-  - Rope length (m): <i>Integer</i>
+  - **AI skills**
+    - enable: <i>Boolean</i>
+    - general: <i>Float</i>
+    - aiming accuracy: <i>Float</i>
+    - aiming speed: <i>Float</i>
+    - aiming shake: <i>Float</i>
+    - commanding: <i>Float</i>
+    - courage: <i>Float</i>
+    - spot distance: <i>Float</i>
+    - sport time: <i>Float</i>
+    - reload speed: <i>Float</i>
+    - seek cover: <i>Boolean</i>
+    - auto combat: <i>Boolean</i>
+    - suppression: <i>Boolean</i>
+    
+  - **AI Throwable**
+    - Throwable to Remove from AI: <i>List\<String\> separated with , and no " required</i>
+    
+  - **Day & Night**
+    - Time before day considered as dawn (minutes): <i>Integer</i>
+    - Dawn time acceleration: <i>Integer</i>
+    - Day time acceleration: <i>Integer</i>
+    - Time before night considered as dusk (minutes): <i>Integer</i>
+    - Dusk time acceleration: <i>Integer</i>
+    - Night time acceleration: <i>Integer</i>
 
-- **AI Throwable**
-  - Throwable to Remove from AI: <i>List\<String\> separated with , and no " required</i> 
+</details>
 
-- **Triangulation**
-  - Required ACRE radio: <i>String</i>
-  - Items to detect: <i>List\<String\> separated with , and no " required</i>
-  - Cool down in seconds: <i>Integer</i>
-  - Requires ACRE spike 'vhf30108spike' nearby (10m away max): <i>Boolean</i>
-  - Threshold distance for signal strength 1/5: <i>Integer</i>
-  - Threshold distance for signal strength 2/5: <i>Integer</i>
-  - Threshold distance for signal strength 3/5: <i>Integer</i>
-  - Threshold distance for signal strength 4/5: <i>Integer</i>
-  - Threshold distance for signal strength 5/5: <i>Integer</i>
+<details>
 
-- **Punji Mace Traps**
-  - Mace kill radius (m): <i>Integer</i>
-  - Enable screams: <i>Boolean</i>
-  - Side activating trap: <i>["BLUFOR", "OPFOR", "Independent", "Civilian", "Any player", "Any AI or player"]</i>
+<summary>COLSOG Prairie Fire Module</summary>
 
-- **Battery**
-  - PRC77 Battery capacity in seconds: <i>Integer</i>
-  - Amount of radio calls before enemy detection: <i>Integer</i>
-  - Item used as spare battery: <i>List\<String\> separated with , and no " required</i>
-  - Groups impacted by enemy radio call detection: <i>List\<String\> separated with , and no " required</i>
+  - **Tracker module**
+    - enable: <i>Boolean</i>
+    - Tracker module name: <i>String</i>
+    - Default behaviour: <i>["Careless", "Safe", "Aware", "Combat"]</i>
+    - Default combat: <i>["Never fire", "Hold fire", "Hold fire, engage at will", "Fire at will", "Fire at will, loose formation"]</i>
+    - Default speed: <i>["Limited", "Normal", "Full"]</i>
+    
+  - **Support module**
+    - enable artillery: <i>Boolean</i>
+    - enable helicopter: <i>Boolean</i>
+    - enable jets: <i>Boolean</i>
+    - enable arc light (B52): <i>Boolean</i>
+    - enable daisy cutter: <i>Boolean</i>
 
-- **Sensors - Gunshot**
-  - Inventory item to use: <i>String</i>
-  - Thing item used as sensor: <i>String</i>
-  - Transmit data over radio: <i>Boolean</i>
-    - Player received diary record + audio bip by radio waves requires:
-      ```
-      this setvariable ["COLSOG_isListeningToSensor", true];
-      ```
-  - Radio transmission range (m): <i>Integer</i>
-  - Sensor logging frequency (sec): <i>Integer</i>
+</details>
 
-- **Sensors - Engine**
-  - Inventory item to use: <i>String</i>
-  - Thing item used as sensor: <i>String</i>
-  - Transmit data over radio: <i>Boolean</i>
-    - Player received diary record + audio bip by radio waves requires:
-      ```
-      this setvariable ["COLSOG_isListeningToSensor", true];
-      ```
-  - Radio transmission range (m): <i>Integer</i>
-  - Sensor logging frequency (sec): <i>Integer</i>
+<details>
 
-- **Sensors - Gravity**
-  - Inventory item to use: <i>String</i>
-  - Thing item used as sensor: <i>String</i>
-  - Transmit data over radio: <i>Boolean</i>
-    - Player received diary record + audio bip by radio waves requires:
-      ```
-      this setvariable ["COLSOG_isListeningToSensor", true];
-      ```
-  - Radio transmission range (m): <i>Integer</i>
-  - Sensor logging frequency (sec): <i>Integer</i>
+<summary>COLSOG Sensors</summary>
 
-- **Intel**
-  - Intel object (inventory item): <i>String</i>
-  - Chance of unit carrying intel (%): <i>Integer</i>
-  - Chance of intel falling on ground (%): <i>Integer</i>
-  - Requires trait 'COLSOG_intelExpert' to decrypt intel : <i>Boolean</i>
+  - **Sensors - Gunshot**
+    - Inventory item to use: <i>String</i>
+    - Thing item used as sensor: <i>String</i>
+    - Transmit data over radio: <i>Boolean</i>
+      - Player received diary record + audio bip by radio waves requires:
+        ```
+        this setvariable ["COLSOG_isListeningToSensor", true];
+        ```
+    - Radio transmission range (m): <i>Integer</i>
+    - Sensor logging frequency (sec): <i>Integer</i>
 
-- **Climbing**
-  - Units allowed to climb trees: <i>String</i>
-  - Required item to climb: <i>String</i>
-  - Time to climb up (sec): <i>Integer</i>
-  - Time to climb down (sec): <i>Integer</i>
+  - **Sensors - Engine**
+    - Inventory item to use: <i>String</i>
+    - Thing item used as sensor: <i>String</i>
+    - Transmit data over radio: <i>Boolean</i>
+      - Player received diary record + audio bip by radio waves requires:
+        ```
+        this setvariable ["COLSOG_isListeningToSensor", true];
+        ```
+    - Radio transmission range (m): <i>Integer</i>
+    - Sensor logging frequency (sec): <i>Integer</i>
 
-- **Day & Night**
-  - Time before day considered as dawn (minutes): <i>Integer</i>
-  - Dawn time acceleration: <i>Integer</i>
-  - Day time acceleration: <i>Integer</i>
-  - Time before night considered as dusk (minutes): <i>Integer</i>
-  - Dusk time acceleration: <i>Integer</i>
-  - Night time acceleration: <i>Integer</i>
+  - **Sensors - Gravity**
+    - Inventory item to use: <i>String</i>
+    - Thing item used as sensor: <i>String</i>
+    - Transmit data over radio: <i>Boolean</i>
+      - Player received diary record + audio bip by radio waves requires:
+        ```
+        this setvariable ["COLSOG_isListeningToSensor", true];
+        ```
+    - Radio transmission range (m): <i>Integer</i>
+    - Sensor logging frequency (sec): <i>Integer</i>
+
+</details>
+
+<details>
+
+<summary>COLSOG Miscellaneous</summary>
+
+  - **STABO**
+    - Action duration in seconds: <i>Integer</i>
+    - Rope length (m): <i>Integer</i>
+
+  - **Punji Mace Traps**
+    - Mace kill radius (m): <i>Integer</i>
+    - Enable screams: <i>Boolean</i>
+    - Side activating trap: <i>["BLUFOR", "OPFOR", "Independent", "Civilian", "Any player", "Any AI or player"]</i>
+    - Chance of being impaled (%): <i>Integer</i>
+
+  - **Intel**
+    - Intel object (inventory item): <i>String</i>
+    - Chance of unit carrying intel (%): <i>Integer</i>
+    - Chance of intel falling on ground (%): <i>Integer</i>
+    - Requires trait 'COLSOG_intelExpert' to decrypt intel : <i>Boolean</i>
+
+  - **Climbing**
+    - Units allowed to climb trees: <i>String</i>
+    - Required item to climb: <i>String</i>
+    - Time to climb up (sec): <i>Integer</i>
+    - Time to climb down (sec): <i>Integer</i>
+
+</details>
+
+<details>
+
+<summary>COLSOG Radio and Battery</summary>
+
+  - **Triangulation**
+    - Required ACRE radio: <i>String</i>
+    - Items to detect: <i>List\<String\> separated with , and no " required</i>
+    - Cool down in seconds: <i>Integer</i>
+    - Requires ACRE spike 'vhf30108spike' nearby (10m away max): <i>Boolean</i>
+    - Threshold distance for signal strength 1/5: <i>Integer</i>
+    - Threshold distance for signal strength 2/5: <i>Integer</i>
+    - Threshold distance for signal strength 3/5: <i>Integer</i>
+    - Threshold distance for signal strength 4/5: <i>Integer</i>
+    - Threshold distance for signal strength 5/5: <i>Integer</i>
+
+  - **Battery**
+    - PRC77 Battery capacity in seconds: <i>Integer</i>
+    - Amount of radio calls before enemy detection: <i>Integer</i>
+    - Item used as spare battery: <i>List\<String\> separated with , and no " required</i>
+    - Groups impacted by enemy radio call detection: <i>List\<String\> separated with , and no " required</i>
+
+</details>
+  
+see [CBASettings.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/CBASettings.sqf)
+
+---
 
 ## Features
 
@@ -814,7 +868,17 @@ Currently only for Cam Lao Nam. To enable, uncomment the line:
 in the main init.sqf and place down the [Cam Lao Nam borders composition](https://steamcommunity.com/sharedfiles/filedetails/?id=3334463724) which contains the necessary markers.
 </details>
 
+---
+
 ## RT Columbia mods
 
 - Procedure to create a new Arma 3 inventory object from scratch: https://github.com/gerard-sog/arma3-macvsog-columbia-items.
 - Custom gesture wheel: https://steamcommunity.com/sharedfiles/filedetails/?id=3339280489.
+
+---
+
+## Special thanks
+
+- <u>Kay</u> (RT Columbia Discord): for the constant help developing and fixing scripts.
+- <u>Johnnyboy</u> (S.O.G. Prairie Fire Discord): for the original scripts for the mace trap and bayonet rush.
+- <u>Sky</u> (S.O.G. Prairie Fire Discord): for the help regarding the bayonet charge scripts.
