@@ -253,6 +253,17 @@ vanilla medical items conversion to ace medical items
     - Groups impacted by enemy radio call detection: <i>List\<String\> separated with , and no " required</i>
 
 </details>
+
+<details>
+
+<summary>COLSOG Bayonet Charge</summary>
+
+- **Bayonet Charge**
+    - Enable screams: <i>Boolean</i>
+    - Search radius (m): <i>Integer</i>
+    - Side the AI will charge: <i>["BLUFOR", "OPFOR", "Independent", "Civilian", "Any player", "Any AI or player"]</i>
+
+</details>
   
 see [CBASettings.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/CBASettings.sqf)
 

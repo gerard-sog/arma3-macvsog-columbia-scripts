@@ -15,7 +15,7 @@ private _targetMovedAwayFromLastPos = _currentWaypointPos distanceSqr (getPos _t
 if (_targetMovedAwayFromLastPos) then {
     "moving" remoteExec ["systemChat", 0];
     _currentWaypointPos = getPos _target;
-    _attacker move _currentWaypointPos;
+    _attacker doMove _currentWaypointPos;
 } else {
     "continue moving..." remoteExec ["systemChat", 0];
 };

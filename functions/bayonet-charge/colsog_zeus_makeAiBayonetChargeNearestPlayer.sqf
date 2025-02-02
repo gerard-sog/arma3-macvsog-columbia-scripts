@@ -33,7 +33,8 @@ if (isNull _closestTarget) exitWith {
         };
 
         {
-          [_x] join grpNull;
+          private _civGroup = createGroup civilian;
+          [_x] join _civGroup;
           private _newGroup = group _x;        
           
           private _attacker = leader _newGroup;
@@ -44,7 +45,11 @@ if (isNull _closestTarget) exitWith {
           removeAllWeapons _attacker;
           _attacker addWeapon _rifle;
           _attacker setUnitPos "UP";
+
           _attacker disableAI "FSM";
+          _attacker disableAI "COVER";
+          _attacker disableAI "SUPPRESSION";
+
           _attacker setBehaviour "AWARE";
           _attacker allowFleeing 0;
           _attacker forceSpeed (_target getSpeed "FAST");
