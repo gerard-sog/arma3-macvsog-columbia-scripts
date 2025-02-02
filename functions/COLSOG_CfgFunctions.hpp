@@ -41,7 +41,7 @@ class COLSOG {
         class gunshotSensor {postInit = 1;};
         class engineSensor {postInit = 1;};
         class gravitySensor {postInit = 1;};
-    }
+    };
     class Intel
     {
         file ="functions\intel";
@@ -55,17 +55,22 @@ class COLSOG {
         class addTreeClimbingAction {postInit = 1;};
         class climbTree {};
         class climbDownTree {};
-    }
+    };
     class Daynight
     {
         file ="functions\day-and-night";
         class startCycle {};
-    }
+    };
+    class Stabo
+    {
+        file ="functions\stabo";
+        class addStaboLoadUnconAction {postInit = 1;};
+    };
     class BayonetCharge
     {
         file ="functions\bayonet-charge";
         class attackAi {};
         class moveAi {};
         class getClosestTarget {};
-    }
+    };
 }
