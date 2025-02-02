@@ -11,7 +11,7 @@ params ["_unit"];
 
 private _availableTargets = [];
 {
-    if ((_x distance _unit < 500) && (alive _x && lifeState _x != "INCAPACITATED")) then {
+    if ((_x distance _unit < colsog_bayonet_searchRadius) && (alive _x && lifeState _x != "INCAPACITATED")) then {
 	    _availableTargets pushBack _x;
     };
 } forEach allPlayers;

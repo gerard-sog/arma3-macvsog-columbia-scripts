@@ -141,5 +141,3 @@ vn_us_death_screams = [
 if (colsog_traps_screamingEnable) then {
     [_mace, selectRandom vn_us_death_screams] remoteExecCall ["say3D", 0, false]; // victim screams
 };
-
-// uiSleep 30; probably useless

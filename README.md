@@ -261,7 +261,7 @@ vanilla medical items conversion to ace medical items
 - **Bayonet Charge**
     - Enable screams: <i>Boolean</i>
     - Search radius (m): <i>Integer</i>
-    - Side the AI will charge: <i>["BLUFOR", "OPFOR", "Independent", "Civilian", "Any player", "Any AI or player"]</i>
+    - Damage given to player: <i>Integer</i>
 
 </details>
   

@@ -19,7 +19,8 @@ if (isNull _unit || not (_unit isKindOf "CAManBase")) exitWith {
 
 private _closestTarget = [_unit] call COLSOG_fnc_getClosestTarget;
 if (isNull _closestTarget) exitWith {
-    systemChat "No player in a 500m radius";
+    private _info = "No player in a " + str colsog_bayonet_searchRadius + "m radius";
+    systemChat _info;
 };
     
 [
@@ -41,8 +42,8 @@ if (isNull _closestTarget) exitWith {
           private _target = [_attacker] call COLSOG_fnc_getClosestTarget;
 
           // Unit setup (remove ammo, sprint mode, etc.)
-          _rifle = primaryWeapon _attacker;
           removeAllWeapons _attacker;
+          private _rifle = selectRandom ["vn_m38_bayo", "vn_m1891_bayo", "vn_sks_bayo"];
           _attacker addWeapon _rifle;
           _attacker setUnitPos "UP";
 
@@ -67,6 +68,21 @@ if (isNull _closestTarget) exitWith {
 
                 private _distanceToTarget = _attacker distance _target;
 
+                // AUDIO
+                if (colsog_bayonet_screamingEnable) then {
+                    private _chanceOfUnitScreamingOrWhistling = [1, 100] call BIS_fnc_randomNum;
+                    if (_chanceOfUnitScreamingOrWhistling > 95) then {
+                        private _audio = selectRandom [
+                            "\vn\sounds_f_vietnam\sfx\missiondesign\enemy_whistle_4.ogg",
+                            "uns_dsaiviet\sounds\combat\vc96.ogg",
+                            "uns_dsaiviet\sounds\combat\vc145.ogg",
+                            "\vn\music_f_vietnam\m_samaudio\pavn\death\vn_sam_vcdeath_005.ogg"
+                        ];
+                        playSound3D [_audio, _attacker];
+                    };
+                };
+
+                // MOVE/ATTACK
                 if (_distanceToTarget > 3) then {
                     _currentWaypointPos = [_attacker, _target, _currentWaypointPos] call COLSOG_fnc_moveAi;
                 } else {

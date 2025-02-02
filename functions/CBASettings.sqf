@@ -20,7 +20,7 @@
 // Bayonet Charge
 ["colsog_bayonet_screamingEnable", "CHECKBOX", ["Enable screams"], [CBA_SETTINGS_COLSOG_BAYONET_CHARGE, "Bayonet Charge"], true, 1, {}, false] call CBA_fnc_addSetting;
 ["colsog_bayonet_searchRadius", "SLIDER", ["Search radius (m)"], [CBA_SETTINGS_COLSOG_BAYONET_CHARGE, "Bayonet Charge"], [1, 2500, 500, 0], 1, {}, false] call CBA_fnc_addSetting;
-["colsog_bayonet_targetedSide", "LIST", ["Side the AI will charge"], [CBA_SETTINGS_COLSOG_BAYONET_CHARGE, "Bayonet Charge"], [["WEST", "EAST", "GUER", "CIV", "ANYPLAYER", "ANY"], ["BLUFOR", "OPFOR", "Independent", "Civilian", "Any player", "Any AI or player"], 4], 1, {}, false] call CBA_fnc_addSetting;
+["colsog_bayonet_damage", "SLIDER", ["Damage given to player"], [CBA_SETTINGS_COLSOG_BAYONET_CHARGE, "Bayonet Charge"], [1, 200, 100, 0], 1, {}, false] call CBA_fnc_addSetting;
 
 // ========================================
 // |CBA_SETTINGS_COLSOG_MEDICAL_AND_SUPPLY|

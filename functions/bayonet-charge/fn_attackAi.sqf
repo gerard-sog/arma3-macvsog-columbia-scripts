@@ -22,12 +22,15 @@ private _bulletType = "B_762x51_Ball";
 private _bullet = _bulletType createVehicle [15, 15, 100];
 _bullet setMass 10;
 _bullet setVelocity [0, 0, 0];
-_bullet setVelocity [0, 0, 150];
+_bullet setVelocity [0, 0, colsog_bayonet_damage];
 [_bullet, [_leader, _leader]] remoteExecCall ["setShotParents", 2];
 
 private _relPos = [0.1, 0, 1.2];
 if (stance _target == "CROUCH") then {
-    _relPos = [0.1, 0, .8]
+    _relPos = [0.1, 0, .7]
+};
+if (stance _target == "PRONE") then {
+    _relPos = [0.1, 0, .2]
 };
 
 _bullet setpos (_target modelToWorld _relPos);
