@@ -34,7 +34,7 @@ if (isNull _closestTarget) exitWith {
         };
 
         {
-          private _civGroup = createGroup civilian;
+          private _civGroup = createGroup [civilian, true]; // true makes the group auto-delete when empty.
           [_x] join _civGroup;
           private _newGroup = group _x;        
           
