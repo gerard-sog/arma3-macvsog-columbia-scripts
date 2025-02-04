@@ -59,7 +59,6 @@ if (player distance2D _object > 7) exitWith {
         player setPos (getPos _platform vectorAdd [0, 0, 1]);
 
         player setVariable ["COLSOG_isUpInTree", true, false];
-        player setVariable ["COLSOG_platform", _platform, false];
 
         [
             {(player distance _this) > 5},

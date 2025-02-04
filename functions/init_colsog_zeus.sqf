@@ -9,6 +9,7 @@ if !(_hasZen) exitWith { systemChat "ZEN not detected";};
 ["A - COLSOG AI", "Un-Garrison (enable PATH)", {_this execVM "functions\colsog_zeus_ungarrison.sqf";}, "\z\ace\addons\zeus\UI\Icon_Module_Zeus_UnGarrison_ca.paa"] call zen_custom_modules_fnc_register;
 ["A - COLSOG AI", "Set AI Skills", {_this execVM "functions\colsog_zeus_setAiSubSkills.sqf";}, "\a3\Modules_F_Curator\Data\iconDiary_ca.paa"] call zen_custom_modules_fnc_register;
 ["A - COLSOG AI", "Toggle Trackers", {_this execVM "functions\tracker\colsog_zeus_toggleTrackers.sqf";}, "\a3\Ui_F_Curator\Data\CfgMarkers\kia_ca.paa"] call zen_custom_modules_fnc_register;
+["A - COLSOG AI", "Bayonet charge", {_this execVM "functions\bayonet-charge\colsog_zeus_makeAiBayonetChargeNearestPlayer.sqf";}, "x\zen\addons\context_actions\ui\attack_ca.paa"] call zen_custom_modules_fnc_register;
 
 // Related to action on vehicle/object
 ["A - COLSOG Vehicle", "Add STABO", {_this execVM "functions\stabo\colsog_zeus_addStabo.sqf";}, "\z\ace\addons\fastroping\UI\Icon_Waypoint.paa"] call zen_custom_modules_fnc_register;

@@ -10,7 +10,7 @@ if !(hasInterface) exitWith {};
 _staboLoadUncon = [
 	"COLSOG_staboLoadUncon",
 	"Load body",
-	"\a3\modules_f\data\hideterrainobjects\icon_ca.paa",
+	"\z\ace\addons\fastroping\UI\Icon_Waypoint.paa",
 	{
 
 		private _sandbags = nearestObjects [player, ["vn_prop_sandbag_01"], 6];

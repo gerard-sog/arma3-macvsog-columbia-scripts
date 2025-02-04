@@ -6,12 +6,21 @@
  * see https://cbateam.github.io/CBA_A3/docs/files/settings/fnc_addSetting-sqf.html
  */
 
-#define CBA_SETTINGS_COLSOG_SENSORS "COLSOG Sensors"
-#define CBA_SETTINGS_COLSOG_RADIO_AND_BATTERY "COLSOG Radio and Battery"
-#define CBA_SETTINGS_COLSOG_PRAIRIE_FIRE_MODULE "COLSOG Prairie Fire Module"
 #define CBA_SETTINGS_COLSOG_AI_ENV_RELATED "COLSOG AI and ENV related"
-#define CBA_SETTINGS_COLSOG_MISCELLANEOUS "COLSOG Miscellaneous"
+#define CBA_SETTINGS_COLSOG_BAYONET_CHARGE "COLSOG Bayonet Charge"
 #define CBA_SETTINGS_COLSOG_MEDICAL_AND_SUPPLY "COLSOG Medical and Supply"
+#define CBA_SETTINGS_COLSOG_MISCELLANEOUS "COLSOG Miscellaneous"
+#define CBA_SETTINGS_COLSOG_PRAIRIE_FIRE_MODULE "COLSOG Prairie Fire Module"
+#define CBA_SETTINGS_COLSOG_RADIO_AND_BATTERY "COLSOG Radio and Battery"
+#define CBA_SETTINGS_COLSOG_SENSORS "COLSOG Sensors"
+
+// ====================================
+// |CBA_SETTINGS_COLSOG_BAYONET_CHARGE|
+// ====================================
+// Bayonet Charge
+["colsog_bayonet_screamingEnable", "CHECKBOX", ["Enable screams"], [CBA_SETTINGS_COLSOG_BAYONET_CHARGE, "Bayonet Charge"], true, 1, {}, false] call CBA_fnc_addSetting;
+["colsog_bayonet_searchRadius", "SLIDER", ["Search radius (m)"], [CBA_SETTINGS_COLSOG_BAYONET_CHARGE, "Bayonet Charge"], [1, 2500, 500, 0], 1, {}, false] call CBA_fnc_addSetting;
+["colsog_bayonet_damage", "SLIDER", ["Damage given to player"], [CBA_SETTINGS_COLSOG_BAYONET_CHARGE, "Bayonet Charge"], [1, 200, 100, 0], 1, {}, false] call CBA_fnc_addSetting;
 
 // ========================================
 // |CBA_SETTINGS_COLSOG_MEDICAL_AND_SUPPLY|
