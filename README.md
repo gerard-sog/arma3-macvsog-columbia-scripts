@@ -229,6 +229,9 @@ vanilla medical items conversion to ace medical items
     - Time to climb up (sec): <i>Integer</i>
     - Time to climb down (sec): <i>Integer</i>
 
+  - **Covertop**
+    - Force all players to vietnamese faces: <i>Boolean</i>
+
 </details>
 
 <details>
@@ -270,6 +273,23 @@ see [CBASettings.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scrip
 ---
 
 ## Features
+
+Some features such as who is able to climb trees, read intel, etc. are now managed through the unit's name. See [init_colsog_PlayerLocalVar.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/init/init_colsog_PlayerLocalVar.sqf) for more details and if you want to customize it.
+
+Here is a list of roles and their available actions:
+
+| Roles              | Has american face<br/>"hasUsface" | Can climb tree<br/>"canClimb" | Can read intel<br/>"canReadIntel" | Can speak languages<br/>"canSpeak" | Can monitor sensors<br/>"canMonitorSensor" | 
+|--------------------|-----------------------------------|-------------------------------|-----------------------------------|------------------------------------|--------------------------------------------|
+| Chief SOG          | true                              | false (default)               | true                              | en (default)                       | false (default)                            |
+| Pilot              | true                              | false                         | false (default)                   | en                                 | true                                       |
+| 0-1 Team Leader    | false (default)                   | true                          | true                              | en, vn                             | false                                      |
+| 0-2 Machine Gunner | false                             | false                         | true                              | en, vn                             | false                                      |
+| 0-3 Grenadier      | false                             | false                         | true                              | en, vn                             | false                                      |
+| 0-4 Point man      | false                             | true                          | true                              | en, vn                             | false                                      |
+| 1-0 Squad Leader   | true                              | false                         | false                             | en                                 | false                                      |
+| 1-1 RTO            | true                              | false                         | false                             | en                                 | false                                      |
+| 1-2 Medic          | true                              | false                         | false                             | en                                 | false                                      |
+| Reserves           | false                             | false                         | false                             | en, vn                             | false                                      |
 
 ### Gameplay
 
