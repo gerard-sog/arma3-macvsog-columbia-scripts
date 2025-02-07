@@ -94,13 +94,9 @@ if (isNull _closestTarget) exitWith {
                     _target = [_attacker] call COLSOG_fnc_getClosestTarget;
                     if (isNull _target) then {
                         _stop = true;
-                    } else {
-                        "switching target" remoteExec ["systemChat", 0];
                     };
                 };
             };
-            "end" remoteExec ["systemChat", 0];
-            
           };
 
         } foreach units group _unit;
