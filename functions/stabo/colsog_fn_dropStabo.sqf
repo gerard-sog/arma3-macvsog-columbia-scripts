@@ -81,10 +81,11 @@ _parentHelicopter setVariable ["COLSOG_staboRope", _staboRope, true];
             },
             {
                 private _crew = crew (_this select 1);
-                ["Rope broke!", -1, 1, 2, 0] remoteExec ["BIS_fnc_dynamicText", _crew];
 
                 // If rope already detached, we exit and do not execute this script.
                 if (not ((_this select 1) getVariable "COLSOG_staboRopeDeployed")) exitWith {};
+
+                ["Rope broke!", -1, 1, 2, 0] remoteExec ["BIS_fnc_dynamicText", _crew];
 
                 // Need broadcast so allPlayers are aware if rope is NOT deployed (the code in this file is only executed by the player detaching)
                 (_this select 1) setVariable ["COLSOG_staboRopeDeployed", false, true];
