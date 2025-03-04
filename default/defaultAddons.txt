@@ -280,7 +280,7 @@ ace_maptools_rotateModifierKey = 1;
 // ACE Medical
 force ace_medical_ai_enabledFor = 2;
 force ace_medical_ai_requireItems = 0;
-force ace_medical_AIDamageThreshold = 1;
+force ace_medical_AIDamageThreshold = 0.85;
 force ace_medical_bleedingCoefficient = 0.7;
 force ace_medical_blood_bloodLifetime = 900;
 force ace_medical_blood_enabledFor = 2;
@@ -679,6 +679,7 @@ force acre_sys_signal_signalModel = 2;
 
 // ACRE2 Gestures
 force acre_sys_gestures_enabled = true;
+acre_sys_gestures_showConnectorRopes = true;
 force acre_sys_gestures_stopADS = true;
 
 // ACRE2 UI
@@ -695,6 +696,7 @@ acre_sys_list_DefaultPTTColor = [1,0.8,0,1];
 acre_sys_list_HintBackgroundColor = [0,0,0,0.8];
 acre_sys_list_HintTextFont = "RobotoCondensed";
 acre_sys_list_LanguageColor = [1,0.29,0.16,1];
+acre_sys_list_LanguageHintPersist = true;
 acre_sys_list_PTT1Color = [1,0.8,0,1];
 acre_sys_list_PTT2Color = [1,0.8,0,1];
 acre_sys_list_PTT3Color = [1,0.8,0,1];
@@ -707,18 +709,18 @@ force acre_sys_zeus_zeusCommunicateViaCamera = true;
 force acre_sys_zeus_zeusDefaultVoiceSource = false;
 
 // COLSOG AI and ENV related
-force colsog_ai_aimingAccuracy = 0.15;
+force colsog_ai_aimingAccuracy = 0.05;
 force colsog_ai_aimingShake = 0.33;
 force colsog_ai_aimingSpeed = 0.33;
 force colsog_ai_autoCombat = true;
 force colsog_ai_commanding = 0.33;
 force colsog_ai_courage = 0.33;
 force colsog_ai_enable = true;
-force colsog_ai_generalSkill = 0.25;
+force colsog_ai_generalSkill = 0.15;
 force colsog_ai_reloadSpeed = 0.33;
 force colsog_ai_seekCover = true;
-force colsog_ai_spotDistance = 0.1;
-force colsog_ai_spotTime = 0.1;
+force colsog_ai_spotDistance = 0.05;
+force colsog_ai_spotTime = 0.05;
 force colsog_ai_suppression = true;
 force colsog_dayAndNight_dawnDuration = 30;
 force colsog_dayAndNight_dawnTimeAcceleration = 8;
@@ -786,6 +788,7 @@ force colsog_supply_content = "[
 force colsog_climbing_requiredItem = "ACE_rope18";
 force colsog_climbing_timeToClimbDown = 5;
 force colsog_climbing_timeToClimbUp = 15;
+colsog_faces_iscovertops = false;
 force colsog_intel_chanceOfIntelFallingOnGround = 25;
 force colsog_intel_chanceOfUnitCarryingIntel = 10;
 force colsog_intel_intelExpertRequired = true;
@@ -810,7 +813,7 @@ force colsog_tracker_enable = true;
 force colsog_tracker_moduleName = "TrackermoduleNAME";
 
 // COLSOG Radio and Battery
-force colsog_battery_enemySpawnThreshold = 50;
+force colsog_battery_enemySpawnThreshold = 100;
 force colsog_battery_groupsTriggeringEnemySpawnThresholdIncrease = "";
 force colsog_battery_powerItems = "colsog_inv_prc77_battery";
 force colsog_battery_prc77Capacity = 480;
@@ -1057,8 +1060,8 @@ force hatg_setting_debug_surface = false;
 force hatg_setting_distance_close = 5;
 force hatg_setting_distance_close_multiplier = 2;
 force hatg_setting_distance_height = 2;
-force hatg_setting_distance_reset = 5;
-force hatg_setting_distance_shots = 4;
+force hatg_setting_distance_reset = -1;
+force hatg_setting_distance_shots = -1;
 hatg_setting_enable_crouch = true;
 force hatg_setting_movement_crouch = 5;
 force hatg_setting_mp_ai = false;
@@ -1108,6 +1111,7 @@ force L_Suppress_recovery = 2;
 // PKM
 force A3_mags_clipsAreDisposable = true;
 force A3_mags_looseBeltsAreDisposable = true;
+
 
 // Restrict Markers
 restrict_markers_main_autoCopyDeletion = true;

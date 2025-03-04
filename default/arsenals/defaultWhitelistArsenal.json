@@ -733,7 +733,6 @@
   "sog_arvn_3_a",
   "sog_arvn_4_a",
   "sog_trop_1_a",
-  "sog_trop_2_a",
   "sog_trop_3_a",
   "sog_trop_4_a",
   "vn_b_acc_towel_01",
@@ -1212,5 +1211,14 @@
   "vnx_gjet_mag",
   "arifle_AKM_F",
   "uns_item_zippo",
-  "vn_l34a1"
+  "vn_l34a1",
+  "ACRE_PRC77",
+  "vn_m63a_150_t_mag",
+  "vn_hp_sd_mag",
+  "bacon_sog_1",
+  "bacon_sog_1a",
+  "jerry_sog_1",
+  "porter_sog_1",
+  "miller_lite_sog_1a",
+  "miller_lite_sog_1"
 ]
