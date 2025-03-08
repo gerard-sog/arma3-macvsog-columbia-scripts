@@ -731,7 +731,7 @@ If intel pool is empty and a player tries to decrypt an intel, the player will r
 Allows player to climb up trees to see further away, orient himself/herself.
 
 To climb up a tree follow this steps:
-- Have required role (unit's name), item and make sure tree is in the config of authorized tree to climb (see [fn_climbTree.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/climbing/fn_climbTree.sqf).
+- Have required role (unit's name), item and make sure tree is in the config of authorized tree to climb (see [fn_climbTree.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/climbing/fn_climbTree.sqf). 
 
 ```
 private _hashMapOfAuthorizedTreesAndHeightCorrection = [
@@ -749,6 +749,25 @@ private _hashMapOfAuthorizedTreesAndHeightCorrection = [
 - To go down, go in 'ace equipment' --> "Climb down".
 
 It is also configurable through CBA Settings (see 'CBA Settings' section of the readme).
+
+Steps to add/remove trees:
+- Get .p3d name of the tree using the below command (to be executed while aiming at a tree):
+
+```
+private _object = cursorObject; 
+private _modelInfo = getModelInfo _object;
+private _objectP3dName = _modelInfo select 0;
+_objectP3dName;
+```
+
+- Teleport yourself at the top of the tree using the below code (find the appropriate value for "TREE_HEIGHT_CORRECTION"):
+
+```
+private _playerPos = getPos player;
+player setPos [_playerPos select 0, _playerPos select 1, <TREE_HEIGHT_CORRECTION> + 3];
+```
+
+- Update the list of trees with new name and new TREE_HEIGHT_CORRECTION value. 
 
 </details>
 
