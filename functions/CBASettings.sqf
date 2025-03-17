@@ -128,12 +128,15 @@
 ["colsog_tracker_defaultCombat", "LIST", ["Default combat"], [CBA_SETTINGS_COLSOG_PRAIRIE_FIRE_MODULE, "Tracker module"], [["BLUE", "GREEN", "WHITE", "YELLOW", "RED"], ["Never fire", "Hold fire", "Hold fire, engage at will", "Fire at will", "Fire at will, loose formation"], 0], 1, {}, false] call CBA_fnc_addSetting;
 ["colsog_tracker_defaultSpeed", "LIST", ["Default speed"], [CBA_SETTINGS_COLSOG_PRAIRIE_FIRE_MODULE, "Tracker module"], [["LIMITED", "NORMAL", "FULL"], ["Limited", "Normal", "Full"], 0], 1, {}, false] call CBA_fnc_addSetting;
 
-// Support module
+// Support module - Radio Support & Simplex
 ["colsog_support_artilleryEnable", "CHECKBOX", ["enable artillery"], [CBA_SETTINGS_COLSOG_PRAIRIE_FIRE_MODULE, "Support module"], false, 1, {}, true] call CBA_fnc_addSetting;
 ["colsog_support_casHelicopterEnable", "CHECKBOX", ["enable helicopter"], [CBA_SETTINGS_COLSOG_PRAIRIE_FIRE_MODULE, "Support module"], false, 1, {}, true] call CBA_fnc_addSetting;
 ["colsog_support_casJetEnable", "CHECKBOX", ["enable jets"], [CBA_SETTINGS_COLSOG_PRAIRIE_FIRE_MODULE, "Support module"], false, 1, {}, true] call CBA_fnc_addSetting;
 ["colsog_support_arcLightEnable", "CHECKBOX", ["enable arc light (B52)"], [CBA_SETTINGS_COLSOG_PRAIRIE_FIRE_MODULE, "Support module"], false, 1, {}, true] call CBA_fnc_addSetting;
 ["colsog_support_daisyCutterEnable", "CHECKBOX", ["enable daisy cutter"], [CBA_SETTINGS_COLSOG_PRAIRIE_FIRE_MODULE, "Support module"], false, 1, {}, true] call CBA_fnc_addSetting;
+
+// Support module - Simplex
+["colsog_support_simplexAccessBackpack", "EDITBOX", ["Backpack(s) with Simplex"], [CBA_SETTINGS_COLSOG_PRAIRIE_FIRE_MODULE, "Support module - simplex"], "sog_trop_2_a", 1, {}, false] call CBA_fnc_addSetting;
 
 // =======================================
 // |CBA_SETTINGS_COLSOG_RADIO_AND_BATTERY|

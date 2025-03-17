@@ -788,15 +788,15 @@ force colsog_supply_content = "[
 force colsog_climbing_requiredItem = "ACE_rope18";
 force colsog_climbing_timeToClimbDown = 5;
 force colsog_climbing_timeToClimbUp = 15;
-colsog_faces_iscovertops = false;
+force colsog_faces_iscovertops = false;
 force colsog_intel_chanceOfIntelFallingOnGround = 25;
-force colsog_intel_chanceOfUnitCarryingIntel = 10;
+force colsog_intel_chanceOfUnitCarryingIntel = 30;
 force colsog_intel_intelExpertRequired = true;
 force colsog_intel_inventoryItem = "uns_leaflet16";
 force colsog_stabo_climbDuration = 10;
 force colsog_stabo_ropeLength = 60;
 force colsog_traps_activatedBySide = "WEST";
-force colsog_traps_chanceOfBeingImpaled = 20;
+force colsog_traps_chanceOfBeingImpaled = 15;
 force colsog_traps_maceKillRadius = 3;
 force colsog_traps_screamingEnable = true;
 
@@ -806,6 +806,7 @@ force colsog_support_artilleryEnable = false;
 force colsog_support_casHelicopterEnable = false;
 force colsog_support_casJetEnable = false;
 force colsog_support_daisyCutterEnable = false;
+force colsog_support_simplexAccessBackpack = "sog_trop_2_a";
 force colsog_tracker_defaultBehaviour = "SAFE";
 force colsog_tracker_defaultCombat = "WHITE";
 force colsog_tracker_defaultSpeed = "LIMITED";
@@ -864,10 +865,27 @@ diwako_dui_indicators_icon_medic = true;
 diwako_dui_indicators_range = 20;
 diwako_dui_indicators_range_crew = 300;
 diwako_dui_indicators_range_scale = false;
+diwako_dui_indicators_rangeLimit = 100;
 diwako_dui_indicators_show = true;
 diwako_dui_indicators_size = 1;
 diwako_dui_indicators_style = "standard";
 diwako_dui_indicators_useACENametagsRange = true;
+
+// DUI - Squad Radar - Line Compass
+diwako_dui_linecompass_ACEFingeringColor = [1,0.66,0,1];
+diwako_dui_linecompass_CompassAvailableShown = true;
+diwako_dui_linecompass_compassRange = 35;
+diwako_dui_linecompass_compassRangeLimit = 50;
+diwako_dui_linecompass_CustomWaypointColor = [0,0,0.87,1];
+diwako_dui_linecompass_DefaultIconColor = [0.5,0.87,0.5,1];
+diwako_dui_linecompass_DrawBearing = 2;
+diwako_dui_linecompass_Enabled = false;
+diwako_dui_linecompass_enableOcclusion = false;
+diwako_dui_linecompass_IconOutline = 0;
+diwako_dui_linecompass_occlusionFadeSpeed = 3.5;
+diwako_dui_linecompass_showSpeaking = true;
+diwako_dui_linecompass_SwapOrder = false;
+diwako_dui_linecompass_WaypointColor = [0,0,0.87,1];
 
 // DUI - Squad Radar - Main
 diwako_dui_ace_hide_interaction = true;
@@ -935,6 +953,7 @@ diwako_dui_radar_ace_finger = true;
 diwako_dui_radar_ace_medic = true;
 diwako_dui_radar_always_show_unit_numbers = false;
 diwako_dui_radar_compassRangeCrew = 500;
+diwako_dui_radar_compassRangeLimit = 50;
 diwako_dui_radar_dir_padding = 25;
 diwako_dui_radar_dir_shadow = 2;
 diwako_dui_radar_enable_seat_icons = 2;
@@ -1111,7 +1130,6 @@ force L_Suppress_recovery = 2;
 // PKM
 force A3_mags_clipsAreDisposable = true;
 force A3_mags_looseBeltsAreDisposable = true;
-
 
 // Restrict Markers
 restrict_markers_main_autoCopyDeletion = true;

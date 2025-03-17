@@ -155,12 +155,15 @@ vanilla medical items conversion to ace medical items
     - Default combat: <i>["Never fire", "Hold fire", "Hold fire, engage at will", "Fire at will", "Fire at will, loose formation"]</i>
     - Default speed: <i>["Limited", "Normal", "Full"]</i>
     
-  - **Support module**
+  - **Support module - Radio Support & Simplex**
     - enable artillery: <i>Boolean</i>
     - enable helicopter: <i>Boolean</i>
     - enable jets: <i>Boolean</i>
     - enable arc light (B52): <i>Boolean</i>
     - enable daisy cutter: <i>Boolean</i>
+
+  - **Support module - Simplex**
+    - Backpack(s) with Simplex: <i>String</i>
 
 </details>
 
@@ -278,18 +281,18 @@ Some features such as who is able to climb trees, read intel, etc. are now manag
 
 Here is a list of roles and their available actions:
 
-| Roles              | Has american face<br/>"hasUsface" | Can climb tree<br/>"canClimb" | Can read intel<br/>"canReadIntel" | Can speak languages<br/>"canSpeak" | Can monitor sensors<br/>"canMonitorSensor" | 
-|--------------------|-----------------------------------|-------------------------------|-----------------------------------|------------------------------------|--------------------------------------------|
-| Chief SOG          | true                              | false (default)               | true                              | en (default)                       | false (default)                            |
-| Pilot              | true                              | false                         | false (default)                   | en                                 | true                                       |
-| 0-1 Team Leader    | false (default)                   | true                          | true                              | en, vn                             | false                                      |
-| 0-2 Machine Gunner | false                             | false                         | true                              | en, vn                             | false                                      |
-| 0-3 Grenadier      | false                             | false                         | true                              | en, vn                             | false                                      |
-| 0-4 Point man      | false                             | true                          | true                              | en, vn                             | false                                      |
-| 1-0 Squad Leader   | true                              | false                         | false                             | en                                 | false                                      |
-| 1-1 RTO            | true                              | false                         | false                             | en                                 | false                                      |
-| 1-2 Medic          | true                              | false                         | false                             | en                                 | false                                      |
-| Reserves           | false                             | false                         | false                             | en, vn                             | false                                      |
+| Roles              | Has american face<br/>"hasUsface" | Can climb tree<br/>"canClimb" | Can read intel<br/>"canReadIntel" | Can speak languages<br/>"canSpeak" | Can monitor sensors<br/>"canMonitorSensor" | Can use simplex<br/>"canUseSimplex" |
+|--------------------|-----------------------------------|-------------------------------|-----------------------------------|------------------------------------|--------------------------------------------|-------------------------------------|
+| Chief SOG          | true                              | false (default)               | true                              | en (default)                       | false (default)                            | true                                |
+| Pilot              | true                              | false                         | false (default)                   | en                                 | true                                       | true                                |
+| 0-1 Team Leader    | false (default)                   | true                          | true                              | en, vn                             | false                                      | false (default)                     |
+| 0-2 Machine Gunner | false                             | false                         | true                              | en, vn                             | false                                      | false                               |
+| 0-3 Grenadier      | false                             | false                         | true                              | en, vn                             | false                                      | false                               |
+| 0-4 Point man      | false                             | true                          | true                              | en, vn                             | false                                      | false                               |
+| 1-0 Squad Leader   | true                              | false                         | false                             | en                                 | false                                      | false                               |
+| 1-1 RTO            | true                              | false                         | false                             | en                                 | false                                      | false                               |
+| 1-2 Medic          | true                              | false                         | false                             | en                                 | false                                      | false                               |
+| Reserves           | false                             | false                         | false                             | en, vn                             | false                                      | false                               |
 
 ### Gameplay
 
