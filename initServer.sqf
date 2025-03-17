@@ -18,6 +18,9 @@ publicVariable "COLSOG_DaisyCutterSupportEnabled";
 COLSOG_TrackersEnabled = colsog_tracker_enable; // Toggle ON/OFF Tracker in AO (will only affect tracker module from Prairie Fire with the following variable used as condition 'COLSOG_TrackersEnabled').
 publicVariable "COLSOG_TrackersEnabled";
 
+COLSOG_SimplexBackpacks = colsog_support_simplexAccessBackpack;
+publicVariable "COLSOG_SimplexBackpacks";
+
 // Default behaviour values for tracker groups
 COLSOG_TrackersDefault = [
     colsog_tracker_defaultBehaviour,

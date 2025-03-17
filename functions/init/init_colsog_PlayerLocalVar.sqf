@@ -15,12 +15,14 @@ switch ((roleDescription player splitString "@") select 0) do {
         player setVariable ["hasUsface", true];
         player setUnitTrait ["vn_artillery", true, true];
         player setVariable ["canReadIntel", true];
+        player setVariable ["canUseSimplex", true];
     };
 
     // Pilots
     case "Pilot": {
         player setVariable ["hasUsface", true];
         player setVariable ["canMonitorSensor", true];
+        player setVariable ["canUseSimplex", true];
     };
 
     // Columbia
