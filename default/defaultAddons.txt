@@ -166,13 +166,13 @@ force acex_headless_log = false;
 force acex_headless_transferLoadout = 0;
 
 // ACE Hearing
-ace_hearing_autoAddEarplugsToUnits = 1;
-force ace_hearing_disableEarRinging = false;
+force ace_hearing_autoAddEarplugsToUnits = 0;
+ace_hearing_disableEarRinging = false;
 force ace_hearing_earplugsVolume = 0.5;
 force ace_hearing_enableCombatDeafness = false;
 force ace_hearing_enabledForZeusUnits = false;
-ace_hearing_enableNoiseDucking = true;
-ace_hearing_explosionDeafnessCoefficient = 1;
+force ace_hearing_enableNoiseDucking = true;
+force ace_hearing_explosionDeafnessCoefficient = 1;
 force ace_hearing_unconsciousnessVolume = 0.4;
 
 // ACE Interaction
@@ -210,7 +210,8 @@ ace_interact_menu_useListMenu = true;
 ace_interact_menu_useListMenuSelf = false;
 
 // ACE Kill Tracker
-ace_killtracker_showCrewKills = false;
+force ace_killtracker_showCrewKills = false;
+force ace_killtracker_showMedicalWounds = 2;
 force ace_killtracker_trackAI = true;
 
 // ACE Logistics
@@ -353,7 +354,7 @@ force ace_medical_treatment_advancedBandages = 2;
 force ace_medical_treatment_advancedDiagnose = 1;
 force ace_medical_treatment_advancedMedication = true;
 force ace_medical_treatment_allowBodyBagUnconscious = false;
-force ace_medical_treatment_allowGraveDigging = 1;
+force ace_medical_treatment_allowGraveDigging = 0;
 force ace_medical_treatment_allowLitterCreation = true;
 force ace_medical_treatment_allowSelfIV = 1;
 force ace_medical_treatment_allowSelfPAK = 0;
@@ -388,14 +389,18 @@ force ace_medical_treatment_medicSplint = 0;
 force ace_medical_treatment_medicSurgicalKit = 1;
 force ace_medical_treatment_numericalPulse = 1;
 force ace_medical_treatment_timeCoefficientPAK = 1;
-force ace_medical_treatment_treatmentTimeAutoinjector = 5;
+force ace_medical_treatment_treatmentTimeAutoinjector = 7.5;
 force ace_medical_treatment_treatmentTimeBodyBag = 15;
 force ace_medical_treatment_treatmentTimeCoeffZeus = 1;
 force ace_medical_treatment_treatmentTimeCPR = 15;
 force ace_medical_treatment_treatmentTimeGrave = 30;
-force ace_medical_treatment_treatmentTimeIV = 12;
+force ace_medical_treatment_treatmentTimeIV = 20;
 force ace_medical_treatment_treatmentTimeSplint = 20;
-force ace_medical_treatment_treatmentTimeTourniquet = 7;
+force ace_medical_treatment_treatmentTimeTourniquet = 10.5;
+force ace_medical_treatment_treatmentTimeTrainedAutoinjector = 5;
+force ace_medical_treatment_treatmentTimeTrainedIV = 10;
+force ace_medical_treatment_treatmentTimeTrainedSplint = 10;
+force ace_medical_treatment_treatmentTimeTrainedTourniquet = 7;
 force ace_medical_treatment_woundReopenChance = 1;
 force ace_medical_treatment_woundStitchTime = 5;
 
@@ -608,8 +613,8 @@ ace_vehicles_speedLimiterStep = 5;
 ace_viewports_enabled = true;
 
 // ACE View Distance Limiter
-ace_viewdistance_enabled = true;
-ace_viewdistance_limitViewDistance = 10000;
+force ace_viewdistance_enabled = true;
+force ace_viewdistance_limitViewDistance = 12000;
 ace_viewdistance_objectViewDistanceCoeff = 0;
 ace_viewdistance_viewDistanceAirVehicle = 0;
 ace_viewdistance_viewDistanceLandVehicle = 0;
