@@ -29,6 +29,14 @@ if !(isNil "_isRadioInitialized") exitWith {
     playSound "FD_Start_F";
 };
 
+//_this call acre_api_fnc_removeAllRacksFromVehicle
+
+// Removes all pre-existing racks from the vehicle. This stage also forces the initialization of the radios, even if no-one has entered the vehicle since it spawned. 
+[_object] remoteExec ["acre_api_fnc_removeAllRacksFromVehicle"];
+
+// There needs to be a second delay to resolve a race condition between the removal function and the adding functions below. 
+sleep 1; 
+
 [_object, ["ACRE_VRC64", "A2A", "PRC77", false, ["inside"], [], "ACRE_PRC77", [], [] ], false] remoteExec ["acre_api_fnc_addRackToVehicle", 2];
 [_object, ["ACRE_VRC64", "A2G", "PRC77", false, ["inside"], [], "ACRE_PRC77", [], [] ], false] remoteExec ["acre_api_fnc_addRackToVehicle", 2];
 [_object, ["ACRE_VRC64", "HQ", "PRC77", false, ["inside"], [], "ACRE_PRC77", [], [] ], false] remoteExec ["acre_api_fnc_addRackToVehicle", 2];
