@@ -30,7 +30,7 @@ if !(isNil "_isRadioInitialized") exitWith {
 };
 
 // Removes all pre-existing racks from the vehicle. This stage also forces the initialization of the radios, even if no-one has entered the vehicle since it spawned. 
-[_object] remoteExec ["acre_api_fnc_removeAllRacksFromVehicle"];
+[_object] remoteExec ["acre_api_fnc_removeAllRacksFromVehicle", 2];
 
 // There needs to be a second delay to resolve a race condition between the removal function and the adding functions below. 
 sleep 1; 
