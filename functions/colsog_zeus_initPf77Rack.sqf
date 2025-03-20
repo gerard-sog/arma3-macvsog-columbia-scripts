@@ -29,8 +29,6 @@ if !(isNil "_isRadioInitialized") exitWith {
     playSound "FD_Start_F";
 };
 
-//_this call acre_api_fnc_removeAllRacksFromVehicle
-
 // Removes all pre-existing racks from the vehicle. This stage also forces the initialization of the radios, even if no-one has entered the vehicle since it spawned. 
 [_object] remoteExec ["acre_api_fnc_removeAllRacksFromVehicle"];
 
