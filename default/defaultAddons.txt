@@ -121,6 +121,7 @@ acex_field_rations_hudShowLevel = 0;
 acex_field_rations_hudTransparency = -1;
 acex_field_rations_hudType = 0;
 force acex_field_rations_hungerSatiated = 1;
+acex_field_rations_nearDepletedConsequence = 1;
 force acex_field_rations_terrainObjectActions = false;
 force acex_field_rations_thirstQuenched = 1;
 force acex_field_rations_timeWithoutFood = 2;
@@ -801,9 +802,9 @@ force colsog_intel_inventoryItem = "uns_leaflet16";
 force colsog_stabo_climbDuration = 10;
 force colsog_stabo_ropeLength = 60;
 force colsog_traps_activatedBySide = "WEST";
-force colsog_traps_chanceOfBeingImpaled = 15;
-force colsog_traps_maceKillRadius = 3;
-force colsog_traps_screamingEnable = true;
+force colsog_traps_chanceOfBeingImpaled = 0;
+force colsog_traps_maceKillRadius = 5;
+force colsog_traps_screamingEnable = false;
 
 // COLSOG Prairie Fire Module
 force colsog_support_arcLightEnable = false;
@@ -858,6 +859,7 @@ cba_disposable_replaceDisposableLauncher = true;
 cba_events_repetitionMode = 1;
 cba_network_loadoutValidation = 0;
 cba_optics_usePipOptics = true;
+cba_quicktime_qteShorten = false;
 cba_ui_notifyLifetime = 4;
 cba_ui_StorePasswords = 1;
 
@@ -878,13 +880,14 @@ diwako_dui_indicators_useACENametagsRange = true;
 
 // DUI - Squad Radar - Line Compass
 diwako_dui_linecompass_ACEFingeringColor = [1,0.66,0,1];
+diwako_dui_linecompass_AllowNumericDrawBearing = true;
 diwako_dui_linecompass_CompassAvailableShown = true;
 diwako_dui_linecompass_compassRange = 35;
 diwako_dui_linecompass_compassRangeLimit = 50;
 diwako_dui_linecompass_CustomWaypointColor = [0,0,0.87,1];
 diwako_dui_linecompass_DefaultIconColor = [0.5,0.87,0.5,1];
 diwako_dui_linecompass_DrawBearing = 2;
-diwako_dui_linecompass_Enabled = false;
+force diwako_dui_linecompass_Enabled = false;
 diwako_dui_linecompass_enableOcclusion = false;
 diwako_dui_linecompass_IconOutline = 0;
 diwako_dui_linecompass_occlusionFadeSpeed = 3.5;
