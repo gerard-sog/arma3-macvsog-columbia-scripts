@@ -1139,16 +1139,6 @@ force L_Suppress_recovery = 2;
 force A3_mags_clipsAreDisposable = true;
 force A3_mags_looseBeltsAreDisposable = true;
 
-// Reeveli's User Marker System
-Rev_marker_briefing = false;
-Rev_marker_CBA = false;
-Rev_marker_command = false;
-Rev_marker_global = false;
-Rev_marker_group = false;
-Rev_marker_side = false;
-Rev_marker_vehicle = false;
-Rev_markers_direct = false;
-
 // Restrict Markers
 restrict_markers_main_autoCopyDeletion = true;
 force restrict_markers_main_canCopyFromSide = 2;
