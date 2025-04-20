@@ -799,7 +799,7 @@ force colsog_intel_chanceOfIntelFallingOnGround = 25;
 force colsog_intel_chanceOfUnitCarryingIntel = 30;
 force colsog_intel_intelExpertRequired = true;
 force colsog_intel_inventoryItem = "uns_leaflet16";
-force colsog_stabo_climbDuration = 10;
+force colsog_stabo_climbDuration = 5;
 force colsog_stabo_ropeLength = 60;
 force colsog_traps_activatedBySide = "WEST";
 force colsog_traps_chanceOfBeingImpaled = 0;
@@ -1138,6 +1138,16 @@ force L_Suppress_recovery = 2;
 // PKM
 force A3_mags_clipsAreDisposable = true;
 force A3_mags_looseBeltsAreDisposable = true;
+
+// Reeveli's User Marker System
+Rev_marker_briefing = false;
+Rev_marker_CBA = false;
+Rev_marker_command = false;
+Rev_marker_global = false;
+Rev_marker_group = false;
+Rev_marker_side = false;
+Rev_marker_vehicle = false;
+Rev_markers_direct = false;
 
 // Restrict Markers
 restrict_markers_main_autoCopyDeletion = true;
