@@ -18,7 +18,7 @@
       "",
       "",
       [
-        "vn_m127_mag",
+        "vn_m129_mag",
         1
       ],
       [],
@@ -71,6 +71,16 @@
         [
           "ACRE_PRC343",
           1
+        ],
+        [
+          "murshun_cigs_cigpack",
+          1,
+          20
+        ],
+        [
+          "murshun_cigs_lighter",
+          1,
+          100
         ]
       ]
     ],
@@ -91,12 +101,17 @@
           18
         ],
         [
-          "vn_m127_mag",
-          3,
+          "vn_m18_purple_mag",
+          2,
           1
         ],
         [
-          "vn_m18_purple_mag",
+          "vn_m129_mag",
+          2,
+          1
+        ],
+        [
+          "vn_m128_mag",
           2,
           1
         ]
