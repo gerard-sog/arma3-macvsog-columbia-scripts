@@ -73,4 +73,10 @@ class COLSOG {
         class moveAi {};
         class getClosestTarget {};
     };
+    class LzClearing
+    {
+        file ="functions\lz-clearing";
+        class cutSmallTree {postInit = 1;};
+        class explodeBigTree {postInit = 1;};
+    }
 }

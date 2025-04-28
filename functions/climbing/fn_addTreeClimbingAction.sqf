@@ -28,7 +28,7 @@ _climbTree = [
 
 ["Man", 1, ["ACE_SelfActions", "ACE_Equipment"], _climbTree, true] call ace_interact_menu_fnc_addActionToClass;
 
-_climbTree = [
+_climbDownTree = [
 	"COLSOG_climbDownTree",
 	"Climb down",
 	"\a3\modules_f\data\hideterrainobjects\icon_ca.paa",
@@ -40,4 +40,4 @@ _climbTree = [
 	}
 ] call ace_interact_menu_fnc_createAction;
 
-["Man", 1, ["ACE_SelfActions", "ACE_Equipment"], _climbTree, true] call ace_interact_menu_fnc_addActionToClass;
+["Man", 1, ["ACE_SelfActions", "ACE_Equipment"], _climbDownTree, true] call ace_interact_menu_fnc_addActionToClass;
