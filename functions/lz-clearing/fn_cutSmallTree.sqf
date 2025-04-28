@@ -6,6 +6,8 @@
  * None
  */
 
+if !(hasInterface) exitWith {};
+
 player addEventHandler [
     "GestureDone", {
     params ["_unit", "_gesture"];

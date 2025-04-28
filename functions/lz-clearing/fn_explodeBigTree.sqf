@@ -6,6 +6,8 @@
  * None
  */
 
+if !(server) exitWith {};
+
 ["ace_explosives_place", {
     params ["_explosive", "_dir", "_pitch", "_unit"];
 
@@ -16,7 +18,7 @@
         [
             {!alive _this},
             {
-                private _listOfNearestTerrainTreesAndBushes = nearestTerrainObjects [_this, ["Tree", "Bush"], 15];
+                private _listOfNearestTerrainTreesAndBushes = nearestTerrainObjects [_this, ["Tree", "Bush"], 5, true, true];
 
                 {
                     private _modelInfo = getModelInfo _x;
