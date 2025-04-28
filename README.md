@@ -774,6 +774,47 @@ player setPos [_playerPos select 0, _playerPos select 1, <TREE_HEIGHT_CORRECTION
 
 </details>
 
+<details>
+
+<summary>15. Cutting/Exploding trees</summary>
+
+Allows player clear LZ or path by cutting/exploding trees, bushes, etc.
+
+To cut a tree follow this steps:
+- Equip one of the following secondary weapons "vn_m_axe_01" or "vn_m_bolo_01".
+- Optional, you can configure amounts of hit required to cut a tree byt updating the hashmap '_hashMapOfTreeAndTimeToCut' in [fn_cutSmallTree.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/lz-clearing/fn_cutSmallTree.sqf)
+```
+// Tree name - Amount of hit required to cut the tree.
+private _hashMapOfTreeAndTimeToCut = [
+    ["vn_pine_tree_01.p3d", 6],
+    ["vn_t_agathis_tall_f.p3d", 6],
+    ["vn_t_cyathea_f.p3d", 4],
+    ["vn_b_cycas_f.p3d", 2],
+    ["vn_t_banana_slim_f.p3d", 1],
+    ["vn_t_banana_f.p3d", 1],
+    ["vn_b_calochlaena_f.p3d", 1],
+    ["vn_t_palaquium_f.p3d", 8],
+    ["vn_elephant_grass_01_lc.p3d", 1],
+    ["vn_t_pritchardia_f.p3d", 2],
+    ["vn_b_leucaena_f.p3d", 2],
+    ["vn_bamboo_bush_01.p3d", 1],
+    ["vn_dried_t_ficus_medium_01.p3d", 8],
+    ["vn_t_cocos_bend_f.p3d", 6],
+    ["vn_t_cocosnucifera3s_tall_f.p3d", 6],
+    ["vn_t_agathis_wide_f.p3d", 8]
+];
+```
+
+- Hit the tree with the secondary weapon.
+
+Some bigger trees are too though to cut. This is where we can use C-4 (ACE "c4_charge_small") to explode those.
+
+To explode a tree follow this steps:
+- Using the ACE action, place a C-4 and arm it.
+- (Small trees and bush in the blast radius will also be destroyed).
+
+</details>
+
 ### Tips
 
 <details>
