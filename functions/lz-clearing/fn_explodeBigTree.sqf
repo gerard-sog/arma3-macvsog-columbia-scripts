@@ -31,9 +31,9 @@ if !(server) exitWith {};
                     ];
 
                     if ((_listOfIndestructibleTrees find _treeP3dName) != -1) then {
-                        hideObjectGlobal _x;
+                        [_x, true] remoteExec ["hideObjectGlobal", 2];
                         _pos = getPosATL _x;
-                        "land_vn_burned_t_ficus_big_04" createVehicle _pos;
+                        createVehicle ["land_vn_burned_t_ficus_big_04", _pos, [], 0, "CAN_COLLIDE"];
                     } else {
                         _x setDamage 1;
                     };
