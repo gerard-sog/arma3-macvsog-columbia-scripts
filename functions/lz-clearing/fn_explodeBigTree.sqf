@@ -6,7 +6,7 @@
  * None
  */
 
-if !(server) exitWith {};
+if (!isServer) exitWith {};
 
 ["ace_explosives_place", {
     params ["_explosive", "_dir", "_pitch", "_unit"];
