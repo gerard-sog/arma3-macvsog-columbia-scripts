@@ -15,7 +15,8 @@ player addEventHandler [
 
         private _listOfAuthorizedCuttingTool = [
             "vn_m_axe_01",
-            "vn_m_bolo_01"
+            "vn_m_bolo_01",
+            "vn_m_machete_02"
         ];
 
         if ((_listOfAuthorizedCuttingTool find currentWeapon _unit) != -1) then {
