@@ -21,9 +21,7 @@ if (!isServer) exitWith {};
                 // -------------------
                 // | Set unconscious |
                 // -------------------
-
-                // To remove units inside kill blast
-                private _unitsToUnconscious = nearestObjects [_this, ["CAManBase"], 15];
+                private _unitsToUnconscious = nearestObjects [_this, ["CAManBase"], 20];
 
                 {
                     if (isPlayer _x) then {
