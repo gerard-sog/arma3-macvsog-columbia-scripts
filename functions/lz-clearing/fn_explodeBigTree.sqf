@@ -18,6 +18,22 @@ if (!isServer) exitWith {};
         [
             {!alive _this},
             {
+                // -------------------
+                // | Set unconscious |
+                // -------------------
+                private _unitsToUnconscious = nearestObjects [_this, ["CAManBase"], 20];
+
+                {
+                    if (isPlayer _x) then {
+                        [_x, true, 30, true] call ace_medical_fnc_setUnconscious;
+                    } else {
+                        _x setUnconscious true;
+                    };
+                } forEach _unitsToUnconscious;
+
+                // -------------
+                // | Cut trees |
+                // -------------
                 private _listOfNearestTerrainTreesAndBushes = nearestTerrainObjects [_this, ["Tree", "Bush"], 5, true, true];
 
                 {
