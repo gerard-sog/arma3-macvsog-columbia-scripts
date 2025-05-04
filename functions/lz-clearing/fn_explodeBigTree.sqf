@@ -6,8 +6,7 @@
  * None
  */
 
-if (!isServer) exitWith {};
-
+// Locality: Global
 ["ace_explosives_place", {
     params ["_explosive", "_dir", "_pitch", "_unit"];
 
@@ -101,6 +100,9 @@ if (!isServer) exitWith {};
     };
 }] call CBA_fnc_addEventHandler;
 
+if (!isServer) exitWith {};
+
+// Locality: Local
 ["ace_dragging_stoppedCarry", {
     params 	["_unit", "_target", "_loadCargo"];
 
@@ -111,6 +113,7 @@ if (!isServer) exitWith {};
     };
 }] call CBA_fnc_addEventHandler;
 
+// Locality: Local
 ["ace_dragging_stoppedDrag", {
     params 	["_unit", "_target"];
 
