@@ -100,8 +100,6 @@
     };
 }] call CBA_fnc_addEventHandler;
 
-if (!isServer) exitWith {};
-
 // Locality: Local
 ["ace_dragging_stoppedCarry", {
     params 	["_unit", "_target", "_loadCargo"];
