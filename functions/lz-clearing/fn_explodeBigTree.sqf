@@ -68,8 +68,6 @@ if (!isServer) exitWith {};
                                 },
                                 [_triggerTime, _unit]
                             ] call CBA_fnc_waitUntilAndExecute;
-
-                            systemChat "GetOutMan";
                         }];
                     };
                 } forEach _vehiclesToUnconsciousDriver;
@@ -111,9 +109,6 @@ if (!isServer) exitWith {};
     if ((!isPlayer _target) && (_hasConcussion)) then {
         _target switchMove "UnconsciousFaceDown";
     };
-
-    systemChat "ace_dragging_stoppedCarry";
-
 }] call CBA_fnc_addEventHandler;
 
 ["ace_dragging_stoppedDrag", {
@@ -124,7 +119,4 @@ if (!isServer) exitWith {};
     if ((!isPlayer _target) && (_hasConcussion)) then {
         _target switchMove "UnconsciousFaceDown";
     };
-
-    systemChat "ace_dragging_stoppedDrag";
-
 }] call CBA_fnc_addEventHandler;
