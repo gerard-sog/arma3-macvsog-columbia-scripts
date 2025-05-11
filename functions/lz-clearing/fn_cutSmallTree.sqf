@@ -31,24 +31,34 @@ player addEventHandler [
                 ["vn_pine_tree_01.p3d", 6],
                 ["vn_t_agathis_tall_f.p3d", 6],
                 ["vn_t_cyathea_f.p3d", 4],
+                ["t_cyathea_f.p3d", 4],
                 ["vn_b_cycas_f.p3d", 2],
+                ["b_cycas_f.p3d", 2],
+                ["b_gardenia_f.p3d", 2],
+                ["b_cestrum_f.p3d", 2],
                 ["vn_t_banana_slim_f.p3d", 1],
                 ["vn_t_banana_f.p3d", 1],
                 ["vn_b_calochlaena_f.p3d", 1],
-                ["vn_t_palaquium_f.p3d", 8],
                 ["vn_elephant_grass_01_lc.p3d", 1],
                 ["vn_t_pritchardia_f.p3d", 2],
+                ["t_pritchardia_f.p3d", 2],
                 ["vn_b_leucaena_f.p3d", 2],
+                ["b_leucaena_f.p3d", 2],
                 ["vn_bamboo_bush_01.p3d", 1],
                 ["vn_dried_t_ficus_medium_01.p3d", 8],
                 ["vn_t_cocos_bend_f.p3d", 6],
                 ["vn_t_cocosnucifera3s_tall_f.p3d", 6],
-                ["vn_t_agathis_wide_f.p3d", 8]
+                ["t_cocosnucifera2s_small_f.p3d", 6],
+                ["t_cocosnucifera3s_tall_f.p3d.p3d", 6],
+                ["vn_t_agathis_wide_f.p3d", 8],
+                ["t_leucaena_f.p3d", 4],
+                ["t_cocosnucifera3s_bend_f.p3d", 4],
+                ["t_cocos_tall_f.p3d", 4]
             ];
 
             {
                 private _key = _x select 0;
-                if ([_key, _objectP3dName] call BIS_fnc_inString) exitWith {
+                if (_key == _objectP3dName) exitWith {
                     _isAuthorizedTree = true;
                     _treeCuttingTime = _x select 1;
                 };
