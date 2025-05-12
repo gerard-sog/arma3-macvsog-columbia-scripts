@@ -23,7 +23,9 @@
 
                 {
                     if (isPlayer _x) then {
-                        [_x, true, 30, true] call ace_medical_fnc_setUnconscious;
+                        private _playerDistanceToExplosion = _x distance2D _this;
+                        private _unconsciousTime = abs (30 - _playerDistanceToExplosion);
+                        [_x, true, _unconsciousTime, true] call ace_medical_fnc_setUnconscious;
                     } else {
                         _x setUnconscious true;
                         _x setVariable ["COLSOG_hasConcussion", true, true];
@@ -128,28 +130,5 @@
             },
             _explosive
         ] call CBA_fnc_waitUntilAndExecute;
-    };
-}] call CBA_fnc_addEventHandler;
-
-// Locality: Local
-["ace_dragging_stoppedCarry", {
-    params 	["_unit", "_target", "_loadCargo"];
-
-    private _hasConcussion = _target getVariable ["COLSOG_hasConcussion", false];
-
-    if ((!isPlayer _target) && (_hasConcussion)) then {
-        [_unit, selectRandom _voiceLinePaths]] call CBA_fnc_globalEvent;
-        _target switchMove "UnconsciousFaceDown";
-    };
-}] call CBA_fnc_addEventHandler;
-
-// Locality: Local
-["ace_dragging_stoppedDrag", {
-    params 	["_unit", "_target"];
-
-    private _hasConcussion = _target getVariable ["COLSOG_hasConcussion", false];
-
-    if ((!isPlayer _target) && (_hasConcussion)) then {
-        _target switchMove "UnconsciousFaceDown";
     };
 }] call CBA_fnc_addEventHandler;
