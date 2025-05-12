@@ -78,5 +78,6 @@ class COLSOG {
         file ="functions\lz-clearing";
         class cutSmallTree {postInit = 1;};
         class explodeBigTree {postInit = 1;};
+        class carryAndDrag {postInit = 1;};
     }
 }

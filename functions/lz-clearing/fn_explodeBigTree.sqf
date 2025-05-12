@@ -6,8 +6,6 @@
  * None
  */
 
-if (!isServer) exitWith {};
-
 ["ace_explosives_place", {
     params ["_explosive", "_dir", "_pitch", "_unit"];
 
@@ -18,16 +16,65 @@ if (!isServer) exitWith {};
         [
             {!alive _this},
             {
+                // -------------------
+                // | Set unconscious |
+                // -------------------
                 private _unitsToUnconscious = nearestObjects [_this, ["CAManBase"], 20];
 
                 {
                     if (isPlayer _x) then {
-                        [_x, true, 30, true] call ace_medical_fnc_setUnconscious;
+                        private _playerDistanceToExplosion = _x distance2D _this;
+                        private _unconsciousTime = abs (30 - _playerDistanceToExplosion);
+                        [_x, true, _unconsciousTime, true] call ace_medical_fnc_setUnconscious;
                     } else {
                         _x setUnconscious true;
+                        _x setVariable ["COLSOG_hasConcussion", true, true];
+
+                        private _triggerTime = serverTime + 5;
+                        [
+                            { (_this select 0) < serverTime },
+                            {
+                                private _unit = _this select 1;
+                                if (alive _unit) then {
+                                    _unit switchMove "UnconsciousFaceDown";
+                                };
+                            },
+                            [_triggerTime, _x]
+                        ] call CBA_fnc_waitUntilAndExecute;
                     };
                 } forEach _unitsToUnconscious;
 
+                _vehiclesToUnconsciousDriver = nearestObjects [_this, ["LandVehicle"], 20];
+                {
+                    _driver = driver _x;
+                    if (isPlayer _driver) then {
+                        [_driver, true, 30, true] call ace_medical_fnc_setUnconscious;
+                    } else {
+                        _driver setUnconscious true;
+                        _driver setVariable ["COLSOG_hasConcussion", true, true];
+                        _driver switchMove "KIA_driver_scooter_01";
+
+                        _driver addEventHandler ["GetOutMan", {
+                            params ["_unit", "_role", "_vehicle", "_turret", "_isEject"];
+
+                            private _triggerTime = serverTime + 5;
+                            [
+                                { (_this select 0) < serverTime },
+                                {
+                                    private _unit = _this select 1;
+                                    if (alive _unit) then {
+                                        _unit switchMove "UnconsciousFaceDown";
+                                    };
+                                },
+                                [_triggerTime, _unit]
+                            ] call CBA_fnc_waitUntilAndExecute;
+                        }];
+                    };
+                } forEach _vehiclesToUnconsciousDriver;
+
+                // -------------
+                // | Cut trees |
+                // -------------
                 private _listOfNearestTerrainTreesAndBushes = nearestTerrainObjects [_this, ["Tree", "Bush"], 10, true, true];
 
                 {
