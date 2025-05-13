@@ -222,7 +222,7 @@
 // ==================================
 // C4 Explosive - Unconscious
 ["colsog_c4_explosive_explosionSearchRadiusUnconscious", "SLIDER", ["Search radius for units to unconscious (m)"], [CBA_SETTINGS_COLSOG_C4_EXPLOSIVE, "C4 Explosive - Unconscious"], [0, 30, 20, 0], 1, {}, false] call CBA_fnc_addSetting;
-["colsog_c4_explosive_maximumTimeUnconscious", "SLIDER", ["Maximum time unconscious in seconds (if at 0m from explosion)"], [CBA_SETTINGS_COLSOG_C4_EXPLOSIVE, "C4 Explosive - Unconscious"], [0, 60, 30, 0], 1, {}, false] call CBA_fnc_addSetting;
+["colsog_c4_explosive_maximumTimeUnconscious", "SLIDER", ["Maximum time unconscious in seconds"], [CBA_SETTINGS_COLSOG_C4_EXPLOSIVE, "C4 Explosive - Unconscious"], [0, 60, 30, 0], 1, {}, false] call CBA_fnc_addSetting;
 
 // C4 Explosive - Trees
 ["colsog_c4_explosive_explosionSearchRadiusTree", "SLIDER", ["Search radius for trees ( > destruction radius) (m)"], [CBA_SETTINGS_COLSOG_C4_EXPLOSIVE, "C4 Explosive - Tree"], [5, 20, 10, 0], 1, {}, false] call CBA_fnc_addSetting;
