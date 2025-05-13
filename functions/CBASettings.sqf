@@ -13,6 +13,8 @@
 #define CBA_SETTINGS_COLSOG_PRAIRIE_FIRE_MODULE "COLSOG Prairie Fire Module"
 #define CBA_SETTINGS_COLSOG_RADIO_AND_BATTERY "COLSOG Radio and Battery"
 #define CBA_SETTINGS_COLSOG_SENSORS "COLSOG Sensors"
+#define CBA_SETTINGS_COLSOG_TREE_CUTTING "COLSOG Tree Cutting"
+#define CBA_SETTINGS_COLSOG_C4_EXPLOSIVE "COLSOG C4 Explosive"
 
 // ====================================
 // |CBA_SETTINGS_COLSOG_BAYONET_CHARGE|
@@ -182,9 +184,9 @@
 ["colsog_sensor_gravityRadioTransmissionRange", "SLIDER", ["Radio transmission range (m)"], [CBA_SETTINGS_COLSOG_SENSORS, "Sensors - Gravity"], [0, 2500, 1000, 0], 1, {}, false] call CBA_fnc_addSetting;
 ["colsog_sensor_gravityLogFrequency", "SLIDER", ["Sensor logging frequency (sec)"], [CBA_SETTINGS_COLSOG_SENSORS, "Sensors - Gravity"], [0, 60, 5, 0], 1, {}, false] call CBA_fnc_addSetting;
 
-// =======================================
+// ===================================
 // |CBA_SETTINGS_COLSOG_MISCELLANEOUS|
-// =======================================
+// ===================================
 // STABO
 ["colsog_stabo_climbDuration", "SLIDER", ["Action duration in seconds"], [CBA_SETTINGS_COLSOG_MISCELLANEOUS, "STABO"], [1, 30, 10, 0], 1, {}, false] call CBA_fnc_addSetting;
 ["colsog_stabo_ropeLength", "SLIDER", ["Rope length (m)"], [CBA_SETTINGS_COLSOG_MISCELLANEOUS, "STABO"], [25, 100, 60, 0], 1, {}, false] call CBA_fnc_addSetting;
@@ -208,3 +210,20 @@
 
 // Covertop
 ["colsog_faces_iscovertops", "CHECKBOX", ["Force all players to vietnamese faces"], [CBA_SETTINGS_COLSOG_MISCELLANEOUS, "Covertops"], false, 1, {}, false] call CBA_fnc_addSetting;
+
+// ==================================
+// |CBA_SETTINGS_COLSOG_TREE_CUTTING|
+// ==================================
+// Tree cutting
+["colsog_tree_cutting_reachWithAxe", "SLIDER", ["Reach with cutting tool (m)"], [CBA_SETTINGS_COLSOG_TREE_CUTTING, "Tree Cutting"], [1, 10, 4, 0], 1, {}, false] call CBA_fnc_addSetting;
+
+// ==================================
+// |CBA_SETTINGS_COLSOG_C4_EXPLOSIVE|
+// ==================================
+// C4 Explosive - Unconscious
+["colsog_c4_explosive_explosionSearchRadiusUnconscious", "SLIDER", ["Search radius for units to unconscious (m)"], [CBA_SETTINGS_COLSOG_C4_EXPLOSIVE, "C4 Explosive - Unconscious"], [0, 30, 20, 0], 1, {}, false] call CBA_fnc_addSetting;
+["colsog_c4_explosive_maximumTimeUnconscious", "SLIDER", ["Maximum time unconscious in seconds (if at 0m from explosion)"], [CBA_SETTINGS_COLSOG_C4_EXPLOSIVE, "C4 Explosive - Unconscious"], [0, 60, 30, 0], 1, {}, false] call CBA_fnc_addSetting;
+
+// C4 Explosive - Trees
+["colsog_c4_explosive_explosionSearchRadiusTree", "SLIDER", ["Search radius for trees ( > destruction radius) (m)"], [CBA_SETTINGS_COLSOG_C4_EXPLOSIVE, "C4 Explosive - Tree"], [5, 20, 10, 0], 1, {}, false] call CBA_fnc_addSetting;
+["colsog_c4_explosive_explosionDestructionRadiusTree", "SLIDER", ["Destruction radius for trees ( < search radius) (m)"], [CBA_SETTINGS_COLSOG_C4_EXPLOSIVE, "C4 Explosive - Tree"], [5, 20, 7, 0], 1, {}, false] call CBA_fnc_addSetting;
