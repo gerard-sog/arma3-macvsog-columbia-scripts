@@ -1,6 +1,6 @@
 /*
  * Adds an event handler on 'ace_explosives_place' ACE event. It will only trigger for the explosive
- * 'c4_charge_small.p3d' and will destroy the tree in a radius around the explosion.
+ * 'c4_charge_small.p3d' and will make AI, player go unconscious and destroy the trees in a radius around the explosion.
  *
  * Return values:
  * None
