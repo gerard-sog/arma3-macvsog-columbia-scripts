@@ -1,3 +1,10 @@
+/*
+ * Adds two event handler to manage drag and drop on unconscious AI due to C4-explosion.
+ *
+ * Return values:
+ * None
+ */
+
 // Locality: Local
 ["ace_dragging_stoppedCarry", {
     params 	["_unit", "_target", "_loadCargo"];

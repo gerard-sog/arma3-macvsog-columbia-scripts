@@ -4,6 +4,14 @@ Compilation of scripts used during multiplayer PVE/PVP mission on Arma 3. Also f
 - If you want to contribute to this project, see [CONTRIBUTING.md](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/CONTRIBUTING.md).
 - For demo of scripts, see [RT Columbia - Youtube videos](https://www.youtube.com/@RTColumbia/videos).
 
+### Special thanks
+
+- <u>Kay</u> (RT Columbia Discord): for the constant help developing and fixing scripts.
+- <u>Johnnyboy</u> (S.O.G. Prairie Fire Discord): for the original scripts for the mace trap and bayonet rush.
+- <u>Sky</u> (S.O.G. Prairie Fire Discord): for the help regarding the bayonet charge scripts.
+
+---
+
 ## Table of contents
 - [Requirements](#requirements)
 - [Installation](#installation)
@@ -71,9 +79,9 @@ Installation of all the scripts/zeus modules is done by **copying the below file
   - **Transition Time**: transition with optional text to whenever in time.
   - **Vanilla Fog**: manage fog.
 - A - COLSOG Radio
-  - **Init PF77s**: add 3 new racks to vehicle (requires player to get in/exit vehicle before executing module on vehicle).
+  - **Init PF77s**: add 3 new racks to vehicle.
   - **NVA radio chatter**: enables to make tape-recorder object produce vietnamese radio like voice (used to simulate wire taping).
-  - **Toggle CAS**: manage CAS asset available in the Radio Support module.
+  - **Toggle CAS**: manage CAS asset available in the Radio Support module & SIMPLEX support module.
 - A - COLSOG Vehicle
   - **Add STABO**: add the ability to deploy a rope from a helicopter to allow player on the ground to get into the helicopter.
   - **Add Crew management**: add the ability for the pilot of a helicopter to request AI crew members (door gunners).
@@ -264,10 +272,33 @@ vanilla medical items conversion to ace medical items
 
 <summary>COLSOG Bayonet Charge</summary>
 
-- **Bayonet Charge**
+  - **Bayonet Charge**
     - Enable screams: <i>Boolean</i>
     - Search radius (m): <i>Integer</i>
     - Damage given to player: <i>Integer</i>
+
+</details>
+
+<details>
+
+<summary>COLSOG Tree cutting</summary>
+
+  - **Tree cutting**
+    - Reach with cutting tool (m): <i>Integer</i>
+
+</details>
+
+<details>
+
+<summary>COLSOG C4 Explosive - Unconscious</summary>
+
+  - **C4 Explosive - Unconscious**
+    - Search radius for units to unconscious (m): <i>Integer</i>
+    - Maximum time unconscious in seconds (if at 0m from explosion): <i>Integer</i>
+
+ - **C4 Explosive - Trees**
+    - Search radius for trees ( > destruction radius) (m): <i>Integer</i>
+    - Destruction radius for trees ( < search radius) (m): <i>Integer</i>
 
 </details>
   
@@ -807,12 +838,33 @@ private _hashMapOfTreeAndTimeToCut = [
 
 - Hit the tree with the secondary weapon.
 
-Some bigger trees are too though to cut. This is where we can use C-4 (ACE "c4_charge_small") to explode those.
+Some bigger trees are too though to cut. This is where we can use C-4 (ACE "c4_charge_small") to explode those (see [fn_explodeBigTree.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/lz-clearing/fn_explodeBigTree.sqf)).
 
 To explode a tree follow this steps:
 - Using the ACE action, place a C-4 and arm it.
 - (Small trees and bush in the blast radius will also be destroyed).
 
+</details>
+
+<details>
+
+<summary>16. C4 explosives for POW snatch</summary>
+
+Adds an unconscious radius to the C4 explosives. 
+
+Currently, we only manage 1 type of explosive:
+
+```
+ c4_charge_small.p3d
+```
+
+This will:
+- Make <u>**any player in the blast radius unconscious for X seconds**</u> (configurable via addons setting), with X lowering the further from the explosion you are.
+- Make <u>**AI go unconscious**</u> (not the ACE unconscious, the Arma version. This make this script working if you have AI to die on ace unconscious) and put them in a **<u>specific animation</u>** to easily recognize them.
+- Make <u>**drivers (AI and player) go unconscious**</u> (no other crew of the vehicle). For AI driver, they will be put in a <u>**unconscious position**</u> (head against the steering wheel).
+
+Also:
+- AI will never wake up once unconscious and if you carry/drag them around, the <u>**specific unconscious position**</u> will be set again each time you drop them.
 </details>
 
 ### Tips
@@ -968,11 +1020,3 @@ in the main init.sqf and place down the [Cam Lao Nam borders composition](https:
 
 - Procedure to create a new Arma 3 inventory object from scratch: https://github.com/gerard-sog/arma3-macvsog-columbia-items.
 - Custom gesture wheel: https://steamcommunity.com/sharedfiles/filedetails/?id=3339280489.
-
----
-
-## Special thanks
-
-- <u>Kay</u> (RT Columbia Discord): for the constant help developing and fixing scripts.
-- <u>Johnnyboy</u> (S.O.G. Prairie Fire Discord): for the original scripts for the mace trap and bayonet rush.
-- <u>Sky</u> (S.O.G. Prairie Fire Discord): for the help regarding the bayonet charge scripts.

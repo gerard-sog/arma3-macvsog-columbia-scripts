@@ -65,18 +65,18 @@ player addEventHandler [
             } forEach _hashMapOfTreeAndTimeToCut;
 
             if (_isAuthorizedTree) then {
-                if (_unit distance2D _object < 4) then {
+                if (_unit distance2D _object < colsog_tree_cutting_reachWithAxe) then {
 
                     _key = str _object;
-
                     _hp = _unit getVariable _key;
+
                     if (isNil "_hp") then {
                         _unit setVariable[_key, _treeCuttingTime, true];
-                        hintSilent format ["Progress: " + str _treeCuttingTime + "/" + str _treeCuttingTime];
+                        hintSilent format ["Stability: " + str _treeCuttingTime + "/" + str _treeCuttingTime];
                     } else {
                         _newHp = _hp - 1;
                         _unit setVariable[_key, _newHp, true];
-                        hintSilent format ["Progress: " + str (_newHp) + "/" + str _treeCuttingTime];
+                        hintSilent format ["Stability: " + str (_newHp) + "/" + str _treeCuttingTime];
                         if (_newHp < 1) then {
                             _object setDamage 1;
                         };
