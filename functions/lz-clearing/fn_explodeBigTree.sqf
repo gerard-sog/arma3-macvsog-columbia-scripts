@@ -108,10 +108,10 @@
                     private _orientation = direction _x;
                     private _orientationToRealTreeDegrees = ((((_orientation + _correctionOrientation) % 360) + 180) % 360);
 
-                    private _pos = getPosATL _x;
-                    private _currentX = _pos select 0;
-                    private _currentY = _pos select 1;
-                    private _currentZ = _pos select 2;
+                    private _posTree = getPosATL _x;
+                    private _currentX = _posTree select 0;
+                    private _currentY = _posTree select 1;
+                    private _currentZ = _posTree select 2;
 
                     private _deltaNorth = (cos _orientationToRealTreeDegrees) * _correctionDistance;
                     private _deltaEast = (sin _orientationToRealTreeDegrees) * _correctionDistance;
@@ -123,7 +123,9 @@
                     if (_this distance2D _correctedPos < colsog_c4_explosive_explosionDestructionRadiusTree) then {
                         if (_isIndestructibleTree) then {
                             [_x, true] remoteExec ["hideObjectGlobal", 2];
-                            createVehicle ["land_vn_burned_t_ficus_big_04", _correctedPos, [], 0, "CAN_COLLIDE"];
+                            private _destroyedTree = createVehicle ["land_vn_burned_t_ficus_big_04", _correctedPos, [], 0, "CAN_COLLIDE"];
+                            private _orientationTree = getDir _x;
+                            _destroyedTree setDir _orientationTree;
                         } else {
                             _x setDamage 1;
                         };
