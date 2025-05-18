@@ -2,8 +2,6 @@
  * TODO
  */
 
-if (!isServer) exitWith {};
-
 ["Air", "Fired", {
 
 	params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile", "_gunner"];
@@ -17,6 +15,7 @@ if (!isServer) exitWith {};
         ["vn_bomb_blu1b_500_fb.p3d", true, 30],
         ["vn_bomb_mk82_se_proxy.p3d", false, 10],
         ["vn_bomb_mk82_he.p3d", false, 10],
+        ["vn_bomb_mk82_dc.p3d", false, 10],
         ["vn_bomb_mk83_he.p3d", false, 20],
         ["vn_bomb_mk82_dc.p3d", false, 10],
         ["vn_bomb_mk84_he.p3d", false, 40],
