@@ -74,10 +74,12 @@
                     };
                 } forEach _vehiclesToUnconsciousDriver;
 
-                // -------------
-                // | Cut trees |
-                // -------------
+                // -----------------
+                // | Explode trees |
+                // -----------------
                 private _listOfNearestTerrainTreesAndBushes = nearestTerrainObjects [_this, ["Tree", "Bush"], colsog_c4_explosive_explosionSearchRadiusTree, true, true];
+                private _listOfNearestDamagedTrees = nearestObjects [_this, ["Land_vn_vegetation_base"], colsog_c4_explosive_explosionSearchRadiusTree, true, true];
+                private _listOfNearestTreeBushAndDamagedTreesToDest = _listOfNearestTerrainTreesAndBushes + _listOfNearestDamagedTrees;
 
                 {
                     private _modelInfo = getModelInfo _x;
@@ -90,7 +92,8 @@
                         ["t_inocarpus_f.p3d", 0, 0],
                         ["vn_dried_t_ficus_big_01.p3d", 0, 0],
                         ["vn_t_palaquium_f.p3d", 0, 0],
-                        ["t_palaquium_f.p3d", 24, 9.2]
+                        ["t_palaquium_f.p3d", 24, 9.2],
+                        ["vn_burned_t_ficus_big_01.p3d", 0, 0]
                     ];
 
                     private _isIndestructibleTree = false;
@@ -121,17 +124,19 @@
                     private _correctedPos = [_correctedX, _correctedY, _currentZ];
 
                     if (_this distance2D _correctedPos < colsog_c4_explosive_explosionDestructionRadiusTree) then {
-                        if (_isIndestructibleTree) then {
-                            [_x, true] remoteExec ["hideObjectGlobal", 2];
-                            private _destroyedTree = createVehicle ["land_vn_burned_t_ficus_big_04", [0, 0, 0], [], 0, "CAN_COLLIDE"];
-                            _destroyedTree setPosATL _correctedPos;
-                            private _orientationTree = getDir _x;
-                            _destroyedTree setDir _orientationTree;
-                        } else {
-                            _x setDamage 1;
+                        if !(isObjectHidden _x) then {
+                            if (_isIndestructibleTree) then {
+                                [_x, true] remoteExec ["hideObjectGlobal", 2];
+                                private _destroyedTree = createVehicle ["land_vn_burned_t_ficus_big_04", [0, 0, 0], [], 0, "CAN_COLLIDE"];
+                                _destroyedTree setPosATL _correctedPos;
+                                private _orientationTree = getDir _x;
+                                _destroyedTree setDir _orientationTree;
+                            } else {
+                                _x setDamage 1;
+                            };
                         };
                     };
-                } forEach _listOfNearestTerrainTreesAndBushes;
+                } forEach _listOfNearestTreeBushAndDamagedTreesToDest;
             },
             _explosive
         ] call CBA_fnc_waitUntilAndExecute;
