@@ -49,7 +49,18 @@
 
                 if (_isNapalm) then {
                     private _floorPos = [_pos select 0, _pos select 1, 0];
-                    createVehicle ["vn_ground_embers_01", _floorPos, [], 0, "CAN_COLLIDE"];
+                    createVehicle ["vn_ground_burned_01", _floorPos, [], 0, "CAN_COLLIDE"];
+                    private _embersDecal = createVehicle ["vn_ground_embers_01", _floorPos, [], 0, "CAN_COLLIDE"];
+
+                    private _extinguishTime = serverTime + 300;
+                    [
+                        { (_this select 0) < serverTime },
+                        {
+                            private _embersDecal = _this select 1;
+                            deleteVehicle _embersDecal;
+                        },
+                        [_extinguishTime, _embersDecal]
+                    ] call CBA_fnc_waitUntilAndExecute;
                 };
 
                 // -------------
