@@ -81,6 +81,12 @@
                 private _listOfNearestDamagedTrees = nearestObjects [_this, ["Land_vn_vegetation_base"], colsog_c4_explosive_explosionSearchRadiusTree, true, true];
                 private _listOfNearestTreeBushAndDamagedTreesToDest = _listOfNearestTerrainTreesAndBushes + _listOfNearestDamagedTrees;
 
+                private _temporaryGroup = createGroup [west, true];
+                private _temporaryUnit = _temporaryGroup createUnit ["B_RangeMaster_F", getPos _this, [], 0, "CAN_COLLIDE"];
+                _temporaryUnit allowDamage false;
+                _temporaryUnit enableSimulation false;
+                _temporaryUnit hideObject true;
+
                 {
                     private _modelInfo = getModelInfo _x;
                     private _treeP3dName = _modelInfo select 0;
@@ -140,11 +146,13 @@
                                     _fallenTree setDir _orientationTree;
                                 };
                             } else {
-                                _x setDamage 1;
+                                _x setDamage [1, true, _temporaryUnit];
                             };
                         };
                     };
                 } forEach _listOfNearestTreeBushAndDamagedTreesToDest;
+
+                deleteVehicle _temporaryUnit;
             },
             _explosive
         ] call CBA_fnc_waitUntilAndExecute;
