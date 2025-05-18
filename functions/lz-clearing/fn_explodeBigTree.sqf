@@ -131,6 +131,14 @@
                                 _destroyedTree setPosATL _correctedPos;
                                 private _orientationTree = getDir _x;
                                 _destroyedTree setDir _orientationTree;
+
+                                private _oddOfFallenTree = [1, 100] call BIS_fnc_randomNum;
+                                if (_oddOfFallenTree <= 30) then {
+                                    private _fallenTree = createVehicle ["land_vn_burned_t_ficus_big_03", [0, 0, 0], [], 0, "CAN_COLLIDE"];
+                                    private _fallenTreePos = [(_correctedPos select 0) + 5, (_correctedPos select 1) + 5, 0];
+                                    _fallenTree setPosATL _fallenTreePos;
+                                    _fallenTree setDir _orientationTree;
+                                };
                             } else {
                                 _x setDamage 1;
                             };

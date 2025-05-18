@@ -8,7 +8,6 @@
 
     private _projectileInfo = getModelInfo _projectile;
     private _projectileP3dName = _projectileInfo select 0;
-    systemChat _projectileP3dName;
 
     private _hashMapOfBombsAndIsNapalmAndRadius = [
         ["vn_bomb_blu1b_fb.p3d", true, 45],
@@ -63,9 +62,9 @@
                     ] call CBA_fnc_waitUntilAndExecute;
                 };
 
-                // -------------
-                // | Cut trees |
-                // -------------
+                // ----------------------
+                // | Explode/Burn trees |
+                // ----------------------
                 private _searchTreeRadius = _destructionRadius + 10;
 
                 private _listOfNearestTerrainTreesAndBushes = nearestTerrainObjects [_pos, ["Tree", "Bush"], _searchTreeRadius, true, true];
@@ -135,6 +134,14 @@
                                     _destroyedTree setPosATL _correctedPos;
                                     private _orientationTree = getDir _x;
                                     _destroyedTree setDir _orientationTree;
+
+                                    private _oddOfFallenTree = [1, 100] call BIS_fnc_randomNum;
+                                    if (_oddOfFallenTree <= 30) then {
+                                        private _fallenTree = createVehicle ["land_vn_burned_t_ficus_big_03", [0, 0, 0], [], 0, "CAN_COLLIDE"];
+                                        private _fallenTreePos = [(_correctedPos select 0) + 5, (_correctedPos select 1) + 5, 0];
+                                        _fallenTree setPosATL _fallenTreePos;
+                                        _fallenTree setDir _orientationTree;
+                                    };
                                 } else {
                                     _x setDamage 1;
                                 };
