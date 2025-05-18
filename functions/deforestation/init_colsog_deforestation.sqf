@@ -97,13 +97,14 @@
 
                     private _correctedX = _currentX + _deltaEast;
                     private _correctedY = _currentY + _deltaNorth;
-                    private _correctedPos = [_correctedX, _correctedY, 0];
+                    private _correctedPos = [_correctedX, _correctedY, _currentZ];
 
                     if (_pos distance2D _correctedPos < _destructionRadius) then {
                         if (_isNapalm) then {
                             if (_isIndestructibleTree) then {
                                 [_x, true] remoteExec ["hideObjectGlobal", 2];
-                                private _destroyedTree = createVehicle ["land_vn_burned_t_ficus_big_01", _correctedPos, [], 0, "CAN_COLLIDE"];
+                                private _destroyedTree = createVehicle ["land_vn_burned_t_ficus_big_01", [0, 0, 0], [], 0, "CAN_COLLIDE"];
+                                _destroyedTree setPosATL _correctedPos;
                                 private _orientationTree = getDir _x;
                                 _destroyedTree setDir _orientationTree;
                             } else {
@@ -112,7 +113,8 @@
                         } else {
                             if (_isIndestructibleTree) then {
                                 [_x, true] remoteExec ["hideObjectGlobal", 2];
-                                private _destroyedTree = createVehicle ["land_vn_burned_t_ficus_big_04", _correctedPos, [], 0, "CAN_COLLIDE"];
+                                private _destroyedTree = createVehicle ["land_vn_burned_t_ficus_big_04", [0, 0, 0], [], 0, "CAN_COLLIDE"];
+                                _destroyedTree setPosATL _correctedPos;
                                 private _orientationTree = getDir _x;
                                 _destroyedTree setDir _orientationTree;
                             } else {
