@@ -14,10 +14,16 @@
         ["vn_bomb_blu1b_500_fb.p3d", true, 30],
         ["vn_bomb_mk82_se_proxy.p3d", false, 10],
         ["vn_bomb_mk82_he.p3d", false, 10],
+        ["uns_mk82.p3d", false, 10],
         ["vn_bomb_mk82_dc.p3d", false, 10],
         ["vn_bomb_mk83_he.p3d", false, 20],
+        ["uns_mk83.p3d", false, 20],
         ["vn_bomb_mk82_dc.p3d", false, 10],
         ["vn_bomb_mk84_he.p3d", false, 40],
+        ["frl_mk84.p3d", false, 40],
+        ["frl_mk82.p3d", false, 10],
+        ["frl_mk77_fly.p3d", true, 30],
+        ["uns_blu1_fly.p3d", true, 45],
         ["vn_bomb_m117_01_he.p3d", false, 15],
         ["frl_blu1b_fly.p3d", true, 45]
     ];
