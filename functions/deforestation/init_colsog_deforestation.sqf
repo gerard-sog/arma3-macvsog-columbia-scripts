@@ -1,5 +1,5 @@
 /*
- * Adds an event handler on all "Air" vehicles that triggers when the vehicle fires. Triggerd by player and AI. This
+ * Adds an event handler on all "Air" vehicles that triggers when the vehicle fires. Triggered by player and AI. This
  * event will burn or destroy trees in the vicinity of the bomb impact point.
  *
  * Return values:
@@ -19,38 +19,44 @@
     };
 
     private _hashMapOfBombsAndIsNapalmAndRadius = [
-        ["vn_bomb_blu1b_fb.p3d", true, 45],
-        ["vn_bomb_blu1b_500_fb.p3d", true, 30],
-        ["vn_bomb_mk82_se_proxy.p3d", false, 10],
-        ["vn_bomb_mk82_he.p3d", false, 10],
-        ["uns_mk82.p3d", false, 10],
-        ["vn_bomb_mk82_dc.p3d", false, 10],
-        ["vn_bomb_mk83_he.p3d", false, 20],
-        ["uns_mk83.p3d", false, 20],
-        ["vn_bomb_mk82_dc.p3d", false, 10],
-        ["vn_bomb_mk84_he.p3d", false, 40],
-        ["frl_mk84.p3d", false, 40],
-        ["frl_mk82.p3d", false, 10],
-        ["frl_mk77_fly.p3d", true, 30],
-        ["uns_blu1_fly.p3d", true, 45],
-        ["vn_bomb_m117_01_he.p3d", false, 15],
-        ["frl_blu1b_fly.p3d", true, 45]
+        // Napalm
+        ["frl_blu1b_fly.p3d", true, 40, 0],
+        ["frl_mk77_fly.p3d", true, 30, 0],
+        ["uns_blu1_fly.p3d", true, 40, 0],
+        ["vn_bomb_blu1b_fb.p3d", true, 40, 0],
+        ["vn_bomb_blu1b_500_fb.p3d", true, 30, 0],
+        // Bombs
+        ["frl_mk82.p3d", false, 10, 0],
+        ["frl_mk84.p3d", false, 35, 10],
+        ["uns_mk82.p3d", false, 10, 0],
+        ["uns_mk83.p3d", false, 20, 0],
+        ["vn_bomb_mk82_dc.p3d", false, 10, 0],
+        ["vn_bomb_mk82_he.p3d", false, 10, 0],
+        ["vn_bomb_mk82_se_proxy.p3d", false, 10, 0],
+        ["vn_bomb_mk83_he.p3d", false, 20, 0],
+        ["vn_bomb_mk84_he.p3d", false, 35, 10],
+        ["vn_bomb_m117_01_he.p3d", false, 15, 0]
     ];
 
     private _isAllowedBomb = false;
     private _isNapalm = false;
+    // Tree in that radius will be destroyed (replace by destroyed version of the tree).
     private _destructionRadius = 0;
+    // No tree can survive this radius (will remove it).
+    private _obliterationRadius = 0;
     {
         private _key = _x select 0;
         if (_key == _projectileP3dName) exitWith {
             _isAllowedBomb = true;
             _isNapalm = _x select 1;
             _destructionRadius = _x select 2;
+            _obliterationRadius = _x select 3;
         };
     } forEach _hashMapOfBombsAndIsNapalmAndRadius;
 
     _projectile setVariable ["COLSOG_isNapalm", _isNapalm];
     _projectile setVariable ["COLSOG_destructionRadius", _destructionRadius];
+    _projectile setVariable ["COLSOG_obliterationRadius", _obliterationRadius];
 
     if (_isAllowedBomb) then {
         _projectile addEventHandler [
@@ -60,6 +66,7 @@
 
                 private _isNapalm = _projectile getVariable "COLSOG_isNapalm";
                 private _destructionRadius = _projectile getVariable "COLSOG_destructionRadius";
+                private _obliterationRadius = _projectile getVariable "COLSOG_obliterationRadius";
 
                 private _floorPos = [_pos select 0, _pos select 1, 0];
                 if (_isNapalm) then {
@@ -104,21 +111,31 @@
 
                     private _correctedPos = [_orientation, getPosATL _x, _correctionOrientation, _correctionDistance] call COLSOG_fnc_getCorrected3dModelPos;
 
-                    if (_pos distance2D _correctedPos < _destructionRadius) then {
-                        if !(isObjectHidden _x) then {
-                            if (_isNapalm) then {
-                                if !(_treeP3dName == "vn_burned_t_ficus_big_01.p3d") then {
+                    private _distanceFromExplosion = _pos distance2D _correctedPos;
+
+                    if (_distanceFromExplosion < _destructionRadius) then {
+                        if (_distanceFromExplosion < _obliterationRadius) then {
+                            if (_isIndestructibleTree) then {
+                                [_x, true] remoteExec ["hideObjectGlobal", 2];
+                            } else {
+                                _x setDamage [1, true, _temporaryUnit];
+                            };
+                        } else {
+                            if !(isObjectHidden _x) then {
+                                if (_isNapalm) then {
+                                    if !(_treeP3dName == "vn_burned_t_ficus_big_01.p3d") then {
+                                        if (_isIndestructibleTree) then {
+                                            [_x, _correctedPos] call COLSOG_fnc_burnTree;
+                                        } else {
+                                            _x setDamage [1, true, _temporaryUnit];
+                                        };
+                                    };
+                                } else {
                                     if (_isIndestructibleTree) then {
-                                        [_x, _correctedPos] call COLSOG_fnc_burnTree;
+                                        [_x, _correctedPos] call COLSOG_fnc_destroyTree;
                                     } else {
                                         _x setDamage [1, true, _temporaryUnit];
                                     };
-                                };
-                            } else {
-                                if (_isIndestructibleTree) then {
-                                    [_x, _correctedPos] call COLSOG_fnc_destroyTree;
-                                } else {
-                                    _x setDamage [1, true, _temporaryUnit];
                                 };
                             };
                         };

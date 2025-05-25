@@ -16,6 +16,7 @@ switch ((roleDescription player splitString "@") select 0) do {
         player setUnitTrait ["vn_artillery", true, true];
         player setVariable ["canReadIntel", true];
         player setVariable ["canUseSimplex", true];
+        player setVariable ["canMonitorSensor", true];
     };
 
     // Pilots
