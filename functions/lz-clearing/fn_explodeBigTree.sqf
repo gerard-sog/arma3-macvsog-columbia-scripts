@@ -74,10 +74,18 @@
                     };
                 } forEach _vehiclesToUnconsciousDriver;
 
-                // -------------
-                // | Cut trees |
-                // -------------
+                // -----------------
+                // | Explode trees |
+                // -----------------
                 private _listOfNearestTerrainTreesAndBushes = nearestTerrainObjects [_this, ["Tree", "Bush"], colsog_c4_explosive_explosionSearchRadiusTree, true, true];
+                private _listOfNearestDamagedTrees = nearestObjects [_this, ["Land_vn_vegetation_base"], colsog_c4_explosive_explosionSearchRadiusTree, true, true];
+                private _listOfNearestTreeBushAndDamagedTreesToDest = _listOfNearestTerrainTreesAndBushes + _listOfNearestDamagedTrees;
+
+                private _temporaryGroup = createGroup [west, true];
+                private _temporaryUnit = _temporaryGroup createUnit ["B_RangeMaster_F", getPos _this, [], 0, "CAN_COLLIDE"];
+                _temporaryUnit allowDamage false;
+                _temporaryUnit enableSimulation false;
+                _temporaryUnit hideObject true;
 
                 {
                     private _modelInfo = getModelInfo _x;
@@ -90,7 +98,8 @@
                         ["t_inocarpus_f.p3d", 0, 0],
                         ["vn_dried_t_ficus_big_01.p3d", 0, 0],
                         ["vn_t_palaquium_f.p3d", 0, 0],
-                        ["t_palaquium_f.p3d", 24, 9.2]
+                        ["t_palaquium_f.p3d", 24, 9.2],
+                        ["vn_burned_t_ficus_big_01.p3d", 0, 0]
                     ];
 
                     private _isIndestructibleTree = false;
@@ -108,27 +117,42 @@
                     private _orientation = direction _x;
                     private _orientationToRealTreeDegrees = ((((_orientation + _correctionOrientation) % 360) + 180) % 360);
 
-                    private _pos = getPosATL _x;
-                    private _currentX = _pos select 0;
-                    private _currentY = _pos select 1;
-                    private _currentZ = _pos select 2;
+                    private _posTree = getPosATL _x;
+                    private _currentX = _posTree select 0;
+                    private _currentY = _posTree select 1;
+                    private _currentZ = _posTree select 2;
 
                     private _deltaNorth = (cos _orientationToRealTreeDegrees) * _correctionDistance;
                     private _deltaEast = (sin _orientationToRealTreeDegrees) * _correctionDistance;
 
                     private _correctedX = _currentX + _deltaEast;
                     private _correctedY = _currentY + _deltaNorth;
-                    private _correctedPos = [_correctedX, _correctedY, 0];
+                    private _correctedPos = [_correctedX, _correctedY, _currentZ];
 
                     if (_this distance2D _correctedPos < colsog_c4_explosive_explosionDestructionRadiusTree) then {
-                        if (_isIndestructibleTree) then {
-                            [_x, true] remoteExec ["hideObjectGlobal", 2];
-                            createVehicle ["land_vn_burned_t_ficus_big_04", _correctedPos, [], 0, "CAN_COLLIDE"];
-                        } else {
-                            _x setDamage 1;
+                        if !(isObjectHidden _x) then {
+                            if (_isIndestructibleTree) then {
+                                [_x, true] remoteExec ["hideObjectGlobal", 2];
+                                private _destroyedTree = createVehicle ["land_vn_burned_t_ficus_big_04", [0, 0, 0], [], 0, "CAN_COLLIDE"];
+                                _destroyedTree setPosATL _correctedPos;
+                                private _orientationTree = getDir _x;
+                                _destroyedTree setDir _orientationTree;
+
+                                private _oddOfFallenTree = [1, 100] call BIS_fnc_randomNum;
+                                if (_oddOfFallenTree <= 30) then {
+                                    private _fallenTree = createVehicle ["land_vn_burned_t_ficus_big_03", [0, 0, 0], [], 0, "CAN_COLLIDE"];
+                                    private _fallenTreePos = [(_correctedPos select 0) + 5, (_correctedPos select 1) + 5, 0];
+                                    _fallenTree setPosATL _fallenTreePos;
+                                    _fallenTree setDir _orientationTree;
+                                };
+                            } else {
+                                _x setDamage [1, true, _temporaryUnit];
+                            };
                         };
                     };
-                } forEach _listOfNearestTerrainTreesAndBushes;
+                } forEach _listOfNearestTreeBushAndDamagedTreesToDest;
+
+                deleteVehicle _temporaryUnit;
             },
             _explosive
         ] call CBA_fnc_waitUntilAndExecute;
