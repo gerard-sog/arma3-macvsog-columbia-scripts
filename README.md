@@ -290,7 +290,7 @@ vanilla medical items conversion to ace medical items
 
 <details>
 
-<summary>COLSOG C4 Explosive - Unconscious</summary>
+<summary>COLSOG Deforestation</summary>
 
   - **C4 Explosive - Unconscious**
     - Search radius for units to unconscious (m): <i>Integer</i>
@@ -300,6 +300,9 @@ vanilla medical items conversion to ace medical items
     - Search radius for trees ( > destruction radius) (m): <i>Integer</i>
     - Destruction radius for trees ( < search radius) (m): <i>Integer</i>
 
+ - **Bombs/Napalm**
+    - Activate debug mode (see bomb name): <i>Boolean</i>
+    - Time before embers removal (sec): <i>Integer</i>
 </details>
   
 see [CBASettings.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/CBASettings.sqf)
@@ -813,7 +816,7 @@ Allows player clear LZ or path by cutting/exploding trees, bushes, etc.
 
 To cut a tree follow this steps:
 - Equip one of the following secondary weapons "vn_m_axe_01" or "vn_m_bolo_01".
-- Optional, you can configure amounts of hit required to cut a tree byt updating the hashmap '_hashMapOfTreeAndTimeToCut' in [fn_cutSmallTree.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/lz-clearing/fn_cutSmallTree.sqf)
+- Optional, you can configure amounts of hit required to cut a tree byt updating the hashmap '_hashMapOfTreeAndTimeToCut' in [fn_cutSmallTree.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/deforestation/fn_cutSmallTree.sqf)
 ```
 // Tree name - Amount of hit required to cut the tree.
 private _hashMapOfTreeAndTimeToCut = [
@@ -838,7 +841,7 @@ private _hashMapOfTreeAndTimeToCut = [
 
 - Hit the tree with the secondary weapon.
 
-Some bigger trees are too though to cut. This is where we can use C-4 (ACE "c4_charge_small") to explode those (see [fn_explodeBigTree.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/lz-clearing/fn_explodeBigTree.sqf)).
+Some bigger trees are too though to cut. This is where we can use C-4 (ACE "c4_charge_small") to explode those (see [fn_detonateCharge.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/deforestation/fn_detonateCharge.sqf)).
 
 To explode a tree follow this steps:
 - Using the ACE action, place a C-4 and arm it.
