@@ -741,11 +741,13 @@ force colsog_bayonet_damage = 100;
 force colsog_bayonet_screamingEnable = true;
 force colsog_bayonet_searchRadius = 1000;
 
-// COLSOG C4 Explosive
-force colsog_c4_explosive_explosionDestructionRadiusTree = 7;
-force colsog_c4_explosive_explosionSearchRadiusTree = 10;
-force colsog_c4_explosive_explosionSearchRadiusUnconscious = 20;
-force colsog_c4_explosive_maximumTimeUnconscious = 30;
+// COLSOG Deforestation
+force colsog_deforestation_debug = false;
+force colsog_deforestation_explosionDestructionRadiusTree = 7;
+force colsog_deforestation_explosionSearchRadiusTree = 10;
+force colsog_deforestation_explosionSearchRadiusUnconscious = 20;
+force colsog_deforestation_maximumTimeUnconscious = 30;
+force colsog_deforestation_napalmEmbersTimeToLive = 300;
 
 // COLSOG Medical and Supply
 force colsog_firstAid_convertAceFieldDressing = 5;

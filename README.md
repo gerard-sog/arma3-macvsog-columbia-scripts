@@ -290,7 +290,7 @@ vanilla medical items conversion to ace medical items
 
 <details>
 
-<summary>COLSOG C4 Explosive - Unconscious</summary>
+<summary>COLSOG Deforestation</summary>
 
   - **C4 Explosive - Unconscious**
     - Search radius for units to unconscious (m): <i>Integer</i>
@@ -300,6 +300,9 @@ vanilla medical items conversion to ace medical items
     - Search radius for trees ( > destruction radius) (m): <i>Integer</i>
     - Destruction radius for trees ( < search radius) (m): <i>Integer</i>
 
+ - **Bombs/Napalm**
+    - Activate debug mode (see bomb name): <i>Boolean</i>
+    - Time before embers removal (sec): <i>Integer</i>
 </details>
   
 see [CBASettings.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/CBASettings.sqf)
@@ -813,7 +816,7 @@ Allows player clear LZ or path by cutting/exploding trees, bushes, etc.
 
 To cut a tree follow this steps:
 - Equip one of the following secondary weapons "vn_m_axe_01" or "vn_m_bolo_01".
-- Optional, you can configure amounts of hit required to cut a tree byt updating the hashmap '_hashMapOfTreeAndTimeToCut' in [fn_cutSmallTree.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/lz-clearing/fn_cutSmallTree.sqf)
+- Optional, you can configure amounts of hit required to cut a tree byt updating the hashmap '_hashMapOfTreeAndTimeToCut' in [fn_cutSmallTree.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/deforestation/fn_cutSmallTree.sqf)
 ```
 // Tree name - Amount of hit required to cut the tree.
 private _hashMapOfTreeAndTimeToCut = [
@@ -838,7 +841,7 @@ private _hashMapOfTreeAndTimeToCut = [
 
 - Hit the tree with the secondary weapon.
 
-Some bigger trees are too though to cut. This is where we can use C-4 (ACE "c4_charge_small") to explode those (see [fn_explodeBigTree.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/lz-clearing/fn_explodeBigTree.sqf)).
+Some bigger trees are too though to cut. This is where we can use C-4 (ACE "c4_charge_small") to explode those (see [fn_detonateCharge.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/deforestation/fn_detonateCharge.sqf)).
 
 To explode a tree follow this steps:
 - Using the ACE action, place a C-4 and arm it.
@@ -865,6 +868,45 @@ This will:
 
 Also:
 - AI will never wake up once unconscious and if you carry/drag them around, the <u>**specific unconscious position**</u> will be set again each time you drop them.
+</details>
+
+<details>
+
+<summary>17. Bomb/Napalm deforestation</summary>
+
+Adds an Event Handler (EH) to "Air" vehicle to detect when a bomb is dropped and if the bomb is in the list of managed bombs (see variable '_hashMapOfBombsAndIsNapalmAndRadius' in [init_colsog_deforestation](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/deforestation/init_colsog_deforestation.sqf)), 
+it will trigger a script to either burn or destroy the tree in a radius around the bomb impact point.
+
+Currently, we only manage the below types of bombs:
+
+```
+    private _hashMapOfBombsAndIsNapalmAndRadius = [
+        // Napalm
+        ["frl_blu1b_fly.p3d", true, 40, 0],
+        ["frl_mk77_fly.p3d", true, 30, 0],
+        ["uns_blu1_fly.p3d", true, 40, 0],
+        ["vn_bomb_blu1b_fb.p3d", true, 40, 0],
+        ["vn_bomb_blu1b_500_fb.p3d", true, 30, 0],
+        // Bombs
+        ["frl_mk82.p3d", false, 10, 0],
+        ["frl_mk84.p3d", false, 35, 10],
+        ["uns_mk82.p3d", false, 10, 0],
+        ["uns_mk83.p3d", false, 20, 0],
+        ["vn_bomb_mk82_dc.p3d", false, 10, 0],
+        ["vn_bomb_mk82_he.p3d", false, 10, 0],
+        ["vn_bomb_mk82_se_proxy.p3d", false, 10, 0],
+        ["vn_bomb_mk83_he.p3d", false, 20, 0],
+        ["vn_bomb_mk84_he.p3d", false, 35, 10],
+        ["vn_bomb_m117_01_he.p3d", false, 15, 0]
+    ];
+```
+
+Structure of the '_hashMapOfBombsAndIsNapalmAndRadius' array. Each element of the array must contain 4 values:
+- <u>**1) NAME_OF_BOMB**</u>: Bomb .p3d name (obtained by toggle the debug mod in COLSOG_DEFORESTATION) and dropping a bomb. At the bottom left of your screen you will see the bomb name.
+- <u>**2) IS_NAPALM**</u>: True if it contains napalm, false otherwise.
+- <u>**3) DESTRUCTION_RADIUS**</u>: Radius in meter (from the bomb impact) where trees and bushes will be burned or destroyed.
+- <u>**4) OBLITERATION_RADIUS**</u>: Radius in meter (from the bomb impact) where trees, bushes and other objects will be completely destroyed. (mainly used to have bomb acting as <u>daisy-cutter</u>)
+
 </details>
 
 ### Tips
