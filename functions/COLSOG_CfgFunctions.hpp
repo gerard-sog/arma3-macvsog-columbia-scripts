@@ -73,11 +73,17 @@ class COLSOG {
         class moveAi {};
         class getClosestTarget {};
     };
-    class LzClearing
+    class Deforestation
     {
-        file ="functions\lz-clearing";
+        file ="functions\deforestation";
+        class getCorrected3dModelPos {};
+        class get3dModelBoundingBoxCorrection {};
+        class destroyTree {};
+        class burnTree {};
+        class createInvisibleUnit {};
+        class getNearestTreesAndBushes {};
         class cutSmallTree {postInit = 1;};
-        class explodeBigTree {postInit = 1;};
+        class detonateCharge {postInit = 1;};
         class carryAndDrag {postInit = 1;};
     }
 }

@@ -19,12 +19,12 @@
                 // -------------------
                 // | Set unconscious |
                 // -------------------
-                private _unitsToUnconscious = nearestObjects [_this, ["CAManBase"], colsog_c4_explosive_explosionSearchRadiusUnconscious];
+                private _unitsToUnconscious = nearestObjects [_this, ["CAManBase"], colsog_deforestation_explosionSearchRadiusUnconscious];
 
                 {
                     if (isPlayer _x) then {
                         private _playerDistanceToExplosion = _x distance2D _this;
-                        private _unconsciousTime = abs (colsog_c4_explosive_maximumTimeUnconscious - _playerDistanceToExplosion);
+                        private _unconsciousTime = abs (colsog_deforestation_maximumTimeUnconscious - _playerDistanceToExplosion);
                         [_x, true, _unconsciousTime, true] call ace_medical_fnc_setUnconscious;
                     } else {
                         _x setUnconscious true;
@@ -44,12 +44,12 @@
                     };
                 } forEach _unitsToUnconscious;
 
-                _vehiclesToUnconsciousDriver = nearestObjects [_this, ["LandVehicle"], colsog_c4_explosive_explosionSearchRadiusUnconscious];
+                _vehiclesToUnconsciousDriver = nearestObjects [_this, ["LandVehicle"], colsog_deforestation_explosionSearchRadiusUnconscious];
                 {
                     _driver = driver _x;
                     if (isPlayer _driver) then {
                         private _driverDistanceToExplosion = _driver distance2D _this;
-                        private _driverUnconsciousTime = abs (colsog_c4_explosive_maximumTimeUnconscious - _driverDistanceToExplosion);
+                        private _driverUnconsciousTime = abs (colsog_deforestation_maximumTimeUnconscious - _driverDistanceToExplosion);
                         [_driver, true, _driverUnconsciousTime, true] call ace_medical_fnc_setUnconscious;
                     } else {
                         _driver setUnconscious true;
@@ -74,61 +74,38 @@
                     };
                 } forEach _vehiclesToUnconsciousDriver;
 
-                // -------------
-                // | Cut trees |
-                // -------------
-                private _listOfNearestTerrainTreesAndBushes = nearestTerrainObjects [_this, ["Tree", "Bush"], colsog_c4_explosive_explosionSearchRadiusTree, true, true];
+                // -----------------
+                // | Explode trees |
+                // -----------------
+                private _listOfNearestTreeBushAndDamagedTreesToDest = [getPos _this, colsog_deforestation_explosionSearchRadiusTree] call COLSOG_fnc_getNearestTreesAndBushes;
+
+                private _temporaryUnit = [getPos _this] call COLSOG_fnc_createInvisibleUnit;
 
                 {
                     private _modelInfo = getModelInfo _x;
                     private _treeP3dName = _modelInfo select 0;
 
-                    private _hashMapOfIndestructibleTreesAndBoundingBoxCorrection = [
-                        ["vn_t_ficus_big_f.p3d", 0, 0],
-                        ["t_ficus_big_f.p3d", 0, 0],
-                        ["vn_t_inocarpus_f.p3d", 0, 0],
-                        ["t_inocarpus_f.p3d", 0, 0],
-                        ["vn_dried_t_ficus_big_01.p3d", 0, 0],
-                        ["vn_t_palaquium_f.p3d", 0, 0],
-                        ["t_palaquium_f.p3d", 24, 9.2]
-                    ];
-
-                    private _isIndestructibleTree = false;
-                    private _correctionOrientation = 0;
-                    private _correctionDistance = 0;
-                    {
-                        private _key = _x select 0;
-                        if (_key == _treeP3dName) exitWith {
-                            _isIndestructibleTree = true;
-                            _correctionOrientation = _x select 1;
-                            _correctionDistance = _x select 2;
-                        };
-                    } forEach _hashMapOfIndestructibleTreesAndBoundingBoxCorrection;
+                    private _boundingBoxCorrection = [_treeP3dName] call COLSOG_fnc_get3dModelBoundingBoxCorrection;
+                    private _isIndestructibleTree = _boundingBoxCorrection select 0;
+                    private _correctionOrientation = _boundingBoxCorrection select 1;
+                    private _correctionDistance = _boundingBoxCorrection select 2;
 
                     private _orientation = direction _x;
-                    private _orientationToRealTreeDegrees = ((((_orientation + _correctionOrientation) % 360) + 180) % 360);
 
-                    private _pos = getPosATL _x;
-                    private _currentX = _pos select 0;
-                    private _currentY = _pos select 1;
-                    private _currentZ = _pos select 2;
+                    private _correctedPos = [_orientation, getPosATL _x, _correctionOrientation, _correctionDistance] call COLSOG_fnc_getCorrected3dModelPos;
 
-                    private _deltaNorth = (cos _orientationToRealTreeDegrees) * _correctionDistance;
-                    private _deltaEast = (sin _orientationToRealTreeDegrees) * _correctionDistance;
-
-                    private _correctedX = _currentX + _deltaEast;
-                    private _correctedY = _currentY + _deltaNorth;
-                    private _correctedPos = [_correctedX, _correctedY, 0];
-
-                    if (_this distance2D _correctedPos < colsog_c4_explosive_explosionDestructionRadiusTree) then {
-                        if (_isIndestructibleTree) then {
-                            [_x, true] remoteExec ["hideObjectGlobal", 2];
-                            createVehicle ["land_vn_burned_t_ficus_big_04", _correctedPos, [], 0, "CAN_COLLIDE"];
-                        } else {
-                            _x setDamage 1;
+                    if (_this distance2D _correctedPos < colsog_deforestation_explosionDestructionRadiusTree) then {
+                        if !(isObjectHidden _x) then {
+                            if (_isIndestructibleTree) then {
+                                [_x, _correctedPos] call COLSOG_fnc_destroyTree;
+                            } else {
+                                _x setDamage [1, true, _temporaryUnit];
+                            };
                         };
                     };
-                } forEach _listOfNearestTerrainTreesAndBushes;
+                } forEach _listOfNearestTreeBushAndDamagedTreesToDest;
+
+                deleteVehicle _temporaryUnit;
             },
             _explosive
         ] call CBA_fnc_waitUntilAndExecute;
