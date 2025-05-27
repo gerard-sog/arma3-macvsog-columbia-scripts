@@ -27,7 +27,7 @@ switch ((roleDescription player splitString "@") select 0) do {
     };
 
     // Columbia
-    case "0-1 Team Leader": {
+    case "0-1 Tail Gunner": {
         player setVariable ["canSpeak", ["en", "vn"]];
         player setVariable ["canClimb", true];
         player setVariable ["canReadIntel", true];
