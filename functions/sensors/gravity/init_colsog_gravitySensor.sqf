@@ -29,7 +29,7 @@ if (!isServer) exitWith {};
                         _trigger setTriggerStatements
                         [
                             "this",
-                            "[thisTrigger getVariable 'COLSOG_sensorObject'] execVM 'functions\sensors\gravity\fn_recordOpforMovement.sqf'",
+                            "[thisTrigger getVariable 'COLSOG_sensorObject', colsog_sensor_gravityTransmitDataOverRadio, colsog_sensor_gravityRadioTransmissionRange, colsog_sensor_gravityLogFrequency] execVM 'functions\sensors\common\fn_recordOpforMovement.sqf'",
                             ""
                         ];
                         _trigger setPos getPos _delayedUnitActivation;

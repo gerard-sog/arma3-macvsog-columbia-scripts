@@ -18,7 +18,7 @@ if (!isServer) exitWith {};
                 _trigger setTriggerStatements
                 [
                     "this",
-                    "[thisTrigger getVariable 'COLSOG_sensorObject'] execVM 'functions\sensors\gunshot\fn_recordOpforMovement.sqf'",
+                    "[thisTrigger getVariable 'COLSOG_sensorObject', colsog_sensor_gunshotTransmitDataOverRadio, colsog_sensor_gunshotRadioTransmissionRange, colsog_sensor_gunshotLogFrequency] execVM 'functions\sensors\common\fn_recordOpforMovement.sqf'",
                     ""
                 ];
                 _trigger setPos getPos _unit;
