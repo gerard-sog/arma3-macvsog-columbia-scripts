@@ -23,7 +23,7 @@ if (!isServer) exitWith {};
                         private _trigger = createTrigger ["EmptyDetector", _pos];
                         // Required in order to pass as argument in trigger statement.
                         _trigger setVariable ["COLSOG_sensorObject", _delayedUnitActivation, true];
-                        _trigger setTriggerArea [50, 50, 0, false];
+                        _trigger setTriggerArea [colsog_sensor_gravityDetectionRadius, colsog_sensor_gravityDetectionRadius, 0, false];
                         _trigger setTriggerInterval 5;
                         _trigger setTriggerActivation ["EAST", "PRESENT", true];
                         _trigger setTriggerStatements

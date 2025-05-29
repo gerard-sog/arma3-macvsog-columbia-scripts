@@ -843,16 +843,19 @@ force colsog_triangulation_signalStrength4 = 2000;
 force colsog_triangulation_signalStrength5 = 1000;
 
 // COLSOG Sensors
+force colsog_sensor_engineDetectionRadius = 100;
 force colsog_sensor_engineInventoryItem = "colsog_inv_handsid_sensor";
 force colsog_sensor_engineLogFrequency = 10;
 force colsog_sensor_engineRadioTransmissionRange = 2000;
 force colsog_sensor_engineThingItem = "colsog_thing_handsid_sensor";
 force colsog_sensor_engineTransmitDataOverRadio = true;
+force colsog_sensor_gravityDetectionRadius = 100;
 force colsog_sensor_gravityInventoryItem = "colsog_inv_gravity_sensor";
 force colsog_sensor_gravityLogFrequency = 10;
-force colsog_sensor_gravityRadioTransmissionRange = 2000;
+force colsog_sensor_gravityRadioTransmissionRange = 8000;
 force colsog_sensor_gravityThingItem = "colsog_thing_gravity_sensor";
 force colsog_sensor_gravityTransmitDataOverRadio = true;
+force colsog_sensor_gunshotDetectionRadius = 100;
 force colsog_sensor_gunshotInventoryItem = "colsog_inv_sensor";
 force colsog_sensor_gunshotLogFrequency = 10;
 force colsog_sensor_gunshotRadioTransmissionRange = 2000;
