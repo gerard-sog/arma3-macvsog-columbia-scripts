@@ -716,11 +716,11 @@ force acre_sys_zeus_zeusDefaultVoiceSource = false;
 
 // COLSOG AI and ENV related
 force colsog_ai_aimingAccuracy = 0.05;
-force colsog_ai_aimingShake = 0.33;
+force colsog_ai_aimingShake = 0.658345;
 force colsog_ai_aimingSpeed = 0.33;
 force colsog_ai_autoCombat = true;
 force colsog_ai_commanding = 0.33;
-force colsog_ai_courage = 0.33;
+force colsog_ai_courage = 0.664642;
 force colsog_ai_enable = true;
 force colsog_ai_generalSkill = 0.15;
 force colsog_ai_reloadSpeed = 0.33;
@@ -758,44 +758,44 @@ force colsog_medikit_convertAceMorphine = 2;
 force colsog_medikit_convertAceSalineIv500 = 2;
 force colsog_medikit_convertAceSplint = 2;
 force colsog_medikit_convertAceTourniquet = 4;
-force colsog_supply_content = "[
-      'vn_m16_20_t_mag', 12,
-      'ACE_fieldDressing', 50,
-      'ACE_packingBandage', 50,
-      'ACE_elasticBandage', 50,
-      'ACE_quikclot', 50,
-      'ACE_CableTie', 5,
-      'ACE_DefusalKit', 1,
-      'ACE_EntrenchingTool', 1,
-      'ACE_epinephrine', 10,
-      'ACE_Flashlight_MX991', 1,
-      'uns_m67gren', 20,
-      'vn_m18_purple_mag', 3,
-      'vn_m18_red_mag', 6,
-      'vn_m18_white_mag', 20,
-      'vn_m18_yellow_mag', 6,
-      'vn_40mm_m381_he_mag', 25,
-      'vn_40mm_m397_ab_mag', 5,
-      'vn_40mm_m433_hedp_mag', 5,
-      'ACE_Clacker', 1,
-      'vn_40mm_m583_flare_w_mag', 8,
-      'ACE_MapTools', 1,
-      'vn_mine_m18_mag', 10,
-      'ACE_salineIV', 10,
-      'ACE_salineIV_250', 20,
-      'ACE_salineIV_500', 15,
-      'ACE_splint', 10,
-      'ACE_surgicalKit', 1,
-      'ACE_tourniquet', 20,
-      'vn_xm16e1', 4,
-      'pk_556_45_clip_bandolier', 14,
-      'pk_762_39_100Rnd_belt', 5,
-      'pk_762_51_100Rnd_belt', 5,
-      'pk_762_51_60Rnd_clip_bandolier', 8,
-      'pk_9_19_50Rnd_box', 5,
-      'pk_carbine_10Rnd_clip', 5,
-      'pk_45ACP_10Rnd_clip', 5,
-      'pk_792_57_50Rnd_belt', 5
+force colsog_supply_content = "[ 
+      'vn_m16_20_t_mag', 12, 
+      'ACE_fieldDressing', 50, 
+      'ACE_packingBandage', 50, 
+      'ACE_elasticBandage', 50, 
+      'ACE_quikclot', 50, 
+      'ACE_CableTie', 5, 
+      'ACE_DefusalKit', 1, 
+      'ACE_EntrenchingTool', 1, 
+      'ACE_epinephrine', 10, 
+      'ACE_Flashlight_MX991', 1, 
+      'uns_m67gren', 20, 
+      'vn_m18_purple_mag', 3, 
+      'vn_m18_red_mag', 6, 
+      'vn_m18_white_mag', 20, 
+      'vn_m18_yellow_mag', 6, 
+      'vn_40mm_m381_he_mag', 25, 
+      'vn_40mm_m397_ab_mag', 5, 
+      'vn_40mm_m433_hedp_mag', 5, 
+      'ACE_Clacker', 1, 
+      'vn_40mm_m583_flare_w_mag', 8, 
+      'ACE_MapTools', 1, 
+      'vn_mine_m18_mag', 10, 
+      'ACE_salineIV', 10, 
+      'ACE_salineIV_250', 20, 
+      'ACE_salineIV_500', 15, 
+      'ACE_splint', 10, 
+      'ACE_surgicalKit', 1, 
+      'ACE_tourniquet', 20, 
+      'vn_xm16e1', 4, 
+      'pk_556_45_clip_bandolier', 14, 
+      'pk_762_39_100Rnd_belt', 5, 
+      'pk_762_51_100Rnd_belt', 5, 
+      'pk_762_51_60Rnd_clip_bandolier', 8, 
+      'pk_9_19_50Rnd_box', 5, 
+      'pk_carbine_10Rnd_clip', 5, 
+      'pk_45ACP_10Rnd_clip', 5, 
+      'pk_792_57_50Rnd_belt', 5 
     ]";
 
 // COLSOG Miscellaneous
@@ -810,7 +810,7 @@ force colsog_intel_inventoryItem = "uns_leaflet16";
 force colsog_stabo_climbDuration = 5;
 force colsog_stabo_ropeLength = 60;
 force colsog_traps_activatedBySide = "WEST";
-force colsog_traps_chanceOfBeingImpaled = 0;
+force colsog_traps_chanceOfBeingImpaled = 75.279;
 force colsog_traps_maceKillRadius = 5;
 force colsog_traps_screamingEnable = false;
 
@@ -1221,10 +1221,11 @@ force SSD_DS_h_stomach = 0.8;
 force SSD_DS_k_chest = 0.8;
 force SSD_DS_k_general = 0.8;
 force SSD_DS_k_head = 0.2;
+force SSD_DS_k_head = 0;
 force SSD_DS_k_stomach = 0.8;
 force SSD_DS_r_chest = 0.8;
 force SSD_DS_r_general = 0.8;
-force SSD_DS_r_head = 0.195851;
+force SSD_DS_r_head = 0;
 force SSD_DS_r_stomach = 0.8;
 
 // Tao's Folding Map Rewrite
@@ -1257,6 +1258,7 @@ tsp_cba_animate_Breach = true;
 tsp_cba_animate_Cancel = true;
 force tsp_cba_animate_cant = true;
 force tsp_cba_animate_captive = true;
+tsp_cba_animate_carry = 2;
 force tsp_cba_animate_clacker = true;
 tsp_cba_animate_Column = true;
 force tsp_cba_animate_compass = true;
@@ -1296,6 +1298,7 @@ force tsp_cba_animate_shake = 0;
 tsp_cba_animate_Shotgun = true;
 force tsp_cba_animate_sling = true;
 force tsp_cba_animate_sling_add = false;
+tsp_cba_animate_sling_arsenal = false;
 force tsp_cba_animate_sling_pos = "[[0.1, 0.8, 0.15], [-90, 40, 70]]";
 tsp_cba_animate_sling_required = true;
 tsp_cba_animate_sling_scroll = false;
