@@ -853,7 +853,7 @@ force colsog_triangulation_signalStrength5 = 1000;
 // COLSOG Sensors
 force colsog_sensor_engineInventoryItem = "colsog_inv_handsid_sensor";
 force colsog_sensor_engineLogFrequency = 10;
-force colsog_sensor_engineRadioTransmissionRange = 2000;
+force colsog_sensor_engineRadioTransmissionRange = 10000;
 force colsog_sensor_engineThingItem = "colsog_thing_handsid_sensor";
 force colsog_sensor_engineTransmitDataOverRadio = true;
 force colsog_sensor_gravityInventoryItem = "colsog_inv_gravity_sensor";
