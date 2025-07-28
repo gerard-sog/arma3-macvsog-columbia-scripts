@@ -88,15 +88,15 @@ force ace_common_swayFactor = 1;
 
 // ACE Cook-off
 force ace_cookoff_ammoCookoffDuration = 0.1;
-ace_cookoff_cookoffDuration = 1;
-ace_cookoff_cookoffEnableProjectiles = true;
-ace_cookoff_cookoffEnableSound = true;
+force ace_cookoff_cookoffDuration = 1;
+force ace_cookoff_cookoffEnableProjectiles = true;
+force ace_cookoff_cookoffEnableSound = true;
 force ace_cookoff_destroyVehicleAfterCookoff = false;
 force ace_cookoff_enableAmmobox = true;
 force ace_cookoff_enableAmmoCookoff = true;
 force ace_cookoff_enableFire = true;
 force ace_cookoff_probabilityCoef = 1;
-ace_cookoff_removeAmmoDuringCookoff = true;
+force ace_cookoff_removeAmmoDuringCookoff = true;
 
 // ACE Crew Served Weapons
 force ace_csw_ammoHandling = 2;
