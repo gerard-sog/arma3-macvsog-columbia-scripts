@@ -1,6 +1,8 @@
 [
     {
-        missionNamespace setVariable ["TEST", time, true];
+        _battery = missionNamespace getVariable "TEST";
+        _battery = _battery - 5;
+        missionNamespace setVariable ["TEST", _battery, true];
     },
     5,
     []

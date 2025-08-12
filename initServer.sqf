@@ -1,3 +1,5 @@
+// For battery draining automatically when not turned off.
+missionNamespace setVariable ["TEST", 100, true];
 [] execVM "functions\battery\fn_radioBatteryTracker.sqf";
 
 profileNamespace setvariable ["SPSaveRoles", 1]; // Required to save loadouts using Persist.
