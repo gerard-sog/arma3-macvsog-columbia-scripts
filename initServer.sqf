@@ -1,3 +1,5 @@
+[] execVM "functions\battery\fn_radioBatteryTracker.sqf";
+
 profileNamespace setvariable ["SPSaveRoles", 1]; // Required to save loadouts using Persist.
 
 COLSOG_ArtillerySupportEnabled = colsog_support_artilleryEnable; // Toggle ON/OFF artillery availability (see support module from Prairie Fire).
