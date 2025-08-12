@@ -9,15 +9,8 @@
  * None
  */
 
-#define BATTERY_LEVEL "battery_level_"
-
 params ["_radioId", "_newBatteryLevel"];
 
-private _batteryLevelRadioId = BATTERY_LEVEL + _radioId;
-
-missionNamespace setVariable [_batteryLevelRadioId, _newBatteryLevel, true];
-
-//--------------------------------------------------------------------------
 private _radios = missionNamespace getVariable "COLSOG_radios";
 _radios pushBack [_radioId, _newBatteryLevel];
 missionNamespace setVariable ["COLSOG_radios", _radios, true];
