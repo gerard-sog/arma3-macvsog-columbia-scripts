@@ -15,6 +15,20 @@
 params ["_radioType", "_player", "_newBatteryLevel"];
 
 private _radioId = [_radioType, _player] call acre_api_fnc_getRadioByType;
-private _batteryLevelRadioId = BATTERY_LEVEL + _radioId;
 
-missionNamespace setVariable [_batteryLevelRadioId, _newBatteryLevel, true];
+_radios = missionNamespace getVariable "COLSOG_radios";
+
+_updatedRadios = [];
+
+{
+    _colsogRadioId = _x select 0;
+    _colsogBatteryLevel = _x select 1;
+
+    if (_colsogRadioId == _radioId) then {
+        _colsogBatteryLevel = _newBatteryLevel;
+    };
+
+    _updatedRadios pushBack [_radioId, _colsogBatteryLevel];
+} forEach _radios;
+
+missionNamespace setVariable ["COLSOG_radios", _updatedRadios, true];

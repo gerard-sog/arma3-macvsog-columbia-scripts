@@ -13,12 +13,15 @@
 
             // Radio is ON;
             if (_isRadioOn == 1) then {
-                _newBatteryLevel = (_newBatteryLevel - 200) max 0;
+                systemChat "removing 5 sec";
+                _newBatteryLevel = (_newBatteryLevel - 5) max 0;
             };
 
             if (_newBatteryLevel <= 0) then {
                 [_radioId, "setOnOffState", 0, true] call acre_sys_data_fnc_dataEvent;
             };
+
+            systemChat (_radioId + ": " + str(_newBatteryLevel));
 
             _updatedRadios pushBack [_radioId, _newBatteryLevel];
 
