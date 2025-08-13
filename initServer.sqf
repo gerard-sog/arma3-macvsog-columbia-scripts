@@ -43,11 +43,10 @@ COLSOG_sensorIdCounter = 0;
 publicVariable "COLSOG_sensorIdCounter";
 
 COLSOG_intelPool = [
-    "intel 1",
-    "intel 2",
-    "intel 3",
-    "intel 4",
-    "intel 5"
+    "The message is encoded, return it to base for decryption",
+    "The message is encoded, return it to base for decryption",
+    "The message is encoded, return it to base for decryption",
+    "The message is encoded, return it to base for decryption"
     ];
 publicVariable "COLSOG_intelPool";
 
