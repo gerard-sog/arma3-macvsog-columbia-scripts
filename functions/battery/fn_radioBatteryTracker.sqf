@@ -13,7 +13,6 @@
 
             // Radio is ON;
             if (_isRadioOn == 1) then {
-                systemChat "removing 5 sec";
                 _newBatteryLevel = (_newBatteryLevel - 5) max 0;
             };
 
@@ -21,8 +20,6 @@
                 // Needs to be run GLOBALLY... (would need to implement set method in ACRE otherwise).
                 [_radioId, "setOnOffState", 0, true] remoteExec ["acre_sys_data_fnc_dataEvent", 0];
             };
-
-            systemChat (_radioId + ": " + str(_newBatteryLevel));
 
             _updatedRadios pushBack [_radioId, _newBatteryLevel];
 

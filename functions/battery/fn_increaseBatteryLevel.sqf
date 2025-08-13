@@ -27,7 +27,6 @@ if (isNil "_batteryLevelInSeconds") then
             _powerItemRemoved = _x;
             _player removeItem _powerItemRemoved;
             // Needs to be run GLOBALLY... (would need to implement set method in ACRE otherwise).
-            // also replace all var by the same --> BUG to fix in the code.
             [_radioId, "setOnOffState", 1, true] remoteExec ["acre_sys_data_fnc_dataEvent", 0];
             breakTo "outsideOfLoop";
         };

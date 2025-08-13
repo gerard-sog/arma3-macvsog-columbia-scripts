@@ -28,7 +28,7 @@ _updatedRadios = [];
         _colsogBatteryLevel = _newBatteryLevel;
     };
 
-    _updatedRadios pushBack [_radioId, _colsogBatteryLevel];
+    _updatedRadios pushBack [_colsogRadioId, _colsogBatteryLevel];
 } forEach _radios;
 
 missionNamespace setVariable ["COLSOG_radios", _updatedRadios, true];
