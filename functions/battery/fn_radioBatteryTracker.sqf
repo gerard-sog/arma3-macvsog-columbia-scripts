@@ -18,7 +18,8 @@
             };
 
             if (_newBatteryLevel <= 0) then {
-                [_radioId, "setOnOffState", 0, true] call acre_sys_data_fnc_dataEvent;
+                // Needs to be run GLOBALLY... (would need to implement set method in ACRE otherwise).
+                [_radioId, "setOnOffState", 0, true] remoteExec ["acre_sys_data_fnc_dataEvent", 0];
             };
 
             systemChat (_radioId + ": " + str(_newBatteryLevel));
