@@ -13,7 +13,7 @@
 
             // Radio is ON;
             if (_isRadioOn == 1) then {
-                _newBatteryLevel = (_newBatteryLevel - 5) max 0;
+                _newBatteryLevel = (_newBatteryLevel - colsog_battery_refreshRate) max 0;
             };
 
             if (_newBatteryLevel <= 0) then {
@@ -27,6 +27,6 @@
 
         missionNamespace setVariable ["COLSOG_radios", _updatedRadios, true];
     },
-    5,
+    colsog_battery_refreshRate,
     []
 ] call CBA_fnc_addPerFrameHandler;
