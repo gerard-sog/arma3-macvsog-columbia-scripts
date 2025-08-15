@@ -1,3 +1,7 @@
+// For battery draining automatically when not turned off.
+missionNamespace setVariable ["COLSOG_radios", [], true];
+[] execVM "functions\battery\fn_radioBatteryTracker.sqf";
+
 profileNamespace setvariable ["SPSaveRoles", 1]; // Required to save loadouts using Persist.
 
 COLSOG_ArtillerySupportEnabled = colsog_support_artilleryEnable; // Toggle ON/OFF artillery availability (see support module from Prairie Fire).
@@ -39,11 +43,10 @@ COLSOG_sensorIdCounter = 0;
 publicVariable "COLSOG_sensorIdCounter";
 
 COLSOG_intelPool = [
-    "intel 1",
-    "intel 2",
-    "intel 3",
-    "intel 4",
-    "intel 5"
+    "The message is encoded, return it to base for decryption",
+    "The message is encoded, return it to base for decryption",
+    "The message is encoded, return it to base for decryption",
+    "The message is encoded, return it to base for decryption"
     ];
 publicVariable "COLSOG_intelPool";
 
