@@ -12,11 +12,8 @@
 	params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile", "_gunner"];
 
     _gunnerNetId = netId _gunner;
-    systemChat ("Gunner unique ID: " + str(_gunnerNetId));
     _playerNetId = netId player;
-    systemChat ("Player unique ID: " + str(_playerNetId));
     _isAi = !(isPlayer _gunner);
-    systemChat ("AI: " + str(_isAi));
 
     if ((_gunnerNetId == _playerNetId) || _isAi) then {
         private _projectileInfo = getModelInfo _projectile;
