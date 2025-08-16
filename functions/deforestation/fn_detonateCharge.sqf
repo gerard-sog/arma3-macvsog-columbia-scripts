@@ -10,9 +10,7 @@
     params ["_explosive", "_dir", "_pitch", "_unit"];
 
     _unitNetId = netId _unit;
-    systemChat ("Unit unique ID: " + str(_unitNetId));
     _playerNetId = netId player;
-    systemChat ("Player unique ID: " + str(_playerNetId));
 
     if (_unitNetId == _playerNetId) then {
         private _modelInfo = getModelInfo _explosive;
