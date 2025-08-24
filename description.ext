@@ -7,7 +7,7 @@ briefingName 	= "Mission selection menu name";
 enabledebugconsole = 1;
 
 //Respawn
-respawn = 3;            // Respawn "BASE", use 'respawn_west'  
+respawn = 3;            // Respawn "BASE", use 'respawn_west'
 respawnOnStart = -1;    // No respawn on mission start
 respawnDialog = 0;      // Show scoreboard, 0 = Disabled, 1 = Enabled
 respawnDelay = 60;      // Delay in seconds
@@ -46,6 +46,14 @@ class Extended_PostInit_EventHandlers
     class minedetector_disable_panel
     {
         init="execVM 'functions\minedetector_disable_panel.sqf';";
+    };
+};
+
+class Extended_Init_EventHandlers {
+    class ACE_bodyBagObject {
+        class bagCarry {
+            init = "[(_this select 0), true, [0,1,1], 90] call ace_dragging_fnc_setCarryable;";
+        };
     };
 };
 
