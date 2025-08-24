@@ -289,7 +289,7 @@ ace_maptools_rotateModifierKey = 1;
 // ACE Medical
 force ace_medical_ai_enabledFor = 2;
 force ace_medical_ai_requireItems = 0;
-force ace_medical_AIDamageThreshold = 0.85;
+force ace_medical_AIDamageThreshold = 0.75;
 ace_medical_alternateArmorPenetration = true;
 force ace_medical_bleedingCoefficient = 0.7;
 force ace_medical_blood_bloodLifetime = 900;
@@ -1101,22 +1101,22 @@ force grad_trenches_functions_vehicleTrenchBuildSpeed = 5;
 // Hide Among The Grass
 force hatg_setting_building = true;
 force hatg_setting_complex_detection = true;
-force hatg_setting_cooldown = 10;
+force hatg_setting_cooldown = 0;
 force hatg_setting_debug = false;
 force hatg_setting_debug_conditions = false;
 force hatg_setting_debug_detection = false;
 force hatg_setting_debug_surface = false;
-force hatg_setting_distance_close = 5;
+force hatg_setting_distance_close = 0;
 force hatg_setting_distance_close_multiplier = 2;
 force hatg_setting_distance_height = 2;
 force hatg_setting_distance_reset = -1;
 force hatg_setting_distance_shots = -1;
-hatg_setting_enable_crouch = true;
+force hatg_setting_enable_crouch = true;
 force hatg_setting_movement_crouch = 5;
 force hatg_setting_mp_ai = false;
 force hatg_setting_reveal_nearby = false;
 force hatg_setting_simple = false;
-hatg_setting_simple_object = false;
+force hatg_setting_simple_object = false;
 force hatg_setting_surfaces = true;
 
 // Hide Among The Grass -  Equipment
