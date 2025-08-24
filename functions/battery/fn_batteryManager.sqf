@@ -61,12 +61,6 @@ _increaseBatteryLevelPrc77 = [
                 [_radioId, _currentBatteryLevelInSeconds] call COLSOG_fnc_setBatteryLevelFromRadioId;
                 hint format ["Battery Initialized"];
             };
-
-            if (_currentBatteryLevelInSeconds <= 0) exitWith {
-                [_radioId, "setOnOffState", 0, true] call acre_sys_data_fnc_dataEvent;
-            };
-
-            [serverTime, _radioId] call COLSOG_fnc_setLastStartOfTransmission;
         };
 
         // Required in order to have access to the 'radioId' in 'acre_stoppedSpeaking'.
@@ -81,29 +75,12 @@ _increaseBatteryLevelPrc77 = [
         private _radioId = player getVariable [LAST_TRANSMISSION_RADIO_ID, ""];
         if ([_onRadio, _radioId, ACRE_PRC77, player] call COLSOG_fnc_isBatteryManagementRequired) then
         {
-            private _transmissionStartTime = [_radioId] call COLSOG_fnc_getLastStartOfTransmission;
-            private _transmissionEndTime = serverTime;
-
-            if (isNil "_transmissionStartTime") then
-            {
-                _transmissionStartTime = _transmissionEndTime;
-            };
-
-            private _powerToRemove = _transmissionEndTime - _transmissionStartTime;
-
-            private _currentBatteryLevelInSeconds = [_radioId] call COLSOG_fnc_getBatteryLevelFromRadioId;
-            private _newBatteryLevelInSeconds = _currentBatteryLevelInSeconds - _powerToRemove;
-            [_radioId, _newBatteryLevelInSeconds] call COLSOG_fnc_setBatteryLevelFromRadioId;
-
-            if (_newBatteryLevelInSeconds <= 0) exitWith {
-                [_radioId, "setOnOffState", 0, true] call acre_sys_data_fnc_dataEvent;
-            };
-
             // If radio call threshold reached, spawn enemy towards current player position and reset.
             [player] call COLSOG_fnc_incrementRadioCallsCounter;
 
             // If battery critically low, then 3 bip audio cue to warn about low battery.
-            private _batteryLevelInPercent = round (100 * (_newBatteryLevelInSeconds/colsog_battery_prc77Capacity));
+            private _currentBatteryLevelInSeconds = [_radioId] call COLSOG_fnc_getBatteryLevelFromRadioId;
+            private _batteryLevelInPercent = round (100 * (_currentBatteryLevelInSeconds/colsog_battery_prc77Capacity));
             if ((_batteryLevelInPercent > 0) AND (_batteryLevelInPercent <= 20)) then
             {
                 playSound "gdtmod_satchel_starttimer"; // (bip bip bip)

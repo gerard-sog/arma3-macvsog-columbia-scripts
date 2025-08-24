@@ -9,11 +9,19 @@
  * Battery level in seconds (Number)
  */
 
-#define BATTERY_LEVEL "battery_level_"
-
 params ["_radioType", "_player"];
 
 private _radioId = [_radioType, _player] call acre_api_fnc_getRadioByType;
-private _batteryLevelRadioId = BATTERY_LEVEL + _radioId;
-private _batteryLevelInSeconds = missionNamespace getVariable _batteryLevelRadioId;
-_batteryLevelInSeconds;
+
+_radios = missionNamespace getVariable "COLSOG_radios";
+
+_result = nil;
+
+{
+    _colsogRadioId = _x select 0;
+    if (_colsogRadioId == _radioId) then {
+        _result = _x select 1;
+    };
+} forEach _radios;
+
+_result;

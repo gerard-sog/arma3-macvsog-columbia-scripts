@@ -29,8 +29,6 @@ class COLSOG {
         class setBatteryLevelFromRadioId {};
         class getBatteryLevelFromRadioType {};
         class setBatteryLevelFromRadioType {};
-        class getLastStartOfTransmission {};
-        class setLastStartOfTransmission {};
         class incrementRadioCallsCounter {};
         class isBatteryManagementRequired {};
     };

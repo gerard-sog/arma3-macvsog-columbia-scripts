@@ -12,6 +12,15 @@
 
 params ["_radioId"];
 
-private _batteryLevelRadioId = BATTERY_LEVEL + _radioId;
-private _batteryLevelInSeconds = missionNamespace getVariable _batteryLevelRadioId;
-_batteryLevelInSeconds;
+_radios = missionNamespace getVariable "COLSOG_radios";
+
+_result = nil;
+
+{
+    _colsogRadioId = _x select 0;
+    if (_colsogRadioId == _radioId) then {
+        _result = _x select 1;
+    };
+} forEach _radios;
+
+_result;
