@@ -1117,7 +1117,7 @@ force hatg_setting_mp_ai = false;
 force hatg_setting_reveal_nearby = false;
 force hatg_setting_simple = false;
 force hatg_setting_simple_object = false;
-force hatg_setting_surfaces = true;
+force hatg_setting_surfaces = false;
 
 // Hide Among The Grass -  Equipment
 force hatg_setting_equipment_ghillie_blacklist = "[]";
