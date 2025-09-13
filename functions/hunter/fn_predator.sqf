@@ -1,5 +1,5 @@
 
-params [];
+params ["_player"];
 
 private _prefix = "COLSOG_PREY_NAME:";
 private _key = "COLSOG_MARKER_TIME:";
