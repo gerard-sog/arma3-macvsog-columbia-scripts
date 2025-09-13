@@ -1,6 +1,6 @@
 [
     {
-        _markerUniqueId = "COLSOG_FOOTPRINT:" + name player + str(round serverTime);
+        _markerUniqueId = "COLSOG_PREY_NAME:" + name player + ", COLSOG_MARKER_TIME:"+  str(round serverTime);
         private _marker = createMarker [_markerUniqueId, player];
         _marker setMarkerShape "ICON";
         _marker setMarkerType "mil_dot";
