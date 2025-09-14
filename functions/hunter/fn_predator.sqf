@@ -74,6 +74,8 @@ params ["_player"];
             // Show to player
             private _dist = round (_playerPos distance2D _markerPos);
             hint format ["Direction: %1°\nDistance: %2 m", round _dir, _dist];
+        } else {
+            hint format ["No footprint detected..."];
         };
     },
     {},
