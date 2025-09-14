@@ -39,6 +39,9 @@ colsog_available_languages = [["en", "English"], ["vn", "Vietnamese"]];
 				execVM "functions\init\init_colsog_PlayerBabel.sqf";
 				// init Babel zeus switch language
 				execVM "functions\init\init_colsog_ZeusBabelSwitch.sqf";
+
+				// add custom footprint creator (using markers) event handler.
+				call COLSOG_fnc_prey;
 			}, 
 			_this // argument (still player)
 		] call CBA_fnc_waitUntilAndExecute;

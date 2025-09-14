@@ -1,4 +1,7 @@
-if (side player == west) then {
+_playerCreatesFootprints = player getVariable ["visibleFootprint", false];
+systemChat str(_playerCreatesFootprints);
+
+if (_playerCreatesFootprints) then {
     [
         {
             _markerSpawnTime = round serverTime;

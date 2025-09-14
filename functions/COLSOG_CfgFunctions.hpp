@@ -91,6 +91,6 @@ class COLSOG {
         class hunterManager {postInit = 1;};
         // ACE self-interact actions.
         class predator {};
-        class prey {postInit = 1;};
+        class prey {};
      };
 }

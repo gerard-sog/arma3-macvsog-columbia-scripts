@@ -31,33 +31,41 @@ switch ((roleDescription player splitString "@") select 0) do {
         player setVariable ["canSpeak", ["en", "vn"]];
         player setVariable ["canClimb", true];
         player setVariable ["canReadIntel", true];
+        player setVariable ["visibleFootprint", true];
     };
     case "0-2 Machine Gunner": {
         player setVariable ["canSpeak", ["en", "vn"]];
         player setVariable ["canReadIntel", true];
+        player setVariable ["visibleFootprint", true];
     };
     case "0-3 Grenadier": {
         player setVariable ["canSpeak", ["en", "vn"]];
         player setVariable ["canReadIntel", true];
+        player setVariable ["visibleFootprint", true];
     };
     case "0-4 Point man": {
         player setVariable ["canSpeak", ["en", "vn"]];
         player setVariable ["canClimb", true];
         player setVariable ["canReadIntel", true];
+        player setVariable ["visibleFootprint", true];
     };
     case "1-0 Squad Leader": {
         player setVariable ["hasUsface", true];
+        player setVariable ["visibleFootprint", true];
     };
     case "1-1 RTO": {
         player setVariable ["hasUsface", true];
+        player setVariable ["visibleFootprint", true];
     };
     case "1-2 Medic": {
         player setVariable ["hasUsface", true];
+        player setVariable ["visibleFootprint", true];
     };
 
     // Reserves
     default {
         player setVariable ["canSpeak",["en", "vn"]];
+        player setVariable ["visibleFootprint", true];
     };
 };
 
