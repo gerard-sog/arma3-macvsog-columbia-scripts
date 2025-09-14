@@ -1,7 +1,4 @@
-_playerCreatesFootprints = player getVariable ["visibleFootprint", false];
-systemChat str(_playerCreatesFootprints);
-
-if (_playerCreatesFootprints) then {
+if (player getVariable ["visibleFootprint", false]) then {
     [
         {
             _markerSpawnTime = round serverTime;
