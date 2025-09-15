@@ -83,5 +83,14 @@ class COLSOG {
         class cutSmallTree {postInit = 1;};
         class detonateCharge {postInit = 1;};
         class carryAndDrag {postInit = 1;};
-    }
+    };
+    class Hunter
+     {
+         file ="functions\hunter";
+        // 1 will execute the function for each player downloading the mission.
+        class hunterManager {postInit = 1;};
+        // ACE self-interact actions.
+        class predator {};
+        class prey {};
+     };
 }
