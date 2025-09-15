@@ -156,7 +156,7 @@
 
 // Battery
 ["colsog_battery_refreshRate", "SLIDER", ["Battery state refresh rate (seconds)"], [CBA_SETTINGS_COLSOG_RADIO_AND_BATTERY, "Battery"], [0, 5, 5, 0], 1, {}, false] call CBA_fnc_addSetting;
-["colsog_battery_prc77Capacity", "SLIDER", ["PRC77 Battery capacity in seconds"], [CBA_SETTINGS_COLSOG_RADIO_AND_BATTERY, "Battery"], [0, 1800, 900, 0], 1, {}, false] call CBA_fnc_addSetting;
+["colsog_battery_prc77Capacity", "SLIDER", ["PRC77 Battery capacity in seconds"], [CBA_SETTINGS_COLSOG_RADIO_AND_BATTERY, "Battery"], [0, 7200, 900, 0], 1, {}, false] call CBA_fnc_addSetting;
 ["colsog_battery_enemySpawnThreshold", "SLIDER", ["Amount of radio calls before enemy detection"], [CBA_SETTINGS_COLSOG_RADIO_AND_BATTERY, "Battery"], [0, 100, 50, 0], 1, {}, false] call CBA_fnc_addSetting;
 ["colsog_battery_groupsTriggeringEnemySpawnThresholdIncrease", "EDITBOX", ["Groups impacted by enemy radio call detection"], [CBA_SETTINGS_COLSOG_RADIO_AND_BATTERY, "Battery"], "Columbia,Reserves", 1, {colsog_battery_groupsTriggeringEnemySpawnThresholdIncrease = colsog_battery_groupsTriggeringEnemySpawnThresholdIncrease splitString " " joinString "" splitString ","}, false] call CBA_fnc_addSetting;
 ["colsog_battery_powerItems", "EDITBOX", ["Item used as spare battery"], [CBA_SETTINGS_COLSOG_RADIO_AND_BATTERY, "Battery"], "ACE_UAVBattery", 1, {colsog_battery_powerItems = colsog_battery_powerItems splitString " " joinString "" splitString ","}, false] call CBA_fnc_addSetting;
