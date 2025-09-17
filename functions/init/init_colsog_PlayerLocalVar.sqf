@@ -62,6 +62,11 @@ switch ((roleDescription player splitString "@") select 0) do {
         player setVariable ["visibleFootprint", true];
     };
 
+    // Opfor
+    case "Tracker": {
+        player setVariable ["canSpeak", ["vn"]];
+    };
+
     // Reserves
     default {
         player setVariable ["canSpeak",["en", "vn"]];
