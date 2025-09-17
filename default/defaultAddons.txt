@@ -824,10 +824,10 @@ force colsog_traps_screamingEnable = false;
 
 // COLSOG Opfor
 force colsog_hunting_debugMode = false;
-force colsog_hunting_FootprintsDetectionRange = 150;
-force colsog_hunting_markerSpawnTime = 120;
-force colsog_hunting_markerTTL = 600;
-force colsog_hunting_timeToFindFootprints = 20;
+force colsog_hunting_FootprintsDetectionRange = 110;
+force colsog_hunting_markerSpawnTime = 30;
+force colsog_hunting_markerTTL = 900;
+force colsog_hunting_timeToFindFootprints = 30;
 
 // COLSOG Prairie Fire Module
 force colsog_support_arcLightEnable = false;
