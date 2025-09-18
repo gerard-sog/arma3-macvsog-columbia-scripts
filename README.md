@@ -45,14 +45,18 @@ Installation of all the scripts/zeus modules is done by **copying the below file
 
 ## Default values
 - Default <b>loadouts</b>:
-  - [covey](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/loadouts/covey.json)
-  - [rifleman](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/loadouts/default_rifleman.json)
-  - [grenadier](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/loadouts/Grenadier.json)
-  - [medic](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/loadouts/Medic.json)
-  - [RPD Gunner](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/loadouts/MG_RPD.json)
-  - [pointman](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/loadouts/Pointman_AK.json)
-  - [RTO](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/loadouts/RTO.json)
-  - [Squad leader](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/loadouts/squad_leader.json)
+  - BLUFOR:
+    - [covey](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/loadouts/BLUFOR/covey.json)
+    - [rifleman](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/loadouts/BLUFOR/default_rifleman.json)
+    - [grenadier](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/loadouts/BLUFOR/Grenadier.json)
+    - [medic](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/loadouts/BLUFOR/Medic.json)
+    - [RPD Gunner](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/loadouts/BLUFOR/MG_RPD.json)
+    - [pointman](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/loadouts/BLUFOR/Pointman_AK.json)
+    - [RTO](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/loadouts/BLUFOR/RTO.json)
+    - [Squad leader](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/loadouts/BLUFOR/squad_leader.json)
+    - [Tail Gunner](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/loadouts/BLUFOR/tail_gunner.json)
+  - OPFOR:
+    - [Tracker](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/loadouts/OPFOR/tracker.json)
 - Default <b>missions</b>:
   - [Cam_Lao_Nam](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/missions/Cam_Lao_Nam/mission.sqm): Includes borders between ARVN (South Vietnam), PAVN (North Vietnam), Khmer Republic, Laos and Cambodia.
   - [fox_pamai](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/missions/fox_pamai/mission.sqm): Includes FOB from vn_the_bra and an Airfield in out of bound area.
@@ -304,6 +308,19 @@ vanilla medical items conversion to ace medical items
     - Activate debug mode (see bomb name): <i>Boolean</i>
     - Time before embers removal (sec): <i>Integer</i>
 </details>
+
+<details>
+
+<summary>COLSOG OPFOR</summary>
+
+- **Hunting**
+    - Debug mode: <i>Boolean</i>
+    - Search time (sec): <i>Integer</i>
+    - Detection radius (m): <i>Integer</i>
+    - marker TTL (sec): <i>Integer</i>
+    - marker spawn time (sec): <i>Integer</i>
+
+</details>
   
 see [CBASettings.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/CBASettings.sqf)
 
@@ -315,18 +332,18 @@ Some features such as who is able to climb trees, read intel, etc. are now manag
 
 Here is a list of roles and their available actions:
 
-| Roles              | Has american face<br/>"hasUsface" | Can climb tree<br/>"canClimb" | Can read intel<br/>"canReadIntel" | Can speak languages<br/>"canSpeak" | Can monitor sensors<br/>"canMonitorSensor" | Can use simplex<br/>"canUseSimplex" |
-|--------------------|-----------------------------------|-------------------------------|-----------------------------------|------------------------------------|--------------------------------------------|-------------------------------------|
-| Chief SOG          | true                              | false (default)               | true                              | en (default)                       | false (default)                            | true                                |
-| Pilot              | true                              | false                         | false (default)                   | en                                 | true                                       | true                                |
-| 0-1 Tail Gunner    | false (default)                   | true                          | true                              | en, vn                             | false                                      | false (default)                     |
-| 0-2 Machine Gunner | false                             | false                         | true                              | en, vn                             | false                                      | false                               |
-| 0-3 Grenadier      | false                             | false                         | true                              | en, vn                             | false                                      | false                               |
-| 0-4 Point man      | false                             | true                          | true                              | en, vn                             | false                                      | false                               |
-| 1-0 Squad Leader   | true                              | false                         | false                             | en                                 | false                                      | false                               |
-| 1-1 RTO            | true                              | false                         | false                             | en                                 | false                                      | false                               |
-| 1-2 Medic          | true                              | false                         | false                             | en                                 | false                                      | false                               |
-| Reserves           | false                             | false                         | false                             | en, vn                             | false                                      | false                               |
+| Roles              | Has american face<br/>"hasUsface" | Can climb tree<br/>"canClimb" | Can read intel<br/>"canReadIntel" | Can speak languages<br/>"canSpeak" | Can monitor sensors<br/>"canMonitorSensor" | Can use simplex<br/>"canUseSimplex" | visibleFootprint |
+|--------------------|-----------------------------------|-------------------------------|-----------------------------------|------------------------------------|--------------------------------------------|-------------------------------------|------------------|
+| Chief SOG          | true                              | false (default)               | true                              | en (default)                       | false (default)                            | true                                | false (default)  | 
+| Pilot              | true                              | false                         | false (default)                   | en                                 | true                                       | true                                | false            |
+| 0-1 Tail Gunner    | false (default)                   | true                          | true                              | en, vn                             | false                                      | false (default)                     | true             |
+| 0-2 Machine Gunner | false                             | false                         | true                              | en, vn                             | false                                      | false                               | true             |
+| 0-3 Grenadier      | false                             | false                         | true                              | en, vn                             | false                                      | false                               | true             |
+| 0-4 Point man      | false                             | true                          | true                              | en, vn                             | false                                      | false                               | true             |
+| 1-0 Squad Leader   | true                              | false                         | false                             | en                                 | false                                      | false                               | true             |
+| 1-1 RTO            | true                              | false                         | false                             | en                                 | false                                      | false                               | true             |
+| 1-2 Medic          | true                              | false                         | false                             | en                                 | false                                      | false                               | true             |
+| Reserves           | false                             | false                         | false                             | en, vn                             | false                                      | false                               | true             |
 
 ### Gameplay
 
@@ -906,6 +923,17 @@ Structure of the '_hashMapOfBombsAndIsNapalmAndRadius' array. Each element of th
 - <u>**2) IS_NAPALM**</u>: True if it contains napalm, false otherwise.
 - <u>**3) DESTRUCTION_RADIUS**</u>: Radius in meter (from the bomb impact) where trees and bushes will be burned or destroyed.
 - <u>**4) OBLITERATION_RADIUS**</u>: Radius in meter (from the bomb impact) where trees, bushes and other objects will be completely destroyed. (mainly used to have bomb acting as <u>daisy-cutter</u>)
+
+</details>
+
+<details>
+
+<summary>18. OPFOR tracker</summary>
+
+Adds a Per Frame Handler (PFH) on all players with 'visibleFootprint' variable set to true (aka the prey). This will create invisible markers with a specific syntax that can be 
+detected by the OPFOR player (aka the hunter) using an ACE action.
+
+Adds a new ACE action to the OPFOR player in order to search for footprints in a configurable radius. Once footprints are detected, it will display a hint towards the freshest footprint.
 
 </details>
 
