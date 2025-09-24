@@ -825,8 +825,8 @@ force colsog_traps_screamingEnable = false;
 // COLSOG Opfor
 force colsog_hunting_debugMode = false;
 force colsog_hunting_FootprintsDetectionRange = 110;
-force colsog_hunting_markerSpawnTime = 30;
 force colsog_hunting_markerTTL = 900;
+force colsog_hunting_scoreThreshold = 100;
 force colsog_hunting_timeToFindFootprints = 30;
 
 // COLSOG Prairie Fire Module
@@ -1285,6 +1285,8 @@ force tsp_cba_animate_Cover = true;
 force tsp_cba_animate_Dab = true;
 force tsp_cba_animate_door = true;
 tsp_cba_animate_drop = "[[""Green Chemlight"",""Chemlight_green""],[""Red Chemlight"",""Chemlight_red""],[""IR Chemlight"",""ACE_Chemlight_IR""]]";
+tsp_cba_animate_drop_ace = false;
+tsp_cba_animate_drop_infinite = false;
 force tsp_cba_animate_Duo = true;
 force tsp_cba_animate_Engage = true;
 force tsp_cba_animate_Follow = true;

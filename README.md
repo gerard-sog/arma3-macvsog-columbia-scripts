@@ -318,7 +318,7 @@ vanilla medical items conversion to ace medical items
     - Search time (sec): <i>Integer</i>
     - Detection radius (m): <i>Integer</i>
     - marker TTL (sec): <i>Integer</i>
-    - marker spawn time (sec): <i>Integer</i>
+    - Marker spawn threshold: <i>Integer</i>
 
 </details>
   

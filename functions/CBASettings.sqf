@@ -245,4 +245,4 @@
 ["colsog_hunting_timeToFindFootprints", "SLIDER", ["Search time (sec)"], [CBA_SETTINGS_COLSOG_OPFOR, "Hunting"], [0, 60, 30, 0], 1, {}, false] call CBA_fnc_addSetting;
 ["colsog_hunting_FootprintsDetectionRange", "SLIDER", ["Detection radius (m)"], [CBA_SETTINGS_COLSOG_OPFOR, "Hunting"], [0, 500, 100, 0], 1, {}, false] call CBA_fnc_addSetting;
 ["colsog_hunting_markerTTL", "SLIDER", ["marker TTL (sec)"], [CBA_SETTINGS_COLSOG_OPFOR, "Hunting"], [0, 3600, 600, 0], 1, {}, false] call CBA_fnc_addSetting;
-["colsog_hunting_markerSpawnTime", "SLIDER", ["marker spawn time (sec)"], [CBA_SETTINGS_COLSOG_OPFOR, "Hunting"], [0, 300, 120, 0], 1, {}, false] call CBA_fnc_addSetting;
+["colsog_hunting_scoreThreshold", "SLIDER", ["Marker spawn threshold"], [CBA_SETTINGS_COLSOG_OPFOR, "Hunting"], [0, 1000, 100, 0], 1, {}, false] call CBA_fnc_addSetting;
