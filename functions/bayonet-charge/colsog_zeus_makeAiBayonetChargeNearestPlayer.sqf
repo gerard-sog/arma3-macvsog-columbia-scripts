@@ -75,8 +75,7 @@ if (isNull _closestTarget) exitWith {
                         private _audio = selectRandom [
                             "\vn\sounds_f_vietnam\sfx\missiondesign\enemy_whistle_4.ogg",
                             "uns_dsaiviet\sounds\combat\vc96.ogg",
-                            "uns_dsaiviet\sounds\combat\vc145.ogg",
-                            "\vn\music_f_vietnam\m_samaudio\pavn\death\vn_sam_vcdeath_005.ogg"
+                            "uns_dsaiviet\sounds\combat\vc145.ogg"
                         ];
                         playSound3D [_audio, _attacker];
                     };

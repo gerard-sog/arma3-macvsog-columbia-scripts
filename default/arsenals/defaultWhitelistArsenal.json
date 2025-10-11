@@ -42,7 +42,6 @@
   "vn_m16_20_t_mag",
   "vn_40mm_m576_buck_mag",
   "vn_b_uniform_macv_02_06",
-  "vn_xm16e1",
   "vn_m79_p",
   "vn_40mm_m406_he_mag",
   "vn_b_boonie_03_06",
@@ -1235,5 +1234,8 @@
   "vn_m1_garand_t_mag",
   "vn_m1_garand_mag",
   "vn_m_bolo_01",
-  "vn_m_axe_01"
+  "vn_m_axe_01",
+  "vn_m16",
+  "vn_m16_camo",
+  "vn_m16_xm148"
 ]

@@ -10,7 +10,7 @@ enabledebugconsole = 1;
 respawn = 3;            // Respawn "BASE", use 'respawn_west'
 respawnOnStart = -1;    // No respawn on mission start
 respawnDialog = 0;      // Show scoreboard, 0 = Disabled, 1 = Enabled
-respawnDelay = 60;      // Delay in seconds
+respawnDelay = 150;      // Delay in seconds
 respawnButton = 1;      // 0 = Disabled, 1 = Enabled
 
 respawnTemplates[] = {"Wave", "ace_spectator", "Counter"};
