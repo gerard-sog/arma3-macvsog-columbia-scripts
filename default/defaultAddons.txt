@@ -1178,6 +1178,14 @@ force restrict_markers_main_shareDistance = 7;
 force restrict_markers_main_shareDistanceGroup = 7;
 restrict_markers_main_showNotifications = 1;
 
+// Ride Where You Look
+force RWYL_FFVAnywhere_enable = false;
+force RWYL_HopVehicleRange = 5;
+RWYL_OtherSeatsColour = [0.2,0.2,0.2,0.4];
+RWYL_OtherSeatsIconSize = 0.8;
+RWYL_SelectedSeatColour = [0.95,0.95,0.95,1];
+RWYL_SelectedSeatIconSize = 1;
+
 // Simplex Support Services
 force sss_artillery_autoTerminals = false;
 force sss_artillery_manualInput = false;
