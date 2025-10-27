@@ -5,7 +5,8 @@ _gunshotSensor = [
 	"Place Gunshot sensor",
 	"\a3\ui_f\data\igui\cfg\simpletasks\types\listen_ca.paa",
 	{
-		execVM "functions\sensors\gunshot\fn_createGunshotSensor.sqf";
+		// Needs to be sent to server.
+        [[], "functions\sensors\gunshot\fn_createGunshotSensor.sqf"] remoteExec ["execVM", 2, false];
 	},
 	{
 	    private _hasItem = [player, colsog_sensor_gunshotInventoryItem] call BIS_fnc_hasItem;
