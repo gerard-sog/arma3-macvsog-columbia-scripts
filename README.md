@@ -63,6 +63,7 @@ Installation of all the scripts/zeus modules is done by **copying the below file
   - [fox_vanam](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/missions/fox_vanam/mission.sqm): Includes border between (South Vietnam) and Cambodia, Special Forces FOB and the Do Lung Bridge (same bridge as Apocalypse Now).
   - [vn_khe_sanh](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/missions/vn_khe_sanh/mission.sqm)
   - [vn_the_bra](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/missions/vn_the_bra/mission.sqm)
+  - [Dong_Giang](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/missions/Dong_Giang/mission.sqm)
 - Default <b>addons</b> for missions: [defaultAddons.txt](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/defaultAddons.txt)
 - Default <b>arsenals</b>: 
   - [defaultWhitelistArsenal.json](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/default/arsenals/defaultWhitelistArsenal.json)
