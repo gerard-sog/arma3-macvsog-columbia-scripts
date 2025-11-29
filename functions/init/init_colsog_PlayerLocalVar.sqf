@@ -64,6 +64,7 @@ switch ((roleDescription player splitString "@") select 0) do {
 
     case "Tracker": {
         player setVariable ["visibleFootprint", false];
+        player setVariable ["canClimb", true];
     };
 
     // Reserves

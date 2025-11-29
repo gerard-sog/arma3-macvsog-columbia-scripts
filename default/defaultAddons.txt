@@ -27,6 +27,7 @@ force ace_advanced_throwing_enablePickUpAttached = true;
 ace_advanced_throwing_enableTempWindInfo = true;
 ace_advanced_throwing_showMouseControls = true;
 ace_advanced_throwing_showThrowArc = true;
+ace_advanced_throwing_throwStepSetting = 8;
 
 // ACE Advanced Vehicle Damage
 force ace_vehicle_damage_enableCarDamage = false;
@@ -231,6 +232,7 @@ force ace_cargo_enableRename = true;
 force ace_cargo_loadTimeCoefficient = 5;
 force ace_cargo_openAfterUnload = 0;
 force ace_cargo_paradropTimeCoefficent = 2.5;
+ace_cargo_unloadOnKilled = 0.5;
 force ace_rearm_distance = 20;
 force ace_rearm_enabled = true;
 force ace_rearm_level = 0;
@@ -643,6 +645,9 @@ acex_volume_lowerInVehicles = false;
 acex_volume_reduction = 5;
 acex_volume_remindIfLowered = false;
 acex_volume_showNotification = true;
+
+// ACE Wardrobe
+ace_wardrobe_enableAction = true;
 
 // ACE Weapons
 ace_common_persistentLaserEnabled = false;
