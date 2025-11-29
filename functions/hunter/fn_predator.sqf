@@ -17,7 +17,7 @@ params ["_player"];
             _debugMarker setMarkerShape "ELLIPSE";
             _debugMarker setMarkerColor "ColorRed";
             _debugMarker setMarkerBrush "Border";
-            _debugMarker setMarkerSize [colsog_hunting_FootprintsDetectionRange, colsog_hunting_FootprintsDetectionRange];
+            _debugMarker setMarkerSize [colsog_hunting_FootprintsDetectionRangeFar, colsog_hunting_FootprintsDetectionRangeFar];
 
             private _debugMarkerTTL = serverTime + 30;
             [
@@ -33,19 +33,29 @@ params ["_player"];
         private _prefix = "COLSOG_PREY_NAME:";
         private _key = "COLSOG_MARKER_TIME:";
         private _bestTimeNum = 0;
+        private _bestDistance = colsog_hunting_FootprintsDetectionRangeFar;
 
         // [markerName, time, markerPos]
-        private _result = [];
+        private _freshestResult = [];
+
+        // [markerName, markerPos]
+        private _closestResult = [];
 
         {
             private _markerName = _x;
             private _pos = getMarkerPos _markerName;
 
             // Check distance.
-            if ((getPos player) distance2D _pos <= colsog_hunting_FootprintsDetectionRange) then {
+            private _distanceToPlayer = (getPos player) distance2D _pos;
+            if (_distanceToPlayer <= colsog_hunting_FootprintsDetectionRangeFar) then {
 
                 // Check prefix.
                 if ((_markerName find _prefix) == 0) then {
+
+                    if (_distanceToPlayer <= _bestDistance) then {
+                        _bestDistance = _distanceToPlayer;
+                        _closestResult = [_markerName, _pos]
+                    };
 
                     // Extract time.
                     private _i = _markerName find _key;
@@ -56,7 +66,7 @@ params ["_player"];
 
                         if (_timeNum > _bestTimeNum) then {
                             _bestTimeNum = _timeNum;
-                            _result = [_markerName, _timeNum, _pos];
+                            _freshestResult = [_markerName, _timeNum, _pos];
                         };
                     };
                 };
@@ -64,16 +74,34 @@ params ["_player"];
 
         } forEach allMapMarkers;
 
-        if (count _result != 0) then {
-            private _markerPos = _result#2;
-            private _playerPos = getPos player;
+        if (count _closestResult != 0 && count _freshestResult != 0) then {
+            private _closestMarkerPos = _closestResult#1;
+            private _freshestMarkerPos = _freshestResult#2;
 
-            // Direction from player to marker (0 = North, clockwise degrees)
-            private _dir = _playerPos getDir _markerPos;
+            // When within 50m of a track, receive information there is a track in the area.
+            if (_bestDistance <= colsog_hunting_FootprintsDetectionRangeFar && _bestDistance > colsog_hunting_FootprintsDetectionRangeMedium) then {
+                hint format ["There are footprints close by!"];
+            };
 
-            // Show to player
-            private _dist = round (_playerPos distance2D _markerPos);
-            hint format ["Direction: %1°\nDistance: %2 m", round _dir, _dist];
+            // When within 20m receive bearing to the nearest track (e.g. there is a track somewhere to the north west).
+            if (_bestDistance <= colsog_hunting_FootprintsDetectionRangeMedium && _bestDistance > colsog_hunting_FootprintsDetectionRangeClose) then {
+                // Direction from player to closest marker (0 = North, clockwise degrees)
+                private _dir = _playerPos getDir _closestMarkerPos;
+
+                // Show to player
+                private _dist = round (_playerPos distance2D _closestMarkerPos);
+                hint format ["Footprint in direction: %1°\nDistance: %2 m", round _dir, _dist];
+            };
+
+            // When within 1m receive exact bearing to the next track (e.g. the tracks lead 157 degrees)
+            if (_bestDistance <= colsog_hunting_FootprintsDetectionRangeClose) then {
+                // Direction from player to freshest marker (0 = North, clockwise degrees)
+                private _dir = _playerPos getDir _freshestMarkerPos;
+
+                // Show to player
+                private _dist = round (_playerPos distance2D _freshestMarkerPos);
+                hint format ["Next track direction: %1°\nDistance: %2 m", round _dir, _dist];
+            };
         } else {
             hint format ["No footprint detected..."];
         };
