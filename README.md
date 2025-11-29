@@ -344,6 +344,7 @@ Here is a list of roles and their available actions:
 | 1-0 Squad Leader   | true                              | false                         | false                             | en                                 | false                                      | false                               | true             |
 | 1-1 RTO            | true                              | false                         | false                             | en                                 | false                                      | false                               | true             |
 | 1-2 Medic          | true                              | false                         | false                             | en                                 | false                                      | false                               | true             |
+| Tracker            | false                             | true                          | false                             | vn                                 | false                                      | false                               | false            |
 | Reserves           | false                             | false                         | false                             | en, vn                             | false                                      | false                               | true             |
 
 ### Gameplay
