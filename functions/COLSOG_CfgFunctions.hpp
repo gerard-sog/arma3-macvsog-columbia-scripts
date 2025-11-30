@@ -90,6 +90,7 @@ class COLSOG {
         // 1 will execute the function for each player downloading the mission.
         class hunterManager {postInit = 1;};
         // ACE self-interact actions.
+        class showFootprint {};
         class predator {};
         class prey {};
      };

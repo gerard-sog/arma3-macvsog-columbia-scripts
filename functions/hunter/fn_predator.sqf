@@ -92,6 +92,8 @@ params ["_player"];
                 // Show to player
                 private _dist = round (_playerPos distance2D _closestMarkerPos);
                 hint format ["Footprint in direction: %1°\nDistance: %2 m", round _dir, _dist];
+
+                [_closestMarkerPos] call COLSOG_fnc_showFootprint;
             };
 
             // When within 1m receive exact bearing to the next track (e.g. the tracks lead 157 degrees)
@@ -102,6 +104,8 @@ params ["_player"];
                 // Show to player
                 private _dist = round (_playerPos distance2D _freshestMarkerPos);
                 hint format ["Next track direction: %1°\nDistance: %2 m", round _dir, _dist];
+
+                [_freshestMarkerPos] call COLSOG_fnc_showFootprint;
             };
         } else {
             hint format ["No footprint detected..."];
