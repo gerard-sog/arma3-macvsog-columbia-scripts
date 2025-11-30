@@ -38,9 +38,11 @@ params ["_player"];
         // [markerName, time, markerPos]
         private _freshestResult = [];
 
-        // [markerName, markerPos]
+        // [markerName, time, markerPos]
         private _closestResult = [];
 
+        // Find closest and freshest footprint.
+        // ------------------------------------
         {
             private _markerName = _x;
             private _pos = getMarkerPos _markerName;
@@ -53,8 +55,17 @@ params ["_player"];
                 if ((_markerName find _prefix) == 0) then {
 
                     if (_distanceToPlayer <= _bestDistance) then {
-                        _bestDistance = _distanceToPlayer;
-                        _closestResult = [_markerName, _pos]
+
+                        // Extract time.
+                        private _i = _markerName find _key;
+                        if (_i >= 0) then {
+                            private _start   = _i + count _key;
+                            private _timeStr = _markerName select [_start];
+                            private _timeNum = parseNumber _timeStr;
+
+                            _bestDistance = _distanceToPlayer;
+                            _closestResult = [_markerName, _timeNum, _pos];
+                        };
                     };
 
                     // Extract time.
@@ -71,11 +82,43 @@ params ["_player"];
                     };
                 };
             };
-
         } forEach allMapMarkers;
 
+        private _allMarkersInRange = [];
+        private _maxDistance = (getPos player) distance2D _freshestResult#2;
+        private _timeToBeat = _closestResult#1;
+
+        // Keeps only markers in range, fresher than closest footprint.
+        // ------------------------------------------------------------
+        {
+            private _markerName = _x;
+            private _pos = getMarkerPos _markerName;
+
+            // Check distance.
+            private _distanceToPlayer = (getPos player) distance2D _pos;
+            if (_distanceToPlayer <= colsog_hunting_FootprintsDetectionRangeFar) then {
+
+                // Check prefix.
+                if ((_markerName find _prefix) == 0) then {
+
+                    // Extract time.
+                    private _i = _markerName find _key;
+                    if (_i >= 0) then {
+                        private _start   = _i + count _key;
+                        private _timeStr = _markerName select [_start];
+                        private _timeNum = parseNumber _timeStr;
+
+                        if (_timeNum >= _timeToBeat) then {
+                            _allMarkersInRange append [_pos];
+                        };
+                    };
+                };
+            };
+        } forEach allMapMarkers;
+
+
         if (count _closestResult != 0 && count _freshestResult != 0) then {
-            private _closestMarkerPos = _closestResult#1;
+            private _closestMarkerPos = _closestResult#2;
             private _freshestMarkerPos = _freshestResult#2;
             private _playerPos = getPos player;
 
@@ -93,19 +136,13 @@ params ["_player"];
                 private _dist = round (_playerPos distance2D _closestMarkerPos);
                 hint format ["Footprint in direction: %1°\nDistance: %2 m", round _dir, _dist];
 
-                [_closestMarkerPos] call COLSOG_fnc_showFootprint;
+                [_closestMarkerPos, 1] call COLSOG_fnc_showFootprint;
             };
 
             // When within 1m receive exact bearing to the next track (e.g. the tracks lead 157 degrees)
             if (_bestDistance <= colsog_hunting_FootprintsDetectionRangeClose) then {
-                // Direction from player to freshest marker (0 = North, clockwise degrees)
-                private _dir = _playerPos getDir _freshestMarkerPos;
-
-                // Show to player
-                private _dist = round (_playerPos distance2D _freshestMarkerPos);
-                hint format ["Next track direction: %1°\nDistance: %2 m", round _dir, _dist];
-
-                [_freshestMarkerPos] call COLSOG_fnc_showFootprint;
+                hint format ["Trail found"];
+                [_allMarkersInRange] call COLSOG_fnc_showTrail;
             };
         } else {
             hint format ["No footprint detected..."];

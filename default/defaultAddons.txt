@@ -834,7 +834,7 @@ force colsog_hunting_FootprintsDetectionRangeFar = 110;
 force colsog_hunting_FootprintsDetectionRangeMedium = 35;
 force colsog_hunting_markerTTL = 1200;
 force colsog_hunting_scoreThreshold = 200;
-force colsog_hunting_timeToFindFootprints = 10;
+force colsog_hunting_timeToFindFootprints = 5;
 
 // COLSOG Prairie Fire Module
 force colsog_support_arcLightEnable = false;
