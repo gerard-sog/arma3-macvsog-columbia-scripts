@@ -141,7 +141,13 @@ params ["_player"];
 
             // When within 1m receive exact bearing to the next track (e.g. the tracks lead 157 degrees)
             if (_bestDistance <= colsog_hunting_FootprintsDetectionRangeClose) then {
-                hint format ["Trail found"];
+                // Direction from player to freshest marker (0 = North, clockwise degrees)
+                private _dir = _playerPos getDir _freshestMarkerPos;
+
+                // Show to player
+                private _dist = round (_playerPos distance2D _freshestMarkerPos);
+                hint format ["Next track direction: %1°\nDistance: %2 m", round _dir, _dist];
+
                 [_allMarkersInRange] call COLSOG_fnc_showTrail;
             };
         } else {
