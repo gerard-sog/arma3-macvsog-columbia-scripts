@@ -77,6 +77,7 @@ params ["_player"];
         if (count _closestResult != 0 && count _freshestResult != 0) then {
             private _closestMarkerPos = _closestResult#1;
             private _freshestMarkerPos = _freshestResult#2;
+            private _playerPos = getPos player;
 
             // When within 50m of a track, receive information there is a track in the area.
             if (_bestDistance <= colsog_hunting_FootprintsDetectionRangeFar && _bestDistance > colsog_hunting_FootprintsDetectionRangeMedium) then {
