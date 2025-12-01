@@ -31,7 +31,6 @@ params ["_player"];
         };
 
         private _prefix = "COLSOG_PREY_NAME:";
-        private _key = "COLSOG_MARKER_TIME:";
         private _bestTimeNum = 0;
         private _bestDistance = colsog_hunting_FootprintsDetectionRangeFar;
 
@@ -57,24 +56,16 @@ params ["_player"];
                     if (_distanceToPlayer <= _bestDistance) then {
 
                         // Extract time.
-                        private _i = _markerName find _key;
-                        if (_i >= 0) then {
-                            private _start   = _i + count _key;
-                            private _timeStr = _markerName select [_start];
-                            private _timeNum = parseNumber _timeStr;
-
+                        private _timeNum = [_markerName] call COLSOG_fnc_extractTimeFromMarkerName;
+                        if (_timeNum > -1) then {
                             _bestDistance = _distanceToPlayer;
                             _closestResult = [_markerName, _timeNum, _pos];
                         };
                     };
 
                     // Extract time.
-                    private _i = _markerName find _key;
-                    if (_i >= 0) then {
-                        private _start   = _i + count _key;
-                        private _timeStr = _markerName select [_start];
-                        private _timeNum = parseNumber _timeStr;
-
+                    private _timeNum = [_markerName] call COLSOG_fnc_extractTimeFromMarkerName;
+                    if (_timeNum > -1) then {
                         if (_timeNum > _bestTimeNum) then {
                             _bestTimeNum = _timeNum;
                             _freshestResult = [_markerName, _timeNum, _pos];
@@ -102,12 +93,8 @@ params ["_player"];
                 if ((_markerName find _prefix) == 0) then {
 
                     // Extract time.
-                    private _i = _markerName find _key;
-                    if (_i >= 0) then {
-                        private _start   = _i + count _key;
-                        private _timeStr = _markerName select [_start];
-                        private _timeNum = parseNumber _timeStr;
-
+                    private _timeNum = [_markerName] call COLSOG_fnc_extractTimeFromMarkerName;
+                    if (_timeNum > -1) then {
                         if (_timeNum >= _timeToBeat) then {
                             _allMarkersInRange append [_pos];
                         };
@@ -136,7 +123,7 @@ params ["_player"];
                 private _dist = round (_playerPos distance2D _closestMarkerPos);
                 hint format ["Footprint in direction: %1°\nDistance: %2 m", round _dir, _dist];
 
-                [_closestMarkerPos, 1] call COLSOG_fnc_showFootprint;
+                [_closestMarkerPos] call COLSOG_fnc_showFootprint;
             };
 
             // When within 1m receive exact bearing to the next track (e.g. the tracks lead 157 degrees)
