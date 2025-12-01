@@ -247,4 +247,5 @@
 ["colsog_hunting_FootprintsDetectionRangeMedium", "SLIDER", ["Detection radius medium (m)"], [CBA_SETTINGS_COLSOG_OPFOR, "Hunting"], [0, 500, 100, 0], 1, {}, false] call CBA_fnc_addSetting;
 ["colsog_hunting_FootprintsDetectionRangeClose", "SLIDER", ["Detection radius close(m)"], [CBA_SETTINGS_COLSOG_OPFOR, "Hunting"], [0, 500, 100, 0], 1, {}, false] call CBA_fnc_addSetting;
 ["colsog_hunting_markerTTL", "SLIDER", ["marker TTL (sec)"], [CBA_SETTINGS_COLSOG_OPFOR, "Hunting"], [0, 3600, 600, 0], 1, {}, false] call CBA_fnc_addSetting;
+["colsog_hunting_footprint3DTTL", "SLIDER", ["3D footprint TTL (sec)"], [CBA_SETTINGS_COLSOG_OPFOR, "Hunting"], [0, 30, 10, 0], 1, {}, false] call CBA_fnc_addSetting;
 ["colsog_hunting_scoreThreshold", "SLIDER", ["Marker spawn threshold"], [CBA_SETTINGS_COLSOG_OPFOR, "Hunting"], [0, 1000, 100, 0], 1, {}, false] call CBA_fnc_addSetting;

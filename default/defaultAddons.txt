@@ -829,6 +829,7 @@ force colsog_traps_screamingEnable = false;
 
 // COLSOG Opfor
 force colsog_hunting_debugMode = false;
+force colsog_hunting_footprint3DTTL = 10;
 force colsog_hunting_FootprintsDetectionRangeClose = 5;
 force colsog_hunting_FootprintsDetectionRangeFar = 110;
 force colsog_hunting_FootprintsDetectionRangeMedium = 35;

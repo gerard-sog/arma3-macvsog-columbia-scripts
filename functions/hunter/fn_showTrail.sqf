@@ -44,6 +44,6 @@ private _ehID = addMissionEventHandler [
 
 [_ehID] spawn {
     params ["_ehID"];
-    sleep 10;
+    sleep colsog_hunting_footprint3DTTL;
     removeMissionEventHandler ["Draw3D", _ehID];
 };

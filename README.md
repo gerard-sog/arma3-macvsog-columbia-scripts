@@ -317,8 +317,11 @@ vanilla medical items conversion to ace medical items
 - **Hunting**
     - Debug mode: <i>Boolean</i>
     - Search time (sec): <i>Integer</i>
-    - Detection radius (m): <i>Integer</i>
+    - Detection radius far (m): <i>Integer</i>
+    - Detection radius medium (m): <i>Integer</i>
+    - Detection radius close (m): <i>Integer</i>
     - marker TTL (sec): <i>Integer</i>
+    - 3D footprint TTL (sec): <i>Integer</i>
     - Marker spawn threshold: <i>Integer</i>
 
 </details>
