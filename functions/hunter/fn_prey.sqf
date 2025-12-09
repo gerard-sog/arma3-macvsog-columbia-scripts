@@ -34,10 +34,10 @@ fnc_getStanceFactor = {
     params ["_unit"];
 
     switch (stance _unit) do {
-        case "STAND":  { 4 };
-        case "CROUCH": { 2 };
-        case "PRONE":  { 1 };
-        default        { 2 };
+        case "STAND":  { colsog_hunting_stanceFactorStand };
+        case "CROUCH": { colsog_hunting_stanceFactorCrouch };
+        case "PRONE":  { colsog_hunting_stanceFactorProne };
+        default        { colsog_hunting_stanceFactorDefault };
     };
 };
 
