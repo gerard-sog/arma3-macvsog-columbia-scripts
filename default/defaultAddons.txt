@@ -831,10 +831,14 @@ force colsog_traps_screamingEnable = false;
 force colsog_hunting_debugMode = false;
 force colsog_hunting_footprint3DTTL = 10;
 force colsog_hunting_FootprintsDetectionRangeClose = 5;
-force colsog_hunting_FootprintsDetectionRangeFar = 110;
-force colsog_hunting_FootprintsDetectionRangeMedium = 35;
+force colsog_hunting_FootprintsDetectionRangeFar = 100;
+force colsog_hunting_FootprintsDetectionRangeMedium = 30;
 force colsog_hunting_markerTTL = 1200;
-force colsog_hunting_scoreThreshold = 200;
+force colsog_hunting_scoreThreshold = 275;
+force colsog_hunting_stanceFactorCrouch = 2;
+force colsog_hunting_stanceFactorDefault = 2;
+force colsog_hunting_stanceFactorProne = 1;
+force colsog_hunting_stanceFactorStand = 2;
 force colsog_hunting_timeToFindFootprints = 5;
 
 // COLSOG Prairie Fire Module

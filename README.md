@@ -323,6 +323,10 @@ vanilla medical items conversion to ace medical items
     - marker TTL (sec): <i>Integer</i>
     - 3D footprint TTL (sec): <i>Integer</i>
     - Marker spawn threshold: <i>Integer</i>
+    - Stance factor stand: <i>Integer</i>
+    - Stance factor crouch: <i>Integer</i>
+    - Stance factor prone: <i>Integer</i>
+    - Stance factor default: <i>Integer</i>
 
 </details>
   

@@ -249,3 +249,7 @@
 ["colsog_hunting_markerTTL", "SLIDER", ["marker TTL (sec)"], [CBA_SETTINGS_COLSOG_OPFOR, "Hunting"], [0, 3600, 600, 0], 1, {}, false] call CBA_fnc_addSetting;
 ["colsog_hunting_footprint3DTTL", "SLIDER", ["3D footprint TTL (sec)"], [CBA_SETTINGS_COLSOG_OPFOR, "Hunting"], [0, 30, 10, 0], 1, {}, false] call CBA_fnc_addSetting;
 ["colsog_hunting_scoreThreshold", "SLIDER", ["Marker spawn threshold"], [CBA_SETTINGS_COLSOG_OPFOR, "Hunting"], [0, 1000, 100, 0], 1, {}, false] call CBA_fnc_addSetting;
+["colsog_hunting_stanceFactorStand", "SLIDER", ["Stance factor stand"], [CBA_SETTINGS_COLSOG_OPFOR, "Hunting"], [1, 10, 4, 0], 1, {}, false] call CBA_fnc_addSetting;
+["colsog_hunting_stanceFactorCrouch", "SLIDER", ["Stance factor crouch"], [CBA_SETTINGS_COLSOG_OPFOR, "Hunting"], [1, 10, 2, 0], 1, {}, false] call CBA_fnc_addSetting;
+["colsog_hunting_stanceFactorProne", "SLIDER", ["Stance factor prone"], [CBA_SETTINGS_COLSOG_OPFOR, "Hunting"], [1, 10, 1, 0], 1, {}, false] call CBA_fnc_addSetting;
+["colsog_hunting_stanceFactorDefault", "SLIDER", ["Stance factor default"], [CBA_SETTINGS_COLSOG_OPFOR, "Hunting"], [1, 10, 2, 0], 1, {}, false] call CBA_fnc_addSetting;
