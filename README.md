@@ -362,7 +362,7 @@ Here is a list of roles and their available actions:
 The Simplex composition can be found here: https://steamcommunity.com/sharedfiles/filedetails/?id=3457675090.
 
 <h3>Allow Simplex Support based on trait</h3>
-Simplex support from the Prairie Fire CDLC is available in a mission if all of the below points are true for a player:
+Simplex support is available in a mission if all of the below points are true for a player:
 - Player is a pilot
 OR 
 - Player has one of the backpacks defined in colsog_support_simplexAccessBackpack AND the relevant support (helicopter, jet or arclight) is enabled via the Zeus module
