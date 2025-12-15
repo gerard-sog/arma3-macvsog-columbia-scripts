@@ -944,6 +944,12 @@ detected by the OPFOR player (aka the hunter) using an ACE action.
 
 Adds a new ACE action to the OPFOR player in order to search for footprints in a configurable radius. Once footprints are detected, it will display a hint towards the freshest footprint.
 
+<summary> OPFOR Respawns </summary>
+
+OPFOR have a respawn of "MenuPosition". By default this shows them the respawn_east marker and nothing else. If you want to add respawns on the trackers, add the following code to the trackers "init" in the editor:
+
+[east, this, "Tracker"] call BIS_fnc_addRespawnPosition;
+
 </details>
 
 ### Tips
