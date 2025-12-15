@@ -950,33 +950,6 @@ Adds a new ACE action to the OPFOR player in order to search for footprints in a
 
 <details>
 
-<summary>1. Respawn with saved loadout</summary>
-
-To save your loadout, add the below code in the arsenal 'init' section.
-
-```
-this addAction [
-  "Save loadout",
-  {player setVariable["saved_loadout",getUnitLoadout player];
-  hint "Loadout saved";},
-  nil,
-  1.5,
-  true,
-  true,
-  "",
-  "_this distance _target < 2",
-  50,
-  false,
-  "",
-  ""
-];
-```
-
-Then, by looking at the arsenal (from 2 meters maximum) and using the scroll wheel, you will have the option to 'save loadout'. This will allow you to respawn with the saved loadout instead of default loadout at connection.
-</details>
-
-<details>
-
 <summary>2. Add image on map stand</summary>
 
 To display any image on a map stand, follow the below steps:
