@@ -9,7 +9,6 @@ removeUniform player;
 removeAllAssignedItems player;
 clearAllItemsFromBackpack player;
 removeBackpack player;
-player setUnitLoadout(player getVariable["saved_loadout", []]);
 
 // reset vietnamese face if needed
 call COLSOG_fnc_faces;
