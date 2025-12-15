@@ -1049,17 +1049,6 @@ To create a drinkable beer (or any other object that player can use) follow the 
 
 <details>
 
-<summary>6. Fuel consumption</summary>
-
-Here is the code to place in the 'init' section of the vehicle you to change the fuel consumption of:
-  ```
-  _this setFuelConsumptionCoef 3; // Fuel consumption will be 3x default consumption.
-  ```
-
-</details>
-
-<details>
-
 <summary>7. Cam Lao Nam borders</summary>
 
 [Original credit](https://github.com/Savage-Game-Design/A3-Modding-Example/tree/master/missions/map_borders.cam_lao_nam). This script converts a series of vectors to create nice borders. 
