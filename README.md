@@ -358,36 +358,14 @@ Here is a list of roles and their available actions:
 
 <details>
 
-<summary>1. Radio Support</summary>
+<summary>1. Simplex Support</summary>
+The Simplex composition can be found here: https://steamcommunity.com/sharedfiles/filedetails/?id=3457675090.
 
-<h3>Allow Radio Support based on trait</h3>
-Radio support from the Prairie Fire CDLC is available in a mission if all of the below points are true for a player:
-- Radio Support module is present in the mission
-- The player has the following radio (should only be the case for RTO if no Covey in a mission):
-
-  ```
-  "vn_b_pack_lw_06"
-  ```
-
-- Or if the player is flying one of the aircraft in the list:
-
-  ```
-  "JK_B_Cessna_T41_Armed_F", 
-  "vnx_b_air_ac119_01_01", 
-  "vn_b_air_ch34_03_01", 
-  "vn_b_air_ch34_03_01", 
-  "vn_b_air_ch34_04_01", 
-  "vn_b_air_ch34_04_02", 
-  "vn_b_air_oh6a_04"
-  ```
-
-- (IF unit_trait_required = 1 in description.ext) Player has the below code in its 'init' section
-
-  ```
-  this setUnitTrait["vn_artillery", true, true];
-  ```
-
-- All this can be modified in the vn_artillery_settings class in [artillery.hpp](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/artillery/artillery.hpp)
+<h3>Allow Simplex Support based on trait</h3>
+Simplex support from the Prairie Fire CDLC is available in a mission if all of the below points are true for a player:
+- Player is a pilot
+OR 
+- Player has one of the backpacks defined in colsog_support_simplexAccessBackpack AND the relevant support (helicopter, jet or arclight) is enabled via the Zeus module
 
 <h3>Enable/Disable Radio Support</h3>
 We created a custom Zeus module to manage the availability of various supports (by default, none are available):
@@ -397,31 +375,6 @@ We created a custom Zeus module to manage the availability of various supports (
 - B-52 Arc Light strike availability
 - Daisy Cutter availability
 
-Here is how we emulate FOB with artillery support capabilities. By this we mean that the FOB can provide artillery support
-within a perimeter (it will be 3.5km in our example).
-
-- To do so, we use a public variable called 'SUPPORT_ENABLED' defined in [initServer.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/initServer.sqf) and it is used as the condition in [artillery.hpp](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/artillery/artillery.hpp).
-
-  ```
-  SUPPORT_ENABLED = true; // Used with the artillery support from Prairie Fire. By default condition on artillery strike will be true thanks to this public variable.
-  publicVariable "SUPPORT_ENABLED";
-  ```
-
-- then add a trigger that updates that variable (see example below).
-  - Condition:
-    ```
-    this
-    ```
-  - On Activation:
-    ```
-    SUPPORT_ENABLED = true; 
-    publicVariable "SUPPORT_ENABLED";
-    ```
-  - On Deactivation:
-    ```
-    SUPPORT_ENABLED = false; 
-    publicVariable "SUPPORT_ENABLED";
-    ```
 </details>
 
 <details>
