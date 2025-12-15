@@ -956,7 +956,7 @@ OPFOR have a respawn of "MenuPosition". By default this shows them the respawn_e
 
 <details>
 
-<summary>2. Add image on map stand</summary>
+<summary>Add image on map stand</summary>
 
 To display any image on a map stand, follow the below steps:
 - convert your .png into one of these resolution: 256x256, 512x512, 1024x1024 or 2048x2048
@@ -974,7 +974,7 @@ To display any image on a map stand, follow the below steps:
 
 <details>
 
-<summary>3. Add teleport flag</summary>
+<summary>Add teleport flag</summary>
 
 To add a teleport flag (or any other object that player can use to teleport themselves at a predetermined point) follow the below steps:
 - Add a invisible marker (point) on the map in editor and give it a name (ex: "airfield")
@@ -992,7 +992,7 @@ To add a teleport flag (or any other object that player can use to teleport them
 
 <details>
 
-<summary>4. Force vietnamese face on players</summary>
+<summary>Force vietnamese face on players</summary>
 
 N.B: Roles 1-0, 1-1 and 1-2 will not be impacted by the face change since they were US soldiers.
 
@@ -1028,7 +1028,7 @@ call COLSOG_fnc_faces;
 
 <details>
 
-<summary>5. Add drinkable beer</summary>
+<summary>Add drinkable beer</summary>
 
 To create a drinkable beer (or any other object that player can use) follow the below steps:
 - Add the beer object 'Savage Bia'
@@ -1049,7 +1049,7 @@ To create a drinkable beer (or any other object that player can use) follow the 
 
 <details>
 
-<summary>7. Cam Lao Nam borders</summary>
+<summary>Cam Lao Nam borders</summary>
 
 [Original credit](https://github.com/Savage-Game-Design/A3-Modding-Example/tree/master/missions/map_borders.cam_lao_nam). This script converts a series of vectors to create nice borders. 
 Currently only for Cam Lao Nam. To enable, uncomment the line: 
