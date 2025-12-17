@@ -1,0 +1,2 @@
+// remove west (bluefor) if the player is opfor. Else (if the player is bluefor) remove opfor
+if (side player == east) then { [[east], [west]] call ace_spectator_fnc_updateSides } else { [[west], [east]] call ace_spectator_fnc_updateSides };

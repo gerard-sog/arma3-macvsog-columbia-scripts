@@ -358,36 +358,14 @@ Here is a list of roles and their available actions:
 
 <details>
 
-<summary>1. Radio Support</summary>
+<summary>1. Simplex Support</summary>
+The Simplex composition can be found here: https://steamcommunity.com/sharedfiles/filedetails/?id=3457675090.
 
-<h3>Allow Radio Support based on trait</h3>
-Radio support from the Prairie Fire CDLC is available in a mission if all of the below points are true for a player:
-- Radio Support module is present in the mission
-- The player has the following radio (should only be the case for RTO if no Covey in a mission):
-
-  ```
-  "vn_b_pack_lw_06"
-  ```
-
-- Or if the player is flying one of the aircraft in the list:
-
-  ```
-  "JK_B_Cessna_T41_Armed_F", 
-  "vnx_b_air_ac119_01_01", 
-  "vn_b_air_ch34_03_01", 
-  "vn_b_air_ch34_03_01", 
-  "vn_b_air_ch34_04_01", 
-  "vn_b_air_ch34_04_02", 
-  "vn_b_air_oh6a_04"
-  ```
-
-- (IF unit_trait_required = 1 in description.ext) Player has the below code in its 'init' section
-
-  ```
-  this setUnitTrait["vn_artillery", true, true];
-  ```
-
-- All this can be modified in the vn_artillery_settings class in [artillery.hpp](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/artillery/artillery.hpp)
+<h3>Allow Simplex Support based on trait</h3>
+Simplex support is available in a mission if all of the below points are true for a player:
+- Player is a pilot
+OR 
+- Player has one of the backpacks defined in colsog_support_simplexAccessBackpack AND the relevant support (helicopter, jet or arclight) is enabled via the Zeus module
 
 <h3>Enable/Disable Radio Support</h3>
 We created a custom Zeus module to manage the availability of various supports (by default, none are available):
@@ -397,31 +375,6 @@ We created a custom Zeus module to manage the availability of various supports (
 - B-52 Arc Light strike availability
 - Daisy Cutter availability
 
-Here is how we emulate FOB with artillery support capabilities. By this we mean that the FOB can provide artillery support
-within a perimeter (it will be 3.5km in our example).
-
-- To do so, we use a public variable called 'SUPPORT_ENABLED' defined in [initServer.sqf](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/initServer.sqf) and it is used as the condition in [artillery.hpp](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/functions/artillery/artillery.hpp).
-
-  ```
-  SUPPORT_ENABLED = true; // Used with the artillery support from Prairie Fire. By default condition on artillery strike will be true thanks to this public variable.
-  publicVariable "SUPPORT_ENABLED";
-  ```
-
-- then add a trigger that updates that variable (see example below).
-  - Condition:
-    ```
-    this
-    ```
-  - On Activation:
-    ```
-    SUPPORT_ENABLED = true; 
-    publicVariable "SUPPORT_ENABLED";
-    ```
-  - On Deactivation:
-    ```
-    SUPPORT_ENABLED = false; 
-    publicVariable "SUPPORT_ENABLED";
-    ```
 </details>
 
 <details>
@@ -944,40 +897,19 @@ detected by the OPFOR player (aka the hunter) using an ACE action.
 
 Adds a new ACE action to the OPFOR player in order to search for footprints in a configurable radius. Once footprints are detected, it will display a hint towards the freshest footprint.
 
+<summary> OPFOR Respawns </summary>
+
+OPFOR have a respawn of "MenuPosition". By default this shows them the respawn_east marker and nothing else. If you want to add respawns on the trackers, add the following code to the trackers "init" in the editor:
+
+[east, this, "Tracker"] call BIS_fnc_addRespawnPosition;
+
 </details>
 
 ### Tips
 
 <details>
 
-<summary>1. Respawn with saved loadout</summary>
-
-To save your loadout, add the below code in the arsenal 'init' section.
-
-```
-this addAction [
-  "Save loadout",
-  {player setVariable["saved_loadout",getUnitLoadout player];
-  hint "Loadout saved";},
-  nil,
-  1.5,
-  true,
-  true,
-  "",
-  "_this distance _target < 2",
-  50,
-  false,
-  "",
-  ""
-];
-```
-
-Then, by looking at the arsenal (from 2 meters maximum) and using the scroll wheel, you will have the option to 'save loadout'. This will allow you to respawn with the saved loadout instead of default loadout at connection.
-</details>
-
-<details>
-
-<summary>2. Add image on map stand</summary>
+<summary>Add image on map stand</summary>
 
 To display any image on a map stand, follow the below steps:
 - convert your .png into one of these resolution: 256x256, 512x512, 1024x1024 or 2048x2048
@@ -995,7 +927,7 @@ To display any image on a map stand, follow the below steps:
 
 <details>
 
-<summary>3. Add teleport flag</summary>
+<summary>Add teleport flag</summary>
 
 To add a teleport flag (or any other object that player can use to teleport themselves at a predetermined point) follow the below steps:
 - Add a invisible marker (point) on the map in editor and give it a name (ex: "airfield")
@@ -1013,7 +945,7 @@ To add a teleport flag (or any other object that player can use to teleport them
 
 <details>
 
-<summary>4. Force vietnamese face on players</summary>
+<summary>Force vietnamese face on players</summary>
 
 N.B: Roles 1-0, 1-1 and 1-2 will not be impacted by the face change since they were US soldiers.
 
@@ -1049,7 +981,7 @@ call COLSOG_fnc_faces;
 
 <details>
 
-<summary>5. Add drinkable beer</summary>
+<summary>Add drinkable beer</summary>
 
 To create a drinkable beer (or any other object that player can use) follow the below steps:
 - Add the beer object 'Savage Bia'
@@ -1070,18 +1002,7 @@ To create a drinkable beer (or any other object that player can use) follow the 
 
 <details>
 
-<summary>6. Fuel consumption</summary>
-
-Here is the code to place in the 'init' section of the vehicle you to change the fuel consumption of:
-  ```
-  _this setFuelConsumptionCoef 3; // Fuel consumption will be 3x default consumption.
-  ```
-
-</details>
-
-<details>
-
-<summary>7. Cam Lao Nam borders</summary>
+<summary>Cam Lao Nam borders</summary>
 
 [Original credit](https://github.com/Savage-Game-Design/A3-Modding-Example/tree/master/missions/map_borders.cam_lao_nam). This script converts a series of vectors to create nice borders. 
 Currently only for Cam Lao Nam. To enable, uncomment the line: 

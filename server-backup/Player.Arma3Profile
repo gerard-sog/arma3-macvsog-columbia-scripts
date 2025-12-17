@@ -37,7 +37,7 @@ class DifficultyPresets
 
                 // View
 
-                thirdPersonView = 1; // 3rd person view
+                thirdPersonView = 2; // 3rd person view for vehicles only
                 cameraShake = 0; // Camera shake
                 // Multiplayer
                 scoreTable = 0; // Score table
