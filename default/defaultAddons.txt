@@ -838,7 +838,7 @@ force colsog_hunting_scoreThreshold = 275;
 force colsog_hunting_stanceFactorCrouch = 2;
 force colsog_hunting_stanceFactorDefault = 2;
 force colsog_hunting_stanceFactorProne = 1;
-force colsog_hunting_stanceFactorStand = 2;
+force colsog_hunting_stanceFactorStand = 1.5;
 force colsog_hunting_timeToFindFootprints = 5;
 
 // COLSOG Prairie Fire Module
