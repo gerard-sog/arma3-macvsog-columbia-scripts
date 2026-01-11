@@ -221,7 +221,6 @@
   "vn_type56_mag",
   "vn_s_m45",
   "vn_s_m45_camo",
-  "vn_m60_shorty",
   "vn_m60_100_mag",
   "vn_camera_01",
   "vn_m1a1_tommy",
@@ -353,7 +352,6 @@
   "vn_p38_mag",
   "vn_m712_mag",
   "vn_l2a3",
-  "vn_l1a1_03_camo",
   "vn_f1_smg_mag",
   "vn_f1_smg_t_mag",
   "vn_l1a1_20_t_mag",
@@ -901,8 +899,6 @@
   "grenadier_01",
   "tsp_sling",
   "vn_m1897",
-  "vn_izh54_shorty",
-  "vn_izh54_so_mag",
   "vn_m1897_fl_mag",
   "vn_m1897_buck_mag",
   "uns_Simc_regenkot_erdl_High",
@@ -1230,5 +1226,7 @@
   "vn_b_item_trapkit",
   "ACRE_PRC343",
   "vnx_type56_xm148",
-  "vn_xm177_xm148_camo"
+  "vn_xm177_xm148_camo",
+  "vn_m14_early_grenade_mag",
+  "vn_m14_grenade_mag"
 ]
