@@ -75,36 +75,37 @@ params ["_player"];
             };
         } forEach allMapMarkers;
 
-        private _allMarkersInRange = [];
-        private _maxDistance = (getPos player) distance2D _freshestResult#2;
-        private _timeToBeat = _closestResult#1;
+        if (count _closestResult != 0 && count _freshestResult != 0) then {
 
-        // Keeps only markers in range, fresher than closest footprint.
-        // ------------------------------------------------------------
-        {
-            private _markerName = _x;
-            private _pos = getMarkerPos _markerName;
+            private _maxDistance = (getPos player) distance2D _freshestResult#2;
+            private _timeToBeat = _closestResult#1;
 
-            // Check distance.
-            private _distanceToPlayer = (getPos player) distance2D _pos;
-            if (_distanceToPlayer <= colsog_hunting_FootprintsDetectionRangeFar) then {
+            private _allMarkersInRange = [];
 
-                // Check prefix.
-                if ((_markerName find _prefix) == 0) then {
+            // Keeps only markers in range, fresher than closest footprint.
+            // ------------------------------------------------------------
+            {
+                private _markerName = _x;
+                private _pos = getMarkerPos _markerName;
 
-                    // Extract time.
-                    private _timeNum = [_markerName] call COLSOG_fnc_extractTimeFromMarkerName;
-                    if (_timeNum > -1) then {
-                        if (_timeNum >= _timeToBeat) then {
-                            _allMarkersInRange append [_pos];
+                // Check distance.
+                private _distanceToPlayer = (getPos player) distance2D _pos;
+                if (_distanceToPlayer <= colsog_hunting_FootprintsDetectionRangeFar) then {
+
+                    // Check prefix.
+                    if ((_markerName find _prefix) == 0) then {
+
+                        // Extract time.
+                        private _timeNum = [_markerName] call COLSOG_fnc_extractTimeFromMarkerName;
+                        if (_timeNum > -1) then {
+                            if (_timeNum >= _timeToBeat) then {
+                                _allMarkersInRange append [_pos];
+                            };
                         };
                     };
                 };
-            };
-        } forEach allMapMarkers;
+            } forEach allMapMarkers;
 
-
-        if (count _closestResult != 0 && count _freshestResult != 0) then {
             private _closestMarkerPos = _closestResult#2;
             private _freshestMarkerPos = _freshestResult#2;
             private _playerPos = getPos player;
