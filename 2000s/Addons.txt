@@ -82,10 +82,10 @@ force ace_common_enableSway = true;
 ace_common_epilepsyFriendlyMode = false;
 ace_common_magneticDeclination = false;
 ace_common_progressBarInfo = 2;
-force ace_common_restedSwayFactor = 1;
+force ace_common_restedSwayFactor = 1.5;
 ace_common_settingFeedbackIcons = 1;
 ace_common_settingProgressBarLocation = 0;
-force ace_common_swayFactor = 1;
+force ace_common_swayFactor = 1.75;
 
 // ACE Cook-off
 force ace_cookoff_ammoCookoffDuration = 0.1;
@@ -309,7 +309,7 @@ force ace_medical_limping = 0;
 force ace_medical_painCoefficient = 1;
 force ace_medical_painUnconsciousChance = 0.15;
 force ace_medical_painUnconsciousThreshold = 0.5;
-force ace_medical_playerDamageThreshold = 8.5;
+force ace_medical_playerDamageThreshold = 6;
 force ace_medical_spontaneousWakeUpChance = 0.803848;
 force ace_medical_spontaneousWakeUpEpinephrineBoost = 30;
 force ace_medical_statemachine_AIUnconsciousness = false;
@@ -317,7 +317,7 @@ force ace_medical_statemachine_cardiacArrestBleedoutEnabled = true;
 force ace_medical_statemachine_cardiacArrestTime = 300;
 force ace_medical_statemachine_fatalInjuriesAI = 0;
 force ace_medical_statemachine_fatalInjuriesPlayer = 2;
-force ace_medical_useLimbDamage = 0;
+force ace_medical_useLimbDamage = 1;
 force ace_medical_vitals_simulateSpO2 = false;
 ace_medical_windowOnWakeUp = 1;
 
@@ -1150,12 +1150,12 @@ force hatg_setting_equipment_suppressor_whitelist = "[]";
 
 // Hide Among The Grass -  UI
 force hatg_setting_ui = false;
-hatg_setting_ui_colour_hidden = [0,1,0,1];
-hatg_setting_ui_colour_revealed = [1,0,0,1];
+hatg_setting_ui_colour_hidden = [0.5,0.5,0.5,0.5];
+hatg_setting_ui_colour_revealed = [1,1,1,1];
 hatg_setting_ui_fade = 0;
 hatg_setting_ui_font = "PuristaBold";
-hatg_setting_ui_textsize = 2;
-hatg_setting_ui_use_image = false;
+hatg_setting_ui_textsize = 1.5;
+hatg_setting_ui_use_image = true;
 hatg_setting_ui_x = 0;
 hatg_setting_ui_y = 0;
 
