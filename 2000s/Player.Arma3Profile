@@ -1,3 +1,4 @@
+// Profile for the server. Place this in https://games.bisecthosting.com/server/103acae5/files#/serverprofile/home/Player
 version=1;
 blood=1;
 volumeCD=5;
