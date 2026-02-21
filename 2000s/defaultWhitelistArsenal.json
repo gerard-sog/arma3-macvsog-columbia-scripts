@@ -47,7 +47,6 @@
     "ACE_HandFlare_Yellow",
     "vn_b_item_trapkit",
     "ItemWatch",
-    "rhsusf_m112_mag",
     "vn_mine_m18_range_mag",
     "vn_mine_m18_mag",
     "hlc_rifle_M4",
@@ -205,6 +204,5 @@
     "colsog_inv_prc77_battery",
     "vn_m60",
     "vn_m60_100_mag",
-    "rhsusf_acc_anpeq15side",
-    "rhsusf_acc_anpeq15_top"
+    "DemoCharge_Remote_Mag"
 ]
