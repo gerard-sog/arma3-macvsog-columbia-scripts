@@ -19,19 +19,8 @@ publicVariable "COLSOG_ArcLightSupportEnabled";
 COLSOG_DaisyCutterSupportEnabled = colsog_support_daisyCutterEnable; // Toggle ON/OFF Daisy Cutter availability (see support module from Prairie Fire).
 publicVariable "COLSOG_DaisyCutterSupportEnabled";
 
-COLSOG_TrackersEnabled = colsog_tracker_enable; // Toggle ON/OFF Tracker in AO (will only affect tracker module from Prairie Fire with the following variable used as condition 'COLSOG_TrackersEnabled').
-publicVariable "COLSOG_TrackersEnabled";
-
 COLSOG_SimplexBackpacks = colsog_support_simplexAccessBackpack;
 publicVariable "COLSOG_SimplexBackpacks";
-
-// Default behaviour values for tracker groups
-COLSOG_TrackersDefault = [
-    colsog_tracker_defaultBehaviour,
-    colsog_tracker_defaultCombat,
-    colsog_tracker_defaultSpeed
-    ];
-publicVariable "COLSOG_TrackersDefault";
 
 COLSOG_lastTriangulationTimeSeconds = -colsog_triangulation_coolDown;
 publicVariable "COLSOG_lastTriangulationTimeSeconds";
@@ -53,11 +42,24 @@ publicVariable "COLSOG_intelPool";
 COLSOG_isDayNightCycleActive = false;
 publicVariable "COLSOG_isDayNightCycleActive";
 
-_handle = [] execVM "functions\tracker\colsog_fn_onTrackerSpawn.sqf";
-_handle = [] execVM "functions\tracker\colsog_fn_trackerGroup.sqf";
+if (colsog_tracker_module_support) then {
+    COLSOG_TrackersEnabled = colsog_tracker_enable; // Toggle ON/OFF Tracker in AO (will only affect tracker module from Prairie Fire with the following variable used as condition 'COLSOG_TrackersEnabled').
+    publicVariable "COLSOG_TrackersEnabled";
 
-waitUntil{ scriptDone _handle };
+    // Default behaviour values for tracker groups
+    COLSOG_TrackersDefault = [
+        colsog_tracker_defaultBehaviour,
+        colsog_tracker_defaultCombat,
+        colsog_tracker_defaultSpeed
+        ];
+    publicVariable "COLSOG_TrackersDefault";
 
-// Tell the monitoring function the Module to monitor, the Function to call when new units are spawned by the module
-private _trackerModuleToMonitor = missionNamespace getVariable colsog_tracker_moduleName;
-[_trackerModuleToMonitor, colsog_fn_customizeTrackerGroup] call colsog_fn_onTrackerSpawn;
+    _handle = [] execVM "functions\tracker\colsog_fn_onTrackerSpawn.sqf";
+    _handle = [] execVM "functions\tracker\colsog_fn_trackerGroup.sqf";
+
+    waitUntil{ scriptDone _handle };
+
+    // Tell the monitoring function the Module to monitor, the Function to call when new units are spawned by the module
+    private _trackerModuleToMonitor = missionNamespace getVariable colsog_tracker_moduleName;
+    [_trackerModuleToMonitor, colsog_fn_customizeTrackerGroup] call colsog_fn_onTrackerSpawn;
+}
