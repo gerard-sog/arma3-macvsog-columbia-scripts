@@ -5,7 +5,8 @@ _gravitySensor = [
 	"Throw Gravity sensor",
 	"\a3\ui_f\data\igui\cfg\simpletasks\types\listen_ca.paa",
 	{
-		execVM "functions\sensors\gravity\fn_createGravitySensor.sqf";
+		// Needs to be sent to server.
+        [[], "functions\sensors\gravity\fn_createGravitySensor.sqf"] remoteExec ["execVM", 2, false];
 	},
 	{
 	    private _hasItem = [player, colsog_sensor_gravityInventoryItem] call BIS_fnc_hasItem;
