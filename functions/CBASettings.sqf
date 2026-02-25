@@ -125,7 +125,6 @@
 // |CBA_SETTINGS_COLSOG_PRAIRIE_FIRE_MODULE|
 // =========================================
 // Tracker module
-["colsog_tracker_module_support", "CHECKBOX", ["Support tracker module"], [CBA_SETTINGS_COLSOG_PRAIRIE_FIRE_MODULE, "Tracker module"], true, 1, {}, true] call CBA_fnc_addSetting;
 ["colsog_tracker_enable", "CHECKBOX", ["enable"], [CBA_SETTINGS_COLSOG_PRAIRIE_FIRE_MODULE, "Tracker module"], true, 1, {}, true] call CBA_fnc_addSetting;
 ["colsog_tracker_moduleName", "EDITBOX", ["Tracker module name"], [CBA_SETTINGS_COLSOG_PRAIRIE_FIRE_MODULE, "Tracker module"], "TrackermoduleNAME", 1, {}, false] call CBA_fnc_addSetting;
 ["colsog_tracker_defaultBehaviour", "LIST", ["Default behaviour"], [CBA_SETTINGS_COLSOG_PRAIRIE_FIRE_MODULE, "Tracker module"], [["CARELESS", "SAFE", "AWARE", "COMBAT"], ["Careless", "Safe", "Aware", "Combat"], 0], 1, {}, false] call CBA_fnc_addSetting;
