@@ -832,10 +832,10 @@ force colsog_traps_screamingEnable = false;
 force colsog_hunting_debugMode = false;
 force colsog_hunting_footprint3DTTL = 10;
 force colsog_hunting_FootprintsDetectionRangeClose = 5;
-force colsog_hunting_FootprintsDetectionRangeFar = 100;
-force colsog_hunting_FootprintsDetectionRangeMedium = 30;
+force colsog_hunting_FootprintsDetectionRangeFar = 75;
+force colsog_hunting_FootprintsDetectionRangeMedium = 20;
 force colsog_hunting_markerTTL = 1200;
-force colsog_hunting_scoreThreshold = 275;
+force colsog_hunting_scoreThreshold = 100;
 force colsog_hunting_stanceFactorCrouch = 2;
 force colsog_hunting_stanceFactorDefault = 2;
 force colsog_hunting_stanceFactorProne = 1;
@@ -932,6 +932,7 @@ diwako_dui_linecompass_DefaultIconColor = [0.5,0.87,0.5,1];
 diwako_dui_linecompass_DrawBearing = 2;
 force diwako_dui_linecompass_Enabled = false;
 diwako_dui_linecompass_enableOcclusion = false;
+diwako_dui_linecompass_enableShowCustomWP = true;
 diwako_dui_linecompass_IconOutline = 0;
 diwako_dui_linecompass_occlusionFadeSpeed = 3.5;
 diwako_dui_linecompass_showSpeaking = true;
@@ -1073,6 +1074,10 @@ force emr_main_staminaCoefficient = 1;
 force emr_main_whitelistStr = "";
 force emr_main_yeetCoefficient = 1.4;
 
+// GRAD Axe
+GRAD_axe_setting_maxTime = 40;
+GRAD_axe_setting_timeFactor = 1;
+
 // GRAD Pace Count Beads
 grad_paceCountBeads_functions_allowPaceCountBeads = true;
 grad_paceCountBeads_functions_constantlyShow = false;
@@ -1158,13 +1163,52 @@ hatg_setting_ui_use_image = false;
 hatg_setting_ui_x = 0;
 hatg_setting_ui_y = 0;
 
+// KP Ranks
+KPR_autoMode = false;
+KPR_autoModeInterval = 5;
+KPR_extendedLog = false;
+KPR_playerNation = true;
+
+// KP Ranks Leveling System
+KPR_airPoints = 32;
+KPR_avhPoints = 12;
+KPR_infPoints = 4;
+KPR_killedPenalty = 8;
+KPR_levelAnnounce = true;
+KPR_levelDebug = false;
+KPR_levelSystem = false;
+KPR_lvhPoints = 8;
+KPR_playPoints = 24;
+KPR_playtime = 60;
+KPR_rank1 = 80;
+KPR_rank10 = 8000;
+KPR_rank11 = 9680;
+KPR_rank12 = 11520;
+KPR_rank13 = 13520;
+KPR_rank14 = 15680;
+KPR_rank15 = 18000;
+KPR_rank16 = 20480;
+KPR_rank17 = 23120;
+KPR_rank18 = 25920;
+KPR_rank19 = 28880;
+KPR_rank2 = 320;
+KPR_rank3 = 720;
+KPR_rank4 = 1280;
+KPR_rank5 = 2000;
+KPR_rank6 = 2880;
+KPR_rank7 = 3920;
+KPR_rank8 = 5120;
+KPR_rank9 = 6480;
+KPR_tkPenalty = 24;
+KPR_updateInterval = 1;
+
 // Laxemann Align
 force L_Align_enabled = true;
 force L_Align_steadyShake_enabled = true;
 
 // Laxemann Immerse
 force L_Immerse_exShake = true;
-force L_Immerse_force = true;
+force L_Immerse_force = false;
 force L_Immerse_recoil = true;
 force L_Immerse_twitch = true;
 
@@ -1509,6 +1553,8 @@ zen_faction_filter_1_BLU_G_F = true;
 zen_faction_filter_1_BLU_GEN_F = true;
 zen_faction_filter_1_BLU_T_F = true;
 zen_faction_filter_1_BLU_W_F = true;
+zen_faction_filter_1_Simc_UA_65 = true;
+zen_faction_filter_1_Simc_UA_67 = true;
 zen_faction_filter_1_UNSUNG_AUS = true;
 zen_faction_filter_1_UNSUNG_AUS_groups = true;
 zen_faction_filter_1_UNSUNG_NZ = true;
