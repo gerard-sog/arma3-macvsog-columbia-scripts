@@ -291,8 +291,8 @@ ace_maptools_rotateModifierKey = 1;
 // ACE Medical
 force ace_medical_ai_enabledFor = 2;
 force ace_medical_ai_requireItems = 0;
-force ace_medical_AIDamageThreshold = 0.5;
-force ace_medical_alternateArmorPenetration = true;
+force ace_medical_AIDamageThreshold = 0.75;
+ace_medical_alternateArmorPenetration = true;
 force ace_medical_bleedingCoefficient = 0.7;
 force ace_medical_blood_bloodLifetime = 900;
 force ace_medical_blood_enabledFor = 2;
@@ -309,7 +309,7 @@ force ace_medical_limping = 0;
 force ace_medical_painCoefficient = 1;
 force ace_medical_painUnconsciousChance = 0.15;
 force ace_medical_painUnconsciousThreshold = 0.5;
-force ace_medical_playerDamageThreshold = 5;
+force ace_medical_playerDamageThreshold = 6;
 force ace_medical_spontaneousWakeUpChance = 0.803848;
 force ace_medical_spontaneousWakeUpEpinephrineBoost = 30;
 force ace_medical_statemachine_AIUnconsciousness = false;
@@ -550,7 +550,7 @@ force ace_trenches_smallEnvelopeDigDuration = 40;
 force ace_trenches_smallEnvelopeRemoveDuration = 40;
 
 // ACE Uncategorized
-force ace_fastroping_autoAddFRIES = true;
+force ace_fastroping_autoAddFRIES = false;
 force ace_fastroping_requireRopeItems = false;
 ace_flags_enableCarrying = true;
 ace_flags_enablePlacing = true;
@@ -1202,6 +1202,12 @@ KPR_updateInterval = 1;
 // Laxemann Align
 force L_Align_enabled = true;
 force L_Align_steadyShake_enabled = true;
+
+// Laxemann Immerse
+force L_Immerse_exShake = true;
+force L_Immerse_force = true;
+force L_Immerse_recoil = true;
+force L_Immerse_twitch = true;
 
 // LAxemann's Suppress
 force L_Suppress_buildup = 0.25;
