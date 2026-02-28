@@ -53,7 +53,13 @@ player addEventHandler [
                 ["vn_t_agathis_wide_f.p3d", 8],
                 ["t_leucaena_f.p3d", 4],
                 ["t_cocosnucifera3s_bend_f.p3d", 4],
-                ["t_cocos_tall_f.p3d", 4]
+                ["t_cocos_tall_f.p3d", 4],
+                ["b_corylus_heterophylla_1.p3d", 1],
+                ["vn_b_arundod2s_f.p3d", 1],
+                ["vn_b_arundod3s_f.p3d", 1],
+                ["b_ficusc1s_f.p3d", 1],
+                ["b_pipermeth_f.p3d", 1],
+                ["b_sugarcane_sapling_single_f.p3d", 1]
             ];
 
             {
