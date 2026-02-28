@@ -84,16 +84,28 @@ class COLSOG {
         class detonateCharge {postInit = 1;};
         class carryAndDrag {postInit = 1;};
     };
-    class Hunter
+    class HunterCommon
      {
-         file ="functions\hunter";
-        // 1 will execute the function for each player downloading the mission.
-        class hunterManager {postInit = 1;};
-        // ACE self-interact actions.
-        class extractTimeFromMarkerName{};
+         file ="functions\hunter-common";
         class showFootprint {};
         class showTrail {};
-        class predator {};
-        class prey {};
+        class extractTimeFromMarkerName {};
      };
+    class HunterOpfor
+     {
+         file ="functions\hunter-opfor";
+        // 1 will execute the function for each player downloading the mission.
+        class hunterManagerOpfor {postInit = 1;};
+        // ACE self-interact actions.
+        class predatorOpfor {};
+        class preyOpfor {};
+     };
+     class HunterBlufor
+      {
+          file ="functions\hunter-blufor";
+         // 1 will execute the function for each player downloading the mission.
+         class hunterManagerBlufor {postInit = 1;};
+         // ACE self-interact actions.
+         class predatorBlufor {};
+      };
 }

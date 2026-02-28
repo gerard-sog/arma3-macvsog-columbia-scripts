@@ -897,11 +897,28 @@ detected by the OPFOR player (aka the hunter) using an ACE action.
 
 Adds a new ACE action to the OPFOR player in order to search for footprints in a configurable radius. Once footprints are detected, it will display a hint towards the freshest footprint.
 
-<summary> OPFOR Respawns </summary>
-
 OPFOR have a respawn of "MenuPosition". By default this shows them the respawn_east marker and nothing else. If you want to add respawns on the trackers, add the following code to the trackers "init" in the editor:
 
+```
 [east, this, "Tracker"] call BIS_fnc_addRespawnPosition;
+```
+
+</details>
+
+<details>
+
+<summary>19. BLUFOR tracker </summary>
+
+Allows BLUFOR player to find trails that have been manually added in the eden editor. Those trail needs to be a marker with a name following the below syntax:
+
+```
+"COLSOG_TRAIL_NAME: <INSERT NAME>, COLSOG_MARKER_TIME: <INSERT TIME>"
+```
+
+Examples:
+```
+"COLSOG_TRAIL_NAME: trail, COLSOG_MARKER_TIME: 120"
+```
 
 </details>
 

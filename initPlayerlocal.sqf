@@ -41,7 +41,7 @@ colsog_available_languages = [["en", "English"], ["vn", "Vietnamese"]];
 				execVM "functions\init\init_colsog_ZeusBabelSwitch.sqf";
 
 				// add custom footprint creator (using markers) event handler.
-				call COLSOG_fnc_prey;
+				call COLSOG_fnc_preyOpfor;
 			}, 
 			_this // argument (still player)
 		] call CBA_fnc_waitUntilAndExecute;

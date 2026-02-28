@@ -1,11 +1,11 @@
 if !(hasInterface) exitWith {};
 
 _searchForFootprints = [
-	"COLSOG_hunter",
+	"COLSOG_hunterOpfor",
 	"HUNT - search for footprints",
 	"\a3\ui_f\data\igui\cfg\simpletasks\types\walk_ca.paa",
 	{
-		[player] call COLSOG_fnc_predator;
+		[player] call COLSOG_fnc_predatorOpfor;
 	},
 	{
         (side player == east)
