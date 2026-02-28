@@ -241,15 +241,23 @@
 // |CBA_SETTINGS_COLSOG_OPFOR|
 // ===========================
 // Hunting
-["colsog_hunting_debugMode", "CHECKBOX", ["Debug mode"], [CBA_SETTINGS_COLSOG_OPFOR, "Hunting"], true, 1, {}, false] call CBA_fnc_addSetting;
-["colsog_hunting_timeToFindFootprints", "SLIDER", ["Search time (sec)"], [CBA_SETTINGS_COLSOG_OPFOR, "Hunting"], [0, 60, 30, 0], 1, {}, false] call CBA_fnc_addSetting;
-["colsog_hunting_FootprintsDetectionRangeFar", "SLIDER", ["Detection radius far (m)"], [CBA_SETTINGS_COLSOG_OPFOR, "Hunting"], [0, 500, 100, 0], 1, {}, false] call CBA_fnc_addSetting;
-["colsog_hunting_FootprintsDetectionRangeMedium", "SLIDER", ["Detection radius medium (m)"], [CBA_SETTINGS_COLSOG_OPFOR, "Hunting"], [0, 500, 100, 0], 1, {}, false] call CBA_fnc_addSetting;
-["colsog_hunting_FootprintsDetectionRangeClose", "SLIDER", ["Detection radius close(m)"], [CBA_SETTINGS_COLSOG_OPFOR, "Hunting"], [0, 500, 100, 0], 1, {}, false] call CBA_fnc_addSetting;
-["colsog_hunting_markerTTL", "SLIDER", ["marker TTL (sec)"], [CBA_SETTINGS_COLSOG_OPFOR, "Hunting"], [0, 3600, 600, 0], 1, {}, false] call CBA_fnc_addSetting;
-["colsog_hunting_footprint3DTTL", "SLIDER", ["3D footprint TTL (sec)"], [CBA_SETTINGS_COLSOG_OPFOR, "Hunting"], [0, 30, 10, 0], 1, {}, false] call CBA_fnc_addSetting;
-["colsog_hunting_scoreThreshold", "SLIDER", ["Marker spawn threshold"], [CBA_SETTINGS_COLSOG_OPFOR, "Hunting"], [0, 1000, 100, 0], 1, {}, false] call CBA_fnc_addSetting;
-["colsog_hunting_stanceFactorStand", "SLIDER", ["Stance factor stand"], [CBA_SETTINGS_COLSOG_OPFOR, "Hunting"], [1, 10, 4, 0], 1, {}, false] call CBA_fnc_addSetting;
-["colsog_hunting_stanceFactorCrouch", "SLIDER", ["Stance factor crouch"], [CBA_SETTINGS_COLSOG_OPFOR, "Hunting"], [1, 10, 2, 0], 1, {}, false] call CBA_fnc_addSetting;
-["colsog_hunting_stanceFactorProne", "SLIDER", ["Stance factor prone"], [CBA_SETTINGS_COLSOG_OPFOR, "Hunting"], [1, 10, 1, 0], 1, {}, false] call CBA_fnc_addSetting;
-["colsog_hunting_stanceFactorDefault", "SLIDER", ["Stance factor default"], [CBA_SETTINGS_COLSOG_OPFOR, "Hunting"], [1, 10, 2, 0], 1, {}, false] call CBA_fnc_addSetting;
+["colsog_hunting_debugMode", "CHECKBOX", ["Debug mode"], [CBA_SETTINGS_COLSOG_OPFOR, "Hunting Opfor"], true, 1, {}, false] call CBA_fnc_addSetting;
+["colsog_hunting_timeToFindFootprints", "SLIDER", ["Search time (sec)"], [CBA_SETTINGS_COLSOG_OPFOR, "Hunting Opfor"], [0, 60, 30, 0], 1, {}, false] call CBA_fnc_addSetting;
+["colsog_hunting_FootprintsDetectionRangeFar", "SLIDER", ["Detection radius far (m)"], [CBA_SETTINGS_COLSOG_OPFOR, "Hunting Opfor"], [0, 500, 100, 0], 1, {}, false] call CBA_fnc_addSetting;
+["colsog_hunting_FootprintsDetectionRangeMedium", "SLIDER", ["Detection radius medium (m)"], [CBA_SETTINGS_COLSOG_OPFOR, "Hunting Opfor"], [0, 500, 100, 0], 1, {}, false] call CBA_fnc_addSetting;
+["colsog_hunting_FootprintsDetectionRangeClose", "SLIDER", ["Detection radius close(m)"], [CBA_SETTINGS_COLSOG_OPFOR, "Hunting Opfor"], [0, 500, 100, 0], 1, {}, false] call CBA_fnc_addSetting;
+["colsog_hunting_markerTTL", "SLIDER", ["marker TTL (sec)"], [CBA_SETTINGS_COLSOG_OPFOR, "Hunting Opfor"], [0, 3600, 600, 0], 1, {}, false] call CBA_fnc_addSetting;
+["colsog_hunting_footprint3DTTL", "SLIDER", ["3D footprint TTL (sec)"], [CBA_SETTINGS_COLSOG_OPFOR, "Hunting Opfor"], [0, 30, 10, 0], 1, {}, false] call CBA_fnc_addSetting;
+["colsog_hunting_scoreThreshold", "SLIDER", ["Marker spawn threshold"], [CBA_SETTINGS_COLSOG_OPFOR, "Hunting Opfor"], [0, 1000, 100, 0], 1, {}, false] call CBA_fnc_addSetting;
+["colsog_hunting_stanceFactorStand", "SLIDER", ["Stance factor stand"], [CBA_SETTINGS_COLSOG_OPFOR, "Hunting Opfor"], [1, 10, 4, 0], 1, {}, false] call CBA_fnc_addSetting;
+["colsog_hunting_stanceFactorCrouch", "SLIDER", ["Stance factor crouch"], [CBA_SETTINGS_COLSOG_OPFOR, "Hunting Opfor"], [1, 10, 2, 0], 1, {}, false] call CBA_fnc_addSetting;
+["colsog_hunting_stanceFactorProne", "SLIDER", ["Stance factor prone"], [CBA_SETTINGS_COLSOG_OPFOR, "Hunting Opfor"], [1, 10, 1, 0], 1, {}, false] call CBA_fnc_addSetting;
+["colsog_hunting_stanceFactorDefault", "SLIDER", ["Stance factor default"], [CBA_SETTINGS_COLSOG_OPFOR, "Hunting Opfor"], [1, 10, 2, 0], 1, {}, false] call CBA_fnc_addSetting;
+
+// ===========================
+// |CBA_SETTINGS_COLSOG_BLUFOR|
+// ===========================
+// Hunting
+["colsog_hunting_blufor_debugMode", "CHECKBOX", ["Debug mode"], [CBA_SETTINGS_COLSOG_OPFOR, "Hunting Blufor"], true, 1, {}, false] call CBA_fnc_addSetting;
+["colsog_hunting_blufor_timeToFindFootprints", "SLIDER", ["Search time (sec)"], [CBA_SETTINGS_COLSOG_OPFOR, "Hunting Blufor"], [0, 60, 30, 0], 1, {}, false] call CBA_fnc_addSetting;
+["colsog_hunting_blufor_FootprintsDetectionRange", "SLIDER", ["Detection radius (m)"], [CBA_SETTINGS_COLSOG_OPFOR, "Hunting Blufor"], [0, 500, 100, 0], 1, {}, false] call CBA_fnc_addSetting;

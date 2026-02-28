@@ -912,12 +912,12 @@ OPFOR have a respawn of "MenuPosition". By default this shows them the respawn_e
 Allows BLUFOR player to find trails that have been manually added in the eden editor. Those trail needs to be a marker with a name following the below syntax:
 
 ```
-"COLSOG_TRAIL_NAME: <INSERT NAME>, COLSOG_MARKER_TIME: <INSERT TIME>"
+"COLSOG_TRAIL_NAME: <INSERT UNIQUE ID>"
 ```
 
 Examples:
 ```
-"COLSOG_TRAIL_NAME: trail, COLSOG_MARKER_TIME: 120"
+"COLSOG_TRAIL_NAME: 1"
 ```
 
 </details>

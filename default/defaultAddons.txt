@@ -829,6 +829,9 @@ force colsog_traps_maceKillRadius = 5;
 force colsog_traps_screamingEnable = false;
 
 // COLSOG Opfor
+force colsog_hunting_blufor_debugMode = false;
+force colsog_hunting_blufor_FootprintsDetectionRange = 35;
+force colsog_hunting_blufor_timeToFindFootprints = 5;
 force colsog_hunting_debugMode = false;
 force colsog_hunting_footprint3DTTL = 10;
 force colsog_hunting_FootprintsDetectionRangeClose = 5;
