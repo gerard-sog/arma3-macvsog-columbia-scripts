@@ -263,6 +263,7 @@ force ace_map_mapLimitZoom = false;
 force ace_map_mapShake = true;
 force ace_map_mapShowCursorCoordinates = false;
 force ace_markers_moveRestriction = 0;
+ace_markers_quickNumberMarks = 2;
 force ace_markers_timestampEnabled = true;
 force ace_markers_timestampFormat = "HH:MM";
 force ace_markers_timestampHourFormat = 24;
@@ -727,6 +728,25 @@ force acre_sys_zeus_zeusCanSpectate = true;
 force acre_sys_zeus_zeusCommunicateViaCamera = true;
 force acre_sys_zeus_zeusDefaultVoiceSource = false;
 
+// Action Menu
+force GW_setting_customConfig = "";
+GW_setting_iconOpacity = 1;
+GW_setting_menuColorActive = [0.9,0.5,0.1,1];
+GW_setting_menuColorNormal = [0.15,0.15,0.15,0.9];
+GW_setting_menuOpacity = 0.9;
+GW_setting_menuScale = 1;
+force GW_setting_noModuleBehavior = "disabled";
+GW_setting_showNumberIndicators = false;
+GW_setting_showSignalIcon = true;
+force GW_setting_signalDefaultRadius = 25;
+force GW_setting_signalDuration = 5;
+GW_setting_signalIconOpacity = 1;
+GW_setting_signalOpacity = 0;
+GW_setting_signalSize = 1;
+force GW_setting_signalVisibility = "side";
+GW_setting_titleColor = [1,0.8,0.4,0.9];
+GW_setting_ySquash = 0.9;
+
 // COLSOG AI and ENV related
 force colsog_ai_aimingAccuracy = 0.05;
 force colsog_ai_aimingShake = 0.658345;
@@ -771,45 +791,45 @@ force colsog_medikit_convertAceMorphine = 2;
 force colsog_medikit_convertAceSalineIv500 = 2;
 force colsog_medikit_convertAceSplint = 2;
 force colsog_medikit_convertAceTourniquet = 4;
-force colsog_supply_content = "[
-      'vn_m16_20_t_mag', 12,
-      'ACE_fieldDressing', 50,
-      'ACE_packingBandage', 50,
-      'ACE_elasticBandage', 50,
-      'ACE_quikclot', 50,
-      'ACE_CableTie', 5,
-      'ACE_DefusalKit', 1,
-      'ACE_EntrenchingTool', 1,
-      'ACE_epinephrine', 10,
-      'ACE_Flashlight_MX991', 1,
-      'uns_m67gren', 20,
-      'vn_m18_purple_mag', 3,
-      'vn_m18_red_mag', 6,
-      'vn_m18_white_mag', 20,
-      'vn_m18_yellow_mag', 6,
-      'vn_40mm_m381_he_mag', 25,
-      'vn_40mm_m397_ab_mag', 5,
-      'vn_40mm_m433_hedp_mag', 5,
-      'ACE_Clacker', 1,
-      'vn_40mm_m583_flare_w_mag', 8,
-      'ACE_MapTools', 1,
-      'vn_mine_m18_mag', 10,
-      'ACE_salineIV', 10,
-      'ACE_salineIV_250', 20,
-      'ACE_salineIV_500', 15,
-      'ACE_splint', 10,
-      'ACE_surgicalKit', 1,
-      'ACE_tourniquet', 20,
-      'vn_xm16e1', 4,
-      'pk_556_45_clip_bandolier', 14,
-      'pk_762_39_100Rnd_belt', 5,
-      'pk_762_51_100Rnd_belt', 5,
-      'pk_762_51_60Rnd_clip_bandolier', 8,
-      'pk_9_19_50Rnd_box', 5,
-      'pk_carbine_10Rnd_clip', 5,
-      'pk_45ACP_10Rnd_clip', 5,
-      'pk_792_57_50Rnd_belt', 5,
-      'colsog_inv_prc77_battery', 2
+force colsog_supply_content = "[ 
+      'vn_m16_20_t_mag', 12, 
+      'ACE_fieldDressing', 50, 
+      'ACE_packingBandage', 50, 
+      'ACE_elasticBandage', 50, 
+      'ACE_quikclot', 50, 
+      'ACE_CableTie', 5, 
+      'ACE_DefusalKit', 1, 
+      'ACE_EntrenchingTool', 1, 
+      'ACE_epinephrine', 10, 
+      'ACE_Flashlight_MX991', 1, 
+      'uns_m67gren', 20, 
+      'vn_m18_purple_mag', 3, 
+      'vn_m18_red_mag', 6, 
+      'vn_m18_white_mag', 20, 
+      'vn_m18_yellow_mag', 6, 
+      'vn_40mm_m381_he_mag', 25, 
+      'vn_40mm_m397_ab_mag', 5, 
+      'vn_40mm_m433_hedp_mag', 5, 
+      'ACE_Clacker', 1, 
+      'vn_40mm_m583_flare_w_mag', 8, 
+      'ACE_MapTools', 1, 
+      'vn_mine_m18_mag', 10, 
+      'ACE_salineIV', 10, 
+      'ACE_salineIV_250', 20, 
+      'ACE_salineIV_500', 15, 
+      'ACE_splint', 10, 
+      'ACE_surgicalKit', 1, 
+      'ACE_tourniquet', 20, 
+      'vn_xm16e1', 4, 
+      'pk_556_45_clip_bandolier', 14, 
+      'pk_762_39_100Rnd_belt', 5, 
+      'pk_762_51_100Rnd_belt', 5, 
+      'pk_762_51_60Rnd_clip_bandolier', 8, 
+      'pk_9_19_50Rnd_box', 5, 
+      'pk_carbine_10Rnd_clip', 5, 
+      'pk_45ACP_10Rnd_clip', 5, 
+      'pk_792_57_50Rnd_belt', 5, 
+      'colsog_inv_prc77_battery', 2 
     ]";
 
 // COLSOG Miscellaneous
@@ -955,6 +975,8 @@ diwako_dui_main_trackingColor = [0.93,0.26,0.93,1];
 diwako_dui_reset_ui_pos = false;
 
 // DUI - Squad Radar - Nametags
+diwako_dui_nametags_customInfoColor = [1,1,1,1];
+diwako_dui_nametags_customInfoShadow = 1;
 diwako_dui_nametags_customRankStyle = "[[""PRIVATE"",""CORPORAL"",""SERGEANT"",""LIEUTENANT"",""CAPTAIN"",""MAJOR"",""COLONEL""],[""Pvt."",""Cpl."",""Sgt."",""Lt."",""Capt."",""Maj."",""Col.""]]";
 diwako_dui_nametags_deadColor = [0.2,0.2,0.2,1];
 diwako_dui_nametags_deadRenderDistance = 3.5;
@@ -964,6 +986,8 @@ diwako_dui_nametags_enableFOVBoost = true;
 diwako_dui_nametags_enableOcclusion = true;
 diwako_dui_nametags_fadeInTime = 0.05;
 diwako_dui_nametags_fadeOutTime = 0.5;
+diwako_dui_nametags_fontCustomInfo = "RobotoCondensedLight";
+diwako_dui_nametags_fontCustomInfoSize = 7;
 diwako_dui_nametags_fontGroup = "RobotoCondensedLight";
 diwako_dui_nametags_fontGroupNameSize = 8;
 diwako_dui_nametags_fontName = "RobotoCondensedBold";
@@ -1415,6 +1439,9 @@ force tsp_cba_animate_tap = true;
 force tsp_cba_animate_throw = false;
 force tsp_cba_animate_ThumbsDown = true;
 force tsp_cba_animate_ThumbsUp = true;
+tsp_cba_animate_tsp_sling = "[[-0.65,0.85,0.72],[-90,40,70]]";
+tsp_cba_animate_tsp_sling_1point = "[[-0.75,1.07,0.07],[-80,8,75]]";
+tsp_cba_animate_tsp_sling_lanyard = "[[1.05,0.8,-0.1],[10,20,90]]";
 force tsp_cba_animate_uav = true;
 force tsp_cba_animate_Up = true;
 force tsp_cba_animate_walk = false;
