@@ -748,18 +748,18 @@ GW_setting_titleColor = [1,0.8,0.4,0.9];
 GW_setting_ySquash = 0.9;
 
 // COLSOG AI and ENV related
-force colsog_ai_aimingAccuracy = 0.05;
+force colsog_ai_aimingAccuracy = 0.15;
 force colsog_ai_aimingShake = 0.658345;
 force colsog_ai_aimingSpeed = 0.33;
 force colsog_ai_autoCombat = true;
 force colsog_ai_commanding = 0.33;
 force colsog_ai_courage = 0.664642;
 force colsog_ai_enable = true;
-force colsog_ai_generalSkill = 0.15;
+force colsog_ai_generalSkill = 0.25;
 force colsog_ai_reloadSpeed = 1;
 force colsog_ai_seekCover = true;
-force colsog_ai_spotDistance = 0.05;
-force colsog_ai_spotTime = 0.05;
+force colsog_ai_spotDistance = 0.15;
+force colsog_ai_spotTime = 0.15;
 force colsog_ai_suppression = true;
 force colsog_dayAndNight_dawnDuration = 60;
 force colsog_dayAndNight_dawnTimeAcceleration = 30;
@@ -768,6 +768,7 @@ force colsog_dayAndNight_duskDuration = 60;
 force colsog_dayAndNight_duskTimeAcceleration = 30;
 force colsog_dayAndNight_nightTimeAcceleration = 120;
 force colsog_throwable_remove = "vn_rdg2_mag,vn_molotov_grenade_mag";
+
 
 // COLSOG Bayonet Charge
 force colsog_bayonet_damage = 100;
