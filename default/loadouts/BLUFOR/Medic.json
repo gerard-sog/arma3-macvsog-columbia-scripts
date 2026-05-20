@@ -45,7 +45,7 @@
       ]
     ],
     [
-      "vn_b_pack_trp_02",
+      "rtbf_arvn_1_od",
       [
         [
           "ACE_epinephrine",
@@ -61,15 +61,15 @@
         ],
         [
           "ACE_elasticBandage",
-          25
+          20
         ],
         [
           "ACE_packingBandage",
-          25
+          20
         ],
         [
           "ACE_salineIV_500",
-          10
+          5
         ],
         [
           "ACE_surgicalKit",
@@ -81,7 +81,7 @@
         ],
         [
           "ACE_morphine",
-          10
+          5
         ],
         [
           "ACE_tourniquet",
@@ -104,6 +104,10 @@
           2
         ],
         [
+          "ACE_Canteen",
+          6
+        ],
+        [
           "vn_m34_grenade_mag",
           2,
           1
@@ -121,6 +125,11 @@
         [
           "pk_762_39_100Rnd_belt",
           1,
+          100
+        ],
+        [
+          "vn_prop_food_lrrp_01_04",
+          3,
           100
         ]
       ]
