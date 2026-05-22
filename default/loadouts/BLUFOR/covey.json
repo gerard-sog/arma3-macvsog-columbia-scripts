@@ -123,6 +123,10 @@
         [
           "ToolKit",
           1
+        ],
+        [
+          "ACE_Canteen",
+          1
         ]
       ]
     ],
