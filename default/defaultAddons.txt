@@ -687,6 +687,7 @@ force acre_sys_core_ignoreAntennaDirection = true;
 force acre_sys_core_interference = false;
 acre_sys_core_postmixGlobalVolume = 1;
 acre_sys_core_premixGlobalVolume = 1;
+acre_sys_core_radioNoise = true;
 force acre_sys_core_revealToAI = 1;
 acre_sys_core_spectatorVolume = 1;
 force acre_sys_core_terrainLoss = 0;
@@ -747,6 +748,54 @@ force GW_setting_signalVisibility = "side";
 GW_setting_titleColor = [1,0.8,0.4,0.9];
 GW_setting_ySquash = 0.9;
 
+// Adjustable Walking Speed - Rework
+force awsr_core_adjustAudioDetection = true;
+force awsr_core_allowedAnimationArray_Custom = "";
+force awsr_core_allowedAnimationArray_Tactical = "";
+force awsr_core_allowedAnimationArray_Walk = "";
+force awsr_core_Enable = true;
+force awsr_core_Enable_Custom = false;
+force awsr_core_Enable_Tactical = true;
+force awsr_core_Enable_Walk = true;
+force awsr_core_forceWalkWhenValueIsNotDefault = false;
+force awsr_core_includeNonRaisedAnimations_Tactical = true;
+force awsr_core_includeNonRaisedAnimations_Walk = true;
+force awsr_core_maxAdjustSpeed_Custom = 1.5;
+force awsr_core_maxAdjustSpeed_Tactical = 1.3;
+force awsr_core_maxAdjustSpeed_Walk = 1.7;
+force awsr_core_minAdjustSpeed_Custom = 0.5;
+force awsr_core_minAdjustSpeed_Tactical = 0.7;
+force awsr_core_minAdjustSpeed_Walk = 0.3;
+force awsr_core_notAllowedAnimationArray_Tactical = "";
+force awsr_core_notAllowedAnimationArray_Walk = "";
+awsr_core_onlyChangeSpeedWhileAnimationIsPlaying = false;
+force awsr_core_speedAdjustCoefficient_Custom = 0.1;
+force awsr_core_speedAdjustCoefficient_Tactical = 0.1;
+force awsr_core_speedAdjustCoefficient_Walk = 0.1;
+
+// Adjustable Walking Speed - Rework IGUI
+awsr_core_allowIGUIRedLimitValue_Custom = true;
+awsr_core_allowIGUIRedLimitValue_Tactical = true;
+awsr_core_allowIGUIRedLimitValue_Walk = true;
+awsr_core_IGUI_imageColor_Custom = [1,1,1,1];
+awsr_core_IGUI_imageColor_Tactical = [1,1,1,1];
+awsr_core_IGUI_imageColor_Walk = [1,1,1,1];
+awsr_core_IGUI_Text_Custom = "%1";
+awsr_core_IGUI_Text_Tactical = "%1";
+awsr_core_IGUI_Text_Walk = "%1";
+awsr_core_IGUI_textColor_Custom = [1,1,1];
+awsr_core_IGUI_textColor_Tactical = [1,1,1];
+awsr_core_IGUI_textColor_Walk = [1,1,1];
+awsr_core_IGUI_textColorLimitReached_Custom = [1,0,0];
+awsr_core_IGUI_textColorLimitReached_Tactical = [1,0,0];
+awsr_core_IGUI_textColorLimitReached_Walk = [1,0,0];
+awsr_core_IGUI_textSize_Custom = 1;
+awsr_core_IGUI_textSize_Tactical = 1;
+awsr_core_IGUI_textSize_Walk = 1;
+awsr_core_speedUpdatedDisplayType_Custom = 3;
+awsr_core_speedUpdatedDisplayType_Tactical = 3;
+awsr_core_speedUpdatedDisplayType_Walk = 3;
+
 // COLSOG AI and ENV related
 force colsog_ai_aimingAccuracy = 0.15;
 force colsog_ai_aimingShake = 0.658345;
@@ -768,7 +817,6 @@ force colsog_dayAndNight_duskDuration = 60;
 force colsog_dayAndNight_duskTimeAcceleration = 30;
 force colsog_dayAndNight_nightTimeAcceleration = 120;
 force colsog_throwable_remove = "vn_rdg2_mag,vn_molotov_grenade_mag";
-
 
 // COLSOG Bayonet Charge
 force colsog_bayonet_damage = 100;
@@ -792,45 +840,37 @@ force colsog_medikit_convertAceMorphine = 2;
 force colsog_medikit_convertAceSalineIv500 = 2;
 force colsog_medikit_convertAceSplint = 2;
 force colsog_medikit_convertAceTourniquet = 4;
-force colsog_supply_content = "[ 
-      'vn_m16_20_t_mag', 12, 
-      'ACE_fieldDressing', 50, 
-      'ACE_packingBandage', 50, 
-      'ACE_elasticBandage', 50, 
-      'ACE_quikclot', 50, 
-      'ACE_CableTie', 5, 
-      'ACE_DefusalKit', 1, 
-      'ACE_EntrenchingTool', 1, 
-      'ACE_epinephrine', 10, 
-      'ACE_Flashlight_MX991', 1, 
-      'uns_m67gren', 20, 
-      'vn_m18_purple_mag', 3, 
-      'vn_m18_red_mag', 6, 
-      'vn_m18_white_mag', 20, 
-      'vn_m18_yellow_mag', 6, 
-      'vn_40mm_m381_he_mag', 25, 
-      'vn_40mm_m397_ab_mag', 5, 
-      'vn_40mm_m433_hedp_mag', 5, 
-      'ACE_Clacker', 1, 
-      'vn_40mm_m583_flare_w_mag', 8, 
-      'ACE_MapTools', 1, 
-      'vn_mine_m18_mag', 10, 
-      'ACE_salineIV', 10, 
-      'ACE_salineIV_250', 20, 
-      'ACE_salineIV_500', 15, 
-      'ACE_splint', 10, 
-      'ACE_surgicalKit', 1, 
-      'ACE_tourniquet', 20, 
-      'vn_xm16e1', 4, 
-      'pk_556_45_clip_bandolier', 14, 
-      'pk_762_39_100Rnd_belt', 5, 
-      'pk_762_51_100Rnd_belt', 5, 
-      'pk_762_51_60Rnd_clip_bandolier', 8, 
-      'pk_9_19_50Rnd_box', 5, 
-      'pk_carbine_10Rnd_clip', 5, 
-      'pk_45ACP_10Rnd_clip', 5, 
-      'pk_792_57_50Rnd_belt', 5, 
-      'colsog_inv_prc77_battery', 2 
+force colsog_supply_content = "[  
+      'vn_m16_20_t_mag', 12,  
+      'ACE_fieldDressing', 50,  
+      'ACE_packingBandage', 50,  
+      'ACE_elasticBandage', 50,  
+      'ACE_quikclot', 50,  
+      'ACE_CableTie', 5,  
+      'ACE_DefusalKit', 1,  
+      'ACE_EntrenchingTool', 1,  
+      'ACE_epinephrine', 10,  
+      'ACE_Flashlight_MX991', 1,  
+      'uns_m67gren', 20,  
+      'vn_m18_purple_mag', 3,  
+      'vn_m18_red_mag', 6,  
+      'vn_m18_white_mag', 20,  
+      'vn_m18_yellow_mag', 6,  
+      'vn_40mm_m381_he_mag', 25,  
+      'vn_40mm_m397_ab_mag', 5,  
+      'vn_40mm_m433_hedp_mag', 5,  
+      'ACE_Clacker', 1,  
+      'vn_40mm_m583_flare_w_mag', 8,  
+      'ACE_MapTools', 1,  
+      'vn_mine_m18_mag', 10,  
+      'ACE_salineIV', 10,  
+      'ACE_salineIV_250', 20,  
+      'ACE_salineIV_500', 15,  
+      'ACE_splint', 10,  
+      'ACE_surgicalKit', 1,  
+      'ACE_tourniquet', 20,  
+      'vn_xm16e1', 4,
+      'colsog_inv_prc77_battery', 2  
     ]";
 
 // COLSOG Miscellaneous
@@ -857,10 +897,6 @@ force colsog_hunting_FootprintsDetectionRangeFar = 75;
 force colsog_hunting_FootprintsDetectionRangeMedium = 20;
 force colsog_hunting_markerTTL = 1200;
 force colsog_hunting_scoreThreshold = 100;
-force colsog_hunting_stanceFactorCrouch = 2;
-force colsog_hunting_stanceFactorDefault = 2;
-force colsog_hunting_stanceFactorProne = 1;
-force colsog_hunting_stanceFactorStand = 1.5;
 force colsog_hunting_timeToFindFootprints = 5;
 
 // COLSOG Prairie Fire Module
@@ -1028,6 +1064,7 @@ diwako_dui_namelist_text_shadow = 2;
 diwako_dui_namelist_width = 215;
 diwako_dui_radar_ace_finger = true;
 diwako_dui_radar_ace_medic = true;
+diwako_dui_radar_always_show_player_number = true;
 diwako_dui_radar_always_show_unit_numbers = false;
 diwako_dui_radar_compassRangeCrew = 500;
 diwako_dui_radar_compassRangeLimit = 50;
@@ -1055,15 +1092,6 @@ diwako_dui_radar_sqlFirst = false;
 diwako_dui_radar_syncGroup = false;
 diwako_dui_radar_vehicleCompassEnabled = false;
 diwako_dui_use_layout_editor = false;
-
-// Dynamic Camo System
-force DYNCAS_enabled = true;
-force DYNCAS_ghillieReduction = 0.2;
-force DYNCAS_lowerLimit = 0.4;
-force DYNCAS_nightCompensation = 0.8;
-force DYNCAS_targetList = 0;
-force DYNCAS_updateFrequency = 1;
-force DYNCAS_upperLimit = 1;
 
 // Enhanced Movement Rework
 force emr_main_allowClimbOnStandingUnits = false;
@@ -1098,10 +1126,6 @@ emr_main_preventHighVaulting = false;
 force emr_main_staminaCoefficient = 1;
 force emr_main_whitelistStr = "";
 force emr_main_yeetCoefficient = 1.4;
-
-// GRAD Axe
-GRAD_axe_setting_maxTime = 40;
-GRAD_axe_setting_timeFactor = 1;
 
 // GRAD Pace Count Beads
 grad_paceCountBeads_functions_allowPaceCountBeads = true;
@@ -1247,9 +1271,14 @@ force L_Suppress_intensity = 0;
 force L_Suppress_playerSwabEnabled = true;
 force L_Suppress_recovery = 2;
 
-// PKM
-force A3_mags_clipsAreDisposable = true;
-force A3_mags_looseBeltsAreDisposable = true;
+// Ready Up! Hardcore Gear
+force FTAC_Backpack_Enabled = true;
+force FTAC_BackpackW_array = "";
+force FTAC_HardMode = false;
+force FTAC_ItemB_array = "";
+force FTAC_ItemW_array = "";
+force FTAC_NoDelayAnim = true;
+force FTAC_PlayableOnly = true;
 
 // Restrict Markers
 restrict_markers_main_autoCopyDeletion = true;
@@ -1267,6 +1296,7 @@ RWYL_OtherSeatsColour = [0.2,0.2,0.2,0.4];
 RWYL_OtherSeatsIconSize = 0.8;
 RWYL_SelectedSeatColour = [0.95,0.95,0.95,1];
 RWYL_SelectedSeatIconSize = 1;
+RWYL_ThirdPerson_enable = true;
 
 // Simplex Support Services
 force sss_artillery_autoTerminals = false;
@@ -1352,116 +1382,6 @@ force tao_rewrite_main_requireGPSForTablet = true;
 force tao_rewrite_main_requireGPSmapIcon = true;
 force tao_rewrite_main_requireMapForPaperMap = true;
 tao_rewrite_main_zoomStep = 2;
-
-// TSP Animate
-force tsp_cba_animate_Abort = true;
-force tsp_cba_animate_Advance = true;
-force tsp_cba_animate_attachment = true;
-force tsp_cba_animate_Bang = true;
-force tsp_cba_animate_Bird = true;
-force tsp_cba_animate_black = "[""optic_tws_mg""]";
-force tsp_cba_animate_Breach = true;
-force tsp_cba_animate_Cancel = true;
-force tsp_cba_animate_cant = true;
-force tsp_cba_animate_captive = true;
-force tsp_cba_animate_carry = 6;
-force tsp_cba_animate_Cease Fire = true;
-force tsp_cba_animate_clacker = true;
-force tsp_cba_animate_Column = true;
-force tsp_cba_animate_commands = true;
-force tsp_cba_animate_compass = true;
-force tsp_cba_animate_Contact = true;
-force tsp_cba_animate_Cover = true;
-force tsp_cba_animate_Dab = true;
-force tsp_cba_animate_door = true;
-tsp_cba_animate_drop = "[[""Green Chemlight"",""Chemlight_green""],[""Red Chemlight"",""Chemlight_red""],[""IR Chemlight"",""ACE_Chemlight_IR""]]";
-tsp_cba_animate_drop_ace = false;
-tsp_cba_animate_drop_infinite = false;
-force tsp_cba_animate_Duo = true;
-force tsp_cba_animate_Engage = true;
-force tsp_cba_animate_Follow = true;
-force tsp_cba_animate_Forward = true;
-force tsp_cba_animate_Frag = true;
-force tsp_cba_animate_Freeze = true;
-force tsp_cba_animate_friend = 0;
-force tsp_cba_animate_Go = true;
-force tsp_cba_animate_grenade = true;
-force tsp_cba_animate_Halt = true;
-force tsp_cba_animate_Heart = true;
-force tsp_cba_animate_Hold = true;
-force tsp_cba_animate_Horns = true;
-force tsp_cba_animate_Inspect = true;
-force tsp_cba_animate_Ivan = true;
-force tsp_cba_animate_Jackoff = true;
-force tsp_cba_animate_Kata = true;
-force tsp_cba_animate_ladder = true;
-force tsp_cba_animate_lift = true;
-force tsp_cba_animate_Line = true;
-force tsp_cba_animate_Loser = true;
-force tsp_cba_animate_Mahalo = true;
-force tsp_cba_animate_map = true;
-force tsp_cba_animate_Metal = true;
-force tsp_cba_animate_nvg = false;
-force tsp_cba_animate_object = 0;
-force tsp_cba_animate_Ok = true;
-force tsp_cba_animate_Paper = true;
-force tsp_cba_animate_Peace = true;
-force tsp_cba_animate_Peek = true;
-force tsp_cba_animate_Point = true;
-force tsp_cba_animate_poll = 0;
-force tsp_cba_animate_port = true;
-force tsp_cba_animate_Pushups = true;
-force tsp_cba_animate_Ready = true;
-force tsp_cba_animate_Regroup = true;
-force tsp_cba_animate_Rock = true;
-force tsp_cba_animate_Scissors = true;
-force tsp_cba_animate_shake = 0;
-force tsp_cba_animate_Shotgun = true;
-force tsp_cba_animate_sling = true;
-force tsp_cba_animate_sling_add = false;
-force tsp_cba_animate_sling_arsenal = false;
-force tsp_cba_animate_sling_pos = "[[-0.78, .89, 0.45], [-90, 30, 75]]";
-force tsp_cba_animate_sling_required = true;
-force tsp_cba_animate_sling_scroll = false;
-force tsp_cba_animate_sling_sprint = true;
-force tsp_cba_animate_sling_style = "adhd";
-force tsp_cba_animate_sound = 0;
-force tsp_cba_animate_sprint = false;
-force tsp_cba_animate_Squats = true;
-force tsp_cba_animate_Stefan = true;
-force tsp_cba_animate_Stop = true;
-force tsp_cba_animate_style = "";
-force tsp_cba_animate_style_autorifle = "loose_";
-force tsp_cba_animate_style_shotgun = "butt_";
-force tsp_cba_animate_style_sniper = "loose_";
-force tsp_cba_animate_Suicide = false;
-force tsp_cba_animate_tactical = true;
-force tsp_cba_animate_tap = true;
-force tsp_cba_animate_throw = false;
-force tsp_cba_animate_ThumbsDown = true;
-force tsp_cba_animate_ThumbsUp = true;
-tsp_cba_animate_tsp_sling = "[[-0.65,0.85,0.72],[-90,40,70]]";
-tsp_cba_animate_tsp_sling_1point = "[[-0.75,1.07,0.07],[-80,8,75]]";
-tsp_cba_animate_tsp_sling_lanyard = "[[1.05,0.8,-0.1],[10,20,90]]";
-force tsp_cba_animate_uav = true;
-force tsp_cba_animate_Up = true;
-force tsp_cba_animate_walk = false;
-force tsp_cba_animate_walk_default = 1;
-force tsp_cba_animate_walk_lower = 1;
-force tsp_cba_animate_walk_max = 1;
-force tsp_cba_animate_Warning = true;
-force tsp_cba_animate_watch = true;
-force tsp_cba_animate_Wedge = true;
-force tsp_cba_animate_Zozo = true;
-
-// TSP Core
-force tsp_cba_angle = -0.1;
-force tsp_cba_compat = false;
-force tsp_cba_core_chvd = false;
-force tsp_cba_core_pause = false;
-force tsp_cba_hint = "Subtitle";
-force tsp_cba_hint_distance = 0;
-force tsp_param_faction = false;
 
 // Zeus Enhanced
 zen_area_markers_editableMarkers = 0;
@@ -1563,12 +1483,6 @@ zen_faction_filter_0_OPF_G_F = true;
 zen_faction_filter_0_OPF_GEN_F = true;
 zen_faction_filter_0_OPF_R_F = true;
 zen_faction_filter_0_OPF_T_F = true;
-zen_faction_filter_0_UNS_All_Obj = true;
-zen_faction_filter_0_UNSUNG_E = true;
-zen_faction_filter_0_UNSUNG_E_NVA = true;
-zen_faction_filter_0_UNSUNG_EV = true;
-zen_faction_filter_0_UNSUNG_EV_VC = true;
-zen_faction_filter_0_UNSUNG_EV_VCG = true;
 zen_faction_filter_1_B_AUS = true;
 zen_faction_filter_1_B_CIA = true;
 zen_faction_filter_1_B_MACV = true;
@@ -1583,17 +1497,6 @@ zen_faction_filter_1_BLU_T_F = true;
 zen_faction_filter_1_BLU_W_F = true;
 zen_faction_filter_1_Simc_UA_65 = true;
 zen_faction_filter_1_Simc_UA_67 = true;
-zen_faction_filter_1_UNSUNG_AUS = true;
-zen_faction_filter_1_UNSUNG_AUS_groups = true;
-zen_faction_filter_1_UNSUNG_NZ = true;
-zen_faction_filter_1_UNSUNG_NZ_groups = true;
-zen_faction_filter_1_UNSUNG_ROK = true;
-zen_faction_filter_1_UNSUNG_ROK_groups = true;
-zen_faction_filter_1_UNSUNG_W = true;
-zen_faction_filter_1_UNSUNG_W_US = true;
-zen_faction_filter_1_UNSUNG_W_USAF = true;
-zen_faction_filter_1_UNSUNG_W_USMC = true;
-zen_faction_filter_1_UNSUNG_W_USN = true;
 zen_faction_filter_2_I_ARVN = true;
 zen_faction_filter_2_I_CAM = true;
 zen_faction_filter_2_I_LAO = true;
@@ -1602,13 +1505,7 @@ zen_faction_filter_2_IND_E_F = true;
 zen_faction_filter_2_IND_F = true;
 zen_faction_filter_2_IND_G_F = true;
 zen_faction_filter_2_IND_L_F = true;
-zen_faction_filter_2_UNSUNG_G = true;
-zen_faction_filter_2_UNSUNG_G_ARVN = true;
-zen_faction_filter_2_UNSUNG_G_CIDG = true;
-zen_faction_filter_2_UNSUNG_ROK = true;
 zen_faction_filter_3_C_VIET = true;
 zen_faction_filter_3_CIV_F = true;
 zen_faction_filter_3_CIV_IDAP_F = true;
 zen_faction_filter_3_IND_L_F = true;
-zen_faction_filter_3_UNSUNG_C = true;
-zen_faction_filter_3_UNSUNG_C_Groups = true;
