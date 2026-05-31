@@ -1,9 +1,6 @@
 /*
- *   50% chance that thrown hand grenades fail to explode.
-*/
-
-
-if (!isServer) exitWith {};
+ *  50% chance that thrown Chicom grenades fail to explode.
+ */
 
 if (isNil "chicom_dud_chance") then {
     chicom_dud_chance = 0.5;
@@ -12,12 +9,12 @@ if (isNil "chicom_dud_chance") then {
 addMissionEventHandler ["ProjectileCreated", {
     params ["_projectile"];
 
+    if (!local _projectile) exitWith {};
+
     private _projectileType = typeOf _projectile;
 
-    // Only affect the S.O.G. Prairie Fire Chicom grenade projectile
     if (_projectileType != "vn_chicom_grenade_ammo") exitWith {};
 
-    // 50% dud chance
     if ((random 1) >= chicom_dud_chance) exitWith {};
 
     [_projectile] spawn {
