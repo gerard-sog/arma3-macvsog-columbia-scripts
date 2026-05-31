@@ -6,6 +6,10 @@ if (isNil "chicom_dud_chance") then {
     chicom_dud_chance = 0.5;
 };
 
+if (isNil "chicom_dud_audio_enabled") then {
+    chicom_dud_audio_enabled = true;
+};
+
 addMissionEventHandler ["ProjectileCreated", {
     params ["_projectile"];
 
@@ -20,7 +24,6 @@ addMissionEventHandler ["ProjectileCreated", {
     };
 
     if (_magazineType == "") exitWith {};
-
     if ((random 1) >= chicom_dud_chance) exitWith {};
 
     [_projectile, _magazineType] spawn {
@@ -42,6 +45,18 @@ addMissionEventHandler ["ProjectileCreated", {
             _pos select 1,
             _groundZ - 0.02
         ];
+
+        if (chicom_dud_audio_enabled) then {
+            playSound3D [
+                "a3\sounds_f_orange\arsenal\explosives\trainingmine\trainingmine_fuse_06.wss",
+                objNull,
+                false,
+                ASLToAGL _groundPosASL,
+                1,
+                1,
+                50
+            ];
+        };
 
         deleteVehicle _grenade;
 
