@@ -83,5 +83,5 @@ configSourceAddonList (configFile >> "CfgVehicles" >> "rtbf_arvn_1_od")
 | vn_b_pack_p44_02             | DONE   |
 | vn_b_pack_pfield_01          | DONE   |
 | vn_b_pack_pfield_02          | DONE   |
-| vn_o_pack_04                 | TODO   |
-| vn_b_pack_lw_06              | TODO   |
+| vn_o_pack_04                 | DONE   |
+| vn_b_pack_lw_06              | DONE   |
