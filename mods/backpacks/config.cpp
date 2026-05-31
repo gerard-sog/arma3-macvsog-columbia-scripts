@@ -5,7 +5,7 @@ class CfgPatches
         units[] = {};
         weapons[] = {};
         requiredVersion = 0.1;
-        requiredAddons[] = {"A3_Characters_F", "rtbf_rucks", "sog_rucksacks", "bf_cw_rucks", "characters_f_vietnam_c", "ace_compat_sog"};
+        requiredAddons[] = {"A3_Characters_F", "rtbf_rucks", "sog_rucksacks", "bf_cw_rucks", "characters_f_vietnam_c", "ace_compat_sog", "characters_f_vietnam_04_c", "characters_f_vietnam_03_c"};
     };
 };
 
@@ -254,6 +254,238 @@ class CfgVehicles
     };
 
     class sog_trop_2_a: B_Kitbag_cbr
+    {
+        maximumLoad = 350;
+        mass = 50;
+    };
+
+    // -----------------------------
+
+    class B_Bergen_Base;
+
+    class vn_b_pack_lw_04: B_Bergen_Base
+    {
+        maximumLoad = 350;
+        mass = 50;
+    };
+
+    class vn_b_pack_m5_01: B_Bergen_Base
+    {
+        maximumLoad = 350;
+        mass = 50;
+    };
+
+    class vn_b_pack_lw_07: B_Bergen_Base
+    {
+        maximumLoad = 350;
+        mass = 50;
+    };
+
+    class vn_b_pack_lw_05: B_Bergen_Base
+    {
+        maximumLoad = 350;
+        mass = 50;
+    };
+
+    class vn_b_pack_lw_02: B_Bergen_Base
+    {
+        maximumLoad = 350;
+        mass = 50;
+    };
+
+    class vn_b_pack_lw_01: B_Bergen_Base
+    {
+        maximumLoad = 350;
+        mass = 50;
+    };
+
+    class vn_b_pack_prc77_01: B_Bergen_Base
+    {
+        maximumLoad = 350;
+        mass = 50;
+    };
+
+    class vn_b_pack_trp_03_02: B_Bergen_Base
+    {
+        maximumLoad = 350;
+        mass = 50;
+    };
+
+    class vn_b_pack_trp_01_02: B_Bergen_Base
+    {
+        maximumLoad = 350;
+        mass = 50;
+    };
+
+    class vn_b_pack_trp_04_02: B_Bergen_Base
+    {
+        maximumLoad = 350;
+        mass = 50;
+    };
+
+    class vn_b_pack_trp_02_02: B_Bergen_Base
+    {
+        maximumLoad = 350;
+        mass = 50;
+    };
+
+    class vn_b_pack_05: B_Bergen_Base
+    {
+        maximumLoad = 350;
+        mass = 50;
+    };
+
+    class vn_b_pack_03: B_Bergen_Base
+    {
+        maximumLoad = 350;
+        mass = 50;
+    };
+
+    class vn_b_pack_04: B_Bergen_Base
+    {
+        maximumLoad = 350;
+        mass = 50;
+    };
+
+    class vn_b_pack_01: B_Bergen_Base
+    {
+        maximumLoad = 350;
+        mass = 50;
+    };
+
+    class vn_b_pack_02: B_Bergen_Base
+    {
+        maximumLoad = 350;
+        mass = 50;
+    };
+
+    class vn_b_pack_trp_03: B_Bergen_Base
+    {
+        maximumLoad = 350;
+        mass = 50;
+    };
+
+    class vn_b_pack_trp_01: B_Bergen_Base
+    {
+        maximumLoad = 350;
+        mass = 50;
+    };
+
+    class vn_b_pack_trp_04: B_Bergen_Base
+    {
+        maximumLoad = 350;
+        mass = 50;
+    };
+
+    class vn_b_pack_trp_02: B_Bergen_Base
+    {
+        maximumLoad = 350;
+        mass = 50;
+    };
+
+    class vn_b_pack_05_02: B_Bergen_Base
+    {
+        maximumLoad = 350;
+        mass = 50;
+    };
+
+    class vn_b_pack_02_02: B_Bergen_Base
+    {
+        maximumLoad = 350;
+        mass = 50;
+    };
+
+    class vn_b_pack_03_02: B_Bergen_Base
+    {
+        maximumLoad = 350;
+        mass = 50;
+    };
+
+    class vn_b_pack_04_02: B_Bergen_Base
+    {
+        maximumLoad = 350;
+        mass = 50;
+    };
+
+    class vn_b_pack_01_02: B_Bergen_Base
+    {
+        maximumLoad = 350;
+        mass = 50;
+    };
+
+    class vn_b_pack_m41_01: B_Bergen_Base
+    {
+        maximumLoad = 350;
+        mass = 50;
+    };
+
+    class vn_b_pack_m41_03: B_Bergen_Base
+    {
+        maximumLoad = 350;
+        mass = 50;
+    };
+
+    class vn_b_pack_m41_02: B_Bergen_Base
+    {
+        maximumLoad = 350;
+        mass = 50;
+    };
+
+    class vn_b_pack_m41_04: B_Bergen_Base
+    {
+        maximumLoad = 350;
+        mass = 50;
+    };
+
+    class vn_b_pack_m41_05: B_Bergen_Base
+    {
+        maximumLoad = 350;
+        mass = 50;
+    };
+
+    class vn_b_pack_p08_01: B_Bergen_Base
+    {
+        maximumLoad = 350;
+        mass = 50;
+    };
+
+    class vn_b_pack_p08_02: B_Bergen_Base
+    {
+        maximumLoad = 350;
+        mass = 50;
+    };
+
+    class vn_b_pack_p44_01: B_Bergen_Base
+    {
+        maximumLoad = 350;
+        mass = 50;
+    };
+
+    class vn_b_pack_p44_02: B_Bergen_Base
+    {
+        maximumLoad = 350;
+        mass = 50;
+    };
+
+    class vn_b_pack_pfield_01: B_Bergen_Base
+    {
+        maximumLoad = 350;
+        mass = 50;
+    };
+
+    class vn_b_pack_pfield_02: B_Bergen_Base
+    {
+        maximumLoad = 350;
+        mass = 50;
+    };
+
+    class vn_o_pack_04: B_Bergen_Base
+    {
+        maximumLoad = 350;
+        mass = 50;
+    };
+
+    class vn_b_pack_lw_06: B_Bergen_Base
     {
         maximumLoad = 350;
         mass = 50;
