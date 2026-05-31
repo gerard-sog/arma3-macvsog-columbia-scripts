@@ -749,7 +749,8 @@ GW_setting_titleColor = [1,0.8,0.4,0.9];
 GW_setting_ySquash = 0.9;
 
 // Chicom Dud Grenade
-force chicom_dud_chance = 50;
+force chicom_dud_audio_enabled = true;
+force chicom_dud_chance = 75;
 
 // COLSOG AI and ENV related
 force colsog_ai_aimingAccuracy = 0.15;
