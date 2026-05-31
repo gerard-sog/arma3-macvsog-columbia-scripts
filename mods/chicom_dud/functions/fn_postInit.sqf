@@ -1,5 +1,5 @@
 /*
- *  50% chance that thrown Chicom grenades fail to explode.
+ *  Chance that thrown Chicom/T67 grenades fail to explode.
  */
 
 if (isNil "chicom_dud_chance") then {
@@ -13,28 +13,30 @@ addMissionEventHandler ["ProjectileCreated", {
 
     private _projectileType = typeOf _projectile;
 
-    if (_projectileType != "vn_chicom_grenade_ammo") exitWith {};
+    private _magazineType = switch (_projectileType) do {
+        case "vn_chicom_grenade_ammo": { "vn_chicom_grenade_mag" };
+        case "vn_t67_grenade_ammo": { "vn_t67_grenade_mag" };
+        default { "" };
+    };
+
+    if (_magazineType == "") exitWith {};
 
     if ((random 1) >= chicom_dud_chance) exitWith {};
 
-    [_projectile] spawn {
-        params ["_grenade"];
+    [_projectile, _magazineType] spawn {
+        params ["_grenade", "_magazineType"];
 
-        // Wait before the normal explosion
         sleep 4.4;
 
         if (isNull _grenade) exitWith {};
 
-        // Get grenade XY position
         private _pos = getPosWorld _grenade;
 
-        // Snap to terrain height
         private _groundZ = getTerrainHeightASL [
             _pos select 0,
             _pos select 1
         ];
 
-        // Slight negative offset prevents floating
         private _groundPosASL = [
             _pos select 0,
             _pos select 1,
@@ -51,10 +53,9 @@ addMissionEventHandler ["ProjectileCreated", {
             "CAN_COLLIDE"
         ];
 
-        _holder addMagazineCargoGlobal ["vn_chicom_grenade_mag", 1];
+        _holder addMagazineCargoGlobal [_magazineType, 1];
         _holder setPosASL _groundPosASL;
 
-        // Auto cleanup after 30 seconds if still present
         [
             {
                 params ["_holder"];
