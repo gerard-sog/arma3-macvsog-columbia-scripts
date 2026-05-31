@@ -1,9 +1,13 @@
 /*
- *  Chance that thrown Chicom/T67 grenades fail to explode.
+ * Chance that thrown Chicom/T67 grenades fail to explode.
  */
 
 if (isNil "chicom_dud_chance") then {
     chicom_dud_chance = 0.5;
+};
+
+if (isNil "chicom_dud_audio_enabled") then {
+    chicom_dud_audio_enabled = true;
 };
 
 addMissionEventHandler ["ProjectileCreated", {
@@ -20,7 +24,6 @@ addMissionEventHandler ["ProjectileCreated", {
     };
 
     if (_magazineType == "") exitWith {};
-
     if ((random 1) >= chicom_dud_chance) exitWith {};
 
     [_projectile, _magazineType] spawn {
@@ -43,11 +46,46 @@ addMissionEventHandler ["ProjectileCreated", {
             _groundZ - 0.02
         ];
 
+        private _groundPosATL = ASLToATL _groundPosASL;
+        private _groundPosAGL = ASLToAGL _groundPosASL;
+
+        playSound3D [
+            "a3\sounds_f_orange\arsenal\explosives\trainingmine\trainingmine_fuse_06.wss",
+            objNull,
+            true,
+            _groundPosAGL,
+            1,
+            1,
+            0
+        ];
+
+        private _smoke = createVehicle [
+            "#particlesource",
+            _groundPosATL,
+            [],
+            0,
+            "CAN_COLLIDE"
+        ];
+
+        _smoke setParticleClass "SmallDestructionSmoke";
+
+        [
+            {
+                params ["_smoke"];
+
+                if (!isNull _smoke) then {
+                    deleteVehicle _smoke;
+                };
+            },
+            [_smoke],
+            10
+        ] call CBA_fnc_waitAndExecute;
+
         deleteVehicle _grenade;
 
         private _holder = createVehicle [
             "GroundWeaponHolder",
-            ASLToATL _groundPosASL,
+            _groundPosATL,
             [],
             0,
             "CAN_COLLIDE"
