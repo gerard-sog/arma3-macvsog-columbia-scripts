@@ -1023,4 +1023,4 @@ in the main init.sqf and place down the [Cam Lao Nam borders composition](https:
 - Custom gesture wheel: https://steamcommunity.com/sharedfiles/filedetails/?id=3339280489.
 - Custom backpacks with modified maximum load weight: 
   - File: [backpack_config.cpp](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/mods/backpacks/config.cpp)
-  - Mod: https://steamcommunity.com/sharedfiles/filedetails/?id=XXXXXXXX
+  - Mod: https://steamcommunity.com/sharedfiles/filedetails/?id=3734012484
