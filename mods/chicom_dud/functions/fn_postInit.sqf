@@ -5,7 +5,9 @@
 
 if (!isServer) exitWith {};
 
-DUD_grenadeDudChance = 0.5;
+if (isNil "chicom_dud_chance") then {
+    chicom_dud_chance = 0.5;
+};
 
 addMissionEventHandler ["ProjectileCreated", {
     params ["_projectile"];
@@ -16,7 +18,7 @@ addMissionEventHandler ["ProjectileCreated", {
     if (_projectileType != "vn_chicom_grenade_ammo") exitWith {};
 
     // 50% dud chance
-    if ((random 1) >= DUD_grenadeDudChance) exitWith {};
+    if ((random 1) >= chicom_dud_chance) exitWith {};
 
     [_projectile] spawn {
         params ["_grenade"];
@@ -54,5 +56,18 @@ addMissionEventHandler ["ProjectileCreated", {
 
         _holder addMagazineCargoGlobal ["vn_chicom_grenade_mag", 1];
         _holder setPosASL _groundPosASL;
+
+        // Auto cleanup after 30 seconds if still present
+        [
+            {
+                params ["_holder"];
+
+                if (!isNull _holder) then {
+                    deleteVehicle _holder;
+                };
+            },
+            [_holder],
+            30
+        ] call CBA_fnc_waitAndExecute;
     };
 }];
