@@ -1271,15 +1271,6 @@ force L_Suppress_intensity = 0;
 force L_Suppress_playerSwabEnabled = true;
 force L_Suppress_recovery = 2;
 
-// Ready Up! Hardcore Gear
-force FTAC_Backpack_Enabled = true;
-force FTAC_BackpackW_array = "";
-force FTAC_HardMode = false;
-force FTAC_ItemB_array = "";
-force FTAC_ItemW_array = "";
-force FTAC_NoDelayAnim = true;
-force FTAC_PlayableOnly = true;
-
 // Restrict Markers
 restrict_markers_main_autoCopyDeletion = true;
 force restrict_markers_main_canCopyFromSide = 2;
