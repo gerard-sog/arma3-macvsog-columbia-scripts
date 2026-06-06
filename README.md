@@ -9,6 +9,7 @@ Compilation of scripts used during multiplayer PVE/PVP mission on Arma 3. Also f
 - <u>Kay</u> (RT Columbia Discord): for the constant help developing and fixing scripts.
 - <u>Johnnyboy</u> (S.O.G. Prairie Fire Discord): for the original scripts for the mace trap and bayonet rush.
 - <u>Sky</u> (S.O.G. Prairie Fire Discord): for the help regarding the bayonet charge scripts.
+- <u>TheDUDE</u> (The Recon Project): for the help with the backpack mods.
 
 ---
 
@@ -1020,3 +1021,9 @@ in the main init.sqf and place down the [Cam Lao Nam borders composition](https:
 
 - Procedure to create a new Arma 3 inventory object from scratch: https://github.com/gerard-sog/arma3-macvsog-columbia-items.
 - Custom gesture wheel: https://steamcommunity.com/sharedfiles/filedetails/?id=3339280489.
+- Custom backpacks with modified maximum load weight: 
+  - File: [backpack_config.cpp](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/mods/backpacks/config.cpp)
+  - Mod: https://steamcommunity.com/sharedfiles/filedetails/?id=3734012484
+- Chicom grenade dud:
+    - File: [backpack_config.cpp](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/mods/chicom_dud/config.cpp)
+    - Mod: https://steamcommunity.com/sharedfiles/filedetails/?id=3736269155
