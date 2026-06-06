@@ -748,9 +748,6 @@ force GW_setting_signalVisibility = "side";
 GW_setting_titleColor = [1,0.8,0.4,0.9];
 GW_setting_ySquash = 0.9;
 
-// Chicom Dud Grenade
-force chicom_dud_chance = 50;
-
 // Adjustable Walking Speed - Rework
 force awsr_core_adjustAudioDetection = true;
 force awsr_core_allowedAnimationArray_Custom = "";
@@ -798,6 +795,10 @@ awsr_core_IGUI_textSize_Walk = 1;
 awsr_core_speedUpdatedDisplayType_Custom = 3;
 awsr_core_speedUpdatedDisplayType_Tactical = 3;
 awsr_core_speedUpdatedDisplayType_Walk = 3;
+
+// Chicom Dud Grenade
+force chicom_dud_audio_enabled = true;
+force chicom_dud_chance = 50;
 
 // COLSOG AI and ENV related
 force colsog_ai_aimingAccuracy = 0.15;
@@ -900,6 +901,10 @@ force colsog_hunting_FootprintsDetectionRangeFar = 75;
 force colsog_hunting_FootprintsDetectionRangeMedium = 20;
 force colsog_hunting_markerTTL = 1200;
 force colsog_hunting_scoreThreshold = 100;
+force colsog_hunting_stanceFactorCrouch = 2;
+force colsog_hunting_stanceFactorDefault = 2;
+force colsog_hunting_stanceFactorProne = 1;
+force colsog_hunting_stanceFactorStand = 1.5;
 force colsog_hunting_timeToFindFootprints = 5;
 
 // COLSOG Prairie Fire Module
