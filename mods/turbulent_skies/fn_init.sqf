@@ -2,6 +2,18 @@ if (!hasInterface) exitWith {};
 if (!isNil "TS_initialized") exitWith {};
 TS_initialized = true;
 
+if (isNil "TS_maximum_altitude") then {
+    TS_maximum_altitude = 100;
+};
+
+if (isNil "TS_camera_shake_enabled") then {
+    TS_camera_shake_enabled = true;
+};
+
+if (isNil "TS_debug_enabled") then {
+    TS_debug_enabled = false;
+};
+
 player addEventHandler ["GetInMan", {
 
     params ["_unit", "_role", "_vehicle"];
@@ -10,7 +22,9 @@ player addEventHandler ["GetInMan", {
 
         if !(isNil {_unit getVariable "TS_handle"}) exitWith {};
 
-        systemChat "[HELI WEATHER] Activated";
+        if (TS_debug_enabled) then {
+            systemChat "[HELI WEATHER] Activated";
+        };
 
         private _handle = [_vehicle] spawn {
 
@@ -25,8 +39,9 @@ player addEventHandler ["GetInMan", {
             } do {
 
                 private _alt = (getPosATL _heli) # 2;
+                private _maxAlt = TS_maximum_altitude max 6;
 
-                if (_alt > 5 && {_alt < 100}) then {
+                if (_alt > 5 && {_alt < _maxAlt}) then {
 
                     private _windMag = vectorMagnitude wind;
 
@@ -39,7 +54,10 @@ player addEventHandler ["GetInMan", {
                     if (_severity > 0.35) then {
 
                         private _vel = velocity _heli;
-                        private _groundFactor = 1 - ((_alt - 5) / 95);
+
+                        // LOW altitude = strong turbulence.
+                        // HIGH altitude = weak turbulence.
+                        private _groundFactor = 1 - ((_alt - 5) / (_maxAlt - 5));
                         private _weatherRamp = _severity ^ 1.6;
 
                         private _strength = if (difficultyEnabledRTD) then {
@@ -62,15 +80,21 @@ player addEventHandler ["GetInMan", {
                             (_vel # 2) + _vertical
                         ];
 
-                        addCamShake [1.5 * _strength, 0.4, 12];
+                        if (TS_camera_shake_enabled) then {
+                            addCamShake [1.5 * _strength, 0.4, 12];
+                        };
 
-                        if (time > _lastDebug + 5) then {
+                        if (TS_debug_enabled && {time > _lastDebug + 5}) then {
+
                             systemChat format [
-                                "[HELI WEATHER] Alt:%1m | Sev:%2 | Str:%3",
+                                "[HELI WEATHER] Alt:%1m | Max:%2m | Sev:%3 | Str:%4 | Shake:%5",
                                 round _alt,
+                                round _maxAlt,
                                 (_severity toFixed 2),
-                                (_strength toFixed 2)
+                                (_strength toFixed 2),
+                                TS_camera_shake_enabled
                             ];
+
                             _lastDebug = time;
                         };
                     };
@@ -79,7 +103,10 @@ player addEventHandler ["GetInMan", {
                 sleep 0.25;
             };
 
-            systemChat "[HELI WEATHER] Deactivated";
+            if (TS_debug_enabled) then {
+                systemChat "[HELI WEATHER] Deactivated";
+            };
+
             player setVariable ["TS_handle", nil];
         };
 

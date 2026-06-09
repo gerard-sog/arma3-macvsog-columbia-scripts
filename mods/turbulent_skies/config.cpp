@@ -22,6 +22,14 @@ class CfgFunctions
     };
 };
 
+class Extended_PreInit_EventHandlers
+{
+    class turbulent_skies_settings
+    {
+        init = "call compile preprocessFileLineNumbers 'turbulent_skies\CBASettings.sqf'";
+    };
+};
+
 class Extended_PostInit_EventHandlers
 {
     class turbulent_skies
