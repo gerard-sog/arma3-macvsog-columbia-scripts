@@ -16,8 +16,11 @@ class CfgFunctions
     {
         class Main
         {
-            file = "turbulent_skies";
+            file = "turbulent_skies\functions";
+
             class init {};
+            class startMonitor {};
+            class startTurbulence {};
         };
     };
 };
