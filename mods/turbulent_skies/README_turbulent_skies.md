@@ -7,9 +7,12 @@ Settings are configurable through CBA Addon Options.
 Test weather in Eden / debug console:
 
 ```
-0 setOvercast .75;
-0 setRain .75;
-0 setFog 0.25;
+0 setOvercast 1;
+0 setRain 1;
+
+// Strong wind
+setWind [14, 14, true];
+
 forceWeatherChange;
 ```
 

@@ -27,10 +27,9 @@ while {
         private _windMag = vectorMagnitude wind;
 
         private _severity =
-            (overcast * 0.2) +
-            (rain * 0.5) +
-            (fog * 0.2) +
-            (_windMag / 14);
+            (overcast * TS_overcast_factor) +
+            (rain * TS_rain_factor) +
+            (_windMag / TS_wind_divisor);
 
         if (_severity > 0.35) then {
 
@@ -39,6 +38,7 @@ while {
             private _groundFactor =
                 1 - ((_alt - 5) / (_maxAlt - 5));
 
+            // Weather escalation is exponential
             private _weatherRamp = _severity ^ 1.6;
 
             private _strength = if (difficultyEnabledRTD) then {
@@ -64,6 +64,25 @@ while {
                     (_vel # 1) + _gustY,
                     (_vel # 2) + _vertical
                 ];
+
+                // Optional small damage in extreme turbulence
+                if (
+                    TS_damage_enabled &&
+                    {_severity > TS_damage_threshold} &&
+                    {random 1 < 0.01}
+                ) then {
+                    private _newDamage =
+                        ((damage _heli) + random [0.005, 0.01, 0.02]) min 0.85;
+
+                    _heli setDamage _newDamage;
+
+                    if (TS_debug_enabled) then {
+                        systemChat format [
+                            "[TS] Turbulence damage applied | Damage:%1",
+                            (_newDamage toFixed 2)
+                        ];
+                    };
+                };
             };
 
             // Camera shake: everyone inside feels it
@@ -83,8 +102,9 @@ while {
                 {time > _lastDebug + 5}
             ) then {
                 systemChat format [
-                    "[TS] ACTIVE | Alt:%1 | Sev:%2 | Str:%3 | Local:%4",
+                    "[TS] ACTIVE | Alt:%1 | Max:%2 | Sev:%3 | Str:%4 | Local:%5",
                     round _alt,
+                    round _maxAlt,
                     (_severity toFixed 2),
                     (_strength toFixed 2),
                     local _heli
