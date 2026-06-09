@@ -10,7 +10,7 @@ if (!isServer) exitWith {};
                 [
                     {
                         // Delayed activation until sensor touches ground.
-                        (getPos (_this select 0) select 2) <= 0 ;
+                        (getPos (_this select 0) select 2) <= 0.1 ;
                     },
                     {
                         // Proximity sensor

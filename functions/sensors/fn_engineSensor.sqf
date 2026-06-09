@@ -5,7 +5,8 @@ _engineSensor = [
 	"Place Engine sensor",
 	"x\zen\addons\attributes\ui\engine_on_ca.paa",
 	{
-		execVM "functions\sensors\engine\fn_createEngineSensor.sqf";
+		// Needs to be sent to server.
+        [[], "functions\sensors\engine\fn_createEngineSensor.sqf"] remoteExec ["execVM", 2, false];
 	},
 	{
 	    private _hasItem = [player, colsog_sensor_engineInventoryItem] call BIS_fnc_hasItem;
