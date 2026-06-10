@@ -4,7 +4,7 @@ if (!isNil "TS_initialized") exitWith {};
 TS_initialized = true;
 
 if (isNil "TS_maximum_altitude") then {
-    TS_maximum_altitude = 100;
+    TS_maximum_altitude = 300;
 };
 
 if (isNil "TS_camera_shake_multiplier") then {

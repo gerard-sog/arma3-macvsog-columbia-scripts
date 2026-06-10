@@ -5,7 +5,7 @@
     "SLIDER",
     ["Maximum altitude", "Maximum altitude in meters AGL where turbulence affects helicopters"],
     [CBA_SETTINGS_TS, "General"],
-    [10, 500, 100, 0],
+    [10, 500, 300, 0],
     1,
     {},
     true

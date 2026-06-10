@@ -22,7 +22,7 @@ while {
     private _alt = (getPosATL _heli) # 2;
     private _maxAlt = TS_maximum_altitude max 6;
 
-    if (_alt > 5 && {_alt < _maxAlt}) then {
+    if (_alt > 3 && {_alt < _maxAlt}) then {
 
         private _windMag = vectorMagnitude wind;
 
@@ -36,7 +36,7 @@ while {
             private _vel = velocity _heli;
 
             private _groundFactor =
-                1 - ((_alt - 5) / (_maxAlt - 5));
+                1 - ((_alt - 3) / (_maxAlt - 3));
 
             // Weather escalation is exponential
             private _weatherRamp = _severity ^ 1.6;
