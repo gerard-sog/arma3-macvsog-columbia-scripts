@@ -130,14 +130,15 @@ COLSOG_fnc_handleBombImpact = {
         } forEach _hashMapOfBombsAndIsNapalmAndRadius;
 
         if (_isAllowedBomb) then {
+            if !(local _projectile) exitWith {};
+
             _projectile setVariable ["COLSOG_isNapalm", _isNapalm];
             _projectile setVariable ["COLSOG_destructionRadius", _destructionRadius];
             _projectile setVariable ["COLSOG_obliterationRadius", _obliterationRadius];
             _projectile setVariable ["COLSOG_hitPartTriggered", false];
 
             /*
-             * Fallback for napalm projectiles that are deleted/exploded without firing HitPart.
-             * Bombs continue to use HitPart normally.
+             * Fallback for projectiles that are deleted/exploded without firing HitPart.
              */
             [_projectile, _projectileP3dName, _isNapalm, _destructionRadius, _obliterationRadius] spawn {
                 params ["_projectile", "_projectileP3dName", "_isNapalm", "_destructionRadius", "_obliterationRadius"];
@@ -148,14 +149,15 @@ COLSOG_fnc_handleBombImpact = {
                 while {!isNull _projectile} do {
                     _lastPos = getPosATL _projectile;
                     _hitPartTriggered = _projectile getVariable ["COLSOG_hitPartTriggered", false];
-                    sleep 0.05;
+                    sleep 0.1;
                 };
 
-                if (!_hitPartTriggered && {_isNapalm}) then {
+                if (!_hitPartTriggered) then {
                     if (colsog_deforestation_debug) then {
                         systemChat format [
-                            "[DEFOREST][FALLBACK_USED] model=%1 lastPos=%2",
+                            "[DEFOREST][FALLBACK_USED] model=%1 isNapalm=%2 lastPos=%3",
                             _projectileP3dName,
+                            _isNapalm,
                             _lastPos
                         ];
                     };
