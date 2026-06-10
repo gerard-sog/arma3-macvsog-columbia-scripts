@@ -5,21 +5,24 @@
     "SLIDER",
     ["Maximum altitude", "Maximum altitude in meters AGL where turbulence affects helicopters"],
     [CBA_SETTINGS_TS, "General"],
-    [10, 300, 100, 0],
+    [10, 500, 300, 0],
     1,
     {},
     true
 ] call CBA_fnc_addSetting;
 
 [
-    "TS_camera_shake_enabled",
-    "CHECKBOX",
-    ["Enable camera shake", "Adds camera shake when turbulence is active"],
+    "TS_camera_shake_multiplier",
+    "SLIDER",
+    [
+        "Camera shake strength",
+        "Multiplier for camera shake intensity. 0 = no shake, 0.5 = subtle (default), 1 = original intensity, 2 = double strength."
+    ],
     [CBA_SETTINGS_TS, "Effects"],
-    true,
-    1,
+    [0, 3, 0.5, 2],
+    0,
     {},
-    true
+    false
 ] call CBA_fnc_addSetting;
 
 [
@@ -45,11 +48,14 @@
 ] call CBA_fnc_addSetting;
 
 [
-    "TS_wind_divisor",
+    "TS_wind_factor",
     "SLIDER",
-    ["Wind divisor", "Lower value means wind contributes more strongly to turbulence severity"],
+    [
+        "Wind factor",
+        "How much wind strength contributes to turbulence severity."
+    ],
     [CBA_SETTINGS_TS, "Weather severity"],
-    [5, 30, 14, 0],
+    [0, 2, 1.0, 2],
     1,
     {},
     true
@@ -69,9 +75,12 @@
 [
     "TS_damage_threshold",
     "SLIDER",
-    ["Damage severity threshold", "Turbulence damage can occur only when severity is above this value"],
+    [
+        "Damage severity threshold",
+        "Turbulence damage can occur only when severity is above this value. 0.5 = frequent damage, 0.8 = rough weather, 1.2 = severe storm only, 1.4 = near extreme storm (recommended), 1.7 = almost never."
+    ],
     [CBA_SETTINGS_TS, "Damage"],
-    [0.5, 4, 2.0, 2],
+    [0.5, 1.7, 1.4, 2],
     1,
     {},
     true

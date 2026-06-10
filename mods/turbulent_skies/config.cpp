@@ -21,6 +21,24 @@ class CfgFunctions
             class init {};
             class startMonitor {};
             class startTurbulence {};
+            class registerZeusModules {};
+            class zeusWeatherPreset {};
+            class applyWeatherPreset {};
+        };
+    };
+};
+
+class CfgRemoteExec
+{
+    class Functions
+    {
+        mode = 1;
+        jip = 0;
+
+        class TS_fnc_applyWeatherPreset
+        {
+            allowedTargets = 2;
+            jip = 0;
         };
     };
 };
