@@ -87,14 +87,29 @@ while {
 
             // Camera shake: everyone inside feels it
             if (
-                TS_camera_shake_enabled &&
+                TS_camera_shake_multiplier > 0 &&
                 {player in crew _heli}
             ) then {
-                addCamShake [
-                    1.5 * _strength,
-                    0.4,
-                    12
-                ];
+
+                private _camShake =
+                    linearConversion [
+                        0.35,
+                        5.0,
+                        _strength,
+                        0.5,
+                        7.5,
+                        true
+                    ];
+
+                _camShake = _camShake * TS_camera_shake_multiplier;
+
+                if (_camShake > 0) then {
+                    addCamShake [
+                        _camShake,
+                        0.4,
+                        12
+                    ];
+                };
             };
 
             if (

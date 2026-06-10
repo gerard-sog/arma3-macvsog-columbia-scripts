@@ -1383,11 +1383,11 @@ force tao_rewrite_main_requireMapForPaperMap = true;
 tao_rewrite_main_zoomStep = 2;
 
 // Turbulent Skies
-force TS_camera_shake_enabled = true;
+force TS_camera_shake_multiplier = 0.5;
 force TS_damage_enabled = true;
-force TS_damage_threshold = 2;
+force TS_damage_threshold = 1;
 force TS_debug_enabled = false;
-force TS_maximum_altitude = 100;
+force TS_maximum_altitude = 300;
 force TS_overcast_factor = 0.2;
 force TS_rain_factor = 0.5;
 force TS_wind_divisor = 14;

@@ -5,21 +5,24 @@
     "SLIDER",
     ["Maximum altitude", "Maximum altitude in meters AGL where turbulence affects helicopters"],
     [CBA_SETTINGS_TS, "General"],
-    [10, 300, 100, 0],
+    [10, 500, 100, 0],
     1,
     {},
     true
 ] call CBA_fnc_addSetting;
 
 [
-    "TS_camera_shake_enabled",
-    "CHECKBOX",
-    ["Enable camera shake", "Adds camera shake when turbulence is active"],
+    "TS_camera_shake_multiplier",
+    "SLIDER",
+    [
+        "Camera shake strength",
+        "Multiplier for camera shake intensity. 0 = no shake, 0.5 = subtle (default), 1 = original intensity, 2 = double strength."
+    ],
     [CBA_SETTINGS_TS, "Effects"],
-    true,
-    1,
+    [0, 3, 0.5, 2],
+    0,
     {},
-    true
+    false
 ] call CBA_fnc_addSetting;
 
 [

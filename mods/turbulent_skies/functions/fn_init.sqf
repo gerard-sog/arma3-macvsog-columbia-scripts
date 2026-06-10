@@ -7,8 +7,8 @@ if (isNil "TS_maximum_altitude") then {
     TS_maximum_altitude = 100;
 };
 
-if (isNil "TS_camera_shake_enabled") then {
-    TS_camera_shake_enabled = true;
+if (isNil "TS_camera_shake_multiplier") then {
+    TS_camera_shake_multiplier = 0.5;
 };
 
 if (isNil "TS_debug_enabled") then {
