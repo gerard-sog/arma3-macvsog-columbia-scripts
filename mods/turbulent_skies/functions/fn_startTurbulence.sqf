@@ -24,12 +24,10 @@ while {
 
     if (_alt > 3 && {_alt < _maxAlt}) then {
 
-        private _windMag = vectorMagnitude wind;
-
         private _severity =
             (overcast * TS_overcast_factor) +
             (rain * TS_rain_factor) +
-            (_windMag / TS_wind_divisor);
+            (windStr * TS_wind_factor);
 
         if (_severity > 0.35) then {
 
@@ -117,11 +115,12 @@ while {
                 {time > _lastDebug + 5}
             ) then {
                 systemChat format [
-                    "[TS] ACTIVE | Alt:%1 | Max:%2 | Sev:%3 | Str:%4 | Local:%5",
+                    "[TS] ACTIVE | Alt:%1 | Max:%2 | Sev:%3 | Str:%4 | WindStr:%5 | Local:%6",
                     round _alt,
                     round _maxAlt,
                     (_severity toFixed 2),
                     (_strength toFixed 2),
+                    (windStr toFixed 2),
                     local _heli
                 ];
 

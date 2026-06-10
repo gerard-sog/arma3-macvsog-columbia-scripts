@@ -23,8 +23,8 @@ if (isNil "TS_rain_factor") then {
     TS_rain_factor = 0.5;
 };
 
-if (isNil "TS_wind_divisor") then {
-    TS_wind_divisor = 14;
+if (isNil "TS_wind_factor") then {
+    TS_wind_factor = 1;
 };
 
 if (isNil "TS_damage_enabled") then {
@@ -32,7 +32,7 @@ if (isNil "TS_damage_enabled") then {
 };
 
 if (isNil "TS_damage_threshold") then {
-    TS_damage_threshold = 2.0;
+    TS_damage_threshold = 1.4;
 };
 
 player addEventHandler ["GetInMan", {
@@ -63,3 +63,5 @@ player addEventHandler ["GetOutMan", {
         systemChat "[TS] Turbulence disabled";
     };
 }];
+
+[] call TS_fnc_registerZeusModules;

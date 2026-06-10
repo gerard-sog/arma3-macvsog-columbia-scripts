@@ -48,11 +48,14 @@
 ] call CBA_fnc_addSetting;
 
 [
-    "TS_wind_divisor",
+    "TS_wind_factor",
     "SLIDER",
-    ["Wind divisor", "Lower value means wind contributes more strongly to turbulence severity"],
+    [
+        "Wind factor",
+        "How much wind strength contributes to turbulence severity."
+    ],
     [CBA_SETTINGS_TS, "Weather severity"],
-    [5, 30, 14, 0],
+    [0, 2, 1.0, 2],
     1,
     {},
     true
@@ -72,9 +75,12 @@
 [
     "TS_damage_threshold",
     "SLIDER",
-    ["Damage severity threshold", "Turbulence damage can occur only when severity is above this value"],
+    [
+        "Damage severity threshold",
+        "Turbulence damage can occur only when severity is above this value. 0.5 = frequent damage, 0.8 = rough weather, 1.2 = severe storm only, 1.4 = near extreme storm (recommended), 1.7 = almost never."
+    ],
     [CBA_SETTINGS_TS, "Damage"],
-    [0.5, 4, 2.0, 2],
+    [0.5, 1.7, 1.4, 2],
     1,
     {},
     true
