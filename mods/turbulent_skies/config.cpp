@@ -28,6 +28,21 @@ class CfgFunctions
     };
 };
 
+class CfgRemoteExec
+{
+    class Functions
+    {
+        mode = 1;
+        jip = 0;
+
+        class TS_fnc_applyWeatherPreset
+        {
+            allowedTargets = 2;
+            jip = 0;
+        };
+    };
+};
+
 class Extended_PreInit_EventHandlers
 {
     class turbulent_skies_settings

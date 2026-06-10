@@ -1,8 +1,7 @@
-if (!hasInterface) exitWith {};
 if (!isNil "TS_initialized") exitWith {};
-
 TS_initialized = true;
 
+// Defaults used by both clients and server-side functions
 if (isNil "TS_maximum_altitude") then {
     TS_maximum_altitude = 300;
 };
@@ -35,33 +34,37 @@ if (isNil "TS_damage_threshold") then {
     TS_damage_threshold = 1.4;
 };
 
-player addEventHandler ["GetInMan", {
-    params ["_unit", "_role", "_vehicle"];
+// Player-only logic
+if (hasInterface) then {
 
-    if !(_vehicle isKindOf "Helicopter") exitWith {};
+    player addEventHandler ["GetInMan", {
+        params ["_unit", "_role", "_vehicle"];
 
-    [_unit, _vehicle] call TS_fnc_startMonitor;
-}];
+        if !(_vehicle isKindOf "Helicopter") exitWith {};
 
-player addEventHandler ["GetOutMan", {
-    params ["_unit"];
+        [_unit, _vehicle] call TS_fnc_startMonitor;
+    }];
 
-    private _handle = _unit getVariable ["TS_handle", scriptNull];
-    if !(isNull _handle) then {
-        terminate _handle;
-    };
+    player addEventHandler ["GetOutMan", {
+        params ["_unit"];
 
-    private _monitor = _unit getVariable ["TS_seatMonitorHandle", scriptNull];
-    if !(isNull _monitor) then {
-        terminate _monitor;
-    };
+        private _handle = _unit getVariable ["TS_handle", scriptNull];
+        if !(isNull _handle) then {
+            terminate _handle;
+        };
 
-    _unit setVariable ["TS_handle", nil];
-    _unit setVariable ["TS_seatMonitorHandle", nil];
+        private _monitor = _unit getVariable ["TS_seatMonitorHandle", scriptNull];
+        if !(isNull _monitor) then {
+            terminate _monitor;
+        };
 
-    if (TS_debug_enabled) then {
-        systemChat "[TS] Turbulence disabled";
-    };
-}];
+        _unit setVariable ["TS_handle", nil];
+        _unit setVariable ["TS_seatMonitorHandle", nil];
 
-[] call TS_fnc_registerZeusModules;
+        if (TS_debug_enabled) then {
+            systemChat "[TS] Turbulence disabled";
+        };
+    }];
+
+    [] call TS_fnc_registerZeusModules;
+};
