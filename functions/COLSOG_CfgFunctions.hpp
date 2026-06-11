@@ -44,6 +44,11 @@ class COLSOG {
         {
             file = "functions\sensors\gravity\fn_createGravitySensor.sqf";
         };
+
+        class addGravitySensorActions
+        {
+            file = "functions\sensors\gravity\fn_addGravitySensorActions.sqf";
+        };
     };
     class Intel
     {

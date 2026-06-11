@@ -5,7 +5,8 @@ _gravitySensor = [
 	"Throw Gravity sensor",
 	"\a3\ui_f\data\igui\cfg\simpletasks\types\listen_ca.paa",
 	{
-		[player] remoteExecCall ["COLSOG_fnc_createGravitySensor", 2];
+	    player removeItem colsog_sensor_gravityInventoryItem;
+		[player] remoteExec ["COLSOG_fnc_createGravitySensor", 2];
 	},
 	{
 	    private _hasItem = [player, colsog_sensor_gravityInventoryItem] call BIS_fnc_hasItem;
