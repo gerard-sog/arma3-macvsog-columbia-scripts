@@ -10,15 +10,15 @@ if (!isServer) exitWith {};
                 [
                     {
                         // Delayed activation until sensor touches ground.
-                        (getPos (_this select 0) select 2) <= 0 ;
+                        isTouchingGround (_this select 0) || ((getPosATL (_this select 0) select 2) < 0.2);
                     },
                     {
                         // Proximity sensor
                         private _delayedUnitActivation = _this select 0;
                         // Freeze it where it touched the ground and set height to 0.0 meter.
-                        _delayedUnitActivation enableSimulation false;
-                        _delayedUnitActivationPosition = getPos _delayedUnitActivation;
-                        _delayedUnitActivation setPos [_delayedUnitActivationPosition select 0, _delayedUnitActivationPosition select 1, 0.0];
+                        _delayedUnitActivation enableSimulationGlobal false;
+                        _delayedUnitActivationPosition = getPosATL _delayedUnitActivation;
+                        _delayedUnitActivation setPosATL [_delayedUnitActivationPosition select 0, _delayedUnitActivationPosition select 1, 0.0];
                         private _pos = getPosATL _delayedUnitActivation;
                         private _trigger = createTrigger ["EmptyDetector", _pos];
                         // Required in order to pass as argument in trigger statement.
