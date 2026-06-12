@@ -48,7 +48,7 @@ private _onConfirm = {
 
     [
         "TS_applyWeatherPreset",
-        _weatherData + [_zeus]
+        _weatherData + [_zeus, _preset]
     ] call CBA_fnc_serverEvent;
 };
 

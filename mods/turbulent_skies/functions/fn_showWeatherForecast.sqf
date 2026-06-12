@@ -1,69 +1,68 @@
 private _nextPreset = missionNamespace getVariable ["TS_weatherSystem_nextPreset", -1];
 
 if (_nextPreset < 0) exitWith {
-    TS_airControl sideChat "AIR CONTROL: No weather forecast is currently available.";
+    player sideChat format ["AIR CONTROL: No weather forecast is currently available."];
 };
 
 private _forecastData = switch (_nextPreset) do {
     case 0: {
-        ["CLEAR WEATHER", 45, 3, 0, 0, "No rain", "No significant low-level turbulence expected"]
+        ["CALM", "No significant low-level turbulence expected"]
     };
 
     case 1: {
-        ["OVERCAST DEVELOPING", 45, 6, 50, 0, "No rain", "No significant low-level turbulence expected"]
+        ["CALM to OVERCAST", "Minimal low-level turbulence expected"]
     };
 
     case 2: {
-        ["POOR WEATHER DEVELOPING", 45, 9, 70, 20, "Light rain expected", "Light low-level turbulence possible"]
+        ["OVERCAST to RAINY", "Light low-level turbulence expected"]
     };
 
     case 3: {
-        ["RAINY CONDITIONS", 45, 15, 85, 50, "Moderate rain expected", "Moderate low-level turbulence expected"]
+        ["RAINY", "Moderate low-level turbulence expected"]
     };
 
     case 4: {
-        ["STORM CONDITIONS DEVELOPING", 45, 23, 95, 75, "Heavy rain expected", "Severe low-level turbulence possible"]
+        ["RAINY to STORMY", "Heavy low-level turbulence expected"]
     };
 
     case 5: {
-        ["STORM CONDITIONS", 45, 30, 100, 100, "Heavy rain expected", "Severe low-level turbulence expected"]
+        ["STORMY", "Severe low-level turbulence expected"]
     };
 
     default {
-        ["UNKNOWN CONDITIONS", 45, 0, 0, 0, "Unknown rain conditions", "Turbulence forecast unavailable"]
+        ["UNKNOWN", "Turbulence forecast unavailable"]
     };
 };
 
 _forecastData params [
     "_condition",
-    "_windDir",
-    "_windKnots",
-    "_overcastPercent",
-    "_rainPercent",
-    "_rainText",
     "_turbulenceText"
 ];
 
-private _bearing = round _windDir;
-private _bearingText = str _bearing;
+private _remainingTime = missionNamespace getVariable [
+    "TS_weatherSystem_nextTransitionTime",
+    0
+];
 
-if (_bearing < 100) then {
-    _bearingText = format ["0%1", _bearingText];
-};
+private _timeLeft = round (_remainingTime - serverTime);
+_timeLeft = _timeLeft max 0;
 
-if (_bearing < 10) then {
-    _bearingText = format ["0%1", _bearingText];
+private _minutes = floor (_timeLeft / 60);
+private _seconds = _timeLeft mod 60;
+
+private _timeText = "";
+
+if (_minutes > 0) then {
+    _timeText = format ["%1m %2s", _minutes, _seconds];
+} else {
+    _timeText = format ["%1s", _seconds];
 };
 
 private _msg = format [
-    "AIR CONTROL: Forecast calls for %1. Winds %2 at %3 knots. Overcast %4 percent. Rain %5 percent. %6. %7.",
+    "Forecasted weather: %1\nTurbulence: %2\nExpected in: %3",
     _condition,
-    _bearingText,
-    _windKnots,
-    _overcastPercent,
-    _rainPercent,
-    _rainText,
-    _turbulenceText
+    _turbulenceText,
+    _timeText
 ];
 
-TS_airControl sideChat _msg;
+player sideChat format ["AIR CONTROL:\n%1", _msg];

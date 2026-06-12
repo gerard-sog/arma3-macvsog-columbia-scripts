@@ -69,56 +69,47 @@ if (isServer) then {
             [] call TS_fnc_startWeatherSystem;
         };
     };
-
-    if (isNil "TS_airControl") then {
-        TS_airControl = createAgent [
-            "VirtualCurator_F",
-            [0, 0, 0],
-            [],
-            0,
-            "NONE"
-        ];
-
-        TS_airControl setName "Air Control";
-        publicVariable "TS_airControl";
-    };
 };
 
 // Player-only logic
 if (hasInterface) then {
 
-    if (!isNil "ace_interact_menu_fnc_createAction") then {
-        [] call TS_fnc_addAceActions;
+    [] spawn {
+        waitUntil { !isNull player };
+
+        if (!isNil "ace_interact_menu_fnc_createAction") then {
+            [] call TS_fnc_addAceActions;
+        };
+
+        player addEventHandler ["GetInMan", {
+            params ["_unit", "_role", "_vehicle"];
+
+            if !(_vehicle isKindOf "Helicopter") exitWith {};
+
+            [_unit, _vehicle] call TS_fnc_startMonitor;
+        }];
+
+        player addEventHandler ["GetOutMan", {
+            params ["_unit"];
+
+            private _handle = _unit getVariable ["TS_handle", scriptNull];
+            if !(isNull _handle) then {
+                terminate _handle;
+            };
+
+            private _monitor = _unit getVariable ["TS_seatMonitorHandle", scriptNull];
+            if !(isNull _monitor) then {
+                terminate _monitor;
+            };
+
+            _unit setVariable ["TS_handle", nil];
+            _unit setVariable ["TS_seatMonitorHandle", nil];
+
+            if (TS_debug_enabled) then {
+                systemChat "[TS] Turbulence disabled";
+            };
+        }];
+
+        [] call TS_fnc_registerZeusModules;
     };
-
-    player addEventHandler ["GetInMan", {
-        params ["_unit", "_role", "_vehicle"];
-
-        if !(_vehicle isKindOf "Helicopter") exitWith {};
-
-        [_unit, _vehicle] call TS_fnc_startMonitor;
-    }];
-
-    player addEventHandler ["GetOutMan", {
-        params ["_unit"];
-
-        private _handle = _unit getVariable ["TS_handle", scriptNull];
-        if !(isNull _handle) then {
-            terminate _handle;
-        };
-
-        private _monitor = _unit getVariable ["TS_seatMonitorHandle", scriptNull];
-        if !(isNull _monitor) then {
-            terminate _monitor;
-        };
-
-        _unit setVariable ["TS_handle", nil];
-        _unit setVariable ["TS_seatMonitorHandle", nil];
-
-        if (TS_debug_enabled) then {
-            systemChat "[TS] Turbulence disabled";
-        };
-    }];
-
-    [] call TS_fnc_registerZeusModules;
 };

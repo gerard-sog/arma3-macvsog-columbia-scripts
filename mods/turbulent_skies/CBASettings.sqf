@@ -101,8 +101,10 @@
     "TS_weather_system_enabled",
     "CHECKBOX",
     ["Enable Dynamic Weather System", "Automatically cycles Turbulent Skies weather presets logically."],
-    "Turbulent Skies - Weather System",
+    [CBA_SETTINGS_TS, "Weather System"],
     false,
+    1,
+    {},
     true
 ] call CBA_fnc_addSetting;
 
@@ -110,8 +112,10 @@
     "TS_weather_cycle_min_time",
     "SLIDER",
     ["Minimum Weather Duration", "Minimum time before the weather system transitions to the next preset."],
-    "Turbulent Skies - Weather System",
-    [300, 7200, 900, 0],
+    [CBA_SETTINGS_TS, "Weather System"],
+    [60, 7200, 900, 0],
+    1,
+    {},
     true
 ] call CBA_fnc_addSetting;
 
@@ -119,7 +123,9 @@
     "TS_weather_cycle_max_time",
     "SLIDER",
     ["Maximum Weather Duration", "Maximum time before the weather system transitions to the next preset."],
-    "Turbulent Skies - Weather System",
-    [300, 7200, 1800, 0],
+    [CBA_SETTINGS_TS, "Weather System"],
+    [60, 7200, 1800, 0],
+    1,
+    {},
     true
 ] call CBA_fnc_addSetting;

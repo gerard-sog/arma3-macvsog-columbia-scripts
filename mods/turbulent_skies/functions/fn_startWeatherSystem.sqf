@@ -18,9 +18,9 @@ TS_fnc_getNextWeatherPreset = {
             _nextPreset = 4;
         } else {
             if ((random 1) < 0.5) then {
-                _nextPreset = _currentPreset - 1;
-            } else {
                 _nextPreset = _currentPreset + 1;
+            } else {
+                _nextPreset = _currentPreset - 1;
             };
         };
     };
@@ -90,9 +90,12 @@ TS_weatherSystem_handle = [] spawn {
 
         private _weatherData = [TS_weatherSystem_currentPreset] call TS_fnc_getWeatherPresetData;
 
-        (_weatherData + [objNull]) call TS_fnc_applyWeatherPreset;
+        (_weatherData + [objNull, TS_weatherSystem_currentPreset]) call TS_fnc_applyWeatherPreset;
 
         private _duration = TS_weather_cycle_min_time + random (TS_weather_cycle_max_time - TS_weather_cycle_min_time);
+
+        TS_weatherSystem_nextTransitionTime = CBA_missionTime + _duration;
+        publicVariable "TS_weatherSystem_nextTransitionTime";
 
         if (TS_debug_enabled) then {
             systemChat format [
