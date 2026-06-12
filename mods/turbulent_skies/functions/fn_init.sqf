@@ -66,6 +66,7 @@ if (isServer) then {
         waitUntil { !isNil "TS_weather_system_enabled" };
 
         if (TS_weather_system_enabled) then {
+            [] call TS_fnc_lockVanillaWeather;
             [] call TS_fnc_startWeatherSystem;
         };
     };

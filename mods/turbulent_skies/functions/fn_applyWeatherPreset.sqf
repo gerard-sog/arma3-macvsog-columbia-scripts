@@ -11,6 +11,10 @@ params [
     ["_preset", -1, [0]]
 ];
 
+if (!isNull _zeus || {TS_weather_system_enabled}) then {
+    [] call TS_fnc_lockVanillaWeather;
+};
+
 if (_preset >= 0) then {
     TS_weatherSystem_currentPreset = _preset;
 

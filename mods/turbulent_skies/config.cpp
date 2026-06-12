@@ -28,6 +28,7 @@ class CfgFunctions
             class showWeatherForecast {};
             class addAceActions {};
             class startWeatherSystem {};
+            class lockVanillaWeather {};
         };
     };
 };
