@@ -24,6 +24,10 @@ class CfgFunctions
             class registerZeusModules {};
             class zeusWeatherPreset {};
             class applyWeatherPreset {};
+            class isPilotOrCopilot {};
+            class showWeatherForecast {};
+            class addAceActions {};
+            class startWeatherSystem {};
         };
     };
 };
