@@ -34,6 +34,13 @@ if (isNil "TS_damage_threshold") then {
     TS_damage_threshold = 1.4;
 };
 
+[
+    "TS_applyWeatherPreset",
+    {
+        _this call TS_fnc_applyWeatherPreset;
+    }
+] call CBA_fnc_addEventHandler;
+
 // Player-only logic
 if (hasInterface) then {
 

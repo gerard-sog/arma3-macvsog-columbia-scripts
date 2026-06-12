@@ -41,10 +41,10 @@ private _onConfirm = {
         };
     };
 
-    (_weatherData + [_zeus]) remoteExecCall [
-        "TS_fnc_applyWeatherPreset",
-        2
-    ];
+    [
+        "TS_applyWeatherPreset",
+        _weatherData + [_zeus]
+    ] call CBA_fnc_serverEvent;
 };
 
 [
