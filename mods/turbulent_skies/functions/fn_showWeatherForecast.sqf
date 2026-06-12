@@ -1,3 +1,11 @@
+if (!TS_weather_system_enabled) exitWith {
+    hintSilent parseText (
+        "<t size='1.2' color='#B8D8FF'>AIR CONTROL</t><br/><br/>" +
+        "<t color='#FFFFFF'>Dynamic weather system is currently disabled.</t><br/>" +
+        "<t color='#D6D6D6'>No forecast is available.</t>"
+    );
+};
+
 private _nextPreset = missionNamespace getVariable ["TS_weatherSystem_nextPreset", -1];
 
 if (_nextPreset < 0) exitWith {
