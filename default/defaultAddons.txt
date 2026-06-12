@@ -1390,6 +1390,9 @@ force TS_debug_enabled = false;
 force TS_maximum_altitude = 300;
 force TS_overcast_factor = 0.2;
 force TS_rain_factor = 0.5;
+force TS_weather_cycle_max_time = 1800;
+force TS_weather_cycle_min_time = 900;
+force TS_weather_system_enabled = true;
 force TS_wind_factor = 1;
 
 // Zeus Enhanced
