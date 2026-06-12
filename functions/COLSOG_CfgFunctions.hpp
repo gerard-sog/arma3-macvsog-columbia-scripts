@@ -39,6 +39,16 @@ class COLSOG {
         class gunshotSensor {postInit = 1;};
         class engineSensor {postInit = 1;};
         class gravitySensor {postInit = 1;};
+
+        class createGravitySensor
+        {
+            file = "functions\sensors\gravity\fn_createGravitySensor.sqf";
+        };
+
+        class addGravitySensorActions
+        {
+            file = "functions\sensors\gravity\fn_addGravitySensorActions.sqf";
+        };
     };
     class Intel
     {
