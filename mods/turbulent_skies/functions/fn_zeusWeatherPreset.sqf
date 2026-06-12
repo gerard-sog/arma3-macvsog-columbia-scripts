@@ -16,23 +16,28 @@ private _onConfirm = {
             [0, 0, 0.1, 45, [0.3, 0.3, true], "CALM"]
         };
 
-        // Transition toward rainy
+        // Transition toward overcast
         case 1: {
-            [0.25, 0.2, 0.3, 45, [0.8, 0.8, true], "CALM → RAINY"]
+            [0.5, 0, 0.2, 45, [0.5, 0.5, true], "CALM to OVERCAST"]
+        };
+
+        // Transition toward rainy
+        case 2: {
+            [0.7, 0.2, 0.3, 45, [0.8, 0.8, true], "OVERCAST to RAINY"]
         };
 
         // Moderate rainy weather
-        case 2: {
-            [0.5, 0.5, 0.5, 45, [1.5, 1.5, true], "RAINY"]
+        case 3: {
+            [0.85, 0.5, 0.5, 45, [1.5, 1.5, true], "RAINY"]
         };
 
         // Transition toward storm
-        case 3: {
-            [0.75, 0.75, 0.75, 45, [2.5, 2.5, true], "RAINY → STORMY"]
+        case 4: {
+            [0.95, 0.75, 0.75, 45, [2.5, 2.5, true], "RAINY to STORMY"]
         };
 
         // Worst weather
-        case 4: {
+        case 5: {
             [1, 1, 1, 45, [3.5, 3.5, true], "STORMY"]
         };
 
@@ -43,7 +48,7 @@ private _onConfirm = {
 
     [
         "TS_applyWeatherPreset",
-        _weatherData + [_zeus]
+        _weatherData + [_zeus, _preset]
     ] call CBA_fnc_serverEvent;
 };
 
@@ -54,10 +59,11 @@ private _onConfirm = {
             "LIST",
             "Preset",
             [
-                [0, 1, 2, 3, 4],
+                [0, 1, 2, 3, 4, 5],
                 [
                     "CALM",
-                    "CALM to RAINY",
+                    "CALM to OVERCAST",
+                    "OVERCAST to RAINY",
                     "RAINY",
                     "RAINY to STORMY",
                     "STORMY"
