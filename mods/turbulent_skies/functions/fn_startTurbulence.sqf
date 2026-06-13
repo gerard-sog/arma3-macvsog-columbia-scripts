@@ -69,10 +69,20 @@ while {
                     {_severity > TS_damage_threshold} &&
                     {random 1 < 0.01}
                 ) then {
-                    private _newDamage =
-                        ((damage _heli) + random [0.005, 0.01, 0.02]) min 0.85;
+                    // 12–14 minutes to 50%
+                    private _newDamage = ((damage _heli) + random [0.008, 0.015, 0.03]) min 0.85;
 
                     _heli setDamage _newDamage;
+
+                    playSound3D [
+                        "A3\Sounds_F\vehicles\crashes\helis\Heli_crash_default_int_1.wss",
+                        _heli,
+                        false,
+                        getPosASL _heli,
+                        25,
+                        random [0.95, 1.0, 1.1],
+                        250
+                    ];
 
                     if (TS_debug_enabled) then {
                         systemChat format [
