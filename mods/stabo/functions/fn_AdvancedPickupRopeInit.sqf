@@ -72,15 +72,12 @@ APR_Add_Stabo_Sandbag_Action = {
 
 			_heli setVariable ["APR_STABO_Using_Player_Chain", true, true];
 
-			// Same current logic: only refresh to the sandbag when it is not frozen.
-			if !(_heli getVariable ["APR_STABO_Sandbag_Stuck", false]) then {
-				[_heli] spawn {
-					params ["_heli"];
+            [_heli] spawn {
+                params ["_heli"];
 
-					sleep 0.5;
-					[_heli] call APR_Refresh_Stabo_Bottom_Ropes;
-				};
-			};
+                sleep 0.5;
+                [_heli] call APR_Refresh_Stabo_Bottom_Ropes;
+            };
 		},
 		{},
 		[_heli],
@@ -97,6 +94,7 @@ APR_Stick_Stabo_Sandbag_To_Ground = {
 	if (isNull _droppedSandbag || {isNull _heli}) exitWith {objNull};
 
 	[_droppedSandbag, true] remoteExec ["hideObjectGlobal", 2];
+	_droppedSandbag enableSimulationGlobal false;
 
 	private _frozenSandbag = APR_STABO_SANDBAG_CLASS createVehicle (getPosATL _droppedSandbag);
 	_frozenSandbag allowDamage false;
@@ -110,7 +108,12 @@ APR_Stick_Stabo_Sandbag_To_Ground = {
 	[_frozenSandbag, _heli] call APR_Add_Stabo_Sandbag_Action;
 
 	// Same current logic: refresh after freezing.
-	[_heli] call APR_Refresh_Stabo_Bottom_Ropes;
+	[_heli] spawn {
+    	params ["_heli"];
+
+    	sleep 0.5;
+    	[_heli] call APR_Refresh_Stabo_Bottom_Ropes;
+    };
 
 	_frozenSandbag
 };
@@ -309,10 +312,7 @@ APR_Client_Refresh_Bottom_Rope = {
 
 	private _sandbag = objNull;
 
-	// Same current logic: only attach the last player's rope to the sandbag when the sandbag is not frozen.
-	if !(_heli getVariable ["APR_STABO_Sandbag_Stuck", false]) then {
-		_sandbag = _heli getVariable ["APR_STABO_Sandbag", objNull];
-	};
+	private _sandbag = _heli getVariable ["APR_STABO_Sandbag", objNull];
 
 	if (!isNull _sandbag) then {
 		private _bottomRopeLength = _rappelDevice distance _sandbag;
