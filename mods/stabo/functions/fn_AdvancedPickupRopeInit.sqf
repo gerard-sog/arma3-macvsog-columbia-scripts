@@ -57,14 +57,20 @@ APR_Client_Refresh_Bottom_Rope = {
 	};
 
 	if (_slotIndex == _lastOccupiedSlot) then {
-		private _bottomRope = ropeCreate [
-			_rappelDevice,
-			[-0.15, 0, 0],
-			APR_STABO_SEGMENT_LENGTH
-		];
+		private _totalRopeLength = APR_STABO_SEGMENT_COUNT * APR_STABO_SEGMENT_LENGTH;
+		private _usedRopeLength = (_slotIndex + 1) * APR_STABO_SEGMENT_LENGTH;
+		private _danglingRopeLength = _totalRopeLength - _usedRopeLength;
 
-		_bottomRope allowDamage false;
-		_unit setVariable ["APR_STABO_BottomRope", _bottomRope];
+		if (_danglingRopeLength > 0) then {
+			private _bottomRope = ropeCreate [
+				_rappelDevice,
+				[-0.15, 0, 0],
+				_danglingRopeLength
+			];
+
+			_bottomRope allowDamage false;
+			_unit setVariable ["APR_STABO_BottomRope", _bottomRope];
+		};
 	};
 };
 
