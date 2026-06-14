@@ -1,5 +1,8 @@
 /*
-	Advanced Pickup Rope - dedicated server safe version
+	STABO Pickup Rope
+
+	- Dedicated server safe
+	- Ground-only STABO extract action
 */
 
 APR_Pickup_Rope = {
@@ -27,7 +30,7 @@ APR_Pickup_Rope = {
 
 	if ((count _rappelPoints) == _rappelPointIndex) exitWith {
 		[
-			["All rappel anchors in use. Please try again.", false],
+			["All STABO pickup anchors in use. Please try again.", false],
 			"AR_Hint",
 			_player
 		] call AR_RemoteExec;
@@ -62,10 +65,13 @@ APR_Client_Pickup_Rope = {
 	if (!isPlayer _player) exitWith {};
 
 	[_player] orderGetIn false;
-	moveOut _player;
 
-	waitUntil {
-		vehicle _player == _player
+	if (vehicle _player != _player) then {
+		moveOut _player;
+
+		waitUntil {
+			vehicle _player == _player
+		};
 	};
 
 	private _rappelPointPosition = AGLToASL (_heli modelToWorldVisual _rappelPoint);
@@ -112,47 +118,6 @@ APR_Client_Pickup_Rope = {
 	_player setVariable ["AR_RANDOM_DECEND_SPEED_ADJUSTMENT", 0];
 	_player setVariable ["AR_ASCEND_PRESSED", false];
 
-	_ropeKeyDownHandler = (findDisplay 46) displayAddEventHandler ["KeyDown", {
-		if ((_this select 1) in (actionKeys "MoveBack")) then {
-			player setVariable ["AR_DECEND_PRESSED", true];
-		};
-
-		if ((_this select 1) in (actionKeys "Turbo")) then {
-			player setVariable ["AR_FAST_DECEND_PRESSED", true];
-		};
-
-		if ((_this select 1) in (actionKeys "MoveForward")) then {
-			player setVariable ["AR_ASCEND_PRESSED", true];
-		};
-	}];
-
-	_ropeKeyUpHandler = (findDisplay 46) displayAddEventHandler ["KeyUp", {
-		if ((_this select 1) in (actionKeys "MoveBack")) then {
-			player setVariable ["AR_DECEND_PRESSED", false];
-		};
-
-		if ((_this select 1) in (actionKeys "Turbo")) then {
-			player setVariable ["AR_FAST_DECEND_PRESSED", false];
-		};
-
-		if ((_this select 1) in (actionKeys "MoveForward")) then {
-			player setVariable ["AR_ASCEND_PRESSED", false];
-		};
-	}];
-
-	[_player, _heli] spawn {
-		params ["_player", "_heli"];
-
-		while {_player getVariable ["AR_Is_Rappelling", false]} do {
-			if (speed _heli > 150) then {
-				["Moving too fast! You've lost grip of the rope.", false] call AR_Hint;
-				[_player] call AR_Rappel_Detach_Action;
-			};
-
-			sleep 2;
-		};
-	};
-
 	while {true} do {
 		private _currentTime = diag_tickTime;
 		private _timeSinceLastUpdate = _currentTime - _lastTime;
@@ -192,33 +157,6 @@ APR_Client_Pickup_Rope = {
 
 		_player setVelocity [0, 0, 0];
 
-		if (_player getVariable ["AR_DECEND_PRESSED", false]) then {
-			private _decendSpeedMetersPerSecond = 3.5;
-
-			if (_player getVariable ["AR_FAST_DECEND_PRESSED", false]) then {
-				_decendSpeedMetersPerSecond = 5;
-			};
-
-			_decendSpeedMetersPerSecond = _decendSpeedMetersPerSecond + (_player getVariable ["AR_RANDOM_DECEND_SPEED_ADJUSTMENT", 0]);
-
-			_bottomRopeLength = _bottomRopeLength - (_timeSinceLastUpdate * _decendSpeedMetersPerSecond);
-			_topRopeLength = _topRopeLength + (_timeSinceLastUpdate * _decendSpeedMetersPerSecond);
-
-			ropeUnwind [_topRope, _decendSpeedMetersPerSecond, _topRopeLength];
-			ropeUnwind [_bottomRope, _decendSpeedMetersPerSecond, _bottomRopeLength];
-		} else {
-			if (_player getVariable ["AR_ASCEND_PRESSED", false]) then {
-				private _decendSpeedMetersPerSecond = 3.5;
-				_decendSpeedMetersPerSecond = _decendSpeedMetersPerSecond + (_player getVariable ["AR_RANDOM_DECEND_SPEED_ADJUSTMENT", 0]);
-
-				_bottomRopeLength = _bottomRopeLength + (_timeSinceLastUpdate * _decendSpeedMetersPerSecond);
-				_topRopeLength = _topRopeLength - (_timeSinceLastUpdate * _decendSpeedMetersPerSecond);
-
-				ropeUnwind [_topRope, _decendSpeedMetersPerSecond, _topRopeLength];
-				ropeUnwind [_bottomRope, _decendSpeedMetersPerSecond, _bottomRopeLength];
-			};
-		};
-
 		_dir = _dir + ((360 / 1000) * _dirSpinFactor);
 
 		private _currentDir = getDir _player;
@@ -256,21 +194,16 @@ APR_Client_Pickup_Rope = {
 
 		_lastPosition = _newPosition;
 
-		if (_player distance _heli < 3) then {
-			_player moveInCargo _heli;
-		};
-
 		if (
 			!alive _player ||
 			{vehicle _player != _player} ||
-			{_bottomRopeLength <= 1} ||
 			{_player getVariable ["AR_Detach_Rope", false]}
 		) exitWith {};
 
 		sleep 0.01;
 	};
 
-	if (_bottomRopeLength > 1 && {alive _player} && {vehicle _player == _player}) then {
+	if (alive _player && {vehicle _player == _player}) then {
 		private _playerStartASLIntersect = getPosASL _player;
 		private _playerEndASLIntersect = [
 			_playerStartASLIntersect select 0,
@@ -346,6 +279,9 @@ APR_Request_Pickup_Rope_Action = {
 	if (isNull _player || {isNull _vehicle}) exitWith {};
 	if (!isPlayer _player) exitWith {};
 
+	if (vehicle _player != _player) exitWith {};
+	if !(_vehicle isKindOf "Helicopter") exitWith {};
+
 	if ([_player, _vehicle] call AR_Rappel_From_Heli_Action_Check) then {
 		[_player, _vehicle] call APR_Pickup_Rope;
 	};
@@ -358,16 +294,21 @@ APR_Pickup_Rope_Add_Player_Actions = {
 	if (!isPlayer _player) exitWith {};
 
 	_player addAction [
-		"Request Pickup Rope",
+		"Request STABO Extract",
 		{
 			[player, cursorTarget] call APR_Request_Pickup_Rope_Action;
 		},
 		nil,
-		0,
+		1.5,
 		false,
 		true,
 		"",
-		"[player, cursorTarget] call AR_Rappel_From_Heli_Action_Check"
+		"
+			vehicle player == player
+			&& {!isNull cursorTarget}
+			&& {cursorTarget isKindOf 'Helicopter'}
+			&& {[player, cursorTarget] call AR_Rappel_From_Heli_Action_Check}
+		"
 	];
 
 	_player addEventHandler ["Respawn", {
