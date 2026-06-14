@@ -5,10 +5,68 @@
 	- Ground-only STABO extract action
 	- Works for players and Zeus remote-controlled AI
 	- 8 rope slots, 3.5m apart
+	- Only the last occupied slot has the dangling bottom rope
 */
 
 APR_STABO_SEGMENT_COUNT = 8;
 APR_STABO_SEGMENT_LENGTH = 3.5;
+
+APR_Refresh_Stabo_Bottom_Ropes = {
+	params ["_heli"];
+
+	if (isNull _heli) exitWith {};
+
+	if (!isServer) exitWith {
+		[_heli] remoteExecCall ["APR_Refresh_Stabo_Bottom_Ropes", 2];
+	};
+
+	for "_i" from 0 to (APR_STABO_SEGMENT_COUNT - 1) do {
+		private _unit = _heli getVariable ["APR_STABO_Player_" + str _i, objNull];
+
+		if (!isNull _unit && {alive _unit}) then {
+			[_unit, _heli] remoteExecCall ["APR_Client_Refresh_Bottom_Rope", owner _unit];
+		};
+	};
+};
+
+APR_Client_Refresh_Bottom_Rope = {
+	params ["_unit", "_heli"];
+
+	if (!local _unit) exitWith {};
+
+	private _oldBottomRope = _unit getVariable ["APR_STABO_BottomRope", objNull];
+
+	if (!isNull _oldBottomRope) then {
+		ropeDestroy _oldBottomRope;
+		_unit setVariable ["APR_STABO_BottomRope", objNull];
+	};
+
+	private _slotIndex = _unit getVariable ["APR_STABO_SlotIndex", -1];
+	private _rappelDevice = _unit getVariable ["APR_STABO_RappelDevice", objNull];
+
+	if (_slotIndex < 0 || {isNull _rappelDevice}) exitWith {};
+
+	private _lastOccupiedSlot = -1;
+
+	for "_i" from 0 to (APR_STABO_SEGMENT_COUNT - 1) do {
+		private _slotUnit = _heli getVariable ["APR_STABO_Player_" + str _i, objNull];
+
+		if (!isNull _slotUnit && {alive _slotUnit}) then {
+			_lastOccupiedSlot = _i;
+		};
+	};
+
+	if (_slotIndex == _lastOccupiedSlot) then {
+		private _bottomRope = ropeCreate [
+			_rappelDevice,
+			[-0.15, 0, 0],
+			APR_STABO_SEGMENT_LENGTH
+		];
+
+		_bottomRope allowDamage false;
+		_unit setVariable ["APR_STABO_BottomRope", _bottomRope];
+	};
+};
 
 APR_Pickup_Rope = {
 	params ["_unit", "_heli"];
@@ -68,6 +126,9 @@ APR_Pickup_Rope = {
 		_slotIndex
 	] remoteExec ["APR_Client_Pickup_Rope", owner _unit];
 
+	sleep 0.25;
+	[_heli] call APR_Refresh_Stabo_Bottom_Ropes;
+
 	[_unit, _heli, _slotIndex] spawn {
 		params ["_unit", "_heli", "_slotIndex"];
 
@@ -77,6 +138,8 @@ APR_Pickup_Rope = {
 		};
 
 		_heli setVariable ["APR_STABO_Player_" + str _slotIndex, nil, true];
+
+		[_heli] call APR_Refresh_Stabo_Bottom_Ropes;
 	};
 };
 
@@ -108,18 +171,9 @@ APR_Client_Pickup_Rope = {
 
 	[[_unit, _rappelDevice, _anchor], "AR_Play_Rappelling_Sounds_Global"] call AR_RemoteExecServer;
 
-	private _bottomRopeLength = 3;
-	private _bottomRope = ropeCreate [_rappelDevice, [-0.15, 0, 0], _bottomRopeLength];
-	_bottomRope allowDamage false;
+	_unit setVariable ["APR_STABO_RappelDevice", _rappelDevice];
+	_unit setVariable ["APR_STABO_BottomRope", objNull];
 
-	/*
-		STABO slot distance:
-		Slot 0 = 3.5m from helicopter
-		Slot 1 = 7.0m from helicopter
-		Slot 2 = 10.5m from helicopter
-		...
-		Slot 7 = 28.0m from helicopter
-	*/
 	private _topRopeLength = (_slotIndex + 1) * APR_STABO_SEGMENT_LENGTH;
 
 	private _topRope = ropeCreate [
@@ -149,14 +203,6 @@ APR_Client_Pickup_Rope = {
 	private _lookDirFreedom = 50;
 	private _dir = (random 360) + (_lookDirFreedom / 2);
 	private _dirSpinFactor = (((random 10) - 5) / 5) max 0.1;
-
-	private _ropeKeyDownHandler = -1;
-	private _ropeKeyUpHandler = -1;
-
-	_unit setVariable ["AR_DECEND_PRESSED", false];
-	_unit setVariable ["AR_FAST_DECEND_PRESSED", false];
-	_unit setVariable ["AR_RANDOM_DECEND_SPEED_ADJUSTMENT", 0];
-	_unit setVariable ["AR_ASCEND_PRESSED", false];
 
 	while {true} do {
 		private _currentTime = diag_tickTime;
@@ -198,39 +244,7 @@ APR_Client_Pickup_Rope = {
 		_unit setVelocity [0, 0, 0];
 
 		_dir = _dir + ((360 / 1000) * _dirSpinFactor);
-
-		private _currentDir = getDir _unit;
-		private _minDir = (_dir - (_lookDirFreedom / 2)) mod 360;
-		private _maxDir = (_dir + (_lookDirFreedom / 2)) mod 360;
-
-		private _minDegreesToMax = 0;
-		private _minDegreesToMin = 0;
-
-		if (_currentDir > _maxDir) then {
-			_minDegreesToMax = (_currentDir - _maxDir) min (360 - _currentDir + _maxDir);
-		};
-
-		if (_currentDir < _maxDir) then {
-			_minDegreesToMax = (_maxDir - _currentDir) min (360 - _maxDir + _currentDir);
-		};
-
-		if (_currentDir > _minDir) then {
-			_minDegreesToMin = (_currentDir - _minDir) min (360 - _currentDir + _minDir);
-		};
-
-		if (_currentDir < _minDir) then {
-			_minDegreesToMin = (_minDir - _currentDir) min (360 - _minDir + _currentDir);
-		};
-
-		if (_minDegreesToMin > _lookDirFreedom || {_minDegreesToMax > _lookDirFreedom}) then {
-			if (_minDegreesToMin < _minDegreesToMax) then {
-				_unit setDir _minDir;
-			} else {
-				_unit setDir _maxDir;
-			};
-		} else {
-			_unit setDir (_currentDir + ((360 / 1000) * _dirSpinFactor));
-		};
+		_unit setDir _dir;
 
 		_lastPosition = _newPosition;
 
@@ -243,55 +257,13 @@ APR_Client_Pickup_Rope = {
 		sleep 0.01;
 	};
 
-	if (alive _unit && {vehicle _unit == _unit}) then {
-		private _unitStartASLIntersect = getPosASL _unit;
-		private _unitEndASLIntersect = [
-			_unitStartASLIntersect select 0,
-			_unitStartASLIntersect select 1,
-			(_unitStartASLIntersect select 2) - 5
-		];
+	private _storedBottomRope = _unit getVariable ["APR_STABO_BottomRope", objNull];
 
-		private _surfaces = lineIntersectsSurfaces [
-			_unitStartASLIntersect,
-			_unitEndASLIntersect,
-			_unit,
-			objNull,
-			true,
-			10
-		];
-
-		private _intersectionASL = [];
-
-		{
-			scopeName "surfaceLoop";
-
-			private _intersectionObject = _x select 2;
-			private _objectFileName = str _intersectionObject;
-
-			if ((_objectFileName find " t_") == -1 && {(_objectFileName find " b_") == -1}) then {
-				_intersectionASL = _x select 0;
-				breakOut "surfaceLoop";
-			};
-		} forEach _surfaces;
-
-		if ((count _intersectionASL) != 0) then {
-			_unit allowDamage false;
-			_unit setPosASL _intersectionASL;
-		};
-
-		if (_unit getVariable ["AR_Detach_Rope", false]) then {
-			if ((count _intersectionASL) == 0) then {
-				_unit allowDamage true;
-			};
-		};
-
-		if (!isEngineOn _heli) then {
-			_unit allowDamage true;
-		};
+	if (!isNull _storedBottomRope) then {
+		ropeDestroy _storedBottomRope;
 	};
 
 	ropeDestroy _topRope;
-	ropeDestroy _bottomRope;
 
 	deleteVehicle _anchor;
 	deleteVehicle _rappelDevice;
@@ -300,14 +272,8 @@ APR_Client_Pickup_Rope = {
 	_unit setVariable ["AR_Rappelling_Vehicle", nil, true];
 	_unit setVariable ["AR_Detach_Rope", nil];
 	_unit setVariable ["APR_STABO_SlotIndex", nil, true];
-
-	if (_ropeKeyDownHandler != -1) then {
-		(findDisplay 46) displayRemoveEventHandler ["KeyDown", _ropeKeyDownHandler];
-	};
-
-	if (_ropeKeyUpHandler != -1) then {
-		(findDisplay 46) displayRemoveEventHandler ["KeyUp", _ropeKeyUpHandler];
-	};
+	_unit setVariable ["APR_STABO_RappelDevice", nil];
+	_unit setVariable ["APR_STABO_BottomRope", nil];
 
 	sleep 2;
 
