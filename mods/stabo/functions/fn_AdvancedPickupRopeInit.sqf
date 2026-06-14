@@ -3,76 +3,92 @@
 
 	- Dedicated server safe
 	- Ground-only STABO extract action
+	- Works for players and Zeus remote-controlled AI
+	- 8 rope slots, 3.5m apart
 */
 
-APR_Pickup_Rope = {
-	params ["_player", "_heli"];
+APR_STABO_SEGMENT_COUNT = 8;
+APR_STABO_SEGMENT_LENGTH = 3.5;
 
-	if (isNull _player || {isNull _heli}) exitWith {};
-	if (!isPlayer _player) exitWith {};
+APR_Pickup_Rope = {
+	params ["_unit", "_heli"];
+
+	if (isNull _unit || {isNull _heli}) exitWith {};
+	if (!alive _unit) exitWith {};
+	if (vehicle _unit != _unit) exitWith {};
+	if !(_heli isKindOf "Helicopter") exitWith {};
 
 	if (!isServer) exitWith {
-		[_player, _heli] remoteExecCall ["APR_Pickup_Rope", 2];
+		[_unit, _heli] remoteExecCall ["APR_Pickup_Rope", 2];
 	};
 
-	if (_player getVariable ["AR_Is_Rappelling", false]) exitWith {};
+	if (_unit getVariable ["AR_Is_Rappelling", false]) exitWith {};
 
 	private _rappelPoints = [_heli] call AR_Get_Heli_Rappel_Points;
-	private _rappelPointIndex = 0;
 
-	{
-		private _rappellingPlayer = _heli getVariable ["AR_Rappelling_Player_" + str _rappelPointIndex, objNull];
-
-		if (isNull _rappellingPlayer) exitWith {};
-
-		_rappelPointIndex = _rappelPointIndex + 1;
-	} forEach _rappelPoints;
-
-	if ((count _rappelPoints) == _rappelPointIndex) exitWith {
-		[
-			["All STABO pickup anchors in use. Please try again.", false],
-			"AR_Hint",
-			_player
-		] call AR_RemoteExec;
+	if ((count _rappelPoints) == 0) exitWith {
+		if (isPlayer _unit) then {
+			[
+				["No STABO pickup anchor available on this helicopter.", false],
+				"AR_Hint",
+				_unit
+			] call AR_RemoteExec;
+		};
 	};
 
-	_heli setVariable ["AR_Rappelling_Player_" + str _rappelPointIndex, _player, true];
-	_player setVariable ["AR_Is_Rappelling", true, true];
+	private _rappelPoint = _rappelPoints select 0;
+	private _slotIndex = -1;
+
+	for "_i" from 0 to (APR_STABO_SEGMENT_COUNT - 1) do {
+		private _slotUnit = _heli getVariable ["APR_STABO_Player_" + str _i, objNull];
+
+		if (isNull _slotUnit || {!alive _slotUnit}) exitWith {
+			_slotIndex = _i;
+		};
+	};
+
+	if (_slotIndex < 0) exitWith {
+		if (isPlayer _unit) then {
+			[
+				["All STABO rope segments are in use. Please try again.", false],
+				"AR_Hint",
+				_unit
+			] call AR_RemoteExec;
+		};
+	};
+
+	_heli setVariable ["APR_STABO_Player_" + str _slotIndex, _unit, true];
+	_unit setVariable ["AR_Is_Rappelling", true, true];
+	_unit setVariable ["APR_STABO_SlotIndex", _slotIndex, true];
 
 	[
-		_player,
+		_unit,
 		_heli,
-		_rappelPoints select _rappelPointIndex
-	] remoteExec ["APR_Client_Pickup_Rope", owner _player];
+		_rappelPoint,
+		_slotIndex
+	] remoteExec ["APR_Client_Pickup_Rope", owner _unit];
 
-	[_player, _heli, _rappelPointIndex] spawn {
-		params ["_player", "_heli", "_rappelPointIndex"];
+	[_unit, _heli, _slotIndex] spawn {
+		params ["_unit", "_heli", "_slotIndex"];
 
 		waitUntil {
 			sleep 2;
-			!alive _player || {!(_player getVariable ["AR_Is_Rappelling", false])}
+			!alive _unit || {!(_unit getVariable ["AR_Is_Rappelling", false])}
 		};
 
-		_heli setVariable ["AR_Rappelling_Player_" + str _rappelPointIndex, nil, true];
+		_heli setVariable ["APR_STABO_Player_" + str _slotIndex, nil, true];
 	};
 };
 
 APR_Client_Pickup_Rope = {
-	params ["_player", "_heli", "_rappelPoint"];
+	params ["_unit", "_heli", "_rappelPoint", ["_slotIndex", 0]];
 
 	if (!hasInterface) exitWith {};
-	if (!local _player) exitWith {};
-	if (!isPlayer _player) exitWith {};
+	if (!local _unit) exitWith {};
+	if (!alive _unit) exitWith {};
+	if (vehicle _unit != _unit) exitWith {};
 
-	[_player] orderGetIn false;
-
-	if (vehicle _player != _player) then {
-		moveOut _player;
-
-		waitUntil {
-			vehicle _player == _player
-		};
-	};
+	[_unit] orderGetIn false;
 
 	private _rappelPointPosition = AGLToASL (_heli modelToWorldVisual _rappelPoint);
 
@@ -84,28 +100,52 @@ APR_Client_Pickup_Rope = {
 
 	_anchor attachTo [_heli, _rappelPoint];
 
-	private _rappelDevice = "B_static_AA_F" createVehicle position _player;
+	private _rappelDevice = "B_static_AA_F" createVehicle position _unit;
 	_rappelDevice allowDamage false;
 	hideObject _rappelDevice;
 
 	[[_rappelDevice], "AR_Hide_Object_Global"] call AR_RemoteExecServer;
 
-	[[_player, _rappelDevice, _anchor], "AR_Play_Rappelling_Sounds_Global"] call AR_RemoteExecServer;
+	[[_unit, _rappelDevice, _anchor], "AR_Play_Rappelling_Sounds_Global"] call AR_RemoteExecServer;
 
 	private _bottomRopeLength = 3;
 	private _bottomRope = ropeCreate [_rappelDevice, [-0.15, 0, 0], _bottomRopeLength];
 	_bottomRope allowDamage false;
 
-	private _topRopeLength = (getPos _heli select 2) + 3;
-	private _topRope = ropeCreate [_rappelDevice, [0, 0.15, 0], _anchor, [0, 0, 0], _topRopeLength];
+	/*
+		STABO slot distance:
+		Slot 0 = 3.5m from helicopter
+		Slot 1 = 7.0m from helicopter
+		Slot 2 = 10.5m from helicopter
+		...
+		Slot 7 = 28.0m from helicopter
+	*/
+	private _topRopeLength = (_slotIndex + 1) * APR_STABO_SEGMENT_LENGTH;
+
+	private _topRope = ropeCreate [
+		_rappelDevice,
+		[0, 0.15, 0],
+		_anchor,
+		[0, 0, 0],
+		_topRopeLength
+	];
+
 	_topRope allowDamage false;
 
-	[_player] spawn AR_Enable_Rappelling_Animation_Client;
+	[_unit] spawn AR_Enable_Rappelling_Animation_Client;
 
 	private _gravityAccelerationVec = [0, 0, -9.8];
 	private _velocityVec = [0, 0, 0];
 	private _lastTime = diag_tickTime;
-	private _lastPosition = AGLToASL (_rappelDevice modelToWorldVisual [0, 0, 0]);
+
+	private _heliPos = AGLToASL (_heli modelToWorldVisual _rappelPoint);
+
+	private _lastPosition = [
+		_heliPos select 0,
+		_heliPos select 1,
+		(_heliPos select 2) - _topRopeLength
+	];
+
 	private _lookDirFreedom = 50;
 	private _dir = (random 360) + (_lookDirFreedom / 2);
 	private _dirSpinFactor = (((random 10) - 5) / 5) max 0.1;
@@ -113,10 +153,10 @@ APR_Client_Pickup_Rope = {
 	private _ropeKeyDownHandler = -1;
 	private _ropeKeyUpHandler = -1;
 
-	_player setVariable ["AR_DECEND_PRESSED", false];
-	_player setVariable ["AR_FAST_DECEND_PRESSED", false];
-	_player setVariable ["AR_RANDOM_DECEND_SPEED_ADJUSTMENT", 0];
-	_player setVariable ["AR_ASCEND_PRESSED", false];
+	_unit setVariable ["AR_DECEND_PRESSED", false];
+	_unit setVariable ["AR_FAST_DECEND_PRESSED", false];
+	_unit setVariable ["AR_RANDOM_DECEND_SPEED_ADJUSTMENT", 0];
+	_unit setVariable ["AR_ASCEND_PRESSED", false];
 
 	while {true} do {
 		private _currentTime = diag_tickTime;
@@ -128,9 +168,9 @@ APR_Client_Pickup_Rope = {
 		};
 
 		private _environmentWindVelocity = wind;
-		private _playerWindVelocity = _velocityVec vectorMultiply -1;
+		private _unitWindVelocity = _velocityVec vectorMultiply -1;
 		private _helicopterWindVelocity = (vectorUp _heli) vectorMultiply -30;
-		private _totalWindVelocity = _environmentWindVelocity vectorAdd _playerWindVelocity vectorAdd _helicopterWindVelocity;
+		private _totalWindVelocity = _environmentWindVelocity vectorAdd _unitWindVelocity vectorAdd _helicopterWindVelocity;
 		private _totalWindForce = _totalWindVelocity vectorMultiply (9.8 / 53);
 
 		private _accelerationVec = _gravityAccelerationVec vectorAdd _totalWindForce;
@@ -147,19 +187,19 @@ APR_Client_Pickup_Rope = {
 		};
 
 		_rappelDevice setPosWorld (_lastPosition vectorAdd ((_newPosition vectorDiff _lastPosition) vectorMultiply 6));
-		_rappelDevice setVectorDir (vectorDir _player);
+		_rappelDevice setVectorDir (vectorDir _unit);
 
-		_player setPosWorld [
+		_unit setPosWorld [
 			_newPosition select 0,
 			_newPosition select 1,
 			(_newPosition select 2) - 0.6
 		];
 
-		_player setVelocity [0, 0, 0];
+		_unit setVelocity [0, 0, 0];
 
 		_dir = _dir + ((360 / 1000) * _dirSpinFactor);
 
-		private _currentDir = getDir _player;
+		private _currentDir = getDir _unit;
 		private _minDir = (_dir - (_lookDirFreedom / 2)) mod 360;
 		private _maxDir = (_dir + (_lookDirFreedom / 2)) mod 360;
 
@@ -184,37 +224,37 @@ APR_Client_Pickup_Rope = {
 
 		if (_minDegreesToMin > _lookDirFreedom || {_minDegreesToMax > _lookDirFreedom}) then {
 			if (_minDegreesToMin < _minDegreesToMax) then {
-				_player setDir _minDir;
+				_unit setDir _minDir;
 			} else {
-				_player setDir _maxDir;
+				_unit setDir _maxDir;
 			};
 		} else {
-			_player setDir (_currentDir + ((360 / 1000) * _dirSpinFactor));
+			_unit setDir (_currentDir + ((360 / 1000) * _dirSpinFactor));
 		};
 
 		_lastPosition = _newPosition;
 
 		if (
-			!alive _player ||
-			{vehicle _player != _player} ||
-			{_player getVariable ["AR_Detach_Rope", false]}
+			!alive _unit ||
+			{vehicle _unit != _unit} ||
+			{_unit getVariable ["AR_Detach_Rope", false]}
 		) exitWith {};
 
 		sleep 0.01;
 	};
 
-	if (alive _player && {vehicle _player == _player}) then {
-		private _playerStartASLIntersect = getPosASL _player;
-		private _playerEndASLIntersect = [
-			_playerStartASLIntersect select 0,
-			_playerStartASLIntersect select 1,
-			(_playerStartASLIntersect select 2) - 5
+	if (alive _unit && {vehicle _unit == _unit}) then {
+		private _unitStartASLIntersect = getPosASL _unit;
+		private _unitEndASLIntersect = [
+			_unitStartASLIntersect select 0,
+			_unitStartASLIntersect select 1,
+			(_unitStartASLIntersect select 2) - 5
 		];
 
 		private _surfaces = lineIntersectsSurfaces [
-			_playerStartASLIntersect,
-			_playerEndASLIntersect,
-			_player,
+			_unitStartASLIntersect,
+			_unitEndASLIntersect,
+			_unit,
 			objNull,
 			true,
 			10
@@ -235,18 +275,18 @@ APR_Client_Pickup_Rope = {
 		} forEach _surfaces;
 
 		if ((count _intersectionASL) != 0) then {
-			_player allowDamage false;
-			_player setPosASL _intersectionASL;
+			_unit allowDamage false;
+			_unit setPosASL _intersectionASL;
 		};
 
-		if (_player getVariable ["AR_Detach_Rope", false]) then {
+		if (_unit getVariable ["AR_Detach_Rope", false]) then {
 			if ((count _intersectionASL) == 0) then {
-				_player allowDamage true;
+				_unit allowDamage true;
 			};
 		};
 
 		if (!isEngineOn _heli) then {
-			_player allowDamage true;
+			_unit allowDamage true;
 		};
 	};
 
@@ -256,9 +296,10 @@ APR_Client_Pickup_Rope = {
 	deleteVehicle _anchor;
 	deleteVehicle _rappelDevice;
 
-	_player setVariable ["AR_Is_Rappelling", nil, true];
-	_player setVariable ["AR_Rappelling_Vehicle", nil, true];
-	_player setVariable ["AR_Detach_Rope", nil];
+	_unit setVariable ["AR_Is_Rappelling", nil, true];
+	_unit setVariable ["AR_Rappelling_Vehicle", nil, true];
+	_unit setVariable ["AR_Detach_Rope", nil];
+	_unit setVariable ["APR_STABO_SlotIndex", nil, true];
 
 	if (_ropeKeyDownHandler != -1) then {
 		(findDisplay 46) displayRemoveEventHandler ["KeyDown", _ropeKeyDownHandler];
@@ -270,33 +311,32 @@ APR_Client_Pickup_Rope = {
 
 	sleep 2;
 
-	_player allowDamage true;
+	_unit allowDamage true;
 };
 
 APR_Request_Pickup_Rope_Action = {
-	params ["_player", "_vehicle"];
+	params ["_unit", "_vehicle"];
 
-	if (isNull _player || {isNull _vehicle}) exitWith {};
-	if (!isPlayer _player) exitWith {};
+	if (isNull _unit || {isNull _vehicle}) exitWith {};
+	if (!alive _unit) exitWith {};
 
-	if (vehicle _player != _player) exitWith {};
+	if (vehicle _unit != _unit) exitWith {};
 	if !(_vehicle isKindOf "Helicopter") exitWith {};
 
-	if ([_player, _vehicle] call AR_Rappel_From_Heli_Action_Check) then {
-		[_player, _vehicle] call APR_Pickup_Rope;
-	};
+	[_unit, _vehicle] call APR_Pickup_Rope;
 };
 
 APR_Pickup_Rope_Add_Player_Actions = {
-	params ["_player"];
+	params ["_unit"];
 
-	if (isNull _player) exitWith {};
-	if (!isPlayer _player) exitWith {};
+	if (isNull _unit) exitWith {};
 
-	_player addAction [
+	_unit addAction [
 		"Request STABO Extract",
 		{
-			[player, cursorTarget] call APR_Request_Pickup_Rope_Action;
+			params ["_target", "_caller", "_actionId", "_arguments"];
+
+			[_target, cursorTarget] call APR_Request_Pickup_Rope_Action;
 		},
 		nil,
 		1.5,
@@ -304,29 +344,32 @@ APR_Pickup_Rope_Add_Player_Actions = {
 		true,
 		"",
 		"
-			vehicle player == player
+			alive _target
+			&& {vehicle _target == _target}
 			&& {!isNull cursorTarget}
 			&& {cursorTarget isKindOf 'Helicopter'}
-			&& {[player, cursorTarget] call AR_Rappel_From_Heli_Action_Check}
+			&& {!(_target getVariable ['AR_Is_Rappelling', false])}
 		"
 	];
 
-	_player addEventHandler ["Respawn", {
-		player setVariable ["APR_Pickup_Rope_Player_Actions_Loaded", false];
+	_unit addEventHandler ["Respawn", {
+		params ["_unit"];
+
+		_unit setVariable ["APR_Pickup_Rope_Player_Actions_Loaded", false];
 	}];
 };
 
 if (hasInterface) then {
 	[] spawn {
-		waitUntil {
-			!isNull player
-		};
-
 		while {true} do {
-			if !(player getVariable ["APR_Pickup_Rope_Player_Actions_Loaded", false]) then {
-				[player] call APR_Pickup_Rope_Add_Player_Actions;
-				player setVariable ["APR_Pickup_Rope_Player_Actions_Loaded", true];
-			};
+			{
+				if (local _x && {alive _x}) then {
+					if !(_x getVariable ["APR_Pickup_Rope_Player_Actions_Loaded", false]) then {
+						[_x] call APR_Pickup_Rope_Add_Player_Actions;
+						_x setVariable ["APR_Pickup_Rope_Player_Actions_Loaded", true];
+					};
+				};
+			} forEach allUnits;
 
 			sleep 5;
 		};
