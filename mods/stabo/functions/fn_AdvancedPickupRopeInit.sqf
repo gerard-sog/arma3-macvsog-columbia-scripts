@@ -33,6 +33,22 @@ APR_Has_Attached_Players = {
 	_hasPlayers
 };
 
+APR_Get_Last_Attached_Player = {
+	params ["_heli"];
+
+	private _lastUnit = objNull;
+
+	for "_i" from 0 to (APR_STABO_SEGMENT_COUNT - 1) do {
+		private _unit = _heli getVariable ["APR_STABO_Player_" + str _i, objNull];
+
+		if (!isNull _unit && {alive _unit}) then {
+			_lastUnit = _unit;
+		};
+	};
+
+	_lastUnit
+};
+
 APR_Reset_Stabo_Sandbag_State = {
 	params ["_heli"];
 
@@ -110,18 +126,31 @@ APR_Add_Stabo_Sandbag_Action = {
 				_heli setVariable ["APR_STABO_Rope", objNull, true];
 			};
 
+			private _droppedSandbag = _heli getVariable ["APR_STABO_DroppedSandbag", objNull];
+			private _frozenSandbag = _heli getVariable ["APR_STABO_Sandbag", objNull];
+
+			if (
+				!isNull _droppedSandbag
+				&& {!isNull _frozenSandbag}
+				&& {_heli getVariable ["APR_STABO_Sandbag_Stuck", false]}
+			) then {
+				_droppedSandbag setPosATL getPosATL _frozenSandbag;
+				_droppedSandbag enableSimulationGlobal false;
+				[_droppedSandbag, true] remoteExec ["hideObjectGlobal", 2];
+			};
+
 			_heli setVariable ["APR_STABO_Using_Player_Chain", true, true];
 
-            [_heli] spawn {
-                params ["_heli"];
+			[_heli] spawn {
+				params ["_heli"];
 
-                sleep 0.5;
-                [_heli] call APR_Refresh_Stabo_Bottom_Ropes;
-            };
+				sleep 0.5;
+				[_heli] call APR_Refresh_Stabo_Bottom_Ropes;
+			};
 		},
 		{},
 		[_heli],
-		3,
+		1,
 		0,
 		false,
 		false
@@ -191,7 +220,7 @@ APR_Unstick_Stabo_Sandbag = {
 	[_droppedSandbag, false] remoteExec ["hideObjectGlobal", 2];
 
 	_droppedSandbag setPosATL _groundPos;
-	_droppedSandbag enableSimulationGlobal true;
+	_droppedSandbag enableSimulationGlobal false;
 	_droppedSandbag allowDamage false;
 
 	_heli setVariable ["APR_STABO_Sandbag", _droppedSandbag, true];
@@ -205,6 +234,42 @@ APR_Unstick_Stabo_Sandbag = {
 		sleep 0.5;
 		[_heli] call APR_Refresh_Stabo_Bottom_Ropes;
 	};
+
+	[_heli, _droppedSandbag] spawn {
+    	params ["_heli", "_sandbag"];
+
+    	while {
+    		!isNull _heli
+    		&& {!isNull _sandbag}
+    		&& {_heli getVariable ["APR_STABO_Sandbag_Deployed", false]}
+    		&& {!(_heli getVariable ["APR_STABO_Sandbag_Stuck", false])}
+    		&& {[_heli] call APR_Has_Attached_Players}
+    	} do {
+    		private _lastUnit = [_heli] call APR_Get_Last_Attached_Player;
+
+    		if (!isNull _lastUnit) then {
+    			private _rappelDevice =
+    				_lastUnit getVariable ["APR_STABO_RappelDevice", objNull];
+
+    			if (!isNull _rappelDevice) then {
+    				private _pos = getPosATL _rappelDevice;
+					private _slotIndex = _lastUnit getVariable ["APR_STABO_SlotIndex", -1];
+					private _usedRopeLength = (_slotIndex + 1) * APR_STABO_SEGMENT_LENGTH;
+					private _remainingRopeLength = APR_STABO_ROPE_LENGTH - _usedRopeLength;
+
+					if (_remainingRopeLength > 0) then {
+						_sandbag setPosATL [
+							_pos select 0,
+							_pos select 1,
+							((_pos select 2) - _remainingRopeLength) max 0
+						];
+					};
+    			};
+    		};
+
+    		sleep 0.05;
+    	};
+    };
 };
 
 APR_Monitor_Stabo_Sandbag = {
@@ -333,6 +398,20 @@ APR_Detach_STABO = {
 	[_heli] call APR_Reset_Stabo_Sandbag_State;
 };
 
+
+
+APR_Detach_Unit_From_STABO = {
+	params ["_unit"];
+
+	if (isNull _unit) exitWith {};
+
+	if (!isServer) exitWith {
+		[_unit] remoteExecCall ["APR_Detach_Unit_From_STABO", 2];
+	};
+
+	_unit setVariable ["AR_Detach_Rope", true, true];
+};
+
 APR_Refresh_Stabo_Bottom_Ropes = {
 	params ["_heli"];
 
@@ -346,7 +425,17 @@ APR_Refresh_Stabo_Bottom_Ropes = {
 		private _unit = _heli getVariable ["APR_STABO_Player_" + str _i, objNull];
 
 		if (!isNull _unit && {alive _unit}) then {
-			[_unit, _heli] remoteExecCall ["APR_Client_Refresh_Bottom_Rope", owner _unit];
+			private _targetOwner = owner _unit;
+
+            if (!isPlayer _unit) then {
+            	private _controller = remoteControlled _unit;
+
+            	if (!isNull _controller) then {
+            		_targetOwner = owner _controller;
+            	};
+            };
+
+            [_unit, _heli] remoteExecCall ["APR_Client_Refresh_Bottom_Rope", _targetOwner];
 		};
 	};
 };
@@ -383,18 +472,21 @@ APR_Client_Refresh_Bottom_Rope = {
 	private _sandbag = _heli getVariable ["APR_STABO_Sandbag", objNull];
 
 	if (!isNull _sandbag) then {
-		private _bottomRopeLength = _rappelDevice distance _sandbag;
+		private _usedRopeLength = (_slotIndex + 1) * APR_STABO_SEGMENT_LENGTH;
+        private _bottomRopeLength = APR_STABO_ROPE_LENGTH - _usedRopeLength;
 
-		private _bottomRope = ropeCreate [
-			_rappelDevice,
-			[-0.15, 0, 0],
-			_sandbag,
-			[0, 0, 0],
-			_bottomRopeLength
-		];
+        if (_bottomRopeLength > 0) then {
+            private _bottomRope = ropeCreate [
+                _rappelDevice,
+                [-0.15, 0, 0],
+                _sandbag,
+                [0, 0, 0],
+                _bottomRopeLength
+            ];
 
-		_bottomRope allowDamage false;
-		_unit setVariable ["APR_STABO_BottomRope", _bottomRope];
+            _bottomRope allowDamage false;
+            _unit setVariable ["APR_STABO_BottomRope", _bottomRope];
+        };
 	} else {
 		private _usedRopeLength = (_slotIndex + 1) * APR_STABO_SEGMENT_LENGTH;
 		private _danglingRopeLength = APR_STABO_ROPE_LENGTH - _usedRopeLength;
@@ -463,12 +555,22 @@ APR_Pickup_Rope = {
 	_unit setVariable ["AR_Is_Rappelling", true, true];
 	_unit setVariable ["APR_STABO_SlotIndex", _slotIndex, true];
 
+	private _targetOwner = owner _unit;
+
+	if (!isPlayer _unit) then {
+		private _remoteController = remoteControlled _unit;
+
+		if (!isNull _remoteController) then {
+			_targetOwner = owner _remoteController;
+		};
+	};
+
 	[
 		_unit,
 		_heli,
 		_rappelPoint,
 		_slotIndex
-	] remoteExec ["APR_Client_Pickup_Rope", owner _unit];
+	] remoteExec ["APR_Client_Pickup_Rope", _targetOwner];
 
 	sleep 0.25;
 	[_heli] call APR_Refresh_Stabo_Bottom_Ropes;
@@ -519,7 +621,7 @@ APR_Client_Pickup_Rope = {
 
 	[[_unit, _rappelDevice, _anchor], "AR_Play_Rappelling_Sounds_Global"] call AR_RemoteExecServer;
 
-	_unit setVariable ["APR_STABO_RappelDevice", _rappelDevice];
+	_unit setVariable ["APR_STABO_RappelDevice", _rappelDevice, true];
 	_unit setVariable ["APR_STABO_BottomRope", objNull];
 
 	private _topRopeLength = (_slotIndex + 1) * APR_STABO_SEGMENT_LENGTH;
@@ -620,8 +722,8 @@ APR_Client_Pickup_Rope = {
 	_unit setVariable ["AR_Rappelling_Vehicle", nil, true];
 	_unit setVariable ["AR_Detach_Rope", nil];
 	_unit setVariable ["APR_STABO_SlotIndex", nil, true];
-	_unit setVariable ["APR_STABO_RappelDevice", nil];
-	_unit setVariable ["APR_STABO_BottomRope", nil];
+    _unit setVariable ["APR_STABO_RappelDevice", nil, true];
+    _unit setVariable ["APR_STABO_BottomRope", nil, true];
 
 	sleep 2;
 
@@ -685,6 +787,24 @@ APR_Pickup_Rope_Add_Player_Actions = {
     		&& {!([vehicle _this] call APR_Has_Attached_Players)}
     	"
     ];
+
+	_unit addAction [
+		"Detach from STABO",
+		{
+			params ["_target", "_caller", "_actionId", "_arguments"];
+
+			[_target] call APR_Detach_Unit_From_STABO;
+		},
+		nil,
+		1.5,
+		false,
+		true,
+		"",
+		"
+			alive _target
+			&& {_target getVariable ['AR_Is_Rappelling', false]}
+		"
+	];
 
 	_unit addEventHandler ["Respawn", {
 		params ["_unit"];
