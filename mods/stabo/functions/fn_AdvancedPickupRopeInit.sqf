@@ -263,6 +263,36 @@ APR_Drop_STABO_Sandbag = {
 	[_droppedSandbag, _heli] spawn APR_Monitor_Stabo_Sandbag;
 };
 
+APR_Detach_STABO = {
+	params ["_heli"];
+
+	if (isNull _heli) exitWith {};
+
+	if (!isServer) exitWith {
+		[_heli] remoteExecCall ["APR_Detach_STABO", 2];
+	};
+
+	if ([_heli] call APR_Has_Attached_Players) exitWith {};
+
+	private _rope = _heli getVariable ["APR_STABO_Rope", objNull];
+	private _droppedSandbag = _heli getVariable ["APR_STABO_DroppedSandbag", objNull];
+	private _sandbag = _heli getVariable ["APR_STABO_Sandbag", objNull];
+
+	if (!isNull _rope) then {
+		ropeDestroy _rope;
+	};
+
+	if (!isNull _droppedSandbag) then {
+		deleteVehicle _droppedSandbag;
+	};
+
+	if (!isNull _sandbag && {_sandbag != _droppedSandbag}) then {
+		deleteVehicle _sandbag;
+	};
+
+	[_heli] call APR_Reset_Stabo_Sandbag_State;
+};
+
 APR_Refresh_Stabo_Bottom_Ropes = {
 	params ["_heli"];
 
@@ -592,6 +622,27 @@ APR_Pickup_Rope_Add_Player_Actions = {
 			&& {!((vehicle _this) getVariable ['APR_STABO_Sandbag_Deployed', false])}
 		"
 	];
+
+	_unit addAction [
+    	"Detach STABO",
+    	{
+    		params ["_target", "_caller", "_actionId", "_arguments"];
+
+    		[vehicle _caller] call APR_Detach_STABO;
+    	},
+    	nil,
+    	1.5,
+    	false,
+    	true,
+    	"",
+    	"
+    		alive _this
+    		&& {vehicle _this != _this}
+    		&& {(vehicle _this) isKindOf 'Helicopter'}
+    		&& {(vehicle _this) getVariable ['APR_STABO_Sandbag_Deployed', false]}
+    		&& {!([vehicle _this] call APR_Has_Attached_Players)}
+    	"
+    ];
 
 	_unit addEventHandler ["Respawn", {
 		params ["_unit"];
