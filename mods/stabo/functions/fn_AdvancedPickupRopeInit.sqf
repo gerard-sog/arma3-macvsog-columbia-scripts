@@ -44,6 +44,46 @@ APR_Reset_Stabo_Sandbag_State = {
 	_heli setVariable ["APR_STABO_Using_Player_Chain", false, true];
 };
 
+APR_Restore_Stabo_Sandbag_Rope = {
+	params ["_heli"];
+
+	if (isNull _heli) exitWith {};
+
+	if (!isServer) exitWith {
+		[_heli] remoteExecCall ["APR_Restore_Stabo_Sandbag_Rope", 2];
+	};
+
+	if ([_heli] call APR_Has_Attached_Players) exitWith {};
+	if !(_heli getVariable ["APR_STABO_Sandbag_Deployed", false]) exitWith {};
+
+	private _oldRope = _heli getVariable ["APR_STABO_Rope", objNull];
+
+	if (!isNull _oldRope) then {
+		ropeDestroy _oldRope;
+	};
+
+	private _sandbag = _heli getVariable ["APR_STABO_Sandbag", objNull];
+
+	if (isNull _sandbag) exitWith {};
+
+	private _newRope = ropeCreate [
+		_heli,
+		[0, 0, 0],
+		_sandbag,
+		[0, 0, 0],
+		APR_STABO_ROPE_LENGTH,
+		nil,
+		nil,
+		nil,
+		63
+	];
+
+	_newRope allowDamage false;
+
+	_heli setVariable ["APR_STABO_Rope", _newRope, true];
+	_heli setVariable ["APR_STABO_Using_Player_Chain", false, true];
+};
+
 APR_Add_Stabo_Sandbag_Action = {
 	params ["_frozenSandbag", "_heli"];
 
@@ -340,8 +380,6 @@ APR_Client_Refresh_Bottom_Rope = {
 
 	if (_slotIndex != _lastOccupiedSlot) exitWith {};
 
-	private _sandbag = objNull;
-
 	private _sandbag = _heli getVariable ["APR_STABO_Sandbag", objNull];
 
 	if (!isNull _sandbag) then {
@@ -443,9 +481,13 @@ APR_Pickup_Rope = {
 			!alive _unit || {!(_unit getVariable ["AR_Is_Rappelling", false])}
 		};
 
-		_heli setVariable ["APR_STABO_Player_" + str _slotIndex, nil, true];
+        _heli setVariable ["APR_STABO_Player_" + str _slotIndex, nil, true];
 
-		[_heli] call APR_Refresh_Stabo_Bottom_Ropes;
+        [_heli] call APR_Refresh_Stabo_Bottom_Ropes;
+
+        if (!([_heli] call APR_Has_Attached_Players)) then {
+            [_heli] call APR_Restore_Stabo_Sandbag_Rope;
+        };
 	};
 };
 
