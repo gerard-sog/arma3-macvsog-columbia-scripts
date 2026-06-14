@@ -10,6 +10,133 @@
 
 APR_STABO_SEGMENT_COUNT = 8;
 APR_STABO_SEGMENT_LENGTH = 3.5;
+APR_STABO_ROPE_LENGTH = APR_STABO_SEGMENT_COUNT * APR_STABO_SEGMENT_LENGTH;
+APR_STABO_SANDBAG_CLASS = "vn_prop_sandbag_01";
+
+APR_Drop_STABO_Sandbag = {
+	params ["_unit", "_heli"];
+
+	if (isNull _unit || {isNull _heli}) exitWith {};
+	if (!alive _unit) exitWith {};
+	if !(_heli isKindOf "Helicopter") exitWith {};
+	if (vehicle _unit != _heli) exitWith {};
+
+	if (!isServer) exitWith {
+		[_unit, _heli] remoteExecCall ["APR_Drop_STABO_Sandbag", 2];
+	};
+
+	if (_heli getVariable ["APR_STABO_Sandbag_Deployed", false]) exitWith {};
+
+	_heli setVariable ["APR_STABO_Sandbag_Deployed", true, true];
+
+	private _pos = getPosATL _heli;
+	_pos set [2, 0];
+
+	private _droppedSandbag = APR_STABO_SANDBAG_CLASS createVehicle ATLToASL _pos;
+	_droppedSandbag allowDamage false;
+
+	private _staboRope = ropeCreate [
+		_heli,
+		[0, 0, 0],
+		_droppedSandbag,
+		[0, 0, 0],
+		APR_STABO_ROPE_LENGTH,
+		nil,
+		nil,
+		nil,
+		63
+	];
+
+	_staboRope allowDamage false;
+
+	_heli setVariable ["APR_STABO_Rope", _staboRope, true];
+	_heli setVariable ["APR_STABO_DroppedSandbag", _droppedSandbag, true];
+
+	[_droppedSandbag, _heli] spawn {
+		params ["_droppedSandbag", "_heli"];
+
+		waitUntil {
+			sleep 0.25;
+			isNull _droppedSandbag
+			|| {isNull _heli}
+			|| {((getPos _droppedSandbag) select 2) <= 0.25}
+		};
+
+		if (isNull _droppedSandbag || {isNull _heli}) exitWith {};
+
+		private _crew = crew _heli;
+		["Sandbag touching ground!", -1, 1, 2, 0] remoteExec ["BIS_fnc_dynamicText", _crew];
+
+		[_droppedSandbag, true] remoteExec ["hideObjectGlobal", 2];
+
+		private _frozenSandbag = APR_STABO_SANDBAG_CLASS createVehicle (getPosATL _droppedSandbag);
+		_frozenSandbag allowDamage false;
+		_frozenSandbag enableSimulationGlobal false;
+
+		_frozenSandbag setVariable ["APR_STABO_ParentHelicopter", _heli, true];
+
+		_heli setVariable ["APR_STABO_Sandbag", _frozenSandbag, true];
+
+		[
+			_frozenSandbag,
+			"Attach STABO rig",
+			"\z\ace\addons\fastroping\UI\Icon_Waypoint.paa",
+			"\z\ace\addons\fastroping\UI\Icon_Waypoint.paa",
+			"(_this distance _target < 6) && {((_target getVariable ['APR_STABO_ParentHelicopter', objNull]) getVariable ['APR_STABO_Sandbag_Deployed', false])}",
+			"true",
+			{},
+			{},
+            {
+                params ["_target", "_caller", "_actionId", "_arguments"];
+
+                private _heli = _arguments select 0;
+
+                // Attach player to STABO
+                [_caller, _heli] call APR_Pickup_Rope;
+
+                // Delete original heli -> sandbag rope
+                private _rope = _heli getVariable ["APR_STABO_Rope", objNull];
+
+                if (!isNull _rope) then {
+                    ropeDestroy _rope;
+                    _heli setVariable ["APR_STABO_Rope", objNull, true];
+                };
+
+                // Mark rope as transitioned to player chain
+                _heli setVariable ["APR_STABO_Using_Player_Chain", true, true];
+
+                // Refresh dangling rope so last player now connects to sandbag
+                [_heli] spawn {
+                    params ["_heli"];
+
+                    sleep 0.5;
+                    [_heli] call APR_Refresh_Stabo_Bottom_Ropes;
+                };
+            },
+			{},
+			[_heli],
+			3,
+			0,
+			false,
+			false
+		] remoteExec ["BIS_fnc_holdActionAdd", 0];
+
+		[
+			[(_heli getVariable "APR_STABO_Rope"), _droppedSandbag, _frozenSandbag],
+			{
+				params ["_rope", "_invisibleSandbag", "_frozenSandbag"];
+
+				while {!isNull _rope} do {
+					sleep 1;
+
+					if ((_invisibleSandbag distance _frozenSandbag) > 0.5) then {
+						_invisibleSandbag setPosATL getPosATL _frozenSandbag;
+					};
+				};
+			}
+		] remoteExecCall ["spawn", 2, false];
+	};
+};
 
 APR_Refresh_Stabo_Bottom_Ropes = {
 	params ["_heli"];
@@ -56,10 +183,26 @@ APR_Client_Refresh_Bottom_Rope = {
 		};
 	};
 
-	if (_slotIndex == _lastOccupiedSlot) then {
-		private _totalRopeLength = APR_STABO_SEGMENT_COUNT * APR_STABO_SEGMENT_LENGTH;
+	if (_slotIndex != _lastOccupiedSlot) exitWith {};
+
+	private _sandbag = _heli getVariable ["APR_STABO_Sandbag", objNull];
+
+	if (!isNull _sandbag) then {
+		private _bottomRopeLength = _rappelDevice distance _sandbag;
+
+		private _bottomRope = ropeCreate [
+			_rappelDevice,
+			[-0.15, 0, 0],
+			_sandbag,
+			[0, 0, 0],
+			_bottomRopeLength
+		];
+
+		_bottomRope allowDamage false;
+		_unit setVariable ["APR_STABO_BottomRope", _bottomRope];
+	} else {
 		private _usedRopeLength = (_slotIndex + 1) * APR_STABO_SEGMENT_LENGTH;
-		private _danglingRopeLength = _totalRopeLength - _usedRopeLength;
+		private _danglingRopeLength = APR_STABO_ROPE_LENGTH - _usedRopeLength;
 
 		if (_danglingRopeLength > 0) then {
 			private _bottomRope = ropeCreate [
@@ -303,26 +446,25 @@ APR_Pickup_Rope_Add_Player_Actions = {
 
 	if (isNull _unit) exitWith {};
 
-	_unit addAction [
-		"Request STABO Extract",
-		{
-			params ["_target", "_caller", "_actionId", "_arguments"];
+    _unit addAction [
+        "Deploy STABO",
+        {
+            params ["_target", "_caller", "_actionId", "_arguments"];
 
-			[_target, cursorTarget] call APR_Request_Pickup_Rope_Action;
-		},
-		nil,
-		1.5,
-		false,
-		true,
-		"",
-		"
-			alive _target
-			&& {vehicle _target == _target}
-			&& {!isNull cursorTarget}
-			&& {cursorTarget isKindOf 'Helicopter'}
-			&& {!(_target getVariable ['AR_Is_Rappelling', false])}
-		"
-	];
+            [_caller, vehicle _caller] call APR_Drop_STABO_Sandbag;
+        },
+        nil,
+        1.5,
+        false,
+        true,
+        "",
+        "
+            alive _this
+            && {vehicle _this != _this}
+            && {(vehicle _this) isKindOf 'Helicopter'}
+            && {!((vehicle _this) getVariable ['APR_STABO_Sandbag_Deployed', false])}
+        "
+    ];
 
 	_unit addEventHandler ["Respawn", {
 		params ["_unit"];
