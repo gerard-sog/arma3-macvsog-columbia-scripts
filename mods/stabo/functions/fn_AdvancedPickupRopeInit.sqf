@@ -429,13 +429,6 @@ APR_Pickup_Rope = {
 		};
 	};
 
-	private _deployRope = _heli getVariable ["APR_STABO_Rope", objNull];
-
-	if (!isNull _deployRope) then {
-		ropeDestroy _deployRope;
-		_heli setVariable ["APR_STABO_Rope", objNull, true];
-	};
-
 	_heli setVariable ["APR_STABO_Using_Player_Chain", true, true];
 	_heli setVariable ["APR_STABO_Player_" + str _slotIndex, _unit, true];
 
