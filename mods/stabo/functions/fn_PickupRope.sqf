@@ -23,7 +23,7 @@ if ((count _rappelPoints) == 0) exitWith {
 private _slotIndex = [_heli] call Dash_fnc_FindFreeSlot;
 
 if (_slotIndex < 0) exitWith {
-	private _message = format ["All STABO rope segments are occupied (%1/%1).", APR_STABO_SEGMENT_COUNT];
+	private _message = format ["All STABO rope segments are occupied (%1/%1).", call APR_STABO_GetSlotCount];
 
 	if (isPlayer _unit) then {
 		[_message, -1, 1, 2, 0] remoteExec ["BIS_fnc_dynamicText", owner _unit];

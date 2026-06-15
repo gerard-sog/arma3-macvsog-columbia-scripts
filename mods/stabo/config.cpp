@@ -5,7 +5,10 @@ class CfgPatches
 		units[] = {};
 		weapons[] = {};
 		requiredVersion = 1.0;
-		requiredAddons[] = {"AR_AdvancedRappelling", "cba_main"};
+		requiredAddons[] = {
+			"cba_main",
+			"AR_AdvancedRappelling"
+		};
 	};
 };
 
@@ -17,21 +20,37 @@ class CfgFunctions
 		{
 			file = "\stabo\functions";
 
-			class AdvancedPickupRopeInit { postInit = 1; };
+			class AdvancedPickupRopeInit {};
+			class DropStaboRope {};
+			class PickupRope {};
+			class ClientPickupRope {};
 			class AddPlayerActions {};
 			class AddSandbagHoldAction {};
 			class BreakDeployRope {};
-			class ClientPickupRope {};
+			class RefreshBottomRopes {};
 			class ClientRefreshBottomRope {};
+			class ResetStaboState {};
+			class HasAttachedPlayers {};
+			class FindFreeSlot {};
 			class DetachStabo {};
 			class DetachUnitFromStabo {};
-			class DropStaboRope {};
-			class FindFreeSlot {};
-			class HasAttachedPlayers {};
-			class PickupRope {};
-			class RefreshBottomRopes {};
-			class ResetStaboState {};
 			class ServerKeepSandbagPinned {};
 		};
+	};
+};
+
+class Extended_PreInit_EventHandlers
+{
+	class Dash_AdvancedPickupRope_Settings
+	{
+		init = "call compile preprocessFileLineNumbers '\stabo\CBASettings.sqf'";
+	};
+};
+
+class Extended_PostInit_EventHandlers
+{
+	class Dash_AdvancedPickupRope
+	{
+		init = "call Dash_fnc_AdvancedPickupRopeInit";
 	};
 };

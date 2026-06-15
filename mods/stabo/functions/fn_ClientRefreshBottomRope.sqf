@@ -16,7 +16,7 @@ if (_slotIndex < 0 || {isNull _rappelDevice}) exitWith {};
 
 private _lastOccupiedSlot = -1;
 
-for "_i" from 0 to (APR_STABO_SEGMENT_COUNT - 1) do {
+for "_i" from 0 to ((call APR_STABO_GetSlotCount) - 1) do {
 	private _slotUnit = _heli getVariable ["APR_STABO_Player_" + str _i, objNull];
 
 	if (!isNull _slotUnit && {alive _slotUnit}) then {

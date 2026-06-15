@@ -1030,3 +1030,6 @@ in the main init.sqf and place down the [Cam Lao Nam borders composition](https:
 - Turbulent skies:
   - File: [config.cpp](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/mods/turbulent_skies/config.cpp)
   - Mod: https://steamcommunity.com/sharedfiles/filedetails/?id=3741553581
+- STABO Pickup Rope:
+  - File: [config.cpp](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/mods/stabo/config.cpp)
+  - Mod: https://steamcommunity.com/sharedfiles/filedetails/?id=XXXXXXXXXX

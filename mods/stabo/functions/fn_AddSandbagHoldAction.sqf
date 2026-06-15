@@ -33,7 +33,7 @@ _sandbag setVariable ["APR_STABO_HoldAction_Added_Local", true];
 	},
 	{},
 	[],
-	1,
+	APR_STABO_HOLD_DURATION,
 	6,
 	false,
 	false
