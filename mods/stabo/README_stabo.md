@@ -1,103 +1,82 @@
 # STABO Pickup Rope
 
-**Based on the original mod:**  
-[Advanced Pickup Rope by Dash](https://steamcommunity.com/sharedfiles/filedetails/?id=1667745333)
-
-Adds immersive **STABO helicopter pickup rope extraction** to **Arma 3**, updated for **multiplayer** and **dedicated servers**.
-
-Designed for:
-
-- MACV-SOG style missions
-
----
+STABO helicopter extraction system for **Arma 3**, inspired by **Advanced Pickup Rope by Dash** and built for **multiplayer** and **dedicated servers**.
 
 ## Features
 
-### Helicopter Pickup Rope
-
-Compatible helicopters gain an action:
+- Helicopter-deployed **STABO rope with sandbag**
+- Ground players attach using:
 
 ```text
-Request Pickup Rope
+Attach STABO rig
 ```
 
-Players can attach to a rope suspended from a helicopter and be extracted while airborne.
+- Multiple players can attach simultaneously
+- Dynamic rope lengths:
 
-### Rope Controls
+```text
+1st player → 3.5m  
+2nd player → 7m  
+3rd player → 10.5m
+```
 
-| Key | Action |
-|------|--------|
-| `W` | Ascend |
-| `S` | Descend |
-| `Shift` | Fast Descend |
-
-### Multiplayer & Dedicated Server Safe
-
+- Rope breaks if helicopter flies too far
+- Attached players remain connected
+- Crew can redeploy a new STABO rope
+- Zeus remote-controlled AI supported
 - Dedicated server compatible
-- Proper locality handling
-- No AI freezing
-- Multiplayer safe rope simulation
-- Server-authoritative pickup validation
-
-### Dynamic Rope Physics
-
-Simulated:
-
-- Gravity
-- Helicopter movement
-- Wind
-- Rope sway
-
-Players automatically re-enter the helicopter when close enough.
-
----
 
 ## Requirements
 
 Required mod:
 
-- [Advanced Rappelling](https://steamcommunity.com/sharedfiles/filedetails/?id=713709341)
+- **Advanced Rappelling**
 
----
+## Main Class
+
+The mod initializes through:
+
+```cpp
+class AdvancedPickupRopeInit
+{
+	postInit = 1;
+};
+```
+
+Main gameplay functions:
+
+```sqf
+Dash_fnc_DropStaboRope
+Dash_fnc_PickupRope
+Dash_fnc_ClientPickupRope
+```
 
 ## Usage
 
-1. Enter a compatible helicopter
-2. Open action menu
-3. Select:
+### Helicopter Crew
+
+Use the action menu:
 
 ```text
-Request Pickup Rope
+Drop STABO rope
 ```
 
-4. Ascend or descend while attached
+### Ground Players
 
----
+Use the sandbag hold action:
 
-## Testing
-
-Check mod loaded:
-
-```sqf
-hint str !isNil "APR_Pickup_Rope";
+```text
+Attach STABO rig
 ```
 
-Force rope pickup:
+Detach using:
 
-```sqf
-[player, vehicle player] call APR_Pickup_Rope;
+```text
+Detach Rappel Device
 ```
 
-Check helicopter compatibility:
-
-```sqf
-hint str ([player, vehicle player] call AR_Rappel_From_Heli_Action_Check);
-```
-
----
+(from **Advanced Rappelling**)
 
 ## Credits
 
-Original concept based on:
-
-[Advanced Pickup Rope by Dash](https://steamcommunity.com/sharedfiles/filedetails/?id=1667745333)
+Inspired by **Advanced Pickup Rope by Dash**: https://steamcommunity.com/sharedfiles/filedetails/?id=1667745333
