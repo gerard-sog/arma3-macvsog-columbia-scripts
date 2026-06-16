@@ -27,3 +27,31 @@
 	{},
 	true
 ] call CBA_fnc_addSetting;
+
+[
+	"APR_STABO_CLIMB_SUPPRESSION_ENABLED",
+	"CHECKBOX",
+	[
+		"Enable climb suppression",
+		"When enabled, STABO load directly reduces helicopter climb rate. At 100% sling load, the helicopter cannot gain altitude."
+	],
+	[CBA_SETTINGS_STABO, "Physics"],
+	true,
+	1,
+	{},
+	true
+] call CBA_fnc_addSetting;
+
+[
+	"APR_STABO_DEBUG_ENABLED",
+	"CHECKBOX",
+	[
+		"Enable STABO debug",
+		"Displays STABO debug information in systemChat."
+	],
+	[CBA_SETTINGS_STABO, "Debug"],
+	false,
+	1,
+	{},
+	false
+] call CBA_fnc_addSetting;

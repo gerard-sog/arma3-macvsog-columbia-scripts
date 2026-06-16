@@ -35,6 +35,8 @@ class CfgFunctions
 			class DetachStabo {};
 			class DetachUnitFromStabo {};
 			class ServerKeepSandbagPinned {};
+			class UpdateStaboDownwardForce {};
+            class ApplyStaboDownwardForce {};
 		};
 	};
 };

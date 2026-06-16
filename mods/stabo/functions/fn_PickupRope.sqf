@@ -50,6 +50,8 @@ if (!isPlayer _unit) then {
 _heli setVariable ["APR_STABO_Using_Player_Chain", true, true];
 _heli setVariable ["APR_STABO_Player_" + str _slotIndex, _unit, true];
 
+[_heli] call Dash_fnc_UpdateStaboDownwardForce;
+
 _unit setVariable ["AR_Is_Rappelling", true, true];
 _unit setVariable ["APR_STABO_SlotIndex", _slotIndex, true];
 
@@ -67,6 +69,9 @@ sleep 0.25;
 	};
 
 	_heli setVariable ["APR_STABO_Player_" + str _slotIndex, nil, true];
+
+	[_heli] call Dash_fnc_UpdateStaboDownwardForce;
+
 	[_heli] call Dash_fnc_RefreshBottomRopes;
 
 	if (!([_heli] call Dash_fnc_HasAttachedPlayers)) then {
