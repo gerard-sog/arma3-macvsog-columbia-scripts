@@ -1362,6 +1362,10 @@ force SSD_DS_r_general = 0.8;
 force SSD_DS_r_head = 0;
 force SSD_DS_r_stomach = 0.8;
 
+// STABO Pickup Rope
+force APR_STABO_HOLD_DURATION = 1;
+force APR_STABO_ROPE_LENGTH = 35;
+
 // Tao's Folding Map Rewrite
 force tao_rewrite_main_allowAdjust = 1;
 force tao_rewrite_main_allowPaperMapDarkening = true;
