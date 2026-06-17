@@ -43,6 +43,20 @@
 ] call CBA_fnc_addSetting;
 
 [
+	"APR_STABO_PLAYER_WEIGHT",
+	"SLIDER",
+	[
+		"STABO player weight",
+		"Weight in kg added for each player or AI attached to the STABO rope."
+	],
+	[CBA_SETTINGS_STABO, "Physics"],
+	[40, 150, 80, 0],
+	1,
+	{},
+	true
+] call CBA_fnc_addSetting;
+
+[
 	"APR_STABO_DEBUG_ENABLED",
 	"CHECKBOX",
 	[
