@@ -1,5 +1,8 @@
 params ["_unit"];
 
+if (!hasInterface) exitWith {};
+if (!local _unit) exitWith {};
+
 if (_unit getVariable ["SignalMirror_airScannerRunning", false]) exitWith {};
 
 _unit setVariable ["SignalMirror_airScannerRunning", true];
@@ -12,7 +15,9 @@ _unit setVariable ["SignalMirror_airScannerRunning", true];
     private _maxAngle = 30;
 
     while {
-        alive _unit
+        hasInterface
+        && {alive _unit}
+        && {local _unit}
         && {currentWeapon _unit == _requiredWeapon}
     } do {
         private _camPos = positionCameraToWorld [0,0,0];
@@ -46,6 +51,17 @@ _unit setVariable ["SignalMirror_airScannerRunning", true];
                 typeOf _best,
                 [_bestAngle, 1] call BIS_fnc_cutDecimals
             ];
+
+            private _signalPos = ASLToAGL getPosASLVisual _unit;
+
+            {
+                if (isPlayer _x) then {
+                    [_signalPos] remoteExecCall [
+                        "SignalMirror_fnc_showSignalMirrorIcon",
+                        owner _x
+                    ];
+                };
+            } forEach crew _best;
         };
 
         sleep 0.2;

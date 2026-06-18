@@ -20,6 +20,7 @@ class CfgFunctions
 
             class init {};
             class startAirScanner {};
+            class showSignalMirrorIcon {};
         };
     };
 };
