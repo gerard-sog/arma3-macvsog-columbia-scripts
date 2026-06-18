@@ -3,9 +3,9 @@ params ["_unit"];
 if (!hasInterface) exitWith {};
 if (!local _unit) exitWith {};
 
-if (_unit getVariable ["SignalMirror_airScannerRunning", false]) exitWith {};
+if (_unit getVariable ["SM_airScannerRunning", false]) exitWith {};
 
-_unit setVariable ["SignalMirror_airScannerRunning", true];
+_unit setVariable ["SM_airScannerRunning", true];
 
 [_unit] spawn {
     params ["_unit"];
@@ -57,7 +57,7 @@ _unit setVariable ["SignalMirror_airScannerRunning", true];
             {
                 if (isPlayer _x) then {
                     [_signalPos] remoteExecCall [
-                        "SignalMirror_fnc_showSignalMirrorIcon",
+                        "SM_fnc_showSignalMirrorIcon",
                         owner _x
                     ];
                 };
@@ -68,5 +68,5 @@ _unit setVariable ["SignalMirror_airScannerRunning", true];
     };
 
     hintSilent "";
-    _unit setVariable ["SignalMirror_airScannerRunning", false];
+    _unit setVariable ["SM_airScannerRunning", false];
 };
