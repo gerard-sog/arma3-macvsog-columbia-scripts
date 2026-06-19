@@ -81,7 +81,12 @@ while {true} do {
 
 	_lastPosition = _newPosition;
 
-	if (!alive _unit || {vehicle _unit != _unit} || {_unit getVariable ["AR_Detach_Rope", false]}) exitWith {};
+    if (
+        !alive _unit
+        || {lifeState _unit == "DEAD"}
+        || {vehicle _unit != _unit}
+        || {_unit getVariable ["AR_Detach_Rope", false]}
+    ) exitWith {};
 
 	sleep 0.01;
 };
