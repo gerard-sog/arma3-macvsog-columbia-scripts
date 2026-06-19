@@ -6,4 +6,4 @@ if (!isServer) exitWith {
 	[_unit] remoteExecCall ["Dash_fnc_DetachUnitFromStabo", 2];
 };
 
-_unit setVariable ["AR_Detach_Rope", true, true];
+_unit setVariable ["APR_STABO_DetachRequested", true, true];
