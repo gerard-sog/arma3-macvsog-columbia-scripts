@@ -1033,3 +1033,6 @@ in the main init.sqf and place down the [Cam Lao Nam borders composition](https:
 - STABO Extraction:
   - File: [config.cpp](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/mods/stabo/config.cpp)
   - Mod: https://steamcommunity.com/sharedfiles/filedetails/?id=3745354414
+- Signal Mirror:
+  - File: [config.cpp](https://github.com/gerard-sog/arma3-macvsog-columbia-scripts/blob/main/mods/signal_mirror/config.cpp)
+  - Mod: https://steamcommunity.com/sharedfiles/filedetails/?id=XXXXXXXXXX
