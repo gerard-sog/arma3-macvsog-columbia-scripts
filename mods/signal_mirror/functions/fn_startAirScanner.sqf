@@ -19,6 +19,7 @@ _unit setVariable ["SM_airScannerRunning", true];
         && {alive _unit}
         && {local _unit}
         && {currentWeapon _unit == _requiredWeapon}
+        && {vehicle _unit == _unit}
     } do {
         private _camPos = positionCameraToWorld [0,0,0];
         private _forward = _camPos vectorFromTo (positionCameraToWorld [0,0,1]);
