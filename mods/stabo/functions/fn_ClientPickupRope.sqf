@@ -27,7 +27,7 @@ _unit setVariable ["APR_STABO_BottomRope", objNull, true];
 private _topRopeLength = (_slotIndex + 1) * APR_STABO_SEGMENT_LENGTH;
 private _topRope = ropeCreate [_rappelDevice, [0, 0.15, 0], _anchor, [0, 0, 0], _topRopeLength];
 _topRope allowDamage false;
-_unit switchMove "Acts_StaticDeath_11";
+[_unit, "Acts_StaticDeath_11"] remoteExecCall ["switchMove", 0];
 
 private _gravityAccelerationVec = [0, 0, -9.8];
 private _velocityVec = [0, 0, 0];
@@ -101,8 +101,10 @@ while {true} do {
 		|| {_unit getVariable ["APR_STABO_DetachRequested", false]}
 	) exitWith {};
 
-    if (animationState _unit != "Acts_StaticDeath_11") then {
-    	_unit switchMove "Acts_StaticDeath_11";
+    if (diag_tickTime > (_unit getVariable ["APR_STABO_NextAnimSync", 0])) then {
+        _unit setVariable ["APR_STABO_NextAnimSync", diag_tickTime + 0.75];
+
+        [_unit, "Acts_StaticDeath_11"] remoteExecCall ["switchMove", 0];
     };
 
 	sleep 0.01;
@@ -125,8 +127,9 @@ _unit setVariable ["APR_STABO_SlotIndex", nil, true];
 _unit setVariable ["APR_STABO_RappelDevice", nil, true];
 _unit setVariable ["APR_STABO_BottomRope", nil, true];
 
-_unit switchMove "";
-_unit playMoveNow "";
+[_unit, ""] remoteExecCall ["switchMove", 0];
+[_unit, ""] remoteExecCall ["playMoveNow", 0];
+_unit setVariable ["APR_STABO_NextAnimSync", nil];
 
 sleep 2;
 _unit allowDamage true;

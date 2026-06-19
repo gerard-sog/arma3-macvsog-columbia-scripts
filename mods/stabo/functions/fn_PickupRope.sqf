@@ -82,6 +82,9 @@ _unit setVariable ["APR_STABO_KilledEH", _killedEH, true];
 	_unit setVariable ["APR_STABO_KilledEH", nil, true];
 
 	_heli setVariable ["APR_STABO_Player_" + str _slotIndex, nil, true];
+
+	[_heli] call Dash_fnc_UpdateStaboDownwardForce;
+
 	[_heli] call Dash_fnc_RefreshBottomRopes;
 
 	if (!([_heli] call Dash_fnc_HasAttachedPlayers)) then {
