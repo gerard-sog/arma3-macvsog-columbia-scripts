@@ -2,6 +2,11 @@ params ["_heli"];
 
 if (isNull _heli) exitWith {};
 
+if !(missionNamespace getVariable ["APR_STABO_CLIMB_SUPPRESSION_ENABLED", false]) exitWith {
+	_heli setVariable ["APR_STABO_ForceActive", false, true];
+	_heli setVariable ["APR_STABO_AttachedCount", 0, true];
+};
+
 if (!isServer) exitWith {
 	[_heli] remoteExecCall [
 		"Dash_fnc_UpdateStaboDownwardForce",
@@ -28,7 +33,7 @@ if (APR_STABO_DEBUG_ENABLED) then {
 			"STABO DEBUG: attached players = %1",
 			_attachedCount
 		]
-	] remoteExec ["systemChat", 0];
+	] remoteExec ["systemChat", crew _heli];
 };
 
 // Store latest count

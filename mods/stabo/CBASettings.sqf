@@ -36,7 +36,7 @@
 		"When enabled, STABO load directly reduces helicopter climb rate. At 100% sling load, the helicopter cannot gain altitude."
 	],
 	[CBA_SETTINGS_STABO, "Physics"],
-	true,
+	false,
 	1,
 	{},
 	true

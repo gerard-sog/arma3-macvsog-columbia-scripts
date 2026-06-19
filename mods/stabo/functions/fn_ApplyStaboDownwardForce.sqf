@@ -33,6 +33,7 @@ _heli setVariable ["APR_STABO_ForceLoopRunning", true];
 	while {
 		alive _heli
 		&& {_heli getVariable ["APR_STABO_ForceActive", false]}
+		&& {missionNamespace getVariable ["APR_STABO_CLIMB_SUPPRESSION_ENABLED", false]}
 	} do {
 		private _attachedCount =
 			_heli getVariable ["APR_STABO_AttachedCount", 0];
@@ -78,7 +79,7 @@ _heli setVariable ["APR_STABO_ForceLoopRunning", true];
 					APR_STABO_CLIMB_SUPPRESSION_ENABLED,
 					_downPull
 				]
-			] remoteExec ["systemChat", 0];
+			] remoteExec ["systemChat", crew _heli];
 		};
 
 		sleep _tickRate;
