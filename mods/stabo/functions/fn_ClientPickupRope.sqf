@@ -26,6 +26,7 @@ _unit setVariable ["APR_STABO_BottomRope", objNull, true];
 private _topRopeLength = (_slotIndex + 1) * APR_STABO_SEGMENT_LENGTH;
 private _topRope = ropeCreate [_rappelDevice, [0, 0.15, 0], _anchor, [0, 0, 0], _topRopeLength];
 _topRope allowDamage false;
+_unit switchMove "Acts_StaticDeath_11";
 
 private _gravityAccelerationVec = [0, 0, -9.8];
 private _velocityVec = [0, 0, 0];
@@ -98,6 +99,10 @@ while {true} do {
 		|| {vehicle _unit != _unit}
 		|| {_unit getVariable ["APR_STABO_DetachRequested", false]}
 	) exitWith {};
+
+    if (animationState _unit != "Acts_StaticDeath_11") then {
+    	_unit switchMove "Acts_StaticDeath_11";
+    };
 
 	sleep 0.01;
 };
