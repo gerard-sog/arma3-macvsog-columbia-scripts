@@ -18,24 +18,22 @@ if (hasInterface) then {
 			!isNull player
 		};
 
-		{
-			if (local _x && {alive _x}) then {
-				[_x] call Dash_fnc_AddPlayerActions;
-			};
-		} forEach allUnits;
+		if (alive player) then {
+			[player] call Dash_fnc_AddPlayerActions;
+		};
 	};
 
 	addMissionEventHandler ["EntityCreated", {
 		params ["_entity"];
 
 		if !(_entity isKindOf "Man") exitWith {};
+		if (!isPlayer _entity) exitWith {};
 
 		[_entity] spawn {
 			params ["_unit"];
-
 			sleep 1;
 
-			if (local _unit && {alive _unit}) then {
+			if (local _unit && {alive _unit} && {isPlayer _unit}) then {
 				[_unit] call Dash_fnc_AddPlayerActions;
 			};
 		};
