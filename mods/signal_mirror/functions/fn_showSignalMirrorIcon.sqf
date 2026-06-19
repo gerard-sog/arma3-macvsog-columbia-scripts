@@ -5,22 +5,22 @@ private _ehID = addMissionEventHandler [
     {
         _thisArgs params ["_pos"];
 
-        private _dist = player distance _pos;
-        private _k = 10 / (_dist max 1);
+        private _dist = cameraOn distance _pos;
+        private _size = (_dist / 200) max 2 min 10;
 
         drawIcon3D [
             "\a3\ui_f\data\igui\cfg\simpletasks\types\walk_ca.paa",
-            [1, 1, 1, 1],
+            [1,1,1,1],
             _pos,
-            1 * _k,
-            1 * _k,
+            _size,
+            _size,
             0,
             "",
             0,
-            0.04 * _k,
+            0.1,
             "RobotoCondensed",
             "center",
-            false,
+            true,
             0,
             0
         ];
@@ -30,6 +30,6 @@ private _ehID = addMissionEventHandler [
 
 [_ehID] spawn {
     params ["_ehID"];
-    sleep 0.3;
+    sleep 0.6;
     removeMissionEventHandler ["Draw3D", _ehID];
 };

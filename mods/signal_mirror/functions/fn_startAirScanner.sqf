@@ -43,16 +43,8 @@ _unit setVariable ["SM_airScannerRunning", true];
             };
         } forEach vehicles;
 
-        if (isNull _best || {_bestAngle > _maxAngle}) then {
-            hintSilent "No aircraft in sight";
-        } else {
-            hintSilent format [
-                "Aircraft in sight\n\nType: %1\nAngle: %2°",
-                typeOf _best,
-                [_bestAngle, 1] call BIS_fnc_cutDecimals
-            ];
-
-            private _signalPos = ASLToAGL getPosASLVisual _unit;
+        if (!isNull _best && {_bestAngle <= _maxAngle}) then {
+            private _signalPos = getPosATLVisual _unit vectorAdd [0,0,1.6];
 
             {
                 if (isPlayer _x) then {
