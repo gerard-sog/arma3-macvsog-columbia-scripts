@@ -29,7 +29,9 @@ private _topRopeLength = (_slotIndex + 1) * APR_STABO_SEGMENT_LENGTH;
 private _topRope = ropeCreate [_rappelDevice, [0, 0.15, 0], _anchor, [0, 0, 0], _topRopeLength];
 _topRope allowDamage false;
 
-[_unit] spawn AR_Enable_Rappelling_Animation_Client;
+if (isPlayer _unit) then {
+	[_unit] spawn AR_Enable_Rappelling_Animation_Client;
+};
 
 private _gravityAccelerationVec = [0, 0, -9.8];
 private _velocityVec = [0, 0, 0];
@@ -85,7 +87,10 @@ while {true} do {
 };
 
 private _bottomRope = _unit getVariable ["APR_STABO_BottomRope", objNull];
-if (!isNull _bottomRope) then { ropeDestroy _bottomRope; };
+
+if (!isNull _bottomRope) then {
+	ropeDestroy _bottomRope;
+};
 
 ropeDestroy _topRope;
 deleteVehicle _anchor;
@@ -97,6 +102,9 @@ _unit setVariable ["AR_Detach_Rope", nil];
 _unit setVariable ["APR_STABO_SlotIndex", nil, true];
 _unit setVariable ["APR_STABO_RappelDevice", nil, true];
 _unit setVariable ["APR_STABO_BottomRope", nil, true];
+
+_unit switchMove "";
+_unit playMoveNow "";
 
 sleep 2;
 _unit allowDamage true;
