@@ -1,7 +1,7 @@
 /*
     GG Signal Mirror Aircraft Scanner
     Runs locally for every player.
-    Starts aircraft scanner when player equips vn_ak_01.
+    Starts aircraft scanner when player equips vn_m19_binocs_grn.
 */
 
 if (!hasInterface) exitWith {};
@@ -16,7 +16,7 @@ SM_fnc_startAirScanner = {
     [_unit] spawn {
         params ["_unit"];
 
-        private _requiredWeapon = "vn_ak_01";
+        private _requiredWeapon = "vn_m19_binocs_grn";
         private _range = 2000;
         private _maxAngle = 30;
 
@@ -68,7 +68,7 @@ SM_fnc_startAirScanner = {
 ["weapon", {
     params ["_unit", "_weapon"];
 
-    if (_weapon == "vn_ak_01") then {
+    if (_weapon == "vn_m19_binocs_grn") then {
         [_unit] call SM_fnc_startAirScanner;
     };
 }, true] call CBA_fnc_addPlayerEventHandler;
