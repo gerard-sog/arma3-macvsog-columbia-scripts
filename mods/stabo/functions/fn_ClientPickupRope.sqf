@@ -12,32 +12,31 @@ private _rappelPointPosition = AGLToASL (_heli modelToWorldVisual _rappelPoint);
 private _anchor = "Land_Can_V2_F" createVehicle _rappelPointPosition;
 _anchor allowDamage false;
 hideObject _anchor;
-[[_anchor], "AR_Hide_Object_Global"] call AR_RemoteExecServer;
+[_anchor, true] remoteExecCall ["hideObjectGlobal", 2];
 _anchor attachTo [_heli, _rappelPoint];
 
 private _rappelDevice = "B_static_AA_F" createVehicle position _unit;
 _rappelDevice allowDamage false;
 hideObject _rappelDevice;
-[[_rappelDevice], "AR_Hide_Object_Global"] call AR_RemoteExecServer;
-
-[[_unit, _rappelDevice, _anchor], "AR_Play_Rappelling_Sounds_Global"] call AR_RemoteExecServer;
+[_rappelDevice, true] remoteExecCall ["hideObjectGlobal", 2];
 
 _unit setVariable ["APR_STABO_RappelDevice", _rappelDevice, true];
-_unit setVariable ["APR_STABO_BottomRope", objNull];
+_unit setVariable ["APR_STABO_BottomRope", objNull, true];
 
 private _topRopeLength = (_slotIndex + 1) * APR_STABO_SEGMENT_LENGTH;
 private _topRope = ropeCreate [_rappelDevice, [0, 0.15, 0], _anchor, [0, 0, 0], _topRopeLength];
 _topRope allowDamage false;
 
-if (isPlayer _unit) then {
-	[_unit] spawn AR_Enable_Rappelling_Animation_Client;
-};
-
 private _gravityAccelerationVec = [0, 0, -9.8];
 private _velocityVec = [0, 0, 0];
 private _lastTime = diag_tickTime;
 private _heliPos = AGLToASL (_heli modelToWorldVisual _rappelPoint);
-private _lastPosition = [_heliPos select 0, _heliPos select 1, (_heliPos select 2) - _topRopeLength];
+private _lastPosition = [
+	_heliPos select 0,
+	_heliPos select 1,
+	(_heliPos select 2) - _topRopeLength
+];
+
 private _lookDirFreedom = 50;
 private _dir = (random 360) + (_lookDirFreedom / 2);
 private _dirSpinFactor = (((random 10) - 5) / 5) max 0.1;
@@ -64,16 +63,28 @@ while {true} do {
 	private _currentHeliPos = AGLToASL (_heli modelToWorldVisual _rappelPoint);
 
 	if (_newPosition distance _currentHeliPos > _topRopeLength) then {
-		_newPosition = _currentHeliPos vectorAdd ((vectorNormalized (_currentHeliPos vectorFromTo _newPosition)) vectorMultiply _topRopeLength);
+		_newPosition = _currentHeliPos vectorAdd (
+			(vectorNormalized (_currentHeliPos vectorFromTo _newPosition)) vectorMultiply _topRopeLength
+		);
 
 		private _surfaceVector = vectorNormalized (_newPosition vectorFromTo _currentHeliPos);
-		_velocityVec = _velocityVec vectorAdd ((_surfaceVector vectorMultiply (_velocityVec vectorDotProduct _surfaceVector)) vectorMultiply -1);
+		_velocityVec = _velocityVec vectorAdd (
+			(_surfaceVector vectorMultiply (_velocityVec vectorDotProduct _surfaceVector)) vectorMultiply -1
+		);
 	};
 
-	_rappelDevice setPosWorld (_lastPosition vectorAdd ((_newPosition vectorDiff _lastPosition) vectorMultiply 6));
+	_rappelDevice setPosWorld (
+		_lastPosition vectorAdd ((_newPosition vectorDiff _lastPosition) vectorMultiply 6)
+	);
+
 	_rappelDevice setVectorDir vectorDir _unit;
 
-	_unit setPosWorld [_newPosition select 0, _newPosition select 1, (_newPosition select 2) - 0.6];
+	_unit setPosWorld [
+		_newPosition select 0,
+		_newPosition select 1,
+		(_newPosition select 2) - 0.6
+	];
+
 	_unit setVelocity [0, 0, 0];
 
 	_dir = _dir + ((360 / 1000) * _dirSpinFactor);
@@ -81,12 +92,12 @@ while {true} do {
 
 	_lastPosition = _newPosition;
 
-    if (
-        !alive _unit
-        || {lifeState _unit == "DEAD"}
-        || {vehicle _unit != _unit}
-        || {_unit getVariable ["AR_Detach_Rope", false]}
-    ) exitWith {};
+	if (
+		!alive _unit
+		|| {lifeState _unit == "DEAD"}
+		|| {vehicle _unit != _unit}
+		|| {_unit getVariable ["APR_STABO_DetachRequested", false]}
+	) exitWith {};
 
 	sleep 0.01;
 };
@@ -101,9 +112,9 @@ ropeDestroy _topRope;
 deleteVehicle _anchor;
 deleteVehicle _rappelDevice;
 
-_unit setVariable ["AR_Is_Rappelling", nil, true];
-_unit setVariable ["AR_Rappelling_Vehicle", nil, true];
-_unit setVariable ["AR_Detach_Rope", nil];
+_unit setVariable ["APR_STABO_IsAttached", nil, true];
+_unit setVariable ["APR_STABO_DetachRequested", nil, true];
+_unit setVariable ["APR_STABO_Vehicle", nil, true];
 _unit setVariable ["APR_STABO_SlotIndex", nil, true];
 _unit setVariable ["APR_STABO_RappelDevice", nil, true];
 _unit setVariable ["APR_STABO_BottomRope", nil, true];

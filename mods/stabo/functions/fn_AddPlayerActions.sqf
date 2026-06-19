@@ -44,6 +44,25 @@ _unit addAction [
 	"
 ];
 
+_unit addAction [
+	"Detach STABO rig",
+	{
+		params ["_target", "_caller"];
+
+		[_caller] call Dash_fnc_DetachUnitFromStabo;
+	},
+	nil,
+	1.5,
+	false,
+	true,
+	"",
+	"_this getVariable ['APR_STABO_IsAttached', false] && {alive _this}",
+	-1,
+	false,
+	"",
+	""
+];
+
 _unit addEventHandler ["Respawn", {
 	params ["_unit"];
 

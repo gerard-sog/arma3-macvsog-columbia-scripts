@@ -36,7 +36,6 @@ Attach STABO rig
 Required mods:
 
 - **CBA_A3**
-- **Advanced Rappelling**
 
 ## Configuration
 

@@ -3,6 +3,7 @@ params ["_unit", "_heli"];
 if (isNull _unit || {isNull _heli}) exitWith {};
 if (!alive _unit) exitWith {};
 if (vehicle _unit != _unit) exitWith {};
+if (!isPlayer _unit && {isNull remoteControlled _unit}) exitWith {};
 if !(_heli isKindOf "Helicopter") exitWith {};
 if !(_heli getVariable ["APR_STABO_Deployed", false]) exitWith {};
 
@@ -10,15 +11,9 @@ if (!isServer) exitWith {
 	[_unit, _heli] remoteExecCall ["Dash_fnc_PickupRope", 2];
 };
 
-if (_unit getVariable ["AR_Is_Rappelling", false]) exitWith {};
+if (_unit getVariable ["APR_STABO_IsAttached", false]) exitWith {};
 
-private _rappelPoints = [_heli] call AR_Get_Heli_Rappel_Points;
-
-if ((count _rappelPoints) == 0) exitWith {
-	if (isPlayer _unit) then {
-		[["No STABO pickup anchor available on this helicopter.", false], "AR_Hint", _unit] call AR_RemoteExec;
-	};
-};
+private _rappelPoint = [0, 0, -1.5];
 
 private _slotIndex = [_heli] call Dash_fnc_FindFreeSlot;
 
@@ -36,7 +31,6 @@ if (_slotIndex < 0) exitWith {
 	};
 };
 
-private _rappelPoint = _rappelPoints select 0;
 private _targetOwner = owner _unit;
 
 if (!isPlayer _unit) then {
@@ -50,13 +44,11 @@ if (!isPlayer _unit) then {
 _heli setVariable ["APR_STABO_Using_Player_Chain", true, true];
 _heli setVariable ["APR_STABO_Player_" + str _slotIndex, _unit, true];
 
-_unit setVariable ["AR_Is_Rappelling", true, true];
+_unit setVariable ["APR_STABO_IsAttached", true, true];
+_unit setVariable ["APR_STABO_DetachRequested", false, true];
+_unit setVariable ["APR_STABO_Vehicle", _heli, true];
 _unit setVariable ["APR_STABO_SlotIndex", _slotIndex, true];
 
-/*
-	Server-side death detach handler.
-	Dedicated-server safe: if the attached unit dies, force the client STABO loop to exit.
-*/
 private _oldKilledEH = _unit getVariable ["APR_STABO_KilledEH", -1];
 
 if (_oldKilledEH >= 0) then {
@@ -66,7 +58,7 @@ if (_oldKilledEH >= 0) then {
 private _killedEH = _unit addEventHandler ["Killed", {
 	params ["_unit"];
 
-	_unit setVariable ["AR_Detach_Rope", true, true];
+	_unit setVariable ["APR_STABO_DetachRequested", true, true];
 }];
 
 _unit setVariable ["APR_STABO_KilledEH", _killedEH, true];
@@ -81,7 +73,7 @@ sleep 0.25;
 
 	waitUntil {
 		sleep 2;
-		!alive _unit || {!(_unit getVariable ["AR_Is_Rappelling", false])}
+		!alive _unit || {!(_unit getVariable ["APR_STABO_IsAttached", false])}
 	};
 
 	private _killedEH = _unit getVariable ["APR_STABO_KilledEH", -1];
