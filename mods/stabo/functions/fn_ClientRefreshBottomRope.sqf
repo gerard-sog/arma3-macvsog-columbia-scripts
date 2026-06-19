@@ -6,7 +6,7 @@ private _oldBottomRope = _unit getVariable ["APR_STABO_BottomRope", objNull];
 
 if (!isNull _oldBottomRope) then {
 	ropeDestroy _oldBottomRope;
-	_unit setVariable ["APR_STABO_BottomRope", objNull];
+	_unit setVariable ["APR_STABO_BottomRope", objNull, true];
 };
 
 private _slotIndex = _unit getVariable ["APR_STABO_SlotIndex", -1];
@@ -37,5 +37,5 @@ if (_danglingRopeLength > 0) then {
 	];
 
 	_bottomRope allowDamage false;
-	_unit setVariable ["APR_STABO_BottomRope", _bottomRope];
+	_unit setVariable ["APR_STABO_BottomRope", _bottomRope, true];
 };

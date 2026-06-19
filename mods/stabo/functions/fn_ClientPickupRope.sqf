@@ -22,6 +22,7 @@ hideObject _rappelDevice;
 
 _unit setVariable ["APR_STABO_RappelDevice", _rappelDevice, true];
 _unit setVariable ["APR_STABO_BottomRope", objNull, true];
+[_heli] remoteExecCall ["Dash_fnc_RefreshBottomRopes", 2];
 
 private _topRopeLength = (_slotIndex + 1) * APR_STABO_SEGMENT_LENGTH;
 private _topRope = ropeCreate [_rappelDevice, [0, 0.15, 0], _anchor, [0, 0, 0], _topRopeLength];

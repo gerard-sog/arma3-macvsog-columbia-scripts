@@ -65,9 +65,6 @@ _unit setVariable ["APR_STABO_KilledEH", _killedEH, true];
 
 [_unit, _heli, _rappelPoint, _slotIndex] remoteExec ["Dash_fnc_ClientPickupRope", _targetOwner];
 
-sleep 0.25;
-[_heli] call Dash_fnc_RefreshBottomRopes;
-
 [_unit, _heli, _slotIndex] spawn {
 	params ["_unit", "_heli", "_slotIndex"];
 
