@@ -8,7 +8,7 @@ APR_STABO_GetSlotCount = {
 	floor (APR_STABO_ROPE_LENGTH / APR_STABO_SEGMENT_LENGTH)
 };
 
-APR_STABO_SANDBAG_CLASS = "vn_prop_sandbag_01";
+APR_STABO_SANDBAG_CLASS = if (isClass (configFile >> "CfgVehicles" >> "vn_prop_sandbag_01")) then {"vn_prop_sandbag_01"} else {"Land_Pillow_grey_F"};
 APR_STABO_HOLD_ACTION_ICON = "\z\ace\addons\fastroping\UI\Icon_Waypoint.paa";
 
 if (hasInterface) then {
