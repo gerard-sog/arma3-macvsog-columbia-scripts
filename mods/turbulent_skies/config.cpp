@@ -21,6 +21,7 @@ class CfgFunctions
             class init {};
             class startMonitor {};
             class startTurbulence {};
+            class startTurbulencePhysics {};
             class registerZeusModules {};
             class zeusWeatherPreset {};
             class applyWeatherPreset {};

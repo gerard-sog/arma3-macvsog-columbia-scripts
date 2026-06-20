@@ -38,9 +38,6 @@ if (_preset >= 0) then {
     publicVariable "TS_weatherSystem_nextPreset";
 };
 
-// Force weather simulation update
-skipTime 0.01;
-
 // Overcast must be forced first or rain won't apply reliably
 86400 setOvercast _overcast;
 forceWeatherChange;

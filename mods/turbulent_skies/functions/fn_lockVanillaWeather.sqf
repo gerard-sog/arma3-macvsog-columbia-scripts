@@ -9,7 +9,6 @@ setForecastWind 0;
 setForecastLightnings 0;
 
 // Re-apply current weather immediately so Arma stops drifting
-skipTime 0.01;
 forceWeatherChange;
 simulWeatherSync;
 
