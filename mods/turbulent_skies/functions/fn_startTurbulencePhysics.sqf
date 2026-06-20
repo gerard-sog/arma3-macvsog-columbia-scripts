@@ -1,106 +1,117 @@
 /*
     Turbulent Skies
-    Helicopter turbulence physics
+    Applies helicopter turbulence physics.
 
-    Runs only where helicopter is local.
-    Applies force-based turbulence to reduce MP desync.
+    Physics force:
+    - only applied where helicopter is local
+    - prevents duplicated wind force in multiplayer
 */
 
 params ["_heli"];
 
-if (isNull _heli) exitWith {};
-
-private _forceMultiplier = 5000;    // Tune 3000-8000
-private _sleepTime = 0.25;
+private _lastDebug = 0;
 
 while {
-    alive _heli
-    && {vehicle player isEqualTo _heli}
+    alive player &&
+    {vehicle player == _heli}
 } do {
 
-    if !(local _heli) exitWith {};
+    if (local _heli) then {
 
-    private _altitude = (getPosATL _heli) # 2;
+        private _alt = (getPosATL _heli) # 2;
+        private _maxAlt = (missionNamespace getVariable ["TS_maximum_altitude", 300]) max 6;
 
-    if (
-        _altitude > 3
-        && {_altitude < TS_maximum_altitude}
-    ) then {
+        if (_alt > 3 && {_alt < _maxAlt}) then {
 
-        private _overcast = overcast;
-        private _rain = rain;
-        private _wind = windStr;
+            private _severity =
+                (overcast * (missionNamespace getVariable ["TS_overcast_factor", 0.2])) +
+                (rain * (missionNamespace getVariable ["TS_rain_factor", 0.5])) +
+                (windStr * (missionNamespace getVariable ["TS_wind_factor", 1]));
 
-        private _severity =
-            (_overcast * TS_overcast_factor)
-            + (_rain * TS_rain_factor)
-            + (_wind * TS_wind_factor);
+            if (_severity > 0.35) then {
 
-        private _weatherRamp = _severity ^ 1.6;
+                private _groundFactor =
+                    1 - ((_alt - 3) / (_maxAlt - 3));
 
-        if (_weatherRamp > 0.05) then {
+                // Weather escalation is exponential
+                private _weatherRamp = _severity ^ 1.6;
 
-            /*
-                Same turbulence generation logic
-                as original implementation
-            */
+                private _strength = if (difficultyEnabledRTD) then {
+                    _weatherRamp * (0.55 + (_groundFactor * 0.55))
+                } else {
+                    _weatherRamp * (0.80 + (_groundFactor * 0.80))
+                };
 
-            private _gustX =
-                (random 2 - 1)
-                * _weatherRamp;
+                private _gustAngle = random 360;
+                private _gustPower =
+                    random [0.6, 1.5, 2.5] * _strength;
 
-            private _gustY =
-                (random 2 - 1)
-                * _weatherRamp;
+                private _gustX = (sin _gustAngle) * _gustPower;
+                private _gustY = (cos _gustAngle) * _gustPower;
 
-            private _vertical =
-                (random 2 - 1)
-                * _weatherRamp
-                * 0.6;
+                private _vertical =
+                    random [-1.0, -0.3, 0.6] * _strength;
 
-            _heli addForce [
-                [
-                    _gustX * _forceMultiplier,
-                    _gustY * _forceMultiplier,
-                    _vertical * _forceMultiplier
-                ],
-                getCenterOfMass _heli
-            ];
+                private _forceMultiplier = (getMass _heli) * 2.0;
 
-            /*
-                Optional turbulence damage
-            */
+                _heli addForce [
+                    [
+                        _gustX * _forceMultiplier,
+                        _gustY * _forceMultiplier,
+                        _vertical * _forceMultiplier
+                    ],
+                    getCenterOfMass _heli
+                ];
 
-            if (
-                TS_damage_enabled
-                && {_severity > TS_damage_threshold}
-            ) then {
+                // Optional small damage in extreme turbulence
+                if (
+                    (missionNamespace getVariable ["TS_damage_enabled", false]) &&
+                    {_severity > (missionNamespace getVariable ["TS_damage_threshold", 1.4])} &&
+                    {random 1 < 0.01}
+                ) then {
+                    // 12–14 minutes to 50%
+                    private _newDamage = ((damage _heli) + random [0.008, 0.015, 0.03]) min 0.85;
 
-                private _damage =
-                    linearConversion [
-                        TS_damage_threshold,
-                        2,
-                        _severity,
-                        0,
-                        0.005,
-                        true
+                    _heli setDamage _newDamage;
+
+                    playSound3D [
+                        "A3\Sounds_F\vehicles\crashes\helis\Heli_crash_default_int_1.wss",
+                        _heli,
+                        false,
+                        getPosASL _heli,
+                        25,
+                        random [0.95, 1.0, 1.1],
+                        250
                     ];
 
-                _heli setDamage (
-                    (damage _heli) + _damage
-                );
-            };
+                    if (missionNamespace getVariable ["TS_debug_enabled", false]) then {
+                        systemChat format [
+                            "[TS] Turbulence damage applied | Damage:%1",
+                            (_newDamage toFixed 2)
+                        ];
+                    };
+                };
 
-            if (TS_debug_enabled) then {
-                systemChat format [
-                    "TS | local=%1 | sev=%2 | force=%3",
-                    local _heli,
-                    round (_severity * 100) / 100,
-                    round (_weatherRamp * _forceMultiplier)
-                ];
+                if (
+                    (missionNamespace getVariable ["TS_debug_enabled", false]) &&
+                    {time > _lastDebug + 5}
+                ) then {
+                    systemChat format [
+                        "[TS] PHYSICS | Alt:%1 | Max:%2 | Sev:%3 | Str:%4 | Mass:%5 | Force:%6 | Local:%7",
+                        round _alt,
+                        round _maxAlt,
+                        (_severity toFixed 2),
+                        (_strength toFixed 2),
+                        round _mass,
+                        round (_strength * _forceMultiplier),
+                        local _heli
+                    ];
+
+                    _lastDebug = time;
+                };
             };
         };
     };
 
-    sleep _sleepTime;
+    sleep 0.25;
 };

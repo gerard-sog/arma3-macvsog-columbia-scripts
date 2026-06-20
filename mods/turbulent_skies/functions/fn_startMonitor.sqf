@@ -1,9 +1,12 @@
 /*
-    Starts one local turbulence loop for this player while inside a helicopter.
+    Starts local turbulence loops for this player while inside a helicopter.
 
-    The turbulence function itself decides:
-    - who applies physics: only local helicopter owner
-    - who gets camera shake: everyone in crew
+    Camera shake:
+    - applied locally to every player inside the helicopter
+
+    Physics force:
+    - started separately
+    - only applies force where helicopter is local
 */
 
 params ["_unit", "_heli"];
@@ -19,16 +22,16 @@ private _monitor = [_unit, _heli] spawn {
         {vehicle _unit == _heli}
     } do {
 
-        if (isNil {_unit getVariable "TS_handle"}) then {
+        if (isNil {_unit getVariable "TS_cameraHandle"}) then {
 
             if (TS_debug_enabled) then {
                 systemChat "[TS] Turbulence camera loop started";
             };
 
-            private _handle =
+            private _cameraHandle =
                 [_heli] spawn TS_fnc_startTurbulence;
 
-            _unit setVariable ["TS_handle", _handle];
+            _unit setVariable ["TS_cameraHandle", _cameraHandle];
         };
 
         if (
@@ -46,39 +49,24 @@ private _monitor = [_unit, _heli] spawn {
             _unit setVariable ["TS_physicsHandle", _physicsHandle];
         };
 
-        if (
-            !(isNil {_unit getVariable "TS_physicsHandle"}) &&
-            {!([_unit] call TS_fnc_isPilotOrCopilot)}
-        ) then {
-
-            private _physicsHandle =
-                _unit getVariable ["TS_physicsHandle", scriptNull];
-
-            if !(isNull _physicsHandle) then {
-                terminate _physicsHandle;
-            };
-
-            _unit setVariable ["TS_physicsHandle", nil];
-        };
-
         sleep 0.5;
     };
 
-    private _handle =
-        _unit getVariable ["TS_handle", scriptNull];
-
-    if !(isNull _handle) then {
-        terminate _handle;
-    };
+    private _cameraHandle =
+        _unit getVariable ["TS_cameraHandle", scriptNull];
 
     private _physicsHandle =
         _unit getVariable ["TS_physicsHandle", scriptNull];
+
+    if !(isNull _cameraHandle) then {
+        terminate _cameraHandle;
+    };
 
     if !(isNull _physicsHandle) then {
         terminate _physicsHandle;
     };
 
-    _unit setVariable ["TS_handle", nil];
+    _unit setVariable ["TS_cameraHandle", nil];
     _unit setVariable ["TS_physicsHandle", nil];
     _unit setVariable ["TS_seatMonitorHandle", nil];
 
