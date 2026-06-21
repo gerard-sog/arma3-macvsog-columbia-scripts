@@ -70,8 +70,22 @@ while {
                     {_severity > (missionNamespace getVariable ["TS_damage_threshold", 1.4])} &&
                     {random 1 < 0.01}
                 ) then {
-                    // 12–14 minutes to 50%
-                    private _newDamage = ((damage _heli) + random [0.008, 0.015, 0.03]) min 0.85;
+                    // About 12–14 minutes to 50% damage in extreme turbulence
+                    private _severityScale =
+                        linearConversion [
+                            missionNamespace getVariable ["TS_damage_threshold", 1.4],
+                            1.7,
+                            _severity,
+                            0.5,
+                            1.5,
+                            true
+                        ];
+
+                    private _damage =
+                        random [0.010, 0.015, 0.020]
+                        * _severityScale;
+
+                    private _newDamage = ((damage _heli) + _damage) min 0.85;
 
                     _heli setDamage _newDamage;
 
@@ -87,7 +101,8 @@ while {
 
                     if (missionNamespace getVariable ["TS_debug_enabled", false]) then {
                         systemChat format [
-                            "[TS] Turbulence damage applied | Damage:%1",
+                            "[TS] Turbulence damage applied | +%1 | Damage:%2",
+                            (_damage toFixed 3),
                             (_newDamage toFixed 2)
                         ];
                     };
