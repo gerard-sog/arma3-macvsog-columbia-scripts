@@ -7,31 +7,33 @@
     - prevents duplicated wind force in multiplayer
 */
 
-params ["_heli"];
+params [
+    ["_heli", objNull, [objNull]]
+];
+
+if (isNull _heli) exitWith {};
 
 private _lastDebug = 0;
 
 while {
     alive player &&
-    {vehicle player == _heli}
+    {alive _heli} &&
+    {vehicle player isEqualTo _heli}
 } do {
 
     if (local _heli) then {
 
-        private _alt = (getPosATL _heli) # 2;
-        private _maxAlt = (missionNamespace getVariable ["TS_maximum_altitude", 300]) max 6;
+        private _altitude = (getPosATL _heli) # 2;
+        private _maxAltitude = (missionNamespace getVariable ["TS_maximum_altitude", 300]) max 6;
 
-        if (_alt > 3 && {_alt < _maxAlt}) then {
+        if (_altitude > 3 && {_altitude < _maxAltitude}) then {
 
-            private _severity =
-                (overcast * (missionNamespace getVariable ["TS_overcast_factor", 0.2])) +
-                (rain * (missionNamespace getVariable ["TS_rain_factor", 0.5])) +
-                (windStr * (missionNamespace getVariable ["TS_wind_factor", 1]));
+            private _severity = [] call TS_fnc_getWeatherSeverity;
 
             if (_severity > 0.35) then {
 
                 private _groundFactor =
-                    1 - ((_alt - 3) / (_maxAlt - 3));
+                    1 - ((_altitude - 3) / (_maxAltitude - 3));
 
                 // Weather escalation is exponential
                 private _weatherRamp = _severity ^ 1.6;
@@ -43,16 +45,15 @@ while {
                 };
 
                 private _gustAngle = random 360;
-                private _gustPower =
-                    random [0.6, 1.5, 2.5] * _strength;
+                private _gustPower = random [0.6, 1.5, 2.5] * _strength;
 
                 private _gustX = (sin _gustAngle) * _gustPower;
                 private _gustY = (cos _gustAngle) * _gustPower;
+                private _vertical = random [-1.0, -0.3, 0.6] * _strength;
 
-                private _vertical =
-                    random [-1.0, -0.3, 0.6] * _strength;
-
-                private _forceMultiplier = (getMass _heli) * 2.0;
+                // Mass compensation keeps small and large helicopters closer in felt acceleration.
+                private _mass = getMass _heli;
+                private _forceMultiplier = _mass * 2.0;
 
                 _heli addForce [
                     [
@@ -98,8 +99,8 @@ while {
                 ) then {
                     systemChat format [
                         "[TS] PHYSICS | Alt:%1 | Max:%2 | Sev:%3 | Str:%4 | Mass:%5 | Force:%6 | Local:%7",
-                        round _alt,
-                        round _maxAlt,
+                        round _altitude,
+                        round _maxAltitude,
                         (_severity toFixed 2),
                         (_strength toFixed 2),
                         round _mass,

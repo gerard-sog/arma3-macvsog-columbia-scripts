@@ -1,4 +1,5 @@
 /*
+    Turbulent Skies
     Starts local turbulence loops for this player while inside a helicopter.
 
     Camera shake:
@@ -9,54 +10,54 @@
     - only applies force where helicopter is local
 */
 
-params ["_unit", "_heli"];
+params [
+    ["_unit", objNull, [objNull]],
+    ["_heli", objNull, [objNull]]
+];
 
-if !(isNil {_unit getVariable "TS_seatMonitorHandle"}) exitWith {};
+if (isNull _unit || {isNull _heli}) exitWith {};
+if !(_heli isKindOf "Helicopter") exitWith {};
 
-private _monitor = [_unit, _heli] spawn {
+// Always clean previous handles first so switching helicopters never leaves stale state.
+[_unit] call TS_fnc_cleanupTurbulence;
 
+_unit setVariable ["TS_currentHeli", _heli];
+
+private _monitorHandle = [_unit, _heli] spawn {
     params ["_unit", "_heli"];
+
+    [format ["Seat monitor started for %1", typeOf _heli]] call TS_fnc_debug;
 
     while {
         alive _unit &&
-        {vehicle _unit == _heli}
+        {alive _heli} &&
+        {vehicle _unit isEqualTo _heli}
     } do {
 
         if (isNil {_unit getVariable "TS_cameraHandle"}) then {
-
-            if (TS_debug_enabled) then {
-                systemChat "[TS] Turbulence camera loop started";
-            };
-
-            private _cameraHandle =
-                [_heli] spawn TS_fnc_startTurbulence;
+            private _cameraHandle = [_heli] spawn TS_fnc_startTurbulence;
 
             _unit setVariable ["TS_cameraHandle", _cameraHandle];
+
+            ["Camera turbulence loop started"] call TS_fnc_debug;
         };
 
         if (
             isNil {_unit getVariable "TS_physicsHandle"} &&
             {[_unit] call TS_fnc_isPilotOrCopilot}
         ) then {
-
-            if (TS_debug_enabled) then {
-                systemChat "[TS] Turbulence physics loop started";
-            };
-
-            private _physicsHandle =
-                [_heli] spawn TS_fnc_startTurbulencePhysics;
+            private _physicsHandle = [_heli] spawn TS_fnc_startTurbulencePhysics;
 
             _unit setVariable ["TS_physicsHandle", _physicsHandle];
+
+            ["Physics turbulence loop started"] call TS_fnc_debug;
         };
 
         sleep 0.5;
     };
 
-    private _cameraHandle =
-        _unit getVariable ["TS_cameraHandle", scriptNull];
-
-    private _physicsHandle =
-        _unit getVariable ["TS_physicsHandle", scriptNull];
+    private _cameraHandle = _unit getVariable ["TS_cameraHandle", scriptNull];
+    private _physicsHandle = _unit getVariable ["TS_physicsHandle", scriptNull];
 
     if !(isNull _cameraHandle) then {
         terminate _cameraHandle;
@@ -68,11 +69,10 @@ private _monitor = [_unit, _heli] spawn {
 
     _unit setVariable ["TS_cameraHandle", nil];
     _unit setVariable ["TS_physicsHandle", nil];
+    _unit setVariable ["TS_currentHeli", nil];
     _unit setVariable ["TS_seatMonitorHandle", nil];
 
-    if (TS_debug_enabled) then {
-        systemChat "[TS] Seat monitor stopped";
-    };
+    ["Seat monitor stopped"] call TS_fnc_debug;
 };
 
-_unit setVariable ["TS_seatMonitorHandle", _monitor];
+_unit setVariable ["TS_seatMonitorHandle", _monitorHandle];
