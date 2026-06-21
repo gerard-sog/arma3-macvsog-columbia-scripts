@@ -13,7 +13,7 @@ private _ehID = addMissionEventHandler [
         _thisArgs params ["_pos", "_texture"];
 
         private _dist = cameraOn distance _pos;
-        private _size = (_dist / 200) max 2 min 10;
+        private _size = (_dist / 400) max 1.5 min 5;
 
         drawIcon3D [
             _texture,
