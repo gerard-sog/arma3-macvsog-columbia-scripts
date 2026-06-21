@@ -11,7 +11,7 @@ _unit setVariable ["SM_airScannerRunning", true];
     params ["_unit"];
 
     private _requiredWeapon = "SM_SignalMirror";
-    private _range = 2000;
+    private _range = 2500;
     private _maxAngle = 30;
 
     while {
