@@ -29,12 +29,3 @@ Player                             Helicopter
 ## Requirements
 
 - CBA_A3
-- S.O.G. Prairie Fire
-
-## Current Signal Mirror
-
-Currently uses:
-
-`vn_m19_binocs_grn`
-
-as the signal mirror item.

@@ -10,7 +10,7 @@ _unit setVariable ["SM_airScannerRunning", true];
 [_unit] spawn {
     params ["_unit"];
 
-    private _requiredWeapon = "vn_m19_binocs_grn";
+    private _requiredWeapon = "SM_SignalMirror";
     private _range = 2000;
     private _maxAngle = 30;
 

@@ -40,9 +40,7 @@ class CfgWeapons
         model = "\signal_mirror\models\signal_mirror.p3d";
         picture = "\signal_mirror\assets\ui\signal_mirror_ca.paa";
 
-        modelOptics = "";
-        simulation = "Binocular";
-        weaponPoolAvailable = 1;
+        modelOptics = "\A3\Weapons_F\acc\reticle_tws.p3d";
 
         class OpticsModes
         {
@@ -68,6 +66,45 @@ class CfgWeapons
                 opticsFlare = 0;
                 opticsDisablePeripherialVision = 0;
                 opticsPPEffects[] = {};
+            };
+        };
+    };
+};
+
+class RscTitles
+{
+    class SM_SignalMirrorOverlay
+    {
+        idd = -1;
+        duration = 999999;
+        fadeIn = 0;
+        fadeOut = 0;
+        movingEnable = 0;
+
+        onLoad = "uiNamespace setVariable ['SM_SignalMirrorOverlay_Display', _this select 0]";
+        onUnload = "uiNamespace setVariable ['SM_SignalMirrorOverlay_Display', displayNull]";
+
+        class controls
+        {
+            class Reticle
+            {
+                idc = 1000;
+                type = 0;
+                style = 48;
+
+                x = safeZoneX;
+                y = safeZoneY;
+                w = safeZoneW;
+                h = safeZoneH;
+
+                text = "\signal_mirror\assets\ui\signal_mirror_reticle_ca.paa";
+
+                colorText[] = {1,1,1,1};
+                colorBackground[] = {0,0,0,0};
+
+                // Required to prevent missing font error
+                font = "RobotoCondensed";
+                sizeEx = 0;
             };
         };
     };
