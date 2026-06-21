@@ -45,15 +45,15 @@ while {
                 };
 
                 private _gustAngle = random 360;
-                private _gustPower = random [0.6, 1.5, 2.5] * _strength;
+                private _gustPower = random [0.25, 0.65, 1.15] * _strength;
 
                 private _gustX = (sin _gustAngle) * _gustPower;
                 private _gustY = (cos _gustAngle) * _gustPower;
-                private _vertical = random [-1.0, -0.3, 0.6] * _strength;
+                private _vertical = random [-0.35, -0.1, 0.25] * _strength;
 
                 // Mass compensation keeps small and large helicopters closer in felt acceleration.
                 private _mass = getMass _heli;
-                private _forceMultiplier = _mass * 2.0;
+                private _forceMultiplier = _mass * 0.75;
 
                 _heli addForce [
                     [
