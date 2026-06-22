@@ -53,7 +53,7 @@ Examples of situations where signaling will not work:
 
 ## Acknowledgements
 
-Special thanks to **TheDude** for creating and providing the signal mirror 3D model used in this mod.
+Special thanks to **TheDUDE** for creating and providing the signal mirror 3D model used in this mod.
 
 ## Requirements
 
