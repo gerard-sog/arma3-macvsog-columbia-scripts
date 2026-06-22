@@ -110,6 +110,14 @@ class RscTitles
     };
 };
 
+class Extended_PreInit_EventHandlers
+{
+    class signal_mirror_settings
+    {
+        init = "call compile preprocessFileLineNumbers '\signal_mirror\CBASettings.sqf'";
+    };
+};
+
 class Extended_PostInit_EventHandlers
 {
     class signal_mirror

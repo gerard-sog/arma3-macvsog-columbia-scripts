@@ -21,6 +21,8 @@ _unit setVariable ["SM_airScannerRunning", true];
         && {currentWeapon _unit == _requiredWeapon}
         && {vehicle _unit == _unit}
     } do {
+        if (sunOrMoon < SM_SUN_THRESHOLD) exitWith {};
+
         private _camPos = positionCameraToWorld [0,0,0];
         private _forward = _camPos vectorFromTo (positionCameraToWorld [0,0,1]);
 
