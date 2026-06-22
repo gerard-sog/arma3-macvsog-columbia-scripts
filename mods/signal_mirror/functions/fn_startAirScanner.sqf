@@ -27,7 +27,8 @@ _unit setVariable ["SM_airScannerRunning", true];
         };
 
         if (SM_REQUIRE_SUN_LOS) then {
-            private _sunPosASL = eyePos _unit vectorAdd (sunDirection vectorMultiply 10000);
+            private _sunDir = getLighting select 2;
+            private _sunPosASL = eyePos _unit vectorAdd ((_sunDir vectorMultiply -1) vectorMultiply 10000);
 
             if (
                 lineIntersectsSurfaces [
