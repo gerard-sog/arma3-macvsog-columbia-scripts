@@ -1,8 +1,8 @@
 # Signal Mirror
 
-Signal Mirror allows ground personnel equipped with a signal mirror to attract the attention of nearby aircraft.
+Signal Mirror adds a **Signal Mirror** item to the **Binoculars** section of the Arsenal.
 
-When a player on foot uses the signal mirror and looks at a flying aircraft, the aircraft crew sees a flashing glint at the player's location.
+Ground personnel equipped with a signal mirror can attract the attention of nearby aircraft by aiming at them. When a player on foot uses the signal mirror and looks at a flying aircraft, the aircraft crew sees a flashing glint at the player's location.
 
 ```text
 Player                             Helicopter
@@ -20,7 +20,8 @@ Player                             Helicopter
 
 ## Features
 
-- Aircraft signaling using binoculars/signal mirror
+- Adds a Signal Mirror item to the Arsenal's Binoculars section
+- Aircraft signaling using signal mirror
 - Randomized glint effects
 - Supports multiple signalers
 - Multiplayer and dedicated server compatible
