@@ -37,6 +37,8 @@ class CfgWeapons
         scope = 2;
         scopeArsenal = 2;
 
+        mass = 1;
+
         model = "\signal_mirror\models\signal_mirror.p3d";
         picture = "\signal_mirror\assets\ui\signal_mirror_ca.paa";
 
