@@ -21,7 +21,30 @@ _unit setVariable ["SM_airScannerRunning", true];
         && {currentWeapon _unit == _requiredWeapon}
         && {vehicle _unit == _unit}
     } do {
-        if (sunOrMoon < SM_SUN_THRESHOLD) exitWith {};
+        if (sunOrMoon < SM_SUN_THRESHOLD) then {
+            sleep 0.2;
+            continue;
+        };
+
+        if (SM_REQUIRE_SUN_LOS) then {
+            private _sunPosASL = eyePos _unit vectorAdd (sunDirection vectorMultiply 10000);
+
+            if (
+                lineIntersectsSurfaces [
+                    eyePos _unit,
+                    _sunPosASL,
+                    _unit,
+                    objNull,
+                    true,
+                    1,
+                    "GEOM",
+                    "NONE"
+                ] isNotEqualTo []
+            ) then {
+                sleep 0.2;
+                continue;
+            };
+        };
 
         private _camPos = positionCameraToWorld [0,0,0];
         private _forward = _camPos vectorFromTo (positionCameraToWorld [0,0,1]);
