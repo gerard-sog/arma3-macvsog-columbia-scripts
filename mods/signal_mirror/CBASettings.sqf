@@ -27,3 +27,17 @@
     {},
     true
 ] call CBA_fnc_addSetting;
+
+[
+    "SM_DEBUG",
+    "CHECKBOX",
+    [
+        "Debug hints",
+        "Displays local debug hints showing sun line-of-sight and aircraft detection status while using the signal mirror."
+    ],
+    [CBA_SETTINGS_SIGNAL_MIRROR, "Debug"],
+    false,
+    0,
+    {},
+    false
+] call CBA_fnc_addSetting;

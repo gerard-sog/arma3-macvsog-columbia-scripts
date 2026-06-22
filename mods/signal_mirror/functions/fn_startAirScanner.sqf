@@ -22,6 +22,14 @@ _unit setVariable ["SM_airScannerRunning", true];
         && {vehicle _unit == _unit}
     } do {
         if (sunOrMoon < SM_SUN_THRESHOLD) then {
+            if (SM_DEBUG) then {
+                hintSilent format [
+                    "Signal Mirror Debug\nSunlight: %1 / %2\nStatus: Not enough sunlight",
+                    sunOrMoon,
+                    SM_SUN_THRESHOLD
+                ];
+            };
+
             sleep 0.2;
             continue;
         };
@@ -30,18 +38,25 @@ _unit setVariable ["SM_airScannerRunning", true];
             private _sunDir = getLighting select 2;
             private _sunPosASL = eyePos _unit vectorAdd ((_sunDir vectorMultiply -1) vectorMultiply 10000);
 
-            if (
-                lineIntersectsSurfaces [
-                    eyePos _unit,
-                    _sunPosASL,
-                    _unit,
-                    objNull,
-                    true,
-                    1,
-                    "GEOM",
-                    "NONE"
-                ] isNotEqualTo []
-            ) then {
+            private _hits = lineIntersectsSurfaces [
+                eyePos _unit,
+                _sunPosASL,
+                _unit,
+                objNull,
+                true,
+                1,
+                "GEOM",
+                "NONE"
+            ];
+
+            if (_hits isNotEqualTo []) then {
+                if (SM_DEBUG) then {
+                    hintSilent format [
+                        "Signal Mirror Debug\nSunlight: OK\nSun LOS: BLOCKED\nHits: %1",
+                        count _hits
+                    ];
+                };
+
                 sleep 0.2;
                 continue;
             };
@@ -81,6 +96,14 @@ _unit setVariable ["SM_airScannerRunning", true];
                     ];
                 };
             } forEach crew _best;
+        };
+
+        if (SM_DEBUG) then {
+            hintSilent format [
+                "Signal Mirror Debug\nSunlight: OK\nSun LOS: OK\nAircraft Found: %1\nAngle: %2°",
+                !isNull _best,
+                round _bestAngle
+            ];
         };
 
         sleep 0.2;
