@@ -75,7 +75,7 @@ _unit setVariable ["SM_airScannerRunning", true];
                 && {_x distance _unit < _range}
                 && {(getPosATL _x select 2) > 10}
             ) then {
-                private _dir = _camPos vectorFromTo (aimPos _x);
+                private _dir = _camPos vectorFromTo (getPosASLVisual _x);
                 private _angle = acos ((_forward vectorDotProduct _dir) max -1 min 1);
 
                 if (_angle < _bestAngle) then {
@@ -102,7 +102,7 @@ _unit setVariable ["SM_airScannerRunning", true];
             hintSilent format [
                 "Signal Mirror Debug\nSunlight: OK\nSun LOS: OK\nAircraft Found: %1\nAngle: %2°",
                 !isNull _best,
-                round _bestAngle
+                _bestAngle toFixed 2
             ];
         };
 
