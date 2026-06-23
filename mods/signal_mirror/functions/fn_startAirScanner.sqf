@@ -10,8 +10,8 @@ _unit setVariable ["SM_airScannerRunning", true];
 [_unit] spawn {
     params ["_unit"];
 
-    private _requiredWeapon = "vn_m19_binocs_grn";
-    private _range = 2000;
+    private _requiredWeapon = "SM_SignalMirror";
+    private _range = 2500;
     private _maxAngle = 30;
 
     while {
@@ -21,6 +21,47 @@ _unit setVariable ["SM_airScannerRunning", true];
         && {currentWeapon _unit == _requiredWeapon}
         && {vehicle _unit == _unit}
     } do {
+        if (sunOrMoon < SM_SUN_THRESHOLD) then {
+            if (SM_DEBUG) then {
+                hintSilent format [
+                    "Signal Mirror Debug\nSunlight: %1 / %2\nStatus: Not enough sunlight",
+                    sunOrMoon,
+                    SM_SUN_THRESHOLD
+                ];
+            };
+
+            sleep 0.2;
+            continue;
+        };
+
+        if (SM_REQUIRE_SUN_LOS) then {
+            private _sunDir = getLighting select 2;
+            private _sunPosASL = eyePos _unit vectorAdd ((_sunDir vectorMultiply -1) vectorMultiply 10000);
+
+            private _hits = lineIntersectsSurfaces [
+                eyePos _unit,
+                _sunPosASL,
+                _unit,
+                objNull,
+                true,
+                1,
+                "GEOM",
+                "NONE"
+            ];
+
+            if (_hits isNotEqualTo []) then {
+                if (SM_DEBUG) then {
+                    hintSilent format [
+                        "Signal Mirror Debug\nSunlight: OK\nSun LOS: BLOCKED\nHits: %1",
+                        count _hits
+                    ];
+                };
+
+                sleep 0.2;
+                continue;
+            };
+        };
+
         private _camPos = positionCameraToWorld [0,0,0];
         private _forward = _camPos vectorFromTo (positionCameraToWorld [0,0,1]);
 
@@ -34,7 +75,7 @@ _unit setVariable ["SM_airScannerRunning", true];
                 && {_x distance _unit < _range}
                 && {(getPosATL _x select 2) > 10}
             ) then {
-                private _dir = _camPos vectorFromTo (aimPos _x);
+                private _dir = _camPos vectorFromTo (getPosASLVisual _x);
                 private _angle = acos ((_forward vectorDotProduct _dir) max -1 min 1);
 
                 if (_angle < _bestAngle) then {
@@ -55,6 +96,14 @@ _unit setVariable ["SM_airScannerRunning", true];
                     ];
                 };
             } forEach crew _best;
+        };
+
+        if (SM_DEBUG) then {
+            hintSilent format [
+                "Signal Mirror Debug\nSunlight: OK\nSun LOS: OK\nAircraft Found: %1\nAngle: %2°",
+                !isNull _best,
+                _bestAngle toFixed 2
+            ];
         };
 
         sleep 0.2;

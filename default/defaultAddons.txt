@@ -1297,6 +1297,11 @@ RWYL_SelectedSeatColour = [0.95,0.95,0.95,1];
 RWYL_SelectedSeatIconSize = 1;
 RWYL_ThirdPerson_enable = true;
 
+// Signal Mirror
+force SM_DEBUG = false;
+force SM_REQUIRE_SUN_LOS = true;
+force SM_SUN_THRESHOLD = 0.3;
+
 // Simplex Support Services
 force sss_artillery_autoTerminals = false;
 force sss_artillery_manualInput = false;
