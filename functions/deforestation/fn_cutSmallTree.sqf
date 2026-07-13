@@ -38,8 +38,11 @@ player addEventHandler [
                 ["b_cestrum_f.p3d", 2],
                 ["vn_t_banana_slim_f.p3d", 1],
                 ["vn_t_banana_f.p3d", 1],
+                ["t_banana_wild_f.p3d", 1],
                 ["vn_b_calochlaena_f.p3d", 1],
+                ["b_calochlaena_f.p3d", 1],
                 ["vn_elephant_grass_01_lc.p3d", 1],
+                ["b_sugarcane_mature_row_f.p3d", 1],
                 ["vn_t_pritchardia_f.p3d", 2],
                 ["t_pritchardia_f.p3d", 2],
                 ["vn_b_leucaena_f.p3d", 2],
@@ -53,7 +56,8 @@ player addEventHandler [
                 ["vn_t_agathis_wide_f.p3d", 8],
                 ["t_leucaena_f.p3d", 4],
                 ["t_cocosnucifera3s_bend_f.p3d", 4],
-                ["t_cocos_tall_f.p3d", 4]
+                ["t_cocos_tall_f.p3d", 4],
+                ["t_ficus_small_f.p3d", 4]
             ];
 
             {
