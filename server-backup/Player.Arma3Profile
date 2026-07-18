@@ -56,7 +56,7 @@ class DifficultyPresets
     class CustomAILevel
     {
         skillAI=0.75;
-        precisionAI=0.15;
+        precisionAI=0.1;
     };
 
 };
