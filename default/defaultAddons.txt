@@ -124,7 +124,7 @@ force ace_explosives_requireSpecialist = false;
 // ACE Field Rations
 ace_field_rations_zeusUpdates = false;
 force acex_field_rations_affectAdvancedFatigue = true;
-force acex_field_rations_enabled = true;
+force acex_field_rations_enabled = false;
 acex_field_rations_hudShowLevel = 70;
 acex_field_rations_hudTransparency = -1;
 acex_field_rations_hudType = 1;
@@ -135,6 +135,7 @@ force acex_field_rations_thirstQuenched = 3;
 force acex_field_rations_timeWithoutFood = 2.8;
 force acex_field_rations_timeWithoutWater = 2.8;
 force acex_field_rations_waterSourceActions = 1;
+
 
 // ACE Fire
 force ace_fire_dropWeapon = 0;
