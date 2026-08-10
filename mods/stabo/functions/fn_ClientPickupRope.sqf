@@ -7,6 +7,8 @@ if (vehicle _unit != _unit) exitWith {};
 
 [_unit] orderGetIn false;
 
+_unit enableCollisionWith objNull;
+
 private _rappelPointPosition = AGLToASL (_heli modelToWorldVisual _rappelPoint);
 
 private _anchor = "Land_Can_V2_F" createVehicle _rappelPointPosition;
@@ -107,6 +109,8 @@ while {true} do {
 
 	sleep 0.01;
 };
+
+_unit enableCollisionWith _unit;
 
 private _bottomRope = _unit getVariable ["APR_STABO_BottomRope", objNull];
 
