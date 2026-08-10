@@ -37,7 +37,17 @@ _heli setVariable ["APR_STABO_Rope", _rope, true];
 _heli setVariable ["APR_STABO_DroppedSandbag", _droppedSandbag, true];
 
 [
-	{(getPosATL (_this select 0) select 2) <= 0.25},
+	{
+		(((getPosATL (_this select 0)) select 2) <= 0.25)
+		||
+		{
+			surfaceIsWater (getPosWorld (_this select 0))
+			&&
+			{
+				(((getPosASLW (_this select 0)) select 2) <= 0.25)
+			}
+		}
+	},
 	{
 		params ["_droppedSandbag", "_heli"];
 
@@ -46,10 +56,20 @@ _heli setVariable ["APR_STABO_DroppedSandbag", _droppedSandbag, true];
 		["Sandbag touching ground!", -1, 1, 2, 0] remoteExec ["BIS_fnc_dynamicText", crew _heli];
 		[_droppedSandbag, true] remoteExec ["hideObjectGlobal", 2];
 
-		private _frozenSandbag = APR_STABO_SANDBAG_CLASS createVehicle getPosATL _droppedSandbag;
-		_frozenSandbag allowDamage false;
-		_frozenSandbag enableSimulationGlobal false;
-		_frozenSandbag setVariable ["APR_STABO_ParentHelicopter", _heli, true];
+        private _frozenSandbag = if (surfaceIsWater (getPosWorld _droppedSandbag)) then {
+            private _waterPos = getPosASLW _droppedSandbag;
+            _waterPos set [2, 0];
+
+            private _bag = APR_STABO_SANDBAG_CLASS createVehicle ASLToATL _waterPos;
+            _bag setPosASL _waterPos;
+            _bag
+        } else {
+            APR_STABO_SANDBAG_CLASS createVehicle getPosATL _droppedSandbag
+        };
+
+        _frozenSandbag allowDamage false;
+        _frozenSandbag enableSimulationGlobal false;
+        _frozenSandbag setVariable ["APR_STABO_ParentHelicopter", _heli, true];
 
 		_heli setVariable ["APR_STABO_Sandbag", _frozenSandbag, true];
 		_heli setVariable ["APR_STABO_ActionPoint", _frozenSandbag, true];
