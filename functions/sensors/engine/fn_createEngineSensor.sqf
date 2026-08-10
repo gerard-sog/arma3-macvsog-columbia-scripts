@@ -24,7 +24,7 @@ if ((isNil "_sensor") && (isNil "_sensorId")) then
     _sensor = createVehicle [colsog_sensor_engineThingItem, getPosATL player, [], 0.5, "CAN_COLLIDE"];
     ["zen_common_updateEditableObjects", [[_sensor], true]] call CBA_fnc_serverEvent;
 
-    // Giving an idea to log it in records, this will give the ability to differentiate them.
+    // Giving an id to log it in records, this will give the ability to differentiate them.
     COLSOG_sensorIdCounter = COLSOG_sensorIdCounter + 1;
     _sensor setVariable ["COLSOG_sensorID", COLSOG_sensorIdCounter, true];
     hintSilent format ["ID_" + str (COLSOG_sensorIdCounter)];
