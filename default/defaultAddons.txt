@@ -1271,14 +1271,14 @@ force L_Immerse_recoil = true;
 force L_Immerse_twitch = true;
 
 // LAxemann's Suppress
-force L_Suppress_buildup = 0.25;
+force L_Suppress_buildup = 0.52;
 force L_Suppress_enabled = true;
 force L_Suppress_flyByEffects = true;
-force L_Suppress_flyByIntensity = 0.3;
+force L_Suppress_flyByIntensity = 1;
 force L_Suppress_halting = true;
-force L_Suppress_intensity = 0;
+force L_Suppress_intensity = 1;
 force L_Suppress_playerSwabEnabled = true;
-force L_Suppress_recovery = 2;
+force L_Suppress_recovery = 1.48;
 
 // Restrict Markers
 restrict_markers_main_autoCopyDeletion = true;
