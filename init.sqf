@@ -35,3 +35,7 @@ execVM "functions\init_colsog_spectatorSetup.sqf";
 // run the script to create the nice vectored map borders
 // commented out by default as currently we only have borders for Cam Lao Nam
 // [] spawn compileScript ["vet_border\init.sqf"];
+
+// borders for the new 10240x10240 map (coordinates are hardcoded, no markers needed)
+// uncomment in the new map's mission; the script exits by itself on maps of another size
+// [] spawn compileScript ["tri_border\init.sqf"];
