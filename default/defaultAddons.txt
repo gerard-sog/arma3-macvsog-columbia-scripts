@@ -799,7 +799,7 @@ awsr_core_speedUpdatedDisplayType_Walk = 3;
 
 // Chicom Dud Grenade
 force chicom_dud_audio_enabled = true;
-force chicom_dud_chance = 50;
+force chicom_dud_chance = 90;
 
 // COLSOG AI and ENV related
 force colsog_ai_aimingAccuracy = 0.15;
@@ -1400,8 +1400,8 @@ force TS_debug_enabled = false;
 force TS_maximum_altitude = 300;
 force TS_overcast_factor = 0.2;
 force TS_rain_factor = 0.5;
-force TS_weather_cycle_max_time = 1800;
-force TS_weather_cycle_min_time = 900;
+force TS_weather_cycle_max_time = 7200;
+force TS_weather_cycle_min_time = 7200;
 force TS_weather_system_enabled = true;
 force TS_wind_factor = 1;
 
